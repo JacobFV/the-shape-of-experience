@@ -14,7 +14,6 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta,positioning,shapes,calc}
-\usepackage{tcolorbox}
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -76,12 +75,8 @@
 \newcommand{\valence}{\mathcal{V}\hspace{-0.5pt}\mathit{al}}
 \newcommand{\arousal}{\mathcal{A}\hspace{-0.5pt}\mathit{r}}
 
-% Box for key results
-\newtcolorbox{keyresult}{
-  colback=blue!5!white,
-  colframe=blue!75!black,
-  title=Key Result
-}
+% --- lightweight callouts ---
+\newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
 
 \title{\textbf{The Inevitability of Being}\\[1em]
 \Large Part I: Thermodynamic Foundations and the Ladder of Emergence}

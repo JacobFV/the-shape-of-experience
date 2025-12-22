@@ -14,7 +14,6 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing}
-\usepackage{tcolorbox}
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -82,24 +81,10 @@
 \newcommand{\distinction}{\delta}
 \newcommand{\relation}{\rho}
 
-% Box for key results
-\newtcolorbox{keyresult}{
-  colback=blue!5!white,
-  colframe=blue!75!black,
-  title=Key Result
-}
-
-\newtcolorbox{phenomenal}{
-  colback=purple!5!white,
-  colframe=purple!75!black,
-  title=Phenomenal Correspondence
-}
-
-\newtcolorbox{warning}{
-  colback=red!5!white,
-  colframe=red!75!black,
-  title=Warning
-}
+% --- lightweight callouts ---
+\newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
+\newenvironment{phenomenal}{\begin{quote}\textbf{Phenomenal Correspondence.} }{\end{quote}}
+\newenvironment{warning}{\begin{quote}\textbf{Warning.} }{\end{quote}}
 
 \title{\textbf{The Inevitability of Being}\\[1em]
 \Large Part II: The Identity Thesis and the Geometry of Feeling}
