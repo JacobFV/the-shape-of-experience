@@ -16,33 +16,6 @@
 \usetikzlibrary{arrows.meta,positioning,shapes,calc}
 \usepackage{enumitem}
 \usepackage{booktabs}
-\usepackage[framemethod=tikz]{mdframed}
-
-% --- styled box environments ---
-\mdfdefinestyle{keybox}{
-  linecolor=blue!75!black,
-  backgroundcolor=blue!5!white,
-  linewidth=1pt,
-  roundcorner=3pt,
-  innertopmargin=10pt,
-  innerbottommargin=10pt,
-  frametitlebackgroundcolor=blue!75!black,
-  frametitlefont=\bfseries\color{white},
-  frametitlerule=true,
-  frametitlerulewidth=0pt
-}
-\mdfdefinestyle{warnbox}{
-  linecolor=red!75!black,
-  backgroundcolor=red!5!white,
-  linewidth=1pt,
-  roundcorner=3pt,
-  innertopmargin=10pt,
-  innerbottommargin=10pt,
-  frametitlebackgroundcolor=red!75!black,
-  frametitlefont=\bfseries\color{white},
-  frametitlerule=true,
-  frametitlerulewidth=0pt
-}
 \usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -102,8 +75,8 @@
 \newcommand{\valence}{\mathcal{V}\hspace{-0.5pt}\mathit{al}}
 \newcommand{\arousal}{\mathcal{A}\hspace{-0.5pt}\mathit{r}}
 
-% --- callout environments using mdframed ---
-\newenvironment{keyresult}{\begin{mdframed}[style=keybox, frametitle=Key Result]}{\end{mdframed}}
+% --- lightweight callouts ---
+\newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
 
 \title{\textbf{The Inevitability of Being}\\[1em]
 \Large Part I: Thermodynamic Foundations and the Ladder of Emergence}
@@ -459,7 +432,7 @@ Self-modeling becomes the cheapest way to improve control once the agent's actio
 
 We can now state the complete ladder:
 
-\begin{mdframed}[style=keybox, frametitle=The Ladder of Inevitability]
+\begin{tcolorbox}[title=The Ladder of Inevitability]
 \begin{center}
 \begin{tikzpicture}[
     node distance=0.7cm,
@@ -481,7 +454,7 @@ We can now state the complete ladder:
 \draw[-{Stealth}] (self) -- (meta) node[midway, right, font=\small] {recursion};
 \end{tikzpicture}
 \end{center}
-\end{mdframed}
+\end{tcolorbox}
 
 Each step follows from the previous under broad conditions:
 \begin{enumerate}
