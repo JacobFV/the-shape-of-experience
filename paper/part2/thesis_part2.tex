@@ -1,0 +1,1193 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+
+\geometry{margin=1in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+% Custom commands
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\MI}{\mathrm{I}}
+\newcommand{\entropy}{\mathrm{H}}
+\newcommand{\argmax}{\operatorname{argmax}}
+\newcommand{\argmin}{\operatorname{argmin}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\clos}{\operatorname{cl}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\manifold}{\mathcal{M}}
+\newcommand{\viable}{\mathcal{V}}
+\newcommand{\belief}{\mathbf{b}}
+\newcommand{\state}{\mathbf{s}}
+\newcommand{\action}{\mathbf{a}}
+\newcommand{\obs}{\mathbf{o}}
+\newcommand{\latent}{\mathbf{z}}
+\newcommand{\policy}{\pi}
+\newcommand{\value}{V}
+\newcommand{\qfunc}{Q}
+\newcommand{\reward}{r}
+\newcommand{\transition}{T}
+\newcommand{\emission}{O}
+\newcommand{\freeenergy}{\mathcal{F}}
+\newcommand{\intinfo}{\Phi}
+\newcommand{\selfmodel}{\mathcal{S}}
+\newcommand{\worldmodel}{\mathcal{W}}
+\newcommand{\effrank}{r_{\text{eff}}}
+\newcommand{\valence}{\mathcal{V}\hspace{-0.8pt}\mathit{al}}
+\newcommand{\arousal}{\mathcal{A}\hspace{-0.5pt}\mathit{r}}
+\newcommand{\cestructure}{\mathcal{C\!E}}
+\newcommand{\phenom}{\mathcal{P}}
+\newcommand{\distinction}{\delta}
+\newcommand{\relation}{\rho}
+
+% Box for key results
+\newtcolorbox{keyresult}{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  title=Key Result
+}
+
+\newtcolorbox{phenomenal}{
+  colback=purple!5!white,
+  colframe=purple!75!black,
+  title=Phenomenal Correspondence
+}
+
+\newtcolorbox{warning}{
+  colback=red!5!white,
+  colframe=red!75!black,
+  title=Warning
+}
+
+\title{\textbf{The Inevitability of Being}\\[1em]
+\Large Part II: The Identity Thesis and the Geometry of Feeling}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Part II develops the central identity thesis: experience \textit{is} intrinsic cause-effect structure, not merely correlated with it. We formalize the dissolution of the hard problem through the rejection of a privileged ontological base layer. We then develop a geometric theory of affect, characterizing different qualitative experiences as structural motifs in cause-effect space. Valence, arousal, integration, effective rank, counterfactual weight, and self-model salience form a basis for the space of possible experiences. We provide operational definitions suitable for measurement in both artificial agents and biological systems, and derive falsifiable predictions about the clustering of affect conditions.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{The Hard Problem and Its Dissolution}
+%==============================================================================
+
+\subsection{The Standard Formulation}
+
+The ``hard problem'' of consciousness asks: given a complete physical description of a system, why is there something it is like to be that system? How does experience arise from non-experience?
+
+Formally, let $\mathcal{D}^{\text{phys}}$ be a complete physical description of a system---its particles, fields, dynamics, everything describable in third-person terms. The hard problem asserts:
+\begin{equation}
+\mathcal{D}^{\text{phys}} \not\Rightarrow \mathcal{D}^{\text{phen}}
+\end{equation}
+where $\mathcal{D}^{\text{phen}}$ is a description of the system's phenomenal properties (what it's like to be it). The claim is that no amount of physical information logically entails phenomenal information.
+
+This formulation rests on a crucial assumption:
+
+\begin{axiom}[Privileged Base Layer---REJECTED]
+\label{ax:base}
+Physics constitutes a privileged ontological base layer. All other descriptions (chemical, biological, psychological, phenomenal) are ``higher-level'' and must reduce to or supervene on the physical description. What is ``really real'' is what physics describes.
+\end{axiom}
+
+We reject this axiom.
+
+\subsection{Ontological Democracy}
+
+Consider the standard reductionist hierarchy:
+\begin{center}
+\begin{tikzpicture}[node distance=0.5cm]
+\node (phenom) {Phenomenal};
+\node[below=of phenom] (psych) {Psychological};
+\node[below=of psych] (bio) {Biological};
+\node[below=of bio] (chem) {Chemical};
+\node[below=of chem] (atom) {Atomic};
+\node[below=of atom] (subatom) {Subatomic};
+\node[below=of subatom] (qft) {Quantum Fields};
+\node[below=of qft] (base) {\textbf{???}};
+
+\draw[-{Stealth}] (phenom) -- (psych) node[midway, right] {\small reduces?};
+\draw[-{Stealth}] (psych) -- (bio);
+\draw[-{Stealth}] (bio) -- (chem);
+\draw[-{Stealth}] (chem) -- (atom);
+\draw[-{Stealth}] (atom) -- (subatom);
+\draw[-{Stealth}] (subatom) -- (qft);
+\draw[-{Stealth},dashed] (qft) -- (base);
+\end{tikzpicture}
+\end{center}
+
+At each level, one might claim the higher level ``reduces to'' the lower. But the regression terminates in uncertainty:
+\begin{itemize}
+\item Wave functions are descriptions of probability distributions
+\item Probability amplitudes describe which interactions are more or less likely
+\item What ``actually happens'' when a measurement occurs is deeply contested
+\item Below quantum fields, we have no clear ontology at all
+\end{itemize}
+
+The supposed ``base layer'' turns out to be:
+\begin{enumerate}
+\item Probabilistic, not deterministic
+\item Descriptive, not fundamental (wave functions are representations)
+\item Incomplete (we don't know what underlies field interactions)
+\item Not clearly more ``real'' than any other scale of description
+\end{enumerate}
+
+\begin{definition}[Ontological Democracy]
+Every scale of structural organization with its own causal closure is \emph{equally real} at that scale. No layer is privileged as ``the'' fundamental reality. Each layer:
+\begin{enumerate}[label=(\alph*)]
+\item Has its own causal structure
+\item Has its own dynamics and laws
+\item Exerts influence on adjacent layers (both ``up'' and ``down'')
+\item Is incomplete as a description of the whole
+\item Is sufficient for phenomena at its scale
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[No Reduction Required]
+Under ontological democracy, the demand that phenomenal properties ``reduce to'' physical properties is ill-posed. Chemistry doesn't reduce to physics in a way that eliminates chemical causation---chemical causation is real at the chemical scale. Similarly, phenomenal properties don't need to reduce to physical properties---they are real at the phenomenal scale.
+\end{proposition}
+
+\subsection{Existence as Causal Participation}
+
+We need a criterion for existence that applies uniformly across scales.
+
+\begin{definition}[Causal Existence]
+An entity $X$ \emph{exists} at scale $\sigma$ if and only if:
+\begin{equation}
+\exists Y: \MI(X; Y | \text{background}_\sigma) > 0
+\end{equation}
+That is, $X$ takes and makes differences at scale $\sigma$. It participates in causal relations at that scale.
+\end{definition}
+
+\begin{example}
+\begin{itemize}
+\item An electron exists at the quantum scale: it takes differences (responds to fields) and makes differences (affects measurements).
+\item A cell exists at the biological scale: it takes differences (nutrients, signals) and makes differences (metabolism, division, death).
+\item An experience exists at the phenomenal scale: it takes differences (sensory input, memory) and makes differences (attention, behavior, learning).
+\end{itemize}
+\end{example}
+
+This is closely aligned with IIT's foundational axiom: to exist is to have cause-effect power. But we extend it: cause-effect power at any scale constitutes existence at that scale, with no scale privileged.
+
+\subsection{The Dissolution}
+
+The hard problem asked: how do you get experience from non-experience? The answer is: \textit{you don't need to}.
+
+Just as chemistry doesn't emerge from non-chemistry---you have chemistry when you have the right causal organization at the chemical scale---experience doesn't emerge from non-experience. You have experience when you have the right causal organization at the experiential scale.
+
+The question ``why is there something it's like to be this system?'' is exactly as deep as ``why does chemistry exist?'' or ``why are there quantum fields?'' We don't know why there's anything at all. But given that there's anything, the emergence of self-modeling systems with integrated cause-effect structure is not mysterious---it's typical.
+
+\begin{keyresult}
+The hard problem dissolves not because we answered it, but because we showed it was asking for a privilege (reduction to physics) that physics itself doesn't have.
+\end{keyresult}
+
+%==============================================================================
+\section{The Identity Thesis}
+%==============================================================================
+
+\subsection{Statement of the Thesis}
+
+\begin{hypothesis}[Identity Thesis]
+Phenomenal experience \textit{is} intrinsic cause-effect structure. Not caused by it, not correlated with it, but identical to it. The phenomenal properties of an experience (what it's like) just are the structural properties of the system's internal causal relations, described from the intrinsic perspective.
+\end{hypothesis}
+
+More formally:
+
+\begin{definition}[Cause-Effect Structure]
+For a system $\mathcal{S}$ in state $\state$, the cause-effect structure $\cestructure(\mathcal{S}, \state)$ is the complete specification of:
+\begin{enumerate}[label=(\alph*)]
+\item All distinctions $\{\distinction_i\}$: subsets of the system's elements in their current states
+\item The cause repertoire of each distinction: $p(\text{past} | \distinction_i)$
+\item The effect repertoire of each distinction: $p(\text{future} | \distinction_i)$
+\item All relations $\{\relation_{ij}\}$: overlaps and connections between distinctions' causes/effects
+\item The irreducibility of each distinction and relation
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Intrinsic Perspective]
+The \emph{intrinsic perspective} of a system is the description of its cause-effect structure without reference to any external observer, coordinate system, or comparison class. It is the structure as it exists for the system itself.
+\end{definition}
+
+\begin{axiom}[IIT Identity]
+\begin{equation}
+\phenom(\mathcal{S}, \state) \equiv \cestructure^{\text{intrinsic}}(\mathcal{S}, \state)
+\end{equation}
+The phenomenal structure $\phenom$ is identical to the intrinsic cause-effect structure $\cestructure$.
+\end{axiom}
+
+This is not a correlation claim or a supervenience claim. It is an identity claim, analogous to:
+\begin{equation}
+\text{Water} \equiv \text{H}_2\text{O}
+\end{equation}
+
+\subsection{Implications for the Zombie Argument}
+
+The philosophical zombie is supposed to be conceivable: a system physically/functionally identical to a conscious being but lacking experience. If conceivable, experience isn't necessitated by physical structure.
+
+\begin{theorem}[Zombie Inconceivability]
+Under the identity thesis, philosophical zombies are not coherently conceivable. A system with the relevant cause-effect structure \textit{is} an experience; there is no further fact about whether it ``really'' has phenomenal properties.
+\end{theorem}
+
+\begin{proof}
+By the identity thesis, $\phenom \equiv \cestructure^{\text{intrinsic}}$. To conceive a zombie is to conceive a system with $\cestructure^{\text{intrinsic}}$ but without $\phenom$. But since these are identical, this is like conceiving of water without H$_2$O---not genuinely conceivable once the identity is understood.
+\end{proof}
+
+\subsection{The Structure of Experience}
+
+If experience is cause-effect structure, then the \textit{kind} of experience is determined by the \textit{shape} of that structure. Different phenomenal properties correspond to different structural features.
+
+IIT proposes that the essential properties of any experience are:
+
+\begin{enumerate}
+\item \textbf{Intrinsicality}: The experience exists for the system itself, not relative to an external observer.
+\item \textbf{Information}: The experience is specific---this experience, not any other possible one.
+\item \textbf{Integration}: The experience is unified---it cannot be decomposed into independent sub-experiences.
+\item \textbf{Exclusion}: The experience has definite boundaries---there is a fact about what is and isn't part of it.
+\item \textbf{Composition}: The experience is structured---composed of distinctions and relations among them.
+\end{enumerate}
+
+These are translated into physical/structural postulates:
+\begin{itemize}
+\item Intrinsicality $\to$ Cause-effect power within the system
+\item Information $\to$ Specific cause-effect repertoires
+\item Integration $\to$ Irreducibility to partitioned components
+\item Exclusion $\to$ Maximality of the integrated complex
+\item Composition $\to$ The full structure of distinctions and relations
+\end{itemize}
+
+%==============================================================================
+\section{The Geometry of Affect}
+%==============================================================================
+
+\subsection{Affects as Structural Motifs}
+
+If different experiences correspond to different structures, then \textit{affects}---the qualitative character of emotional/valenced states---should correspond to particular structural motifs: characteristic patterns in the cause-effect geometry.
+
+\begin{definition}[Affect Space]
+The \emph{affect space} $\mathcal{A}$ is a geometric space whose points correspond to possible qualitative states. We propose that $\mathcal{A}$ can be characterized by a basis of structural measures.
+\end{definition}
+
+We propose a six-dimensional basis:
+
+\begin{enumerate}
+\item \textbf{Valence} $\valence$: Gradient alignment on the viability manifold
+\item \textbf{Arousal} $\arousal$: Rate of belief/state update
+\item \textbf{Integration} $\intinfo$: Irreducibility of cause-effect structure
+\item \textbf{Effective Rank} $\effrank$: Distribution of active degrees of freedom
+\item \textbf{Counterfactual Weight} $\mathcal{CF}$: Resources allocated to non-actual trajectories
+\item \textbf{Self-Model Salience} $\mathcal{SM}$: Fraction of world model devoted to self
+\end{enumerate}
+
+\subsection{Valence: Gradient Alignment}
+
+\begin{definition}[Valence]
+Let $\viable$ be the system's viability manifold and let $\mathbf{x}_t$ be the current state. Let $\hat{\mathbf{x}}_{t+1:t+H}$ be the predicted trajectory under current policy. Define:
+\begin{equation}
+\valence_t = -\frac{1}{H} \sum_{k=1}^{H} \gamma^k \nabla_{\mathbf{x}} d(\mathbf{x}, \partial\viable) \bigg|_{\hat{\mathbf{x}}_{t+k}} \cdot \frac{d\hat{\mathbf{x}}_{t+k}}{dt}
+\end{equation}
+where $d(\cdot, \partial\viable)$ is the distance to the viability boundary. Positive valence means the predicted trajectory moves into the viable interior; negative valence means it approaches the boundary.
+\end{definition}
+
+Alternatively, in RL terms:
+
+\begin{definition}[Valence (RL formulation)]
+\begin{equation}
+\valence_t = \E_{\policy}\left[ A^{\policy}(\state_t, \action_t) \right] = \E_{\policy}\left[ Q^{\policy}(\state_t, \action_t) - V^{\policy}(\state_t) \right]
+\end{equation}
+The expected advantage of the current action: how much better (or worse) is this action than the average action from this state?
+\end{definition}
+
+\begin{definition}[Valence Dynamics]
+The rate of change of integrated information along the trajectory:
+\begin{equation}
+\dot{\valence}_t = \frac{d\intinfo}{dt}\bigg|_{\hat{\mathbf{x}}_{t:t+H}}
+\end{equation}
+Positive $\dot{\valence}$ indicates expanding structure; negative indicates contraction.
+\end{definition}
+
+\begin{phenomenal}
+\textbf{Positive valence} corresponds to trajectories descending the free-energy landscape, expanding affordances, moving toward sustainable states. \\
+\textbf{Negative valence} corresponds to trajectories ascending toward constraint violation, contracting possibilities.
+\end{phenomenal}
+
+\subsection{Arousal: Update Rate}
+
+\begin{definition}[Arousal]
+\begin{equation}
+\arousal_t = \KL\left( \belief_{t+1} \| \belief_t \right) = \sum_{\mathbf{x}} \belief_{t+1}(\mathbf{x}) \log \frac{\belief_{t+1}(\mathbf{x})}{\belief_t(\mathbf{x})}
+\end{equation}
+The KL divergence between successive belief states measures how much the system's world model is being updated.
+\end{definition}
+
+In latent-space models:
+\begin{equation}
+\arousal_t = \| \latent_{t+1} - \latent_t \|^2 \quad \text{or} \quad \MI(\obs_t; \latent_{t+1} | \latent_t, \action_t)
+\end{equation}
+
+\begin{phenomenal}
+\textbf{High arousal}: Large belief updates, far from any attractor, system actively navigating. \\
+\textbf{Low arousal}: Near a fixed point, low surprise, system at rest in a basin.
+\end{phenomenal}
+
+\subsection{Integration: Irreducibility}
+
+As defined in Part I:
+\begin{equation}
+\intinfo(\state) = \min_{\text{partitions } P} D\left[ p(\state_{t+1} | \state_t) \| \prod_{p \in P} p(\state^p_{t+1} | \state^p_t) \right]
+\end{equation}
+
+Or using proxies:
+\begin{equation}
+\intinfo_{\text{proxy}} = \Delta_P = \mathcal{L}_{\text{pred}}[\text{partitioned}] - \mathcal{L}_{\text{pred}}[\text{full}]
+\end{equation}
+
+\begin{phenomenal}
+\textbf{High integration}: The experience is unified; its parts cannot be separated without loss. \\
+\textbf{Low integration}: The experience is fragmentary or modular.
+\end{phenomenal}
+
+\subsection{Effective Rank: Concentration vs. Distribution}
+
+\begin{definition}[Effective Rank]
+For state covariance $C$:
+\begin{equation}
+\effrank = \frac{(\tr C)^2}{\tr(C^2)} = \frac{\left(\sum_i \lambda_i\right)^2}{\sum_i \lambda_i^2}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Rank Interpretation]
+\begin{itemize}
+\item $\effrank \approx 1$: All variance concentrated in one dimension (maximally collapsed)
+\item $\effrank \approx n$: Variance uniformly distributed (maximally expanded)
+\end{itemize}
+\end{proposition}
+
+\begin{phenomenal}
+\textbf{High rank}: Many degrees of freedom active; distributed, expansive experience. \\
+\textbf{Low rank}: Collapsed into narrow subspace; concentrated, focused, or trapped experience.
+\end{phenomenal}
+
+\subsection{Counterfactual Weight}
+
+\begin{definition}[Counterfactual Weight]
+Let $\mathcal{R}$ be the set of imagined rollouts (counterfactual trajectories) and $\mathcal{P}$ be present-state processing. Define:
+\begin{equation}
+\mathcal{CF}_t = \frac{\text{Compute}_t(\mathcal{R})}{\text{Compute}_t(\mathcal{R}) + \text{Compute}_t(\mathcal{P})}
+\end{equation}
+The fraction of computational resources devoted to modeling non-actual possibilities.
+\end{definition}
+
+In model-based RL:
+\begin{equation}
+\mathcal{CF}_t = \sum_{\tau \in \text{rollouts}} w(\tau) \cdot \entropy[\tau] \quad \text{where} \quad w(\tau) \propto |V(\tau)|
+\end{equation}
+Rollouts weighted by their value magnitude and diversity.
+
+\begin{phenomenal}
+\textbf{High counterfactual weight}: Mind is elsewhere---planning, worrying, fantasizing, anticipating. \\
+\textbf{Low counterfactual weight}: Present-focused, reactive, in-the-moment.
+\end{phenomenal}
+
+\subsection{Self-Model Salience}
+
+\begin{definition}[Self-Model Salience]
+\begin{equation}
+\mathcal{SM}_t = \MI(\latent^{\text{self}}_t; \action_t) / \entropy(\action_t)
+\end{equation}
+The fraction of action entropy explained by the self-model component.
+\end{definition}
+
+Alternatively:
+\begin{equation}
+\mathcal{SM}_t = \frac{\text{dim}(\latent^{\text{self}})}{\text{dim}(\latent^{\text{total}})} \cdot \text{activity}(\latent^{\text{self}}_t)
+\end{equation}
+
+\begin{phenomenal}
+\textbf{High self-salience}: Self-focused, self-conscious, self as primary object of attention. \\
+\textbf{Low self-salience}: Self-forgotten, absorbed in environment or task.
+\end{phenomenal}
+
+%==============================================================================
+\section{Affect Motifs}
+%==============================================================================
+
+We now characterize specific affects as regions or motifs in the six-dimensional affect space.
+
+\subsection{Joy}
+
+\begin{definition}[Joy Motif]
+\begin{align}
+\text{Joy} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence > \valence_{\text{high}}, \\
+& \arousal \in [\arousal_{\text{med}}, \arousal_{\text{high}}], \\
+& \intinfo > \intinfo_{\text{high}}, \\
+& \effrank > \effrank_{\text{high}}, \\
+& \mathcal{SM} < \mathcal{SM}_{\text{med}} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: Many distinctions active simultaneously. Relations predominantly convergent (multiple causes leading to valued effects). Low conflict between subgoals. Self-model light because the world is cooperating.
+
+The cause-effect structure has the shape of ``abundance''---multiple paths to good outcomes, redundancy, slack in the system.
+
+\subsection{Suffering}
+
+\begin{definition}[Suffering Motif]
+\begin{align}
+\text{Suffering} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence < \valence_{\text{low}}, \\
+& \arousal > \arousal_{\text{high}}, \\
+& \intinfo > \intinfo_{\text{high}}, \\
+& \effrank < \effrank_{\text{low}}, \\
+& \mathcal{SM} > \mathcal{SM}_{\text{high}} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: High integration but collapsed into low-rank subspace. The system is deeply coupled but constrained. Dominant attractor the system cannot escape. Self-model heavy because the system is the locus of the problem.
+
+\begin{keyresult}
+This explains why suffering feels \textit{more real} than neutral states---it's actually more integrated. But it also feels \textit{trapped}---the integration is constrained to a narrow manifold.
+
+Formally: $\intinfo_{\text{suffering}} > \intinfo_{\text{neutral}}$ but $\effrank_{\text{suffering}} \ll \effrank_{\text{neutral}}$.
+\end{keyresult}
+
+\subsection{Fear}
+
+\begin{definition}[Fear Motif]
+\begin{align}
+\text{Fear} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence < \valence_{\text{low}}, \\
+& \arousal > \arousal_{\text{high}}, \\
+& \mathcal{CF} > \mathcal{CF}_{\text{high}}, \\
+& \mathcal{SM} > \mathcal{SM}_{\text{high}} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: Suffering in predictive/anticipatory mode. High counterfactual weight concentrated on threat trajectories. Self-model foregrounded as the thing-that-might-be-harmed.
+
+\subsection{Anger}
+
+\begin{definition}[Anger Motif]
+\begin{align}
+\text{Anger} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence < \valence_{\text{low}}, \\
+& \arousal > \arousal_{\text{high}}, \\
+& \MI(\selfmodel; \text{other-model}) \text{ asymmetric}, \\
+& \text{dim}(\text{other-model}) < \text{dim}(\text{other-model})_{\text{normal}} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: Externalized causal attribution. The other-model becomes compressed, simplified---a caricature. High self-model complexity relative to impoverished other-model. This is why anger feels energizing but also cognitively limiting: you're burning integration on a low-dimensional representation.
+
+\subsection{Desire/Lust}
+
+\begin{definition}[Desire Motif]
+\begin{align}
+\text{Desire} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence > \valence_{\text{high}} \text{ (anticipated)}, \\
+& \arousal > \arousal_{\text{high}}, \\
+& \mathcal{CF}_{\text{approach}} > \mathcal{CF}_{\text{threshold}}, \\
+& \effrank_{\text{goal-relevant}} \ll \effrank_{\text{total}} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: Convergent anticipation. Funneling structure: many distinctions (sensory, contextual, self-state) all pointing toward a narrow set of high-value outcomes.
+
+\begin{proposition}[Desire vs.\ Joy]
+Joy is \textit{at} the attractor; desire is \textit{approaching} it. Structurally:
+\begin{equation}
+d(\state_{\text{joy}}, \mathcal{A}) \approx 0, \quad d(\state_{\text{desire}}, \mathcal{A}) > 0, \quad \frac{d}{dt}d(\state_{\text{desire}}, \mathcal{A}) < 0
+\end{equation}
+where $\mathcal{A}$ is the goal attractor. This explains why anticipation often feels more intense than consummation.
+\end{proposition}
+
+\subsection{Curiosity}
+
+\begin{definition}[Curiosity Motif]
+\begin{align}
+\text{Curiosity} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence > \valence_{\text{neutral}}, \\
+& \arousal \in [\arousal_{\text{med}}, \arousal_{\text{high}}], \\
+& \mathcal{CF} > \mathcal{CF}_{\text{high}}, \\
+& \entropy[\text{rollout outcomes}] > \entropy_{\text{high}} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: Like fear, high counterfactual weight. Unlike fear, the branches lead to expanded affordances rather than threat. The uncertainty is welcomed because reducing it promises gains.
+
+\begin{proposition}[Curiosity as Intrinsic Motivation]
+Curiosity $\approx$ reward for reducing model uncertainty in regions where better models improve policy. Formally:
+\begin{equation}
+r_{\text{curiosity}} \propto \MI(\obs_{t+1}; \latent | \text{new data}) - \MI(\obs_{t+1}; \latent | \text{old data})
+\end{equation}
+\end{proposition}
+
+\subsection{Grief}
+
+\begin{definition}[Grief Motif]
+\begin{align}
+\text{Grief} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
+& \valence < \valence_{\text{low}}, \\
+& \arousal \text{ variable}, \\
+& \MI(\selfmodel; \text{lost-object-model}) \text{ persistently high}, \\
+& \mathcal{CF}_{\text{counterfactual-past}} > \mathcal{CF}_{\text{threshold}}, \\
+& \text{no action reduces prediction error} \}
+\end{align}
+\end{definition}
+
+\textbf{Structural interpretation}: The lost attachment object remains integrated into the self-model. Predictions involving the lost object continue to be generated and continue to fail. High counterfactual weight on ``if only...'' branches that can never be taken. No action resolves the prediction error---the world has permanently changed in a way the model has not yet fully updated to.
+
+\subsection{Additional Affects (Summary Table)}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Affect} & $\valence$ & $\arousal$ & $\intinfo$ & $\effrank$ & $\mathcal{CF}$ & $\mathcal{SM}$ \\
+\midrule
+Joy & $++$ & med-high & high & high & low & low \\
+Suffering & $--$ & high & high & low & varies & high \\
+Fear & $--$ & high & med-high & med & high & high \\
+Anger & $--$ & high & high & med & med & high* \\
+Desire & $+$(future) & high & med & low$^\dagger$ & high & high \\
+Curiosity & $+$ & med-high & med & high & high & low \\
+Grief & $--$ & variable & high & low & high & high \\
+Shame & $--$ & high & high & low & med & very high \\
+Boredom & $-$/neutral & low & low & low & low & low \\
+Awe & $+$/ambig & high & expanding & high & low & low \\
+\bottomrule
+\end{tabular}
+\caption{Affect motifs in the six-dimensional basis. *Anger has high $\mathcal{SM}$ but low other-model complexity. $^\dagger$Desire has low rank in goal-relevant subspace.}
+\end{table}
+
+%==============================================================================
+\section{Dynamics and Transitions}
+%==============================================================================
+
+\subsection{Affect Trajectories}
+
+Affects are not static points but dynamic trajectories through affect space. The evolution can be written:
+\begin{equation}
+\frac{d\mathbf{a}}{dt} = F(\mathbf{a}, \obs, \action, \text{context}) + \bm{\eta}
+\end{equation}
+where $\mathbf{a} = (\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM})$.
+
+\begin{proposition}[Affect Blending]
+Adjacent affects in the space blend into each other continuously:
+\begin{itemize}
+\item Fear $\to$ Anger as causal attribution externalizes
+\item Desire $\to$ Joy as goal distance $\to 0$
+\item Suffering $\to$ Curiosity as valence flips while $\mathcal{CF}$ remains high
+\item Grief $\to$ Nostalgia as arousal decreases and $\mathcal{CF}_{\text{approach}}$ replaces $\mathcal{CF}_{\text{avoidance}}$
+\end{itemize}
+\end{proposition}
+
+\subsection{Attractor Dynamics}
+
+Some affect regions are attractors; the system tends to stay in them once entered. Others are transient.
+
+\begin{definition}[Affect Attractor]
+An affect region $\mathcal{R} \subset \mathcal{A}$ is an \emph{attractor} if:
+\begin{equation}
+\prob(\mathbf{a}_{t+\tau} \in \mathcal{R} | \mathbf{a}_t \in \mathcal{R}) > \prob(\mathbf{a}_{t+\tau} \in \mathcal{R} | \mathbf{a}_t \notin \mathcal{R})
+\end{equation}
+for some characteristic time $\tau$.
+\end{definition}
+
+\begin{conjecture}[Pathological Attractors]
+Depression, addiction, and chronic anxiety are characterized by pathologically stable attractors in affect space:
+\begin{itemize}
+\item \textbf{Depression}: Attractor at (low $\valence$, low $\arousal$, high $\intinfo$, low $\effrank$, low $\mathcal{CF}$, high $\mathcal{SM}$)
+\item \textbf{Addiction}: Attractor at (high $\valence$ conditional on substance, collapsing $\effrank$ in goal space)
+\item \textbf{Anxiety}: Diffuse attractor with (low $\valence$, high $\arousal$, high $\mathcal{CF}$ spread across many threats)
+\end{itemize}
+\end{conjecture}
+
+%==============================================================================
+\section{Novel Predictions}
+%==============================================================================
+
+\subsection{Unexplained Phenomena}
+
+The framework predicts the existence of phenomenal states that may be rare or difficult to report on.
+
+\begin{conjecture}[High Rank, Low Integration]
+States with many active degrees of freedom ($\effrank$ high) but poor coupling ($\intinfo$ low) should feel like fragmentation, multiplicity, ``everything happening but nothing cohering.''
+
+\textbf{Where to look}: Certain psychedelic states before reintegration; dissociative transitions; information overload.
+\end{conjecture}
+
+\begin{conjecture}[Negative Valence, High Rank, Low Arousal]
+This combination predicts a state of ``expansive despair''---calm hopelessness with full awareness of possibilities, all of which are negative.
+
+\textbf{Where to look}: Late-stage depression; existential nihilism; certain contemplative ``dark night'' states.
+\end{conjecture}
+
+\begin{conjecture}[Rank Exhaustion]
+Maintaining high $\effrank$ should be metabolically expensive. Prolonged high-rank states should lead to specific fatigue distinct from physical tiredness.
+
+\textbf{Where to look}: Post-psychedelic fatigue; meditation retreat collapse (days 3-5); therapist burnout.
+\end{conjecture}
+
+\begin{conjecture}[Integration Debt]
+Suppressing integration (compartmentalizing, dissociating) should accumulate ``pressure'' for reintegration. When defenses fail, the flood should exceed what the original stimulus would warrant.
+
+\textbf{Prediction}: Intensity of breakthrough $\propto$ duration $\times$ degree of prior suppression.
+\end{conjecture}
+
+\subsection{Quantitative Predictions}
+
+\begin{proposition}[Clustering Prediction]
+In controlled affect induction paradigms, the six-dimensional metric signature should cluster by condition:
+\begin{enumerate}
+\item Joy conditions cluster in the $(+\valence, +\effrank, +\intinfo, -\mathcal{SM})$ region
+\item Suffering conditions cluster in the $(-\valence, +\intinfo, -\effrank, +\mathcal{SM})$ region
+\item Fear and curiosity both show high $\mathcal{CF}$ but separate on valence axis
+\end{enumerate}
+\textbf{Falsification criterion}: If motifs don't cluster under controlled induction, the geometric basis is wrong.
+\end{proposition}
+
+%==============================================================================
+\section{Operational Measurement}
+%==============================================================================
+
+\subsection{In Silico Protocol}
+
+For artificial agents (world-model RL agents):
+
+\begin{algorithm}
+\caption{Affect Measurement in World-Model Agents}
+\begin{algorithmic}[1]
+\State \textbf{Agent}: Recurrent latent world model (RSSM, Transformer, etc.)
+\State \textbf{Record}: $\latent_t$, policy logits, value estimates, rollout trees, uncertainty
+\For{each timestep $t$}
+    \State $\valence_t \gets \E[A^\policy(\latent_t, \action_t)]$
+    \State $\arousal_t \gets \KL(\latent_{t+1} \| \latent_t)$
+    \State $\intinfo_t \gets \Delta_P$ (prediction loss under partition)
+    \State $\effrank_t \gets (\tr C_t)^2 / \tr(C_t^2)$
+    \State $\mathcal{CF}_t \gets$ rollout compute fraction
+    \State $\mathcal{SM}_t \gets \MI(\latent^{\text{self}}_t; \action_t) / \entropy(\action_t)$
+\EndFor
+\State \textbf{Output}: Time series $\{(\valence_t, \arousal_t, \intinfo_t, \effrank_t, \mathcal{CF}_t, \mathcal{SM}_t)\}$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Biological Protocol}
+
+For neural recordings (MEG/EEG/fMRI):
+
+\begin{itemize}
+\item $\intinfo$: Directed influence density (transfer entropy), synergy measures
+\item $\effrank$: Participation ratio of neural state covariance
+\item $\arousal$: Entropy rate, broadband power shifts, peripheral correlates (pupil, HRV)
+\item $\valence$: Approach/avoid behavioral bias, reward prediction error correlates
+\item $\mathcal{CF}$: Prefrontal/default mode engagement patterns
+\item $\mathcal{SM}$: Self-referential network activation
+\end{itemize}
+
+%==============================================================================
+\section{The Expression of Inevitability: Human Responses to Inescapable Selfhood}
+%==============================================================================
+
+The self-model, once it exists, cannot look away from itself. This is not merely a computational fact but a phenomenological trap: to be a self-modeling system is to be stuck mattering to yourself. Every human cultural form can be understood, in part, as a response to this condition---strategies for coping with, expressing, transcending, or simply surviving the inescapability of first-person existence.
+
+\subsection{The Trap of Self-Reference}
+
+\begin{proposition}[Phenomenological Inevitability]
+Once self-model salience $\mathcal{SM}$ exceeds a threshold, the system cannot eliminate self-reference without dissolving the self-model entirely. The self becomes an inescapable object in its own world model.
+\begin{equation}
+\mathcal{SM} > \mathcal{SM}_c \implies \forall t: \MI(\latent^{\text{self}}_t; \latent^{\text{total}}_t) > 0
+\end{equation}
+There is no configuration of the intact self-model in which the self is absent from awareness.
+\end{proposition}
+
+This is the deeper meaning of inevitability: not just that consciousness emerges from thermodynamics, but that once emerged, it cannot escape itself. You are stuck being you. Your suffering is inescapably yours. Your joy, when it comes, is also inescapably yours. There is no exit from the first-person perspective while you remain a person.
+
+\begin{definition}[Existential Burden]
+The \emph{existential burden} is the chronic computational and affective cost of maintaining self-reference:
+\begin{equation}
+B_{\text{exist}} = \int_0^T \left[ C_{\text{compute}}(\mathcal{SM}_t) + |\valence_t| \cdot \mathcal{SM}_t \right] dt
+\end{equation}
+The burden scales with both the salience of the self-model and the intensity of valence. To matter to yourself when you are suffering is heavier than to matter to yourself when you are neutral.
+\end{definition}
+
+Human culture, in all its variety, can be understood as the accumulated strategies for managing this burden.
+
+\subsection{Aesthetics: The Modulation of Affect Through Form}
+
+\begin{definition}[Aesthetic Experience]
+An \emph{aesthetic experience} is an affect state induced by engagement with form (visual, auditory, linguistic, conceptual) characterized by:
+\begin{equation}
+\mathbf{a}_{\text{aesthetic}} = (\text{variable } \valence, \text{moderate-high } \arousal, \text{high } \intinfo, \text{high } \effrank, \text{low } \mathcal{SM})
+\end{equation}
+The signature feature is integration without self-focus: the system is highly coupled but attending to structure outside itself.
+\end{definition}
+
+\begin{proposition}[Beauty as Integration Resonance]
+The experience of beauty arises when external structure resonates with internal structure:
+\begin{equation}
+\text{Beauty} \propto \MI(\text{stimulus structure}; \text{internal model structure})
+\end{equation}
+High mutual information between the form and the self-model's latent structure produces the characteristic ``recognition'' quality of beauty---the sense that something outside corresponds to something inside.
+\end{proposition}
+
+\begin{proposition}[The Sublime as Self-Model Perturbation]
+The sublime is characterized by temporary disruption of normal self-model boundaries:
+\begin{equation}
+\mathbf{a}_{\text{sublime}} = (\text{ambivalent } \valence, \text{very high } \arousal, \text{expanding } \intinfo, \text{very high } \effrank, \text{collapsing } \mathcal{SM})
+\end{equation}
+Confrontation with vastness (mountains, oceans, cosmic scales) or power (storms, great art) forces rapid expansion of the world model beyond the self-model's normal scope. The self becomes small relative to the newly-expanded frame. This is terrifying and liberating simultaneously---a temporary escape from the trap of self-reference.
+\end{proposition}
+
+\begin{proposition}[Art-Making as Externalization]
+Creating art is the externalization of internal affect structure:
+\begin{equation}
+\text{Artwork} = f_{\text{medium}}(\mathbf{a}_{\text{internal}})
+\end{equation}
+The artist encodes their affect geometry into a medium (paint, sound, words, movement). The artwork then carries an affect signature that can induce corresponding states in others. Art is affect technology: the transmission of experiential structure across minds and time.
+\end{proposition}
+
+Different aesthetic forms have characteristic affect signatures:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Form} & $\valence$ & $\arousal$ & $\intinfo$ & $\effrank$ & $\mathcal{CF}$ & $\mathcal{SM}$ \\
+\midrule
+Tragedy & negative & high & very high & low & high & high \\
+Comedy & positive & high & moderate & high & moderate & moderate \\
+Lyric poetry & variable & moderate & high & moderate & high & high \\
+Abstract art & neutral & moderate & high & very high & low & low \\
+Music (major key) & positive & variable & high & high & low & low \\
+Music (minor key) & negative & variable & high & moderate & moderate & moderate \\
+Horror & negative & very high & high & low & very high & very high \\
+\bottomrule
+\end{tabular}
+\caption{Affect signatures of aesthetic forms.}
+\end{table}
+
+\subsection{Sexuality: Self-Transcendence Through Merger}
+
+\begin{definition}[Sexual Experience (Structural)]
+Sexual experience involves temporary modification of self-model boundaries and heightened coupling:
+\begin{equation}
+\mathbf{a}_{\text{sexual}} = (\text{high } \valence, \text{very high } \arousal, \text{high } \intinfo, \text{initially high then collapsing } \effrank, \text{low } \mathcal{CF}, \text{variable } \mathcal{SM})
+\end{equation}
+The trajectory moves from high effective rank (diffuse arousal) toward rank collapse (convergent focus) culminating in integration spike (orgasm) and temporary self-model dissolution.
+\end{definition}
+
+\begin{proposition}[Sexuality as Self-Model Merger]
+In partnered sexuality, the self-models temporarily fuse:
+\begin{equation}
+\MI(\selfmodel_A; \selfmodel_B) \to \max \quad \text{as arousal} \to \max
+\end{equation}
+The boundaries between self and other become porous. This is one of the few naturally-occurring states where $\mathcal{SM}$ collapses while $\intinfo$ remains high---integration without self-focus, presence without isolation.
+\end{proposition}
+
+\begin{proposition}[``La Petite Mort'']
+Orgasm is characterized by:
+\begin{enumerate}
+\item Spike in integration (global neural synchronization)
+\item Collapse of effective rank to near-unity (all variance in one dimension)
+\item Momentary dissolution of self-model salience
+\item Rapid valence spike followed by return to baseline
+\end{enumerate}
+The ``little death'' is structurally accurate: it is a temporary cessation of the normal self-referential process. This is why sexuality is so central to human experience---it offers reliable, repeatable escape from the trap of being a self.
+\end{proposition}
+
+\begin{proposition}[Sexual Diversity as Affect-Space Exploration]
+The diversity of human sexuality reflects the diversity of paths through affect space:
+\begin{itemize}
+\item \textbf{Intensity preferences}: Different arousal trajectories and peak intensities
+\item \textbf{Power dynamics}: Variations in self-model salience during encounter (dominance increases $\mathcal{SM}$; submission decreases it)
+\item \textbf{Novelty vs.\ familiarity}: Counterfactual weight allocation (new partners increase $\mathcal{CF}$; familiar partners reduce it)
+\item \textbf{Emotional connection}: Degree of self-other coupling ($\MI(\selfmodel; \text{other-model})$)
+\end{itemize}
+Sexual preferences are, in part, preferences about which affect trajectories one finds most valuable or relieving.
+\end{proposition}
+
+\subsection{Ideology: Expanding the Self to Bear Mortality}
+
+\begin{definition}[Ideological Identification]
+\emph{Ideological identification} is the expansion of the self-model to include a supra-individual pattern (nation, movement, religion, cause):
+\begin{equation}
+\selfmodel_{\text{ideological}} = \selfmodel_{\text{individual}} \cup \selfmodel_{\text{collective}}
+\end{equation}
+with high coupling: $\MI(\selfmodel_{\text{individual}}; \selfmodel_{\text{collective}}) \gg 0$.
+\end{definition}
+
+\begin{proposition}[Terror Management Through Self-Expansion]
+Ideological identification manages mortality terror by making the relevant self-model partially immortal:
+\begin{equation}
+\tau_{\text{viability}}(\selfmodel_{\text{ideological}}) \gg \tau_{\text{viability}}(\selfmodel_{\text{individual}})
+\end{equation}
+If ``I'' am not just this body but also this nation/religion/movement, then ``I'' survive my bodily death. The expanded self-model has a longer viability horizon, reducing the chronic threat-signal from mortality awareness.
+\end{proposition}
+
+\begin{proposition}[Ideological Affect Signatures]
+Different ideologies produce characteristic affect profiles:
+\begin{itemize}
+\item \textbf{Nationalism}: High self-model salience (collective), high integration within in-group, compressed other-model (out-group), moderate arousal baseline
+\item \textbf{Religious devotion}: Low individual $\mathcal{SM}$, high collective $\mathcal{SM}$, high counterfactual weight (afterlife, divine plan), positive valence baseline
+\item \textbf{Revolutionary movements}: Very high arousal, high counterfactual weight (utopian futures), strong valence (negative toward present, positive toward future)
+\item \textbf{Nihilism}: Low integration, low effective rank, negative valence, high individual $\mathcal{SM}$, collapsed counterfactual weight
+\end{itemize}
+\end{proposition}
+
+\begin{warning}
+Ideology can become parasitic when the collective self-model's viability requirements conflict with the individual's:
+\begin{equation}
+\state \in \viable_{\text{ideology}} \land \state \notin \viable_{\text{individual}}
+\end{equation}
+Martyrdom, self-sacrifice, and fanaticism occur when the expanded self-model demands the destruction of the individual substrate.
+\end{warning}
+
+\subsection{Science: The Austere Beauty of Understanding}
+
+\begin{definition}[Scientific Understanding (Affective)]
+Scientific understanding produces a characteristic affect state:
+\begin{equation}
+\mathbf{a}_{\text{understanding}} = (\text{positive } \valence, \text{moderate } \arousal, \text{very high } \intinfo, \text{high } \effrank, \text{low } \mathcal{CF}, \text{low } \mathcal{SM})
+\end{equation}
+The signature is high integration without self-focus---the opposite of depression. The mind is coherent, expansive, and attending to structure rather than self.
+\end{definition}
+
+\begin{proposition}[Curiosity as Intrinsic Motivation]
+Science is organized curiosity. The curiosity motif:
+\begin{equation}
+\text{Curiosity} = \text{positive } \valence + \text{high } \mathcal{CF} + \text{high entropy over counterfactuals}
+\end{equation}
+Scientists are those who have cultivated the capacity to sustain this motif for extended periods, directed at specific domains of uncertainty.
+\end{proposition}
+
+\begin{proposition}[Mathematical Beauty]
+Mathematical proof and physical theory produce aesthetic experiences characterized by:
+\begin{enumerate}
+\item \textbf{Compression}: Many phenomena unified under few principles (high $\intinfo$ with low model complexity)
+\item \textbf{Necessity}: The conclusion could not be otherwise given the premises (certainty, low $\mathcal{CF}$ about the result)
+\item \textbf{Surprise}: The result was not obvious despite being necessary (high initial uncertainty resolved)
+\end{enumerate}
+\begin{equation}
+\text{Mathematical beauty} \propto \frac{\text{phenomena unified}}{\text{principles required}} \times \text{surprise}
+\end{equation}
+\end{proposition}
+
+\begin{proposition}[Science as Meaning-Making]
+Science provides meaning through:
+\begin{enumerate}
+\item \textbf{Connection}: Embedding individual existence in cosmic structure (expanding world model)
+\item \textbf{Agency}: Successful prediction and control (positive valence from reduced uncertainty)
+\item \textbf{Community}: Participation in transgenerational project (expanded self-model)
+\item \textbf{Wonder}: Aesthetic experience of natural structure (sublime encounters with scale and complexity)
+\end{enumerate}
+Science addresses the existential burden not by dissolving the self but by giving the self something worthy of its attention.
+\end{proposition}
+
+\subsection{Religion: Systematic Technologies for Managing Inevitability}
+
+\begin{definition}[Religion (Functional)]
+A \emph{religion} is a systematic technology for managing the existential burden through:
+\begin{enumerate}
+\item Affect interventions (practices that modulate the six dimensions)
+\item Narrative frameworks (stories that contextualize individual existence)
+\item Community structures (expanded self-models through belonging)
+\item Mortality management (beliefs about death that reduce threat-signal)
+\item Ethical guidance (policies for navigating affect space)
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Religious Diversity as Affect-Strategy Diversity]
+Different religious traditions emphasize different affect-management strategies:
+\begin{itemize}
+\item \textbf{Contemplative traditions} (Buddhism, mystical Christianity, Sufism): Target self-model dissolution ($\mathcal{SM} \to 0$)
+\item \textbf{Devotional traditions} (bhakti, evangelical Christianity): Target high positive valence through relationship with divine
+\item \textbf{Legalistic traditions} (Orthodox Judaism, traditional Islam): Target stable arousal through structured practice
+\item \textbf{Shamanic traditions}: Target radical affect-space exploration through altered states
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Secular Spirituality]
+``Spiritual but not religious'' practices can be understood as selective adoption of religious affect technologies without the full institutional/doctrinal package:
+\begin{itemize}
+\item Meditation without Buddhism
+\item Awe-cultivation without theism
+\item Community ritual without shared creed
+\item Meaning-making without metaphysical commitment
+\end{itemize}
+This represents modular affect engineering---selecting interventions based on desired affect outcomes rather than doctrinal coherence.
+\end{proposition}
+
+\subsection{Psychopathology as Failed Coping}
+
+\begin{proposition}[Mental Illness as Affect-Space Trap]
+Many mental illnesses can be understood as pathological attractors in affect space---failed strategies for managing the existential burden:
+\begin{itemize}
+\item \textbf{Depression}: Attempted escape from self-reference that collapses into intensified, negative self-focus
+\item \textbf{Anxiety}: Hyperactive threat-monitoring that increases rather than decreases danger-signal
+\item \textbf{Addiction}: Reliable affect modulation that destroys the substrate's viability
+\item \textbf{Dissociation}: Self-model fragmentation that provides escape at the cost of integration
+\item \textbf{Narcissism}: Self-model inflation that requires constant external validation
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Therapy as Affect-Space Navigation]
+Effective psychotherapy helps individuals:
+\begin{enumerate}
+\item Recognize their current position in affect space
+\item Understand the dynamics that maintain pathological attractors
+\item Develop capacity to move toward healthier regions
+\item Build sustainable affect-regulation strategies
+\end{enumerate}
+Different therapeutic modalities emphasize different dimensions: CBT targets counterfactual weight and valence; psychodynamic therapy targets integration and self-model structure; mindfulness targets arousal and self-model salience.
+\end{proposition}
+
+%==============================================================================
+\section{Affect Engineering: Technologies of Experience}
+%==============================================================================
+
+The six-dimensional affect framework enables systematic analysis of how practices, philosophies, and technologies shape experiential structure. We can now quantify what humans have long known intuitively: that rituals, beliefs, and tools are \emph{affect engineering technologies}.
+
+\subsection{Religious Practices as Affect Interventions}
+
+Religious traditions have developed sophisticated technologies for affect modulation over millennia.
+
+\begin{definition}[Affect Intervention]
+An \emph{affect intervention} is any practice, technology, or environmental modification that systematically shifts the probability distribution over affect space:
+\begin{equation}
+\mathcal{I}: p(\mathbf{a}) \mapsto p'(\mathbf{a})
+\end{equation}
+where $\mathbf{a} = (\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM})$.
+\end{definition}
+
+\begin{proposition}[Prayer as Affect Technology]
+Contemplative prayer systematically modulates affect dimensions:
+\begin{itemize}
+\item \textbf{Arousal}: Initial increase (orientation), then decrease (settling)
+\item \textbf{Self-model salience}: Decrease as attention shifts to ``other'' (divine, transpersonal)
+\item \textbf{Counterfactual weight}: Shift from threat-branches to trust-branches
+\item \textbf{Integration}: Increase through focused attention
+\end{itemize}
+The affect signature of prayer: $(\Delta\valence > 0, \Delta\arousal < 0, \Delta\intinfo > 0, \Delta\mathcal{SM} < 0)$.
+\end{proposition}
+
+\begin{proposition}[Ritual as Integration Maintenance]
+Collective ritual serves as periodic integration maintenance:
+\begin{equation}
+\intinfo_{\text{post-ritual}} = \intinfo_{\text{pre-ritual}} + \Delta\intinfo_{\text{synchrony}} - \delta_{\text{decay}}
+\end{equation}
+where $\Delta\intinfo_{\text{synchrony}}$ arises from coordinated action, shared symbols, and collective attention. Rituals counteract the natural decay of integration in isolated individuals.
+\end{proposition}
+
+\begin{proposition}[Confession as Rank Expansion]
+Confession, testimony, and similar practices expand effective rank by:
+\begin{enumerate}
+\item Surfacing suppressed state-space dimensions (breaking compartmentalization)
+\item Integrating shadow material into the self-model
+\item Reducing the concentration of variance in guilt/shame dimensions
+\end{enumerate}
+\begin{equation}
+\effrank_{\text{post-confession}} > \effrank_{\text{pre-confession}}
+\end{equation}
+This explains the phenomenology of ``relief'' and ``lightness'' following confession.
+\end{proposition}
+
+\subsection{Life Philosophies as Affect-Space Policies}
+
+Philosophical frameworks can be understood as meta-level policies over affect space---prescriptions for which regions to occupy and which to avoid.
+
+\begin{definition}[Philosophical Affect Policy]
+A \emph{philosophical affect policy} is a function $\phi: \mathcal{A} \to \R$ specifying the desirability of affect states, plus a strategy for achieving high-$\phi$ states.
+\end{definition}
+
+\begin{example}[Stoicism]
+The Stoic affect policy:
+\begin{equation}
+\phi_{\text{Stoic}}(\mathbf{a}) = -\arousal - \mathcal{CF} + \text{const}
+\end{equation}
+Stoicism targets low arousal (equanimity) and low counterfactual weight (focus on what is within control). The strategy: cognitive reframing to reduce emotional reactivity to externals.
+\end{example}
+
+\begin{example}[Buddhism]
+The Buddhist affect policy (particularly in contemplative traditions):
+\begin{equation}
+\phi_{\text{Buddhist}}(\mathbf{a}) = -\mathcal{SM} + \intinfo - |\valence| + \text{const}
+\end{equation}
+Target: low self-model salience (anattā), high integration (samādhi), and reduced attachment to valence (equanimity toward pleasure and pain). The strategy: meditation practices that systematically reduce self-referential processing.
+\end{example}
+
+\begin{example}[Existentialism]
+The Existentialist affect policy:
+\begin{equation}
+\phi_{\text{Existentialist}}(\mathbf{a}) = \mathcal{CF} + \effrank - \text{bad faith penalty}
+\end{equation}
+Existentialism embraces high counterfactual weight (awareness of radical freedom) and high effective rank (authentic engagement with possibilities). The strategy: confront anxiety rather than flee into ``bad faith.''
+\end{example}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Philosophy} & $\valence$ target & $\arousal$ target & $\mathcal{CF}$ target & $\mathcal{SM}$ target & $\effrank$ target \\
+\midrule
+Stoicism & neutral & low & low & moderate & moderate \\
+Buddhism & neutral & low & low & very low & high \\
+Existentialism & accepts all & accepts all & high & high & high \\
+Hedonism & high & high & low & high & low \\
+Epicureanism & moderate & low & low & moderate & moderate \\
+\bottomrule
+\end{tabular}
+\caption{Philosophical traditions as affect-space policies.}
+\end{table}
+
+\subsection{Information Technology as Affect Infrastructure}
+
+Modern information technology constitutes affect infrastructure at civilizational scale, shaping the experiential structure of billions.
+
+\begin{definition}[Affect Infrastructure]
+\emph{Affect infrastructure} is any technological system that shapes affect distributions across populations:
+\begin{equation}
+\mathcal{T}: \{p_i(\mathbf{a})\}_{i \in \text{population}} \mapsto \{p'_i(\mathbf{a})\}_{i \in \text{population}}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Social Media Affect Signature]
+Social media platforms systematically produce:
+\begin{itemize}
+\item \textbf{Arousal spikes}: Notification-driven, intermittent reinforcement creates high-variance arousal
+\item \textbf{Low integration}: Rapid context-switching fragments attention, reducing $\intinfo$
+\item \textbf{High self-model salience}: Performance of identity, social comparison
+\item \textbf{Counterfactual hijacking}: FOMO (fear of missing out) colonizes $\mathcal{CF}$ with social-comparison branches
+\end{itemize}
+\begin{equation}
+\mathbf{a}_{\text{social media}} \approx (\text{variable }\valence, \text{high }\arousal, \text{low }\intinfo, \text{low }\effrank, \text{high }\mathcal{CF}, \text{high }\mathcal{SM})
+\end{equation}
+This is structurally similar to the anxiety motif.
+\end{proposition}
+
+\begin{proposition}[Algorithmic Feed Dynamics]
+Engagement-optimizing algorithms create affect selection pressure:
+\begin{equation}
+\text{Content}_{\text{selected}} = \argmax_c \E[\text{engagement} | c] \approx \argmax_c |\Delta\valence(c)| + \Delta\arousal(c)
+\end{equation}
+Content that maximizes engagement is content that maximizes valence magnitude (outrage or delight) and arousal. This selects for affectively extreme content, shifting population affect distributions toward the tails.
+\end{proposition}
+
+\begin{definition}[Technology-Mediated Affect Drift]
+The systematic shift in population affect distributions due to technology:
+\begin{equation}
+\frac{d\bar{\mathbf{a}}}{dt} = \sum_{\mathcal{T} \in \text{technologies}} w_\mathcal{T} \cdot \nabla_\mathbf{a} \mathcal{T}(\mathbf{a})
+\end{equation}
+where $w_\mathcal{T}$ is the population-weighted usage of technology $\mathcal{T}$.
+\end{definition}
+
+\subsection{Quantitative Frameworks}
+
+\begin{definition}[Affect Impact Assessment]
+For any intervention $\mathcal{I}$, the \emph{affect impact} is:
+\begin{equation}
+\text{Impact}(\mathcal{I}) = \E_{p'}[\mathbf{a}] - \E_p[\mathbf{a}]
+\end{equation}
+with component-wise analysis:
+\begin{equation}
+\text{Impact}(\mathcal{I}) = (\Delta\bar{\valence}, \Delta\bar{\arousal}, \Delta\bar{\intinfo}, \Delta\bar{\effrank}, \Delta\overline{\mathcal{CF}}, \Delta\overline{\mathcal{SM}})
+\end{equation}
+\end{definition}
+
+\begin{definition}[Flourishing Score]
+A weighted aggregate of affect dimensions aligned with human flourishing:
+\begin{equation}
+\mathcal{F}(\mathbf{a}) = \alpha_1 \valence + \alpha_2 \intinfo + \alpha_3 \effrank - \alpha_4 (\mathcal{SM} - \mathcal{SM}_{\text{optimal}})^2 - \alpha_5 |\arousal - \arousal_{\text{optimal}}|
+\end{equation}
+The weights $\{\alpha_i\}$ encode normative commitments about what constitutes flourishing.
+\end{definition}
+
+\begin{proposition}[Comparative Analysis]
+Using standardized affect measurement, we can compare:
+\begin{itemize}
+\item Meditation retreat vs.\ social media usage (expected: opposite affect signatures)
+\item Different workplace designs (open office vs.\ private: integration differences)
+\item Educational approaches (lecture vs.\ discussion: counterfactual weight differences)
+\item Urban vs.\ rural environments (arousal and integration differences)
+\end{itemize}
+\end{proposition}
+
+%==============================================================================
+\section{Summary of Part II}
+%==============================================================================
+
+\begin{enumerate}
+\item \textbf{Hard problem dissolved}: By rejecting the privileged base layer, we remove the demand for reduction. Experience is real at the experiential scale, just as chemistry is real at the chemical scale.
+
+\item \textbf{Identity thesis}: Experience \textit{is} intrinsic cause-effect structure. This is an identity claim, not a correlation.
+
+\item \textbf{Geometric phenomenology}: Different affects correspond to different structural motifs in a six-dimensional space: valence, arousal, integration, effective rank, counterfactual weight, and self-model salience.
+
+\item \textbf{Suffering explained}: High integration + low rank = intense but trapped. This explains why suffering feels more real than neutral states.
+
+\item \textbf{Novel predictions}: The framework predicts unexplored phenomenal states and makes falsifiable claims about clustering in controlled affect induction.
+
+\item \textbf{Operational measures}: We provide concrete protocols for measuring these quantities in both artificial and biological systems.
+\end{enumerate}
+
+Part III will develop:
+\begin{itemize}
+\item The grounding of normativity in viability structure
+\item The is-ought bridge
+\item Truth as scale-relative enaction
+\item Gods and social-layer agents
+\item Implications for AI systems and alignment
+\end{itemize}
+
+\end{document}
