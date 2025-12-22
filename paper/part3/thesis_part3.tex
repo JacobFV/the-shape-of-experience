@@ -14,6 +14,45 @@
 \usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing}
 \usepackage{enumitem}
 \usepackage{booktabs}
+\usepackage[framemethod=tikz]{mdframed}
+
+% --- styled box environments ---
+\mdfdefinestyle{keybox}{
+  linecolor=blue!75!black,
+  backgroundcolor=blue!5!white,
+  linewidth=1pt,
+  roundcorner=3pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  frametitlebackgroundcolor=blue!75!black,
+  frametitlefont=\bfseries\color{white},
+  frametitlerule=true,
+  frametitlerulewidth=0pt
+}
+\mdfdefinestyle{warnbox}{
+  linecolor=red!75!black,
+  backgroundcolor=red!5!white,
+  linewidth=1pt,
+  roundcorner=3pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  frametitlebackgroundcolor=red!75!black,
+  frametitlefont=\bfseries\color{white},
+  frametitlerule=true,
+  frametitlerulewidth=0pt
+}
+\mdfdefinestyle{phenombox}{
+  linecolor=purple!75!black,
+  backgroundcolor=purple!5!white,
+  linewidth=1pt,
+  roundcorner=3pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  frametitlebackgroundcolor=purple!75!black,
+  frametitlefont=\bfseries\color{white},
+  frametitlerule=true,
+  frametitlerulewidth=0pt
+}
 \usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -79,10 +118,10 @@
 \newcommand{\distinction}{\delta}
 \newcommand{\relation}{\rho}
 
-% --- lightweight callouts ---
-\newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
-\newenvironment{phenomenal}{\begin{quote}\textbf{Phenomenal Correspondence.} }{\end{quote}}
-\newenvironment{warning}{\begin{quote}\textbf{Warning.} }{\end{quote}}
+% --- callout environments using mdframed ---
+\newenvironment{keyresult}{\begin{mdframed}[style=keybox, frametitle=Key Result]}{\end{mdframed}}
+\newenvironment{phenomenal}{\begin{mdframed}[style=phenombox, frametitle=Phenomenal Correspondence]}{\end{mdframed}}
+\newenvironment{warning}{\begin{mdframed}[style=warnbox, frametitle=Warning]}{\end{mdframed}}
 
 \title{\textbf{The Inevitability of Being}\\[1em]
 \Large Part III: Signatures of Affect Under the Existential Burden}
