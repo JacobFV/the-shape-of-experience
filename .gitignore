@@ -1,0 +1,39 @@
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.pdfsync
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.glg
+*.xdv
+*.spl
+
+# Generated PDFs (uncomment to track them)
+# *.pdf
+
+# Editor files
+*.swp
+*~
+.DS_Store
+
+# Misc
+missfont.log
+texput.log
