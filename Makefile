@@ -35,4 +35,4 @@ clean:
 cleanall: clean
 	rm -f paper/*/*.pdf
 
-.PHONY: all part1 part2 part3 clean cleanall
+.PHONY: all part1 part2 part3 part4 part5 clean cleanall

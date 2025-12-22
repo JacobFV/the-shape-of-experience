@@ -16,6 +16,7 @@
 \usetikzlibrary{arrows.meta,positioning,shapes,calc}
 \usepackage{enumitem}
 \usepackage{booktabs}
+\usepackage{tcolorbox}
 \usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -75,8 +76,12 @@
 \newcommand{\valence}{\mathcal{V}\hspace{-0.5pt}\mathit{al}}
 \newcommand{\arousal}{\mathcal{A}\hspace{-0.5pt}\mathit{r}}
 
-% --- lightweight callouts ---
-\newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
+% --- styled callout boxes ---
+\newtcolorbox{keyresult}{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  title=Key Result
+}
 
 \title{\textbf{The Inevitability of Being}\\[1em]
 \Large Part I: Thermodynamic Foundations and the Ladder of Emergence}
