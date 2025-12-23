@@ -609,3 +609,19 @@ TODO:
 - maybe part IV should be named "Part IV: Interventions Across Scale: From Neurons to Nations"
 - in the part V: i should outline the commandagi vision
 - we currently just throw out numerical estimates for the affect
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
+
+think deeply and seriously about the underlyingh thoughts and what might be expanded. mull over possible implications, answers, relations, etc in this theory. don't even think about writing, just think about the ideas. once you're done, then edit as appropriate 
