@@ -1,0 +1,264 @@
+{
+  "results": {
+    "joy": {
+      "valence": {
+        "mean": 0.08889173004285598,
+        "std": 0.08286604220493032
+      },
+      "arousal": {
+        "mean": 0.9311728762709834,
+        "std": 0.01783628939262173
+      },
+      "integration": {
+        "mean": 0.30392221324881163,
+        "std": 0.0023586122988043397
+      },
+      "effective_rank": {
+        "mean": 0.47535840923396444,
+        "std": 0.009519774383767757
+      },
+      "counterfactual_weight": {
+        "mean": 0.28622394643071836,
+        "std": 0.0502464830076599
+      },
+      "self_model_salience": {
+        "mean": 0.49244258655047923,
+        "std": 0.003476154506082637
+      }
+    },
+    "suffering": {
+      "valence": {
+        "mean": 0.13847136642440977,
+        "std": 0.08427487828818053
+      },
+      "arousal": {
+        "mean": 0.951816156229764,
+        "std": 0.00827610680737441
+      },
+      "integration": {
+        "mean": 0.2984295846411779,
+        "std": 0.0026401910195073173
+      },
+      "effective_rank": {
+        "mean": 0.4591267313156016,
+        "std": 0.01251272312057374
+      },
+      "counterfactual_weight": {
+        "mean": 0.21575432200160308,
+        "std": 0.019812828227336616
+      },
+      "self_model_salience": {
+        "mean": 0.6607688905906495,
+        "std": 0.05319198179034811
+      }
+    },
+    "fear": {
+      "valence": {
+        "mean": 0.09435460562723111,
+        "std": 0.15170818837121972
+      },
+      "arousal": {
+        "mean": 0.9530520779013915,
+        "std": 0.002987186510835501
+      },
+      "integration": {
+        "mean": 0.2999386626608052,
+        "std": 0.0015496884672484127
+      },
+      "effective_rank": {
+        "mean": 0.4836466267527568,
+        "std": 0.017254646075340933
+      },
+      "counterfactual_weight": {
+        "mean": 0.35412621863758265,
+        "std": 0.031475393286637746
+      },
+      "self_model_salience": {
+        "mean": 0.6002079677108982,
+        "std": 0.06578340321660427
+      }
+    },
+    "curiosity": {
+      "valence": {
+        "mean": 0.08926800044839156,
+        "std": 0.11550360048962041
+      },
+      "arousal": {
+        "mean": 0.9433877074598177,
+        "std": 0.009539174419966502
+      },
+      "integration": {
+        "mean": 0.3004627490407501,
+        "std": 0.002002487042017263
+      },
+      "effective_rank": {
+        "mean": 0.47937255054712297,
+        "std": 0.011337898809095439
+      },
+      "counterfactual_weight": {
+        "mean": 0.30447361599205225,
+        "std": 0.08549130085802509
+      },
+      "self_model_salience": {
+        "mean": 0.5187571038830834,
+        "std": 0.04418077240129387
+      }
+    },
+    "boredom": {
+      "valence": {
+        "mean": 0.017679955142272535,
+        "std": 0.17256859092206067
+      },
+      "arousal": {
+        "mean": 0.9124204144778965,
+        "std": 0.012030522554791178
+      },
+      "integration": {
+        "mean": 0.3171429947379307,
+        "std": 0.004543160349332181
+      },
+      "effective_rank": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "counterfactual_weight": {
+        "mean": 0.27885342843808636,
+        "std": 0.0148453811186637
+      },
+      "self_model_salience": {
+        "mean": 0.48726751837869764,
+        "std": 0.008048817563431562
+      }
+    },
+    "anger": {
+      "valence": {
+        "mean": 0.1171853090202023,
+        "std": 0.08618194668861609
+      },
+      "arousal": {
+        "mean": 0.9484675612983089,
+        "std": 0.007394762643821818
+      },
+      "integration": {
+        "mean": 0.3029940868881189,
+        "std": 0.0034735037638861355
+      },
+      "effective_rank": {
+        "mean": 0.4774277992068957,
+        "std": 0.014582441114111354
+      },
+      "counterfactual_weight": {
+        "mean": 0.2483644995976957,
+        "std": 0.009934140684232396
+      },
+      "self_model_salience": {
+        "mean": 0.5204229326010922,
+        "std": 0.04373077078426121
+      }
+    },
+    "desire": {
+      "valence": {
+        "mean": 0.08459790528488326,
+        "std": 0.06896408164475658
+      },
+      "arousal": {
+        "mean": 0.9441539154394106,
+        "std": 0.008843042455369297
+      },
+      "integration": {
+        "mean": 0.3007799742504099,
+        "std": 0.0035094598859388188
+      },
+      "effective_rank": {
+        "mean": 0.48873678588857633,
+        "std": 0.01776806893472545
+      },
+      "counterfactual_weight": {
+        "mean": 0.27707843209181543,
+        "std": 0.06418256031680326
+      },
+      "self_model_salience": {
+        "mean": 0.5891754045650496,
+        "std": 0.08575946575578036
+      }
+    },
+    "awe": {
+      "valence": {
+        "mean": 0.03462972950669873,
+        "std": 0.13495222866399853
+      },
+      "arousal": {
+        "mean": 0.950682869616386,
+        "std": 0.0065311522542710575
+      },
+      "integration": {
+        "mean": 0.3026659389331467,
+        "std": 0.0012134030372600764
+      },
+      "effective_rank": {
+        "mean": 0.47505589416532806,
+        "std": 0.011113829489451622
+      },
+      "counterfactual_weight": {
+        "mean": 0.26850875363649795,
+        "std": 0.04538092219582872
+      },
+      "self_model_salience": {
+        "mean": 0.5465286122335888,
+        "std": 0.08106125618558176
+      }
+    }
+  },
+  "predictions": [
+    {
+      "name": "joy_vs_suffering_valence",
+      "description": "Joy V (+0.089) > Suffering V (+0.138)",
+      "confirmed": false
+    },
+    {
+      "name": "suffering_higher_sm",
+      "description": "Suffering SM (0.661) > Joy SM (0.492)",
+      "confirmed": true
+    },
+    {
+      "name": "fear_higher_cf",
+      "description": "Fear CF (0.354) > Boredom CF (0.279)",
+      "confirmed": true
+    },
+    {
+      "name": "curiosity_signature",
+      "description": "Curiosity: V>0 (True), CF>0.4 (False), SM<0.5 (False)",
+      "confirmed": false
+    },
+    {
+      "name": "boredom_low_engagement",
+      "description": "Boredom: Ar<0.4 (False), \u03a6<0.6 (True)",
+      "confirmed": true
+    },
+    {
+      "name": "fear_higher_arousal",
+      "description": "Fear Ar (0.953) > Boredom Ar (0.912)",
+      "confirmed": true
+    },
+    {
+      "name": "anger_high_sm",
+      "description": "Anger SM (0.520) > Curiosity SM (0.519)",
+      "confirmed": true
+    },
+    {
+      "name": "joy_higher_rank",
+      "description": "Joy r_eff (0.475) > Suffering r_eff (0.459)",
+      "confirmed": true
+    },
+    {
+      "name": "awe_expansive",
+      "description": "Awe: Ar>0.4 (True), r>0.4 (True)",
+      "confirmed": true
+    },
+    {
+      "name": "desire_positive_anticipation",
+      "description": "Desire V (+0.085) > Fear V (+0.094)",
+      "confirmed": false
+    }
+  ]
+}
