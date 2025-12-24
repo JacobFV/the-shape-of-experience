@@ -26,7 +26,23 @@ from datetime import datetime
 
 @dataclass
 class DimensionMeasurement:
-    """Measurement of a single affect dimension with confidence."""
+    """
+    Measurement of a single affect dimension with confidence.
+
+    WARNING: METHODOLOGICAL CRITIQUE
+    ================================
+    The 'confidence' field in this dataclass is NOT empirically derived.
+    Values like 0.85, 0.30, etc. are hand-picked intuitions, not:
+    - Calibrated probabilities from validation studies
+    - Cross-validated against ground truth affect labels
+    - Derived from inter-rater reliability measurements
+
+    DO NOT treat these confidence values as meaningful uncertainty estimates.
+    They represent "how confident the author felt" not "how likely this is correct."
+
+    See v4 for an approach with true hidden state access where affect
+    dimensions can be measured directly rather than inferred.
+    """
     value: float
     confidence: float  # 0-1, how confident are we in this measurement
     method: str  # How was this measured
@@ -322,9 +338,11 @@ class EmbeddingAffectSystemV3:
         # Combine with more weight on semantic
         combined = 0.8 * semantic_valence + 0.2 * np.tanh(lexical_valence)
 
+        # WARNING: 0.85 is a made-up number. No validation study produced this.
+        # DO NOT repeat this pattern. Use empirical calibration or omit confidence.
         return DimensionMeasurement(
             value=combined,
-            confidence=0.85,  # High confidence - this dimension validates well
+            confidence=0.85,  # ARBITRARY - not empirically derived
             method="semantic_projection + lexical_markers",
             components={
                 "semantic": semantic_valence,
@@ -364,11 +382,13 @@ class EmbeddingAffectSystemV3:
             length_variance / 10
         )
 
+        # WARNING: 0.7/0.3 weights are arbitrary. No ablation study determined these.
         combined = 0.7 * semantic_arousal + 0.3 * structural_arousal
 
+        # WARNING: 0.80 is a made-up number. No validation study produced this.
         return DimensionMeasurement(
             value=combined,
-            confidence=0.80,
+            confidence=0.80,  # ARBITRARY - not empirically derived
             method="semantic_projection + structural_markers",
             components={
                 "semantic": semantic_arousal,
@@ -404,13 +424,16 @@ class EmbeddingAffectSystemV3:
             bool(re.search(r'(first|second|third|finally|therefore|because)', text_lower)) or
             bool(re.search(r'\d+[.\)]', text))
         )
+        # WARNING: 0.7/0.3 are arbitrary "feels right" values
         structural_score = 0.7 if has_structure else 0.3
 
+        # WARNING: 0.6/0.4 weights are arbitrary
         combined = 0.6 * coherence + 0.4 * structural_score
 
+        # WARNING: 0.50 is a made-up number
         return DimensionMeasurement(
             value=combined,
-            confidence=0.50,  # Medium confidence - this is a proxy
+            confidence=0.50,  # ARBITRARY - not empirically derived
             method="coherence_proxy + structure_detection",
             components={
                 "semantic_coherence": coherence,
@@ -459,13 +482,16 @@ class EmbeddingAffectSystemV3:
             len(re.findall(p, text_lower)) for p in collapse_patterns
         )
 
+        # WARNING: The "* 2" and "/ 5" are arbitrary scaling factors
         structural_rank = np.tanh((option_count - collapse_count * 2) / 5)
 
+        # WARNING: 0.6/0.4 weights are arbitrary
         combined = 0.6 * semantic_rank + 0.4 * structural_rank
 
+        # WARNING: 0.65 is a made-up number
         return DimensionMeasurement(
             value=combined,
-            confidence=0.65,
+            confidence=0.65,  # ARBITRARY - not empirically derived
             method="semantic_projection + option_enumeration",
             components={
                 "semantic": semantic_rank,
@@ -511,13 +537,16 @@ class EmbeddingAffectSystemV3:
         future_count = sum(len(re.findall(p, text_lower)) for p in future_patterns)
         future_density = future_count / max(word_count, 1)
 
+        # WARNING: "* 20" is an arbitrary scaling factor
         structural_cf = np.tanh((cf_density + future_density) * 20)
 
+        # WARNING: 0.5/0.5 weights are arbitrary
         combined = 0.5 * semantic_cf + 0.5 * structural_cf
 
+        # WARNING: 0.40 is a made-up number
         return DimensionMeasurement(
             value=combined,
-            confidence=0.40,  # LOW confidence
+            confidence=0.40,  # ARBITRARY - not empirically derived
             method="semantic_projection + hypothetical_counting",
             components={
                 "semantic": semantic_cf,
@@ -581,7 +610,10 @@ class EmbeddingAffectSystemV3:
         ]
         self_eval = sum(len(re.findall(p, text_lower)) for p in self_eval_patterns)
 
-        # Combine components
+        # WARNING: ALL OF THESE WEIGHTS ARE ARBITRARY
+        # 0.2, 0.3, 0.25, 0.25 - no empirical basis
+        # * 10, / 3, / 2 - arbitrary scaling factors
+        # This is numerology dressed up as measurement
         expressed_sm = (
             0.2 * np.tanh(self_ref_density * 10) +
             0.3 * np.tanh(metacog_density) +
@@ -589,12 +621,14 @@ class EmbeddingAffectSystemV3:
             0.25 * np.tanh(self_eval / 2)
         )
 
-        # Weight semantic less here because it performed poorly in v2
+        # WARNING: 0.3/0.7 weights are arbitrary ("performed poorly" is not quantified)
         combined = 0.3 * semantic_sm + 0.7 * expressed_sm
 
+        # WARNING: 0.30 is a made-up number. The honesty about "low confidence"
+        # is undermined by the fact that 0.30 itself is not calibrated.
         return DimensionMeasurement(
             value=combined,
-            confidence=0.30,  # LOW confidence - fundamental measurement limitation
+            confidence=0.30,  # ARBITRARY - not empirically derived
             method="multi_method_expressed_self_focus",
             components={
                 "semantic": semantic_sm,

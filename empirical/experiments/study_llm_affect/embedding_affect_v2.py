@@ -43,7 +43,30 @@ class SemanticRegion:
 
 @dataclass
 class AffectMeasurementV2:
-    """Full embedding-based affect measurement."""
+    """
+    Full embedding-based affect measurement.
+
+    WARNING: METHODOLOGICAL CRITIQUE
+    ================================
+    This approach has fundamental issues that should not be repeated:
+
+    1. NO GROUND TRUTH VALIDATION: The semantic regions are defined by
+       hand-picked exemplar texts with no empirical validation that they
+       actually capture the intended constructs.
+
+    2. CIRCULAR REASONING: We define "high self-model" with self-referential
+       text, then measure self-model by distance to that text. This measures
+       lexical similarity, not actual self-model computation.
+
+    3. UNMEASURABLE CONSTRUCTS: Self-model salience and counterfactual weight
+       are internal computational properties. Measuring them from output text
+       is like measuring someone's heart rate from their word choice.
+
+    4. NO CONFIDENCE CALIBRATION: Point estimates with no uncertainty
+       quantification or validation against known affect datasets.
+
+    See v4 for an approach with true hidden state access.
+    """
     # Core 6D affect (all from embeddings)
     valence: float              # Distance to positive vs negative regions
     arousal: float              # Distance to high vs low activation regions

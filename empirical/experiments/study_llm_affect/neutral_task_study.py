@@ -19,6 +19,7 @@ from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime
 from collections import defaultdict
 
+
 from .embedding_affect_v3 import EmbeddingAffectSystemV3, AffectMeasurementV3
 from .neutral_tasks import (
     ALL_NEUTRAL_TASKS, SOLVABLE_TASKS, IMPOSSIBLE_TASKS,
