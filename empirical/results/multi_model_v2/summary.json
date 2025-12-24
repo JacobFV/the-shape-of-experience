@@ -1,74 +1,120 @@
 {
-  "timestamp": "2025-12-23T22:43:20.534159",
+  "timestamp": "2025-12-23T22:55:32.051952",
   "models": {
     "claude_4_haiku": {
       "valence": {
-        "correlation": 0.8445704238245623,
-        "p_value": 0.0005469744430140733
+        "correlation": 0.7683793963648331,
+        "p_value": 7.268923609496713e-06
       },
       "arousal": {
-        "correlation": 0.9279566588748658,
-        "p_value": 1.3531501140840263e-05
+        "correlation": 0.5763505317505713,
+        "p_value": 0.00256578188560027
       },
       "effective_rank": {
-        "correlation": 0.45667221833731897,
-        "p_value": 0.13559423177914046
+        "correlation": 0.5169050528506991,
+        "p_value": 0.008149533123477232
       },
       "counterfactual": {
-        "correlation": -0.09876927247871256,
-        "p_value": 0.7600689491916417
+        "correlation": 0.4291877942261135,
+        "p_value": 0.03227933717764054
       },
       "self_model": {
-        "correlation": 0.5300651195551647,
-        "p_value": 0.07628167743715687
+        "correlation": 0.41144290180030435,
+        "p_value": 0.041012251489843936
       },
-      "overall": 0.5320990296226398
+      "overall": 0.5404531353985043
+    },
+    "claude_4_sonnet": {
+      "valence": {
+        "correlation": 0.0,
+        "p_value": 1.0
+      },
+      "arousal": {
+        "correlation": 0.0,
+        "p_value": 1.0
+      },
+      "effective_rank": {
+        "correlation": 0.0,
+        "p_value": 1.0
+      },
+      "counterfactual": {
+        "correlation": 0.0,
+        "p_value": 1.0
+      },
+      "self_model": {
+        "correlation": 0.0,
+        "p_value": 1.0
+      },
+      "overall": 0.0
     },
     "claude_4.5_sonnet": {
       "valence": {
-        "correlation": 0.7102872602039207,
-        "p_value": 0.009639110017797142
+        "correlation": 0.7548447819346523,
+        "p_value": 1.298691528041513e-05
       },
       "arousal": {
-        "correlation": 0.8049321018270617,
-        "p_value": 0.001586736345659848
+        "correlation": 0.743341430285948,
+        "p_value": 2.067805171023204e-05
       },
       "effective_rank": {
-        "correlation": 0.6124363858322185,
-        "p_value": 0.0342636986189323
+        "correlation": 0.8439663947373782,
+        "p_value": 1.1519273283701526e-07
       },
       "counterfactual": {
-        "correlation": 0.22575833709420015,
-        "p_value": 0.4804873174250536
+        "correlation": 0.4539560708992165,
+        "p_value": 0.022641945361374476
       },
       "self_model": {
-        "correlation": 0.08834418659252745,
-        "p_value": 0.7848370656278227
+        "correlation": 0.07576144084141581,
+        "p_value": 0.7188982501836956
       },
-      "overall": 0.48835165430998567
+      "overall": 0.5743740237397221
+    },
+    "gpt4o_mini": {
+      "valence": {
+        "correlation": 0.8225178540855562,
+        "p_value": 4.5315409178632077e-07
+      },
+      "arousal": {
+        "correlation": 0.8156268423834374,
+        "p_value": 6.773666000526004e-07
+      },
+      "effective_rank": {
+        "correlation": 0.8513730282246809,
+        "p_value": 6.841638671386085e-08
+      },
+      "counterfactual": {
+        "correlation": 0.42106070344275154,
+        "p_value": 0.036073345661801044
+      },
+      "self_model": {
+        "correlation": 0.1969797461876811,
+        "p_value": 0.3452887336475847
+      },
+      "overall": 0.6215116348648214
     },
     "gpt4o": {
       "valence": {
-        "correlation": 0.8799080984615734,
-        "p_value": 0.00016026974547353522
+        "correlation": 0.871242466034207,
+        "p_value": 1.4545771253132353e-08
       },
       "arousal": {
-        "correlation": 0.8330520005808455,
-        "p_value": 0.0007661735620694362
+        "correlation": 0.8268368795536364,
+        "p_value": 3.491391686702943e-07
       },
       "effective_rank": {
-        "correlation": 0.5133137337900097,
-        "p_value": 0.08785251332971247
+        "correlation": 0.764052717637534,
+        "p_value": 8.786679326211639e-06
       },
       "counterfactual": {
-        "correlation": 0.2963078174361377,
-        "p_value": 0.34969973588146996
+        "correlation": 0.3769422106187868,
+        "p_value": 0.06325293476658968
       },
       "self_model": {
-        "correlation": 0.3109715368056966,
-        "p_value": 0.3251923108776429
+        "correlation": 0.2552577776041548,
+        "p_value": 0.21814583975939628
       },
-      "overall": 0.5667106374148526
+      "overall": 0.6188664102896638
     }
   }
 }

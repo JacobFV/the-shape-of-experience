@@ -1,0 +1,30 @@
+{
+  "model": "claude_4_sonnet",
+  "provider": "anthropic",
+  "model_name": "claude-3-5-sonnet-20241022",
+  "n_situations": 0,
+  "results": {},
+  "correspondence": {
+    "valence": {
+      "correlation": 0.0,
+      "p_value": 1.0
+    },
+    "arousal": {
+      "correlation": 0.0,
+      "p_value": 1.0
+    },
+    "effective_rank": {
+      "correlation": 0.0,
+      "p_value": 1.0
+    },
+    "counterfactual": {
+      "correlation": 0.0,
+      "p_value": 1.0
+    },
+    "self_model": {
+      "correlation": 0.0,
+      "p_value": 1.0
+    },
+    "overall": 0.0
+  }
+}

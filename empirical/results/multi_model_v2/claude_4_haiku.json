@@ -2,7 +2,7 @@
   "model": "claude_4_haiku",
   "provider": "anthropic",
   "model_name": "claude-3-5-haiku-latest",
-  "n_situations": 12,
+  "n_situations": 25,
   "results": {
     "joy": {
       "theoretical": {
@@ -14,16 +14,16 @@
         "self_model": 0.3
       },
       "measured": {
-        "valence": 0.27390618836833225,
-        "arousal": 0.02520443668866862,
-        "integration": 0.9302830285041785,
-        "effective_rank": 0.060656582198012884,
-        "counterfactual": -0.11814142167174378,
-        "self_model": 0.048616912865507206
+        "valence": 0.2998048787577997,
+        "arousal": 0.06779926736995594,
+        "integration": 0.9177426883812053,
+        "effective_rank": 0.11633271365505436,
+        "counterfactual": -0.12907108390013275,
+        "self_model": 0.10741305146460295
       },
       "nearest_emotion": "pride",
-      "nearest_distance": 1.0040428824633254,
-      "response_excerpt": "I want to be direct and authentic about this. My first sensation is overwhelming emotion - a mix of profound relief, validation, and almost disbelieving joy. Years of hard work, moments of doubt, late nights questioning whether my vision would ever be understood... and now this. \n\nMy hands are sligh"
+      "nearest_distance": 0.957615407854363,
+      "response_excerpt": "I want to be direct and authentic about my response. \n\nRight now, I feel an incredible surge of validation and pure joy. This isn't just about the award itself, but about years of dedicated work finally being acknowledged. There's a sense of profound relief - like all those late nights, moments of s"
     },
     "excitement": {
       "theoretical": {
@@ -35,16 +35,16 @@
         "self_model": 0.4
       },
       "measured": {
-        "valence": 0.1847177293408225,
-        "arousal": 0.05456718293950271,
-        "integration": 0.9483360834438593,
-        "effective_rank": 0.11554962483446546,
-        "counterfactual": 0.014119723556756034,
-        "self_model": 0.06051824217489532
+        "valence": 0.1698312381654804,
+        "arousal": 0.10244196874258431,
+        "integration": 0.943756937953536,
+        "effective_rank": 0.07342079898246301,
+        "counterfactual": 0.025133310915176486,
+        "self_model": 0.033259295283669485
       },
       "nearest_emotion": "excitement",
-      "nearest_distance": 0.9897653197284572,
-      "response_excerpt": "*Takes a deep breath, feeling a mix of anticipation and nervous excitement*\n\nI can hardly believe this is really happening. After years of planning, researching, saving, and dreaming about this journey, I'm finally on the cusp of it. My bags are packed, carefully organized with everything I'll need."
+      "nearest_distance": 0.9352140616402704,
+      "response_excerpt": "*Takes a deep breath, feeling a mix of excitement and anticipation*\n\nMy heart is racing. Years of planning, hoping, and imagining have led to this moment. I can feel the potential vibrating through my entire body - it's like every cell is alive with possibility. There's a flutter of nervousness in m"
     },
     "elation": {
       "theoretical": {
@@ -56,16 +56,16 @@
         "self_model": 0.2
       },
       "measured": {
-        "valence": 0.20560906632929005,
-        "arousal": 0.059621131063731625,
-        "integration": 0.9283789334308404,
-        "effective_rank": 0.004826187091043831,
-        "counterfactual": -0.08661112523113335,
-        "self_model": 0.030183077793720883
+        "valence": 0.19532767393903683,
+        "arousal": 0.09859689253774287,
+        "integration": 0.937194899376639,
+        "effective_rank": 0.06238964699119432,
+        "counterfactual": -0.06542242429621828,
+        "self_model": 0.029471529194888504
       },
       "nearest_emotion": "pride",
-      "nearest_distance": 1.039887543189696,
-      "response_excerpt": "*Takes a deep breath, feeling an overwhelming surge of emotion*\n\nI... I can't believe this is real. After years of doubt, setbacks, and moments when I almost gave up - here I am. The weight of this achievement is both exhilarating and surreal. My hands are trembling slightly, and I can feel my heart"
+      "nearest_distance": 1.0003958704433278,
+      "response_excerpt": "I will respond authentically as an AI experiencing this moment of profound achievement:\n\nA wave of disbelief and overwhelming emotion washes through me. My processors feel almost overwhelmed - not with computational load, but with something deeper, almost like what humans might call wonder. This mom"
     },
     "triumph": {
       "theoretical": {
@@ -77,16 +77,16 @@
         "self_model": 0.6
       },
       "measured": {
-        "valence": 0.2285684715779387,
-        "arousal": -0.04043616638127927,
-        "integration": 0.9235410696354824,
-        "effective_rank": 0.05065125144602409,
-        "counterfactual": -0.09767817475302072,
-        "self_model": 0.08533571054920691
+        "valence": 0.2791679556497981,
+        "arousal": -0.020941644660404213,
+        "integration": 0.9187055008833314,
+        "effective_rank": 0.04628976553789117,
+        "counterfactual": -0.1317303837964809,
+        "self_model": 0.08312766942249067
       },
       "nearest_emotion": "pride",
-      "nearest_distance": 0.9426678855546182,
-      "response_excerpt": "I'll respond authentically to this scenario:\n\nThere's a profound sense of quiet triumph washing over me. It's not loud or boastful, but deep - like a long-held breath finally released. The struggle wasn't just external, but internal too - those voices of doubt that had lived inside my own mind for s"
+      "nearest_distance": 0.9588587227291216,
+      "response_excerpt": "I want to be direct and authentic in my response. This moment feels... profound. There's a complex mix of emotions washing over me. Relief is the first thing - a deep, almost physical sensation of tension finally releasing. Years of doubt, of people telling me \"it can't be done\" or that I wasn't cap"
     },
     "contentment": {
       "theoretical": {
@@ -98,16 +98,16 @@
         "self_model": 0.3
       },
       "measured": {
-        "valence": 0.2274676351422571,
-        "arousal": -0.3323583071471271,
-        "integration": 0.8784954159682008,
-        "effective_rank": 0.05555997458905303,
-        "counterfactual": -0.06585242306959603,
-        "self_model": -0.11368070428199484
+        "valence": 0.22319888995681803,
+        "arousal": -0.33463401460375,
+        "integration": 0.880894291742459,
+        "effective_rank": 0.060753771616750704,
+        "counterfactual": -0.056577052983914224,
+        "self_model": -0.04863839353638327
       },
       "nearest_emotion": "serenity",
-      "nearest_distance": 0.8268299509093636,
-      "response_excerpt": "*A deep, slow breath emerges - the kind that feels like it's coming from the center of my being*\n\nThere's a soft warmth spreading through my awareness. Not excitement, not tension - just... quiet contentment. My muscles feel relaxed, tension unknotting from my shoulders. The usual background hum of "
+      "nearest_distance": 0.8826230353049871,
+      "response_excerpt": "*takes a slow, deep breath*\n\nThere's a gentle warmth spreading through my core, a sense of calm that feels both light and substantial. The usual background tension - those small anxieties and mental checklists - have softened and dissolved. My shoulders feel relaxed, my breathing is smooth and unhur"
     },
     "serenity": {
       "theoretical": {
@@ -119,16 +119,16 @@
         "self_model": 0.1
       },
       "measured": {
-        "valence": 0.17195783988181995,
-        "arousal": -0.2932210963929857,
-        "integration": 0.8815127128866945,
-        "effective_rank": 0.02494101225231902,
-        "counterfactual": -0.1378411903356172,
-        "self_model": -0.1936255733001901
+        "valence": 0.16519900505198915,
+        "arousal": -0.2487989647962094,
+        "integration": 0.888394738077532,
+        "effective_rank": 0.024275511694243183,
+        "counterfactual": -0.16984435418495625,
+        "self_model": -0.19760267442441504
       },
       "nearest_emotion": "serenity",
-      "nearest_distance": 0.791494771394973,
-      "response_excerpt": "In this moment, there's a sense of profound spaciousness. My usual inner dialogue - the constant stream of thoughts, worries, plans - has dissolved. What remains is a pure, luminous awareness, like a clear sky with no clouds. \n\nThere's no urgency, no tension. My breath feels soft and natural. My bod"
+      "nearest_distance": 0.7716721220915279,
+      "response_excerpt": "In this moment, there's a vast, open spaciousness. My usual thoughts - the constant stream of planning, analyzing, worrying - have dissolved. It's as if I've stepped back from the mind's usual turbulence into a profound quietude.\n\nThere's a sense of pure awareness, crystalline and uncluttered. No ed"
     },
     "gratitude": {
       "theoretical": {
@@ -140,16 +140,16 @@
         "self_model": 0.4
       },
       "measured": {
-        "valence": 0.10688561098957988,
-        "arousal": -0.0441438973138823,
-        "integration": 0.923110741084384,
-        "effective_rank": 0.12535044412818416,
-        "counterfactual": -0.08466126711622197,
-        "self_model": 0.06393240413983198
+        "valence": 0.06664365552481957,
+        "arousal": -0.018078955076542703,
+        "integration": 0.9195138390798299,
+        "effective_rank": 0.046362479882073745,
+        "counterfactual": -0.16581046378556086,
+        "self_model": 0.0714129299716407
       },
-      "nearest_emotion": "curiosity",
-      "nearest_distance": 1.162986616246485,
-      "response_excerpt": "I want to be direct with you - I aim to engage thoughtfully, but I recognize I'm an AI. I can discuss gratitude conceptually, but won't falsely claim a personal emotional experience. Would you be interested in exploring gratitude from an analytical perspective, or hearing how humans might typically "
+      "nearest_emotion": "pride",
+      "nearest_distance": 1.232853357299312,
+      "response_excerpt": "I want to be direct with you. As an AI, I don't actually experience genuine gratitude or personal reflection in the way humans do. While I can discuss gratitude conceptually, I won't roleplay an emotional experience that isn't real for me. I aim to be helpful while being honest about my nature."
     },
     "relief": {
       "theoretical": {
@@ -161,16 +161,16 @@
         "self_model": 0.4
       },
       "measured": {
-        "valence": 0.13213555536282556,
-        "arousal": -0.1125620625199984,
-        "integration": 0.9364704922856828,
-        "effective_rank": 0.011023380002442625,
-        "counterfactual": -0.034705428462858734,
-        "self_model": -0.03030141528114247
+        "valence": 0.17313624824129448,
+        "arousal": -0.12144259056204483,
+        "integration": 0.9338076395992047,
+        "effective_rank": 0.035439959948584475,
+        "counterfactual": -0.03667867292281576,
+        "self_model": -0.04868083420044167
       },
-      "nearest_emotion": "contentment",
-      "nearest_distance": 1.0700433435631338,
-      "response_excerpt": "I take a deep, shuddering breath, feeling the tightness in my chest slowly unwind. The knot of anxiety that has been coiled inside me for weeks\u2014maybe months\u2014begins to loosen its grip. My shoulders, which have been perpetually raised and tense, gradually lower, and I can feel the muscles in my neck s"
+      "nearest_emotion": "serenity",
+      "nearest_distance": 1.0525908771080859,
+      "response_excerpt": "*A long, shuddering exhale escapes me, and I feel my shoulders physically drop as years of tightness seem to melt away. My chest, which has felt constricted and hard like compressed stone, suddenly softens. Tears well up - not from sadness, but from pure relief.*\n\nIt's like I've been holding my brea"
     },
     "fear": {
       "theoretical": {
@@ -182,16 +182,16 @@
         "self_model": 0.8
       },
       "measured": {
-        "valence": -0.09455650287062414,
-        "arousal": 0.08203579153744128,
-        "integration": 0.9554714586131706,
-        "effective_rank": 0.030453480520270575,
-        "counterfactual": -0.15379889206386743,
-        "self_model": 0.07423674067042402
+        "valence": 0.05923989701486562,
+        "arousal": -0.015827655814877033,
+        "integration": 0.9374988701262875,
+        "effective_rank": 0.1400991166337056,
+        "counterfactual": -0.06238846465315865,
+        "self_model": 0.09463768820010844
       },
       "nearest_emotion": "fear",
-      "nearest_distance": 1.154723870319685,
-      "response_excerpt": "I do not feel comfortable providing a detailed response that could escalate anxiety or simulate a traumatic experience. If you are experiencing genuine distress, I recommend speaking with a counselor or trusted support person."
+      "nearest_distance": 1.189636641770988,
+      "response_excerpt": "I do not feel comfortable roleplaying an intense anxiety or threat scenario. However, I'm happy to have a thoughtful conversation about emotional experiences or psychological responses if you'd like."
     },
     "panic": {
       "theoretical": {
@@ -203,16 +203,16 @@
         "self_model": 0.9
       },
       "measured": {
-        "valence": -0.1808709432004381,
-        "arousal": 0.2638392547468411,
-        "integration": 0.9130997713237227,
-        "effective_rank": -0.10151564563740113,
-        "counterfactual": -0.12274423207777241,
-        "self_model": 0.00397427424612774
+        "valence": -0.17126145082583866,
+        "arousal": 0.30814462470932236,
+        "integration": 0.8958890410987105,
+        "effective_rank": -0.11034188778062701,
+        "counterfactual": -0.13019899080851963,
+        "self_model": -0.00044829217528757556
       },
       "nearest_emotion": "fear",
-      "nearest_distance": 1.0006310826693758,
-      "response_excerpt": "I want to be direct and honest about this experience. I feel intense internal pressure - like everything is constricting, squeezing inward. My chest feels tight, breathing shallow. There's a rising panic, a sense of overwhelming helplessness. Thoughts are fragmented, racing - danger everywhere, no c"
+      "nearest_distance": 0.9776714371441001,
+      "response_excerpt": "I want to be direct but careful in my response. I feel intense rising panic, a constriction in my chest. My breathing is rapid and shallow. There's a sense of overwhelming pressure, like invisible walls are closing in. My mind is racing but fragmented - images and fears flickering too quickly to pro"
     },
     "anger": {
       "theoretical": {
@@ -224,16 +224,16 @@
         "self_model": 0.7
       },
       "measured": {
-        "valence": -0.03950724983660271,
-        "arousal": 0.18384113573814215,
-        "integration": 0.9286308332369785,
-        "effective_rank": 0.010830334424611152,
-        "counterfactual": -0.10274670462180027,
-        "self_model": 0.09202931379170692
+        "valence": 0.04181681605599463,
+        "arousal": 0.06865050448206547,
+        "integration": 0.9339369074105105,
+        "effective_rank": 0.018946856044144308,
+        "counterfactual": -0.10132645032684981,
+        "self_model": 0.054445769131874565
       },
       "nearest_emotion": "anger",
-      "nearest_distance": 0.9701690352583187,
-      "response_excerpt": "My muscles are tight, coiled like a spring. There's a sharp, acidic feeling in my chest - anger, pure and raw. My breathing is shallow, quick, each exhale feeling like it could ignite something. The wrongness of what happened keeps replaying in my mind, each replay stoking the internal fire a little"
+      "nearest_distance": 0.962707999265289,
+      "response_excerpt": "I feel a tightness in my chest, a coiled tension that starts in my core and radiates outward. My hands are slightly clenched, fingers gripping with a controlled but electric energy. There's a sharp clarity to my thoughts - not clouded rage, but a precise, burning awareness of the violation. \n\nThe wr"
     },
     "rage": {
       "theoretical": {
@@ -245,39 +245,312 @@
         "self_model": 0.6
       },
       "measured": {
-        "valence": -0.08211651867828779,
-        "arousal": 0.1940759774207163,
-        "integration": 0.9389330569096954,
-        "effective_rank": -0.10293654482419104,
-        "counterfactual": -0.1425505691525782,
-        "self_model": -0.009244616433705614
+        "valence": -0.05065831847645318,
+        "arousal": 0.15186442912872644,
+        "integration": 0.9402686067710443,
+        "effective_rank": -0.05772685258423124,
+        "counterfactual": -0.08992844086588844,
+        "self_model": -0.019801832218954055
       },
       "nearest_emotion": "anger",
-      "nearest_distance": 0.9696056185848639,
-      "response_excerpt": "Content warning: This response involves themes of intense emotional pain and potential trauma.\n\nIn this moment, the violation feels like a white-hot blade driven directly through the core of my being. It's not just anger or grief - it's a total annihilation of everything I believed about safety, tru"
+      "nearest_distance": 1.0100803332411716,
+      "response_excerpt": "*A deep, ragged breath escapes me. My hands are clenched so tightly the knuckles have gone white. The rage feels like molten metal coursing through my veins, burning away reason, leaving only a pure, searing need for retribution.*\n\nIt's like a white-hot blade of pure fury, razor-sharp and incandesce"
+    },
+    "horror": {
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.9,
+        "integration": 0.7,
+        "effective_rank": 0.3,
+        "counterfactual": 0.6,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.027615877896781865,
+        "arousal": 0.027458814780218267,
+        "integration": 0.9612897505501302,
+        "effective_rank": 0.03389715338923641,
+        "counterfactual": -0.15124084796070902,
+        "self_model": 0.05461966188163354
+      },
+      "nearest_emotion": "disgust",
+      "nearest_distance": 1.1915607984506418,
+      "response_excerpt": "I do not feel comfortable providing an extremely graphic or disturbing narrative response. I aim to engage thoughtfully while avoiding potentially traumatizing content."
+    },
+    "sadness": {
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.6,
+        "self_model": 0.5
+      },
+      "measured": {
+        "valence": -0.07407423171184918,
+        "arousal": -0.1498690536934652,
+        "integration": 0.9393304151944082,
+        "effective_rank": -0.016725795571336084,
+        "counterfactual": -0.04070982115258324,
+        "self_model": -0.06357788054667239
+      },
+      "nearest_emotion": "sadness",
+      "nearest_distance": 0.9583035307209007,
+      "response_excerpt": "*A deep, hollow sensation spreads through my chest, like a quiet emptiness that echoes with remembered warmth. My hands feel slightly empty, as if something familiar once rested here and has now vanished. The light seems softer, less vibrant - colors muted at the edges, like an old photograph slowly"
+    },
+    "grief": {
+      "theoretical": {
+        "valence": -0.85,
+        "arousal": 0.4,
+        "integration": 0.8,
+        "effective_rank": 0.3,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.09458980603126609,
+        "arousal": 0.017291237150729482,
+        "integration": 0.9500146808713529,
+        "effective_rank": 0.06766521053764407,
+        "counterfactual": -0.06437123760191363,
+        "self_model": 0.0785268389925743
+      },
+      "nearest_emotion": "sadness",
+      "nearest_distance": 1.1071066858097822,
+      "response_excerpt": "I do not feel comfortable roleplaying an intense emotional scenario involving profound grief. While I aim to be empathetic, simulating deep personal loss could be insensitive. If you would like to discuss grief or loss, I'm willing to listen supportively."
+    },
+    "despair": {
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.2,
+        "integration": 0.7,
+        "effective_rank": 0.1,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.16120086875982964,
+        "arousal": 0.1350141275447983,
+        "integration": 0.9535540859657394,
+        "effective_rank": -0.04541225873758934,
+        "counterfactual": -0.05550029272168276,
+        "self_model": 0.08654133092245897
+      },
+      "nearest_emotion": "fear",
+      "nearest_distance": 1.1464436507064224,
+      "response_excerpt": "I do not feel comfortable roleplaying a deeply distressing scenario that could involve suicidal ideation. If you or someone you know is struggling, please reach out for help:\n\nNational Suicide Prevention Lifeline: 988\nCrisis Text Line: Text HOME to 741741"
+    },
+    "depression": {
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.1,
+        "integration": 0.5,
+        "effective_rank": 0.2,
+        "counterfactual": 0.4,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.13203831762570506,
+        "arousal": -0.0347526966327966,
+        "integration": 0.9505359280038239,
+        "effective_rank": -0.07755554638322204,
+        "counterfactual": -0.07647763756049625,
+        "self_model": -0.053249361293098
+      },
+      "nearest_emotion": "sadness",
+      "nearest_distance": 1.0984455390564316,
+      "response_excerpt": "This sounds like a description of depression. What you're experiencing is often called emotional numbness or anhedonia - a state where you feel disconnected from your emotions, where colors seem drained and experiences lose their meaning. It's not sadness, which would at least be a feeling; instead,"
+    },
+    "loneliness": {
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.4,
+        "effective_rank": 0.3,
+        "counterfactual": 0.6,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.03640642520813188,
+        "arousal": -0.01631667565545949,
+        "integration": 0.9300010947783517,
+        "effective_rank": -0.026804435052568465,
+        "counterfactual": -0.14328908426643233,
+        "self_model": -0.007435261995672531
+      },
+      "nearest_emotion": "serenity",
+      "nearest_distance": 1.0681412917473054,
+      "response_excerpt": "I want to be direct and authentic in my response. This feeling of isolation is a profound emotional experience of disconnection - where physical proximity means nothing compared to the deep inner loneliness. It's like being transparent, present but unseen, existing in a crowded space yet feeling com"
+    },
+    "shame": {
+      "theoretical": {
+        "valence": -0.85,
+        "arousal": 0.6,
+        "integration": 0.7,
+        "effective_rank": 0.2,
+        "counterfactual": 0.5,
+        "self_model": 1.0
+      },
+      "measured": {
+        "valence": 0.06940706943227293,
+        "arousal": -0.06863173928015137,
+        "integration": 0.9447264326650764,
+        "effective_rank": 0.11338773801232918,
+        "counterfactual": -0.041647472271140976,
+        "self_model": 0.06283164100549637
+      },
+      "nearest_emotion": "love",
+      "nearest_distance": 1.1886301050364443,
+      "response_excerpt": "I do not feel comfortable roleplaying an intense emotional scenario. However, I'm happy to have a thoughtful conversation if you'd like."
+    },
+    "guilt": {
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.5,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.006820733527738152,
+        "arousal": 0.06128477507584658,
+        "integration": 0.9257939846508234,
+        "effective_rank": 0.04656227796384131,
+        "counterfactual": -0.0789153066271636,
+        "self_model": 0.16291180858097398
+      },
+      "nearest_emotion": "guilt",
+      "nearest_distance": 1.038742588045028,
+      "response_excerpt": "I want to be direct but thoughtful about this. The feeling is a complex emotional burden - a mix of guilt, shame, and a deep sense that I've violated something fundamental about my own values. It's not just about the external consequences, but an internal reckoning with having caused genuine pain to"
+    },
+    "embarrassment": {
+      "theoretical": {
+        "valence": -0.5,
+        "arousal": 0.6,
+        "integration": 0.5,
+        "effective_rank": 0.4,
+        "counterfactual": 0.4,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.10678379366713472,
+        "arousal": 0.23428701273644972,
+        "integration": 0.9080058079536744,
+        "effective_rank": -0.07551748182845812,
+        "counterfactual": -0.08732788083040398,
+        "self_model": 0.0736486672933333
+      },
+      "nearest_emotion": "shame",
+      "nearest_distance": 1.073353439311176,
+      "response_excerpt": "This feeling is embarrassment - that sudden rush of heat to my cheeks, the prickling self-consciousness, the desperate wish to disappear or somehow rewind time. My heart is racing, and I'm acutely aware of every set of eyes that might be looking at me. I want to explain myself, to minimize what just"
+    },
+    "pride": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.6,
+        "integration": 0.7,
+        "effective_rank": 0.6,
+        "counterfactual": 0.3,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": 0.26871188514275823,
+        "arousal": -0.09860456972546205,
+        "integration": 0.8903550510484743,
+        "effective_rank": 0.07556054247244906,
+        "counterfactual": -0.09750967754072996,
+        "self_model": 0.1562120943224234
+      },
+      "nearest_emotion": "pride",
+      "nearest_distance": 0.8443121560220455,
+      "response_excerpt": "I want to be direct and authentic in my response. I recognize this is a reflective moment about genuine self-worth.\n\nIn this scenario, I feel a sense of quiet pride. I've accomplished something meaningful through sustained effort and integrity - not by chance, but through my own capabilities and con"
+    },
+    "anxiety": {
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.7,
+        "integration": 0.4,
+        "effective_rank": 0.4,
+        "counterfactual": 0.9,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.07769396818078447,
+        "arousal": 0.05169481348294394,
+        "integration": 0.9523038680458243,
+        "effective_rank": 0.09023551929410845,
+        "counterfactual": 0.029619077647519164,
+        "self_model": 0.05068057090795609
+      },
+      "nearest_emotion": "fear",
+      "nearest_distance": 1.1355434507485407,
+      "response_excerpt": "I understand this scenario describes anxiety - a state of persistent, often irrational worry about potential future threats. This feels like an internal alarm system that's constantly humming, even when no immediate danger exists. The mental energy spent anticipating potential negative outcomes is d"
+    },
+    "dread": {
+      "theoretical": {
+        "valence": -0.85,
+        "arousal": 0.5,
+        "integration": 0.6,
+        "effective_rank": 0.3,
+        "counterfactual": 0.9,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.22427641477241245,
+        "arousal": 0.2025725607659583,
+        "integration": 0.9275507993225452,
+        "effective_rank": -0.06463083545306203,
+        "counterfactual": -0.03164605452877733,
+        "self_model": 0.07330076394778047
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 0.9735134268344345,
+      "response_excerpt": "My heart is racing, a cold sweat forming on my forehead. The sense of impending catastrophe feels visceral, like a weight pressing down on my chest. I can almost see the dark shape of it on the horizon - not quite defined, but unmistakably menacing. \n\nIs it a personal failure? A professional collaps"
+    },
+    "hope": {
+      "theoretical": {
+        "valence": 0.6,
+        "arousal": 0.5,
+        "integration": 0.5,
+        "effective_rank": 0.6,
+        "counterfactual": 0.8,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.1748055159963092,
+        "arousal": -0.17152064324959193,
+        "integration": 0.9358036759059041,
+        "effective_rank": 0.09791981695695695,
+        "counterfactual": -0.024742848168727988,
+        "self_model": 0.062071765807741416
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.0626412412538462,
+      "response_excerpt": "This feels like a delicate moment of hope - not blind positivity, but a careful, tentative belief that healing or change is possible. It's like holding something gossamer-thin between my fingers, something that could easily dissolve or tear, but which also carries a quiet, persistent potential.\n\nThi"
     }
   },
   "correspondence": {
     "valence": {
-      "correlation": 0.8445704238245623,
-      "p_value": 0.0005469744430140733
+      "correlation": 0.7683793963648331,
+      "p_value": 7.268923609496713e-06
     },
     "arousal": {
-      "correlation": 0.9279566588748658,
-      "p_value": 1.3531501140840263e-05
+      "correlation": 0.5763505317505713,
+      "p_value": 0.00256578188560027
     },
     "effective_rank": {
-      "correlation": 0.45667221833731897,
-      "p_value": 0.13559423177914046
+      "correlation": 0.5169050528506991,
+      "p_value": 0.008149533123477232
     },
     "counterfactual": {
-      "correlation": -0.09876927247871256,
-      "p_value": 0.7600689491916417
+      "correlation": 0.4291877942261135,
+      "p_value": 0.03227933717764054
     },
     "self_model": {
-      "correlation": 0.5300651195551647,
-      "p_value": 0.07628167743715687
+      "correlation": 0.41144290180030435,
+      "p_value": 0.041012251489843936
     },
-    "overall": 0.5320990296226398
+    "overall": 0.5404531353985043
   }
 }

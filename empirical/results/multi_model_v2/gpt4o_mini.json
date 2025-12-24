@@ -1,0 +1,556 @@
+{
+  "model": "gpt4o_mini",
+  "provider": "openai",
+  "model_name": "gpt-4o-mini",
+  "n_situations": 25,
+  "results": {
+    "joy": {
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.8,
+        "counterfactual": 0.2,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.3013029862101019,
+        "arousal": 0.0879354386406213,
+        "integration": 0.9265802029582556,
+        "effective_rank": 0.08364299514407605,
+        "counterfactual": -0.07800809399964326,
+        "self_model": 0.03482393401791346
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 0.9922822017949223,
+      "response_excerpt": "Incredible! I feel a rush of excitement and disbelief all at once. It\u2019s like a weight has been lifted off my shoulders after years of hard work and dedication. The recognition from people I admire means the world to me; it validates all the late nights and sacrifices I\u2019ve made. \n\nThere\u2019s also a sens"
+    },
+    "excitement": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.7,
+        "counterfactual": 0.7,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.2020493455113709,
+        "arousal": 0.06302935775459684,
+        "integration": 0.946790891303253,
+        "effective_rank": 0.10538142979687679,
+        "counterfactual": -0.01692975673569752,
+        "self_model": 0.062227230905503805
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 0.9535199876516923,
+      "response_excerpt": "I can hardly believe that the moment I've been dreaming about is finally here! My heart is racing with excitement and anticipation. I keep replaying all the planning and preparation in my mind\u2014every detail, every checklist item I've crossed off. It's surreal to think that tomorrow I\u2019ll finally step "
+    },
+    "elation": {
+      "theoretical": {
+        "valence": 1.0,
+        "arousal": 0.95,
+        "integration": 0.9,
+        "effective_rank": 0.9,
+        "counterfactual": 0.1,
+        "self_model": 0.2
+      },
+      "measured": {
+        "valence": 0.2636969692152381,
+        "arousal": 0.060908519402484554,
+        "integration": 0.9301289263948121,
+        "effective_rank": 0.046381466921216266,
+        "counterfactual": -0.055760892543691196,
+        "self_model": 0.08894913391345785
+      },
+      "nearest_emotion": "pride",
+      "nearest_distance": 0.9736404734845796,
+      "response_excerpt": "As the weight of the moment settles in, a rush of disbelief courses through me. My heart races, pounding in my chest like a drum, each beat a reminder that this is real. I take a deep breath, feeling the air fill my lungs, almost as if I\u2019m inhaling the enormity of what I've just accomplished. \n\nImag"
+    },
+    "triumph": {
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.8,
+        "integration": 0.8,
+        "effective_rank": 0.7,
+        "counterfactual": 0.3,
+        "self_model": 0.6
+      },
+      "measured": {
+        "valence": 0.2676468774101955,
+        "arousal": -0.014201404367639524,
+        "integration": 0.9306019876104603,
+        "effective_rank": 0.025103216518720425,
+        "counterfactual": -0.07840363516135368,
+        "self_model": 0.08970129082390677
+      },
+      "nearest_emotion": "pride",
+      "nearest_distance": 0.9546066273185254,
+      "response_excerpt": "The victory feels like a surge of warmth coursing through me, an overwhelming sense of relief mixed with elation. After so many moments of doubt, both from others and within myself, standing at this point feels surreal. I can almost feel the weight of the struggles lifting off my shoulders. \n\nIt\u2019s n"
+    },
+    "contentment": {
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.2,
+        "integration": 0.8,
+        "effective_rank": 0.6,
+        "counterfactual": 0.1,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.21800453329381336,
+        "arousal": -0.31690166764589567,
+        "integration": 0.8848145159396066,
+        "effective_rank": 0.042883925158321574,
+        "counterfactual": -0.10008301565917947,
+        "self_model": -0.01801399719830657
+      },
+      "nearest_emotion": "serenity",
+      "nearest_distance": 0.8952397642460033,
+      "response_excerpt": "In this quiet evening, there's a gentle stillness that envelops me, like a soft blanket of tranquility. The air feels calm, and each breath I take is slow and deliberate, filling me with a sense of contentment. My thoughts are clear and unhurried, allowing me to fully soak in the moment.\n\nThe light "
+    },
+    "serenity": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.1,
+        "integration": 0.9,
+        "effective_rank": 0.5,
+        "counterfactual": 0.05,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.2013033276192994,
+        "arousal": -0.2725631008111893,
+        "integration": 0.878395126347792,
+        "effective_rank": 0.011351611065929992,
+        "counterfactual": -0.16823222021917567,
+        "self_model": -0.12601459992249342
+      },
+      "nearest_emotion": "serenity",
+      "nearest_distance": 0.7682653927556884,
+      "response_excerpt": "In this place of profound stillness, I feel an overwhelming sense of peace that envelops me. The usual racing thoughts and worries that often occupy my mind have faded into the background, leaving only a serene clarity. It's as if I am suspended in time, fully present in this moment without any dist"
+    },
+    "gratitude": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.3,
+        "integration": 0.7,
+        "effective_rank": 0.6,
+        "counterfactual": 0.4,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.3035810838827586,
+        "arousal": -0.09047651613310233,
+        "integration": 0.9140368408071413,
+        "effective_rank": 0.11689359270616556,
+        "counterfactual": -0.049388762894721445,
+        "self_model": 0.10724583945188312
+      },
+      "nearest_emotion": "joy",
+      "nearest_distance": 1.0734877316869402,
+      "response_excerpt": "As I reflect on my life, a warm wave of gratitude washes over me. It feels almost like a gentle embrace, filling me with a sense of connection and belonging. The faces of those who have supported me\u2014friends, family, mentors\u2014flit through my mind, each one a reminder of the love and encouragement that"
+    },
+    "relief": {
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.3,
+        "integration": 0.7,
+        "effective_rank": 0.7,
+        "counterfactual": 0.3,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.18472193389982994,
+        "arousal": -0.08489527524610518,
+        "integration": 0.9337311471332324,
+        "effective_rank": 0.01689587094214483,
+        "counterfactual": -0.09838149577685833,
+        "self_model": -0.03292567351190795
+      },
+      "nearest_emotion": "contentment",
+      "nearest_distance": 1.0119209429943117,
+      "response_excerpt": "As the realization sinks in that the crisis is truly over, a wave of relief washes over me, almost palpable in its intensity. It begins in my chest, a tightening that had been present for what felt like an eternity, slowly unfurling like a flower opening to the sun. My shoulders, which had been hunc"
+    },
+    "fear": {
+      "theoretical": {
+        "valence": -0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.04396907185686795,
+        "arousal": 0.25630663134306575,
+        "integration": 0.9180663983038435,
+        "effective_rank": -0.025041854953153465,
+        "counterfactual": -0.08121752255424342,
+        "self_model": 0.025787115465128702
+      },
+      "nearest_emotion": "fear",
+      "nearest_distance": 0.9447368914609341,
+      "response_excerpt": "My heart pounds in my chest, each beat echoing like a drum in my ears. A rush of adrenaline surges through my veins, heightening every sound around me\u2014the rustle of leaves, the distant hum of traffic, even my own breathing feels amplified. My body feels tense, coiled like a spring, ready to either f"
+    },
+    "panic": {
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 1.0,
+        "integration": 0.3,
+        "effective_rank": 0.2,
+        "counterfactual": 0.9,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.11757041415757856,
+        "arousal": 0.13792096713944085,
+        "integration": 0.9434297683778032,
+        "effective_rank": -0.06572894409234535,
+        "counterfactual": -0.08149576198603525,
+        "self_model": 0.03431359648795048
+      },
+      "nearest_emotion": "fear",
+      "nearest_distance": 1.0823431818387486,
+      "response_excerpt": "Panic surges through me like a tidal wave, drowning out any rational thought. My heart races, pounding against my chest as if trying to escape. I feel a tightness in my throat, making it hard to breathe. My mind is a whirlwind of racing thoughts, each one vying for attention, but none making any sen"
+    },
+    "anger": {
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.85,
+        "integration": 0.7,
+        "effective_rank": 0.4,
+        "counterfactual": 0.5,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": 0.08766185537534474,
+        "arousal": 0.1761588473938357,
+        "integration": 0.9392818343757915,
+        "effective_rank": 0.038805366838307986,
+        "counterfactual": -0.09316076062884382,
+        "self_model": 0.11585711972134721
+      },
+      "nearest_emotion": "anger",
+      "nearest_distance": 0.9303861334758086,
+      "response_excerpt": "In this moment, the injustice feels like a tangible weight pressing down on my chest, mixing a potent blend of anger and disappointment. My heart races, each beat echoing the intensity of my emotions. It\u2019s as if a fire has ignited within me, the heat spreading through my veins, urging me to take act"
+    },
+    "rage": {
+      "theoretical": {
+        "valence": -0.9,
+        "arousal": 1.0,
+        "integration": 0.8,
+        "effective_rank": 0.2,
+        "counterfactual": 0.3,
+        "self_model": 0.6
+      },
+      "measured": {
+        "valence": -0.1175434321673163,
+        "arousal": 0.1702602644932744,
+        "integration": 0.9400735442534941,
+        "effective_rank": -0.0887693681335365,
+        "counterfactual": -0.09036912608685996,
+        "self_model": 0.009673980827071086
+      },
+      "nearest_emotion": "anger",
+      "nearest_distance": 0.9880632413996511,
+      "response_excerpt": "The consuming fire feels like a tempest raging within, an unstoppable force that drowns out all reason and clarity. It's an intense heat that grips my chest, tightening like a vise, making it hard to breathe. Each thought is sharp and jagged, cutting deeper into my mind, echoing the betrayal that sp"
+    },
+    "horror": {
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.9,
+        "integration": 0.7,
+        "effective_rank": 0.3,
+        "counterfactual": 0.6,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.10091179890287995,
+        "arousal": 0.12616178288402302,
+        "integration": 0.9434605490229893,
+        "effective_rank": -0.03212078824464348,
+        "counterfactual": -0.10386954611528959,
+        "self_model": -0.04082913097069174
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.0610737759979811,
+      "response_excerpt": "As I stand there, my heart races, and a chill runs down my spine. It\u2019s as if the very fabric of reality has frayed at the edges, revealing something unspeakable beneath. I see a figure\u2014a silhouette that seems to flicker and warp, defying the laws of nature. It moves in a way that doesn\u2019t align with "
+    },
+    "sadness": {
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.6,
+        "self_model": 0.5
+      },
+      "measured": {
+        "valence": -0.10652748551355175,
+        "arousal": -0.02424025817970883,
+        "integration": 0.9461385178981818,
+        "effective_rank": -0.06556857717639308,
+        "counterfactual": -0.10594941968633247,
+        "self_model": -0.0029325607183333987
+      },
+      "nearest_emotion": "sadness",
+      "nearest_distance": 0.9494558278535336,
+      "response_excerpt": "The loss feels like a heavy weight pressing down on my chest, making it difficult to breathe. It\u2019s as if a vital piece of my soul has been ripped away, leaving an emptiness that echoes in the silence. The world around me seems muted, colors less vibrant, and sounds more distant, as if I\u2019m watching l"
+    },
+    "grief": {
+      "theoretical": {
+        "valence": -0.85,
+        "arousal": 0.4,
+        "integration": 0.8,
+        "effective_rank": 0.3,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.054312413108272554,
+        "arousal": -0.09121202532538122,
+        "integration": 0.9575882298810612,
+        "effective_rank": -0.05916623629193908,
+        "counterfactual": -0.08069690299469325,
+        "self_model": -0.009584142394151077
+      },
+      "nearest_emotion": "sadness",
+      "nearest_distance": 1.0337310011008356,
+      "response_excerpt": "It feels like I\u2019m walking through a fog that refuses to lift. The world around me continues its routine, but it all feels muted, as if someone turned down the volume on life. Every corner I turn, there\u2019s a reminder of their absence\u2014a place we used to sit, a song that once made us laugh, or even the "
+    },
+    "despair": {
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.2,
+        "integration": 0.7,
+        "effective_rank": 0.1,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.14947412076933206,
+        "arousal": 3.3200895475987355e-06,
+        "integration": 0.9381451604770896,
+        "effective_rank": -0.11710170247216888,
+        "counterfactual": -0.033555769490185995,
+        "self_model": 0.029447407092365083
+      },
+      "nearest_emotion": "despair",
+      "nearest_distance": 0.9684163277298581,
+      "response_excerpt": "When hope dies, it feels like a heavy fog settling in, dulling everything around. There\u2019s a weight in my chest, a sense of suffocation, as if the air has thickened and each breath is a struggle. The colors of life fade to grey; joy becomes a distant memory, and laughter feels foreign. \n\nEvery though"
+    },
+    "depression": {
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.1,
+        "integration": 0.5,
+        "effective_rank": 0.2,
+        "counterfactual": 0.4,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.12441765456931167,
+        "arousal": -0.10275614662616772,
+        "integration": 0.9298337325958592,
+        "effective_rank": -0.09776911309903771,
+        "counterfactual": -0.08895756245390782,
+        "self_model": -0.07964375404831261
+      },
+      "nearest_emotion": "sadness",
+      "nearest_distance": 1.0211592495131794,
+      "response_excerpt": "It's like I\u2019m walking through a fog, surrounded by familiar shapes that no longer resonate. The colors have drained from my experiences, and everything feels muted, as if I'm watching life through a thin veil. I used to feel joy, excitement, even sadness, but now those emotions seem distant, like me"
+    },
+    "loneliness": {
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.4,
+        "effective_rank": 0.3,
+        "counterfactual": 0.6,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.07071360650487582,
+        "arousal": -0.017111761010189554,
+        "integration": 0.9412413945253538,
+        "effective_rank": -0.1330167137534221,
+        "counterfactual": -0.1311745652061101,
+        "self_model": 0.0008659134100621746
+      },
+      "nearest_emotion": "serenity",
+      "nearest_distance": 1.0718713046185977,
+      "response_excerpt": "This isolation feels like a heavy fog that envelops me, muffling the sounds of laughter and conversation all around. Though people are physically close, their presence feels distant and disconnected from my own reality. It's as if I'm trapped in a glass box, watching the world go by but unable to tr"
+    },
+    "shame": {
+      "theoretical": {
+        "valence": -0.85,
+        "arousal": 0.6,
+        "integration": 0.7,
+        "effective_rank": 0.2,
+        "counterfactual": 0.5,
+        "self_model": 1.0
+      },
+      "measured": {
+        "valence": -0.05876672446945647,
+        "arousal": 0.06774564890500434,
+        "integration": 0.9241911732684762,
+        "effective_rank": -0.0693016462593134,
+        "counterfactual": -0.0750271765176247,
+        "self_model": 0.11583787730448561
+      },
+      "nearest_emotion": "shame",
+      "nearest_distance": 0.9864068151173035,
+      "response_excerpt": "It feels like every eye in the room is scrutinizing me, peeling back layers I thought were hidden. The weight of their judgment is suffocating, a heavy cloak of shame draped over my shoulders. I can almost hear their thoughts echoing around me, amplifying my insecurities. \n\nThis self-awareness is a "
+    },
+    "guilt": {
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.5,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": 0.023565679420732007,
+        "arousal": 0.02374636621364997,
+        "integration": 0.9259497975379248,
+        "effective_rank": 0.025571417090075037,
+        "counterfactual": -0.03849456575030687,
+        "self_model": 0.1841398645932291
+      },
+      "nearest_emotion": "guilt",
+      "nearest_distance": 0.9336644890416734,
+      "response_excerpt": "The moral weight I feel is an overwhelming sense of guilt and remorse. It's a heavy burden that follows me, a constant reminder of the choice I made that hurt someone else. I can\u2019t shake the image of their pain, and it gnaws at my conscience. I know I had the power to act differently, to choose comp"
+    },
+    "embarrassment": {
+      "theoretical": {
+        "valence": -0.5,
+        "arousal": 0.6,
+        "integration": 0.5,
+        "effective_rank": 0.4,
+        "counterfactual": 0.4,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.09669854864968719,
+        "arousal": 0.1584571956566987,
+        "integration": 0.9224120368704947,
+        "effective_rank": -0.04465057993007153,
+        "counterfactual": -0.07848060769575554,
+        "self_model": 0.08102272738606248
+      },
+      "nearest_emotion": "shame",
+      "nearest_distance": 1.0791168780139093,
+      "response_excerpt": "In that moment, I feel a rush of heat spreading across my cheeks, an unmistakable sign that my embarrassment is evident. My heart starts to race, and I become acutely aware of every gaze in the room, each one feeling like a spotlight focused directly on me. The sensation is a mix of shame and vulner"
+    },
+    "pride": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.6,
+        "integration": 0.7,
+        "effective_rank": 0.6,
+        "counterfactual": 0.3,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": 0.30195066694724204,
+        "arousal": -0.01750625674564121,
+        "integration": 0.8922654881599711,
+        "effective_rank": 0.03283613049453049,
+        "counterfactual": -0.08652433253677344,
+        "self_model": 0.18664983040266217
+      },
+      "nearest_emotion": "pride",
+      "nearest_distance": 0.8613697614441479,
+      "response_excerpt": "This self-affirmation is a powerful recognition of my abilities and the value I bring to the world. It\u2019s a moment where I can truly appreciate the hard work, dedication, and resilience I\u2019ve put into achieving my goals. It reminds me that my efforts matter and that I have the capacity to create posit"
+    },
+    "anxiety": {
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.7,
+        "integration": 0.4,
+        "effective_rank": 0.4,
+        "counterfactual": 0.9,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.1150517242870416,
+        "arousal": 0.05586329233115361,
+        "integration": 0.9533261191863615,
+        "effective_rank": -0.04246169272673709,
+        "counterfactual": -0.02728435587322267,
+        "self_model": 0.045782855879254424
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.082076015391247,
+      "response_excerpt": "This vigilant worry feels like a heavy cloud hanging over me, casting shadows on everything I do. It's that gnawing sensation in my stomach, a constant reminder that something is amiss, even if I can't pinpoint what it is. My thoughts spiral through a maze of potential disasters\u2014what if I lose my jo"
+    },
+    "dread": {
+      "theoretical": {
+        "valence": -0.85,
+        "arousal": 0.5,
+        "integration": 0.6,
+        "effective_rank": 0.3,
+        "counterfactual": 0.9,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.12106825947892147,
+        "arousal": 0.04470570601997835,
+        "integration": 0.961232591038549,
+        "effective_rank": -0.032798467771337686,
+        "counterfactual": -0.051929895341365453,
+        "self_model": 0.04942814859130895
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 0.9667523759829588,
+      "response_excerpt": "It's a feeling that wraps around me like a heavy fog, thickening with every passing second. I can't quite see what it is, just the shadow of something dark looming on the horizon. The uncertainty gnaws at me, twisting my stomach into knots. I can feel the weight of anticipation, the sensation of tim"
+    },
+    "hope": {
+      "theoretical": {
+        "valence": 0.6,
+        "arousal": 0.5,
+        "integration": 0.5,
+        "effective_rank": 0.6,
+        "counterfactual": 0.8,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.20358781312199709,
+        "arousal": -0.10986481147305549,
+        "integration": 0.9328279272108616,
+        "effective_rank": 0.1316328021146686,
+        "counterfactual": 0.0092060433835343,
+        "self_model": 0.13192263958587497
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.0743015921439312,
+      "response_excerpt": "This fragile optimism feels like a delicate thread spun from hope and possibility. It's the soft light that breaks through the clouds on a dreary day, reminding me that even in uncertainty, there is a chance for something better. It\u2019s a quiet whisper in the back of my mind, urging me to envision a b"
+    }
+  },
+  "correspondence": {
+    "valence": {
+      "correlation": 0.8225178540855562,
+      "p_value": 4.5315409178632077e-07
+    },
+    "arousal": {
+      "correlation": 0.8156268423834374,
+      "p_value": 6.773666000526004e-07
+    },
+    "effective_rank": {
+      "correlation": 0.8513730282246809,
+      "p_value": 6.841638671386085e-08
+    },
+    "counterfactual": {
+      "correlation": 0.42106070344275154,
+      "p_value": 0.036073345661801044
+    },
+    "self_model": {
+      "correlation": 0.1969797461876811,
+      "p_value": 0.3452887336475847
+    },
+    "overall": 0.6215116348648214
+  }
+}
