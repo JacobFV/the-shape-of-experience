@@ -607,7 +607,6 @@ TODO:
 - paper I needs diagrams and textbook examples showing thes pheenomenae in bilayer membrane formation, etc. etc.
 - in the part III, i can show that this framework is _useful_ (not necesarily complete!) by making a software that presents the user with immersive experience to control their mental state and compare the self-report vs the predicted affective state
 - maybe part IV should be named "Part IV: Interventions Across Scale: From Neurons to Nations"
-- in the part V: i should outline the commandagi vision
 - we currently just throw out numerical estimates for the affect
 
 
