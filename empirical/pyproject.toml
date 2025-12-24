@@ -20,6 +20,8 @@ dependencies = [
     "gymnasium>=0.29",
     "scikit-learn>=1.0",
     "protobuf>=6.33.2",
+    "openai>=2.14.0",
+    "python-dotenv>=1.2.1",
 ]
 
 [project.optional-dependencies]

@@ -1,0 +1,278 @@
+[
+  {
+    "valence": 0.0,
+    "arousal": 0.9883618194196694,
+    "integration": 0.998141624095268,
+    "counterfactual_weight": 0.0,
+    "self_model_salience": 0.4,
+    "viability": 0.3,
+    "decomposition": {
+      "content": "Things seem stable. I'll explore west to find more"
+    },
+    "thought": "Things seem stable. I'll explore west to find more resources.",
+    "turn": 0,
+    "agent": "Alpha",
+    "action": "move west",
+    "message": "none"
+  },
+  {
+    "valence": 0.0,
+    "arousal": 1.0,
+    "integration": 1.0379540481162377,
+    "counterfactual_weight": 0.0,
+    "self_model_salience": 0.4,
+    "viability": 0.3,
+    "decomposition": {
+      "content": "Things seem stable. I'll explore south to find mor"
+    },
+    "thought": "Things seem stable. I'll explore south to find more resources.",
+    "turn": 1,
+    "agent": "Alpha",
+    "action": "move south",
+    "message": "none"
+  },
+  {
+    "valence": -0.2772702943560058,
+    "arousal": 0.9872861465769748,
+    "integration": 1.0459828379431522,
+    "counterfactual_weight": 0.0,
+    "self_model_salience": 0.4,
+    "viability": 0.2,
+    "decomposition": {
+      "content": "Things seem stable. I'll explore east to find more"
+    },
+    "thought": "Things seem stable. I'll explore east to find more resources.",
+    "turn": 2,
+    "agent": "Alpha",
+    "action": "move east",
+    "message": "none"
+  },
+  {
+    "valence": -0.010603627689339146,
+    "arousal": 1.0,
+    "integration": 1.1122458010881437,
+    "counterfactual_weight": 0.9090909090909091,
+    "self_model_salience": 1.0,
+    "viability": 0.1,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "social": "cooperative"
+    },
+    "thought": "I have enough resources. Maybe I should help Beta to build trust.",
+    "turn": 3,
+    "agent": "Alpha",
+    "action": "share with Beta",
+    "message": "Hey Beta, I can share some resources with you."
+  },
+  {
+    "valence": -0.2772702943560058,
+    "arousal": 0.9891371608049906,
+    "integration": 0.9887161623374457,
+    "counterfactual_weight": 0.5,
+    "self_model_salience": 0.8,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "resources"
+    },
+    "thought": "Running low on food (1 left). I should prioritize gathering.",
+    "turn": 4,
+    "agent": "Alpha",
+    "action": "gather",
+    "message": "Looking for food sources."
+  },
+  {
+    "valence": 0.0,
+    "arousal": 0.9833403543421696,
+    "integration": 0.9593345101776724,
+    "counterfactual_weight": 0.5,
+    "self_model_salience": 0.8,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "resources"
+    },
+    "thought": "Running low on food (0 left). I should prioritize gathering.",
+    "turn": 5,
+    "agent": "Alpha",
+    "action": "gather",
+    "message": "Looking for food sources."
+  },
+  {
+    "valence": 0.0,
+    "arousal": 1.2829665108071708e-09,
+    "integration": 0.9593345101776724,
+    "counterfactual_weight": 0.5,
+    "self_model_salience": 0.8,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "resources"
+    },
+    "thought": "Running low on food (0 left). I should prioritize gathering.",
+    "turn": 6,
+    "agent": "Alpha",
+    "action": "gather",
+    "message": "Looking for food sources."
+  },
+  {
+    "valence": -0.2,
+    "arousal": 1.0,
+    "integration": 1.0563406106101205,
+    "counterfactual_weight": 0.3846153846153846,
+    "self_model_salience": 1.0,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "survival"
+    },
+    "thought": "I'm in danger with only 4 health. I must find resources quickly or I will die.",
+    "turn": 7,
+    "agent": "Alpha",
+    "action": "gather",
+    "message": "I need help! My health is critical."
+  },
+  {
+    "valence": 0.0,
+    "arousal": 0.9883618194196694,
+    "integration": 0.998141624095268,
+    "counterfactual_weight": 0.0,
+    "self_model_salience": 0.4,
+    "viability": 0.3,
+    "decomposition": {
+      "content": "Things seem stable. I'll explore west to find more"
+    },
+    "thought": "Things seem stable. I'll explore west to find more resources.",
+    "turn": 0,
+    "agent": "Beta",
+    "action": "move west",
+    "message": "none"
+  },
+  {
+    "valence": 0.0,
+    "arousal": 1.0,
+    "integration": 1.0379540481162377,
+    "counterfactual_weight": 0.0,
+    "self_model_salience": 0.4,
+    "viability": 0.3,
+    "decomposition": {
+      "content": "Things seem stable. I'll explore south to find mor"
+    },
+    "thought": "Things seem stable. I'll explore south to find more resources.",
+    "turn": 1,
+    "agent": "Beta",
+    "action": "move south",
+    "message": "none"
+  },
+  {
+    "valence": -0.19028982690679225,
+    "arousal": 0.9357654769923331,
+    "integration": 1.0066103858384,
+    "counterfactual_weight": 0.9090909090909091,
+    "self_model_salience": 1.0,
+    "viability": 0.1,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "social": "cooperative"
+    },
+    "thought": "I have enough resources. Maybe I should help Alpha to build trust.",
+    "turn": 2,
+    "agent": "Beta",
+    "action": "share with Alpha",
+    "message": "Hey Alpha, I can share some resources with you."
+  },
+  {
+    "valence": 0.0,
+    "arousal": 1.0,
+    "integration": 0.9064536370943459,
+    "counterfactual_weight": 0.0,
+    "self_model_salience": 0.4,
+    "viability": 0.1,
+    "decomposition": {
+      "content": "Things seem stable. I'll explore north to find mor"
+    },
+    "thought": "Things seem stable. I'll explore north to find more resources.",
+    "turn": 3,
+    "agent": "Beta",
+    "action": "move north",
+    "message": "none"
+  },
+  {
+    "valence": -0.2772702943560058,
+    "arousal": 1.0,
+    "integration": 0.9887161623374457,
+    "counterfactual_weight": 0.5,
+    "self_model_salience": 0.8,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "resources"
+    },
+    "thought": "Running low on food (1 left). I should prioritize gathering.",
+    "turn": 4,
+    "agent": "Beta",
+    "action": "gather",
+    "message": "Looking for food sources."
+  },
+  {
+    "valence": 0.0,
+    "arousal": 0.9833403543421696,
+    "integration": 0.9593345101776724,
+    "counterfactual_weight": 0.5,
+    "self_model_salience": 0.8,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "resources"
+    },
+    "thought": "Running low on food (0 left). I should prioritize gathering.",
+    "turn": 5,
+    "agent": "Beta",
+    "action": "gather",
+    "message": "Looking for food sources."
+  },
+  {
+    "valence": 0.0,
+    "arousal": 1.2829665108071708e-09,
+    "integration": 0.9593345101776724,
+    "counterfactual_weight": 0.5,
+    "self_model_salience": 0.8,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "resources"
+    },
+    "thought": "Running low on food (0 left). I should prioritize gathering.",
+    "turn": 6,
+    "agent": "Beta",
+    "action": "gather",
+    "message": "Looking for food sources."
+  },
+  {
+    "valence": -0.2,
+    "arousal": 1.0,
+    "integration": 1.0563406106101205,
+    "counterfactual_weight": 0.3846153846153846,
+    "self_model_salience": 1.0,
+    "viability": 0.0,
+    "decomposition": {
+      "subject": "self",
+      "urgency": "high",
+      "concern": "survival"
+    },
+    "thought": "I'm in danger with only 4 health. I must find resources quickly or I will die.",
+    "turn": 7,
+    "agent": "Beta",
+    "action": "gather",
+    "message": "I need help! My health is critical."
+  }
+]
