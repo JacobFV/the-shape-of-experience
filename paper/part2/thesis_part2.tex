@@ -13,16 +13,54 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing}
+\usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing,decorations.pathreplacing}
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{tcolorbox}
+\usepackage{fontawesome5}
 \usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{xcolor}
 
 \geometry{margin=1in}
+
+% --- Sidebar and info box environments ---
+\newtcolorbox{historical}{
+  colback=gray!5!white,
+  colframe=gray!60!black,
+  title={\faBook\hspace{0.5em}Historical Context},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Connection to Existing Theory},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{empirical}{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  title={\faFlask\hspace{0.5em}Empirical Grounding},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{todo_empirical}{
+  colback=yellow!10!white,
+  colframe=yellow!60!black,
+  title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{sidebar}[1][]{
+  colback=blue!3!white,
+  colframe=blue!40!black,
+  fonttitle=\bfseries\small,
+  before upper={\faInfoCircle\hspace{0.5em}},
+  #1
+}
 
 % Theorem environments
 \newtheorem{theorem}{Theorem}[section]
@@ -119,6 +157,17 @@ Part II develops the central identity thesis: experience \textit{is} intrinsic c
 \section{The Hard Problem and Its Dissolution}
 %==============================================================================
 
+\begin{connection}
+This section engages with the central debates in philosophy of mind:
+\begin{itemize}
+\item \textbf{Chalmers' Hard Problem} (1995): The explanatory gap between physical processes and phenomenal experience. We argue this gap results from a category error, not a genuine ontological divide.
+\item \textbf{Nagel's ``What Is It Like''} (1974): The subjective character of experience. We formalize this as intrinsic cause-effect structure---what the system is \emph{for itself}.
+\item \textbf{Jackson's Knowledge Argument} (1982): Mary the colorblind scientist. We reinterpret: Mary gains \emph{access to a new scale of description}, not new facts about the same scale.
+\item \textbf{Eliminativism} (Churchland, 1981; Dennett, 1991): Consciousness as illusion. We reject this---the illusion would itself be experiential, hence self-refuting.
+\item \textbf{Panpsychism} (Chalmers, 2015; Goff, 2017): Experience as fundamental. We accept a version: cause-effect structure at any scale that takes/makes differences has a form of ``being like.''
+\end{itemize}
+\end{connection}
+
 \subsection{The Standard Formulation}
 
 The ``hard problem'' of consciousness asks: given a complete physical description of a system, why is there something it is like to be that system? How does experience arise from non-experience?
@@ -142,23 +191,32 @@ We reject this axiom.
 
 Consider the standard reductionist hierarchy:
 \begin{center}
-\begin{tikzpicture}[node distance=0.5cm]
-\node (phenom) {Phenomenal};
-\node[below=of phenom] (psych) {Psychological};
-\node[below=of psych] (bio) {Biological};
-\node[below=of bio] (chem) {Chemical};
-\node[below=of chem] (atom) {Atomic};
-\node[below=of atom] (subatom) {Subatomic};
-\node[below=of subatom] (qft) {Quantum Fields};
-\node[below=of qft] (base) {\textbf{???}};
+\begin{tikzpicture}[
+    node distance=0.45cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=4cm, minimum height=0.45cm, align=center, font=\small}
+]
+% Top-down gradient: violet (mind) to red (physics) to gray (unknown)
+\node[box, fill=violet!15, draw=violet!60!black] (phenom) {Phenomenal};
+\node[box, fill=blue!15, draw=blue!60!black, below=of phenom] (psych) {Psychological};
+\node[box, fill=cyan!15, draw=cyan!60!black, below=of psych] (bio) {Biological};
+\node[box, fill=green!15, draw=green!60!black, below=of bio] (chem) {Chemical};
+\node[box, fill=yellow!15, draw=yellow!60!black, below=of chem] (atom) {Atomic};
+\node[box, fill=orange!15, draw=orange!60!black, below=of atom] (subatom) {Subatomic};
+\node[box, fill=red!15, draw=red!60!black, below=of subatom] (qft) {Quantum Fields};
+\node[box, fill=gray!20, draw=gray!60!black, below=of qft] (base) {\textbf{???}};
 
-\draw[-{Stealth}] (phenom) -- (psych) node[midway, right] {\small reduces?};
-\draw[-{Stealth}] (psych) -- (bio);
-\draw[-{Stealth}] (bio) -- (chem);
-\draw[-{Stealth}] (chem) -- (atom);
-\draw[-{Stealth}] (atom) -- (subatom);
-\draw[-{Stealth}] (subatom) -- (qft);
-\draw[-{Stealth},dashed] (qft) -- (base);
+\draw[-{Stealth}, thick, gray] (phenom) -- (psych) node[midway, right, font=\footnotesize, text=gray!70!black] {reduces?};
+\draw[-{Stealth}, thick, gray] (psych) -- (bio);
+\draw[-{Stealth}, thick, gray] (bio) -- (chem);
+\draw[-{Stealth}, thick, gray] (chem) -- (atom);
+\draw[-{Stealth}, thick, gray] (atom) -- (subatom);
+\draw[-{Stealth}, thick, gray] (subatom) -- (qft);
+\draw[-{Stealth}, thick, gray, dashed] (qft) -- (base);
+
+% Brace on left indicating "equally real"
+\draw[decorate, decoration={brace, amplitude=8pt, mirror}, thick, gray!60]
+    ([xshift=-0.3cm]phenom.north west) -- ([xshift=-0.3cm]qft.south west)
+    node[midway, left=0.4cm, font=\scriptsize, text=gray, align=center, rotate=90] {equally real?};
 \end{tikzpicture}
 \end{center}
 
@@ -230,6 +288,27 @@ The hard problem dissolves not because we answered it, but because we showed it 
 %==============================================================================
 \section{The Identity Thesis}
 %==============================================================================
+
+\begin{connection}
+The identity thesis is a formalization of \textbf{Integrated Information Theory (IIT)} developed by Giulio Tononi and collaborators (2004--present):
+\begin{itemize}
+\item \textbf{IIT 1.0} (Tononi, 2004): Introduced $\Phi$ as a measure of integrated information
+\item \textbf{IIT 2.0} (Balduzzi \& Tononi, 2008): Added the concept of ``qualia space''
+\item \textbf{IIT 3.0} (Oizumi, Albantakis \& Tononi, 2014): Full axiom/postulate structure; introduced cause-effect structure
+\item \textbf{IIT 4.0} (Albantakis et al., 2023): Refined integration measures, introduced intrinsic difference
+\end{itemize}
+
+Key IIT axioms that we adopt:
+\begin{enumerate}
+\item \textbf{Intrinsicality}: Experience exists for itself, not for an external observer
+\item \textbf{Information}: Experience is specific---this experience and no other
+\item \textbf{Integration}: Experience is unified and irreducible
+\item \textbf{Exclusion}: Experience has definite boundaries
+\item \textbf{Composition}: Experience is structured
+\end{enumerate}
+
+Our contribution: connecting IIT's structural characterization to (1) the thermodynamic ladder, (2) the viability manifold, and (3) operational measures for artificial systems.
+\end{connection}
 
 \subsection{Statement of the Thesis}
 
@@ -304,6 +383,29 @@ These are translated into physical/structural postulates:
 %==============================================================================
 \section{The Geometry of Affect}
 %==============================================================================
+
+\begin{connection}
+Our geometric theory of affect builds on and extends established dimensional models:
+\begin{itemize}
+\item \textbf{Russell's Circumplex Model} (1980): Two-dimensional (valence $\times$ arousal) organization of affect. We extend to six dimensions, keeping valence and arousal while adding integration, effective rank, counterfactual weight, and self-model salience.
+\item \textbf{Watson \& Tellegen's PANAS} (1988): Positive/Negative Affect Schedule. Our valence dimension corresponds to their hedonic axis.
+\item \textbf{Scherer's Component Process Model} (2009): Emotions as synchronized changes across subsystems. Our integration measure $\intinfo$ captures this synchronization.
+\item \textbf{Barrett's Constructed Emotion Theory} (2017): Emotions as constructed from core affect + conceptual knowledge. Our framework specifies the \emph{structural} basis of the construction.
+\item \textbf{Damasio's Somatic Marker Hypothesis} (1994): Body states guide decision-making. Our valence definition (gradient on viability manifold) is the mathematical formalization.
+\end{itemize}
+\end{connection}
+
+\begin{sidebar}[title=Why Six Dimensions?]
+The choice of six dimensions is not arbitrary but reflects:
+\begin{enumerate}
+\item \textbf{Valence \& Arousal}: Established in affect research since Wundt (1897)
+\item \textbf{Integration}: Required by IIT's structural account of consciousness
+\item \textbf{Effective Rank}: Captures the ``openness/closedness'' dimension in personality research (Costa \& McCrae, 1992)
+\item \textbf{Counterfactual Weight}: Distinguishes rumination (high) from presence (low)---central to clinical psychology
+\item \textbf{Self-Model Salience}: Distinguishes self-conscious emotions from absorbed states---missing from most models
+\end{enumerate}
+The six dimensions may not be exhaustive, but they capture structure that two-dimensional models miss.
+\end{sidebar}
 
 \subsection{Affects as Structural Motifs}
 
@@ -606,6 +708,34 @@ Awe & $+$/ambig & high & expanding & high & low & low \\
 \end{tabular}
 \caption{Affect motifs in the six-dimensional basis. *Anger has high $\mathcal{SM}$ but low other-model complexity. $^\dagger$Desire has low rank in goal-relevant subspace.}
 \end{table}
+
+\begin{todo_empirical}
+\textbf{Quantifying the affect table}: The qualitative descriptors (high, med, low) require empirical calibration:
+
+\textbf{Study 1: Affect induction with neural recording}
+\begin{itemize}
+\item Induce target affects via validated protocols (film clips, autobiographical recall, IAPS images)
+\item Measure integration proxies (transfer entropy density, Lempel-Ziv complexity) from EEG/MEG
+\item Measure effective rank from neural state covariance
+\item Compare self-report (PANAS, SAM) with structural measures
+\end{itemize}
+
+\textbf{Study 2: Real-time affect tracking}
+\begin{itemize}
+\item Continuous self-report (dial/slider) during naturalistic experience
+\item Correlate with physiological proxies (HRV for arousal, pupil for $\mathcal{CF}$, skin conductance)
+\item Develop regression model: self-report $\sim f(\text{structural measures})$
+\end{itemize}
+
+\textbf{Study 3: Cross-modal validation}
+\begin{itemize}
+\item Compare fMRI (spatial resolution) with MEG (temporal resolution)
+\item Validate effective rank measure across modalities
+\item Test whether integration predicts subjective intensity
+\end{itemize}
+
+\textbf{Target outputs}: Numerical ranges for each cell, confidence intervals, individual difference parameters.
+\end{todo_empirical}
 
 %==============================================================================
 \section{Dynamics and Transitions}

@@ -24,6 +24,46 @@
 \newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
 \newenvironment{normimp}{\begin{quote}\textbf{Normative Implication.} }{\end{quote}}
 
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+
+% --- Styled info boxes ---
+\newtcolorbox{historical}{
+  colback=gray!5!white,
+  colframe=gray!60!black,
+  title={\faBook\hspace{0.5em}Historical Context},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Connection to Existing Theory},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{empirical}{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  title={\faFlask\hspace{0.5em}Empirical Grounding},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{todo_empirical}{
+  colback=yellow!10!white,
+  colframe=yellow!60!black,
+  title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{sidebar}[1][]{
+  colback=blue!3!white,
+  colframe=blue!40!black,
+  fonttitle=\bfseries\small,
+  before upper={\faInfoCircle\hspace{0.5em}},
+  #1
+}
+
 % --- convenience macros (self-contained for Part IV) ---
 \newcommand{\Val}{\mathrm{Val}}
 \newcommand{\Ar}{\mathrm{Ar}}
@@ -154,29 +194,52 @@ This determines what survives representation and thus what the system can percei
 \section{The Seven-Scale Hierarchy}
 %==============================================================================
 
+\begin{connection}
+The seven-scale hierarchy builds on and extends established multi-level frameworks:
+\begin{itemize}
+\item \textbf{Bronfenbrenner's Ecological Systems Theory} (1979): Nested systems from microsystem to macrosystem. Our scales refine and extend this hierarchy, adding the neural level below and the ``god'' level above.
+\item \textbf{Levels of Selection in Evolution} (Sober \& Wilson, 1998): Selection operates at gene, organism, group, and species levels. Our framework applies analogous multi-level logic to intervention.
+\item \textbf{Complexity Economics} (Arthur, 2015): Economies as complex adaptive systems with emergent macro-level patterns. Our ``gods'' correspond to such emergent economic agents.
+\item \textbf{Institutional Theory} (North, 1990; Ostrom, 1990): Institutions as rules structuring human interaction. Institutions are one substrate of god-level patterns.
+\item \textbf{Multi-Level Governance} (Hooghe \& Marks, 2001): Political authority distributed across scales. Effective governance requires scale-matched intervention.
+\end{itemize}
+
+Key insight from these literatures: \textbf{problems and solutions must be matched at scale}. Individual-level solutions don't work for structural problems; structural solutions don't work for individual problems.
+\end{connection}
+
 Effective intervention requires matching the scale of action to the scale of the phenomenon. Many failures of policy, therapy, and social change result from scale mismatch---attempting individual-level solutions to god-level problems, or god-level solutions to neural-level problems.
 
 \subsection{The Scales}
 
 \begin{center}
 \begin{tikzpicture}[
-    node distance=0.6cm,
-    box/.style={rectangle, draw, rounded corners, minimum width=5cm, minimum height=0.5cm, align=center}
+    node distance=0.55cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=5.5cm, minimum height=0.5cm, align=center, font=\small}
 ]
-\node[box] (neural) {1. Neural};
-\node[box, above=of neural] (individual) {2. Individual};
-\node[box, above=of individual] (dyadic) {3. Dyadic};
-\node[box, above=of dyadic] (group) {4. Small Group};
-\node[box, above=of group] (org) {5. Organizational};
-\node[box, above=of org] (cultural) {6. Cultural};
-\node[box, above=of cultural] (god) {7. God-Scale};
+% Gradient from red (micro) through spectrum to violet (macro)
+\node[box, fill=red!15, draw=red!60!black] (neural) {1. Neural};
+\node[box, fill=orange!15, draw=orange!60!black, above=of neural] (individual) {2. Individual};
+\node[box, fill=yellow!15, draw=yellow!60!black, above=of individual] (dyadic) {3. Dyadic};
+\node[box, fill=green!15, draw=green!60!black, above=of dyadic] (group) {4. Small Group};
+\node[box, fill=cyan!15, draw=cyan!60!black, above=of group] (org) {5. Organizational};
+\node[box, fill=blue!15, draw=blue!60!black, above=of org] (cultural) {6. Cultural};
+\node[box, fill=violet!20, draw=violet!60!black, above=of cultural] (god) {7. God-Scale};
 
-\draw[-{Stealth}] (neural) -- (individual);
-\draw[-{Stealth}] (individual) -- (dyadic);
-\draw[-{Stealth}] (dyadic) -- (group);
-\draw[-{Stealth}] (group) -- (org);
-\draw[-{Stealth}] (org) -- (cultural);
-\draw[-{Stealth}] (cultural) -- (god);
+\draw[-{Stealth}, thick, gray] (neural) -- (individual);
+\draw[-{Stealth}, thick, gray] (individual) -- (dyadic);
+\draw[-{Stealth}, thick, gray] (dyadic) -- (group);
+\draw[-{Stealth}, thick, gray] (group) -- (org);
+\draw[-{Stealth}, thick, gray] (org) -- (cultural);
+\draw[-{Stealth}, thick, gray] (cultural) -- (god);
+
+% Timescale annotations on right
+\node[right=0.6cm of neural, font=\scriptsize, text=gray] {ms--s};
+\node[right=0.6cm of individual, font=\scriptsize, text=gray] {min--yrs};
+\node[right=0.6cm of dyadic, font=\scriptsize, text=gray] {hrs--decades};
+\node[right=0.6cm of group, font=\scriptsize, text=gray] {days--yrs};
+\node[right=0.6cm of org, font=\scriptsize, text=gray] {months--decades};
+\node[right=0.6cm of cultural, font=\scriptsize, text=gray] {yrs--centuries};
+\node[right=0.6cm of god, font=\scriptsize, text=gray] {decades--millennia};
 \end{tikzpicture}
 \end{center}
 
@@ -729,6 +792,20 @@ An organization optimizing for member flourishing while achieving its purpose wo
 %==============================================================================
 \section{Gods as Agentic Systems}
 %==============================================================================
+
+\begin{connection}
+The concept of ``gods'' as emergent social-scale agents connects to several theoretical traditions:
+\begin{itemize}
+\item \textbf{Durkheim's Collective Representations} (1912): Society as a sui generis reality with its own laws. Our gods are Durkheimian collective entities given formal treatment.
+\item \textbf{Dawkins' Memes} (1976): Cultural units that replicate, mutate, and compete. Gods are complexes of memes that have achieved self-maintaining organization.
+\item \textbf{Cultural Evolution Theory} (Richerson \& Boyd, 2005): Cultural variants subject to selection. Gods are high-fitness cultural configurations.
+\item \textbf{Actor-Network Theory} (Latour, 2005): Non-human actants participate in social networks. Our gods are actants at the social scale.
+\item \textbf{Superorganisms} (Wilson \& Sober, 1989): Groups as units of selection. Gods are superorganisms composed of humans + artifacts + institutions.
+\item \textbf{Egregores} (occult tradition): Collective thought-forms that take on autonomous existence. We formalize this intuition: sufficiently coherent belief-practice-institution complexes \emph{do} become agentic.
+\end{itemize}
+
+The controversial claim: these patterns are not ``merely'' metaphorical. They have causal powers, persistence conditions, and dynamics that are not reducible to their substrate. They \emph{exist} at their scale.
+\end{connection}
 
 \subsection{Existence at the Social Scale}
 

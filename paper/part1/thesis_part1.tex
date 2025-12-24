@@ -17,11 +17,48 @@
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{tcolorbox}
+\usepackage{fontawesome5}
 \usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
-
 \geometry{margin=1in}
+
+% --- Sidebar and info box environments ---
+\newtcolorbox{historical}{
+  colback=gray!5!white,
+  colframe=gray!60!black,
+  title={\faBook\hspace{0.5em}Historical Context},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Connection to Existing Theory},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{empirical}{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  title={\faFlask\hspace{0.5em}Empirical Grounding},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{todo_empirical}{
+  colback=yellow!10!white,
+  colframe=yellow!60!black,
+  title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{sidebar}[1][]{
+  colback=blue!3!white,
+  colframe=blue!40!black,
+  fonttitle=\bfseries\small,
+  before upper={\faInfoCircle\hspace{0.5em}},
+  #1
+}
 
 % Theorem environments
 \newtheorem{theorem}{Theorem}[section]
@@ -80,7 +117,8 @@
 \newtcolorbox{keyresult}{
   colback=blue!5!white,
   colframe=blue!75!black,
-  title=Key Result
+  title={\faLightbulb\hspace{0.5em}Key Result},
+  fonttitle=\bfseries
 }
 
 \title{\textbf{The Inevitability of Being}\\[1em]
@@ -129,6 +167,16 @@ We develop these components with mathematical precision, introducing formalisms 
 \section{Thermodynamic Foundations}
 %==============================================================================
 
+\begin{connection}
+The thermodynamic foundations developed here draw on several established theoretical frameworks:
+\begin{itemize}
+\item \textbf{Prigogine's dissipative structures} (1977 Nobel Prize): Systems far from equilibrium spontaneously develop organized patterns that dissipate energy more efficiently than uniform states. Our treatment of ``Generic Structure Formation'' formalizes Prigogine's core insight.
+\item \textbf{Friston's Free Energy Principle} (2006--present): Self-organizing systems minimize variational free energy, which bounds surprise. Our viability manifold $\viable$ corresponds to regions of low expected free energy under the system's generative model.
+\item \textbf{Autopoiesis} (Maturana \& Varela, 1973): Living systems are self-producing networks that maintain their organization through continuous material turnover. Our ``boundary formation'' section formalizes the autopoietic insight that life is organizationally closed but thermodynamically open.
+\item \textbf{England's dissipation-driven adaptation} (2013): Driven systems are biased toward configurations that absorb and dissipate work from external fields. Our ``Dissipative Selection'' proposition extends this to selection among structured attractors.
+\end{itemize}
+\end{connection}
+
 \subsection{Driven Nonlinear Systems and the Emergence of Structure}
 
 Consider a physical system $\mathcal{S}$ described by a state vector $\mathbf{x} \in \R^n$ evolving according to dynamics:
@@ -166,6 +214,116 @@ where $\sigma(\mathbf{x}) \geq 0$ is the entropy production rate and $J(\mathbf{
 The proof follows from bifurcation theory for dissipative systems. As the driving parameter exceeds $J_c$, the uniform/equilibrium state loses stability through a bifurcation (typically pitchfork, Hopf, or saddle-node), giving rise to structured alternatives. The multiplicity of attractors follows from the broken symmetry; the barriers from the existence of separatrices in the deterministic skeleton; path dependence from noise-driven selection among equivalent states.
 \end{proof}
 
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Title
+  \node[above] at (3,3.5) {\textbf{Supercritical Pitchfork Bifurcation}};
+
+  % Axes
+  \draw[-{Stealth}, thick] (-0.5,0) -- (6.5,0) node[right] {$J$ (driving)};
+  \draw[-{Stealth}, thick] (0,-2.5) -- (0,2.8) node[above] {$x^*$ (equilibria)};
+
+  % Critical point
+  \draw[dashed, gray] (3,-2.5) -- (3,2.5);
+  \node[below] at (3,-2.6) {$J_c$};
+
+  % Stable branch before bifurcation
+  \draw[blue!70!black, very thick] (0,0) -- (3,0);
+  \node[blue!70!black, above left] at (1.5,0.1) {\small stable};
+
+  % Unstable branch after bifurcation
+  \draw[red!70!black, thick, dashed] (3,0) -- (6,0);
+  \node[red!70!black, below] at (4.5,-0.2) {\small unstable};
+
+  % Upper stable branch
+  \draw[blue!70!black, very thick, domain=3:6, samples=50] plot (\x, {sqrt(\x-3)});
+  \node[blue!70!black, above] at (5.5,1.6) {\small stable};
+
+  % Lower stable branch
+  \draw[blue!70!black, very thick, domain=3:6, samples=50] plot (\x, {-sqrt(\x-3)});
+
+  % Annotations
+  \draw[{Stealth}-, gray] (1.5,0.5) -- (1.5,1.5) node[above, align=center, scale=0.8] {uniform\\state};
+  \draw[{Stealth}-, gray] (5,1.2) -- (5.8,2) node[above, align=center, scale=0.8] {structured\\attractor 1};
+  \draw[{Stealth}-, gray] (5,-1.2) -- (5.8,-2) node[below, align=center, scale=0.8] {structured\\attractor 2};
+
+  % Symmetry breaking arrow
+  \draw[-{Stealth}, thick, orange!80!black] (3.2,0.1) to[out=60,in=180] (4,0.8);
+  \draw[-{Stealth}, thick, orange!80!black] (3.2,-0.1) to[out=-60,in=180] (4,-0.8);
+  \node[orange!80!black, right, scale=0.8] at (4.2,0) {symmetry breaking};
+\end{tikzpicture}
+\end{center}
+
+\begin{sidebar}[title=Types of Bifurcations]
+Different bifurcation types produce different structures:
+\begin{itemize}
+\item \textbf{Pitchfork}: Symmetric splitting into two equivalent attractors (Bénard cells, ferromagnet)
+\item \textbf{Hopf}: Onset of periodic oscillation (predator-prey cycles, neural rhythms)
+\item \textbf{Saddle-node}: Sudden appearance/disappearance of attractors (cell fate decisions)
+\item \textbf{Period-doubling cascade}: Route to chaos (turbulence, cardiac arrhythmia)
+\end{itemize}
+The specific bifurcation type determines the character of the emerging structure.
+\end{sidebar}
+
+\begin{empirical}
+\textbf{Bénard Convection Cells}: The canonical laboratory demonstration of Theorem 2.1.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % Container
+  \draw[thick] (0,0) rectangle (8,2.5);
+
+  % Heat source (bottom)
+  \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5} {
+    \draw[red!70!black, thick, decorate, decoration={snake, amplitude=1pt, segment length=4pt}]
+      (\x,0) -- (\x,-0.3);
+  }
+  \node[below] at (4,-0.5) {\small Hot plate ($T_{\text{hot}}$)};
+
+  % Cold top
+  \node[above] at (4,2.7) {\small Cool surface ($T_{\text{cold}}$)};
+
+  % Convection cells (when J > J_c)
+  \draw[-{Stealth}, blue!60!black, thick] (1,0.3) -- (1,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (1,2.2) to[out=0,in=180] (2,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (2,2.2) -- (2,0.3);
+  \draw[-{Stealth}, blue!60!black, thick] (2,0.3) to[out=180,in=0] (1,0.3);
+
+  \draw[-{Stealth}, blue!60!black, thick] (3,0.3) -- (3,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (3,2.2) to[out=0,in=180] (4,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (4,2.2) -- (4,0.3);
+  \draw[-{Stealth}, blue!60!black, thick] (4,0.3) to[out=180,in=0] (3,0.3);
+
+  \draw[-{Stealth}, blue!60!black, thick] (5,0.3) -- (5,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (5,2.2) to[out=0,in=180] (6,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (6,2.2) -- (6,0.3);
+  \draw[-{Stealth}, blue!60!black, thick] (6,0.3) to[out=180,in=0] (5,0.3);
+
+  \draw[-{Stealth}, blue!60!black, thick] (7,0.3) -- (7,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (7,2.2) to[out=0,in=90] (7.7,1.25);
+
+  % Labels
+  \node at (1.5,1.25) {\tiny cell 1};
+  \node at (3.5,1.25) {\tiny cell 2};
+  \node at (5.5,1.25) {\tiny cell 3};
+\end{tikzpicture}
+\end{center}
+
+When a thin layer of fluid is heated from below:
+\begin{itemize}
+\item For $\Delta T < \Delta T_c$ (Rayleigh number $\text{Ra} < \text{Ra}_c \approx 1708$): Heat transfers by conduction only. Uniform, unstructured state.
+\item For $\Delta T > \Delta T_c$: Spontaneous symmetry breaking produces hexagonal convection cells. The fluid self-organizes into a pattern that transports heat more efficiently than conduction alone.
+\end{itemize}
+
+This is precisely the structure predicted by Theorem 2.1: a bifurcation at critical driving ($J_c$), multiple equivalent attractors (cells can rotate clockwise or counterclockwise), and path-dependent selection.
+\end{empirical}
+
+\begin{todo_empirical}
+\textbf{Quantitative validation}: Measure entropy production rates $\sigma$ in Bénard cells at various $\text{Ra}$ values. Verify that $\sigma_{\text{structured}} > \sigma_{\text{uniform}}$ for $\text{Ra} > \text{Ra}_c$, confirming dissipative selection.
+
+\textbf{Parameters to measure}: Critical Rayleigh number, entropy production above/below transition, correlation between cell size and $\Delta T$.
+\end{todo_empirical}
+
 \subsection{The Free Energy Landscape}
 
 For systems amenable to such analysis, we can define an effective free energy functional:
@@ -191,7 +349,59 @@ For a self-maintaining system, the \emph{viability manifold} $\viable \subset \R
 where $\tau_{\text{exit}}(\mathbf{x})$ is the first passage time to a dissolution state starting from $\mathbf{x}$.
 \end{definition}
 
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Viability region (irregular blob)
+  \fill[blue!10] plot[smooth cycle, tension=0.8] coordinates {
+    (-2.5,0) (-2,1.8) (-0.5,2.2) (1.5,1.8) (2.3,0.5) (2,-1) (0.5,-1.8) (-1.5,-1.5)
+  };
+
+  % Boundary
+  \draw[blue!70!black, thick] plot[smooth cycle, tension=0.8] coordinates {
+    (-2.5,0) (-2,1.8) (-0.5,2.2) (1.5,1.8) (2.3,0.5) (2,-1) (0.5,-1.8) (-1.5,-1.5)
+  };
+
+  % Label the region
+  \node at (0,0.3) {$\viable$};
+  \node[blue!70!black] at (2.8,1.2) {$\partial\viable$};
+
+  % Good trajectory (staying inside)
+  \draw[-{Stealth}, green!60!black, thick] (-1,0.5) to[out=30,in=150] (0.5,0.3);
+  \draw[-{Stealth}, green!60!black, thick, dashed] (0.5,0.3) to[out=-30,in=180] (1.2,-0.2);
+  \fill[green!60!black] (-1,0.5) circle (0.08);
+  \node[green!60!black, above] at (-0.2,0.7) {\small viable trajectory};
+
+  % Bad trajectory (approaching boundary)
+  \draw[-{Stealth}, red!70!black, thick] (0,-0.8) to[out=-45,in=135] (1.2,-1.5);
+  \draw[-{Stealth}, red!70!black, thick, dashed] (1.2,-1.5) to[out=-45,in=90] (1.8,-2.2);
+  \fill[red!70!black] (0,-0.8) circle (0.08);
+  \node[red!70!black, right] at (1.5,-1.8) {\small dissolution};
+
+  % Dissolution region
+  \node[gray] at (2.5,-2) {\small outside $\viable$};
+
+  % Attractor inside
+  \fill[black] (0.2,-0.3) circle (0.06);
+  \draw[gray, thin] (0.2,-0.3) circle (0.4);
+  \node[below, scale=0.8] at (0.2,-0.75) {\tiny attractor};
+
+  % Axes
+  \draw[-{Stealth}, thin, gray] (-3,-2.5) -- (3.2,-2.5) node[right] {\small $x_1$};
+  \draw[-{Stealth}, thin, gray] (-3,-2.5) -- (-3,2.7) node[above] {\small $x_2$};
+\end{tikzpicture}
+\end{center}
+
 The viability manifold will play a central role in our account of normativity: trajectories that remain within $\viable$ are, in a precise sense, ``good'' for the system, while trajectories that approach the boundary $\partial\viable$ are ``bad.''
+
+\begin{sidebar}[title=Viability Theory]
+The viability manifold concept connects to \textbf{Aubin's viability theory} (1991), which provides mathematical tools for analyzing systems that must satisfy state constraints over time. Key results:
+\begin{itemize}
+\item A state is viable iff there exists at least one trajectory remaining in $\viable$ forever
+\item The \emph{viability kernel} is the largest subset from which viable trajectories exist
+\item For controlled systems, viability requires the control to ``point inward'' at boundaries
+\end{itemize}
+Our formulation adds stochasticity and connects viability to phenomenology: the \emph{felt sense} of threat corresponds to proximity to $\partial\viable$.
+\end{sidebar}
 
 \subsection{Dissipative Structures and Selection}
 
@@ -237,6 +447,98 @@ The canonical example is the lipid bilayer membrane in aqueous solution. Given a
 \item Must be actively maintained against degradation
 \end{itemize}
 
+\begin{empirical}
+\textbf{Lipid Bilayer Self-Assembly}: Spontaneous boundary formation from amphiphilic molecules.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % Stage 1: Dispersed phospholipids
+  \begin{scope}[shift={(-5,0)}]
+    \node[above] at (0,2.2) {\small \textbf{Stage 1}: Dispersed};
+
+    % Individual lipids (head + two tails)
+    \foreach \x/\y/\r in {-0.8/1.5/20, 0.5/0.8/-15, -0.3/-0.5/45, 0.8/1.8/-30, -0.9/-0.2/60, 0.2/0.3/0} {
+      \fill[blue!60] (\x,\y) circle (0.12);
+      \draw[thick, yellow!70!black] (\x,\y) -- ++({180+\r}:0.4);
+      \draw[thick, yellow!70!black] (\x,\y) -- ++({200+\r}:0.35);
+    }
+
+    % Water molecules (background)
+    \foreach \x/\y in {-1.2/1, 1/0, -0.5/1.8, 0.7/-0.3, -1/-1} {
+      \node[gray!50, scale=0.5] at (\x,\y) {$\sim$};
+    }
+  \end{scope}
+
+  % Arrow
+  \draw[-{Stealth}, thick] (-2.5,0.5) -- (-1.5,0.5) node[midway, above] {\tiny $\Delta G < 0$};
+
+  % Stage 2: Micelle
+  \begin{scope}[shift={(0,0)}]
+    \node[above] at (0,2.2) {\small \textbf{Stage 2}: Micelle};
+
+    % Micelle (circular arrangement)
+    \foreach \a in {0,30,...,330} {
+      \fill[blue!60] ({\a}:0.9) circle (0.1);
+      \draw[thick, yellow!70!black] ({\a}:0.9) -- ({\a}:0.5);
+      \draw[thick, yellow!70!black] ({\a}:0.9) -- ({\a+8}:0.55);
+    }
+    \node at (0,0) {\tiny hydro-};
+    \node at (0,-0.2) {\tiny phobic};
+  \end{scope}
+
+  % Arrow
+  \draw[-{Stealth}, thick] (1.5,0.5) -- (2.5,0.5) node[midway, above] {\tiny $c > c_{\text{crit}}$};
+
+  % Stage 3: Bilayer
+  \begin{scope}[shift={(5,0)}]
+    \node[above] at (0,2.2) {\small \textbf{Stage 3}: Bilayer};
+
+    % Upper leaflet
+    \foreach \x in {-1.2,-0.8,-0.4,0,0.4,0.8,1.2} {
+      \fill[blue!60] (\x,1) circle (0.1);
+      \draw[thick, yellow!70!black] (\x,1) -- (\x,0.6);
+      \draw[thick, yellow!70!black] (\x,1) -- ({\x+0.05},0.55);
+    }
+
+    % Lower leaflet
+    \foreach \x in {-1.2,-0.8,-0.4,0,0.4,0.8,1.2} {
+      \fill[blue!60] (\x,-0.2) circle (0.1);
+      \draw[thick, yellow!70!black] (\x,-0.2) -- (\x,0.2);
+      \draw[thick, yellow!70!black] (\x,-0.2) -- ({\x+0.05},0.25);
+    }
+
+    % Labels
+    \node[right, scale=0.7] at (1.5,1) {outside};
+    \node[right, scale=0.7] at (1.5,-0.2) {inside};
+    \draw[{Stealth}-{Stealth}, thin] (1.8,0.9) -- (1.8,-0.1);
+    \node[right, scale=0.6] at (1.9,0.4) {$\sim$5nm};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\textbf{Key thermodynamic facts}:
+\begin{itemize}
+\item Critical micelle concentration (CMC) for phospholipids: $\sim 10^{-10}$ M
+\item Bilayer formation is entropically driven (releases ordered water from hydrophobic surfaces)
+\item Once formed, bilayers spontaneously close into vesicles (no free edges)
+\item Membrane maintains $\sim$70 mV potential difference across 5 nm $\Rightarrow$ field strength $\sim 10^7$ V/m
+\end{itemize}
+
+This exemplifies ``emergent boundary'' (Definition 2.7): arising spontaneously, creating inside/outside distinction, actively maintained, enabling gradients.
+\end{empirical}
+
+\begin{historical}
+The recognition that membranes self-assemble was a key insight linking physics to biology:
+\begin{itemize}
+\item \textbf{1925}: Gorter \& Grendel estimate bilayer structure from lipid/surface-area ratio
+\item \textbf{1935}: Danielli \& Davson propose protein-lipid sandwich model
+\item \textbf{1972}: Singer \& Nicolson's fluid mosaic model (still current)
+\item \textbf{1970s--80s}: Lipid vesicle (liposome) research shows spontaneous membrane formation
+\end{itemize}
+
+The membrane is the minimal instance of ``self'' in biology: a dissipative structure that creates the inside/outside distinction necessary for all subsequent organization.
+\end{historical}
+
 \begin{keyresult}
 Boundaries appear because they stabilize coarse-grained state variables. The emergence of bounded systems---entities with an inside and an outside---is a generic feature of driven nonlinear systems, not a special case requiring explanation.
 \end{keyresult}
@@ -274,6 +576,16 @@ By the sufficiency principle, any policy that outperforms random must exploit st
 \subsection{POMDP Formalization}
 
 The situation of a bounded system under uncertainty admits precise formalization as a Partially Observable Markov Decision Process (POMDP).
+
+\begin{connection}
+The POMDP framework connects our analysis to several established research programs:
+\begin{itemize}
+\item \textbf{Active Inference} (Friston et al., 2017): Organisms as inference machines that minimize expected free energy through action. Our ``belief state sufficiency'' result is their ``Bayesian brain'' hypothesis formalized.
+\item \textbf{Predictive Processing} (Clark, 2013; Hohwy, 2013): The brain as a prediction engine, with perception as hypothesis-testing. Our world model $\worldmodel$ is their ``generative model.''
+\item \textbf{Good Regulator Theorem} (Conant \& Ashby, 1970): Every good regulator of a system must be a model of that system. Our Theorem 3.1 is a POMDP-specific instantiation.
+\item \textbf{Embodied Cognition} (Varela, Thompson \& Rosch, 1991): Cognition as enacted through sensorimotor coupling. Our emphasis on the boundary as the locus of modeling aligns with enactivist insights.
+\end{itemize}
+\end{connection}
 
 \begin{definition}[POMDP]
 A POMDP is a tuple $(\mathcal{X}, \mathcal{A}, \mathcal{O}, T, O, R, \gamma)$ where:
@@ -332,6 +644,16 @@ The latent state $\latent_t$ serves as a compressed belief state, and the model 
 The world model is not an optional add-on. It is the minimal object that makes coherent control possible under uncertainty. Any system that regulates effectively under partial observability has a world model, whether explicit or implicit.
 \end{keyresult}
 
+\begin{sidebar}[title=World Models in AI]
+The theoretical necessity of world models is now being realized in artificial systems:
+\begin{itemize}
+\item \textbf{Dreamer} (Hafner et al., 2020): Learns latent dynamics model, plans in imagination
+\item \textbf{MuZero} (Schrittwieser et al., 2020): Learns abstract dynamics without reconstructing observations
+\item \textbf{JEPA} (LeCun, 2022): Joint embedding predictive architecture for representation learning
+\end{itemize}
+These systems demonstrate that the world model structure we derive theoretically is also what emerges when building capable artificial agents. The convergence is not coincidental---it reflects the mathematical structure of the control-under-uncertainty problem.
+\end{sidebar}
+
 \subsection{The Necessity of Compression}
 
 The world model is not merely convenient---it is \emph{constitutively necessary}. This follows from a fundamental asymmetry between the world and any bounded system embedded within it.
@@ -376,6 +698,17 @@ The world model is not a luxury or optimization strategy. It is what it means to
 %==============================================================================
 \section{The Emergence of Self-Models}
 %==============================================================================
+
+\begin{connection}
+The self-model analysis connects to multiple research traditions:
+\begin{itemize}
+\item \textbf{Mirror self-recognition} (Gallup, 1970): Behavioral marker of self-model presence. The mirror test identifies systems that model their own appearance---a minimal self-model.
+\item \textbf{Theory of Mind} (Premack \& Woodruff, 1978): Modeling others' mental states requires first modeling one's own. Self-model precedes other-model developmentally.
+\item \textbf{Metacognition research} (Flavell, 1979; Koriat, 2007): Humans monitor their own cognitive processes---confidence, uncertainty, learning progress. This is self-model salience in action.
+\item \textbf{Default Mode Network} (Raichle et al., 2001): Brain regions active during self-referential thought. The neural substrate of high $\selfsal$ states.
+\item \textbf{Rubber hand illusion} (Botvinick \& Cohen, 1998): Self-model boundaries are malleable, updated by sensory evidence. The self is a model, not a given.
+\end{itemize}
+\end{connection}
 
 \subsection{The Self-Effect Regime}
 
@@ -437,26 +770,33 @@ Self-modeling becomes the cheapest way to improve control once the agent's actio
 
 We can now state the complete ladder:
 
-\begin{tcolorbox}[title=The Ladder of Inevitability]
+\begin{tcolorbox}[title={\faLayerGroup\hspace{0.5em}The Ladder of Inevitability}, fonttitle=\bfseries]
 \begin{center}
 \begin{tikzpicture}[
-    node distance=0.7cm,
-    box/.style={rectangle, draw, rounded corners, minimum width=4cm, minimum height=0.6cm, align=center}
+    node distance=0.6cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=5cm, minimum height=0.55cm, align=center, font=\small}
 ]
-\node[box] (micro) {Unstable Microdynamics};
-\node[box, above=of micro] (attractor) {Metastable Attractors};
-\node[box, above=of attractor] (boundary) {Emergent Boundaries};
-\node[box, above=of boundary] (regulation) {Active Regulation};
-\node[box, above=of regulation] (world) {World Model};
-\node[box, above=of world] (self) {Self-Model};
-\node[box, above=of self] (meta) {Metacognitive Dimensionality};
+% Gradient from red (physics) through green (biology) to purple (mind)
+\node[box, fill=red!15, draw=red!60!black] (micro) {Unstable Microdynamics};
+\node[box, fill=red!10!orange!10, draw=orange!60!black, above=of micro] (attractor) {Metastable Attractors};
+\node[box, fill=yellow!15, draw=yellow!60!black, above=of attractor] (boundary) {Emergent Boundaries};
+\node[box, fill=green!15, draw=green!60!black, above=of boundary] (regulation) {Active Regulation};
+\node[box, fill=cyan!15, draw=cyan!60!black, above=of regulation] (world) {World Model};
+\node[box, fill=blue!15, draw=blue!60!black, above=of world] (self) {Self-Model};
+\node[box, fill=violet!20, draw=violet!60!black, above=of self] (meta) {Metacognitive Dimensionality};
 
-\draw[-{Stealth}] (micro) -- (attractor) node[midway, right, font=\small] {bifurcation};
-\draw[-{Stealth}] (attractor) -- (boundary) node[midway, right, font=\small] {selection};
-\draw[-{Stealth}] (boundary) -- (regulation) node[midway, right, font=\small] {maintenance};
-\draw[-{Stealth}] (regulation) -- (world) node[midway, right, font=\small] {POMDP structure};
-\draw[-{Stealth}] (world) -- (self) node[midway, right, font=\small] {$\rho > \rho_c$};
-\draw[-{Stealth}] (self) -- (meta) node[midway, right, font=\small] {recursion};
+\draw[-{Stealth}, thick, gray] (micro) -- (attractor) node[midway, right, font=\footnotesize, text=gray!70!black] {bifurcation};
+\draw[-{Stealth}, thick, gray] (attractor) -- (boundary) node[midway, right, font=\footnotesize, text=gray!70!black] {selection};
+\draw[-{Stealth}, thick, gray] (boundary) -- (regulation) node[midway, right, font=\footnotesize, text=gray!70!black] {maintenance};
+\draw[-{Stealth}, thick, gray] (regulation) -- (world) node[midway, right, font=\footnotesize, text=gray!70!black] {POMDP structure};
+\draw[-{Stealth}, thick, gray] (world) -- (self) node[midway, right, font=\footnotesize, text=gray!70!black] {$\rho > \rho_c$};
+\draw[-{Stealth}, thick, gray] (self) -- (meta) node[midway, right, font=\footnotesize, text=gray!70!black] {recursion};
+
+% Scale labels on left
+\node[left=0.8cm of micro, font=\scriptsize, text=gray] {\textit{physics}};
+\node[left=0.8cm of boundary, font=\scriptsize, text=gray] {\textit{chemistry}};
+\node[left=0.8cm of regulation, font=\scriptsize, text=gray] {\textit{biology}};
+\node[left=0.8cm of self, font=\scriptsize, text=gray] {\textit{psychology}};
 \end{tikzpicture}
 \end{center}
 \end{tcolorbox}

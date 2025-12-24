@@ -15,12 +15,57 @@
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{tcolorbox}
+\usepackage{fontawesome5}
 \usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{xcolor}
 
 \geometry{margin=1in}
+
+% --- Sidebar and info box environments ---
+\newtcolorbox{historical}{
+  colback=gray!5!white,
+  colframe=gray!60!black,
+  title={\faBook\hspace{0.5em}Historical Context},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Connection to Existing Theory},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{empirical}{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  title={\faFlask\hspace{0.5em}Empirical Grounding},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{todo_empirical}{
+  colback=yellow!10!white,
+  colframe=yellow!60!black,
+  title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{sidebar}[1][]{
+  colback=blue!3!white,
+  colframe=blue!40!black,
+  fonttitle=\bfseries\small,
+  before upper={\faInfoCircle\hspace{0.5em}},
+  #1
+}
+
+\newtcolorbox{software}{
+  colback=cyan!5!white,
+  colframe=cyan!60!black,
+  title={\faCode\hspace{0.5em}\textsc{Proposed Software Implementation}},
+  fonttitle=\bfseries\small
+}
 
 % Theorem environments
 \newtheorem{theorem}{Theorem}[section]
@@ -179,9 +224,54 @@ The complete affect state at time $t$ is the six-dimensional vector:
 Cultural forms, practices, and technologies can be characterized by their characteristic affect signatures---the regions of this space they tend to produce.
 \end{definition}
 
+\begin{center}
+\begin{tikzpicture}[
+    dim/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=0.6cm, align=center, font=\small},
+    label/.style={font=\scriptsize, text=gray}
+]
+% Central node
+\node[circle, draw, fill=gray!10, minimum size=1.2cm, font=\small\bfseries] (center) {$\mathbf{a}_t$};
+
+% Six dimensions arranged in hexagon
+\node[dim, fill=red!15, draw=red!60!black, above=1.2cm of center] (val) {Valence $\valence$};
+\node[dim, fill=orange!15, draw=orange!60!black, above right=0.6cm and 1.8cm of center] (ar) {Arousal $\arousal$};
+\node[dim, fill=yellow!15, draw=yellow!60!black, below right=0.6cm and 1.8cm of center] (int) {Integration $\intinfo$};
+\node[dim, fill=green!15, draw=green!60!black, below=1.2cm of center] (eff) {Eff.\ Rank $\effrank$};
+\node[dim, fill=cyan!15, draw=cyan!60!black, below left=0.6cm and 1.8cm of center] (cf) {CF Weight $\mathcal{CF}$};
+\node[dim, fill=blue!15, draw=blue!60!black, above left=0.6cm and 1.8cm of center] (sm) {Self-Salience $\mathcal{SM}$};
+
+% Connections
+\draw[thick, gray!50] (center) -- (val);
+\draw[thick, gray!50] (center) -- (ar);
+\draw[thick, gray!50] (center) -- (int);
+\draw[thick, gray!50] (center) -- (eff);
+\draw[thick, gray!50] (center) -- (cf);
+\draw[thick, gray!50] (center) -- (sm);
+
+% Pole labels
+\node[label, above=0.1cm of val] {good $\leftrightarrow$ bad};
+\node[label, right=0.1cm of ar] {high $\leftrightarrow$ low};
+\node[label, right=0.1cm of int] {unified $\leftrightarrow$ fragmented};
+\node[label, below=0.1cm of eff] {open $\leftrightarrow$ narrow};
+\node[label, left=0.1cm of cf] {elsewhere $\leftrightarrow$ present};
+\node[label, left=0.1cm of sm] {self-aware $\leftrightarrow$ absorbed};
+\end{tikzpicture}
+\end{center}
+
 %==============================================================================
 \section{The Expression of Inevitability: Human Responses to Inescapable Selfhood}
 %==============================================================================
+
+\begin{connection}
+This analysis of cultural responses to selfhood connects to several established research programs:
+\begin{itemize}
+\item \textbf{Terror Management Theory} (Greenberg, Solomon \& Pyszczynski, 1986): Mortality salience triggers cultural worldview defense. Our ``existential burden'' formalizes the threat-signal that TMT identifies.
+\item \textbf{Meaning Maintenance Model} (Heine, Proulx \& Vohs, 2006): Humans respond to meaning violations through compensatory affirmation. Our framework specifies the structural signature of ``meaning violation'' (disrupted integration, collapsed effective rank).
+\item \textbf{Self-Determination Theory} (Deci \& Ryan, 1985): Basic needs for autonomy, competence, relatedness. These correspond to different regions of our affect space (autonomy $\approx$ low external $\mathcal{SM}$; competence $\approx$ positive valence from successful prediction; relatedness $\approx$ expanded self-model).
+\item \textbf{Flow Theory} (Csikszentmihalyi, 1990): Optimal experience as challenge-skill balance. Flow is precisely our low-$\mathcal{SM}$, high-$\intinfo$, moderate-$\arousal$ region.
+\item \textbf{Attachment Theory} (Bowlby, 1969): Early relational patterns shape adult affect regulation. Attachment styles are stable individual differences in the parameters governing affect dynamics.
+\end{itemize}
+\end{connection}
 
 The self-model, once it exists, cannot look away from itself. This is not merely a computational fact but a phenomenological trap: to be a self-modeling system is to be stuck mattering to yourself. Every human cultural form can be understood, in part, as a response to this condition---strategies for coping with, expressing, transcending, or simply surviving the inescapability of first-person existence.
 
@@ -265,6 +355,64 @@ Horror & negative & very high & high & low & very high & very high \\
 \end{tabular}
 \caption{Affect signatures of aesthetic forms.}
 \end{table}
+
+\begin{software}
+\textbf{AffectSpace: Immersive Validation Platform}
+
+A software system to validate the six-dimensional affect framework by comparing predicted signatures with self-report:
+
+\textbf{Architecture}:
+\begin{enumerate}
+\item \textbf{Stimulus Library}: Curated collection of affect-inducing stimuli
+  \begin{itemize}
+  \item Music tracks (genre-tagged, tempo-annotated)
+  \item Visual scenes (IAPS images, nature videos, abstract art)
+  \item Guided experiences (breathing exercises, body scans, visualizations)
+  \item Interactive scenarios (games, social simulations)
+  \end{itemize}
+
+\item \textbf{Real-time Self-Report Interface}:
+  \begin{itemize}
+  \item Six sliders (one per dimension) with anchoring descriptions
+  \item Continuous sampling at 1 Hz during stimulus
+  \item Pre/post discrete ratings for calibration
+  \end{itemize}
+
+\item \textbf{Physiological Integration} (optional):
+  \begin{itemize}
+  \item Heart rate variability $\rightarrow$ arousal proxy
+  \item Skin conductance $\rightarrow$ arousal + valence interaction
+  \item Eye tracking $\rightarrow$ counterfactual weight (saccade patterns during planning)
+  \item Pupillometry $\rightarrow$ cognitive load / $\mathcal{CF}$
+  \end{itemize}
+
+\item \textbf{Prediction Engine}:
+  \begin{itemize}
+  \item For each stimulus, system predicts $\hat{\mathbf{a}} = (\hat{\valence}, \hat{\arousal}, \hat{\intinfo}, \hat{\effrank}, \hat{\mathcal{CF}}, \hat{\mathcal{SM}})$
+  \item Predictions derived from stimulus features (tempo, key, content tags)
+  \item Compare $\hat{\mathbf{a}}$ vs.\@ self-report $\mathbf{a}^{\text{reported}}$
+  \end{itemize}
+\end{enumerate}
+
+\textbf{Experimental Protocol}:
+\begin{enumerate}
+\item Baseline calibration (neutral stimuli, establish individual anchor points)
+\item Target affect induction (present stimulus predicted to induce specific profile)
+\item Real-time tracking (continuous self-report during experience)
+\item Post-hoc reflection (discrete ratings, qualitative description)
+\item Model updating (adjust prediction weights based on error)
+\end{enumerate}
+
+\textbf{Validation Metrics}:
+\begin{itemize}
+\item Per-dimension correlation: $r(\hat{d}_i, d_i^{\text{reported}})$ for each dimension $i$
+\item Profile similarity: cosine similarity between predicted and reported vectors
+\item Clustering accuracy: do induced affects cluster as predicted in 6D space?
+\item Individual differences: do stable person-level parameters emerge?
+\end{itemize}
+
+\textbf{Falsification criteria}: If predicted profiles do not predict self-report better than chance, or if clustering structure does not emerge, the six-dimensional basis requires revision.
+\end{software}
 
 \subsection{Musical Genres as Affect Technologies}
 
@@ -605,6 +753,17 @@ This explains the phenomenology of ``relief'' and ``lightness'' following confes
 \subsection{Life Philosophies as Affect-Space Policies}
 
 Philosophical frameworks can be understood as meta-level policies over affect space---prescriptions for which regions to occupy and which to avoid.
+
+\begin{historical}
+The idea that philosophies are affect-management strategies has historical precedent:
+\begin{itemize}
+\item \textbf{Pierre Hadot} (1995): Ancient philosophy as ``spiritual exercises''---practices for transforming the self, not just doctrines to believe
+\item \textbf{Martha Nussbaum} (1994): Hellenistic philosophies as ``therapy of desire''
+\item \textbf{Michel Foucault} (1984): ``Technologies of the self''---practices by which individuals transform themselves
+\item \textbf{William James} (1902): Religious/philosophical stances as temperamental predispositions (``tough-minded'' vs ``tender-minded'')
+\end{itemize}
+Our contribution: formalizing these insights in terms of affect-space policies with measurable targets.
+\end{historical}
 
 \begin{definition}[Philosophical Affect Policy]
 A \emph{philosophical affect policy} is a function $\phi: \mathcal{A} \to \R$ specifying the desirability of affect states, plus a strategy for achieving high-$\phi$ states.

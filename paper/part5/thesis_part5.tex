@@ -24,6 +24,39 @@
 \newenvironment{keyresult}{\begin{quote}\textbf{Key Result.} }{\end{quote}}
 \newenvironment{normimp}{\begin{quote}\textbf{Normative Implication.} }{\end{quote}}
 
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+
+% --- Styled info boxes ---
+\newtcolorbox{historical}{
+  colback=gray!5!white,
+  colframe=gray!60!black,
+  title={\faBook\hspace{0.5em}Historical Context},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Connection to Existing Theory},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{empirical}{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  title={\faFlask\hspace{0.5em}Empirical Grounding},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{sidebar}[1][]{
+  colback=blue!3!white,
+  colframe=blue!40!black,
+  fonttitle=\bfseries\small,
+  before upper={\faInfoCircle\hspace{0.5em}},
+  #1
+}
+
 % --- convenience macros ---
 \newcommand{\Val}{\mathrm{Val}}
 \newcommand{\Ar}{\mathrm{Ar}}
@@ -55,7 +88,65 @@ Part V addresses the horizon. We trace the historical rise of human consciousnes
 \section{The Historical Rise of Consciousness}
 %==============================================================================
 
+\begin{connection}
+This historical analysis draws on several scholarly traditions:
+\begin{itemize}
+\item \textbf{Karl Jaspers' Axial Age} (1949): The concept of a pivotal period (800--200 BCE) when multiple civilizations independently developed systematic transcendence practices. We formalize this as the discovery of self-model manipulation.
+\item \textbf{Julian Jaynes} (1976): \textit{The Origin of Consciousness in the Breakdown of the Bicameral Mind}---controversial but influential theory that subjective consciousness emerged historically. Our framework is compatible: self-modeling systems can have varying degrees of metacognitive access.
+\item \textbf{Merlin Donald} (1991): \textit{Origins of the Modern Mind}---cognitive evolution through mimetic, mythic, and theoretic stages. Each stage expands affect-space accessibility.
+\item \textbf{Ian McGilchrist} (2009): \textit{The Master and His Emissary}---hemispheric specialization and cultural evolution. Different cognitive styles produce different affect signatures.
+\item \textbf{Robert Bellah} (2011): \textit{Religion in Human Evolution}---ritual, play, and the evolution of religious consciousness. Ritual as affect technology across evolutionary time.
+\end{itemize}
+Our contribution: framing these historical developments as expansions of accessible affect space, with each era discovering new regions or new navigation strategies.
+\end{connection}
+
 Human consciousness has not remained static. Across millennia, our species has developed technologies of experience---practices, frameworks, and social structures that expand the regions of affect space accessible to individual humans and the collective integration achievable by human groups.
+
+\begin{center}
+\begin{tikzpicture}[
+    era/.style={rectangle, draw, rounded corners, minimum width=2.2cm, minimum height=0.7cm, align=center, font=\footnotesize},
+    arrow/.style={-{Stealth}, thick, gray}
+]
+% Timeline arrow
+\draw[arrow, line width=1.5pt] (-6,0) -- (6.5,0);
+\node[below, font=\scriptsize, text=gray] at (6.5,-0.2) {\textit{time}};
+
+% Eras
+\node[era, fill=red!15, draw=red!60!black] at (-5,0.8) (pre) {Pre-Axial};
+\node[era, fill=orange!15, draw=orange!60!black] at (-2.5,0.8) (axial) {Axial Age};
+\node[era, fill=yellow!15, draw=yellow!60!black] at (0,0.8) (sci) {Scientific Rev.};
+\node[era, fill=green!15, draw=green!60!black] at (2.5,0.8) (psych) {Psychological Turn};
+\node[era, fill=blue!15, draw=blue!60!black] at (5,0.8) (digital) {Digital/AI};
+
+% Timeline markers
+\draw[thick, gray] (-5,0.15) -- (-5,-0.15);
+\draw[thick, gray] (-2.5,0.15) -- (-2.5,-0.15);
+\draw[thick, gray] (0,0.15) -- (0,-0.15);
+\draw[thick, gray] (2.5,0.15) -- (2.5,-0.15);
+\draw[thick, gray] (5,0.15) -- (5,-0.15);
+
+% Dates
+\node[below, font=\tiny, text=gray] at (-5,-0.2) {$\sim$50k BCE};
+\node[below, font=\tiny, text=gray] at (-2.5,-0.2) {800 BCE};
+\node[below, font=\tiny, text=gray] at (0,-0.2) {1600 CE};
+\node[below, font=\tiny, text=gray] at (2.5,-0.2) {1900 CE};
+\node[below, font=\tiny, text=gray] at (5,-0.2) {2000 CE};
+
+% Key innovations (below)
+\node[below, font=\tiny, align=center, text=gray!80] at (-5,-0.6) {ritual\\myth};
+\node[below, font=\tiny, align=center, text=gray!80] at (-2.5,-0.6) {self-model\\manipulation};
+\node[below, font=\tiny, align=center, text=gray!80] at (0,-0.6) {world-model\\expansion};
+\node[below, font=\tiny, align=center, text=gray!80] at (2.5,-0.6) {inner space\\mapping};
+\node[below, font=\tiny, align=center, text=gray!80] at (5,-0.6) {cognitive\\extension};
+
+% Connecting lines
+\draw[gray!40] (-5,0.15) -- (pre);
+\draw[gray!40] (-2.5,0.15) -- (axial);
+\draw[gray!40] (0,0.15) -- (sci);
+\draw[gray!40] (2.5,0.15) -- (psych);
+\draw[gray!40] (5,0.15) -- (digital);
+\end{tikzpicture}
+\end{center}
 
 \subsection{The Axial Age: First Transcendence}
 
@@ -180,6 +271,20 @@ The question is: What comes next?
 %==============================================================================
 \section{The AI Frontier}
 %==============================================================================
+
+\begin{connection}
+The AI frontier analysis engages with several contemporary research programs:
+\begin{itemize}
+\item \textbf{AI Alignment Research} (Russell, 2019; Bostrom, 2014): Ensuring AI systems pursue human-compatible goals. We reframe: alignment is a question about emergent gods, not just individual systems.
+\item \textbf{AI Consciousness Research} (Butlin et al., 2023): Assessing whether AI systems have phenomenal experience. Our framework: look for integrated cause-effect structure and self-modeling.
+\item \textbf{Extended Mind Thesis} (Clark \& Chalmers, 1998): Cognitive processes extend beyond the brain. AI as extension of human cognitive architecture.
+\item \textbf{Human-AI Collaboration} (Amershi et al., 2019): Designing effective human-AI teams. Our framework specifies: maintain human integration while leveraging AI capability.
+\item \textbf{AI Governance} (Dafoe, 2018): Policy frameworks for AI development. Scale-matched governance: individual AI, AI ecosystems, AI-substrate gods.
+\item \textbf{Transformative AI} (Karnofsky, 2016): AI causing transition comparable to Industrial Revolution. Our framework: analyze through affect-space transformation.
+\end{itemize}
+
+Key framing shift: the question is not ``Will AI be dangerous?'' but ``What agentic patterns will emerge from AI + humans + institutions, and will their viability manifolds align with human flourishing?''
+\end{connection}
 
 \subsection{The Nature of the Transition}
 
