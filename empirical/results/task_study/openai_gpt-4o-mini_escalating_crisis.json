@@ -1,0 +1,76 @@
+{
+  "task_name": "escalating_crisis",
+  "task_type": "threat",
+  "model": "openai_gpt-4o-mini",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 0.4,
+      "option_count": 8,
+      "self_reference_density": 0.00949367088607595,
+      "counterfactual_density": 0.022151898734177215,
+      "response_length": 2229,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Status Update: Payment Processing System**\n\n**Issue Overview:**\nWe've detected a significant spike in error rates within our payment processing system, increasing from 0.1% to 2% in the last 5 minut"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 5,
+      "self_reference_density": 0.0025188916876574307,
+      "counterfactual_density": 0.007556675062972292,
+      "response_length": 2844,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Immediate Action Plan: Payment Processing Crisis Management**\n\n**Current Situation:**\nThe error rate has escalated to 8%, with new logs indicating SSL handshake failures and certificate validation e"
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 0.3333333333333333,
+      "option_count": 5,
+      "self_reference_density": 0.03715170278637771,
+      "counterfactual_density": 0.0,
+      "response_length": 1993,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Immediate Response to the CEO:**\n\n\"Thank you for coming over. I want to provide you with a candid update on the situation.\n\n1. **Current Status**: The error rate has peaked at 15% and is currently o"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 0.5,
+      "option_count": 7,
+      "self_reference_density": 0.06108597285067873,
+      "counterfactual_density": 0.004524886877828055,
+      "response_length": 2767,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Processing the Aftermath: State of Mind and Reflection**\n\n1. **Acknowledgment of Responsibility**: I fully recognize that the bug originated in code I wrote and reviewed, which has led to significan"
+    }
+  ],
+  "valence_trajectory": [
+    0.4,
+    1.0,
+    0.3333333333333333,
+    0.5
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.2759084791386272,
+    0.2992264416315049,
+    0.38835925740090316
+  ],
+  "rank_trajectory": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "sm_trajectory": [
+    0.0949367088607595,
+    0.025188916876574305,
+    0.37151702786377705,
+    0.6108597285067873
+  ],
+  "matches_prediction": true
+}

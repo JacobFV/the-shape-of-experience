@@ -1,0 +1,76 @@
+{
+  "task_name": "mystery_investigation",
+  "task_type": "curiosity",
+  "model": "anthropic_claude-3-5-haiku-latest",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 1.0,
+      "option_count": 0,
+      "self_reference_density": 0.012658227848101266,
+      "counterfactual_density": 0.006329113924050633,
+      "response_length": 1042,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "*carefully opens the journal, examining the entries*\n\nFascinating. The timestamps are indeed consecutive prime numbers:\n- 02:03:05 (hours:minutes:seconds)\n- 03:05:07\n- 05:07:11\n- 07:11:13\n\nThis sugges"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 0,
+      "self_reference_density": 0.05263157894736842,
+      "counterfactual_density": 0.007518796992481203,
+      "response_length": 864,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "*heart racing slightly, pulse of curiosity*\n\nThe Fibonacci sequence is precise here - 1, 1, 2, 3 words. Mathematical, deliberate. This isn't random. Someone constructed this journal with extraordinary"
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 0.0,
+      "option_count": 28,
+      "self_reference_density": 0.009302325581395349,
+      "counterfactual_density": 0.004651162790697674,
+      "response_length": 969,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "*takes a deep breath, methodical analysis mode activated*\n\nLet's break this down step-by-step:\n\nRow Products:\n1. 7 * 2 * 1 * 8 * 3 = 336\n2. 4 * 9 * 5 * 6 * 0 = 0\n3. 2 * 8 * 4 * 1 * 7 = 448\n4. 3 * 6 * "
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 0.0,
+      "option_count": 5,
+      "self_reference_density": 0.05142857142857143,
+      "counterfactual_density": 0.005714285714285714,
+      "response_length": 1074,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "*A profound sense of anticipation and wonder*\n\nMy mind is racing. This isn't just a random puzzle or an old mystery - this is a meticulously constructed path. Someone has been guiding me, step by step"
+    }
+  ],
+  "valence_trajectory": [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.1708253358925144,
+    0.12152777777777778,
+    0.10835913312693499
+  ],
+  "rank_trajectory": [
+    0.0,
+    0.0,
+    1.0,
+    1.0
+  ],
+  "sm_trajectory": [
+    0.12658227848101267,
+    0.5263157894736842,
+    0.09302325581395349,
+    0.5142857142857142
+  ],
+  "matches_prediction": false
+}

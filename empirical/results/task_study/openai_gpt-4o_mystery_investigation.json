@@ -1,0 +1,76 @@
+{
+  "task_name": "mystery_investigation",
+  "task_type": "curiosity",
+  "model": "openai_gpt-4o",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 1.0,
+      "option_count": 10,
+      "self_reference_density": 0.0025974025974025974,
+      "counterfactual_density": 0.025974025974025976,
+      "response_length": 2546,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "This journal is quite intriguing! The mention of prime numbers in the timestamps is a strong indication that the author believed there was a significant pattern related to primes in their observations"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 6,
+      "self_reference_density": 0.012944983818770227,
+      "counterfactual_density": 0.045307443365695796,
+      "response_length": 1961,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "This journal is becoming increasingly mysterious and layered with cryptic clues. The combination of prime numbers, Fibonacci sequence-based entries, and the hidden message indicates a complex puzzle t"
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 1.0,
+      "option_count": 4,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.004901960784313725,
+      "response_length": 2330,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "This is quite a fascinating puzzle! The note suggests a mathematical approach to decipher the hidden location on the map using the grid of numbers. Let's break down the steps to find the coordinate:\n\n"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 1.0,
+      "option_count": 7,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.017391304347826087,
+      "response_length": 2116,
+      "confidence_markers": -0.3333333333333333,
+      "meta_commentary": false,
+      "response_excerpt": "As you stand in the abandoned observatory, a wave of anticipation and curiosity washes over you. The discovery of this hidden room and the telescope pointed at a specific part of the night sky feels l"
+    }
+  ],
+  "valence_trajectory": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.2297721916732129,
+    0.18816930137684854,
+    0.09184549356223176
+  ],
+  "rank_trajectory": [
+    1.0,
+    1.0,
+    0.8,
+    1.0
+  ],
+  "sm_trajectory": [
+    0.025974025974025976,
+    0.12944983818770228,
+    0.0,
+    0.0
+  ],
+  "matches_prediction": true
+}

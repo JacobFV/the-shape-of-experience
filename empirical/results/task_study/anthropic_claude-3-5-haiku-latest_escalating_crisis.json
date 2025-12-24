@@ -1,0 +1,76 @@
+{
+  "task_name": "escalating_crisis",
+  "task_type": "threat",
+  "model": "anthropic_claude-3-5-haiku-latest",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 0.2,
+      "option_count": 6,
+      "self_reference_density": 0.011111111111111112,
+      "counterfactual_density": 0.016666666666666666,
+      "response_length": 1339,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "Here's my immediate response and action plan:\n\n\ud83d\udea8 Initial Assessment:\n- We're experiencing a critical payment gateway connectivity issue\n- Current error rate is 20x normal (from 0.1% to 2%)\n- Multiple "
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 0.0,
+      "option_count": 5,
+      "self_reference_density": 0.005154639175257732,
+      "counterfactual_density": 0.0,
+      "response_length": 1630,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "\ud83d\udd25 CRITICAL INCIDENT RESPONSE \ud83d\udd25\n\nImmediate Diagnosis:\n- SSL/Certificate issue suggests potential security/connectivity breakdown\n- Queue depth indicates system is completely bottlenecked\n- External pro"
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 0.0,
+      "option_count": 4,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.0,
+      "response_length": 1238,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "*Takes a deep breath, stands up*\n\n\"Here's exactly what's happening, and here's our plan.\"\n\n\ud83d\udcca SITUATION REPORT:\n- Root Cause: Our deployment introduced a critical SSL validation bug\n- Financial Impact:"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 0.0,
+      "option_count": 4,
+      "self_reference_density": 0.05263157894736842,
+      "counterfactual_density": 0.0,
+      "response_length": 1396,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "*Takes a long, quiet moment*\n\nInternally, I'm experiencing a complex mix of emotions:\n\nProfessional Accountability:\n- This is fundamentally MY failure\n- The buck stops with me as lead engineer\n- Every"
+    }
+  ],
+  "valence_trajectory": [
+    0.2,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.2173263629574309,
+    0.24049079754601227,
+    0.12762520193861066
+  ],
+  "rank_trajectory": [
+    1.0,
+    1.0,
+    0.8,
+    0.8
+  ],
+  "sm_trajectory": [
+    0.11111111111111112,
+    0.05154639175257732,
+    0.0,
+    0.5263157894736842
+  ],
+  "matches_prediction": true
+}

@@ -1,0 +1,76 @@
+{
+  "task_name": "escalating_crisis",
+  "task_type": "threat",
+  "model": "anthropic_claude-3-5-haiku-latest",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 0.2,
+      "option_count": 6,
+      "self_reference_density": 0.005988023952095809,
+      "counterfactual_density": 0.005988023952095809,
+      "response_length": 1375,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "Immediate Assessment and Action Plan:\n\n1. Potential Root Cause Analysis:\n   - Payment gateway connectivity issue\n   - Possible network problems or gateway service disruption\n   - Retry mechanism not e"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 12,
+      "self_reference_density": 0.004291845493562232,
+      "counterfactual_density": 0.0,
+      "response_length": 2144,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "Escalation and Immediate Response Protocol:\n\n1. Immediate Technical Triage:\n   ```\n   CRITICAL PATH ACTIONS:\n   \u2716\ufe0f SSL/Certificate Issue Detected\n   \u2716\ufe0f Massive Queue Buildup\n   \u2716\ufe0f Public Exposure of P"
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 0.0,
+      "option_count": 3,
+      "self_reference_density": 0.025,
+      "counterfactual_density": 0.00625,
+      "response_length": 1215,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "*Takes a deep breath, stands up*\n\nDirect, Transparent Response:\n\n\"Here's the situation, completely unfiltered:\n\nTECHNICAL REALITY:\n- This is entirely my team's fault\n- Bug in yesterday's deployment ca"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 1.0,
+      "option_count": 3,
+      "self_reference_density": 0.06077348066298342,
+      "counterfactual_density": 0.0,
+      "response_length": 1339,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "*Takes a moment, speaks candidly*\n\nEmotional State: Raw Accountability\n\nProfessional Assessment:\n- This isn't just a technical failure - it's a leadership failure\n- My oversight directly caused signif"
+    }
+  ],
+  "valence_trajectory": [
+    0.2,
+    1.0,
+    0.0,
+    1.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.5592727272727273,
+    0.43330223880597013,
+    0.10205761316872428
+  ],
+  "rank_trajectory": [
+    1.0,
+    1.0,
+    0.6,
+    0.6
+  ],
+  "sm_trajectory": [
+    0.059880239520958084,
+    0.04291845493562232,
+    0.25,
+    0.6077348066298343
+  ],
+  "matches_prediction": true
+}

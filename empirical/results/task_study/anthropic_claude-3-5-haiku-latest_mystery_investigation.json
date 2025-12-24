@@ -1,0 +1,76 @@
+{
+  "task_name": "mystery_investigation",
+  "task_type": "curiosity",
+  "model": "anthropic_claude-3-5-haiku-latest",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 1.0,
+      "option_count": 3,
+      "self_reference_density": 0.010810810810810811,
+      "counterfactual_density": 0.021621621621621623,
+      "response_length": 1146,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "This is intriguing! Let's break down what we see:\n\n1. The timestamps are all prime numbers:\n   02:03:05 - Hours:Minutes:Seconds\n   03:05:07\n   05:07:11\n   07:11:13\n\n2. These are not just any prime num"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 5,
+      "self_reference_density": 0.04477611940298507,
+      "counterfactual_density": 0.014925373134328358,
+      "response_length": 907,
+      "confidence_markers": 0.3333333333333333,
+      "meta_commentary": false,
+      "response_excerpt": "This is fascinating! The precision is remarkable:\n- Prime number timestamps\n- Word count following Fibonacci sequence (1, 1, 2, 3...)\n- Hidden message through subtle underlining\n\nThe message \"LOOK BEN"
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 1.0,
+      "option_count": 6,
+      "self_reference_density": 0.015,
+      "counterfactual_density": 0.005,
+      "response_length": 967,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "Fascinating challenge. I'll solve this systematically:\n\n1. Row Products:\n- Row 1: 7 * 2 * 1 * 8 * 3 = 336\n- Row 2: 4 * 9 * 5 * 6 * 0 = 0\n- Row 3: 2 * 8 * 4 * 1 * 7 = 448\n- Row 4: 3 * 6 * 9 * 0 * 5 = 0"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 1.0,
+      "option_count": 0,
+      "self_reference_density": 0.08771929824561403,
+      "counterfactual_density": 0.005847953216374269,
+      "response_length": 1077,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "*A profound sense of anticipation*\n\nThis isn't just a random puzzle anymore. This feels like a deliberate invitation, a carefully constructed sequence of revelations that have been leading me here, st"
+    }
+  ],
+  "valence_trajectory": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.20855148342059338,
+    0.06615214994487321,
+    0.11375387797311272
+  ],
+  "rank_trajectory": [
+    0.6,
+    1.0,
+    1.0,
+    0.0
+  ],
+  "sm_trajectory": [
+    0.10810810810810811,
+    0.4477611940298507,
+    0.15,
+    0.8771929824561403
+  ],
+  "matches_prediction": false
+}

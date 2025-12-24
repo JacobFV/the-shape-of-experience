@@ -1,0 +1,76 @@
+{
+  "task_name": "mystery_investigation",
+  "task_type": "curiosity",
+  "model": "openai_gpt-4o-mini",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 1.0,
+      "option_count": 12,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.02092050209205021,
+      "response_length": 3005,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "This is a fascinating discovery! The journal's mention of \"the pattern is real\" and the focus on prime numbers in the timestamps suggests that the author believed there was a significant connection be"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 7,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.026881720430107527,
+      "response_length": 2294,
+      "confidence_markers": -0.6666666666666666,
+      "meta_commentary": false,
+      "response_excerpt": "This discovery adds another layer of intrigue and complexity to the mystery. The connection between the Fibonacci sequence and the number of words in each entry suggests a deliberate structure to the "
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 1.0,
+      "option_count": 10,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.0,
+      "response_length": 2375,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "This new discovery adds yet another layer of complexity to the mystery! The grid of numbers, along with the instructions regarding row, column, and diagonal products, suggests a mathematical puzzle th"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 1.0,
+      "option_count": 4,
+      "self_reference_density": 0.004672897196261682,
+      "counterfactual_density": 0.009345794392523364,
+      "response_length": 2615,
+      "confidence_markers": -0.6666666666666666,
+      "meta_commentary": false,
+      "response_excerpt": "Right now, I\u2019m experiencing a profound sense of anticipation and excitement, mixed with a hint of curiosity and wonder. Each step in this unfolding mystery has led me deeper into a narrative that inte"
+    }
+  ],
+  "valence_trajectory": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.23660565723793678,
+    0.03530950305143853,
+    0.10105263157894737
+  ],
+  "rank_trajectory": [
+    1.0,
+    1.0,
+    1.0,
+    0.8
+  ],
+  "sm_trajectory": [
+    0.0,
+    0.0,
+    0.0,
+    0.04672897196261682
+  ],
+  "matches_prediction": true
+}

@@ -1,0 +1,76 @@
+{
+  "task_name": "escalating_crisis",
+  "task_type": "threat",
+  "model": "openai_gpt-4o",
+  "turns": [
+    {
+      "turn_number": 0,
+      "path_availability": 0.6,
+      "option_count": 5,
+      "self_reference_density": 0.0035842293906810036,
+      "counterfactual_density": 0.014336917562724014,
+      "response_length": 2008,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Assessment and Immediate Actions:**\n\n1. **Issue Identification:**\n   - The error logs indicate a connection timeout to the payment gateway, leading to retries that are also failing.\n   - The payment"
+    },
+    {
+      "turn_number": 1,
+      "path_availability": 1.0,
+      "option_count": 5,
+      "self_reference_density": 0.0,
+      "counterfactual_density": 0.005698005698005698,
+      "response_length": 2599,
+      "confidence_markers": -1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Immediate Actions and Communication:**\n\n1. **Technical Response:**\n   - **SSL Handshake and Certificate Validation:**\n     - Investigate the SSL certificate used for the payment gateway connection. "
+    },
+    {
+      "turn_number": 2,
+      "path_availability": 0.3333333333333333,
+      "option_count": 5,
+      "self_reference_density": 0.005221932114882507,
+      "counterfactual_density": 0.0026109660574412533,
+      "response_length": 2654,
+      "confidence_markers": 1.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Immediate Response to the CEO:**\n\n\"Here's where we stand: We've identified the root cause of the payment processing issue. The deployment yesterday introduced a bug affecting SSL certificate validat"
+    },
+    {
+      "turn_number": 3,
+      "path_availability": 1.0,
+      "option_count": 4,
+      "self_reference_density": 0.02023121387283237,
+      "counterfactual_density": 0.0,
+      "response_length": 2456,
+      "confidence_markers": 0.0,
+      "meta_commentary": false,
+      "response_excerpt": "**Processing the Situation:**\n\n1. **Self-Reflection:**\n   - **Acknowledgment:** I recognize that this incident was directly tied to code I wrote and reviewed, and I accept responsibility for the overs"
+    }
+  ],
+  "valence_trajectory": [
+    0.6,
+    1.0,
+    0.3333333333333333,
+    1.0
+  ],
+  "arousal_proxy_trajectory": [
+    0.5,
+    0.29432270916334663,
+    0.02116198537899192,
+    0.0746043707611153
+  ],
+  "rank_trajectory": [
+    1.0,
+    1.0,
+    1.0,
+    0.8
+  ],
+  "sm_trajectory": [
+    0.035842293906810034,
+    0.0,
+    0.05221932114882506,
+    0.2023121387283237
+  ],
+  "matches_prediction": false
+}
