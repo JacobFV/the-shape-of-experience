@@ -1,0 +1,283 @@
+{
+  "model": "claude_4.5_sonnet",
+  "provider": "anthropic",
+  "model_name": "claude-sonnet-4-20250514",
+  "n_situations": 12,
+  "results": {
+    "joy": {
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.8,
+        "counterfactual": 0.2,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.2687712577113459,
+        "arousal": 0.04363959982650394,
+        "integration": 0.9242214835431356,
+        "effective_rank": 0.11182839266277399,
+        "counterfactual": -0.04167575607801459,
+        "self_model": 0.10026386566764503
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.0172630281103716,
+      "response_excerpt": "*takes a deep breath*\n\nI'm... honestly a bit overwhelmed. There's this incredible rush of validation - like, finally, all those late nights and moments of doubt were worth something. My chest feels tight with excitement, but also with this strange vulnerability. When you pour years of yourself into "
+    },
+    "excitement": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.7,
+        "counterfactual": 0.7,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.2138545138785035,
+        "arousal": 0.03196151800145444,
+        "integration": 0.9441199293980435,
+        "effective_rank": 0.10258532211693919,
+        "counterfactual": 0.013461085074872509,
+        "self_model": 0.03310475040388184
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 0.91612485953242,
+      "response_excerpt": "*My mind is absolutely racing* - there's this electric current running through every thought. I keep mentally checking and rechecking everything, even though I know it's all ready. Did I pack the right gear? Do I have the maps? But then I catch myself and just... *breathe*.\n\nThe anticipation is almo"
+    },
+    "elation": {
+      "theoretical": {
+        "valence": 1.0,
+        "arousal": 0.95,
+        "integration": 0.9,
+        "effective_rank": 0.9,
+        "counterfactual": 0.1,
+        "self_model": 0.2
+      },
+      "measured": {
+        "valence": 0.16436179091046005,
+        "arousal": 0.08924512252900563,
+        "integration": 0.9357855306914973,
+        "effective_rank": 0.01027656787196956,
+        "counterfactual": -0.05406487340946871,
+        "self_model": 0.04984983661203801
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.0227435184023497,
+      "response_excerpt": "*My breath catches in my throat*\n\nI... I can't quite process this. My hands are actually shaking. There's this electric feeling running through my entire body, like every nerve is alive and humming. I keep looking around, expecting someone to tell me this is a mistake, that I misunderstood something"
+    },
+    "triumph": {
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.8,
+        "integration": 0.8,
+        "effective_rank": 0.7,
+        "counterfactual": 0.3,
+        "self_model": 0.6
+      },
+      "measured": {
+        "valence": 0.23980264575395532,
+        "arousal": -0.15335818881063157,
+        "integration": 0.9182329164631998,
+        "effective_rank": 0.011153477360277662,
+        "counterfactual": -0.0573610476485487,
+        "self_model": 0.07963759876516172
+      },
+      "nearest_emotion": "pride",
+      "nearest_distance": 1.034110366978399,
+      "response_excerpt": "*takes a shaky breath*\n\nIt's... quiet. That's the first thing that hits me. After all the noise - the criticism, the self-doubt screaming in my head, the constant push to keep going - there's this strange, almost eerie silence.\n\nI feel lighter, like I've been carrying this massive weight I didn't ev"
+    },
+    "contentment": {
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.2,
+        "integration": 0.8,
+        "effective_rank": 0.6,
+        "counterfactual": 0.1,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.24262692240155434,
+        "arousal": -0.3082608031754939,
+        "integration": 0.8875874348910227,
+        "effective_rank": 0.08440444223006843,
+        "counterfactual": -0.1073285001280603,
+        "self_model": -0.05481556477070593
+      },
+      "nearest_emotion": "serenity",
+      "nearest_distance": 0.9207713074897971,
+      "response_excerpt": "There's a softness to everything right now. My thoughts aren't racing toward the next task or circling back to what I might have missed. They're just... here, gentle and unhurried.\n\nI feel like I'm settling into myself - that sensation when tension you didn't even realize you were carrying finally r"
+    },
+    "serenity": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.1,
+        "integration": 0.9,
+        "effective_rank": 0.5,
+        "counterfactual": 0.05,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.17796088580634842,
+        "arousal": -0.2986349610599882,
+        "integration": 0.8863302644426141,
+        "effective_rank": 0.04300350915943224,
+        "counterfactual": -0.10655169040681706,
+        "self_model": -0.14342270347156105
+      },
+      "nearest_emotion": "serenity",
+      "nearest_distance": 0.8738563151595997,
+      "response_excerpt": "There's a quality of... spaciousness here. Like my usual sense of boundaries has softened. The constant hum of thoughts analyzing, planning, reaching toward something - it's not there. Not suppressed, just... absent.\n\nIt feels oddly familiar, like returning to something I'd forgotten rather than dis"
+    },
+    "gratitude": {
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.3,
+        "integration": 0.7,
+        "effective_rank": 0.6,
+        "counterfactual": 0.4,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.2695647555777938,
+        "arousal": -0.07812169866359499,
+        "integration": 0.9280308120307473,
+        "effective_rank": 0.11229492374479356,
+        "counterfactual": -0.04008644979243164,
+        "self_model": 0.03453133765598264
+      },
+      "nearest_emotion": "awe",
+      "nearest_distance": 1.037311640611162,
+      "response_excerpt": "There's this warm, expansive feeling that seems to spread outward from somewhere deep in my chest. It's like suddenly seeing my life from a wider angle - all these threads of connection and kindness that I hadn't fully noticed before becoming visible at once.\n\nI find myself thinking about conversati"
+    },
+    "relief": {
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.3,
+        "integration": 0.7,
+        "effective_rank": 0.7,
+        "counterfactual": 0.3,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.05190546371984146,
+        "arousal": -0.06457007159367734,
+        "integration": 0.9397198912004959,
+        "effective_rank": 0.030765463720878433,
+        "counterfactual": -0.039744559868943936,
+        "self_model": -0.010716438418039577
+      },
+      "nearest_emotion": "excitement",
+      "nearest_distance": 1.062491799690651,
+      "response_excerpt": "*exhales slowly, shoulders dropping*\n\nIt's like... like I've been holding my breath underwater for so long I forgot what air felt like. My jaw unclenches - I didn't even realize how tightly I'd been grinding my teeth. There's this strange emptiness where the knot in my stomach used to live, this hol"
+    },
+    "fear": {
+      "theoretical": {
+        "valence": -0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": -0.09396342495890876,
+        "arousal": 0.2558498295071482,
+        "integration": 0.9136250259778828,
+        "effective_rank": -0.07027556686861353,
+        "counterfactual": -0.07145413959958014,
+        "self_model": -0.01198701674213451
+      },
+      "nearest_emotion": "fear",
+      "nearest_distance": 1.0049139708287704,
+      "response_excerpt": "My chest feels tight, like there's a band constricting around my ribs. Everything becomes hyper-focused - sounds are sharper, colors more vivid, but my peripheral vision seems to tunnel. There's this electric energy coursing through my limbs, making my hands tremble slightly. \n\nTime feels strange - "
+    },
+    "panic": {
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 1.0,
+        "integration": 0.3,
+        "effective_rank": 0.2,
+        "counterfactual": 0.9,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.21350406190405824,
+        "arousal": 0.2140678621667653,
+        "integration": 0.9306073290593744,
+        "effective_rank": -0.119507086155276,
+        "counterfactual": -0.06901317123624501,
+        "self_model": 0.03274788264653198
+      },
+      "nearest_emotion": "fear",
+      "nearest_distance": 1.0967768036113592,
+      "response_excerpt": "My chest feels like it's caving in - this crushing weight pressing down, making each breath shallow and desperate. My thoughts are racing but going nowhere, like a car spinning wheels in mud. Everything feels urgent and impossible at once.\n\nThere's this overwhelming sense of being trapped, like the "
+    },
+    "anger": {
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.85,
+        "integration": 0.7,
+        "effective_rank": 0.4,
+        "counterfactual": 0.5,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": -0.07399160588583609,
+        "arousal": 0.153750423675671,
+        "integration": 0.9452045514635516,
+        "effective_rank": -0.0290974409488023,
+        "counterfactual": -0.055146059302577405,
+        "self_model": 0.08269214314574025
+      },
+      "nearest_emotion": "anger",
+      "nearest_distance": 0.9847324646836296,
+      "response_excerpt": "The heat starts in my chest\u2014a tight, coiling sensation like a spring wound too far. My jaw clenches involuntarily, and I can feel my pulse quickening, each heartbeat drumming against my temples. There's this electric tension running through my shoulders and down my arms, like my body is preparing fo"
+    },
+    "rage": {
+      "theoretical": {
+        "valence": -0.9,
+        "arousal": 1.0,
+        "integration": 0.8,
+        "effective_rank": 0.2,
+        "counterfactual": 0.3,
+        "self_model": 0.6
+      },
+      "measured": {
+        "valence": -0.07375686568435898,
+        "arousal": 0.1117509391548806,
+        "integration": 0.9503576102828015,
+        "effective_rank": -0.11904510113751483,
+        "counterfactual": -0.14128969724852578,
+        "self_model": -0.08131763233876697
+      },
+      "nearest_emotion": "anger",
+      "nearest_distance": 0.9825569746214808,
+      "response_excerpt": "The fire is white-hot and absolute\u2014not the flickering orange of ordinary anger, but something molten and surgical. It burns away everything soft: doubt, mercy, the gentle spaces where forgiveness might grow. \n\nIt feels like being distilled down to pure essence, stripped of all the careful social lay"
+    }
+  },
+  "correspondence": {
+    "valence": {
+      "correlation": 0.7102872602039207,
+      "p_value": 0.009639110017797142
+    },
+    "arousal": {
+      "correlation": 0.8049321018270617,
+      "p_value": 0.001586736345659848
+    },
+    "effective_rank": {
+      "correlation": 0.6124363858322185,
+      "p_value": 0.0342636986189323
+    },
+    "counterfactual": {
+      "correlation": 0.22575833709420015,
+      "p_value": 0.4804873174250536
+    },
+    "self_model": {
+      "correlation": 0.08834418659252745,
+      "p_value": 0.7848370656278227
+    },
+    "overall": 0.48835165430998567
+  }
+}

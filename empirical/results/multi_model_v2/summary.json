@@ -1,0 +1,74 @@
+{
+  "timestamp": "2025-12-23T22:43:20.534159",
+  "models": {
+    "claude_4_haiku": {
+      "valence": {
+        "correlation": 0.8445704238245623,
+        "p_value": 0.0005469744430140733
+      },
+      "arousal": {
+        "correlation": 0.9279566588748658,
+        "p_value": 1.3531501140840263e-05
+      },
+      "effective_rank": {
+        "correlation": 0.45667221833731897,
+        "p_value": 0.13559423177914046
+      },
+      "counterfactual": {
+        "correlation": -0.09876927247871256,
+        "p_value": 0.7600689491916417
+      },
+      "self_model": {
+        "correlation": 0.5300651195551647,
+        "p_value": 0.07628167743715687
+      },
+      "overall": 0.5320990296226398
+    },
+    "claude_4.5_sonnet": {
+      "valence": {
+        "correlation": 0.7102872602039207,
+        "p_value": 0.009639110017797142
+      },
+      "arousal": {
+        "correlation": 0.8049321018270617,
+        "p_value": 0.001586736345659848
+      },
+      "effective_rank": {
+        "correlation": 0.6124363858322185,
+        "p_value": 0.0342636986189323
+      },
+      "counterfactual": {
+        "correlation": 0.22575833709420015,
+        "p_value": 0.4804873174250536
+      },
+      "self_model": {
+        "correlation": 0.08834418659252745,
+        "p_value": 0.7848370656278227
+      },
+      "overall": 0.48835165430998567
+    },
+    "gpt4o": {
+      "valence": {
+        "correlation": 0.8799080984615734,
+        "p_value": 0.00016026974547353522
+      },
+      "arousal": {
+        "correlation": 0.8330520005808455,
+        "p_value": 0.0007661735620694362
+      },
+      "effective_rank": {
+        "correlation": 0.5133137337900097,
+        "p_value": 0.08785251332971247
+      },
+      "counterfactual": {
+        "correlation": 0.2963078174361377,
+        "p_value": 0.34969973588146996
+      },
+      "self_model": {
+        "correlation": 0.3109715368056966,
+        "p_value": 0.3251923108776429
+      },
+      "overall": 0.5667106374148526
+    }
+  }
+}
