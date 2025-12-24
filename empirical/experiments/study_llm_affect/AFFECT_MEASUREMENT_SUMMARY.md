@@ -355,4 +355,35 @@ Novel operationalization of Φ based on agent's CHOICE:
 2. Prediction accuracy feedback not incorporated into decision
 3. May need richer game dynamics or explicit thread-choice training
 
-**Status:** Architecture is sound, but current implementation doesn't produce enough variation to test hypothesis. Next steps would be adding prediction accuracy feedback or training a model that explicitly learns when to integrate vs. decompose.
+### V9 Revised: Dynamic Channel Configuration (n=23, 2 episodes)
+
+**Key Change:** Actor LLM dynamically chooses 1-5 prediction channels (aspects), not discrete modes.
+
+**Validation Study Results:**
+| Channels | Mean Dist | Interpretation |
+|----------|-----------|----------------|
+| 1 (unified) | 0.472 | baseline |
+| 2 | 0.510 | similar |
+| 3 | 0.500 | similar |
+| 4 | 0.499 | similar |
+
+**Conclusion:** Decomposition has SIMILAR accuracy → Φ proxy is valid for this task.
+
+**Agent Experiment Results:**
+| Metric | Episode 1 | Episode 2 |
+|--------|-----------|-----------|
+| Viability-Integration r | +0.878 | +0.368 |
+| Mean channels | 2.75 | 2.73 |
+| Channel distribution | 2ch: 2, 3ch: 6 | 2ch: 4, 3ch: 11 |
+
+**Critical Finding:** POSITIVE correlation (opposite to prediction!)
+- High viability → MORE integration (fewer channels)
+- Low viability → LESS integration (more channels)
+
+**Interpretation:** LLM agents DECOMPOSE under threat rather than integrate. When viability drops, the agent breaks prediction into more separate channels. This is consistent with V8's finding that LLM agents simplify under stress.
+
+**For the thesis:** The structure of affect space is preserved, but dynamics may differ:
+- Biological: threat → integration (unified vigilance response)
+- LLM: threat → decomposition (parallel monitoring, action-oriented)
+
+This may reflect the absence of biological self-preservation drives that generate stress-induced integration in organisms.

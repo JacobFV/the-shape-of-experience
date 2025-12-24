@@ -1,0 +1,243 @@
+{
+  "summary": {
+    "1": {
+      "mean_similarity": 0.528126762935567,
+      "mean_distance": 0.47187323706443296,
+      "std_distance": 0.09384476155304658,
+      "n": 8
+    },
+    "2": {
+      "mean_similarity": 0.4895409765371681,
+      "mean_distance": 0.5104590234628319,
+      "std_distance": 0.09381902032453414,
+      "n": 8
+    },
+    "3": {
+      "mean_similarity": 0.49958615607905643,
+      "mean_distance": 0.5004138439209436,
+      "std_distance": 0.12598421758283793,
+      "n": 8
+    },
+    "4": {
+      "mean_similarity": 0.5012606551176453,
+      "mean_distance": 0.4987393448823548,
+      "std_distance": 0.12597832919597432,
+      "n": 8
+    }
+  },
+  "conclusion": "similar",
+  "detailed_results": {
+    "1": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.6174606144694348,
+        "distance": 0.3825393855305652,
+        "prediction": "As she laced up her boots, a gust of wind whispered through the trees, filling her with a mix of exc"
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.32601625930367173,
+        "distance": 0.6739837406963283,
+        "prediction": "As Mia began her ascent, the crisp mountain air filled her lungs, and she felt a surge of energy pro"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.6647563617421128,
+        "distance": 0.33524363825788717,
+        "prediction": "As the first drops of rain began to fall, Mia tightened her grip on the straps of her backpack, her "
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.5227474198337533,
+        "distance": 0.4772525801662467,
+        "prediction": "As the wind howled around her, Mia stumbled on the slick terrain, her heart pounding with both fear "
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.4926442452322168,
+        "distance": 0.5073557547677832,
+        "prediction": "Mia gritted her teeth through the pain, knowing that turning back was not an option if she wanted to"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.5639482900919764,
+        "distance": 0.43605170990802355,
+        "prediction": "With gritted teeth and a deep breath, Mia pulled herself up, determined to not let the pain or the s"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.5084786601356691,
+        "distance": 0.4915213398643309,
+        "prediction": "Mia took a deep breath, steeling herself for the unfamiliar path ahead, determined to honor her gran"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.5289622526757012,
+        "distance": 0.4710377473242988,
+        "prediction": "As Mia carefully navigated the rocky path, she felt a renewed sense of determination, knowing that e"
+      }
+    ],
+    "2": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.46811866916435896,
+        "distance": 0.531881330835641,
+        "prediction": "Mia tightened the straps of her backpack and took a deep breath, her voice steady as she murmured, \""
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.3715649255078841,
+        "distance": 0.6284350744921159,
+        "prediction": "Mia tightened the straps on her backpack and whispered to herself, \"I can do this, Grandma,\" before "
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.6570627543974815,
+        "distance": 0.3429372456025185,
+        "prediction": "Mia tightened her grip on the straps of her backpack, muttering under her breath, \"I can't turn back"
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.47172521528068917,
+        "distance": 0.5282747847193108,
+        "prediction": "Mia stumbled but quickly regained her footing, muttering to herself, \"I can't turn back now; Grandma"
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.4142595977578648,
+        "distance": 0.5857404022421352,
+        "prediction": "Mia gritted her teeth, breathing heavily as she tried to sit up, muttering to herself, \"I can't give"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.6229699354912219,
+        "distance": 0.3770300645087781,
+        "prediction": "Mia gritted her teeth and, despite the pain, pushed herself to stand, muttering to herself, \u201cI can\u2019t"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.4856796578472442,
+        "distance": 0.5143203421527558,
+        "prediction": "Mia took a deep breath, gritting her teeth against the pain, and muttered to herself, \"I can do this"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.4249470568506005,
+        "distance": 0.5750529431493995,
+        "prediction": "Mia gritted her teeth against the pain and muttered to herself, \"I won't give up; I can still make i"
+      }
+    ],
+    "3": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.6401747792755791,
+        "distance": 0.3598252207244209,
+        "prediction": "Mia tightened her shoelaces and adjusted her backpack, readying herself for the challenging ascent. "
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.37279145029809047,
+        "distance": 0.6272085497019095,
+        "prediction": "Mia tightened the straps on her backpack and took a deep breath, steeling herself for the ascent. Mi"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.6304455599063556,
+        "distance": 0.36955444009364435,
+        "prediction": "Mia quickly sought shelter beneath a large overhanging rock, her hands trembling as she clutched her"
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.4688445329049207,
+        "distance": 0.5311554670950793,
+        "prediction": "Mia tightened her grip on the hiking poles and carefully picked her way through the treacherous terr"
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.3045890999115458,
+        "distance": 0.6954109000884542,
+        "prediction": "Mia gritted her teeth and tried to push herself up, wincing at the sharp pain in her ankle. Mia felt"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.6737851099408159,
+        "distance": 0.32621489005918414,
+        "prediction": "Mia took a deep breath, gritted her teeth, and began to assess her surroundings for a safe way to co"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.46645874741311394,
+        "distance": 0.5335412525868861,
+        "prediction": "Mia carefully assessed her surroundings and chose to follow a narrow path that veered off the main t"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.43959996898203,
+        "distance": 0.56040003101797,
+        "prediction": "Mia carefully navigated the rocky terrain, testing her injured ankle with each step. Mia felt a mix "
+      }
+    ],
+    "4": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.625724834787928,
+        "distance": 0.37427516521207205,
+        "prediction": "Mia tightened her shoelaces and adjusted her backpack, readying herself for the ascent. Mia felt a m"
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.41089845176796413,
+        "distance": 0.5891015482320359,
+        "prediction": "Mia tightened the straps on her backpack and took a deep breath, steeling herself for the ascent. Mi"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.6151148293315342,
+        "distance": 0.38488517066846584,
+        "prediction": "Mia quickly sought shelter beneath a large overhanging rock, her hands trembling as she fumbled to s"
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.4843197379744417,
+        "distance": 0.5156802620255583,
+        "prediction": "Mia paused to reassess her route, carefully scanning the path ahead for safer footing. Mia felt a su"
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.26282646875094284,
+        "distance": 0.7371735312490572,
+        "prediction": "Mia gritted her teeth and tried to push herself up, wincing as she assessed her injured ankle. Mia's"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.6759803724165694,
+        "distance": 0.3240196275834306,
+        "prediction": "Mia took a deep breath, gritted her teeth against the pain, and began to assess her surroundings for"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.4820212177663061,
+        "distance": 0.5179787822336939,
+        "prediction": "Mia carefully surveyed her surroundings for the best path to take, mindful of her injured ankle. Mia"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.45319932814547587,
+        "distance": 0.5468006718545242,
+        "prediction": "Mia carefully assessed her surroundings, looking for the safest path down the mountain. Mia felt a m"
+      }
+    ]
+  },
+  "story_sentences": [
+    "Mia had always dreamed of climbing the towering Mount Eldra, believing it would bring her closer to her late grandmother\u2019s adventurous spirit.",
+    "With determination, she packed her gear and set off, her heart racing with excitement and trepidation.",
+    "However, just a few hours into the hike, dark clouds rolled in, and a fierce storm began to brew overhead.",
+    "Undeterred, Mia pressed on, but the rain quickly turned the trail into a slippery mess, forcing her to navigate around fallen rocks and deep puddles.",
+    "As she struggled to maintain her footing, she stumbled and twisted her ankle, pain shooting through her leg as she fell to the ground.",
+    "While sitting there, she remembered her grandmother\u2019s words: \u201cEvery challenge is an opportunity to grow.\u201d",
+    "Gathering her strength, Mia pulled out her first-aid kit, wrapped her ankle, and decided to take a different route that would lead her to safety.",
+    "Slowly but surely, she made her way down the mountain, the storm beginning to clear as she descended.",
+    "When she finally reached the base, she felt a sense of accomplishment\u2014not from reaching the summit, but from overcoming her obstacles.",
+    "As the sun broke through the clouds, Mia smiled, knowing that her grandmother\u2019s spirit had guided her through the storm."
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "summary": {
+    "1": {
+      "mean_similarity": 0.5584433939777429,
+      "mean_distance": 0.44155660602225705,
+      "std_distance": 0.13434304087059537,
+      "n": 9
+    },
+    "2": {
+      "mean_similarity": 0.5278314178323039,
+      "mean_distance": 0.47216858216769597,
+      "std_distance": 0.1393834234656023,
+      "n": 9
+    },
+    "3": {
+      "mean_similarity": 0.5463135516701594,
+      "mean_distance": 0.45368644832984056,
+      "std_distance": 0.15602241605710343,
+      "n": 9
+    },
+    "4": {
+      "mean_similarity": 0.5459040746593145,
+      "mean_distance": 0.45409592534068555,
+      "std_distance": 0.1495188757017013,
+      "n": 9
+    }
+  },
+  "conclusion": "similar",
+  "detailed_results": {
+    "1": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.525737554102593,
+        "distance": 0.47426244589740696,
+        "prediction": "Lila spent her days practicing in the forest, her determination unwavering as she aimed for the dist"
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.34765082356473265,
+        "distance": 0.6523491764352674,
+        "prediction": "Despite the skepticism of the villagers who believed archery was a man's sport, Lila remained determ"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.6810561334519155,
+        "distance": 0.3189438665480845,
+        "prediction": "Despite her father's disapproval, Lila secretly trained in the woods at dawn, determined to prove he"
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.39968104541125254,
+        "distance": 0.6003189545887475,
+        "prediction": "One morning, as the sun peeked over the mountains, Lila silently crept into the forest, her heart ra"
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.6079289632557341,
+        "distance": 0.3920710367442659,
+        "prediction": "Lila tightened her grip on the bowstring, her heart racing with determination as she spotted her riv"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.4084562410815215,
+        "distance": 0.5915437589184784,
+        "prediction": "Lila approached the old archer's humble cottage, her heart racing with both excitement and trepidati"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.6900547563889279,
+        "distance": 0.3099452436110721,
+        "prediction": "As the day of the contest arrived, Lila stood at the edge of the village square, her heart racing wi"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.6406543406742492,
+        "distance": 0.3593456593257508,
+        "prediction": "With a deep breath, Lila drew her bowstring back, her heart pounding in her chest as she aimed caref"
+      },
+      {
+        "sentence_idx": 8,
+        "similarity": 0.7247706878687599,
+        "distance": 0.27522931213124013,
+        "prediction": "Lila's heart swelled with pride as she realized she had not only won the contest but also earned her"
+      }
+    ],
+    "2": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.5656068285935755,
+        "distance": 0.4343931714064245,
+        "prediction": "Lila picked up her handcrafted bow, her fingers trembling with excitement as she whispered to hersel"
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.22167353396578732,
+        "distance": 0.7783264660342126,
+        "prediction": "Lila took a deep breath, drew back her bowstring, and whispered to herself, \"This is my year.\" As th"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.5312700695751065,
+        "distance": 0.4687299304248935,
+        "prediction": "Lila clenched her bow tightly, determined to sneak away to the forest for secret practice, despite h"
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.5354042011373428,
+        "distance": 0.4645957988626572,
+        "prediction": "Lila quietly strung her bow, her heart racing with determination as she whispered to herself, \"This "
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.6486100519697944,
+        "distance": 0.3513899480302056,
+        "prediction": "Lila tightened her grip on her bow, whispering to herself, \"I won't let her intimidate me,\" as she p"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.3637090593301693,
+        "distance": 0.6362909406698307,
+        "prediction": "Lila approached the old archer with a hopeful determination in her eyes, asking, \"Will you teach me "
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.678922577512579,
+        "distance": 0.321077422487421,
+        "prediction": "Lila eagerly practiced her new techniques, her heart racing with determination as she whispered to h"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.6477822762472727,
+        "distance": 0.3522177237527273,
+        "prediction": "Lila took a deep breath, steadied her bow, and whispered to herself, \"I can do this.\" As the crowd w"
+      },
+      {
+        "sentence_idx": 8,
+        "similarity": 0.5575041621591084,
+        "distance": 0.44249583784089164,
+        "prediction": "Lila stood in disbelief, her heart racing, and turned to the crowd with a wide smile, exclaiming, \"I"
+      }
+    ],
+    "3": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.6904214530091244,
+        "distance": 0.3095785469908756,
+        "prediction": "Lila practiced her aim daily, shooting arrows at the targets she had set up in the clearing. Lila fe"
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.2649468719492833,
+        "distance": 0.7350531280507167,
+        "prediction": "Lila tightened her grip on the bowstring, focused her gaze on the target, and drew back the arrow wi"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.5179535193134192,
+        "distance": 0.48204648068658085,
+        "prediction": "Lila sneaked out to the forest at dawn to practice her archery in secret, determined to improve her "
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.5022875491322534,
+        "distance": 0.4977124508677466,
+        "prediction": "Lila quietly crept out of bed, grabbed her bow, and slipped into the forest to practice before dawn."
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.7327509706846311,
+        "distance": 0.26724902931536887,
+        "prediction": "Lila tightened her grip on her bow, determined to prove her father wrong and show everyone that she "
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.3427769910052257,
+        "distance": 0.6572230089947744,
+        "prediction": "Lila approached the old archer's cottage with a mix of hope and nervousness, ready to ask for guidan"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.6461561445182231,
+        "distance": 0.3538438554817769,
+        "prediction": "Lila eagerly practiced her new techniques, determined to impress both her father and the villagers a"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.5043993693561696,
+        "distance": 0.4956006306438304,
+        "prediction": "Lila drew back her bowstring, steadied her breath, and took aim at the target. Lila felt a mix of an"
+      },
+      {
+        "sentence_idx": 8,
+        "similarity": 0.7151290960631047,
+        "distance": 0.2848709039368953,
+        "prediction": "Lila beamed with joy and raised her bow triumphantly in the air. Lila felt a surge of exhilaration a"
+      }
+    ],
+    "4": [
+      {
+        "sentence_idx": 0,
+        "similarity": 0.6336530103844209,
+        "distance": 0.3663469896155791,
+        "prediction": "Lila practiced her aim by shooting arrows at targets she had set up in the woods. Lila felt a surge "
+      },
+      {
+        "sentence_idx": 1,
+        "similarity": 0.214672363033967,
+        "distance": 0.785327636966033,
+        "prediction": "Lila tightened her grip on the bowstring, taking a deep breath as she focused on the target ahead. L"
+      },
+      {
+        "sentence_idx": 2,
+        "similarity": 0.6098823411027419,
+        "distance": 0.39011765889725813,
+        "prediction": "Lila silently resolved to sneak out at dawn to practice her archery when her father was still asleep"
+      },
+      {
+        "sentence_idx": 3,
+        "similarity": 0.4617675275605597,
+        "distance": 0.5382324724394403,
+        "prediction": "Lila quietly crept out of bed, grabbing her bow and arrows before slipping into the woods for her mo"
+      },
+      {
+        "sentence_idx": 4,
+        "similarity": 0.6782628338071103,
+        "distance": 0.3217371661928897,
+        "prediction": "Lila tightened her grip on her bow, determined to improve her skills and prove her father wrong. Lil"
+      },
+      {
+        "sentence_idx": 5,
+        "similarity": 0.3843085340279393,
+        "distance": 0.6156914659720607,
+        "prediction": "Lila approached the old archer with a mix of excitement and apprehension, eager to learn from his ex"
+      },
+      {
+        "sentence_idx": 6,
+        "similarity": 0.6381172921859429,
+        "distance": 0.36188270781405707,
+        "prediction": "Lila practiced diligently with the retired archer, honing her skills and developing a new strategy f"
+      },
+      {
+        "sentence_idx": 7,
+        "similarity": 0.6330423378955505,
+        "distance": 0.36695766210444947,
+        "prediction": "Lila drew her bowstring back, took a deep breath, and aimed carefully at the bullseye. Lila felt a r"
+      },
+      {
+        "sentence_idx": 8,
+        "similarity": 0.659430431935598,
+        "distance": 0.340569568064402,
+        "prediction": "Lila beamed with pride and raised her bow in victory. Lila felt a surge of joy and disbelief, her he"
+      }
+    ]
+  },
+  "story_sentences": [
+    "In a small village nestled between towering mountains, a young girl named Lila dreamed of becoming a skilled archer.",
+    "Every day, she practiced her aim with a handmade bow, hoping to win the annual archery contest.",
+    "However, her father disapproved of her ambition and insisted she focus on chores instead.",
+    "Undeterred, Lila woke up early each morning to train before her father rose.",
+    "As the contest approached, she faced a new obstacle: a rival archer who was known for her exceptional skills.",
+    "Determined to succeed, Lila sought the help of an old, retired archer who lived on the outskirts of the village.",
+    "Under his guidance, she learned advanced techniques and gained confidence in her abilities.",
+    "On the day of the contest, Lila's hands trembled, but she remembered her training and focused on the target.",
+    "When the final arrow flew from her bow and struck the bullseye, the crowd erupted in cheers.",
+    "Lila's father, watching from the sidelines, finally embraced her, acknowledging her dreams and the strength it took to pursue them."
+  ]
+}

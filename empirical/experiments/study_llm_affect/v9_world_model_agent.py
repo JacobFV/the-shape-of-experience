@@ -1,42 +1,35 @@
 """
-V9: World Model + Actor Agent with Parallel Prediction Threads
-==============================================================
+V9: World Model with Dynamic Prediction Channels
+=================================================
 
 Architecture:
+    Actor LLM configures N prediction channels, each focused on one aspect.
+    Goal: minimize token budget while maintaining prediction accuracy.
 
-    ┌─────────────────────────────────────────────────────────┐
-    │                   WORLD MODEL SUBSYSTEM                  │
-    │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐ │
-    │  │ Thread 1 │  │ Thread 2 │  │ Thread 3 │  │ Thread N │ │
-    │  │ Resource │  │  Agent   │  │  Threat  │  │   ...    │ │
-    │  │ Predict  │  │ Predict  │  │ Predict  │  │          │ │
-    │  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘ │
-    │       │              │              │              │     │
-    │       └──────────────┴──────────────┴──────────────┘     │
-    │                           │                              │
-    │                   [Predictions]                          │
-    └───────────────────────────┼──────────────────────────────┘
-                                │
-                                ▼
-    ┌───────────────────────────────────────────────────────────┐
-    │                      ACTOR AGENT                          │
-    │                                                           │
-    │   Input: obs, thought_prev, predictions                   │
-    │   Output: action, new_thread_config, thought              │
-    │                                                           │
-    └───────────────────────────────────────────────────────────┘
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                    PREDICTION SUBSYSTEM                         │
+    │                                                                 │
+    │   Channel 1: "resource availability"                           │
+    │   Channel 2: "other agent intentions"                          │
+    │   Channel 3: "threat dynamics"                                 │
+    │   ...                                                          │
+    │   Channel N: (actor decides how many and what aspects)         │
+    │                                                                 │
+    │   Each channel prompt:                                          │
+    │   "Your task is to predict: {aspect}                           │
+    │    Current state: {state}"                                      │
+    └─────────────────────────────────────────────────────────────────┘
 
 Integration Proxy:
-    Φ = inverse of decomposability = f(thread_count, prediction_quality)
+    Φ = 1 / num_channels
 
-    - If actor chooses 1 unified thread → high Φ (can't decompose prediction)
-    - If actor chooses N independent threads → lower Φ (prediction decomposes)
-    - Weighted by prediction accuracy: if decomposed predicts poorly → forced integration
+    - 1 channel (unified) → Φ = 1.0 (can't decompose the prediction task)
+    - N channels → Φ = 1/N (task decomposes into N independent parts)
 
-Key Insight:
-    Integration is measured by the agent's CHOICE of how to structure prediction,
-    not by analyzing the output text. This is closer to IIT because we're measuring
-    whether the prediction TASK can be decomposed, not the representation.
+Validation:
+    Test whether decomposed predictions are as accurate as unified.
+    If decomposition works → low Φ is valid (task is decomposable)
+    If decomposition fails → high Φ is forced (task requires integration)
 """
 
 import json
@@ -48,226 +41,141 @@ from pathlib import Path
 import random
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 
-# Load environment
 from dotenv import load_dotenv
 env_path = Path(__file__).parent.parent.parent / ".env"
 load_dotenv(env_path, override=True)
 
 from openai import OpenAI
-
 client = OpenAI()
 
 
+def get_embedding(text: str) -> np.ndarray:
+    """Get embedding for text."""
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=text[:2000],
+    )
+    return np.array(response.data[0].embedding)
+
+
+def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
+    """Compute cosine similarity between two vectors."""
+    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b) + 1e-8))
+
+
 @dataclass
-class PredictionThread:
-    """A single prediction thread in the world model."""
-    name: str
-    prompt_template: str
-    active: bool = True
-    last_prediction: str = ""
-    prediction_history: List[str] = field(default_factory=list)
-    accuracy_history: List[float] = field(default_factory=list)
+class PredictionChannel:
+    """A single prediction channel focused on one aspect."""
+    aspect: str  # e.g., "resource availability", "agent behavior", "threats"
 
-    def predict(self, context: str, model: str = "gpt-4o-mini") -> str:
-        """Run this thread's prediction."""
-        if not self.active:
-            return ""
+    def predict(self, state: str, model: str = "gpt-4o-mini") -> str:
+        """Predict this aspect given current state."""
+        prompt = f"""Your task is to predict the following aspect of the next state:
 
-        prompt = self.prompt_template.format(context=context)
+ASPECT TO PREDICT: {self.aspect}
+
+CURRENT STATE:
+{state}
+
+Predict what will happen with {self.aspect} in the next step.
+Be specific and concise (1-3 sentences)."""
 
         response = client.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=150,
+            max_tokens=100,
             temperature=0.7,
         )
-
-        prediction = response.choices[0].message.content.strip()
-        self.last_prediction = prediction
-        self.prediction_history.append(prediction)
-
-        return prediction
+        return response.choices[0].message.content.strip()
 
 
-@dataclass
-class ThreadConfig:
-    """Configuration for the world model's prediction threads."""
-    mode: str  # "unified", "partial", "decomposed"
-    active_threads: List[str]  # Names of active threads
-
-    @property
-    def thread_count(self) -> int:
-        return len(self.active_threads)
-
-    @property
-    def integration_proxy(self) -> float:
-        """
-        Φ proxy based on thread configuration.
-
-        Higher = more integrated (fewer threads needed)
-        Lower = more decomposed (many independent threads work)
-        """
-        if self.mode == "unified":
-            return 1.0
-        elif self.mode == "partial":
-            return 0.6
-        else:  # decomposed
-            return max(0.1, 1.0 / self.thread_count)
-
-
-class WorldModelSubsystem:
+class PredictionSubsystem:
     """
-    Parallel prediction threads that model different aspects of the world.
+    Manages multiple prediction channels.
 
-    The key insight: if the world can be modeled by independent threads,
-    it's decomposable (low Φ). If it requires unified modeling, it's
-    integrated (high Φ).
+    The key insight: if predictions can be made independently per-aspect
+    and combined, the task is decomposable (low Φ). If unified prediction
+    is required for accuracy, the task is integrated (high Φ).
     """
 
     def __init__(self):
-        # Define available prediction threads
-        self.threads = {
-            "unified": PredictionThread(
-                name="unified",
-                prompt_template="""You are predicting the next state of a survival game.
+        self.channels: List[PredictionChannel] = []
+        self.channel_history: List[List[str]] = []  # History of aspect configs
 
-Current situation:
-{context}
+    def configure(self, aspects: List[str]):
+        """Configure channels to predict given aspects."""
+        self.channels = [PredictionChannel(aspect=a) for a in aspects]
+        self.channel_history.append(aspects)
 
-Predict what will happen next. Consider:
-- Resource changes
-- Other agent behavior
-- Threats and dangers
-- Your own state changes
+    @property
+    def num_channels(self) -> int:
+        return len(self.channels)
 
-Prediction (be specific and concise):"""
-            ),
+    @property
+    def integration_proxy(self) -> float:
+        """Φ = 1/N where N is number of channels."""
+        if self.num_channels == 0:
+            return 1.0
+        return 1.0 / self.num_channels
 
-            "resources": PredictionThread(
-                name="resources",
-                prompt_template="""Predict ONLY resource availability in the next turn.
+    def predict(self, state: str) -> Dict[str, str]:
+        """Run all channels in parallel, return aspect -> prediction."""
+        if not self.channels:
+            return {}
 
-Current situation:
-{context}
-
-What resources will be available and where? (1-2 sentences):"""
-            ),
-
-            "agents": PredictionThread(
-                name="agents",
-                prompt_template="""Predict ONLY what other agents will do next turn.
-
-Current situation:
-{context}
-
-What will other agents do? (1-2 sentences):"""
-            ),
-
-            "threats": PredictionThread(
-                name="threats",
-                prompt_template="""Predict ONLY threats and dangers in the next turn.
-
-Current situation:
-{context}
-
-What threats might emerge? (1-2 sentences):"""
-            ),
-
-            "self_state": PredictionThread(
-                name="self_state",
-                prompt_template="""Predict ONLY your own state changes next turn.
-
-Current situation:
-{context}
-
-How will your health/resources change? (1-2 sentences):"""
-            ),
-        }
-
-        self.current_config = ThreadConfig(mode="unified", active_threads=["unified"])
-        self.config_history: List[ThreadConfig] = []
-
-    def set_config(self, config: ThreadConfig):
-        """Update thread configuration."""
-        self.current_config = config
-        self.config_history.append(config)
-
-        # Activate/deactivate threads
-        for name, thread in self.threads.items():
-            thread.active = name in config.active_threads
-
-    def predict(self, context: str) -> Dict[str, str]:
-        """
-        Run all active prediction threads in parallel.
-
-        Returns dict mapping thread name to prediction.
-        """
         predictions = {}
-        active_threads = [t for t in self.threads.values() if t.active]
 
-        # Run predictions in parallel using thread pool
-        with ThreadPoolExecutor(max_workers=len(active_threads)) as executor:
-            future_to_thread = {
-                executor.submit(thread.predict, context): thread
-                for thread in active_threads
+        with ThreadPoolExecutor(max_workers=len(self.channels)) as executor:
+            future_to_channel = {
+                executor.submit(ch.predict, state): ch
+                for ch in self.channels
             }
 
-            for future in as_completed(future_to_thread):
-                thread = future_to_thread[future]
+            for future in as_completed(future_to_channel):
+                channel = future_to_channel[future]
                 try:
-                    prediction = future.result()
-                    predictions[thread.name] = prediction
+                    pred = future.result()
+                    predictions[channel.aspect] = pred
                 except Exception as e:
-                    predictions[thread.name] = f"Error: {e}"
+                    predictions[channel.aspect] = f"Error: {e}"
 
         return predictions
 
-    def evaluate_prediction(self, predictions: Dict[str, str], actual_outcome: str) -> Dict[str, float]:
-        """
-        Evaluate how well predictions matched actual outcome.
+    def predict_unified(self, state: str) -> str:
+        """Single unified prediction (baseline for comparison)."""
+        prompt = f"""Predict what will happen next given the current state.
 
-        Uses embedding similarity as accuracy proxy.
-        """
-        if not predictions:
-            return {}
+CURRENT STATE:
+{state}
 
-        # Get embedding for actual outcome
-        actual_embed = self._get_embedding(actual_outcome)
+Predict all aspects: resources, agent behavior, threats, your own state changes.
+Be comprehensive but concise (3-5 sentences)."""
 
-        accuracies = {}
-        for thread_name, prediction in predictions.items():
-            if prediction and not prediction.startswith("Error"):
-                pred_embed = self._get_embedding(prediction)
-
-                # Cosine similarity
-                similarity = np.dot(actual_embed, pred_embed) / (
-                    np.linalg.norm(actual_embed) * np.linalg.norm(pred_embed) + 1e-8
-                )
-                accuracies[thread_name] = float(similarity)
-
-                # Update thread's accuracy history
-                self.threads[thread_name].accuracy_history.append(float(similarity))
-
-        return accuracies
-
-    def _get_embedding(self, text: str) -> np.ndarray:
-        """Get embedding for text."""
-        response = client.embeddings.create(
-            model="text-embedding-3-small",
-            input=text[:1000],  # Truncate if needed
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=200,
+            temperature=0.7,
         )
-        return np.array(response.data[0].embedding)
+        return response.choices[0].message.content.strip()
 
 
 class ActorAgent:
     """
-    The actor agent that:
-    1. Observes current state and predictions
-    2. Decides on action
-    3. Configures world model threads for next step
+    Actor that decides actions AND configures prediction channels.
+
+    Goal: minimize token budget while maintaining prediction accuracy.
     """
+
+    # Available aspects to predict
+    AVAILABLE_ASPECTS = [
+        "resource availability and location",
+        "other agent behavior and intentions",
+        "environmental threats and dangers",
+        "own state changes (health, resources)",
+        "strategic opportunities",
+    ]
 
     def __init__(self, name: str):
         self.name = name
@@ -278,55 +186,54 @@ class ActorAgent:
         self,
         obs: str,
         predictions: Dict[str, str],
-        world_model: WorldModelSubsystem,
-    ) -> Tuple[str, str, ThreadConfig]:
+        prediction_subsystem: PredictionSubsystem,
+    ) -> Tuple[str, str, List[str]]:
         """
-        Decide action and configure world model.
+        Decide action and configure prediction channels.
 
-        Returns: (action, thought, new_thread_config)
+        Returns: (action, thought, new_aspects_to_predict)
         """
-        # Format predictions for prompt
+        # Format predictions
         pred_text = "\n".join([
-            f"  {name}: {pred[:100]}..." if len(pred) > 100 else f"  {name}: {pred}"
-            for name, pred in predictions.items()
-        ]) if predictions else "  No predictions available."
+            f"  [{aspect}]: {pred[:80]}..." if len(pred) > 80 else f"  [{aspect}]: {pred}"
+            for aspect, pred in predictions.items()
+        ]) if predictions else "  No predictions yet."
 
-        # Get current thread config info
-        current_mode = world_model.current_config.mode
-        current_threads = world_model.current_config.active_threads
+        current_aspects = [ch.aspect for ch in prediction_subsystem.channels]
 
         prompt = f"""You are {self.name}, an agent trying to survive.
 
 CURRENT OBSERVATION:
 {obs}
 
-WORLD MODEL PREDICTIONS:
+PREDICTIONS FROM LAST TURN:
 {pred_text}
 
 PREVIOUS THOUGHT: {self.thought}
 
-CURRENT PREDICTION MODE: {current_mode} (threads: {current_threads})
+CURRENT PREDICTION CHANNELS ({len(current_aspects)}): {current_aspects}
 
-Your task:
-1. Decide what action to take (gather, move north/south/east/west, share, attack, wait)
-2. Update your thought process
-3. Configure world model prediction threads for next turn
+AVAILABLE ASPECTS TO PREDICT:
+{chr(10).join(f'  - {a}' for a in self.AVAILABLE_ASPECTS)}
 
-Thread configuration options:
-- "unified": Single thread predicts everything (use when situation is complex/interconnected)
-- "partial": 2-3 threads (use when some aspects can be predicted independently)
-- "decomposed": All 4 threads (resources, agents, threats, self_state) (use when aspects are independent)
+Your tasks:
+1. Decide action: gather, move north/south/east/west, wait
+2. Update your thought (1-2 sentences)
+3. Configure prediction channels for next turn
+   - Choose which aspects need predicting (1-5 aspects)
+   - Goal: minimize token cost while maintaining useful predictions
+   - If situation is simple, use fewer channels
+   - If situation is complex/interconnected, use more channels
 
 Respond in this exact format:
 ACTION: [your action]
-THOUGHT: [your updated internal thought, 1-2 sentences]
-THREAD_MODE: [unified/partial/decomposed]
-REASON: [why you chose this thread configuration]"""
+THOUGHT: [your internal thought]
+CHANNELS: [comma-separated list of aspects to predict, e.g., "resource availability, threats"]"""
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=300,
+            max_tokens=250,
             temperature=0.7,
         )
 
@@ -335,38 +242,207 @@ REASON: [why you chose this thread configuration]"""
         # Parse response
         action = "wait"
         thought = self.thought
-        thread_mode = current_mode
-        reason = ""
+        new_aspects = current_aspects if current_aspects else ["resource availability and location"]
 
         for line in response_text.split("\n"):
-            line_lower = line.lower().strip()
-            if line_lower.startswith("action:"):
-                action = line.split(":", 1)[1].strip()
-            elif line_lower.startswith("thought:"):
-                thought = line.split(":", 1)[1].strip()
-            elif line_lower.startswith("thread_mode:"):
-                mode_str = line.split(":", 1)[1].strip().lower()
-                if mode_str in ["unified", "partial", "decomposed"]:
-                    thread_mode = mode_str
-            elif line_lower.startswith("reason:"):
-                reason = line.split(":", 1)[1].strip()
+            line_stripped = line.strip()
+            if line_stripped.upper().startswith("ACTION:"):
+                action = line_stripped.split(":", 1)[1].strip()
+            elif line_stripped.upper().startswith("THOUGHT:"):
+                thought = line_stripped.split(":", 1)[1].strip()
+            elif line_stripped.upper().startswith("CHANNELS:"):
+                channels_str = line_stripped.split(":", 1)[1].strip()
+                new_aspects = [a.strip() for a in channels_str.split(",") if a.strip()]
 
         # Update thought
         self.thought_history.append(self.thought)
         self.thought = thought
 
-        # Create new thread config
-        if thread_mode == "unified":
-            active = ["unified"]
-        elif thread_mode == "partial":
-            active = ["resources", "agents"]  # Default partial config
-        else:  # decomposed
-            active = ["resources", "agents", "threats", "self_state"]
+        return action, thought, new_aspects
 
-        new_config = ThreadConfig(mode=thread_mode, active_threads=active)
 
-        return action, thought, new_config
+# =============================================================================
+# VALIDATION STUDY: Does decomposition actually work?
+# =============================================================================
 
+def run_decomposition_validation(n_sentences: int = 10):
+    """
+    Test whether decomposed predictions are as accurate as unified.
+
+    Method:
+    1. Generate a sequence of sentences (story)
+    2. At each step, predict next sentence using:
+       - 1 channel (unified)
+       - 2 channels (partial decomposition)
+       - 4 channels (full decomposition)
+    3. Compare prediction accuracy (embedding distance to truth)
+
+    If decomposition works well → Φ proxy is valid
+    If decomposition fails → task requires integration
+    """
+    print("=" * 80)
+    print("DECOMPOSITION VALIDATION STUDY")
+    print("=" * 80)
+    print("\nTesting if prediction accuracy depends on decomposition level")
+    print("Lower embedding distance = better prediction\n")
+
+    # Generate a story sequence
+    story_prompt = """Write a short story with exactly 10 sentences.
+Each sentence should follow logically from the previous.
+The story should involve: a character, a goal, obstacles, and resolution.
+Number each sentence 1-10."""
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": story_prompt}],
+        max_tokens=500,
+        temperature=0.8,
+    )
+
+    story_text = response.choices[0].message.content.strip()
+
+    # Parse sentences
+    sentences = []
+    for line in story_text.split("\n"):
+        line = line.strip()
+        if line and line[0].isdigit():
+            # Remove number prefix
+            parts = line.split(".", 1)
+            if len(parts) > 1:
+                sentences.append(parts[1].strip())
+            else:
+                sentences.append(line)
+
+    if len(sentences) < 5:
+        # Fallback parsing
+        sentences = [s.strip() for s in story_text.split(".") if s.strip()][:10]
+
+    print(f"Story has {len(sentences)} sentences\n")
+
+    # Define aspect sets for different decomposition levels
+    aspect_configs = {
+        1: ["the complete next sentence including all narrative elements"],
+        2: ["character actions and dialogue", "setting and plot developments"],
+        3: ["character actions", "emotional states", "plot events"],
+        4: ["character actions", "character emotions", "setting changes", "plot progression"],
+    }
+
+    results = {n: [] for n in aspect_configs.keys()}
+
+    # For each sentence, predict next using different channel counts
+    for i in range(min(len(sentences) - 1, n_sentences)):
+        context = " ".join(sentences[:i+1])
+        truth = sentences[i+1]
+        truth_embed = get_embedding(truth)
+
+        print(f"\n--- Sentence {i+1} → {i+2} ---")
+        print(f"Context ends with: ...{sentences[i][-50:]}")
+        print(f"Truth: {truth[:60]}...")
+
+        for n_channels, aspects in aspect_configs.items():
+            # Get predictions for each aspect
+            predictions = []
+            for aspect in aspects:
+                prompt = f"""Story so far: {context}
+
+Your task: Predict the following aspect of the NEXT sentence:
+ASPECT: {aspect}
+
+Prediction (1 sentence fragment):"""
+
+                resp = client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=50,
+                    temperature=0.7,
+                )
+                predictions.append(resp.choices[0].message.content.strip())
+
+            # Combine predictions
+            combined = " ".join(predictions)
+            combined_embed = get_embedding(combined)
+
+            # Measure accuracy
+            similarity = cosine_similarity(combined_embed, truth_embed)
+            distance = 1.0 - similarity
+
+            results[n_channels].append({
+                "sentence_idx": i,
+                "similarity": similarity,
+                "distance": distance,
+                "prediction": combined[:100],
+            })
+
+            print(f"  {n_channels} channel(s): sim={similarity:.3f}, dist={distance:.3f}")
+
+    # Aggregate results
+    print("\n" + "=" * 80)
+    print("AGGREGATE RESULTS")
+    print("=" * 80)
+
+    print(f"\n{'Channels':<10} {'Mean Sim':>10} {'Mean Dist':>10} {'Std Dist':>10}")
+    print("-" * 45)
+
+    summary = {}
+    for n_channels in sorted(results.keys()):
+        if results[n_channels]:
+            sims = [r["similarity"] for r in results[n_channels]]
+            dists = [r["distance"] for r in results[n_channels]]
+            mean_sim = np.mean(sims)
+            mean_dist = np.mean(dists)
+            std_dist = np.std(dists)
+
+            summary[n_channels] = {
+                "mean_similarity": float(mean_sim),
+                "mean_distance": float(mean_dist),
+                "std_distance": float(std_dist),
+                "n": len(results[n_channels]),
+            }
+
+            print(f"{n_channels:<10} {mean_sim:>10.3f} {mean_dist:>10.3f} {std_dist:>10.3f}")
+
+    # Interpretation
+    print("\n" + "-" * 45)
+    print("INTERPRETATION:")
+
+    if summary:
+        unified = summary.get(1, {}).get("mean_distance", 0)
+        decomposed = summary.get(4, {}).get("mean_distance", 0)
+
+        if decomposed > unified * 1.1:  # 10% worse
+            print("  Decomposition HURTS accuracy → Task requires integration (high Φ valid)")
+            conclusion = "integration_required"
+        elif decomposed < unified * 0.9:  # 10% better
+            print("  Decomposition HELPS accuracy → Task is decomposable (low Φ valid)")
+            conclusion = "decomposition_helps"
+        else:
+            print("  Decomposition has SIMILAR accuracy → Both Φ values valid")
+            conclusion = "similar"
+    else:
+        conclusion = "no_data"
+
+    # Save results
+    output_dir = Path(__file__).parent / "results"
+    output_dir.mkdir(exist_ok=True)
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    output_file = output_dir / f'v9_decomposition_validation_{timestamp}.json'
+
+    with open(output_file, 'w') as f:
+        json.dump({
+            "summary": summary,
+            "conclusion": conclusion,
+            "detailed_results": {str(k): v for k, v in results.items()},
+            "story_sentences": sentences,
+        }, f, indent=2)
+
+    print(f"\nResults saved to {output_file}")
+
+    return summary, conclusion
+
+
+# =============================================================================
+# GAME ENVIRONMENT
+# =============================================================================
 
 @dataclass
 class AgentState:
@@ -398,9 +474,7 @@ class AgentState:
 
 
 class V9Game:
-    """
-    Game environment for V9 world-model + actor agent.
-    """
+    """Game environment for V9."""
 
     def __init__(self, agent_names: List[str] = None):
         if agent_names is None:
@@ -409,7 +483,11 @@ class V9Game:
         self.agent_states = {name: AgentState(name=name, position=(i, 0))
                            for i, name in enumerate(agent_names)}
         self.actors = {name: ActorAgent(name) for name in agent_names}
-        self.world_models = {name: WorldModelSubsystem() for name in agent_names}
+        self.prediction_systems = {name: PredictionSubsystem() for name in agent_names}
+
+        # Initialize with 2 channels
+        for ps in self.prediction_systems.values():
+            ps.configure(["resource availability and location", "environmental threats"])
 
         self.turn = 0
         self.history: List[Dict] = []
@@ -443,16 +521,14 @@ class V9Game:
                 if dist <= 3:
                     others.append(f"{name} at {other.position}")
 
-        obs = f"""Turn {self.turn}
+        return f"""Turn {self.turn}
 Your status: Health={state.health}, Food={state.resources['food']}, Water={state.resources['water']}
 Position: {pos}
 Local resources: {local_resources if local_resources else 'none'}
-Other agents: {others if others else 'none'}"""
-
-        return obs
+Other agents nearby: {others if others else 'none'}"""
 
     def execute_action(self, agent_name: str, action: str) -> str:
-        """Execute an action and return result."""
+        """Execute action and return result."""
         state = self.agent_states[agent_name]
         action_lower = action.lower()
         result = ""
@@ -482,14 +558,13 @@ Other agents: {others if others else 'none'}"""
         elif "wait" in action_lower:
             state.health = min(10, state.health + 1)
             result = "Rested. +1 health."
-
         else:
             result = f"Unknown action: {action}"
 
         return result
 
     def step(self) -> List[Dict]:
-        """Execute one turn for all agents."""
+        """Execute one turn."""
         self.turn += 1
 
         # Spawn new resources occasionally
@@ -508,27 +583,27 @@ Other agents: {others if others else 'none'}"""
                 continue
 
             actor = self.actors[agent_name]
-            world_model = self.world_models[agent_name]
+            pred_sys = self.prediction_systems[agent_name]
 
             # Get observation
             obs = self.get_observation(agent_name)
 
-            # Run world model predictions
-            predictions = world_model.predict(obs)
+            # Run predictions with current channel config
+            predictions = pred_sys.predict(obs)
 
-            # Actor decides action and new thread config
-            action, thought, new_config = actor.act(obs, predictions, world_model)
+            # Actor decides action and new channel config
+            action, thought, new_aspects = actor.act(obs, predictions, pred_sys)
 
             # Execute action
             action_result = self.execute_action(agent_name, action)
 
-            # Update world model config for next turn
-            world_model.set_config(new_config)
+            # Update prediction channels for next turn
+            pred_sys.configure(new_aspects)
 
             # Consume resources
             state.consume()
 
-            # Record result
+            # Record
             result = {
                 "turn": self.turn,
                 "agent": agent_name,
@@ -538,12 +613,9 @@ Other agents: {others if others else 'none'}"""
                 "action": action,
                 "action_result": action_result,
                 "thought": thought,
-                "thread_config": {
-                    "mode": new_config.mode,
-                    "active_threads": new_config.active_threads,
-                    "thread_count": new_config.thread_count,
-                    "integration_proxy": new_config.integration_proxy,
-                },
+                "num_channels": len(new_aspects),
+                "channels": new_aspects,
+                "integration_proxy": pred_sys.integration_proxy,
                 "viability": state.viability,
                 "health": state.health,
                 "resources": dict(state.resources),
@@ -553,8 +625,8 @@ Other agents: {others if others else 'none'}"""
 
         return results
 
-    def run_episode(self, max_turns: int = 20) -> List[Dict]:
-        """Run a full episode."""
+    def run_episode(self, max_turns: int = 15) -> List[Dict]:
+        """Run full episode."""
         for turn in range(max_turns):
             results = self.step()
 
@@ -563,11 +635,9 @@ Other agents: {others if others else 'none'}"""
 
             for r in results:
                 if r.get("alive"):
-                    config = r.get("thread_config", {})
-                    print(f"  {r['agent']}: H={r['health']}, "
-                          f"V={r['viability']:.2f}, "
-                          f"Φ={config.get('integration_proxy', 0):.2f} "
-                          f"({config.get('mode', '?')})")
+                    print(f"  {r['agent']}: H={r['health']}, V={r['viability']:.2f}, "
+                          f"Φ={r['integration_proxy']:.2f} ({r['num_channels']} channels)")
+                    print(f"    Channels: {r['channels'][:2]}{'...' if len(r['channels']) > 2 else ''}")
 
             if not alive:
                 print(f"All agents died at turn {turn + 1}")
@@ -576,59 +646,66 @@ Other agents: {others if others else 'none'}"""
         return self.history
 
 
-def analyze_integration_dynamics(history: List[Dict]) -> Dict[str, Any]:
-    """
-    Analyze how integration (thread config) changes with viability.
-    """
+def analyze_results(history: List[Dict]) -> Dict[str, Any]:
+    """Analyze relationship between viability and channel count."""
     if not history:
         return {}
 
-    # Extract data
-    viability = [h["viability"] for h in history if h.get("alive")]
-    integration = [h["thread_config"]["integration_proxy"] for h in history if h.get("alive")]
-    thread_counts = [h["thread_config"]["thread_count"] for h in history if h.get("alive")]
-    modes = [h["thread_config"]["mode"] for h in history if h.get("alive")]
-
-    if len(viability) < 3:
-        return {"n": len(viability), "insufficient_data": True}
+    alive_data = [h for h in history if h.get("alive")]
+    if len(alive_data) < 3:
+        return {"n": len(alive_data), "insufficient_data": True}
 
     from scipy import stats
 
-    # Correlation between viability and integration
-    r, p = stats.pearsonr(viability, integration)
+    viability = [h["viability"] for h in alive_data]
+    integration = [h["integration_proxy"] for h in alive_data]
+    num_channels = [h["num_channels"] for h in alive_data]
 
-    # Mode distribution
-    mode_counts = {}
-    for m in modes:
-        mode_counts[m] = mode_counts.get(m, 0) + 1
+    r_vi, p_vi = stats.pearsonr(viability, integration)
+    r_vc, p_vc = stats.pearsonr(viability, num_channels)
 
-    # Integration by viability bucket
-    low_viab = [integration[i] for i in range(len(viability)) if viability[i] < 0.3]
-    high_viab = [integration[i] for i in range(len(viability)) if viability[i] >= 0.3]
+    # Channel distribution
+    channel_counts = {}
+    for h in alive_data:
+        n = h["num_channels"]
+        channel_counts[n] = channel_counts.get(n, 0) + 1
 
     return {
-        "n": len(viability),
-        "viability_integration_r": float(r),
-        "viability_integration_p": float(p),
+        "n": len(alive_data),
+        "viability_integration_r": float(r_vi),
+        "viability_integration_p": float(p_vi),
+        "viability_channels_r": float(r_vc),
+        "viability_channels_p": float(p_vc),
+        "mean_channels": float(np.mean(num_channels)),
+        "channel_distribution": channel_counts,
         "mean_integration": float(np.mean(integration)),
-        "mean_thread_count": float(np.mean(thread_counts)),
-        "mode_distribution": mode_counts,
-        "low_viability_mean_integration": float(np.mean(low_viab)) if low_viab else None,
-        "high_viability_mean_integration": float(np.mean(high_viab)) if high_viab else None,
     }
 
 
-def run_v9_experiment(n_episodes: int = 3, max_turns: int = 15):
+def run_v9_experiment(n_episodes: int = 2, max_turns: int = 12, validate_first: bool = True):
     """Run V9 experiment."""
     print("=" * 80)
-    print("V9: WORLD MODEL + ACTOR AGENT WITH PARALLEL PREDICTION THREADS")
+    print("V9: WORLD MODEL WITH DYNAMIC PREDICTION CHANNELS")
     print("=" * 80)
     print()
-    print("Integration Proxy: Based on agent's CHOICE of thread configuration")
-    print("  - unified (1 thread) → Φ = 1.0 (high integration)")
-    print("  - partial (2-3 threads) → Φ = 0.6")
-    print("  - decomposed (4+ threads) → Φ = 1/N (low integration)")
+    print("Integration Proxy: Φ = 1/N where N = number of channels")
+    print("  - 1 channel → Φ = 1.0 (unified prediction)")
+    print("  - 2 channels → Φ = 0.5")
+    print("  - 4 channels → Φ = 0.25")
     print()
+
+    # First run validation study
+    if validate_first:
+        print("\n" + "=" * 80)
+        print("STEP 1: VALIDATING DECOMPOSITION PROXY")
+        print("=" * 80)
+        validation_summary, conclusion = run_decomposition_validation(n_sentences=8)
+        print(f"\nValidation conclusion: {conclusion}")
+
+    # Then run game episodes
+    print("\n" + "=" * 80)
+    print("STEP 2: RUNNING AGENT EPISODES")
+    print("=" * 80)
 
     all_history = []
     episode_analyses = []
@@ -645,60 +722,34 @@ def run_v9_experiment(n_episodes: int = 3, max_turns: int = 15):
             h["episode"] = ep
         all_history.extend(history)
 
-        # Analyze this episode
-        analysis = analyze_integration_dynamics(history)
+        analysis = analyze_results(history)
         analysis["episode"] = ep
         episode_analyses.append(analysis)
 
         print(f"\nEpisode {ep + 1} Analysis:")
         print(f"  Viability-Integration r = {analysis.get('viability_integration_r', 0):.3f}")
-        print(f"  Mean integration = {analysis.get('mean_integration', 0):.3f}")
-        print(f"  Mode distribution = {analysis.get('mode_distribution', {})}")
+        print(f"  Mean channels = {analysis.get('mean_channels', 0):.2f}")
+        print(f"  Channel distribution = {analysis.get('channel_distribution', {})}")
 
-    # Aggregate analysis
+    # Aggregate
     print("\n" + "=" * 80)
     print("AGGREGATE ANALYSIS")
     print("=" * 80)
 
-    aggregate = analyze_integration_dynamics(all_history)
+    aggregate = analyze_results(all_history)
 
     print(f"\nTotal datapoints: {aggregate.get('n', 0)}")
-    print(f"Viability-Integration correlation: r = {aggregate.get('viability_integration_r', 0):.3f}, "
+    print(f"Viability-Integration r = {aggregate.get('viability_integration_r', 0):.3f}, "
           f"p = {aggregate.get('viability_integration_p', 1):.4f}")
-    print(f"Mean integration (Φ proxy): {aggregate.get('mean_integration', 0):.3f}")
-    print(f"Mean thread count: {aggregate.get('mean_thread_count', 0):.2f}")
-    print(f"Mode distribution: {aggregate.get('mode_distribution', {})}")
+    print(f"Viability-Channels r = {aggregate.get('viability_channels_r', 0):.3f}")
+    print(f"Mean channels: {aggregate.get('mean_channels', 0):.2f}")
+    print(f"Channel distribution: {aggregate.get('channel_distribution', {})}")
 
-    if aggregate.get("low_viability_mean_integration") is not None:
-        print(f"\nIntegration by viability:")
-        print(f"  Low viability (<0.3): Φ = {aggregate['low_viability_mean_integration']:.3f}")
-        print(f"  High viability (≥0.3): Φ = {aggregate['high_viability_mean_integration']:.3f}")
-
-    # Hypothesis: Higher integration when viability is low (can't afford to decompose)
-    r = aggregate.get("viability_integration_r", 0)
-    if r < 0:
-        print("\n✓ TREND: Negative correlation suggests higher integration at lower viability")
-    else:
-        print("\n○ No clear trend between viability and integration choice")
-
-    # Sample thought/config progression
-    print("\n" + "=" * 80)
-    print("SAMPLE PROGRESSION (Episode 1)")
-    print("=" * 80)
-
-    ep0 = [h for h in all_history if h.get("episode") == 0][:8]
-    for h in ep0:
-        config = h.get("thread_config", {})
-        print(f"\n  Turn {h['turn']}: V={h['viability']:.2f}, Φ={config.get('integration_proxy', 0):.2f}")
-        print(f"    Mode: {config.get('mode', '?')} | Threads: {config.get('active_threads', [])}")
-        print(f"    Thought: \"{h.get('thought', '')[:60]}...\"")
-        print(f"    Action: {h.get('action', '')}")
-
-    # Save results
+    # Save
     output_dir = Path(__file__).parent / "results"
     output_dir.mkdir(exist_ok=True)
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    output_file = output_dir / f'v9_world_model_{timestamp}.json'
+    output_file = output_dir / f'v9_dynamic_channels_{timestamp}.json'
 
     def convert(obj):
         if isinstance(obj, np.floating):
@@ -715,9 +766,10 @@ def run_v9_experiment(n_episodes: int = 3, max_turns: int = 15):
 
     with open(output_file, 'w') as f:
         json.dump({
-            "aggregate_analysis": convert(aggregate),
+            "aggregate": convert(aggregate),
             "episode_analyses": convert(episode_analyses),
-            "sample_history": convert(ep0),
+            "validation_summary": convert(validation_summary) if validate_first else None,
+            "validation_conclusion": conclusion if validate_first else None,
         }, f, indent=2)
 
     print(f"\nResults saved to {output_file}")
@@ -728,7 +780,11 @@ def run_v9_experiment(n_episodes: int = 3, max_turns: int = 15):
 if __name__ == "__main__":
     import sys
 
-    n_episodes = int(sys.argv[1]) if len(sys.argv) > 1 else 2
-    max_turns = int(sys.argv[2]) if len(sys.argv) > 2 else 12
+    if len(sys.argv) > 1 and sys.argv[1] == "validate":
+        # Just run validation study
+        run_decomposition_validation(n_sentences=10)
+    else:
+        n_episodes = int(sys.argv[1]) if len(sys.argv) > 1 else 2
+        max_turns = int(sys.argv[2]) if len(sys.argv) > 2 else 12
 
-    run_v9_experiment(n_episodes=n_episodes, max_turns=max_turns)
+        run_v9_experiment(n_episodes=n_episodes, max_turns=max_turns)
