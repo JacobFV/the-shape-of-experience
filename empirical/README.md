@@ -33,6 +33,13 @@ The framework is falsified if:
 
 ## Installation
 
+Using [uv](https://docs.astral.sh/uv/) (recommended):
+```bash
+cd empirical
+uv sync
+```
+
+Or with pip:
 ```bash
 pip install -e .
 ```

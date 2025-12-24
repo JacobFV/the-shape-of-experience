@@ -462,12 +462,12 @@ def train_agent(
         mean_viability = trajectory['viability_distances'].mean()
 
         training_history.append({
-            'episode': episode,
-            'return': episode_return,
-            'length': episode_length,
-            'mean_viability': mean_viability,
-            'policy_loss': policy_loss.item(),
-            'value_loss': value_loss.item(),
+            'episode': int(episode),
+            'return': float(episode_return),
+            'length': int(episode_length),
+            'mean_viability': float(mean_viability),
+            'policy_loss': float(policy_loss.item()),
+            'value_loss': float(value_loss.item()),
         })
 
         if episode % 100 == 0:

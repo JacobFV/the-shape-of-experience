@@ -375,14 +375,14 @@ def run_analysis(agent_type: str, model_path: Path, output_dir: Path):
     # Save detailed results
     results = {
         'agent_type': agent_type,
-        'effective_rank': dim_results['effective_rank'],
+        'effective_rank': float(dim_results['effective_rank']),
         'n_90': int(dim_results['n_90']),
         'n_95': int(dim_results['n_95']),
         'n_99': int(dim_results['n_99']),
-        'participation_ratio': dim_results['participation_ratio'],
-        'variance_explained': dim_results['variance_explained'].tolist(),
+        'participation_ratio': float(dim_results['participation_ratio']),
+        'variance_explained': [float(x) for x in dim_results['variance_explained']],
         'mappings': mappings,
-        'correlations': {k: {k2: v2['r'] for k2, v2 in v.items()}
+        'correlations': {k: {k2: float(v2['r']) for k2, v2 in v.items()}
                         for k, v in correlations.items()},
     }
 
