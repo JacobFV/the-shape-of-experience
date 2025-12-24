@@ -2,9 +2,32 @@
 Train agents with different architectures and analyze what representational
 structure emerges.
 
-The thesis predicts that self-modeling agents under viability constraints
-will develop internal representations with 6-dimensional structure
-corresponding to the affect dimensions.
+═══════════════════════════════════════════════════════════════════════════════
+WARNING: COMMON MISINTERPRETATION - READ BEFORE USING THIS CODE
+═══════════════════════════════════════════════════════════════════════════════
+
+This experiment tests whether the RAW REPRESENTATION SPACE has 6 dimensions.
+This is NOT what the thesis claims.
+
+The thesis claims that the SIX AFFECT DIMENSIONS are COMPUTED QUANTITIES that
+exist at a HIGHER LEVEL OF ABSTRACTION:
+
+    1. Valence = gradient on viability manifold (computed from predicted futures)
+    2. Arousal = rate of belief update (computed from model change over time)
+    3. Integration = irreducibility (computed from partition analysis of structure)
+    4. Effective Rank = active degrees of freedom (computed from state covariance)
+    5. Counterfactual Weight = compute on non-actuals (computed from resource use)
+    6. Self-Model Salience = self-focus (computed from attention distribution)
+
+The raw state space can have THOUSANDS of dimensions. The claim is that when you
+COMPUTE these six quantities from the raw state, they capture affect-relevant
+structure.
+
+This experiment is preserved as an example of a common misinterpretation.
+See CORRECTION.md for details.
+
+For the CORRECT test, see: ../study_c_llm_affect/
+═══════════════════════════════════════════════════════════════════════════════
 """
 
 import numpy as np

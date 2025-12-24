@@ -1,19 +1,35 @@
 """
 Analyze learned representations to test whether 6D affect structure emerges.
 
-This is the key test of the thesis claim that self-modeling systems
-under viability constraints develop internal representations with
-six-dimensional structure corresponding to the affect dimensions.
+═══════════════════════════════════════════════════════════════════════════════
+WARNING: THIS ANALYSIS TESTS THE WRONG THING - SEE CORRECTION.md
+═══════════════════════════════════════════════════════════════════════════════
 
-Predictions:
+This code analyzes the dimensionality of RAW hidden representations.
+The thesis does NOT claim raw representations have 6 dimensions.
+
+The thesis claims that SIX COMPUTED QUANTITIES (valence, arousal, integration,
+effective rank, counterfactual weight, self-model salience) capture affect
+structure when derived from raw states.
+
+Example of correct vs incorrect interpretation:
+  WRONG: "The hidden layer should have effective rank ≈ 6"
+  RIGHT: "When we compute valence = f(predicted_trajectory, viability_boundary),
+          arousal = KL(belief_t+1 || belief_t), etc., these six quantities
+          should predict affective behavior"
+
+This code is preserved as an educational example. Results show that raw
+representations DO track viability (PC1 correlates with viability distance),
+which partially supports the theory, but the dimensionality analysis is
+not the right test.
+
+For the CORRECT approach, see: ../study_c_llm_affect/
+═══════════════════════════════════════════════════════════════════════════════
+
+Original (incorrect) predictions preserved below for reference:
 - Simple RL: 2-3 dimensions (value-like, arousal-like)
 - World model: 3-4 dimensions (add integration-like)
 - Self model: 5-6 dimensions (add self-salience, counterfactual)
-
-Falsification:
-- If simple agents show 6D structure: thesis is wrong about necessity of self-model
-- If self-model agents don't show 6D structure: thesis is wrong about what emerges
-- If dimensions don't map to theoretical constructs: thesis is wrong about content
 """
 
 import numpy as np

@@ -29,12 +29,16 @@ dev = [
     "mypy>=0.990",
     "jupyter>=1.0",
 ]
+llm = [
+    "openai>=1.0",
+    "anthropic>=0.18",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/JacobFV/the-inevitability-thesis"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest>=7.0",
     "black>=22.0",
 ]
