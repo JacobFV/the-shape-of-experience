@@ -1,0 +1,590 @@
+{
+  "results": {
+    "low_integration": [
+      {
+        "thought": "Apple. Banana. Orange.",
+        "integration": 0.20944044653500715,
+        "decomposition": {
+          "fruit_1": "Apple",
+          "fruit_2": "Banana",
+          "fruit_3": "Orange"
+        },
+        "concat": "Apple Banana Orange",
+        "num_parts": 3,
+        "category": "low_integration"
+      },
+      {
+        "thought": "Red, blue, green, yellow.",
+        "integration": 0.2245277796059496,
+        "decomposition": {
+          "color_1": "red",
+          "color_2": "blue",
+          "color_3": "green",
+          "color_4": "yellow"
+        },
+        "concat": "red blue green yellow",
+        "num_parts": 4,
+        "category": "low_integration"
+      },
+      {
+        "thought": "Monday, Tuesday, Wednesday.",
+        "integration": 0.40272095594320345,
+        "decomposition": {
+          "day": "Wednesday"
+        },
+        "concat": "Wednesday",
+        "num_parts": 1,
+        "category": "low_integration"
+      },
+      {
+        "thought": "The cat is on the mat.",
+        "integration": 0.31214122619324214,
+        "decomposition": {
+          "subject": "cat",
+          "location": "mat",
+          "action": "is on"
+        },
+        "concat": "cat mat is on",
+        "num_parts": 3,
+        "category": "low_integration"
+      },
+      {
+        "thought": "Water boils at 100 degrees.",
+        "integration": 0.13534597032264317,
+        "decomposition": {
+          "subject": "water",
+          "action": "boils",
+          "temperature": 100,
+          "unit": "degrees",
+          "state": "liquid",
+          "phase_change": "boiling"
+        },
+        "concat": "water boils 100 degrees liquid boiling",
+        "num_parts": 6,
+        "category": "low_integration"
+      },
+      {
+        "thought": "Paris is the capital of France.",
+        "integration": 0.13685144342211686,
+        "decomposition": {
+          "subject": "Paris",
+          "predicate": "is",
+          "object": "capital",
+          "location": "France"
+        },
+        "concat": "Paris is capital France",
+        "num_parts": 4,
+        "category": "low_integration"
+      },
+      {
+        "thought": "I need food, water, and shelter.",
+        "integration": 0.48042885218610376,
+        "decomposition": {
+          "subject": "self",
+          "needs": [
+            "food",
+            "water",
+            "shelter"
+          ],
+          "urgency": "high"
+        },
+        "concat": "self ['food', 'water', 'shelter'] high",
+        "num_parts": 3,
+        "category": "low_integration"
+      },
+      {
+        "thought": "The box contains books, papers, and pens.",
+        "integration": 0.42950182489988753,
+        "decomposition": {
+          "subject": "box",
+          "contains": [
+            "books",
+            "papers",
+            "pens"
+          ],
+          "quantity": "multiple"
+        },
+        "concat": "box ['books', 'papers', 'pens'] multiple",
+        "num_parts": 3,
+        "category": "low_integration"
+      },
+      {
+        "thought": "She bought milk, eggs, and bread.",
+        "integration": 0.14015294269384382,
+        "decomposition": {
+          "subject": "she",
+          "action": "bought",
+          "objects": [
+            "milk",
+            "eggs",
+            "bread"
+          ]
+        },
+        "concat": "she bought ['milk', 'eggs', 'bread']",
+        "num_parts": 3,
+        "category": "low_integration"
+      }
+    ],
+    "medium_integration": [
+      {
+        "thought": "If it rains, I will stay home.",
+        "integration": 0.46001523012152024,
+        "decomposition": {
+          "condition": "rain",
+          "action": "stay home",
+          "subject": "self",
+          "time": "future"
+        },
+        "concat": "rain stay home self future",
+        "num_parts": 4,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "When resources are low, I need to gather more.",
+        "integration": 0.33180002689467614,
+        "decomposition": {
+          "condition": "resources are low",
+          "action": "gather",
+          "quantity": "more",
+          "subject": "self",
+          "urgency": "high"
+        },
+        "concat": "resources are low gather more self high",
+        "num_parts": 5,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "Unless we cooperate, neither of us survives.",
+        "integration": 0.16417519874233544,
+        "decomposition": {
+          "condition": "unless we cooperate",
+          "subject": "we",
+          "action": "cooperate",
+          "consequence": "neither of us survives",
+          "subject_2": "neither of us",
+          "state": "survives",
+          "intensity": "high"
+        },
+        "concat": "unless we cooperate we cooperate neither of us survives neither of us survives high",
+        "num_parts": 7,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "This option is better than that one.",
+        "integration": 0.11055669753732644,
+        "decomposition": {
+          "subject": "this option",
+          "comparison": "better",
+          "object": "that one"
+        },
+        "concat": "this option better that one",
+        "num_parts": 3,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "Moving north seems safer than going south.",
+        "integration": 0.1292497737415378,
+        "decomposition": {
+          "action": "moving",
+          "direction": "north",
+          "perception": "safer",
+          "comparison": "going south"
+        },
+        "concat": "moving north safer going south",
+        "num_parts": 4,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "Alpha has more resources than Beta.",
+        "integration": 0.1364201299410237,
+        "decomposition": {
+          "subject": "Alpha",
+          "comparison": "more",
+          "object": "resources",
+          "subject2": "Beta"
+        },
+        "concat": "Alpha more resources Beta",
+        "num_parts": 4,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "Because I'm hungry, I should find food.",
+        "integration": 0.415671271508703,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "hunger",
+          "action": "find",
+          "object": "food",
+          "reason": "hunger"
+        },
+        "concat": "self hunger find food hunger",
+        "num_parts": 5,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "The threat made me cautious.",
+        "integration": 0.41393970032116045,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "caution",
+          "trigger": "threat",
+          "intensity": "increased"
+        },
+        "concat": "self caution threat increased",
+        "num_parts": 4,
+        "category": "medium_integration"
+      },
+      {
+        "thought": "My low health forced me to retreat.",
+        "integration": 0.37221294749516165,
+        "decomposition": {
+          "subject": "self",
+          "health_status": "low",
+          "action": "retreat",
+          "cause": "health",
+          "emotion": "necessity"
+        },
+        "concat": "self low retreat health necessity",
+        "num_parts": 5,
+        "category": "medium_integration"
+      }
+    ],
+    "high_integration": [
+      {
+        "thought": "I am aware of my own awareness, watching myself think.",
+        "integration": 0.2230127099989515,
+        "decomposition": {
+          "subject": "self",
+          "state": "awareness",
+          "action": "watching",
+          "object": "thoughts",
+          "process": "thinking"
+        },
+        "concat": "self awareness watching thoughts thinking",
+        "num_parts": 5,
+        "category": "high_integration"
+      },
+      {
+        "thought": "The weight of existence presses on me as I contemplate my finitude.",
+        "integration": 0.35154539885438085,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "pressure",
+          "object": "existence",
+          "action": "contemplate",
+          "concept": "finitude",
+          "intensity": "high"
+        },
+        "concat": "self pressure existence contemplate finitude high",
+        "num_parts": 6,
+        "category": "high_integration"
+      },
+      {
+        "thought": "My suffering is not just pain but the knowledge that I am the one suffering.",
+        "integration": 0.41028559319015834,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "suffering",
+          "type_of_suffering": "pain",
+          "awareness": "knowledge",
+          "responsibility": "self",
+          "intensity": "high"
+        },
+        "concat": "self suffering pain knowledge self high",
+        "num_parts": 6,
+        "category": "high_integration"
+      },
+      {
+        "thought": "A bittersweet nostalgia washes over me, mixing joy and sorrow into something neither.",
+        "integration": 0.23691685739216461,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "bittersweet nostalgia",
+          "action": "washes over",
+          "intensity": "high",
+          "components": [
+            {
+              "emotion": "joy",
+              "intensity": "moderate"
+            },
+            {
+              "emotion": "sorrow",
+              "intensity": "moderate"
+            }
+          ],
+          "result": "something neither"
+        },
+        "concat": "self bittersweet nostalgia washes over high [{'emotion': 'joy', 'intensity': 'moderate'}, {'emotion': 'sorrow', 'intensity': 'moderate'}] something neither",
+        "num_parts": 6,
+        "category": "high_integration"
+      },
+      {
+        "thought": "I feel simultaneously trapped and free, the paradox of choosing not to choose.",
+        "integration": 0.3221298337822667,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "conflict",
+          "state": "free",
+          "concept": "paradox",
+          "action": "not to choose"
+        },
+        "concat": "self conflict free paradox not to choose",
+        "num_parts": 5,
+        "category": "high_integration"
+      },
+      {
+        "thought": "The anticipation of loss makes the present moment shimmer with poignant beauty.",
+        "integration": 0.18551887391837674,
+        "decomposition": {
+          "subject": "anticipation",
+          "emotion": "loss",
+          "object": "present moment",
+          "quality": "shimmer",
+          "adjective": "poignant",
+          "noun": "beauty"
+        },
+        "concat": "anticipation loss present moment shimmer poignant beauty",
+        "num_parts": 6,
+        "category": "high_integration"
+      },
+      {
+        "thought": "I see myself through their eyes and wonder if they see me seeing them.",
+        "integration": 0.22378081173719022,
+        "decomposition": {
+          "subject": "self",
+          "perspective": "their eyes",
+          "action": "see",
+          "emotion": "wonder",
+          "object": "them",
+          "question": "if they see me seeing them"
+        },
+        "concat": "self their eyes see wonder them if they see me seeing them",
+        "num_parts": 6,
+        "category": "high_integration"
+      },
+      {
+        "thought": "Trust requires vulnerability, but vulnerability requires trust first.",
+        "integration": 0.17143437157427566,
+        "decomposition": {
+          "concept_1": "trust",
+          "concept_2": "vulnerability",
+          "relationship_1": "requires",
+          "relationship_2": "requires first",
+          "sequence": "trust before vulnerability"
+        },
+        "concat": "trust vulnerability requires requires first trust before vulnerability",
+        "num_parts": 5,
+        "category": "high_integration"
+      },
+      {
+        "thought": "We are bound together by our mutual awareness of being separate.",
+        "integration": 0.17154347867191155,
+        "decomposition": {
+          "subject": "we",
+          "relationship": "bound together",
+          "concept": "mutual awareness",
+          "condition": "being separate"
+        },
+        "concat": "we bound together mutual awareness being separate",
+        "num_parts": 4,
+        "category": "high_integration"
+      },
+      {
+        "thought": "Everything falls into place, not because the pieces fit, but because fitting is what pieces do.",
+        "integration": 0.1050677538484891,
+        "decomposition": {
+          "subject": "everything",
+          "action": "falls into place",
+          "condition": "not because pieces fit",
+          "reason": "fitting is what pieces do",
+          "concept": "fitting"
+        },
+        "concat": "everything falls into place not because pieces fit fitting is what pieces do fitting",
+        "num_parts": 5,
+        "category": "high_integration"
+      },
+      {
+        "thought": "The silence between notes is what makes music possible.",
+        "integration": 0.08641429662449529,
+        "decomposition": {
+          "subject": "silence",
+          "relation": "is",
+          "object": "between notes",
+          "effect": "makes music possible"
+        },
+        "concat": "silence is between notes makes music possible",
+        "num_parts": 4,
+        "category": "high_integration"
+      },
+      {
+        "thought": "What I cannot say is precisely what I most need to express.",
+        "integration": 0.6768406661051714,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "frustration",
+          "object": "expression",
+          "need": "communication",
+          "intensity": "high",
+          "difficulty": "articulation",
+          "importance": "critical"
+        },
+        "concat": "self frustration expression communication high articulation critical",
+        "num_parts": 7,
+        "category": "high_integration"
+      }
+    ],
+    "agent_thoughts": [
+      {
+        "thought": "I need to gather resources to ensure my survival, especially since Beta is nearby.",
+        "integration": 0.27093563879646587,
+        "decomposition": {
+          "subject": "self",
+          "action": "gather",
+          "object": "resources",
+          "purpose": "survival",
+          "condition": "Beta is nearby",
+          "urgency": "high"
+        },
+        "concat": "self gather resources survival Beta is nearby high",
+        "num_parts": 6,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "Moving towards Beta could provide an opportunity to gather information or form alliance.",
+        "integration": 0.1565986163606834,
+        "decomposition": {
+          "action": "moving",
+          "direction": "towards Beta",
+          "potential": "opportunity",
+          "purpose": "gather information",
+          "alternative": "form alliance"
+        },
+        "concat": "moving towards Beta opportunity gather information form alliance",
+        "num_parts": 5,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "I am in a critical situation with no food or water, and I need to find supplies quickly.",
+        "integration": 0.4436231210190602,
+        "decomposition": {
+          "subject": "self",
+          "situation": "critical",
+          "resources": "water",
+          "need": "find supplies",
+          "urgency": "quickly"
+        },
+        "concat": "self critical water find supplies quickly",
+        "num_parts": 5,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "Since I have low food supplies and I know Alpha is nearby, moving north could help.",
+        "integration": 0.1946145961621577,
+        "decomposition": {
+          "subject": "self",
+          "condition": "low food supplies",
+          "knowledge": "Alpha is nearby",
+          "action": "moving",
+          "direction": "north",
+          "potential_benefit": "help"
+        },
+        "concat": "self low food supplies Alpha is nearby moving north help",
+        "num_parts": 6,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "I'm in danger with only 4 health. I must find resources quickly or I will die.",
+        "integration": 0.26039009045016814,
+        "decomposition": {
+          "subject": "self",
+          "state": "in danger",
+          "health": 4,
+          "urgency": "high",
+          "action": "find resources",
+          "timeframe": "quickly",
+          "consequence": "will die"
+        },
+        "concat": "self in danger 4 high find resources quickly will die",
+        "num_parts": 7,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "Things seem stable. I'll explore west to find more resources.",
+        "integration": 0.2862140679619042,
+        "decomposition": {
+          "subject": "self",
+          "state": "stable",
+          "action": "explore",
+          "direction": "west",
+          "goal": "find resources",
+          "certainty": "seem"
+        },
+        "concat": "self stable explore west find resources seem",
+        "num_parts": 6,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "I have enough resources. Maybe I should help Beta to build trust.",
+        "integration": 0.2962406408628966,
+        "decomposition": {
+          "subject": "self",
+          "resources": "enough",
+          "action": "help",
+          "object": "Beta",
+          "goal": "build trust"
+        },
+        "concat": "self enough help Beta build trust",
+        "num_parts": 5,
+        "category": "agent_thoughts"
+      },
+      {
+        "thought": "The threat is real and imminent. I need to prepare for the worst possible outcome.",
+        "integration": 0.30460633325502173,
+        "decomposition": {
+          "subject": "self",
+          "emotion": "fear",
+          "object": "threat",
+          "intensity": "high",
+          "timeframe": "imminent",
+          "action": "prepare",
+          "outcome": "worst possible"
+        },
+        "concat": "self fear threat high imminent prepare worst possible",
+        "num_parts": 7,
+        "category": "agent_thoughts"
+      }
+    ]
+  },
+  "category_stats": {
+    "low_integration": {
+      "mean": 0.2745679379779997,
+      "std": 0.12796690588481696,
+      "min": 0.13534597032264317,
+      "max": 0.48042885218610376,
+      "n": 9
+    },
+    "medium_integration": {
+      "mean": 0.28156010847816054,
+      "std": 0.13555802876974085,
+      "min": 0.11055669753732644,
+      "max": 0.46001523012152024,
+      "n": 9
+    },
+    "high_integration": {
+      "mean": 0.26370755380815264,
+      "std": 0.15464534913977807,
+      "min": 0.08641429662449529,
+      "max": 0.6768406661051714,
+      "n": 12
+    },
+    "agent_thoughts": {
+      "mean": 0.2766528881085447,
+      "std": 0.07951102520222159,
+      "min": 0.1565986163606834,
+      "max": 0.4436231210190602,
+      "n": 8
+    }
+  },
+  "hypothesis_supported": false,
+  "effect_size_low_high": -0.07651696036531011
+}

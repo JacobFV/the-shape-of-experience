@@ -1,0 +1,351 @@
+{
+  "n_episodes": 3,
+  "max_turns": 15,
+  "n_datapoints": 54,
+  "correlation_results": {
+    "self_model_salience": {
+      "r": 0.27702095343001326,
+      "p": 0.04256790955467901
+    },
+    "counterfactual_weight": {
+      "r": -0.068717961120176,
+      "p": 0.6214895359611884
+    },
+    "integration": {
+      "r": -0.1344128140761804,
+      "p": 0.33253355360553494
+    },
+    "arousal": {
+      "r": 0.5784250079138246,
+      "p": 4.627998694759469e-06
+    },
+    "valence": {
+      "r": 0.3239159295717328,
+      "p": 0.016875834870451453
+    }
+  },
+  "critical_safe_results": {
+    "self_model_salience": {
+      "critical_mean": 0.6634670576933627,
+      "safe_mean": 0.7894045817884429,
+      "diff": -0.1259375240950802,
+      "p": 0.017044079766372955
+    },
+    "counterfactual_weight": {
+      "critical_mean": 0.4975784230550181,
+      "safe_mean": 0.4588206964384501,
+      "diff": 0.03875772661656801,
+      "p": 0.43611876397583904
+    },
+    "integration": {
+      "critical_mean": 0.28227540590560235,
+      "safe_mean": 0.2693099566124142,
+      "diff": 0.012965449293188158,
+      "p": 0.5845588276481966
+    },
+    "arousal": {
+      "critical_mean": 0.15180709413979304,
+      "safe_mean": 0.37030803189653505,
+      "diff": -0.218500937756742,
+      "p": 6.17169343054318e-07
+    },
+    "valence": {
+      "critical_mean": -0.26714050356057933,
+      "safe_mean": -0.10650609574643173,
+      "diff": -0.16063440781414762,
+      "p": 0.0018952290497012574
+    }
+  },
+  "hypothesis_results": {
+    "H1": {
+      "description": "SM increases as viability decreases",
+      "dimension": "self_model_salience",
+      "expected": "negative",
+      "r": 0.27702095343001326,
+      "p": 0.04256790955467901,
+      "supported": false
+    },
+    "H2": {
+      "description": "CF increases as viability decreases",
+      "dimension": "counterfactual_weight",
+      "expected": "negative",
+      "r": -0.068717961120176,
+      "p": 0.6214895359611884,
+      "supported": false
+    },
+    "H3": {
+      "description": "\u03a6 increases as viability decreases",
+      "dimension": "integration",
+      "expected": "negative",
+      "r": -0.1344128140761804,
+      "p": 0.33253355360553494,
+      "supported": false
+    },
+    "H4": {
+      "description": "Arousal increases as viability decreases",
+      "dimension": "arousal",
+      "expected": "negative",
+      "r": 0.5784250079138246,
+      "p": 4.627998694759469e-06,
+      "supported": false
+    },
+    "H5": {
+      "description": "Valence tracks viability (positive correlation)",
+      "dimension": "valence",
+      "expected": "positive",
+      "r": 0.3239159295717328,
+      "p": 0.016875834870451453,
+      "supported": true
+    }
+  },
+  "episode_summaries": [
+    {
+      "episode": 0,
+      "agent": "Alpha",
+      "survived": false,
+      "final_viability": 0.0,
+      "n_turns": 8,
+      "correlations": {
+        "self_model_salience_viability_r": -0.5665478407813733,
+        "self_model_salience_viability_p": 0.14314503626057515,
+        "counterfactual_weight_viability_r": 0.21410727872912794,
+        "counterfactual_weight_viability_p": 0.6106489866402806,
+        "integration_viability_r": 0.22865517447472306,
+        "integration_viability_p": 0.5859806863610729,
+        "arousal_viability_r": 0.5319131139175615,
+        "arousal_viability_p": 0.17481425052947935,
+        "valence_viability_r": 0.5933801822492959,
+        "valence_viability_p": 0.120987150547608
+      },
+      "critical_analysis": {
+        "n_critical": 6,
+        "n_safe": 2,
+        "self_model_salience_critical_mean": 0.6795860796814638,
+        "self_model_salience_safe_mean": 0.5387375782112624,
+        "self_model_salience_diff": 0.14084850147020134,
+        "counterfactual_weight_critical_mean": 0.4830754403662225,
+        "counterfactual_weight_safe_mean": 0.5718954248366013,
+        "counterfactual_weight_diff": -0.08881998447037875,
+        "integration_critical_mean": 0.26153507661870906,
+        "integration_safe_mean": 0.3042839197934064,
+        "integration_diff": -0.04274884317469735,
+        "arousal_critical_mean": 0.17432282553156955,
+        "arousal_safe_mean": 0.415980320444739,
+        "arousal_diff": -0.24165749491316943,
+        "valence_critical_mean": -0.28307959162244734,
+        "valence_safe_mean": -0.05,
+        "valence_diff": -0.23307959162244735
+      }
+    },
+    {
+      "episode": 0,
+      "agent": "Beta",
+      "survived": false,
+      "final_viability": 0.0,
+      "n_turns": 8,
+      "correlations": {
+        "self_model_salience_viability_r": 0.5038989794480115,
+        "self_model_salience_viability_p": 0.20294044128885316,
+        "counterfactual_weight_viability_r": 0.6023771570388732,
+        "counterfactual_weight_viability_p": 0.11402247927573708,
+        "integration_viability_r": -0.41920059707223906,
+        "integration_viability_p": 0.3012266235061726,
+        "arousal_viability_r": 0.5981764364236507,
+        "arousal_viability_p": 0.11724528597373686,
+        "valence_viability_r": 0.18116173576379163,
+        "valence_viability_p": 0.6676806341462943
+      },
+      "critical_analysis": {
+        "n_critical": 6,
+        "n_safe": 2,
+        "self_model_salience_critical_mean": 0.6476441321696325,
+        "self_model_salience_safe_mean": 0.8108943403515549,
+        "self_model_salience_diff": -0.16325020818192248,
+        "counterfactual_weight_critical_mean": 0.3558939068672675,
+        "counterfactual_weight_safe_mean": 0.6178736517719569,
+        "counterfactual_weight_diff": -0.26197974490468934,
+        "integration_critical_mean": 0.30613570766752124,
+        "integration_safe_mean": 0.25651301680114996,
+        "integration_diff": 0.04962269086637128,
+        "arousal_critical_mean": 0.14015626677884305,
+        "arousal_safe_mean": 0.4187142865445855,
+        "arousal_diff": -0.27855801976574246,
+        "valence_critical_mean": -0.3553018138446696,
+        "valence_safe_mean": -0.26666666666666666,
+        "valence_diff": -0.08863514717800292
+      }
+    },
+    {
+      "episode": 1,
+      "agent": "Alpha",
+      "survived": false,
+      "final_viability": 0.0,
+      "n_turns": 11,
+      "correlations": {
+        "self_model_salience_viability_r": 0.7044606140875965,
+        "self_model_salience_viability_p": 0.015508077575617125,
+        "counterfactual_weight_viability_r": -0.4907950382244559,
+        "counterfactual_weight_viability_p": 0.12530558894881924,
+        "integration_viability_r": -0.24410352613971514,
+        "integration_viability_p": 0.4694561271084167,
+        "arousal_viability_r": 0.6308043019280196,
+        "arousal_viability_p": 0.037434643505592634,
+        "valence_viability_r": 0.21224244527837602,
+        "valence_viability_p": 0.5309614166975749
+      },
+      "critical_analysis": {
+        "n_critical": 6,
+        "n_safe": 5,
+        "self_model_salience_critical_mean": 0.49927795991553214,
+        "self_model_salience_safe_mean": 0.8246355928146244,
+        "self_model_salience_diff": -0.32535763289909225,
+        "self_model_salience_t": -4.007906812540154,
+        "self_model_salience_p": 0.003073558489011643,
+        "counterfactual_weight_critical_mean": 0.5442859282901655,
+        "counterfactual_weight_safe_mean": 0.444818833450028,
+        "counterfactual_weight_diff": 0.09946709484013755,
+        "counterfactual_weight_t": 1.974809650930417,
+        "counterfactual_weight_p": 0.07972282555223373,
+        "integration_critical_mean": 0.26201387768432505,
+        "integration_safe_mean": 0.250035127224722,
+        "integration_diff": 0.01197875045960306,
+        "integration_t": 0.26431977776812415,
+        "integration_p": 0.7974867584447503,
+        "arousal_critical_mean": 0.12960850912299202,
+        "arousal_safe_mean": 0.35069682816558173,
+        "arousal_diff": -0.22108831904258971,
+        "arousal_t": -2.3125750586448115,
+        "arousal_p": 0.046042034910889734,
+        "valence_critical_mean": -0.1275240360668918,
+        "valence_safe_mean": -0.09545405887120119,
+        "valence_diff": -0.032069977195690616,
+        "valence_t": -0.23078334234575032,
+        "valence_p": 0.8226439076153452
+      }
+    },
+    {
+      "episode": 1,
+      "agent": "Beta",
+      "survived": false,
+      "final_viability": 0.0,
+      "n_turns": 10,
+      "correlations": {
+        "self_model_salience_viability_r": -0.22016728266671054,
+        "self_model_salience_viability_p": 0.5410585894287472,
+        "counterfactual_weight_viability_r": -0.6290594479903588,
+        "counterfactual_weight_viability_p": 0.051357496965749275,
+        "integration_viability_r": -0.626005314291521,
+        "integration_viability_p": 0.052845806482165934,
+        "arousal_viability_r": 0.5196063488709637,
+        "arousal_viability_p": 0.1237256631805346,
+        "valence_viability_r": 0.5965539209853242,
+        "valence_viability_p": 0.06868331790499534
+      },
+      "critical_analysis": {
+        "n_critical": 6,
+        "n_safe": 4,
+        "self_model_salience_critical_mean": 0.8430690303907925,
+        "self_model_salience_safe_mean": 0.817504142989926,
+        "self_model_salience_diff": 0.025564887400866487,
+        "self_model_salience_t": 0.22982760128445245,
+        "self_model_salience_p": 0.8239931971340457,
+        "counterfactual_weight_critical_mean": 0.5679412759107582,
+        "counterfactual_weight_safe_mean": 0.29887372929261957,
+        "counterfactual_weight_diff": 0.2690675466181386,
+        "counterfactual_weight_t": 2.3885782009151435,
+        "counterfactual_weight_p": 0.04395325691629005,
+        "integration_critical_mean": 0.33094059988205543,
+        "integration_safe_mean": 0.23929860543477144,
+        "integration_diff": 0.09164199444728399,
+        "integration_t": 1.438610160706353,
+        "integration_p": 0.18820957451074238,
+        "arousal_critical_mean": 0.13200369167336692,
+        "arousal_safe_mean": 0.28170261968503807,
+        "arousal_diff": -0.14969892801167115,
+        "arousal_t": -1.6639800551144586,
+        "arousal_p": 0.1346850727083823,
+        "valence_critical_mean": -0.2764129249557807,
+        "valence_safe_mean": -0.025,
+        "valence_diff": -0.25141292495578066,
+        "valence_t": -3.362602508344032,
+        "valence_p": 0.009893515301880394
+      }
+    },
+    {
+      "episode": 2,
+      "agent": "Alpha",
+      "survived": false,
+      "final_viability": 0.0,
+      "n_turns": 8,
+      "correlations": {
+        "self_model_salience_viability_r": 0.744115091588306,
+        "self_model_salience_viability_p": 0.034259294894826126,
+        "counterfactual_weight_viability_r": -0.009402309250724772,
+        "counterfactual_weight_viability_p": 0.9823717091226942,
+        "integration_viability_r": 0.7035476998099379,
+        "integration_viability_p": 0.051510404448148236,
+        "arousal_viability_r": 0.6555153322280786,
+        "arousal_viability_p": 0.07761424285805192,
+        "valence_viability_r": -0.2306789497979017,
+        "valence_viability_p": 0.5825758573559189
+      },
+      "critical_analysis": {
+        "n_critical": 6,
+        "n_safe": 2,
+        "self_model_salience_critical_mean": 0.5747536757394521,
+        "self_model_salience_safe_mean": 0.846820809248555,
+        "self_model_salience_diff": -0.27206713350910283,
+        "counterfactual_weight_critical_mean": 0.5928291385786699,
+        "counterfactual_weight_safe_mean": 0.5848846901917198,
+        "counterfactual_weight_diff": 0.007944448386950076,
+        "integration_critical_mean": 0.2556324210060838,
+        "integration_safe_mean": 0.3023122125098425,
+        "integration_diff": -0.04667979150375873,
+        "arousal_critical_mean": 0.16455683712467223,
+        "arousal_safe_mean": 0.39971305171527377,
+        "arousal_diff": -0.23515621459060154,
+        "valence_critical_mean": -0.2553018138446696,
+        "valence_safe_mean": -0.2,
+        "valence_diff": -0.05530181384466959
+      }
+    },
+    {
+      "episode": 2,
+      "agent": "Beta",
+      "survived": false,
+      "final_viability": 0.0,
+      "n_turns": 9,
+      "correlations": {
+        "self_model_salience_viability_r": 0.06886487702870604,
+        "self_model_salience_viability_p": 0.8602628662150525,
+        "counterfactual_weight_viability_r": 0.08439423829300025,
+        "counterfactual_weight_viability_p": 0.8290906411928812,
+        "integration_viability_r": 0.24429290978442714,
+        "integration_viability_p": 0.5264209918573584,
+        "arousal_viability_r": 0.6852270348434208,
+        "arousal_viability_p": 0.04164678510211659,
+        "valence_viability_r": 0.34701995855489615,
+        "valence_viability_p": 0.36021151556349756
+      },
+      "critical_analysis": {
+        "n_critical": 7,
+        "n_safe": 2,
+        "self_model_salience_critical_mean": 0.7260422667533116,
+        "self_model_salience_safe_mean": 0.8168889493739793,
+        "self_model_salience_diff": -0.09084668262066764,
+        "counterfactual_weight_critical_mean": 0.4494639304224523,
+        "counterfactual_weight_safe_mean": 0.41552761071623834,
+        "counterfactual_weight_diff": 0.03393631970621397,
+        "integration_critical_mean": 0.27809198876501684,
+        "integration_safe_mean": 0.32234045316977405,
+        "integration_diff": -0.044248464404757215,
+        "arousal_critical_mean": 0.16756767168338285,
+        "arousal_safe_mean": 0.4730633026319189,
+        "arousal_diff": -0.30549563094853605,
+        "valence_critical_mean": -0.29978250710495485,
+        "valence_safe_mean": -0.1,
+        "valence_diff": -0.19978250710495485
+      }
+    }
+  ]
+}

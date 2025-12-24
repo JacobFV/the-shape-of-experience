@@ -272,3 +272,43 @@ The shift from V2/V3 (output inference with arbitrary weights) to V4/V5/V6 (inte
 - Integration may require different architectures (sparse circuits)
 - Effective rank limited by SSM compression
 - Clear path forward: larger models, grokking studies, content valence layer
+
+---
+
+## V7/V8: Multi-Agent LLM with Recurrent Thought State
+
+### Architecture
+```
+{action, thought, message} = f_llm(obs, thought_prev, messages_received)
+```
+
+The thought text IS the observable hidden state—interpretable, analyzable.
+
+### Integration via Decomposition (V7)
+Novel operationalization of Φ:
+1. Decompose thought into atomic semantic parts via LLM
+2. Embed both original and concatenated parts
+3. Cosine distance = integration (meaning lost in decomposition)
+
+**Findings**: Range Φ ∈ [0.08, 0.68]. Highest for paradoxical self-reference ("What I cannot say is what I need to express"). Does not cleanly order a priori complexity categories—captures syntactic-semantic coupling rather than pure IIT-style integration.
+
+### V8 Comprehensive Study (n=54 datapoints, 3 episodes)
+
+**Hypothesis Testing:**
+
+| Hypothesis | Prediction | Observed | Result |
+|------------|------------|----------|--------|
+| H1: SM increases as viability ↓ | r < 0 | r = +0.28 | NOT SUPPORTED |
+| H2: CF increases as viability ↓ | r < 0 | r = -0.07 | NOT SUPPORTED |
+| H3: Φ increases as viability ↓ | r < 0 | r = -0.13 | NOT SUPPORTED |
+| H4: Arousal increases as viability ↓ | r < 0 | r = +0.58 | NOT SUPPORTED |
+| H5: Valence tracks viability | r > 0 | r = +0.32* | **SUPPORTED** |
+
+**Key Insight: LLM agents simplify under threat rather than intensify.**
+
+- High viability: More self-focus, higher arousal, varied thinking
+- Low viability: Less self-focus, lower arousal, action-oriented thoughts
+
+This is opposite to biological affect patterns where threat increases arousal and self-focus. LLM agents may lack the self-preservation drive that generates biological stress responses.
+
+**Implication for Theory:** The affect dimensions may require different thresholds/interpretations for LLM agents vs. biological systems. The *structure* of the affect space may be preserved while the *dynamics* differ.
