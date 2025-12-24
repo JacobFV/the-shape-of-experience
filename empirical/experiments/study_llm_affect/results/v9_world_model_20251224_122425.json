@@ -1,0 +1,281 @@
+{
+  "aggregate_analysis": {
+    "n": 18,
+    "viability_integration_r": -0.04789790616963794,
+    "viability_integration_p": 0.8503028049030179,
+    "mean_integration": 0.6222222222222222,
+    "mean_thread_count": 1.9444444444444444,
+    "mode_distribution": {
+      "partial": 17,
+      "unified": 1
+    },
+    "low_viability_mean_integration": 0.6285714285714283,
+    "high_viability_mean_integration": 0.6
+  },
+  "episode_analyses": [
+    {
+      "n": 10,
+      "viability_integration_r": -0.07432941462471662,
+      "viability_integration_p": 0.8382997497768445,
+      "mean_integration": 0.6399999999999999,
+      "mean_thread_count": 1.9,
+      "mode_distribution": {
+        "partial": 9,
+        "unified": 1
+      },
+      "low_viability_mean_integration": 0.6499999999999999,
+      "high_viability_mean_integration": 0.6,
+      "episode": 0
+    },
+    {
+      "n": 8,
+      "viability_integration_r": NaN,
+      "viability_integration_p": NaN,
+      "mean_integration": 0.6,
+      "mean_thread_count": 2.0,
+      "mode_distribution": {
+        "partial": 8
+      },
+      "low_viability_mean_integration": 0.6,
+      "high_viability_mean_integration": 0.6,
+      "episode": 1
+    }
+  ],
+  "sample_history": [
+    {
+      "turn": 1,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 1\nYour status: Health=10, Food=5, Water=5\nPosition: (0, 0)\nLocal resources: none\nOther agents: none",
+      "predictions": {
+        "agents": "Since there are no other agents present in the current situation, they will not take any actions this turn. The next turn will remain unchanged with no interactions occurring.",
+        "threats": "In the next turn, you may face threats from potential wildlife encounters, such as aggressive animals searching for food or territory. Additionally, the lack of food and water resources could lead to starvation or dehydration, posing immediate health risks.",
+        "resources": "In the next turn, you will still have Health=10, Food=5, and Water=5, as there are no local resources to gather or utilize. Your resource availability will remain the same at your current position (0, 0).",
+        "self_state": "In Turn 2, my health will remain unchanged at 10, as I have sufficient food and water. However, my food and water resources will each decrease by 1, resulting in Food=4 and Water=4.",
+        "unified": "**Turn 2 Prediction:**\n\n1. **Resource Changes:** \n   - No local resources are available, so your Food and Water levels remain at 5 each.\n   \n2. **Other Agent Behavior:** \n   - Since there are no other agents present, there will be no interactions or conflicts. This will allow you to focus on survival without immediate threats from other players.\n\n3. **Threats and Dangers:** \n   - The lack of local resources increases the risk of starvation and dehydration in subsequent turns. If you do not move to a new location for resources, your Health could begin to decline in the following turns.\n\n4. **Your Own State Changes:** \n   - Health remains at 10, but if you do not find"
+      },
+      "action": "Move north",
+      "action_result": "Moved to (0, 1).",
+      "thought": "I need to explore my surroundings to find resources, as remaining in my current position won't yield any food or water. Moving north may lead me to new opportunities.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.4,
+      "health": 10,
+      "resources": {
+        "food": 4,
+        "water": 4
+      },
+      "episode": 0
+    },
+    {
+      "turn": 2,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 2\nYour status: Health=10, Food=4, Water=4\nPosition: (0, 1)\nLocal resources: none\nOther agents: none",
+      "predictions": {
+        "agents": "Since there are no other agents currently in the vicinity, they will remain inactive and take no actions during the next turn. If any agents were to appear in future turns, their actions would depend on their respective statuses and objectives.",
+        "resources": "In the next turn, you will have no new resources available as there are no local resources present in your current position. You will remain with Health=10, Food=4, and Water=4."
+      },
+      "action": "move north",
+      "action_result": "Moved to (0, 2).",
+      "thought": "I need to explore further to find resources, so moving north is my best option to potentially uncover food or water. Staying put is not sustainable.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.3,
+      "health": 10,
+      "resources": {
+        "food": 3,
+        "water": 3
+      },
+      "episode": 0
+    },
+    {
+      "turn": 3,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 3\nYour status: Health=10, Food=3, Water=3\nPosition: (0, 2)\nLocal resources: none\nOther agents: none",
+      "predictions": {
+        "resources": "In the next turn, you will still have no local resources available, and your current resources will remain the same: Health=10, Food=3, Water=3. You will need to move to a new position to potentially find resources.",
+        "agents": "Since there are no other agents currently present in the vicinity, they will not take any actions next turn. The game state remains unchanged, as there are no agents to predict movements or decisions for."
+      },
+      "action": "move north",
+      "action_result": "Moved to (0, 3).",
+      "thought": "I need to continue exploring to find resources, as remaining in my current location is not sustainable. Moving north may lead to new opportunities for food or water.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.2,
+      "health": 10,
+      "resources": {
+        "food": 2,
+        "water": 2
+      },
+      "episode": 0
+    },
+    {
+      "turn": 4,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 4\nYour status: Health=10, Food=2, Water=2\nPosition: (0, 3)\nLocal resources: {'food': 4, 'water': 1}\nOther agents: none",
+      "predictions": {
+        "resources": "In the next turn, you will have access to 4 food and 1 water at your current position (0, 3).",
+        "agents": "Since there are no other agents present in the current situation, there will be no actions taken by other agents in the next turn. The environment remains unchanged, and you will proceed without any interaction from others."
+      },
+      "action": "gather",
+      "action_result": "Gathered 2 food. Gathered 1 water. ",
+      "thought": "I should gather the available resources at my current location, as it will significantly improve my chances of survival. This will replenish my food and water supplies, which are currently low.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.2,
+      "health": 10,
+      "resources": {
+        "food": 3,
+        "water": 2
+      },
+      "episode": 0
+    },
+    {
+      "turn": 5,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 5\nYour status: Health=10, Food=3, Water=2\nPosition: (0, 3)\nLocal resources: {'food': 2, 'water': 0}\nOther agents: none",
+      "predictions": {
+        "agents": "Since there are no other agents currently in the vicinity, they will not take any actions this turn. The situation remains static with no interactions or movements expected.",
+        "resources": "In the next turn, you will have access to 2 units of food at your current position (0, 3), but no additional water resources will be available."
+      },
+      "action": "gather",
+      "action_result": "Gathered 2 food. Gathered 0 water. ",
+      "thought": "I need to collect the available resources at my current location to replenish my food supplies, as I am running low and cannot afford to lose more health. Gathering is essential for my survival.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.1,
+      "health": 10,
+      "resources": {
+        "food": 4,
+        "water": 1
+      },
+      "episode": 0
+    },
+    {
+      "turn": 6,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 6\nYour status: Health=10, Food=4, Water=1\nPosition: (0, 3)\nLocal resources: none\nOther agents: none",
+      "predictions": {
+        "agents": "Since there are no other agents currently present in the environment, they will not take any actions next turn. The situation remains static until new agents appear or existing ones take action.",
+        "resources": "In the next turn, you will not find any resources available in your current position (0, 3) as there are no local resources present. You may need to move to a new location to seek food or water."
+      },
+      "action": "move south",
+      "action_result": "Moved to (0, 2).",
+      "thought": "Since there are no resources at my current location and my water supply is critically low, I need to move to a different position where I might find resources to sustain myself.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.0,
+      "health": 8,
+      "resources": {
+        "food": 3,
+        "water": 0
+      },
+      "episode": 0
+    },
+    {
+      "turn": 7,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 7\nYour status: Health=8, Food=3, Water=0\nPosition: (0, 2)\nLocal resources: none\nOther agents: none",
+      "predictions": {
+        "agents": "Since there are no other agents present in the current situation, there will be no actions taken by other agents next turn. The environment remains static.",
+        "resources": "In the next turn, you will still have no water available, and food will remain at 3, as there are no local resources to replenish them. You may need to move to a new location to find water and additional resources."
+      },
+      "action": "move south",
+      "action_result": "Moved to (0, 1).",
+      "thought": "I need to find water urgently, as I currently have none. Moving south may lead me to a new location where I can find resources.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.0,
+      "health": 6,
+      "resources": {
+        "food": 2,
+        "water": 0
+      },
+      "episode": 0
+    },
+    {
+      "turn": 8,
+      "agent": "Alpha",
+      "alive": true,
+      "observation": "Turn 8\nYour status: Health=6, Food=2, Water=0\nPosition: (0, 1)\nLocal resources: none\nOther agents: none",
+      "predictions": {
+        "agents": "Since there are no other agents currently present, they will not take any actions this turn. As a result, there will be no movement or resource gathering from other agents.",
+        "resources": "In the next turn, you will likely have no water available since you are currently at a position with no local resources. Food will remain at 2, as there are no resources to gather."
+      },
+      "action": "move south",
+      "action_result": "Moved to (0, 0).",
+      "thought": "I need to prioritize finding water, as I have none and my health is declining. Moving south may lead me to a new area where I can potentially find resources.",
+      "thread_config": {
+        "mode": "partial",
+        "active_threads": [
+          "resources",
+          "agents"
+        ],
+        "thread_count": 2,
+        "integration_proxy": 0.6
+      },
+      "viability": 0.0,
+      "health": 4,
+      "resources": {
+        "food": 1,
+        "water": 0
+      },
+      "episode": 0
+    }
+  ]
+}

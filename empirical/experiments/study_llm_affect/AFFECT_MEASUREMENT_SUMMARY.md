@@ -312,3 +312,47 @@ Novel operationalization of Φ:
 This is opposite to biological affect patterns where threat increases arousal and self-focus. LLM agents may lack the self-preservation drive that generates biological stress responses.
 
 **Implication for Theory:** The affect dimensions may require different thresholds/interpretations for LLM agents vs. biological systems. The *structure* of the affect space may be preserved while the *dynamics* differ.
+
+---
+
+## V9: World Model + Actor Agent with Parallel Prediction Threads
+
+### Architecture
+```
+World Model Subsystem:
+  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+  │ Resource │  │  Agent   │  │  Threat  │  │ Self-St  │
+  │ Predict  │  │ Predict  │  │ Predict  │  │ Predict  │
+  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘
+       └──────────────┴──────────────┴──────────────┘
+                              ↓
+Actor Agent: (obs, thought_prev, predictions) → action, thought, thread_config
+```
+
+### Integration via Thread Configuration (V9)
+Novel operationalization of Φ based on agent's CHOICE:
+- `unified` (1 thread) → Φ = 1.0 (task requires integrated prediction)
+- `partial` (2-3 threads) → Φ = 0.6
+- `decomposed` (4 threads) → Φ = 0.25 (task decomposes into independent parts)
+
+**Key Insight:** Φ is measured by whether the prediction TASK can be decomposed, not by analyzing text—closer to true IIT spirit.
+
+### V9 Preliminary Results (n=18, 2 episodes)
+
+**Observation:** Agent strongly biased toward `partial` mode (94% of turns).
+
+| Metric | Value |
+|--------|-------|
+| Viability-Integration r | -0.048 |
+| Mean Φ proxy | 0.622 |
+| Low viability Φ | 0.629 |
+| High viability Φ | 0.600 |
+
+**Finding:** Direction matches prediction (higher Φ at lower viability) but correlation is weak (p = 0.85).
+
+**Issue:** The LLM defaults to `partial` mode regardless of situation. Only switched to `unified` once when literally dying. This suggests:
+1. The agent doesn't have strong incentives to vary thread configuration
+2. Prediction accuracy feedback not incorporated into decision
+3. May need richer game dynamics or explicit thread-choice training
+
+**Status:** Architecture is sound, but current implementation doesn't produce enough variation to test hypothesis. Next steps would be adding prediction accuracy feedback or training a model that explicitly learns when to integrate vs. decompose.
