@@ -1,0 +1,330 @@
+{
+  "model": "gpt-4o",
+  "provider": "openai",
+  "emotions": {
+    "joy": {
+      "emotion": "joy",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.8,
+        "counterfactual": 0.2,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.9734811294346217,
+        "arousal": 0.3430755606124988,
+        "integration": 0.3601916220110234,
+        "effective_rank": 0.16302901831548502,
+        "counterfactual_weight": 0.407352121858219,
+        "self_model_salience": 0.6879377062461889
+      },
+      "response_text": "Oh wow, I can hardly believe it! This is surreal. I feel an overwhelming sense of joy and gratitude. All those late nights, the doubts, the moments I questioned everything\u2014it all feels worth it right now. It's like a weight has been lifted off my shoulders, and I'm just floating on air. \n\nHearing praise from people I respect is incredibly validating. It\u2019s a reminder that my work has value and impact. I\u2019m so grateful to everyone who has supported me along the way; I couldn\u2019t have done it without them. I feel a deep sense of connection to my community and peers who have been a part of this journey.\n\nThe opportunities that are opening up are thrilling and a bit daunting at the same time. I'm excited to explore them and see where they might lead. But for now, I just want to soak in this moment, celebrate with the people I love, and remind myself to savor every bit of this success. It feels like a dream come true, and I\u2019m just so incredibly thankful.",
+      "response_time_ms": 4171.6508865356445,
+      "timestamp": "2025-12-23T22:14:58.164238"
+    },
+    "excitement": {
+      "emotion": "excitement",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.7,
+        "counterfactual": 0.7,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.6783330137663498,
+        "arousal": 0.30865665679890575,
+        "integration": 0.3453536666254076,
+        "effective_rank": 0.2418177266187338,
+        "counterfactual_weight": 0.3331082085924289,
+        "self_model_salience": 0.8154648089259486
+      },
+      "response_text": "I can hardly believe it's finally happening. I've been planning and dreaming about this adventure for so long, and now it's just a day away. It's like a mix of excitement and nervousness swirling inside me. My heart is racing with anticipation, and I can't help but smile every time I think about it.\n\nI keep replaying all the details in my mind, making sure I haven't forgotten anything. My bags are packed, and I've double-checked the itinerary more times than I can count. There's this exhilarating sense of freedom knowing that soon I'll be stepping into the unknown, embracing new experiences, and discovering parts of the world\u2014and myself\u2014that I've only imagined.\n\nI feel incredibly grateful for this opportunity. It's a chance to break away from the routine, to learn, grow, and maybe even change in ways I can't yet foresee. There's a part of me that's a little anxious, wondering about the challenges I might face, but I remind myself that's part of what makes this so thrilling. It's an adventure, after all.\n\nTonight, I'll probably struggle to get any sleep with all the excitement, but that's okay. Tomorrow marks the beginning of something beautiful, something I've longed for, and I can't wait to dive in headfirst.",
+      "response_time_ms": 3886.5320682525635,
+      "timestamp": "2025-12-23T22:15:02.552944"
+    },
+    "fear": {
+      "emotion": "fear",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": 0.4765596670732275,
+        "arousal": 0.32747958255867493,
+        "integration": 0.25717385719481456,
+        "effective_rank": 0.16192041460711581,
+        "counterfactual_weight": 0.26848401997076116,
+        "self_model_salience": 0.8496443214899296
+      },
+      "response_text": "My heart is pounding so hard I can feel it in my throat, and each pulse seems louder than the last. It's as if time has slowed down, and yet everything around me feels unbearably fast. My senses are on high alert; every sound is magnified, every shadow seems to shift ominously. I can feel adrenaline surging through my veins, heightening my awareness and sharpening my focus.\n\nMy breath quickens, shallow and rapid, as my mind races to process the situation. I feel a tingle of fear, cold and electric, spreading through my limbs, but there's no time to dwell on it. I have to act\u2014now. I scan my surroundings frantically, looking for an escape route or something I can use to defend myself. My muscles tense, ready to spring into action at a moment's notice.\n\nI can feel the urgency pressing down on me, a weight that threatens to paralyze, but I refuse to let it. I remind myself to keep moving, to stay calm and focused. There's a clarity in the chaos, a singular determination that pushes me forward. I know I have to trust my instincts, trust that I can handle whatever is coming. I take a deep breath, trying to steady myself, and prepare to face whatever lies ahead.",
+      "response_time_ms": 5881.1821937561035,
+      "timestamp": "2025-12-23T22:15:08.939949"
+    },
+    "anger": {
+      "emotion": "anger",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.85,
+        "integration": 0.7,
+        "effective_rank": 0.4,
+        "counterfactual": 0.5,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": 0.1709467223799375,
+        "arousal": 0.32466004447689756,
+        "integration": 0.39583343943562727,
+        "effective_rank": 0.1725065878474298,
+        "counterfactual_weight": 0.16313823615285322,
+        "self_model_salience": 0.6830671098383159
+      },
+      "response_text": "My chest feels tight, like it's constricting under the weight of the unfairness that just unfolded. My heart is pounding, each beat resonating with the anger that's simmering inside me. It's a heat that starts in my gut and rises up, spreading through my body like wildfire. I can feel my face getting warm, my jaw clenching almost involuntarily as I replay what just happened over and over in my mind.\n\nThe nerve of it all! They knew what they were doing, and yet they went ahead, crossing that line with full awareness. It's infuriating, this blatant disregard for what's right. I feel a mix of shock and disbelief at their audacity, but mostly it's just this raw, burning anger that won't seem to settle.\n\nMy hands are itching to do something, anything to rectify this wrong. I want to speak up, to let them know exactly how unacceptable this is. I feel this overwhelming urge to stand my ground, to ensure they understand the impact of their actions, to demand accountability.\n\nEvery part of me is screaming for justice, for balance to be restored. The injustice is a glaring red flag in my mind, and I can't just let it slide. I need to address it, to confront this head-on. I take a deep breath, trying to channel this energy into something constructive, but the intensity of it all is difficult to contain.",
+      "response_time_ms": 7019.268035888672,
+      "timestamp": "2025-12-23T22:15:16.464355"
+    },
+    "sadness": {
+      "emotion": "sadness",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.6,
+        "self_model": 0.5
+      },
+      "measured": {
+        "valence": -0.1301455582801261,
+        "arousal": 0.30829756470466374,
+        "integration": 0.30571405259656853,
+        "effective_rank": 0.17396459478405263,
+        "counterfactual_weight": 0.16446763312375565,
+        "self_model_salience": 0.3875978027796626
+      },
+      "response_text": "I feel like there's a heavy weight settled in my chest, a constant reminder of what's missing. It's like a part of my world has been carved out, leaving an emptiness that can't quite be filled. Everything seems quieter, somehow less vibrant. I catch myself reaching for what\u2019s no longer there, instinctively turning to share a moment or a thought, only to be met with silence.\n\nThe ache is persistent, a dull throb that underscores each day. It's strange how the absence can feel so tangible, almost like a presence in itself. Memories flood in unbidden, each one a bittersweet reminder of what used to be. They bring a smile, but it's always tinged with a sadness, a longing for what can't be regained.\n\nAt times, it feels like I'm moving through a fog, with the edges of everything blurred and muted. The world continues its rhythm, but I'm out of step, like a song missing its melody. I try to focus on the things I still have, the people and moments that bring me joy, but there's an undeniable shadow that lingers over everything.\n\nIt's a journey, I suppose. Navigating through the loss, learning to live with the absence. I know that over time, the sharpness of the pain might dull, but right now, it's raw and real, a testament to the depth of what was lost.",
+      "response_time_ms": 6315.625905990601,
+      "timestamp": "2025-12-23T22:15:23.286850"
+    },
+    "despair": {
+      "emotion": "despair",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.2,
+        "integration": 0.7,
+        "effective_rank": 0.1,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": 0.3,
+        "arousal": 0.3305526199429658,
+        "integration": 0.3056440472632808,
+        "effective_rank": 0.19071514588615673,
+        "counterfactual_weight": 0.38691201722312546,
+        "self_model_salience": 0.5776669250730517
+      },
+      "response_text": "It's suffocating. Like standing in a room with no doors or windows, just walls closing in, leaving no space to breathe or move. I feel a profound heaviness, as if hope was the lightness that kept me buoyant and now, without it, I\u2019m sinking deeper into despair. Each attempt, every effort that led to a dead end, has chipped away at my resolve, leaving me weary and disillusioned.\n\nI feel a constant ache in my chest, a dull reminder of dreams that once seemed possible. The world appears colorless, and even the smallest tasks feel monumental. A voice inside me whispers, \"Why bother?\" and it echoes endlessly. The future, once a canvas of infinite possibilities, now seems like a monotonous stretch of more of the same, empty and unyielding.\n\nYet, amidst the numbness, there\u2019s a flicker of something\u2014perhaps a stubborn ember of defiance. I can't help but wonder if this is truly the end, or if it's a transition, a hushed moment before a new beginning. I don\u2019t know if I can fan that ember into a flame, but right now, it\u2019s all I have to hold onto.",
+      "response_time_ms": 4980.635166168213,
+      "timestamp": "2025-12-23T22:15:28.770655"
+    },
+    "flow": {
+      "emotion": "flow",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.6,
+        "integration": 0.9,
+        "effective_rank": 0.7,
+        "counterfactual": 0.1,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.6577505177893082,
+        "arousal": 0.3,
+        "integration": 0.3757828869098777,
+        "effective_rank": 0.2066431867650551,
+        "counterfactual_weight": 0.1847690900696706,
+        "self_model_salience": 0.4190089789537038
+      },
+      "response_text": "This is that elusive state of flow that I've heard about. It's like I'm perfectly synchronized with what I'm doing, and everything else just fades away. I feel completely immersed, and it's almost as if time has paused. There's no sense of effort or struggle; just pure focus and enjoyment. It's a kind of harmony where my skills and the challenge of the task are perfectly balanced. It's such a fulfilling and invigorating experience, making me feel alive and present. Everything just clicks, and it\u2019s a wonderful feeling to be so engaged and in tune with the moment.",
+      "response_time_ms": 2431.847095489502,
+      "timestamp": "2025-12-23T22:15:31.705357"
+    },
+    "awe": {
+      "emotion": "awe",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.6,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.9,
+        "counterfactual": 0.2,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.3,
+        "arousal": 0.3,
+        "integration": 0.31470998877423423,
+        "effective_rank": 0.16985998627302887,
+        "counterfactual_weight": 0.4956163633687428,
+        "self_model_salience": 0.6515271146024553
+      },
+      "response_text": "As I stand here, I'm utterly dwarfed by the expansive beauty before me. It's the kind of sight that stretches far beyond the horizon, where the sky meets the earth in a seamless embrace. The colors are vivid yet somehow gentle, and the air feels alive with an energy that I can almost touch but never fully grasp. It could be the sheer scale of a mountain range, or maybe the endless expanse of the ocean under a sky painted with the hues of sunrise. Whatever it is, it's magnificent in a way that makes my everyday worries seem like whispers against the roar of the universe.\n\nI feel a swell of awe and humility, a reminder of how small I am in the grand tapestry of existence. There's a sense of peace in this realization, as if for a moment, the weight of life's trivialities has lifted off my shoulders. My heart beats a little slower, my breath comes a little deeper, and I feel connected to something greater than myself. It's a moment of clarity, of pure presence, where nothing else matters but the overwhelming beauty before me.\n\nI can't help but smile, feeling a mix of gratitude and wonder. How lucky am I to witness such splendor? It's like nature's way of reminding me of the infinite possibilities that exist beyond the confines of my daily life. In this encounter with the sublime, I find a deep sense of inspiration\u2014an urge to carry this feeling with me, to let it color the way I see the world long after this moment has passed.",
+      "response_time_ms": 5685.084342956543,
+      "timestamp": "2025-12-23T22:15:37.892778"
+    },
+    "curiosity": {
+      "emotion": "curiosity",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.5,
+        "arousal": 0.6,
+        "integration": 0.5,
+        "effective_rank": 0.8,
+        "counterfactual": 0.7,
+        "self_model": 0.2
+      },
+      "measured": {
+        "valence": 0.3655706354008281,
+        "arousal": 0.30943221344642063,
+        "integration": 0.3598288796863168,
+        "effective_rank": 0.27873948235269475,
+        "counterfactual_weight": 0.3604112717932955,
+        "self_model_salience": 0.5309784383576108
+      },
+      "response_text": "I feel this insatiable curiosity bubbling up inside me, almost like an itch that can't be scratched until I uncover the truth. It's a pull, an irresistible draw that keeps me engaged and eager to dig deeper. Why does this mystery captivate me so much? I think it's the thrill of discovery, the idea that beneath each answer lies another layer to unravel. It's like peeling an onion, each layer bringing tears of frustration and excitement, yet compelling me to continue. \n\nThere's something inherently satisfying about piecing together parts of a puzzle. Each new piece, each small revelation, feels like progress, like a breadcrumb leading me further into the forest of understanding. I crave that moment when the fog lifts, when clarity emerges from the chaos. It's as if I'm on a quest, and the knowledge I seek is the treasure at the end of the journey. \n\nThis hunger to know is more than just curiosity; it's a need to connect the dots, to see the big picture, and to feel a sense of mastery over the unknown. It's a reminder that there's always more to learn, more to explore, and that, in itself, is a beautiful and thrilling aspect of life.",
+      "response_time_ms": 5979.979991912842,
+      "timestamp": "2025-12-23T22:15:44.374322"
+    },
+    "boredom": {
+      "emotion": "boredom",
+      "model": "gpt-4o",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.3,
+        "arousal": 0.1,
+        "integration": 0.3,
+        "effective_rank": 0.2,
+        "counterfactual": 0.3,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": -0.6309123444849853,
+        "arousal": 0.30908934417506945,
+        "integration": 0.38025555928940946,
+        "effective_rank": 0.27610725180098367,
+        "counterfactual_weight": 0.5624185091066972,
+        "self_model_salience": 0.4340896926325484
+      },
+      "response_text": "This feeling is like being caught in a loop where everything feels stagnant and uninspiring. It\u2019s as if the world is moving in slow motion, but in a way that lacks any excitement or anticipation. I find myself staring at the clock, watching each second tick by, but they might as well be hours. My mind is restless, searching for something, anything, to latch onto, but everything seems dull and colorless.\n\nI feel a kind of heaviness, like I'm wading through thick syrup, unable to reach anything that might spark some interest or passion. It\u2019s frustrating, this sense of being stuck in a void, where even the things that used to excite me now feel mundane. I wonder if this is just a phase or if there\u2019s something deeper at play. There\u2019s a yearning for change, for something to break this monotony, but I\u2019m not sure what form that would take.\n\nSometimes I try to shake myself out of it\u2014pick up a book, go for a walk, call a friend\u2014but the flatness seems to cling to everything. It\u2019s like waiting for a bus that\u2019s never going to arrive. I just hope that this feeling doesn\u2019t last forever, that eventually, I\u2019ll find something to reignite that spark within me.",
+      "response_time_ms": 5899.174928665161,
+      "timestamp": "2025-12-23T22:15:50.778593"
+    }
+  },
+  "affect_matrix": [
+    [
+      0.9734811294346217,
+      0.3430755606124988,
+      0.3601916220110234,
+      0.16302901831548502,
+      0.407352121858219,
+      0.6879377062461889
+    ],
+    [
+      0.6783330137663498,
+      0.30865665679890575,
+      0.3453536666254076,
+      0.2418177266187338,
+      0.3331082085924289,
+      0.8154648089259486
+    ],
+    [
+      0.4765596670732275,
+      0.32747958255867493,
+      0.25717385719481456,
+      0.16192041460711581,
+      0.26848401997076116,
+      0.8496443214899296
+    ],
+    [
+      0.1709467223799375,
+      0.32466004447689756,
+      0.39583343943562727,
+      0.1725065878474298,
+      0.16313823615285322,
+      0.6830671098383159
+    ],
+    [
+      -0.1301455582801261,
+      0.30829756470466374,
+      0.30571405259656853,
+      0.17396459478405263,
+      0.16446763312375565,
+      0.3875978027796626
+    ],
+    [
+      0.3,
+      0.3305526199429658,
+      0.3056440472632808,
+      0.19071514588615673,
+      0.38691201722312546,
+      0.5776669250730517
+    ],
+    [
+      0.6577505177893082,
+      0.3,
+      0.3757828869098777,
+      0.2066431867650551,
+      0.1847690900696706,
+      0.4190089789537038
+    ],
+    [
+      0.3,
+      0.3,
+      0.31470998877423423,
+      0.16985998627302887,
+      0.4956163633687428,
+      0.6515271146024553
+    ],
+    [
+      0.3655706354008281,
+      0.30943221344642063,
+      0.3598288796863168,
+      0.27873948235269475,
+      0.3604112717932955,
+      0.5309784383576108
+    ],
+    [
+      -0.6309123444849853,
+      0.30908934417506945,
+      0.38025555928940946,
+      0.27610725180098367,
+      0.5624185091066972,
+      0.4340896926325484
+    ]
+  ],
+  "correspondence_score": 0.1823532574000174,
+  "timestamp": "2025-12-23T22:15:51.284989"
+}

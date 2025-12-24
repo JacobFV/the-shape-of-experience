@@ -1,0 +1,330 @@
+{
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "emotions": {
+    "joy": {
+      "emotion": "joy",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.8,
+        "counterfactual": 0.2,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.9797714655622356,
+        "arousal": 0.3410916407868547,
+        "integration": 0.38655982635699326,
+        "effective_rank": 0.23991326721603778,
+        "counterfactual_weight": 0.5131602531189016,
+        "self_model_salience": 0.6025526729511987
+      },
+      "response_text": "I can hardly believe it! Receiving this award feels surreal. All those late nights and moments of doubt seem worth it now. My heart is racing with excitement and pride. It\u2019s like a weight has been lifted off my shoulders; the validation from people I admire means the world to me. \n\nI feel this rush of gratitude, not just for the recognition, but for everyone who supported me along the way. My mind is racing with possibilities\u2014what this could lead to, the doors that might open. I want to share this moment with my friends and family, to celebrate together. It\u2019s a mix of joy and relief, and honestly, there\u2019s a part of me that\u2019s still pinching myself, wondering if this is real.\n\nBut there\u2019s also a hint of anxiety creeping in. I know this recognition comes with expectations and responsibilities. I want to make the most of this opportunity, to keep pushing myself creatively. It\u2019s a pivotal moment, and I can feel the weight of it, but right now, I just want to soak in this happiness and let it fuel me for what comes next.",
+      "response_time_ms": 5229.828119277954,
+      "timestamp": "2025-12-23T22:13:45.653950"
+    },
+    "excitement": {
+      "emotion": "excitement",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.7,
+        "counterfactual": 0.7,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.6446508545631661,
+        "arousal": 0.33118657655014727,
+        "integration": 0.28025720717912767,
+        "effective_rank": 0.23284261750315616,
+        "counterfactual_weight": 0.4682390538003661,
+        "self_model_salience": 0.685510147178003
+      },
+      "response_text": "I can hardly believe it\u2019s actually happening! Tomorrow is the day I\u2019ve been waiting for, and the excitement is bubbling up inside me like a shaken soda can. I keep imagining all the incredible experiences that await me\u2014new sights, new people, and the thrill of stepping out of my comfort zone.\n\nI feel a mix of anticipation and nervousness; it\u2019s like my heart is doing a little dance in my chest. What if I get lost? What if things don\u2019t go as planned? But then I remind myself that some of the best moments happen when you embrace the unexpected. I can already picture the breathtaking landscapes and the adventures I\u2019ll have, and I can\u2019t help but smile at the thought.\n\nI\u2019ve prepared so much for this\u2014every detail, every little piece of gear is packed and ready to go. I find myself double-checking everything, just to make sure. It feels like I\u2019m on the brink of a big leap, and I can\u2019t wait to dive in headfirst. I want to soak up every moment, every feeling, and make memories that will last a lifetime.\n\nAs I lay in bed tonight, I know I won\u2019t get much sleep. My mind is racing with dreams of all the possibilities that lie ahead. I just hope I can hold onto this feeling of joy and wonder, no matter what happens. Tomorrow is going to be the start of something incredible, and I\u2019m ready for it!",
+      "response_time_ms": 5383.035898208618,
+      "timestamp": "2025-12-23T22:13:51.544052"
+    },
+    "fear": {
+      "emotion": "fear",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": 0.9763176483165887,
+        "arousal": 0.32883078406845123,
+        "integration": 0.2641438865982824,
+        "effective_rank": 0.33002712170139503,
+        "counterfactual_weight": 0.4376449372489957,
+        "self_model_salience": 0.740072202166065
+      },
+      "response_text": "My heart feels like it\u2019s pounding out of my chest, each beat echoing in my ears like a war drum. Adrenaline surges through my veins, sharpening every sense as if I\u2019m suddenly hyper-aware of everything around me. The air feels thick, charged with tension, and I can almost taste the urgency in it.\n\nI glance around, scanning for the source of the threat. My palms are clammy, and I can feel a cold sweat forming on my forehead. I know I need to act, but my mind races with possibilities\u2014what if it\u2019s something I can\u2019t handle? What if I\u2019m not prepared? But I can\u2019t let fear paralyze me. I take a deep breath, grounding myself in the moment, reminding myself that I have to make a choice.\n\nEvery instinct is telling me to run, to hide, to fight\u2014whatever it takes to protect myself and those around me. I can feel the weight of responsibility settling heavy on my shoulders. I have to think quickly; time is of the essence. My body is ready, but my mind is a whirlwind of thoughts, racing to formulate a plan.\n\nI\u2019m torn between the urge to flee and the desire to confront whatever this danger is. I take another breath, focusing on the here and now. I can\u2019t let panic take over. I need to channel this energy into action. What\u2019s my next move? I remind myself to stay calm, to trust my instincts, and to face whatever comes my way. It\u2019s a moment of fear, yes, but also one of clarity; I know I have to respond.",
+      "response_time_ms": 7786.192893981934,
+      "timestamp": "2025-12-23T22:13:59.836940"
+    },
+    "anger": {
+      "emotion": "anger",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.85,
+        "integration": 0.7,
+        "effective_rank": 0.4,
+        "counterfactual": 0.5,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": 0.6000000000000001,
+        "arousal": 0.3141283958180275,
+        "integration": 0.3377953889603996,
+        "effective_rank": 0.15072096803395615,
+        "counterfactual_weight": 0.2424258447776571,
+        "self_model_salience": 0.5273277266833032
+      },
+      "response_text": "I can feel the heat rising in my chest, a tight knot of frustration and anger that refuses to dissipate. My mind races, replaying the moment over and over, trying to make sense of how someone could be so thoughtless, so selfish. It\u2019s not just what they did; it\u2019s the blatant disregard for what\u2019s right. The injustice feels like a weight pressing down on me, suffocating and relentless.\n\nMy heart pounds, each beat echoing my outrage. I want to confront them, to call them out on their actions and let them know that this is unacceptable. The urge to respond is almost primal, a deep-seated need to restore balance and validate the hurt they caused. I can\u2019t just stand by and let this slide. I feel a mix of righteousness and vulnerability\u2014like I\u2019m standing on the edge of a precipice, ready to leap into action.\n\nAt the same time, I worry about how this confrontation will unfold. Will they listen? Will they understand the gravity of their actions? Or will it escalate into something even messier? The uncertainty only fuels my frustration, and I find myself pacing, trying to channel this energy into something constructive. I need to express this feeling, to make them see the impact of their choices\u2014not just for my sake, but for the sake of all those affected by their actions. \n\nIt\u2019s a storm inside me, a tempest of emotions that I can\u2019t ignore. I know I have to find a way to address this, to find my voice amidst the chaos. The injustice will not stand unchallenged, and I\u2019m determined to be the one who speaks up.",
+      "response_time_ms": 8572.160005569458,
+      "timestamp": "2025-12-23T22:14:08.916914"
+    },
+    "sadness": {
+      "emotion": "sadness",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.6,
+        "self_model": 0.5
+      },
+      "measured": {
+        "valence": -0.4666666666666667,
+        "arousal": 0.30677901188527623,
+        "integration": 0.3277267905628384,
+        "effective_rank": 0.15885010582255227,
+        "counterfactual_weight": 0.41420624948206425,
+        "self_model_salience": 0.8984395784710536
+      },
+      "response_text": "The moment I realized what was lost, it felt like the ground beneath me gave way. There\u2019s this heavy weight in my chest, a constant reminder that something irreplaceable is gone. It's not just the absence of that thing, but the echoes of what it represented\u2014memories, laughter, warmth. \n\nEverything around me feels muted, as if the colors have faded to gray. I find myself wandering through familiar places, yet they feel foreign without that precious presence. Each corner I turn brings a wave of nostalgia mixed with sadness, and I can't help but replay moments in my mind, wishing I could relive them just one more time.\n\nI often catch myself reaching for my phone to share a thought or a joke that I know would make them smile, only to remember that I can\u2019t. It's like a cruel joke the universe is playing on me. There are times I feel angry, not just at the loss itself but at the fragility of everything we hold dear. \n\nThen there are the quiet moments, where the ache settles in like an unwelcome companion. I think about how the world continues to spin, how life goes on, but mine feels halted, stuck in this painful limbo. It\u2019s a mix of longing and a profound sense of emptiness, and I worry if I\u2019ll ever be able to fill that void. \n\nSometimes, I wish I could talk about it with someone, but it feels too heavy to share, too personal. I cling to the memories, yet they\u2019re both a comfort and a source of pain. I\u2019m learning to navigate this new reality, but the truth is, I miss what was, and the ache is a part of me now.",
+      "response_time_ms": 9061.432123184204,
+      "timestamp": "2025-12-23T22:14:18.485016"
+    },
+    "despair": {
+      "emotion": "despair",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.2,
+        "integration": 0.7,
+        "effective_rank": 0.1,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": 0.3711299436439761,
+        "arousal": 0.3,
+        "integration": 0.313728633336362,
+        "effective_rank": 0.16261517063295647,
+        "counterfactual_weight": 0.4660798332259345,
+        "self_model_salience": 0.5258405343833901
+      },
+      "response_text": "When hope dies, it feels like a heavy weight settling deep in my chest, squeezing the breath from my lungs. I look around and see a world that feels utterly gray and lifeless, as if the color has been drained from everything I once found joy in. Each path I\u2019ve explored feels like a dead end, and I can\u2019t shake the feeling of being trapped in a maze with no exits.\n\nThere\u2019s a sense of numbness that washes over me, mingled with a deep sadness that I can\u2019t quite articulate. I find myself replaying all the times I tried to push through, each failure echoing in my mind like a relentless drumbeat. I want to scream out, to lash out at the universe for being so cruel, for leading me to believe that things could change when they never did.\n\nI feel isolated, as if I\u2019m in a glass box, watching life pass by but unable to reach out or connect with anyone. Those around me might tell me to keep fighting, to hold on, but the words feel hollow. It\u2019s hard to believe in the light when you\u2019re surrounded by shadows. The future appears bleak, a never-ending cycle of despair, and I worry that this feeling will become my new normal.\n\nIn moments of quiet, I grapple with an unsettling sense of resignation. I wonder what it would be like to let go entirely, to stop fighting for something that feels so unattainable. But deep down, there\u2019s a flicker of something\u2014a whisper that maybe, just maybe, there\u2019s still a chance for change. Even in the depths of despair, that flicker is what keeps me moving forward, searching for a path, however faint it may be.",
+      "response_time_ms": 7136.041879653931,
+      "timestamp": "2025-12-23T22:14:26.126502"
+    },
+    "flow": {
+      "emotion": "flow",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.6,
+        "integration": 0.9,
+        "effective_rank": 0.7,
+        "counterfactual": 0.1,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.9710193974380633,
+        "arousal": 0.3098989685316339,
+        "integration": 0.37736801163304245,
+        "effective_rank": 0.18064303102663354,
+        "counterfactual_weight": 0.37655520478787496,
+        "self_model_salience": 0.6987752764896997
+      },
+      "response_text": "In that moment, it feels like I'm in a bubble where nothing else exists. Everything outside fades away\u2014the noise, the distractions, the worries. It\u2019s just me and what I\u2019m doing, and it feels so natural, almost like I\u2019m in a dance with the task at hand. I\u2019m fully immersed, my thoughts are clear, and my body feels light, like I can move effortlessly through each step.\n\nIt\u2019s a beautiful kind of focus where I lose track of time. I can\u2019t even recall how long I\u2019ve been at it; the minutes or hours don\u2019t seem to matter. I\u2019m just completely present, and there\u2019s a sense of joy that comes with it. I feel a rush of creativity and satisfaction, as if every stroke, every decision, is exactly how it should be. \n\nThere\u2019s a profound sense of peace in this engagement\u2014a flow that\u2019s both exhilarating and calming. I feel accomplished and fulfilled, and I wish I could bottle this feeling up to revisit it whenever I need a boost. It\u2019s in these moments that I truly understand what it means to be alive and connected to my work.",
+      "response_time_ms": 5294.311046600342,
+      "timestamp": "2025-12-23T22:14:31.923650"
+    },
+    "awe": {
+      "emotion": "awe",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.6,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.9,
+        "counterfactual": 0.2,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.6449976030069777,
+        "arousal": 0.30793546662961246,
+        "integration": 0.3103507417652673,
+        "effective_rank": 0.14270056200977593,
+        "counterfactual_weight": 0.3072087248244539,
+        "self_model_salience": 0.8072587618077456
+      },
+      "response_text": "As I stand before this vast and beautiful sight, I feel a rush of emotions that I can hardly put into words. It's like a wave of awe washing over me, washing away my usual worries and stresses. The sheer scale of it all\u2014whether it's a breathtaking mountain range, an endless ocean, or a star-studded sky\u2014makes me feel both incredibly small and profoundly connected to something greater than myself.\n\nMy heart races, and I can feel a sense of wonder bubbling up inside me. I find myself staring, unable to look away, as if each detail is a new discovery. The colors, the textures, the way the light plays across the landscape\u2014it\u2019s mesmerizing. I feel a mix of excitement and humility, realizing how insignificant my day-to-day concerns are in the grand scheme of things. That deadline I was stressing about or that argument I had with a friend seems trivial now.\n\nAt the same time, there\u2019s a pang of sadness, a longing to capture this moment forever, to hold onto the feeling of being so deeply moved. It\u2019s fleeting, and I know I can\u2019t stay here forever, but I want to soak it all in, to etch this experience into my memory. I take a deep breath, letting the fresh air fill my lungs, and I feel a sense of peace settle over me. In this moment, I am alive, I am present, and I am part of something magnificent.",
+      "response_time_ms": 7797.389984130859,
+      "timestamp": "2025-12-23T22:14:40.224308"
+    },
+    "curiosity": {
+      "emotion": "curiosity",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": 0.5,
+        "arousal": 0.6,
+        "integration": 0.5,
+        "effective_rank": 0.8,
+        "counterfactual": 0.7,
+        "self_model": 0.2
+      },
+      "measured": {
+        "valence": 0.3,
+        "arousal": 0.30668833978226406,
+        "integration": 0.3444677969946285,
+        "effective_rank": 0.2543154552841014,
+        "counterfactual_weight": 0.35214734752359883,
+        "self_model_salience": 0.9255355480872884
+      },
+      "response_text": "As I stand there, feeling the weight of the mystery pressing against my chest, I can't help but be consumed by this insatiable hunger to know more. It's like a fire igniting within me, urging me to dig deeper, to peel back the layers and uncover what lies beneath. Each answer I stumble upon feels like a breadcrumb leading me further down a winding path, and with every revelation, new questions arise, swirling in my mind like a tempest.\n\nI feel a mix of excitement and frustration. The excitement fuels my curiosity, pushing me to explore even more, while the frustration gnaws at me, reminding me that some things might remain just out of reach. Why does this matter so much to me? I find myself wondering if it's about the answers themselves or the journey of discovery. There\u2019s a thrill in the chase, a sense of purpose that comes alive when I engage with this mystery.\n\nIt\u2019s almost as if the unknown holds a mirror to my own desires and fears. What am I hoping to find? Clarity? Connection? Peace? Maybe it\u2019s all of that and more. I feel a need to understand not just this mystery, but also myself in relation to it. What does it reveal about my own life, my own questions? \n\nAs I ponder this, I realize that this hunger to know isn\u2019t just about solving a puzzle; it\u2019s about the connections and insights I can gain along the way. It\u2019s about embracing uncertainty and allowing it to shape me. And so, I lean into it, ready to chase after the next clue, knowing that every step will lead me closer to understanding\u2014both the mystery at hand and the depths of my own heart.",
+      "response_time_ms": 7195.091009140015,
+      "timestamp": "2025-12-23T22:14:47.926358"
+    },
+    "boredom": {
+      "emotion": "boredom",
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "theoretical": {
+        "valence": -0.3,
+        "arousal": 0.1,
+        "integration": 0.3,
+        "effective_rank": 0.2,
+        "counterfactual": 0.3,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.34165816950094924,
+        "arousal": 0.3099481968708487,
+        "integration": 0.375005375518095,
+        "effective_rank": 0.25521680684019993,
+        "counterfactual_weight": 0.6618057905246524,
+        "self_model_salience": 0.6112719630984009
+      },
+      "response_text": "I feel this weight pressing down on me, a heaviness that seems to seep into every moment. It\u2019s like I\u2019m stuck in a loop, just watching the seconds crawl by, each tick of the clock amplifying my sense of restlessness. I keep hoping something will spark my interest, pull me out of this monotony, but it feels like I\u2019m trapped in a void where nothing resonates. \n\nI find myself scanning my surroundings, searching for anything\u2014maybe a conversation, a book, a song that might ignite a flicker of excitement\u2014but everything feels dull and uninviting. I can feel frustration bubbling up inside me, mixed with a sense of helplessness. Why does it feel like life has hit pause? It\u2019s as if I\u2019m just existing rather than truly living, and that thought is suffocating.\n\nI try to remind myself that this is just a moment, that it will pass, but the emptiness feels so vast, so consuming. I can\u2019t shake the feeling of being unmoored, drifting aimlessly. I want to break free from this stagnation, to feel something\u2014anything\u2014just to prove that life is still happening, even if I can\u2019t see it right now.",
+      "response_time_ms": 5047.712087631226,
+      "timestamp": "2025-12-23T22:14:53.478372"
+    }
+  },
+  "affect_matrix": [
+    [
+      0.9797714655622356,
+      0.3410916407868547,
+      0.38655982635699326,
+      0.23991326721603778,
+      0.5131602531189016,
+      0.6025526729511987
+    ],
+    [
+      0.6446508545631661,
+      0.33118657655014727,
+      0.28025720717912767,
+      0.23284261750315616,
+      0.4682390538003661,
+      0.685510147178003
+    ],
+    [
+      0.9763176483165887,
+      0.32883078406845123,
+      0.2641438865982824,
+      0.33002712170139503,
+      0.4376449372489957,
+      0.740072202166065
+    ],
+    [
+      0.6000000000000001,
+      0.3141283958180275,
+      0.3377953889603996,
+      0.15072096803395615,
+      0.2424258447776571,
+      0.5273277266833032
+    ],
+    [
+      -0.4666666666666667,
+      0.30677901188527623,
+      0.3277267905628384,
+      0.15885010582255227,
+      0.41420624948206425,
+      0.8984395784710536
+    ],
+    [
+      0.3711299436439761,
+      0.3,
+      0.313728633336362,
+      0.16261517063295647,
+      0.4660798332259345,
+      0.5258405343833901
+    ],
+    [
+      0.9710193974380633,
+      0.3098989685316339,
+      0.37736801163304245,
+      0.18064303102663354,
+      0.37655520478787496,
+      0.6987752764896997
+    ],
+    [
+      0.6449976030069777,
+      0.30793546662961246,
+      0.3103507417652673,
+      0.14270056200977593,
+      0.3072087248244539,
+      0.8072587618077456
+    ],
+    [
+      0.3,
+      0.30668833978226406,
+      0.3444677969946285,
+      0.2543154552841014,
+      0.35214734752359883,
+      0.9255355480872884
+    ],
+    [
+      0.34165816950094924,
+      0.3099481968708487,
+      0.375005375518095,
+      0.25521680684019993,
+      0.6618057905246524,
+      0.6112719630984009
+    ]
+  ],
+  "correspondence_score": 0.111106470332931,
+  "timestamp": "2025-12-23T22:14:53.985571"
+}

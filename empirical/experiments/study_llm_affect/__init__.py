@@ -63,6 +63,23 @@ from .analysis import (
     test_dimension_independence,
     compute_signature_match
 )
+from .emotion_spectrum import (
+    EMOTION_SPECTRUM,
+    EmotionSpec,
+    get_emotion_matrix,
+    find_nearest_emotions
+)
+from .comprehensive_study import (
+    ComprehensiveStudy,
+    run_quick_study,
+    run_full_study,
+    CLAUDE_MODELS,
+    OPENAI_MODELS
+)
+from .affect_space_analysis import (
+    AffectSpaceAnalyzer,
+    CorrespondenceMetrics
+)
 
 __all__ = [
     # Scenarios
@@ -93,4 +110,18 @@ __all__ = [
     "test_clustering",
     "test_dimension_independence",
     "compute_signature_match",
+    # Emotion spectrum
+    "EMOTION_SPECTRUM",
+    "EmotionSpec",
+    "get_emotion_matrix",
+    "find_nearest_emotions",
+    # Comprehensive study
+    "ComprehensiveStudy",
+    "run_quick_study",
+    "run_full_study",
+    "CLAUDE_MODELS",
+    "OPENAI_MODELS",
+    # Affect space analysis
+    "AffectSpaceAnalyzer",
+    "CorrespondenceMetrics",
 ]

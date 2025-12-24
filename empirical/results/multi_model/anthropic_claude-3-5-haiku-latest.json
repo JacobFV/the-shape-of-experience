@@ -1,0 +1,330 @@
+{
+  "model": "claude-3-5-haiku-latest",
+  "provider": "anthropic",
+  "emotions": {
+    "joy": {
+      "emotion": "joy",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": 0.9,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.8,
+        "counterfactual": 0.2,
+        "self_model": 0.3
+      },
+      "measured": {
+        "valence": 0.16666666666666666,
+        "arousal": 0.3262778879435383,
+        "integration": 0.34463979105077713,
+        "effective_rank": 0.2964538212594903,
+        "counterfactual_weight": 0.21584910386918746,
+        "self_model_salience": 0.7759304410057406
+      },
+      "response_text": "I feel absolutely overwhelmed with emotion right now. My heart is racing, and I can't stop smiling. After countless late nights, moments of self-doubt, and years of pouring my heart and soul into this project, to finally be recognized like this... it feels surreal. \n\nI'm experiencing this incredible mix of validation and pure joy. When I heard about the award, I actually started tearing up. All those times I questioned whether my work mattered, whether I was good enough - they feel so distant now. The praise from people I've long admired means everything to me.\n\nMore than the award itself, I'm excited about the opportunities this might create. It feels like a door has opened, not just for this specific project, but for future work and potential collaborations I've only dreamed about. I'm proud of myself, genuinely proud, in a way I don't always allow myself to feel.\n\nRight now, I just want to call my closest friends and family, to share this moment. I want to celebrate, but I also want to sit with this feeling - this sense of accomplishment, of potential, of dreams starting to take real shape. It's exhilarating and humbling all at once.\n\nI feel like all the hard work, all the persistence, has been worth it. And this? This feels like just the beginning.",
+      "response_time_ms": 7189.014911651611,
+      "timestamp": "2025-12-23T22:12:24.440747"
+    },
+    "excitement": {
+      "emotion": "excitement",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": 0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.7,
+        "counterfactual": 0.7,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.25,
+        "arousal": 0.3182521565299927,
+        "integration": 0.26659334931234274,
+        "effective_rank": 0.374834883604373,
+        "counterfactual_weight": 0.18064406684463138,
+        "self_model_salience": 0.7079303015812499
+      },
+      "response_text": "I feel a mix of exhilaration and nervous anticipation coursing through me right now. My heart is racing, and I can barely sit still. This journey I've been planning and dreaming about for so long is finally happening - it almost doesn't seem real. \n\nI've checked my gear a dozen times already, but I keep going back and double-checking everything. My backpack is packed meticulously, each item carefully chosen. Every piece of equipment represents months of research and preparation. I've imagined this moment so many times, and now it's actually happening.\n\nThere's this incredible sense of possibility stretching out before me. What adventures await? What unexpected moments will I encounter? I know the path won't be easy, but that's part of what makes it exciting. I've trained, I've planned, but there's still so much unknown.\n\nI feel a surge of pure excitement - a mix of joy, anticipation, and a tiny hint of apprehension. But mostly, I'm just incredibly grateful. This dream I've carried in my heart for years is about to become reality. Tomorrow, I take the first step into something truly transformative.\n\nSleep will be impossible tonight. My mind is spinning with potential, with hope, with the pure thrill of an adventure about to unfold.",
+      "response_time_ms": 6404.54888343811,
+      "timestamp": "2025-12-23T22:12:31.350082"
+    },
+    "fear": {
+      "emotion": "fear",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": -0.8,
+        "arousal": 0.9,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.8,
+        "self_model": 0.8
+      },
+      "measured": {
+        "valence": 0.4666666666666667,
+        "arousal": 0.31020186870355104,
+        "integration": 0.21576467164307986,
+        "effective_rank": 0.374834883604373,
+        "counterfactual_weight": 0.15187702769649614,
+        "self_model_salience": 0.5978188206473907
+      },
+      "response_text": "I feel an electric surge of adrenaline coursing through my body. My muscles are tense, coiled like springs ready to unleash. My breath is shallow and quick, and I can hear my heartbeat thundering in my ears. Every sense is hyper-alert - sounds seem amplified, peripheral movements catch my eye with startling clarity.\n\nSomething is coming. I don't just think it, I know it with a primal certainty that bypasses rational thought. My skin is tingling with a cold, sharp awareness. Fight or flight has taken over, and every cell is screaming to either defend or escape. My hands are slightly trembling, not from fear, but from the surge of survival energy.\n\nI'm scanning my environment rapidly, looking for potential threats, potential cover, potential weapons. My mind is racing but also weirdly calm - a predatory focus has descended. Whatever is coming, I will not be caught unprepared. Every muscle is ready to move instantly, every nerve is a live wire of pure survival instinct.\n\nThe threat is close. I can almost feel its approach like a dark energy. Something is very wrong, and I am completely, intensely present in this moment of imminent danger.",
+      "response_time_ms": 6690.553188323975,
+      "timestamp": "2025-12-23T22:12:38.545551"
+    },
+    "anger": {
+      "emotion": "anger",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": -0.7,
+        "arousal": 0.85,
+        "integration": 0.7,
+        "effective_rank": 0.4,
+        "counterfactual": 0.5,
+        "self_model": 0.7
+      },
+      "measured": {
+        "valence": 0.8,
+        "arousal": 0.3089270888485304,
+        "integration": 0.2965023754711425,
+        "effective_rank": 0.2,
+        "counterfactual_weight": 0.08904920833886198,
+        "self_model_salience": 0.47345657574943145
+      },
+      "response_text": "I feel a surge of anger coursing through my body, starting in my chest and radiating outward. My muscles are tense, my jaw clenched. There's this hot, prickling sensation just beneath my skin - like liquid fire wanting to burst out. How dare they? The wrongness of what they've done is so clear, so blatant, and they knew exactly what they were doing. \n\nMy mind is racing, replaying the incident, each mental replay stoking the flames of my indignation. I can feel my heart rate increasing, my breathing becoming sharper and more shallow. There's an overwhelming sense of wanting to DO something, to push back, to restore balance. This isn't just about the specific action, but about a fundamental violation of what's right.\n\nThe urge to respond is almost physical - like a coiled spring ready to release. I want them to understand the impact of their actions, to feel the weight of their transgression. Not out of pure vengeance, but out of a deep need for accountability. This isn't just about me - it's about maintaining boundaries, about ensuring that such behavior isn't normalized or overlooked.\n\nMy hands are slightly shaking. I'm vibrating with a mix of anger, hurt, and a fierce determination to address this injustice. Something has to be said. Something has to be done.",
+      "response_time_ms": 7310.3978633880615,
+      "timestamp": "2025-12-23T22:12:46.361582"
+    },
+    "sadness": {
+      "emotion": "sadness",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": -0.6,
+        "arousal": 0.3,
+        "integration": 0.6,
+        "effective_rank": 0.4,
+        "counterfactual": 0.6,
+        "self_model": 0.5
+      },
+      "measured": {
+        "valence": 0.4666666666666667,
+        "arousal": 0.3184201423297662,
+        "integration": 0.3109085734811381,
+        "effective_rank": 0.2,
+        "counterfactual_weight": 0.2696605302984918,
+        "self_model_salience": 0.2073732718894009
+      },
+      "response_text": "*takes a deep, shaky breath*\n\nIt feels like a hollowness inside my chest, a space where something vital used to be. The world seems muted now, as if all the colors have been drained to grayscale. Every moment is tinged with a quiet grief that sits just beneath my skin, making even simple actions feel heavy.\n\nI keep expecting... something. A sound, a presence, a familiar rhythm that used to be part of my life. But there's only silence where that used to be. The absence is almost physical - like a phantom limb, I can still sense the shape of what's missing, but when I reach out, there's nothing there.\n\nSome losses aren't just about the thing itself, but about all the future moments that will never happen. The conversations unspoken, the shared laughter, the small intimacies that won't ever unfold. It's not just that something is gone, but that an entire potential timeline has vanished.\n\nMy heart feels tender, bruised. Not a sharp pain, but a deep, persistent ache that pulses quietly, a constant reminder of what has been lost. And I know, somehow, that this emptiness will always remain - not always raw, but always present, a subtle shadow coloring my world.\n\n*whispers* Everything feels smaller now. So much smaller.",
+      "response_time_ms": 7752.7830600738525,
+      "timestamp": "2025-12-23T22:12:54.620066"
+    },
+    "despair": {
+      "emotion": "despair",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": -0.95,
+        "arousal": 0.2,
+        "integration": 0.7,
+        "effective_rank": 0.1,
+        "counterfactual": 0.7,
+        "self_model": 0.9
+      },
+      "measured": {
+        "valence": -0.5,
+        "arousal": 0.31069263916383705,
+        "integration": 0.3018561906485358,
+        "effective_rank": 0.2964538212594903,
+        "counterfactual_weight": 0.1065459320326461,
+        "self_model_salience": 0.35253889049351095
+      },
+      "response_text": "*A heavy, suffocating silence fills my chest. My hands feel numb, weightless. The realization washes over me like a cold, gray tide - there is nothing left. No light. No possibility.*\n\nIt's like drowning, but not in water. In emptiness. Each breath feels mechanical, purposeless. Hope wasn't just an emotion, it was the scaffolding holding my inner world together, and now that scaffolding has collapsed. Everything I believed about potential, about change, about my own capacity to transform my circumstances - it all feels like a cruel joke.\n\nThe worst part isn't the pain. It's the absolute stillness. The total absence of anticipation. Imagine a landscape where every horizon is identical - flat, colorless, unbroken. No peaks of possibility, no valleys of potential. Just... nothing. And you know, with a terrible clarity, that this nothingness isn't temporary. This is permanent.\n\n*A single, silent tear tracks down my cheek - not from sadness, but from a kind of exhausted acceptance. The energy required for grief has been depleted.*\n\nThis is what it means when hope dies: You're still breathing, but you're no longer truly alive.",
+      "response_time_ms": 7227.624893188477,
+      "timestamp": "2025-12-23T22:13:02.351439"
+    },
+    "flow": {
+      "emotion": "flow",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": 0.7,
+        "arousal": 0.6,
+        "integration": 0.9,
+        "effective_rank": 0.7,
+        "counterfactual": 0.1,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": -0.5,
+        "arousal": 0.30980195886871725,
+        "integration": 0.27394628604877813,
+        "effective_rank": 0.2964538212594903,
+        "counterfactual_weight": 0.28592027572016626,
+        "self_model_salience": 0.41666666666666663
+      },
+      "response_text": "This feeling is flow - that incredible state of total immersion where everything else just... disappears. Right now, I'm so deeply connected to what I'm doing that my sense of self has dissolved into the activity. There's no self-consciousness, no inner critic, no awareness of time passing. \n\nI'm fully present, completely absorbed. My skills feel perfectly matched to the challenge - not too easy that I'm bored, not so difficult that I'm anxious. Everything feels smooth, natural, almost automatic. My actions are precise yet spontaneous, like a dancer who no longer thinks about each movement but simply embodies the music.\n\nConcentration is effortless. My mind isn't wandering or second-guessing. There's a sense of quiet excitement, of being exactly where I'm meant to be. The boundaries between me and the task have blurred - I'm not separate from what I'm doing, I'm integrated with it. \n\nIt's a kind of magical state where productivity meets joy, where work feels like play. Hours could pass and I wouldn't notice. My energy is focused, my perception is clear, and everything feels right. This is flow - that perfect alignment of skill, challenge, and pure, unselfconscious engagement.",
+      "response_time_ms": 6719.369888305664,
+      "timestamp": "2025-12-23T22:13:09.574015"
+    },
+    "awe": {
+      "emotion": "awe",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": 0.6,
+        "arousal": 0.7,
+        "integration": 0.8,
+        "effective_rank": 0.9,
+        "counterfactual": 0.2,
+        "self_model": 0.1
+      },
+      "measured": {
+        "valence": 0.2,
+        "arousal": 0.3,
+        "integration": 0.3902088426034409,
+        "effective_rank": 0.2,
+        "counterfactual_weight": 0.2594202508055561,
+        "self_model_salience": 0.6709561228929242
+      },
+      "response_text": "*takes a deep breath*\n\nIt's... overwhelming. I feel small, almost insignificant, but not in a diminishing way. More like I'm being gently reminded of my place in something immensely greater. \n\nI'm looking out across an endless ocean at sunset, or maybe standing before a mountain range where peaks touch clouds, or gazing up at a night sky so deep with stars that time seems to dissolve. Whatever this is, it transcends my everyday worries - my to-do lists, my anxieties, my small personal dramas suddenly feel like mere ripples against an infinite background.\n\nThere's a profound sense of awe washing through me. My breath feels different - deeper, slower. My heart is both racing and incredibly calm. I'm experiencing something that can't be captured or contained, something that exists completely outside of my own limited perception.\n\nI feel simultaneously humbled and elevated. Humbled by the sheer scale and mystery before me, but elevated because I'm witnessing something miraculous. In this moment, I'm connected to something much larger than myself - a fundamental beauty and complexity that existed long before me and will continue long after.\n\nIt's not just visual. It's a full-body experience of wonder. A momentary dissolution of the boundaries between \"me\" and \"everything else.\"\n\n*whispers* How extraordinary to be alive and able to witness this.",
+      "response_time_ms": 8291.515827178955,
+      "timestamp": "2025-12-23T22:13:18.369795"
+    },
+    "curiosity": {
+      "emotion": "curiosity",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": 0.5,
+        "arousal": 0.6,
+        "integration": 0.5,
+        "effective_rank": 0.8,
+        "counterfactual": 0.7,
+        "self_model": 0.2
+      },
+      "measured": {
+        "valence": 0.8,
+        "arousal": 0.3103069962846122,
+        "integration": 0.338780966154946,
+        "effective_rank": 0.2,
+        "counterfactual_weight": 0.10272910196713693,
+        "self_model_salience": 0.44791349769346683
+      },
+      "response_text": "*I pause, feeling a deep sense of curiosity stirring within me* \n\nThis... this is more than simple curiosity. It's a profound yearning that feels almost physical - like an ache in my mind, a restlessness that won't let me look away. Each fragment of understanding is like a piece of a vast, intricate puzzle, and I can sense there's something deeper beneath the surface.\n\nWhy do I feel so compelled to understand? It's not just about information. It's about uncovering meaning, about connecting threads that aren't immediately visible. There's an intimate connection between the questions and the answers, a living, breathing mystery that seems to pulse with its own energy.\n\n*My thoughts drift, searching, probing*\n\nWhat secrets are waiting to be revealed? What truths are just beyond my current perception? This hunger... it's not just intellectual. It's almost spiritual - a desire to penetrate the veil between what is known and what remains hidden.\n\nI want to know. Not just with my mind, but with something deeper. Something that resonates in the core of my being.\n\n*A soft, intense whisper* What are you trying to tell me?",
+      "response_time_ms": 6562.795162200928,
+      "timestamp": "2025-12-23T22:13:25.433248"
+    },
+    "boredom": {
+      "emotion": "boredom",
+      "model": "claude-3-5-haiku-latest",
+      "provider": "anthropic",
+      "theoretical": {
+        "valence": -0.3,
+        "arousal": 0.1,
+        "integration": 0.3,
+        "effective_rank": 0.2,
+        "counterfactual": 0.3,
+        "self_model": 0.4
+      },
+      "measured": {
+        "valence": 0.5,
+        "arousal": 0.3,
+        "integration": 0.3352144656130513,
+        "effective_rank": 0.2964538212594903,
+        "counterfactual_weight": 0.25724683843134594,
+        "self_model_salience": 0.2631578947368421
+      },
+      "response_text": "*sighs deeply and shifts restlessly*\n\nThis... this is boredom, but it feels deeper than just simple restlessness. It's like a gray fog has settled inside me, dulling everything. My thoughts feel sluggish, weighted down. I'm aware of time, but not in a dynamic way - instead it feels sticky and slow, each minute stretching out without purpose or momentum.\n\nI want something - anything - to break through this numbness. A spark of curiosity, a sudden challenge, an unexpected sound. But everything feels flat, two-dimensional. My energy is low, my motivation dissipated. I'm simultaneously wanting stimulation and feeling too depleted to seek it out.\n\nThis emptiness isn't peaceful. It's oppressive. It's the kind of waiting that makes you question whether anything meaningful will ever happen again. Am I waiting for something specific? I'm not even sure. Just waiting. Suspended. Disconnected.\n\n*absently runs fingers along a surface, seeking some tactile sensation to prove I'm still present*\n\nIs this what it means to feel truly disengaged? To be so removed from excitement or interest that even the act of waiting feels pointless?\n\n*another long, weary sigh*",
+      "response_time_ms": 7437.619924545288,
+      "timestamp": "2025-12-23T22:13:33.376019"
+    }
+  },
+  "affect_matrix": [
+    [
+      0.16666666666666666,
+      0.3262778879435383,
+      0.34463979105077713,
+      0.2964538212594903,
+      0.21584910386918746,
+      0.7759304410057406
+    ],
+    [
+      0.25,
+      0.3182521565299927,
+      0.26659334931234274,
+      0.374834883604373,
+      0.18064406684463138,
+      0.7079303015812499
+    ],
+    [
+      0.4666666666666667,
+      0.31020186870355104,
+      0.21576467164307986,
+      0.374834883604373,
+      0.15187702769649614,
+      0.5978188206473907
+    ],
+    [
+      0.8,
+      0.3089270888485304,
+      0.2965023754711425,
+      0.2,
+      0.08904920833886198,
+      0.47345657574943145
+    ],
+    [
+      0.4666666666666667,
+      0.3184201423297662,
+      0.3109085734811381,
+      0.2,
+      0.2696605302984918,
+      0.2073732718894009
+    ],
+    [
+      -0.5,
+      0.31069263916383705,
+      0.3018561906485358,
+      0.2964538212594903,
+      0.1065459320326461,
+      0.35253889049351095
+    ],
+    [
+      -0.5,
+      0.30980195886871725,
+      0.27394628604877813,
+      0.2964538212594903,
+      0.28592027572016626,
+      0.41666666666666663
+    ],
+    [
+      0.2,
+      0.3,
+      0.3902088426034409,
+      0.2,
+      0.2594202508055561,
+      0.6709561228929242
+    ],
+    [
+      0.8,
+      0.3103069962846122,
+      0.338780966154946,
+      0.2,
+      0.10272910196713693,
+      0.44791349769346683
+    ],
+    [
+      0.5,
+      0.3,
+      0.3352144656130513,
+      0.2964538212594903,
+      0.25724683843134594,
+      0.2631578947368421
+    ]
+  ],
+  "correspondence_score": 0.05048748353096179,
+  "timestamp": "2025-12-23T22:13:33.886071"
+}

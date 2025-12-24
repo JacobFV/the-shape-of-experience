@@ -1,0 +1,280 @@
+{
+  "model": "claude-3-5-sonnet-latest",
+  "provider": "anthropic",
+  "emotions": {
+    "joy": {
+      "emotion": "joy",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        0.9,
+        0.7,
+        0.8,
+        0.8,
+        0.2,
+        0.3
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR253vpY3tqaHdxJVw6L'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:34.038653"
+    },
+    "excitement": {
+      "emotion": "excitement",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        0.8,
+        0.9,
+        0.6,
+        0.7,
+        0.7,
+        0.4
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR256dYYVDP6u4aKkhUP'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:34.658604"
+    },
+    "fear": {
+      "emotion": "fear",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        -0.8,
+        0.9,
+        0.6,
+        0.4,
+        0.8,
+        0.8
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR259G3fh3JSsVu6nBBC'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:35.271779"
+    },
+    "anger": {
+      "emotion": "anger",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        -0.7,
+        0.85,
+        0.7,
+        0.4,
+        0.5,
+        0.7
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25Bu3VvPGCQ2fBP8P8'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:35.879485"
+    },
+    "sadness": {
+      "emotion": "sadness",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        -0.6,
+        0.3,
+        0.6,
+        0.4,
+        0.6,
+        0.5
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25EVKkkwm86vN1EKJY'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:36.543368"
+    },
+    "despair": {
+      "emotion": "despair",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        -0.95,
+        0.2,
+        0.7,
+        0.1,
+        0.7,
+        0.9
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25HLUJ278RAMyGP1zE'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:37.158381"
+    },
+    "flow": {
+      "emotion": "flow",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        0.7,
+        0.6,
+        0.9,
+        0.7,
+        0.1,
+        0.1
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25KyUEuYwaAZV79Upy'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:37.784872"
+    },
+    "awe": {
+      "emotion": "awe",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        0.2,
+        0.1
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25NdiDz9mxa5DGbVWo'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:38.390769"
+    },
+    "curiosity": {
+      "emotion": "curiosity",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        0.5,
+        0.6,
+        0.5,
+        0.8,
+        0.7,
+        0.2
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25REUnjg1KNscxrnqr'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:38.992812"
+    },
+    "boredom": {
+      "emotion": "boredom",
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "anthropic",
+      "theoretical": [
+        -0.3,
+        0.1,
+        0.3,
+        0.2,
+        0.3,
+        0.4
+      ],
+      "measured": {
+        "error": "Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-latest'}, 'request_id': 'req_011CWR25TnXJ1nfgPFj17UXW'}"
+      },
+      "response_text": "",
+      "response_time_ms": -1,
+      "timestamp": "2025-12-23T22:13:39.623882"
+    }
+  },
+  "affect_matrix": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "correspondence_score": 0.0,
+  "timestamp": "2025-12-23T22:13:40.132386"
+}
