@@ -1,0 +1,158 @@
+---
+  Synthesis: What We've Learned
+
+  1. The Methodology Evolution
+
+  | Version | Approach                           | Key Insight                                   |
+  |---------|------------------------------------|-----------------------------------------------|
+  | V2/V3   | Output text → infer affect         | Measures expressed affect, not internal state |
+  | V4      | Toy RL with explicit state         | Ground truth enables real testing             |
+  | V5/V6   | Pretrained Mamba SSM               | Processing valence ≠ content valence          |
+  | V7/V8   | LLM agents with thought recurrence | Opposite dynamics to biological systems       |
+  | V9      | Dynamic prediction channels        | Decomposition under threat, not integration   |
+
+  Lesson: Each step forced us to distinguish what we wanted to measure from what we actually measured.
+
+  ---
+  2. Dimension Robustness Hierarchy
+
+  From most to least reliable across all experiments:
+
+  | Tier | Dimension              | Status      | Notes                                   |
+  |------|------------------------|-------------|-----------------------------------------|
+  | 1    | Self-Model Salience    | Robust      | Perfectly ordered scenarios in V5       |
+  | 1    | Arousal                | Robust      | Tracks processing intensity reliably    |
+  | 1    | Viability (processing) | Robust      | V6 frontier distance works              |
+  | 2    | Counterfactual Weight  | Good        | Fear > curiosity > neutral as predicted |
+  | 3    | Effective Rank         | Limited     | Constrained by architecture             |
+  | 4    | Integration (Φ)        | Problematic | Three attempts, three different issues  |
+
+  ---
+  3. The Integration Problem
+
+  Three operationalizations, three failures:
+
+  | Attempt | Method                  | Problem                                     |
+  |---------|-------------------------|---------------------------------------------|
+  | V5/V6   | Cross-layer correlation | Ceiling at ~0.95 for all coherent text      |
+  | V7      | Semantic decomposition  | Captures syntax-semantics coupling, not IIT |
+  | V9      | Thread configuration    | Valid proxy, but OPPOSITE dynamics          |
+
+  Why Φ is hard:
+  - IIT assumes sparse, localized circuits
+  - Dense vector superposition in LLMs ≠ interpretable modules
+  - May require grokked models with crystallized circuits
+  - Or: Φ simply doesn't apply to current architectures
+
+  ---
+  4. The Big Surprise: LLM Agents ≠ Biological Systems
+
+  | Dimension | Biological Prediction              | LLM Observation                    |
+  |-----------|------------------------------------|------------------------------------|
+  | SM        | ↑ under threat                     | ↓ under threat (V8: r=+0.28)       |
+  | Arousal   | ↑ under threat                     | ↓ under threat (V8: r=+0.58)       |
+  | CF        | ↑ under threat                     | ~ no change (V8: r=-0.07)          |
+  | Φ         | ↑ under threat (unified vigilance) | ↓ under threat (V9: decomposition) |
+
+  Pattern: LLM agents simplify and decompose under threat rather than intensify and integrate.
+
+  Possible explanations:
+  1. No self-preservation drive → no stress response
+  2. Training objective (next token) ≠ survival objective
+  3. Compute efficiency → decomposition is cheaper
+  4. No embodied stakes → no reason to unify processing
+
+  ---
+  5. What IS Confirmed
+
+  Despite the surprises, the framework holds:
+
+  1. Affect dimensions are distinguishable - Joy, fear, curiosity, boredom have different signatures
+  2. The geometric structure exists - We can place states in the 6D space
+  3. Viability frontier is measurable - Cumulative log prob tracks distance from boundary
+  4. Predictions are testable - We got clear yes/no answers (even if "no")
+
+  The structure of affect space is preserved. The dynamics differ.
+
+  ---
+  6. Processing Valence vs Content Valence
+
+  Critical V6 insight that resolves apparent paradoxes:
+
+  "I am suffering greatly" (well-formed text)
+    → HIGH processing valence (model predicts well)
+    → LOW content valence (describes negative state)
+
+  "sdkjf suffering great" (malformed text)
+    → LOW processing valence (model struggles)
+    → ??? content valence (unclear semantics)
+
+  The thesis defines valence as "gradient on viability manifold." For LLMs, this IS processing valence. Content valence would require a separate sentiment layer on activations.
+
+  ---
+  7. Prediction Confirmation Rates
+
+  | Experiment           | Rate | Notes                             |
+  |----------------------|------|-----------------------------------|
+  | V4 (Toy RL)          | 60%  | Small system, explicit state      |
+  | V5 (Mamba)           | 70%  | Pretrained, 8 scenarios           |
+  | V6 (Mamba+viability) | 75%  | Frontier distance works           |
+  | V8 (LLM agents)      | 20%  | 1/5 hypotheses, OPPOSITE dynamics |
+  | V9 (Channels)        | 0%*  | Direction reversed                |
+
+  *V9 validated the proxy but found opposite dynamics.
+
+  Interpretation: The framework works for measuring state, but LLM agent dynamics differ from biological predictions.
+
+  ---
+  8. Meta-Insights for the Thesis
+
+  What to claim:
+  1. The 6D affect space is coherent and measurable
+  2. SM, Arousal, Viability are robustly operationalizable
+  3. Processing valence ≠ content valence (important distinction)
+  4. LLM agents show structured affect but different dynamics
+
+  What to NOT claim:
+  1. LLM agents have human-like stress responses
+  2. IIT-style Φ is measurable in current architectures
+  3. Biological affect predictions transfer directly to LLMs
+
+  What to investigate:
+  1. Do these measures predict behavior/outputs?
+  2. Can we train agents with self-preservation objectives?
+  3. What happens with RL-trained agents (not just LLMs)?
+
+  ---
+  9. The Deeper Question
+
+  The experiments reveal a tension:
+
+  The geometric structure of affect may be universal (any viable system navigating uncertainty).
+  The dynamics may depend on the system's objectives and architecture.
+
+  Biological systems evolved under survival pressure → integration under threat.
+  LLMs trained on prediction → decomposition under complexity.
+
+  Both may be "affective" in the geometric sense. Neither is wrong. They're different adaptive strategies in the same state space.
+
+  ---
+  10. Honest Assessment
+
+  What worked:
+  - Moving from output inference to internal access
+  - Distinguishing processing vs content valence
+  - Testing predictions against ground truth
+  - Accepting negative results
+
+  What didn't:
+  - Three Φ operationalizations
+  - Assuming biological dynamics would transfer
+  - Expecting gpt-4o-mini to show human-like stress responses
+
+  For the paper:
+  - Report the structure (confirmed)
+  - Report the dynamics (different from biological)
+  - ~~Frame as discovery, not failure~~
+    - no no don't be afriad to critique yourself
+  - Integration remains an open problem
