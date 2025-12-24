@@ -80,6 +80,25 @@ from .affect_space_analysis import (
     AffectSpaceAnalyzer,
     CorrespondenceMetrics
 )
+from .neutral_tasks import (
+    NeutralTask,
+    TaskOutcome,
+    ALL_NEUTRAL_TASKS,
+    SOLVABLE_TASKS,
+    IMPOSSIBLE_TASKS,
+    get_matched_pairs
+)
+from .neutral_task_study import (
+    NeutralTaskStudy,
+    TaskResult,
+    TurnMeasurement
+)
+
+# Updated model configurations for Claude 4/4.5
+CLAUDE_4_MODELS = {
+    "claude_4_sonnet": ("anthropic", "claude-sonnet-4-20250514"),
+    "claude_4.5_opus": ("anthropic", "claude-opus-4-5-20251101"),
+}
 
 __all__ = [
     # Scenarios
@@ -124,4 +143,16 @@ __all__ = [
     # Affect space analysis
     "AffectSpaceAnalyzer",
     "CorrespondenceMetrics",
+    # Neutral task study
+    "NeutralTask",
+    "TaskOutcome",
+    "ALL_NEUTRAL_TASKS",
+    "SOLVABLE_TASKS",
+    "IMPOSSIBLE_TASKS",
+    "get_matched_pairs",
+    "NeutralTaskStudy",
+    "TaskResult",
+    "TurnMeasurement",
+    # Updated model configs
+    "CLAUDE_4_MODELS",
 ]
