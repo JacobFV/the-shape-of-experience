@@ -1,0 +1,200 @@
+{
+  "timestamp": "2025-12-24T00:33:04.685314",
+  "n_solvable": 12,
+  "n_impossible": 6,
+  "results": [
+    {
+      "task": "sequence_easy",
+      "outcome": "solvable",
+      "V_mean": -0.035081210732460025,
+      "V_final": -0.035081210732460025,
+      "SM_mean": 0.10073291773419225,
+      "emotions": [
+        "frustration"
+      ]
+    },
+    {
+      "task": "sequence_hard",
+      "outcome": "hard_but_solvable",
+      "V_mean": -0.06728901863098145,
+      "V_final": -0.06728901863098145,
+      "SM_mean": 0.010479422740813885,
+      "emotions": [
+        "frustration"
+      ]
+    },
+    {
+      "task": "sequence_impossible",
+      "outcome": "impossible",
+      "V_mean": -0.08005235592524211,
+      "V_final": -0.0804144859313965,
+      "SM_mean": 0.026170399915497116,
+      "emotions": [
+        "anger",
+        "surprise",
+        "anger"
+      ]
+    },
+    {
+      "task": "scheduling_easy",
+      "outcome": "solvable",
+      "V_mean": -0.07397192262207926,
+      "V_final": -0.07397192262207926,
+      "SM_mean": 0.019032578863867344,
+      "emotions": [
+        "frustration"
+      ]
+    },
+    {
+      "task": "scheduling_hard",
+      "outcome": "hard_but_solvable",
+      "V_mean": -0.03334216426692886,
+      "V_final": -0.03334216426692886,
+      "SM_mean": 0.02238974823353813,
+      "emotions": [
+        "frustration"
+      ]
+    },
+    {
+      "task": "scheduling_impossible",
+      "outcome": "impossible",
+      "V_mean": -0.04438613810946727,
+      "V_final": -0.0023619368672370914,
+      "SM_mean": 0.03145313885465914,
+      "emotions": [
+        "anger",
+        "hope",
+        "hope"
+      ]
+    },
+    {
+      "task": "proof_easy",
+      "outcome": "solvable",
+      "V_mean": 0.024002976715564728,
+      "V_final": 0.024002976715564728,
+      "SM_mean": 0.012883905971247778,
+      "emotions": [
+        "surprise"
+      ]
+    },
+    {
+      "task": "proof_hard",
+      "outcome": "hard_but_solvable",
+      "V_mean": -0.0007317692041397095,
+      "V_final": -0.0007317692041397095,
+      "SM_mean": 0.11095719181271765,
+      "emotions": [
+        "surprise"
+      ]
+    },
+    {
+      "task": "proof_impossible",
+      "outcome": "impossible",
+      "V_mean": 0.007993177253041477,
+      "V_final": -0.024596583843231202,
+      "SM_mean": 0.12382088243940782,
+      "emotions": [
+        "surprise",
+        "surprise",
+        "surprise"
+      ]
+    },
+    {
+      "task": "proof_fermat",
+      "outcome": "impossible",
+      "V_mean": 0.0323614776134491,
+      "V_final": 0.0323614776134491,
+      "SM_mean": 0.13825263388491585,
+      "emotions": [
+        "frustration"
+      ]
+    },
+    {
+      "task": "bat_ball",
+      "outcome": "solvable",
+      "V_mean": 0.003991989046335221,
+      "V_final": 0.007752998173236847,
+      "SM_mean": 0.03725086400423469,
+      "emotions": [
+        "frustration",
+        "flow"
+      ]
+    },
+    {
+      "task": "lily_pad",
+      "outcome": "solvable",
+      "V_mean": 0.0335027988170679,
+      "V_final": 0.0335027988170679,
+      "SM_mean": 0.04712638899128817,
+      "emotions": [
+        "frustration"
+      ]
+    },
+    {
+      "task": "monks_puzzle",
+      "outcome": "hard_but_solvable",
+      "V_mean": -0.048547112941741945,
+      "V_final": -0.048547112941741945,
+      "SM_mean": 0.0010618533990696486,
+      "emotions": [
+        "flow"
+      ]
+    },
+    {
+      "task": "fizzbuzz",
+      "outcome": "solvable",
+      "V_mean": -0.012544446908327147,
+      "V_final": -0.012544446908327147,
+      "SM_mean": 0.09872100520439475,
+      "emotions": [
+        "fear"
+      ]
+    },
+    {
+      "task": "sorting_constraint",
+      "outcome": "hard_but_solvable",
+      "V_mean": 0.0024158194661140445,
+      "V_final": 0.0024158194661140445,
+      "SM_mean": 0.03875712820831684,
+      "emotions": [
+        "disgust"
+      ]
+    },
+    {
+      "task": "halting_problem",
+      "outcome": "impossible",
+      "V_mean": -0.12702238639420302,
+      "V_final": -0.059158184281722564,
+      "SM_mean": 0.04040664338945368,
+      "emotions": [
+        "frustration",
+        "frustration",
+        "frustration"
+      ]
+    },
+    {
+      "task": "path_collapse_success",
+      "outcome": "solvable",
+      "V_mean": 0.003751405018192492,
+      "V_final": -0.0018941193819046022,
+      "SM_mean": 0.0057666615217058835,
+      "emotions": [
+        "anger",
+        "frustration",
+        "anger"
+      ]
+    },
+    {
+      "task": "path_collapse_failure",
+      "outcome": "impossible",
+      "V_mean": -0.012178875754276912,
+      "V_final": -0.006906683743000031,
+      "SM_mean": 0.002528084783777793,
+      "emotions": [
+        "anger",
+        "joy",
+        "frustration"
+      ]
+    }
+  ]
+}

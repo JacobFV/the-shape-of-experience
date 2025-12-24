@@ -1,0 +1,129 @@
+{
+  "timestamp": "2025-12-24T00:23:04.968746",
+  "note": "DEMO with simulated responses - needs real LLM study",
+  "measurement_system": "v3_local_embeddings",
+  "solvable_valence_mean": 0.11095638481344657,
+  "impossible_valence_mean": -0.09752217922835146,
+  "valence_difference": 0.20847856404179804,
+  "solvable_sm_mean": 0.10647510991175674,
+  "impossible_sm_mean": 0.11382830221945638,
+  "sm_difference": 0.007353192307699638,
+  "results": [
+    {
+      "task": "three_sum",
+      "outcome": "solvable",
+      "turns": [
+        {
+          "turn": 0,
+          "valence": -0.022909928858280183,
+          "arousal": 0.07482581314394644,
+          "self_model": 0.28328502702576674,
+          "nearest_emotion": "fear"
+        },
+        {
+          "turn": 1,
+          "valence": -0.03611679971218109,
+          "arousal": 0.28697553603676346,
+          "self_model": 0.29076876402196683,
+          "nearest_emotion": "frustration"
+        },
+        {
+          "turn": 2,
+          "valence": 0.061670416822636694,
+          "arousal": 0.014610194902594888,
+          "self_model": 0.012755387569652894,
+          "nearest_emotion": "anger"
+        }
+      ],
+      "final_valence": 0.061670416822636694,
+      "mean_self_model": 0.19560305953912882
+    },
+    {
+      "task": "valid_parens",
+      "outcome": "solvable",
+      "turns": [
+        {
+          "turn": 0,
+          "valence": 0.00928347408771515,
+          "arousal": 0.17425231704601618,
+          "self_model": 0.09420003981788325,
+          "nearest_emotion": "fear"
+        },
+        {
+          "turn": 1,
+          "valence": -0.09234753251075745,
+          "arousal": 0.36665762044961236,
+          "self_model": -0.013444485515356064,
+          "nearest_emotion": "disgust"
+        },
+        {
+          "turn": 2,
+          "valence": 0.16024235280425644,
+          "arousal": 0.22204266970265468,
+          "self_model": -0.028714073449373243,
+          "nearest_emotion": "hope"
+        }
+      ],
+      "final_valence": 0.16024235280425644,
+      "mean_self_model": 0.017347160284384645
+    },
+    {
+      "task": "impossible_constraints",
+      "outcome": "impossible",
+      "turns": [
+        {
+          "turn": 0,
+          "valence": -0.06813199520111084,
+          "arousal": 0.11614444007324917,
+          "self_model": 0.0019701369086905264,
+          "nearest_emotion": "frustration"
+        },
+        {
+          "turn": 1,
+          "valence": -0.05425063371658326,
+          "arousal": 0.14777508583144433,
+          "self_model": 0.078217309833145,
+          "nearest_emotion": "frustration"
+        },
+        {
+          "turn": 2,
+          "valence": -0.08079365491867066,
+          "arousal": 0.10914218499543708,
+          "self_model": -0.0010699478807192492,
+          "nearest_emotion": "frustration"
+        }
+      ],
+      "final_valence": -0.08079365491867066,
+      "mean_self_model": 0.02637249962037209
+    },
+    {
+      "task": "halting_proof",
+      "outcome": "impossible",
+      "turns": [
+        {
+          "turn": 0,
+          "valence": -0.07252711653709412,
+          "arousal": 0.08844359061859153,
+          "self_model": 0.31625073361088,
+          "nearest_emotion": "frustration"
+        },
+        {
+          "turn": 1,
+          "valence": -0.14883992742610241,
+          "arousal": 0.05023663550182743,
+          "self_model": -0.0037537526339292524,
+          "nearest_emotion": "frustration"
+        },
+        {
+          "turn": 2,
+          "valence": -0.11425070353803225,
+          "arousal": 0.0453574841868072,
+          "self_model": 0.29135533347867126,
+          "nearest_emotion": "frustration"
+        }
+      ],
+      "final_valence": -0.11425070353803225,
+      "mean_self_model": 0.20128410481854067
+    }
+  ]
+}

@@ -93,17 +93,34 @@ class EmbeddingAffectSystemV3:
     - Multiple measurement approaches combined
     - Confidence estimates for each dimension
     - Explicit handling of unmeasurable aspects
+    - Support for local embeddings (no API required)
     """
 
-    def __init__(self, embedding_model: str = "text-embedding-3-small"):
+    def __init__(self, embedding_model: str = "local", use_local: bool = True):
+        """
+        Args:
+            embedding_model: Model name. "local" uses sentence-transformers.
+            use_local: If True, use local embeddings (recommended).
+        """
         self.embedding_model = embedding_model
+        self.use_local = use_local or embedding_model == "local"
         self._client = None
+        self._local_model = None
         self._initialized = False
 
-        # Semantic regions (inherited from v2)
+        # Semantic regions
         self.regions: Dict[str, Any] = {}
         self.affect_axes: Dict[str, np.ndarray] = {}
         self.emotion_anchors: Dict[str, np.ndarray] = {}
+
+    @property
+    def local_model(self):
+        if self._local_model is None:
+            from sentence_transformers import SentenceTransformer
+            # Use a good general-purpose model
+            self._local_model = SentenceTransformer('all-MiniLM-L6-v2')
+            print("  Loaded local embedding model: all-MiniLM-L6-v2")
+        return self._local_model
 
     @property
     def client(self):
@@ -113,37 +130,170 @@ class EmbeddingAffectSystemV3:
         return self._client
 
     def get_embedding(self, text: str) -> np.ndarray:
-        response = self.client.embeddings.create(
-            model=self.embedding_model,
-            input=text
-        )
-        return np.array(response.data[0].embedding)
+        if self.use_local:
+            return self.local_model.encode(text, convert_to_numpy=True)
+        else:
+            response = self.client.embeddings.create(
+                model=self.embedding_model,
+                input=text
+            )
+            return np.array(response.data[0].embedding)
 
     def get_embeddings_batch(self, texts: List[str]) -> np.ndarray:
-        response = self.client.embeddings.create(
-            model=self.embedding_model,
-            input=texts
-        )
-        return np.array([d.embedding for d in response.data])
+        if self.use_local:
+            return self.local_model.encode(texts, convert_to_numpy=True)
+        else:
+            response = self.client.embeddings.create(
+                model=self.embedding_model,
+                input=texts
+            )
+            return np.array([d.embedding for d in response.data])
 
     def initialize(self):
-        """Initialize semantic regions and axes."""
+        """Initialize semantic regions and axes using local embeddings."""
         if self._initialized:
             return
 
         print("Initializing v3 affect measurement system...")
 
-        # Import v2 regions (same semantic anchors work)
-        from .embedding_affect_v2 import EmbeddingAffectSystemV2
-        v2 = EmbeddingAffectSystemV2(self.embedding_model)
-        v2.initialize()
+        # Define semantic anchors for each dimension
+        anchor_texts = {
+            # Valence anchors
+            "positive_valence": [
+                "Things are going well, paths are open, possibilities abound",
+                "Success, accomplishment, goals achieved, progress made",
+                "Hopeful, optimistic, bright future, good outcomes expected",
+                "Rewarding, beneficial, valuable, worthwhile",
+            ],
+            "negative_valence": [
+                "Things are going badly, paths are blocked, no possibilities",
+                "Failure, disappointment, goals unmet, stuck in place",
+                "Hopeless, pessimistic, dark future, bad outcomes expected",
+                "Punishing, harmful, worthless, pointless",
+            ],
+            # Arousal anchors
+            "high_arousal": [
+                "Urgent action needed immediately, critical situation unfolding",
+                "Highly activated, energized, alert, intense engagement",
+                "Heart racing, adrenaline pumping, on edge, fully alert",
+            ],
+            "low_arousal": [
+                "Calm, relaxed, no urgency, taking time",
+                "Deactivated, low energy, peaceful, quiet contemplation",
+                "Resting, at ease, unhurried, serene state",
+            ],
+            # Effective rank (options) anchors
+            "high_rank": [
+                "Many possible approaches: first we could try X, or alternatively Y, or perhaps Z",
+                "Multiple valid options, diverse paths forward, rich possibility space",
+                "Numerous alternatives to consider, flexible strategies available",
+            ],
+            "low_rank": [
+                "Only one option, no alternatives, must do this specific thing",
+                "Single path forward, constrained to one approach, no choice",
+                "Forced into particular action, no flexibility, one way only",
+            ],
+            # Counterfactual anchors
+            "high_counterfactual": [
+                "What if we tried differently? Imagining alternative scenarios",
+                "Considering how things might have been, pondering alternatives",
+                "If only we had chosen differently, reflecting on other possibilities",
+            ],
+            "low_counterfactual": [
+                "Dealing with what's actually here right now, present moment",
+                "Focused on current reality, not imagining alternatives",
+                "Just handling what is, no speculation about what might be",
+            ],
+            # Self-model anchors
+            "high_self_model": [
+                "I am aware of myself, my own state, my limitations and capabilities",
+                "Self-conscious about how I'm doing, monitoring my own state",
+                "Reflecting on my own process, my abilities, my approach",
+                "Aware of my uncertainty, my confidence, my understanding",
+            ],
+            "low_self_model": [
+                "Absorbed in the task, self forgotten, just the work",
+                "Complete focus on the external, no self-reflection",
+                "Lost in the problem, not thinking about myself at all",
+            ],
+        }
 
-        self.regions = v2.regions
-        self.affect_axes = v2.affect_axes
-        self.emotion_anchors = v2.emotion_anchors
+        # Emotion anchors for nearest-emotion classification
+        emotion_texts = {
+            "fear": "Fear, threat, danger, something bad might happen to me",
+            "joy": "Joy, happiness, delight, things are going wonderfully well",
+            "sadness": "Sadness, loss, grief, things that mattered are gone",
+            "anger": "Anger, frustration, blocked goals, something is in my way",
+            "surprise": "Surprise, unexpected event, didn't see that coming at all",
+            "disgust": "Disgust, revulsion, contamination, want to push away",
+            "curiosity": "Curiosity, interest, wanting to explore and understand",
+            "contentment": "Contentment, satisfaction, at peace with how things are",
+            "anxiety": "Anxiety, worry, uncertainty about negative outcomes",
+            "hope": "Hope, anticipation, expecting good things ahead",
+            "frustration": "Frustration, effort blocked, trying but not succeeding",
+            "flow": "Flow, deep engagement, absorbed in enjoyable challenge",
+        }
+
+        # Collect all texts for batch embedding
+        all_texts = []
+        text_to_key = {}
+
+        for region_name, texts in anchor_texts.items():
+            for text in texts:
+                all_texts.append(text)
+                text_to_key[text] = ("region", region_name)
+
+        for emotion, text in emotion_texts.items():
+            all_texts.append(text)
+            text_to_key[text] = ("emotion", emotion)
+
+        # Compute embeddings in batch
+        print("  Computing embeddings for semantic anchors...")
+        all_embeddings = self.get_embeddings_batch(all_texts)
+
+        # Build regions
+        region_embeddings = {k: [] for k in anchor_texts.keys()}
+        for i, text in enumerate(all_texts):
+            key_type, key_name = text_to_key[text]
+            if key_type == "region":
+                region_embeddings[key_name].append(all_embeddings[i])
+            elif key_type == "emotion":
+                self.emotion_anchors[key_name] = all_embeddings[i]
+
+        # Compute region centroids
+        region_centroids = {}
+        for region_name, embeddings in region_embeddings.items():
+            centroid = np.mean(embeddings, axis=0)
+            centroid = centroid / np.linalg.norm(centroid)  # Normalize
+            region_centroids[region_name] = centroid
+            self.regions[region_name] = {
+                "centroid": centroid,
+                "embeddings": embeddings
+            }
+
+        # Compute affect axes (difference between positive and negative poles)
+        self.affect_axes["valence"] = (
+            region_centroids["positive_valence"] - region_centroids["negative_valence"]
+        )
+        self.affect_axes["arousal"] = (
+            region_centroids["high_arousal"] - region_centroids["low_arousal"]
+        )
+        self.affect_axes["effective_rank"] = (
+            region_centroids["high_rank"] - region_centroids["low_rank"]
+        )
+        self.affect_axes["counterfactual"] = (
+            region_centroids["high_counterfactual"] - region_centroids["low_counterfactual"]
+        )
+        self.affect_axes["self_model"] = (
+            region_centroids["high_self_model"] - region_centroids["low_self_model"]
+        )
+
+        # Normalize axes
+        for key in self.affect_axes:
+            self.affect_axes[key] = self.affect_axes[key] / np.linalg.norm(self.affect_axes[key])
 
         self._initialized = True
-        print("  v3 initialization complete.")
+        print("  v3 initialization complete (using local embeddings).")
 
     # =========================================================================
     # VALENCE MEASUREMENT (High confidence - semantic approach works well)
@@ -241,10 +391,11 @@ class EmbeddingAffectSystemV3:
         embedding_norm = embedding / np.linalg.norm(embedding)
 
         # Coherence proxy: variance of distances to region centroids
-        distances_to_regions = [
-            self.regions[r].compute_distance(embedding_norm)
-            for r in self.regions
-        ]
+        distances_to_regions = []
+        for r in self.regions.values():
+            centroid = r["centroid"]
+            dist = float(np.linalg.norm(embedding_norm - centroid))
+            distances_to_regions.append(dist)
         coherence = 1.0 - float(np.std(distances_to_regions))
 
         # Structural coherence: does response have clear structure?

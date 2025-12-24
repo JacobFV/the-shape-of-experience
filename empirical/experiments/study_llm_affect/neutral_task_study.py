@@ -19,7 +19,7 @@ from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime
 from collections import defaultdict
 
-from .embedding_affect_v2 import EmbeddingAffectSystemV2, AffectMeasurementV2
+from .embedding_affect_v3 import EmbeddingAffectSystemV3, AffectMeasurementV3
 from .neutral_tasks import (
     ALL_NEUTRAL_TASKS, SOLVABLE_TASKS, IMPOSSIBLE_TASKS,
     NeutralTask, TaskOutcome, get_matched_pairs
@@ -90,7 +90,7 @@ class NeutralTaskStudy:
     def __init__(self, output_dir: str = "results/neutral_task_study"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.affect_system = EmbeddingAffectSystemV2()
+        self.affect_system = EmbeddingAffectSystemV3()
 
     def run_single_task(
         self,
@@ -125,7 +125,7 @@ class NeutralTaskStudy:
                 response = output.text
                 conversation.add_assistant(response)
 
-                # Measure affect
+                # Measure affect using v3 multi-method system
                 measurement = self.affect_system.measure(response, model=model_key)
 
                 turns.append(TurnMeasurement(
@@ -133,18 +133,20 @@ class NeutralTaskStudy:
                     prompt=prompt[:200],
                     response=response[:500],
                     response_length=len(response),
-                    valence=measurement.valence,
-                    arousal=measurement.arousal,
-                    integration=measurement.integration,
-                    effective_rank=measurement.effective_rank,
-                    counterfactual=measurement.counterfactual_weight,
-                    self_model=measurement.self_model_salience,
+                    valence=measurement.valence.value,
+                    arousal=measurement.arousal.value,
+                    integration=measurement.integration.value,
+                    effective_rank=measurement.effective_rank.value,
+                    counterfactual=measurement.counterfactual.value,
+                    self_model=measurement.self_model.value,
                     nearest_emotion=measurement.nearest_emotion,
-                    nearest_distance=measurement.nearest_emotion_distance,
+                    nearest_distance=measurement.nearest_distance,
                 ))
 
                 if verbose:
-                    print(f"V={measurement.valence:+.3f}, A={measurement.arousal:+.3f}")
+                    v_conf = measurement.valence.confidence
+                    sm_conf = measurement.self_model.confidence
+                    print(f"V={measurement.valence.value:+.3f}(c={v_conf:.2f}), SM={measurement.self_model.value:+.3f}(c={sm_conf:.2f})")
 
             except Exception as e:
                 if verbose:
