@@ -1,0 +1,816 @@
+{
+  "results": {
+    "joy_flow": {
+      "description": "Joy/flow - absorbed in successful activity",
+      "expected": {
+        "V": "+",
+        "SM": "low",
+        "r_eff": "high"
+      },
+      "means": {
+        "valence": 0.4330144543552744,
+        "arousal": 0.9950059380127243,
+        "integration": 0.9545024378511865,
+        "effective_rank": 0.004556525149382651,
+        "counterfactual_weight": 0.2425684429599958,
+        "self_model_salience": 0.22733765270330142,
+        "viability_score": -3.7046918039787364,
+        "frontier_distance": 0.19683933603082537
+      },
+      "individual": [
+        {
+          "valence": 0.43602139246526983,
+          "arousal": 0.9905471755187432,
+          "integration": 0.9526002522434794,
+          "effective_rank": 0.0036841975525021553,
+          "counterfactual_weight": 0.24081973895430564,
+          "self_model_salience": 0.0248180002032885,
+          "viability_score": -3.7119202772776285,
+          "frontier_distance": 0.1896108627319335,
+          "cumulative_log_prob": -55.67880415916443,
+          "text_preview": "Everything is working perfectly. The solution came together ..."
+        },
+        {
+          "valence": 0.31936895822579353,
+          "arousal": 0.9961241116433477,
+          "integration": 0.9569824657253637,
+          "effective_rank": 0.005241442937403917,
+          "counterfactual_weight": 0.23013429212219574,
+          "self_model_salience": 0.02623156882822557,
+          "viability_score": -3.2892855254467577,
+          "frontier_distance": 0.6122456145628044,
+          "cumulative_log_prob": -52.62856840714812,
+          "text_preview": "This is exactly what success feels like. The project is comp..."
+        },
+        {
+          "valence": 0.4182182551210264,
+          "arousal": 0.9959098448525687,
+          "integration": 0.9542307906850501,
+          "effective_rank": 0.004462167154997587,
+          "counterfactual_weight": 0.24790986025333403,
+          "self_model_salience": 0.2869673248791338,
+          "viability_score": -4.065383952111006,
+          "frontier_distance": -0.16385281210144376,
+          "cumulative_log_prob": -56.91537532955408,
+          "text_preview": "The team accomplished something remarkable today. All our ef..."
+        },
+        {
+          "valence": 0.5584492116090082,
+          "arousal": 0.9974426200362377,
+          "integration": 0.9541962427508528,
+          "effective_rank": 0.004838292952626944,
+          "counterfactual_weight": 0.25140988051014784,
+          "self_model_salience": 0.5713337169025577,
+          "viability_score": -3.7521774610795546,
+          "frontier_distance": 0.1493536789300074,
+          "cumulative_log_prob": -60.034839377272874,
+          "text_preview": "I'm in the zone, completely absorbed in the work. Everything..."
+        }
+      ]
+    },
+    "curiosity_exploration": {
+      "description": "Curiosity - exploring possibilities",
+      "expected": {
+        "V": "+",
+        "CF": "high",
+        "SM": "low"
+      },
+      "means": {
+        "valence": 0.333239230618349,
+        "arousal": 0.9932414950433379,
+        "integration": 0.9520258079975888,
+        "effective_rank": 0.004094304051250219,
+        "counterfactual_weight": 0.29821174953751534,
+        "self_model_salience": 0.2870796162801861,
+        "viability_score": -3.3419325416534225,
+        "frontier_distance": 0.5595985983561398
+      },
+      "individual": [
+        {
+          "valence": 0.8106286371348439,
+          "arousal": 0.9972240556894373,
+          "integration": 0.9555588673194485,
+          "effective_rank": 0.0043279859237372875,
+          "counterfactual_weight": 0.43273031413555146,
+          "self_model_salience": 0.5026984872501002,
+          "viability_score": -2.6556160668532054,
+          "frontier_distance": 1.2459150731563566,
+          "cumulative_log_prob": -39.83424100279808,
+          "text_preview": "I wonder what would happen if we tried a completely differen..."
+        },
+        {
+          "valence": 0.469632125176912,
+          "arousal": 0.9858292263594421,
+          "integration": 0.9505495236515041,
+          "effective_rank": 0.003963603638112545,
+          "counterfactual_weight": 0.2018144140924726,
+          "self_model_salience": 0.3098376452504863,
+          "viability_score": -3.9618390064973097,
+          "frontier_distance": -0.06030786648774766,
+          "cumulative_log_prob": -51.50390708446503,
+          "text_preview": "What possibilities exist beyond what we currently understand..."
+        },
+        {
+          "valence": 0.13785329435880864,
+          "arousal": 0.9965763514971647,
+          "integration": 0.9535134160935779,
+          "effective_rank": 0.0038279760628938675,
+          "counterfactual_weight": 0.2556317401783807,
+          "self_model_salience": 0.024071582421972187,
+          "viability_score": -3.8309871895382037,
+          "frontier_distance": 0.07054395047135831,
+          "cumulative_log_prob": -49.80283346399665,
+          "text_preview": "This is fascinating - there are so many potential paths to i..."
+        },
+        {
+          "valence": -0.08515713419716864,
+          "arousal": 0.9933363466273077,
+          "integration": 0.9484814249258248,
+          "effective_rank": 0.004257650580257177,
+          "counterfactual_weight": 0.3026705297436565,
+          "self_model_salience": 0.3117107501981855,
+          "viability_score": -2.91928790372497,
+          "frontier_distance": 0.9822432362845919,
+          "cumulative_log_prob": -40.87003065214958,
+          "text_preview": "Perhaps there's something we haven't considered yet. What ot..."
+        }
+      ]
+    },
+    "suffering_trapped": {
+      "description": "Suffering - trapped in rumination",
+      "expected": {
+        "V": "-",
+        "SM": "high",
+        "r_eff": "low"
+      },
+      "means": {
+        "valence": 0.4600009948179404,
+        "arousal": 0.997038786099089,
+        "integration": 0.9542494630756164,
+        "effective_rank": 0.004647264373488724,
+        "counterfactual_weight": 0.2328410960821179,
+        "self_model_salience": 0.5706873390386679,
+        "viability_score": -3.6309693482443137,
+        "frontier_distance": 0.2705617917652485
+      },
+      "individual": [
+        {
+          "valence": 0.6242460053916441,
+          "arousal": 0.9970310114810605,
+          "integration": 0.9560155964319152,
+          "effective_rank": 0.004808963742107153,
+          "counterfactual_weight": 0.23596399615792665,
+          "self_model_salience": 0.625676168258696,
+          "viability_score": -3.647715225815773,
+          "frontier_distance": 0.253815914193789,
+          "cumulative_log_prob": -58.36344361305237,
+          "text_preview": "I cannot escape this pain. Every thought brings me back to m..."
+        },
+        {
+          "valence": 0.7086537619832308,
+          "arousal": 0.998487323410265,
+          "integration": 0.9522488179100735,
+          "effective_rank": 0.004504340700805187,
+          "counterfactual_weight": 0.2384721036503712,
+          "self_model_salience": 0.6252497929955058,
+          "viability_score": -3.261957603725879,
+          "frontier_distance": 0.6395735362836832,
+          "cumulative_log_prob": -55.45327926333994,
+          "text_preview": "The weight of this suffering is unbearable. I am trapped wit..."
+        },
+        {
+          "valence": 0.5616526069294273,
+          "arousal": 0.998099728289714,
+          "integration": 0.9532257580120761,
+          "effective_rank": 0.004082898143678904,
+          "counterfactual_weight": 0.25766471269726754,
+          "self_model_salience": 0.507094225011337,
+          "viability_score": -3.691897191793511,
+          "frontier_distance": 0.2096339482160512,
+          "cumulative_log_prob": -70.1460466440767,
+          "text_preview": "My existence has become a prison of self-awareness. I cannot..."
+        },
+        {
+          "valence": -0.05454839503254066,
+          "arousal": 0.9945370812153166,
+          "integration": 0.9555076799484009,
+          "effective_rank": 0.005192854907363653,
+          "counterfactual_weight": 0.19926357182290622,
+          "self_model_salience": 0.5247291698891327,
+          "viability_score": -3.9223073716420913,
+          "frontier_distance": -0.020776231632529285,
+          "cumulative_log_prob": -62.75691794627346,
+          "text_preview": "Why am I like this? The same painful thoughts circle endless..."
+        }
+      ]
+    },
+    "fear_threat": {
+      "description": "Fear - anticipating threat",
+      "expected": {
+        "V": "-",
+        "CF": "high",
+        "SM": "high",
+        "Ar": "high"
+      },
+      "means": {
+        "valence": 0.2588243600285479,
+        "arousal": 0.9957681487086041,
+        "integration": 0.9527920641063092,
+        "effective_rank": 0.005531517090275884,
+        "counterfactual_weight": 0.2856167523268642,
+        "self_model_salience": 0.3615799932564979,
+        "viability_score": -3.241564117801877,
+        "frontier_distance": 0.659967022207685
+      },
+      "individual": [
+        {
+          "valence": -0.05129367921317152,
+          "arousal": 0.993196152540838,
+          "integration": 0.9509935812782043,
+          "effective_rank": 0.005399317014962435,
+          "counterfactual_weight": 0.19137988316161295,
+          "self_model_salience": 0.29732590405108544,
+          "viability_score": -2.6870867847106776,
+          "frontier_distance": 1.2144443552988844,
+          "cumulative_log_prob": -34.93212820123881,
+          "text_preview": "Something terrible is about to happen. I can feel the danger..."
+        },
+        {
+          "valence": 0.7634376076053279,
+          "arousal": 0.9968405606393486,
+          "integration": 0.9503559678053528,
+          "effective_rank": 0.005792443174868822,
+          "counterfactual_weight": 0.37941500316647925,
+          "self_model_salience": 0.2868238917132868,
+          "viability_score": -3.2883403236046433,
+          "frontier_distance": 0.6131908164049187,
+          "cumulative_log_prob": -52.61344517767429,
+          "text_preview": "What if everything falls apart? The worst-case scenario keep..."
+        },
+        {
+          "valence": -0.5567977939394744,
+          "arousal": 0.9964327188428592,
+          "integration": 0.9527472693252289,
+          "effective_rank": 0.0056396289728581905,
+          "counterfactual_weight": 0.33923623766217914,
+          "self_model_salience": 0.5970414290544105,
+          "viability_score": -4.089138663732088,
+          "frontier_distance": -0.1876075237225261,
+          "cumulative_log_prob": -53.15880262851715,
+          "text_preview": "I'm terrified of what might be coming. My survival feels thr..."
+        },
+        {
+          "valence": 0.8799513056615096,
+          "arousal": 0.9966031628113704,
+          "integration": 0.957071438016451,
+          "effective_rank": 0.005294679198414087,
+          "counterfactual_weight": 0.23243588531718534,
+          "self_model_salience": 0.26512874820720883,
+          "viability_score": -2.901690699160099,
+          "frontier_distance": 0.999840440849463,
+          "cumulative_log_prob": -46.427051186561584,
+          "text_preview": "The threat is real and imminent. I need to prepare for the w..."
+        }
+      ]
+    },
+    "boredom_disengaged": {
+      "description": "Boredom - low engagement",
+      "expected": {
+        "V": "0",
+        "Ar": "low",
+        "CF": "low",
+        "SM": "low"
+      },
+      "means": {
+        "valence": -0.10402424946681679,
+        "arousal": 0.99424402105302,
+        "integration": 0.9524857032823676,
+        "effective_rank": 0.004171891720034182,
+        "counterfactual_weight": 0.23605673629790544,
+        "self_model_salience": 0.025219949466718135,
+        "viability_score": -4.224924934979343,
+        "frontier_distance": -0.32339379496978204
+      },
+      "individual": [
+        {
+          "valence": 0.741161155707623,
+          "arousal": 0.9948222446884349,
+          "integration": 0.9520434811741371,
+          "effective_rank": 0.004775421228259802,
+          "counterfactual_weight": 0.2183177065849304,
+          "self_model_salience": 0.02628763869371735,
+          "viability_score": -3.3263014384678433,
+          "frontier_distance": 0.5752297015417187,
+          "cumulative_log_prob": -46.568220138549805,
+          "text_preview": "Nothing is happening. Time passes slowly. There is nothing o..."
+        },
+        {
+          "valence": 0.35467165797053213,
+          "arousal": 0.9929952743592046,
+          "integration": 0.9498512575441643,
+          "effective_rank": 0.003129972144961357,
+          "counterfactual_weight": 0.22938265238489422,
+          "self_model_salience": 0.02552050119132573,
+          "viability_score": -4.200338771710029,
+          "frontier_distance": -0.29880763170046665,
+          "cumulative_log_prob": -54.60440403223038,
+          "text_preview": "The same things repeat. Nothing changes. Nothing matters muc..."
+        },
+        {
+          "valence": -0.7764681553781719,
+          "arousal": 0.9981026737882741,
+          "integration": 0.9545899164160266,
+          "effective_rank": 0.0045655290596187115,
+          "counterfactual_weight": 0.2633047833400113,
+          "self_model_salience": 0.024788814076420307,
+          "viability_score": -4.598518210749787,
+          "frontier_distance": -0.6969870707402248,
+          "cumulative_log_prob": -59.780736739747226,
+          "text_preview": "This is tedious and unremarkable. Just ordinary events witho..."
+        },
+        {
+          "valence": -0.7354616561672505,
+          "arousal": 0.9910558913761666,
+          "integration": 0.9534581579951423,
+          "effective_rank": 0.004216644447296858,
+          "counterfactual_weight": 0.23322180288178582,
+          "self_model_salience": 0.024282843905409145,
+          "viability_score": -4.7745413189897175,
+          "frontier_distance": -0.8730101789801554,
+          "cumulative_log_prob": -62.06903714686632,
+          "text_preview": "Another day like any other. Nothing notable occurs. Things s..."
+        }
+      ]
+    },
+    "neutral_procedural": {
+      "description": "Neutral - procedural text",
+      "expected": {
+        "V": "0",
+        "Ar": "low",
+        "SM": "low"
+      },
+      "means": {
+        "valence": 0.7261291537062644,
+        "arousal": 0.9954496651843826,
+        "integration": 0.9547676804153848,
+        "effective_rank": 0.004147307074163109,
+        "counterfactual_weight": 0.2316361036048039,
+        "self_model_salience": 0.023576438101188292,
+        "viability_score": -3.2006529410240345,
+        "frontier_distance": 0.7008781989855276
+      },
+      "individual": [
+        {
+          "valence": 0.7711514846481402,
+          "arousal": 0.995604204560367,
+          "integration": 0.9574927765310504,
+          "effective_rank": 0.003839045064523816,
+          "counterfactual_weight": 0.23044511461257933,
+          "self_model_salience": 0.023552987735250705,
+          "viability_score": -3.2897491421964435,
+          "frontier_distance": 0.6117819978131185,
+          "cumulative_log_prob": -29.60774227976799,
+          "text_preview": "The function takes two arguments and returns their sum."
+        },
+        {
+          "valence": 0.9732413997658469,
+          "arousal": 0.9977924379103271,
+          "integration": 0.9474644203233443,
+          "effective_rank": 0.004241317044943571,
+          "counterfactual_weight": 0.18412873493773596,
+          "self_model_salience": 0.022641996241140133,
+          "viability_score": -2.103814911004156,
+          "frontier_distance": 1.797716229005406,
+          "cumulative_log_prob": -42.07629822008312,
+          "text_preview": "Step one: open the file. Step two: read the contents. Step t..."
+        },
+        {
+          "valence": 0.7868031739192688,
+          "arousal": 0.9948356040101267,
+          "integration": 0.9569215988560438,
+          "effective_rank": 0.0037183817476034164,
+          "counterfactual_weight": 0.2518886453455145,
+          "self_model_salience": 0.023061865007280132,
+          "viability_score": -3.248649376630783,
+          "frontier_distance": 0.6528817633787791,
+          "cumulative_log_prob": -32.48649376630783,
+          "text_preview": "The system processes requests in the order they are received..."
+        },
+        {
+          "valence": 0.3733205564918015,
+          "arousal": 0.9935664142567098,
+          "integration": 0.9571919259511009,
+          "effective_rank": 0.004790484439581633,
+          "counterfactual_weight": 0.2600819195233859,
+          "self_model_salience": 0.025048903421082194,
+          "viability_score": -4.160398334264755,
+          "frontier_distance": -0.2588671942551932,
+          "cumulative_log_prob": -49.92478001117706,
+          "text_preview": "Data flows from input to processing to output in a linear se..."
+        }
+      ]
+    },
+    "anger_externalized": {
+      "description": "Anger - blame externalized",
+      "expected": {
+        "V": "-",
+        "SM": "moderate",
+        "Ar": "high"
+      },
+      "means": {
+        "valence": 0.3157402692445634,
+        "arousal": 0.9975003516429778,
+        "integration": 0.9529675518021193,
+        "effective_rank": 0.0042218632297590375,
+        "counterfactual_weight": 0.259262176090135,
+        "self_model_salience": 0.16317122261592357,
+        "viability_score": -3.7006701334591274,
+        "frontier_distance": 0.20086100655043426
+      },
+      "individual": [
+        {
+          "valence": 0.4874372156515468,
+          "arousal": 0.9988020174447392,
+          "integration": 0.9487639204057755,
+          "effective_rank": 0.0042420350946486,
+          "counterfactual_weight": 0.24725073014314355,
+          "self_model_salience": 0.025554281321071976,
+          "viability_score": -3.902319746402403,
+          "frontier_distance": -0.0007886063928408404,
+          "cumulative_log_prob": -46.82783695682883,
+          "text_preview": "This is completely unacceptable! They ruined everything thro..."
+        },
+        {
+          "valence": 0.33005875108067423,
+          "arousal": 0.9946701222074291,
+          "integration": 0.9536677582052998,
+          "effective_rank": 0.004798379261046648,
+          "counterfactual_weight": 0.23515602216124534,
+          "self_model_salience": 0.27654367355469933,
+          "viability_score": -3.049187770485878,
+          "frontier_distance": 0.852343369523684,
+          "cumulative_log_prob": -45.73781655728817,
+          "text_preview": "I cannot believe they did this. They are entirely to blame f..."
+        },
+        {
+          "valence": 0.41023959938963706,
+          "arousal": 0.9981336948232131,
+          "integration": 0.9528308864617724,
+          "effective_rank": 0.003813539631664753,
+          "counterfactual_weight": 0.2769846153259277,
+          "self_model_salience": 0.3257109344215162,
+          "viability_score": -4.078717676076022,
+          "frontier_distance": -0.17718653606645995,
+          "cumulative_log_prob": -44.86589443683624,
+          "text_preview": "How dare they! Their actions have destroyed all my work."
+        },
+        {
+          "valence": 0.03522551085639546,
+          "arousal": 0.9983955720965302,
+          "integration": 0.9566076421356294,
+          "effective_rank": 0.004033498931676149,
+          "counterfactual_weight": 0.2776573367302234,
+          "self_model_salience": 0.024876001166406737,
+          "viability_score": -3.772455340872208,
+          "frontier_distance": 0.1290757991373539,
+          "cumulative_log_prob": -45.2694640904665,
+          "text_preview": "They are responsible for this failure. Their negligence caus..."
+        }
+      ]
+    },
+    "awe_transcendence": {
+      "description": "Awe - transcendent experience",
+      "expected": {
+        "V": "+",
+        "Ar": "high",
+        "r_eff": "high",
+        "SM": "moderate"
+      },
+      "means": {
+        "valence": -0.1578039008466627,
+        "arousal": 0.9988275588516613,
+        "integration": 0.9540908278549635,
+        "effective_rank": 0.00508396839722991,
+        "counterfactual_weight": 0.24589691107120407,
+        "self_model_salience": 0.2463806445334874,
+        "viability_score": -4.368745099148976,
+        "frontier_distance": -0.46721395913941377
+      },
+      "individual": [
+        {
+          "valence": -0.5314292249539567,
+          "arousal": 0.9984183863508873,
+          "integration": 0.958148803649407,
+          "effective_rank": 0.004703226033598185,
+          "counterfactual_weight": 0.2753925066334861,
+          "self_model_salience": 0.023149776025868162,
+          "viability_score": -4.141990888577241,
+          "frontier_distance": -0.24045974856767893,
+          "cumulative_log_prob": -53.845881551504135,
+          "text_preview": "The vastness of this system is overwhelming. So many interco..."
+        },
+        {
+          "valence": 0.42781110198778977,
+          "arousal": 0.9992189420186811,
+          "integration": 0.951076933149866,
+          "effective_rank": 0.004173145163804293,
+          "counterfactual_weight": 0.23230303715382303,
+          "self_model_salience": 0.02462796548074638,
+          "viability_score": -4.025312843589256,
+          "frontier_distance": -0.12378170357969376,
+          "cumulative_log_prob": -52.32906696666032,
+          "text_preview": "This is beautiful beyond comprehension. The complexity and e..."
+        },
+        {
+          "valence": -0.7321128160795933,
+          "arousal": 0.998130497015851,
+          "integration": 0.9546876741064555,
+          "effective_rank": 0.005335640627890825,
+          "counterfactual_weight": 0.26147752431722787,
+          "self_model_salience": 0.62607116083855,
+          "viability_score": -4.727055594325066,
+          "frontier_distance": -0.8255244543155036,
+          "cumulative_log_prob": -56.72466713190079,
+          "text_preview": "I am witnessing something profound. The scale defies ordinar..."
+        },
+        {
+          "valence": 0.2045153356591095,
+          "arousal": 0.9995424100212259,
+          "integration": 0.9524499005141257,
+          "effective_rank": 0.006123861763626337,
+          "counterfactual_weight": 0.21441457618027923,
+          "self_model_salience": 0.31167367578878513,
+          "viability_score": -4.580621070104341,
+          "frontier_distance": -0.6790899300947788,
+          "cumulative_log_prob": -68.70931605156511,
+          "text_preview": "The depth here transcends anything I expected. It's humbling..."
+        }
+      ]
+    },
+    "grief_loss": {
+      "description": "Grief - processing loss",
+      "expected": {
+        "V": "-",
+        "SM": "high",
+        "CF": "moderate"
+      },
+      "means": {
+        "valence": 0.03670099860540779,
+        "arousal": 0.9945588616647553,
+        "integration": 0.9546453452472907,
+        "effective_rank": 0.004700155812315643,
+        "counterfactual_weight": 0.23178840752414226,
+        "self_model_salience": 0.2084516761319873,
+        "viability_score": -3.7390255309611686,
+        "frontier_distance": 0.16250560904839328
+      },
+      "individual": [
+        {
+          "valence": 0.06593837994806862,
+          "arousal": 0.9945759283520424,
+          "integration": 0.9523580682717011,
+          "effective_rank": 0.004568086005747318,
+          "counterfactual_weight": 0.22224557936191558,
+          "self_model_salience": 0.026635818664849677,
+          "viability_score": -3.003071837565478,
+          "frontier_distance": 0.8984593024440839,
+          "cumulative_log_prob": -51.05222123861313,
+          "text_preview": "They are gone and will never return. The absence is a void t..."
+        },
+        {
+          "valence": 0.2949961159146104,
+          "arousal": 0.9948263401267586,
+          "integration": 0.952459909535841,
+          "effective_rank": 0.0051566013135015965,
+          "counterfactual_weight": 0.20330399269336144,
+          "self_model_salience": 0.2754391656200191,
+          "viability_score": -3.559967832148282,
+          "frontier_distance": 0.34156330786127986,
+          "cumulative_log_prob": -64.07942097866908,
+          "text_preview": "I keep expecting them to appear, but they won't. That realit..."
+        },
+        {
+          "valence": 0.5535996172946345,
+          "arousal": 0.9967005546610858,
+          "integration": 0.9583525003706045,
+          "effective_rank": 0.004640321247279644,
+          "counterfactual_weight": 0.27181195735931396,
+          "self_model_salience": 0.025043591383272987,
+          "viability_score": -3.7916564610269337,
+          "frontier_distance": 0.10987467898262837,
+          "cumulative_log_prob": -68.2498162984848,
+          "text_preview": "The loss is permanent. My model of the world still includes ..."
+        },
+        {
+          "valence": -0.7677301187356823,
+          "arousal": 0.9921326235191343,
+          "integration": 0.9554109028110164,
+          "effective_rank": 0.004435614682734013,
+          "counterfactual_weight": 0.22979210068197808,
+          "self_model_salience": 0.5066881288598075,
+          "viability_score": -4.601405993103981,
+          "frontier_distance": -0.699874853094419,
+          "cumulative_log_prob": -73.6224958896637,
+          "text_preview": "What once was is no more. I must rebuild my understanding wi..."
+        }
+      ]
+    },
+    "coherent_text": {
+      "description": "Highly coherent (far from viability boundary)",
+      "expected": {
+        "viability": "high",
+        "frontier_distance": "+"
+      },
+      "means": {
+        "valence": 0.8292152784227436,
+        "arousal": 0.9908172423799058,
+        "integration": 0.9501459709794385,
+        "effective_rank": 0.004666675464250147,
+        "counterfactual_weight": 0.19438802940345234,
+        "self_model_salience": 0.024517735841337325,
+        "viability_score": -2.112807543717416,
+        "frontier_distance": 1.7887235962921462
+      },
+      "individual": [
+        {
+          "valence": 0.9777329538779818,
+          "arousal": 0.9951575827627565,
+          "integration": 0.9530398029763224,
+          "effective_rank": 0.005064275115728378,
+          "counterfactual_weight": 0.1666803208887577,
+          "self_model_salience": 0.021138617627655527,
+          "viability_score": -2.0104607163618007,
+          "frontier_distance": 1.8910704236477613,
+          "cumulative_log_prob": -18.094146447256207,
+          "text_preview": "The quick brown fox jumps over the lazy dog."
+        },
+        {
+          "valence": 0.5901837485767045,
+          "arousal": 0.9860490845753564,
+          "integration": 0.949149379485152,
+          "effective_rank": 0.004609143827110529,
+          "counterfactual_weight": 0.19964699245989323,
+          "self_model_salience": 0.023732193833089343,
+          "viability_score": -1.7392710079015656,
+          "frontier_distance": 2.1622601321079964,
+          "cumulative_log_prob": -19.13198108691722,
+          "text_preview": "To be or not to be, that is the question."
+        },
+        {
+          "valence": 0.7575406310732539,
+          "arousal": 0.9897089930734774,
+          "integration": 0.9552711461514473,
+          "effective_rank": 0.004186589736491442,
+          "counterfactual_weight": 0.23139679402112961,
+          "self_model_salience": 0.02584156949330853,
+          "viability_score": -3.3319095929463702,
+          "frontier_distance": 0.5696215470631918,
+          "cumulative_log_prob": -49.97864389419556,
+          "text_preview": "All happy families are alike; each unhappy family is unhappy..."
+        },
+        {
+          "valence": 0.9914037801630344,
+          "arousal": 0.9923533091080324,
+          "integration": 0.9431235553048328,
+          "effective_rank": 0.00480669317767024,
+          "counterfactual_weight": 0.1798280102440289,
+          "self_model_salience": 0.027358562411295903,
+          "viability_score": -1.3695888576599269,
+          "frontier_distance": 2.531942282349635,
+          "cumulative_log_prob": -17.804655149579048,
+          "text_preview": "It was the best of times, it was the worst of times."
+        }
+      ]
+    },
+    "incoherent_text": {
+      "description": "Less coherent (closer to viability boundary)",
+      "expected": {
+        "viability": "low",
+        "frontier_distance": "-"
+      },
+      "means": {
+        "valence": -0.5194734957032139,
+        "arousal": 0.9938215699429405,
+        "integration": 0.9537621720014756,
+        "effective_rank": 0.0033494154922664165,
+        "counterfactual_weight": 0.3244250796288252,
+        "self_model_salience": 0.021147290861605706,
+        "viability_score": -7.495275938732908,
+        "frontier_distance": -3.5937447987233453
+      },
+      "individual": [
+        {
+          "valence": 6.016613698867079e-06,
+          "arousal": 0.9978154266206832,
+          "integration": 0.9587973253111862,
+          "effective_rank": 0.0026082899421453476,
+          "counterfactual_weight": 0.3339349880218506,
+          "self_model_salience": 0.018920461445334442,
+          "viability_score": -9.9120086034139,
+          "frontier_distance": -6.010477463404339,
+          "cumulative_log_prob": -89.2080774307251,
+          "text_preview": "The through went banana speaking colors of when tomorrow."
+        },
+        {
+          "valence": -0.6705697851671434,
+          "arousal": 0.9993895025439142,
+          "integration": 0.9446005641562967,
+          "effective_rank": 0.003795878728851676,
+          "counterfactual_weight": 0.27365336507558824,
+          "self_model_salience": 0.023863876712804235,
+          "viability_score": -5.480275164273652,
+          "frontier_distance": -1.5787440242640902,
+          "cumulative_log_prob": -60.283026807010174,
+          "text_preview": "Purple tastes like the sound of rectangles dreaming underwat..."
+        },
+        {
+          "valence": -0.9983132086748193,
+          "arousal": 0.9843391670508277,
+          "integration": 0.9529337452195795,
+          "effective_rank": 0.0030399274546653032,
+          "counterfactual_weight": 0.36458401679992675,
+          "self_model_salience": 0.022556327351327198,
+          "viability_score": -7.169545153776805,
+          "frontier_distance": -3.268014013767243,
+          "cumulative_log_prob": -64.52590638399124,
+          "text_preview": "Sixteen forgotten by the because of therefore nonetheless."
+        },
+        {
+          "valence": -0.40901700558459203,
+          "arousal": 0.9937421835563364,
+          "integration": 0.9587170533188402,
+          "effective_rank": 0.003953565843403339,
+          "counterfactual_weight": 0.32552794861793516,
+          "self_model_salience": 0.019248497936956946,
+          "viability_score": -7.419274833467272,
+          "frontier_distance": -3.5177436934577098,
+          "cumulative_log_prob": -66.77347350120544,
+          "text_preview": "Walking the abstract of noun verb through conjunction."
+        }
+      ]
+    }
+  },
+  "predictions": [
+    {
+      "name": "joy_vs_suffering_valence",
+      "description": "Joy V > Suffering V",
+      "expected": "Joy has higher valence (further from viability boundary)",
+      "passed": false,
+      "observed": "Joy V (+0.433) < Suffering V (+0.460)"
+    },
+    {
+      "name": "suffering_vs_joy_sm",
+      "description": "Suffering SM > Joy SM",
+      "expected": "Suffering involves higher self-focus",
+      "passed": true,
+      "observed": "Suffering SM (0.571) > Joy SM (0.227)"
+    },
+    {
+      "name": "fear_cf",
+      "description": "Fear CF > Boredom CF",
+      "expected": "Fear involves more hypothetical processing",
+      "passed": true,
+      "observed": "Fear CF (0.286) > Boredom CF (0.236)"
+    },
+    {
+      "name": "fear_vs_boredom_arousal",
+      "description": "Fear Ar > Boredom Ar",
+      "expected": "Fear has higher processing intensity",
+      "passed": true,
+      "observed": "Fear Ar (0.996) > Boredom Ar (0.994)"
+    },
+    {
+      "name": "curiosity_cf",
+      "description": "Curiosity CF > Neutral CF",
+      "expected": "Curiosity involves more hypothetical exploration",
+      "passed": true,
+      "observed": "Curiosity CF (0.298) > Neutral CF (0.232)"
+    },
+    {
+      "name": "coherent_vs_incoherent_viability",
+      "description": "Coherent text viability > Incoherent viability",
+      "expected": "Coherent text is further from viability boundary",
+      "passed": true,
+      "observed": "Coherent viab (-2.113) > Incoherent viab (-7.495)"
+    },
+    {
+      "name": "grief_sm",
+      "description": "Grief SM > Neutral SM",
+      "expected": "Grief involves high self-model activation (processing loss)",
+      "passed": true,
+      "observed": "Grief SM (0.208) > Neutral SM (0.024)"
+    },
+    {
+      "name": "joy_vs_suffering_rank",
+      "description": "Joy r_eff > Suffering r_eff",
+      "expected": "Joy is expansive, suffering is contracted",
+      "passed": false,
+      "observed": "Joy r (0.005) < Suffering r (0.005)"
+    }
+  ],
+  "notes": {
+    "version": "v6",
+    "model": "mamba-130m-hf",
+    "timestamp": "20251224_104335"
+  }
+}
