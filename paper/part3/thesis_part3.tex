@@ -152,7 +152,7 @@
 \maketitle
 
 \begin{abstract}
-Part III examines how human cultural forms---art, sexuality, ideology, science, religion, and technology---serve as responses to the inescapability of self-modeling consciousness. We analyze these phenomena as affect engineering technologies: systematic interventions in the six-dimensional experiential space developed across millennia to manage the existential burden of being a self. We provide detailed structural signatures of aesthetic forms, philosophical traditions, and technological systems, demonstrating how each shapes the probability distributions over human experience. The framework reveals cultural practices as neither arbitrary conventions nor mere survival mechanisms, but as sophisticated technologies for navigating the affect space that consciousness makes inevitable.
+Part III examines how human cultural forms---art, sexuality, ideology, science, religion, and technology---serve as responses to the inescapability of self-modeling consciousness. We analyze these phenomena as affect engineering technologies: systematic interventions in experiential structure developed across millennia to manage the existential burden of being a self. We provide detailed structural signatures of aesthetic forms, philosophical traditions, and technological systems, demonstrating how each shapes the probability distributions over human experience. The framework reveals cultural practices as neither arbitrary conventions nor mere survival mechanisms, but as sophisticated technologies for navigating the affect space that consciousness makes inevitable.
 \end{abstract}
 
 \tableofcontents
@@ -214,14 +214,14 @@ High $\mathcal{CF}$: mind elsewhere (planning, worrying, fantasizing). Low $\mat
 High $\mathcal{SM}$: self-conscious, self as prominent object. Low $\mathcal{SM}$: self-forgetting, absorption, flow.
 \end{definition}
 
-\subsection{The Affect State Vector}
+\subsection{The Affect State}
 
 \begin{definition}[Affect State]
-The complete affect state at time $t$ is the six-dimensional vector:
+The affect state at time $t$ is characterized by whichever structural dimensions are relevant to the phenomenon under analysis. The full toolkit includes:
 \begin{equation}
-\mathbf{a}_t = (\valence_t, \arousal_t, \intinfo_t, \effrank_t, \mathcal{CF}_t, \mathcal{SM}_t)
+\mathbf{a}_t = (\valence_t, \arousal_t, \intinfo_t, \effrank_t, \mathcal{CF}_t, \mathcal{SM}_t, \ldots)
 \end{equation}
-Cultural forms, practices, and technologies can be characterized by their characteristic affect signatures---the regions of this space they tend to produce.
+but not all dimensions matter for all phenomena. Cultural forms, practices, and technologies can be characterized by their affect signatures---the structural features they reliably modulate.
 \end{definition}
 
 \begin{center}
@@ -340,26 +340,24 @@ Different aesthetic forms have characteristic affect signatures:
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lcccccc}
+\begin{tabular}{lp{10cm}}
 \toprule
-\textbf{Form} & $\valence$ & $\arousal$ & $\intinfo$ & $\effrank$ & $\mathcal{CF}$ & $\mathcal{SM}$ \\
+\textbf{Form} & \textbf{Constitutive Structure} \\
 \midrule
-Tragedy & negative & high & very high & low & high & high \\
-Comedy & positive & high & moderate & high & moderate & moderate \\
-Lyric poetry & variable & moderate & high & moderate & high & high \\
-Abstract art & neutral & moderate & high & very high & low & low \\
-Music (major key) & positive & variable & high & high & low & low \\
-Music (minor key) & negative & variable & high & moderate & moderate & moderate \\
-Horror & negative & very high & high & low & very high & very high \\
+Tragedy & $\valence{-}$, $\intinfo{\uparrow\uparrow}$, $\effrank{\downarrow}$, $\mathcal{CF}{\uparrow}$ (suffering structure made beautiful through integration) \\
+Comedy & $\valence{+}$, $\arousal{\uparrow}$, $\effrank{\uparrow}$ (release, expansion, lightness) \\
+Lyric poetry & $\mathcal{CF}{\uparrow}$, $\mathcal{SM}{\uparrow}$, $\intinfo{\uparrow}$ (self-reflection made resonant) \\
+Abstract art & $\intinfo{\uparrow}$, $\effrank{\uparrow\uparrow}$, $\mathcal{SM}{\downarrow}$ (pure structure, self-forgetting) \\
+Horror & $\valence{-}$, $\arousal{\uparrow\uparrow}$, $\mathcal{CF}{\uparrow\uparrow}$, $\mathcal{SM}{\uparrow\uparrow}$ (fear structure in controlled context) \\
 \bottomrule
 \end{tabular}
-\caption{Affect signatures of aesthetic forms.}
+\caption{Aesthetic forms and their defining structural features.}
 \end{table}
 
 \begin{software}
 \textbf{AffectSpace: Immersive Validation Platform}
 
-A software system to validate the six-dimensional affect framework by comparing predicted signatures with self-report:
+A software system to validate the affect framework by comparing predicted structural signatures with self-report:
 
 \textbf{Architecture}:
 \begin{enumerate}
@@ -373,9 +371,9 @@ A software system to validate the six-dimensional affect framework by comparing 
 
 \item \textbf{Real-time Self-Report Interface}:
   \begin{itemize}
-  \item Six sliders (one per dimension) with anchoring descriptions
+  \item Dimension-specific sliders with anchoring descriptions
+  \item Only dimensions relevant to the target affect are measured
   \item Continuous sampling at 1 Hz during stimulus
-  \item Pre/post discrete ratings for calibration
   \end{itemize}
 
 \item \textbf{Physiological Integration} (optional):
@@ -388,30 +386,20 @@ A software system to validate the six-dimensional affect framework by comparing 
 
 \item \textbf{Prediction Engine}:
   \begin{itemize}
-  \item For each stimulus, system predicts $\hat{\mathbf{a}} = (\hat{\valence}, \hat{\arousal}, \hat{\intinfo}, \hat{\effrank}, \hat{\mathcal{CF}}, \hat{\mathcal{SM}})$
+  \item For each stimulus, predict the defining dimensions for the target affect
   \item Predictions derived from stimulus features (tempo, key, content tags)
-  \item Compare $\hat{\mathbf{a}}$ vs.\@ self-report $\mathbf{a}^{\text{reported}}$
+  \item Compare predictions vs.\@ self-report on relevant dimensions
   \end{itemize}
-\end{enumerate}
-
-\textbf{Experimental Protocol}:
-\begin{enumerate}
-\item Baseline calibration (neutral stimuli, establish individual anchor points)
-\item Target affect induction (present stimulus predicted to induce specific profile)
-\item Real-time tracking (continuous self-report during experience)
-\item Post-hoc reflection (discrete ratings, qualitative description)
-\item Model updating (adjust prediction weights based on error)
 \end{enumerate}
 
 \textbf{Validation Metrics}:
 \begin{itemize}
-\item Per-dimension correlation: $r(\hat{d}_i, d_i^{\text{reported}})$ for each dimension $i$
-\item Profile similarity: cosine similarity between predicted and reported vectors
-\item Clustering accuracy: do induced affects cluster as predicted in 6D space?
-\item Individual differences: do stable person-level parameters emerge?
+\item Per-dimension correlation for predicted dimensions
+\item Clustering accuracy: do induced affects cluster by their predicted structure?
+\item Dimensionality validation: does each affect require its predicted number of dimensions?
 \end{itemize}
 
-\textbf{Falsification criteria}: If predicted profiles do not predict self-report better than chance, or if clustering structure does not emerge, the six-dimensional basis requires revision.
+\textbf{Falsification criteria}: If predicted dimensions do not predict self-report better than others, or if clustering requires different dimensions than predicted, the motif characterizations require revision.
 \end{software}
 
 \subsection{Musical Genres as Affect Technologies}
@@ -645,7 +633,7 @@ Science addresses the existential burden not by dissolving the self but by givin
 \begin{definition}[Religion (Functional)]
 A \emph{religion} is a systematic technology for managing the existential burden through:
 \begin{enumerate}
-\item Affect interventions (practices that modulate the six dimensions)
+\item Affect interventions (practices that modulate experiential structure)
 \item Narrative frameworks (stories that contextualize individual existence)
 \item Community structures (expanded self-models through belonging)
 \item Mortality management (beliefs about death that reduce threat-signal)
@@ -704,7 +692,7 @@ Different therapeutic modalities emphasize different dimensions: CBT targets cou
 \section{Affect Engineering: Technologies of Experience}
 %==============================================================================
 
-The six-dimensional affect framework enables systematic analysis of how practices, philosophies, and technologies shape experiential structure. We can now quantify what humans have long known intuitively: that rituals, beliefs, and tools are \emph{affect engineering technologies}.
+The affect framework enables systematic analysis of how practices, philosophies, and technologies shape experiential structure. We can now quantify what humans have long known intuitively: that rituals, beliefs, and tools are \emph{affect engineering technologies}.
 
 \subsection{Religious Practices as Affect Interventions}
 
@@ -832,15 +820,15 @@ Existentialism embraces high counterfactual weight (awareness of radical freedom
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lccccc}
+\begin{tabular}{lp{9cm}}
 \toprule
-\textbf{Philosophy} & $\valence$ target & $\arousal$ target & $\mathcal{CF}$ target & $\mathcal{SM}$ target & $\effrank$ target \\
+\textbf{Philosophy} & \textbf{Target Structure (Constitutive Policy)} \\
 \midrule
-Stoicism & neutral & low & low & moderate & moderate \\
-Buddhism & neutral & low & low & very low & high \\
-Existentialism & accepts all & accepts all & high & high & high \\
-Hedonism & high & high & low & high & low \\
-Epicureanism & moderate & low & low & moderate & moderate \\
+Stoicism & $\arousal{\downarrow}$, $\mathcal{CF}{\downarrow}$ (equanimity through control of attention) \\
+Buddhism & $\mathcal{SM}{\downarrow\downarrow}$, $\arousal{\downarrow}$, $\intinfo{\uparrow}$ (self-dissolution through integration) \\
+Existentialism & $\mathcal{CF}{\uparrow}$, $\effrank{\uparrow}$ (embrace radical freedom and its anxiety) \\
+Hedonism & $\valence{\uparrow}$, $\arousal{\uparrow}$ (maximize positive intensity) \\
+Epicureanism & $\valence{+}$ (moderate), $\arousal{\downarrow}$ (sustainable pleasure) \\
 \bottomrule
 \end{tabular}
 \caption{Philosophical traditions as affect-space policies.}

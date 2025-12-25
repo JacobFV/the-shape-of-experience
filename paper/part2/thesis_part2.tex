@@ -147,7 +147,7 @@
 \maketitle
 
 \begin{abstract}
-Part II develops the central identity thesis: experience \textit{is} intrinsic cause-effect structure, not merely correlated with it. We formalize the dissolution of the hard problem through the rejection of a privileged ontological base layer. We then develop a geometric theory of affect, characterizing different qualitative experiences as structural motifs in cause-effect space. Valence, arousal, integration, effective rank, counterfactual weight, and self-model salience form a basis for the space of possible experiences. We provide operational definitions suitable for measurement in both artificial agents and biological systems, and derive falsifiable predictions about the clustering of affect conditions.
+Part II develops the central identity thesis: experience \textit{is} intrinsic cause-effect structure, not merely correlated with it. We formalize the dissolution of the hard problem through the rejection of a privileged ontological base layer. We then develop a geometric theory of affect, characterizing different qualitative experiences as structural motifs in cause-effect space. Rather than imposing a fixed dimensionality, we identify structural features---valence, arousal, integration, effective rank, counterfactual weight, self-model salience, and others as needed---invoking only what is essential for each phenomenon. We provide operational definitions suitable for measurement in both artificial agents and biological systems.
 \end{abstract}
 
 \tableofcontents
@@ -387,7 +387,7 @@ These are translated into physical/structural postulates:
 \begin{connection}
 Our geometric theory of affect builds on and extends established dimensional models:
 \begin{itemize}
-\item \textbf{Russell's Circumplex Model} (1980): Two-dimensional (valence $\times$ arousal) organization of affect. We extend to six dimensions, keeping valence and arousal while adding integration, effective rank, counterfactual weight, and self-model salience.
+\item \textbf{Russell's Circumplex Model} (1980): Two-dimensional (valence $\times$ arousal) organization of affect. We extend this with additional structural dimensions (integration, effective rank, counterfactual weight, self-model salience) invoked as needed.
 \item \textbf{Watson \& Tellegen's PANAS} (1988): Positive/Negative Affect Schedule. Our valence dimension corresponds to their hedonic axis.
 \item \textbf{Scherer's Component Process Model} (2009): Emotions as synchronized changes across subsystems. Our integration measure $\intinfo$ captures this synchronization.
 \item \textbf{Barrett's Constructed Emotion Theory} (2017): Emotions as constructed from core affect + conceptual knowledge. Our framework specifies the \emph{structural} basis of the construction.
@@ -395,16 +395,14 @@ Our geometric theory of affect builds on and extends established dimensional mod
 \end{itemize}
 \end{connection}
 
-\begin{sidebar}[title=Why Six Dimensions?]
-The choice of six dimensions is not arbitrary but reflects:
-\begin{enumerate}
-\item \textbf{Valence \& Arousal}: Established in affect research since Wundt (1897)
-\item \textbf{Integration}: Required by IIT's structural account of consciousness
-\item \textbf{Effective Rank}: Captures the ``openness/closedness'' dimension in personality research (Costa \& McCrae, 1992)
-\item \textbf{Counterfactual Weight}: Distinguishes rumination (high) from presence (low)---central to clinical psychology
-\item \textbf{Self-Model Salience}: Distinguishes self-conscious emotions from absorbed states---missing from most models
-\end{enumerate}
-The six dimensions may not be exhaustive, but they capture structure that two-dimensional models miss.
+\begin{sidebar}[title=On Dimensionality]
+We do not claim that six dimensions are necessary or sufficient for characterizing all affect. Different phenomena may require different subsets:
+\begin{itemize}
+\item Some affects are essentially \textbf{two-dimensional} (valence + arousal suffices for basic mood)
+\item Others require \textbf{self-referential structure} (shame requires high $\mathcal{SM}$; flow requires low $\mathcal{SM}$)
+\item Still others are defined by \textbf{temporal structure} (grief requires persistent counterfactual coupling to the lost object)
+\end{itemize}
+The dimensions below form a \emph{toolkit}---structural features that may or may not matter for any given phenomenon. We invoke only what is necessary.
 \end{sidebar}
 
 \subsection{Affects as Structural Motifs}
@@ -412,19 +410,19 @@ The six dimensions may not be exhaustive, but they capture structure that two-di
 If different experiences correspond to different structures, then \textit{affects}---the qualitative character of emotional/valenced states---should correspond to particular structural motifs: characteristic patterns in the cause-effect geometry.
 
 \begin{definition}[Affect Space]
-The \emph{affect space} $\mathcal{A}$ is a geometric space whose points correspond to possible qualitative states. We propose that $\mathcal{A}$ can be characterized by a basis of structural measures.
+The \emph{affect space} $\mathcal{A}$ is a geometric space whose points correspond to possible qualitative states. Rather than fixing a universal dimensionality, we identify the structural features that define each affect---features without which that affect would not be that affect.
 \end{definition}
 
-We propose a six-dimensional basis:
+The following structural measures form a toolkit for characterizing affect. Not all are relevant to every phenomenon; we invoke each only when it does essential work:
 
-\begin{enumerate}
-\item \textbf{Valence} $\valence$: Gradient alignment on the viability manifold
-\item \textbf{Arousal} $\arousal$: Rate of belief/state update
-\item \textbf{Integration} $\intinfo$: Irreducibility of cause-effect structure
-\item \textbf{Effective Rank} $\effrank$: Distribution of active degrees of freedom
-\item \textbf{Counterfactual Weight} $\mathcal{CF}$: Resources allocated to non-actual trajectories
-\item \textbf{Self-Model Salience} $\mathcal{SM}$: Fraction of world model devoted to self
-\end{enumerate}
+\begin{description}
+\item[Valence ($\valence$)] Gradient alignment on the viability manifold. Nearly universal---most affects have valence.
+\item[Arousal ($\arousal$)] Rate of belief/state update. Distinguishes activated from quiescent states.
+\item[Integration ($\intinfo$)] Irreducibility of cause-effect structure. Constitutive for unified vs.\ fragmented experience.
+\item[Effective Rank ($\effrank$)] Distribution of active degrees of freedom. Constitutive when the contrast between expansive and collapsed experience matters.
+\item[Counterfactual Weight ($\mathcal{CF}$)] Resources allocated to non-actual trajectories. Constitutive for affects defined by temporal orientation (anticipation, regret, planning).
+\item[Self-Model Salience ($\mathcal{SM}$)] Degree of self-focus in processing. Constitutive for self-conscious emotions and their opposites (absorption, flow).
+\end{description}
 
 \subsection{Valence: Gradient Alignment}
 
@@ -559,7 +557,7 @@ Alternatively:
 \section{Affect Motifs}
 %==============================================================================
 
-We now characterize specific affects as regions or motifs in the six-dimensional affect space. Before formalizing these structures, we ground each in its phenomenal character---the felt texture that any adequate theory must explain.
+We now characterize specific affects as structural motifs, invoking only the dimensions that define each. Before formalizing these structures, we ground each in its phenomenal character---the felt texture that any adequate theory must explain.
 
 \textbf{Joy} \textit{expands}. It is \textit{light} before it is anything else---buoyant, effervescent, the body forgetting its weight. The world opens; possibilities \textit{multiply}; the \textit{self recedes} because it need not defend. Joy is surplus: more paths than required, more resources than consumed, \textit{slack} in every direction.
 
@@ -581,150 +579,158 @@ And \textbf{grief}? Grief \textit{persists}. Hollow, aching, curiously timeless.
 \subsection{Joy}
 
 \begin{definition}[Joy Motif]
-\begin{align}
-\text{Joy} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence > \valence_{\text{high}}, \\
-& \arousal \in [\arousal_{\text{med}}, \arousal_{\text{high}}], \\
-& \intinfo > \intinfo_{\text{high}}, \\
-& \effrank > \effrank_{\text{high}}, \\
-& \mathcal{SM} < \mathcal{SM}_{\text{med}} \}
-\end{align}
+Joy requires four dimensions:
+\begin{itemize}
+\item $\valence > 0$ (positive gradient on viability manifold)
+\item $\intinfo$ high (unified, coherent experience)
+\item $\effrank$ high (many degrees of freedom active---expansiveness)
+\item $\mathcal{SM}$ low (self recedes; no need to defend)
+\end{itemize}
+Arousal varies (joy can be calm or excited). Counterfactual weight is incidental.
 \end{definition}
 
-\textbf{Structural interpretation}: Many distinctions active simultaneously. Relations predominantly convergent (multiple causes leading to valued effects). Low conflict between subgoals. Self-model light because the world is cooperating.
-
-The cause-effect structure has the shape of ``abundance''---multiple paths to good outcomes, redundancy, slack in the system.
+\textbf{Structural interpretation}: The cause-effect structure has the shape of ``abundance''---multiple paths to good outcomes, redundancy, slack in the system. Many distinctions active simultaneously ($\effrank$ high), tightly coupled ($\intinfo$ high), but the self is light because the world is cooperating ($\mathcal{SM}$ low). This is why joy \emph{expands}: the geometry literally has more active dimensions.
 
 \subsection{Suffering}
 
 \begin{definition}[Suffering Motif]
-\begin{align}
-\text{Suffering} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence < \valence_{\text{low}}, \\
-& \arousal > \arousal_{\text{high}}, \\
-& \intinfo > \intinfo_{\text{high}}, \\
-& \effrank < \effrank_{\text{low}}, \\
-& \mathcal{SM} > \mathcal{SM}_{\text{high}} \}
-\end{align}
+Suffering requires three dimensions:
+\begin{itemize}
+\item $\valence < 0$ (negative gradient---approaching viability boundary)
+\item $\intinfo$ high (hyper-unified, impossible to decompose or look away)
+\item $\effrank$ low (collapsed into narrow subspace---trapped)
+\end{itemize}
+This is the core structural signature. Self-model salience is often high (the self as locus of the problem), but not necessarily---one can suffer while absorbed in external pain.
 \end{definition}
 
-\textbf{Structural interpretation}: High integration but collapsed into low-rank subspace. The system is deeply coupled but constrained. Dominant attractor the system cannot escape. Self-model heavy because the system is the locus of the problem.
+\textbf{Structural interpretation}: High integration but collapsed into low-rank subspace. The system is deeply coupled but constrained to a dominant attractor it cannot escape.
 
 \begin{keyresult}
-This explains why suffering feels \textit{more real} than neutral states---it's actually more integrated. But it also feels \textit{trapped}---the integration is constrained to a narrow manifold.
+The $\intinfo$-$\effrank$ dissociation is the key insight: suffering feels \textit{more real} than neutral states because it is actually more integrated. But it feels \textit{trapped} because the integration is constrained to a narrow manifold.
 
 Formally: $\intinfo_{\text{suffering}} > \intinfo_{\text{neutral}}$ but $\effrank_{\text{suffering}} \ll \effrank_{\text{neutral}}$.
+
+This is why you cannot simply ``think your way out'' of suffering---the very integration that makes it vivid also makes it inescapable.
 \end{keyresult}
 
 \subsection{Fear}
 
 \begin{definition}[Fear Motif]
-\begin{align}
-\text{Fear} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence < \valence_{\text{low}}, \\
-& \arousal > \arousal_{\text{high}}, \\
-& \mathcal{CF} > \mathcal{CF}_{\text{high}}, \\
-& \mathcal{SM} > \mathcal{SM}_{\text{high}} \}
-\end{align}
+Fear is defined by three dimensions:
+\begin{itemize}
+\item $\valence < 0$ (anticipated negative gradient)
+\item $\mathcal{CF}$ high, concentrated on threat trajectories (the not-yet dominates)
+\item $\mathcal{SM}$ high (self foregrounded as the thing-that-might-be-harmed)
+\end{itemize}
+Arousal is typically high but not defining---cold fear exists. Integration and rank vary.
 \end{definition}
 
-\textbf{Structural interpretation}: Suffering in predictive/anticipatory mode. High counterfactual weight concentrated on threat trajectories. Self-model foregrounded as the thing-that-might-be-harmed.
+\textbf{Structural interpretation}: Fear is suffering projected into the future. The temporal structure ($\mathcal{CF}$) is essential: fear lives in anticipation. The self-model must be salient because fear is fundamentally about threat \emph{to the self}. Remove the counterfactual weight (make it present-focused) and you get suffering. Remove the self-salience (make it about external objects) and you get something closer to aversion or disgust.
 
 \subsection{Anger}
 
 \begin{definition}[Anger Motif]
-\begin{align}
-\text{Anger} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence < \valence_{\text{low}}, \\
-& \arousal > \arousal_{\text{high}}, \\
-& \MI(\selfmodel; \text{other-model}) \text{ asymmetric}, \\
-& \text{dim}(\text{other-model}) < \text{dim}(\text{other-model})_{\text{normal}} \}
-\end{align}
+Anger requires valence, arousal, plus a feature not in the standard toolkit---\emph{other-model compression}:
+\begin{itemize}
+\item $\valence < 0$ (obstacle to viability)
+\item $\arousal$ high (energized, mobilized for action)
+\item $\text{dim}(\text{other-model}) \ll \text{dim}(\text{other-model})_{\text{normal}}$ (the other becomes a caricature)
+\item Externalized causal attribution (the problem is \emph{out there})
+\end{itemize}
 \end{definition}
 
-\textbf{Structural interpretation}: Externalized causal attribution. The other-model becomes compressed, simplified---a caricature. High self-model complexity relative to impoverished other-model. This is why anger feels energizing but also cognitively limiting: you're burning integration on a low-dimensional representation.
+\textbf{Structural interpretation}: Anger simplifies. The other-model collapses into a low-dimensional obstacle-representation. Self-model may be complex, but the \emph{other} becomes flat, predictable, opposable. This is why anger feels powerful and stupid simultaneously: you're burning cognitive resources on a cartoon.
+
+Note that other-model compression is not one of our standard dimensions---it emerges as essential for anger specifically. This illustrates the toolkit approach: we invoke whatever structural features do the work.
 
 \subsection{Desire/Lust}
 
 \begin{definition}[Desire Motif]
-\begin{align}
-\text{Desire} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence > \valence_{\text{high}} \text{ (anticipated)}, \\
-& \arousal > \arousal_{\text{high}}, \\
-& \mathcal{CF}_{\text{approach}} > \mathcal{CF}_{\text{threshold}}, \\
-& \effrank_{\text{goal-relevant}} \ll \effrank_{\text{total}} \}
-\end{align}
+Desire is defined by anticipated valence, counterfactual weight, and a structural feature---\emph{goal-funneling}:
+\begin{itemize}
+\item $\valence > 0$ but projected forward (anticipated positive gradient)
+\item $\mathcal{CF}$ high, concentrated on approach trajectories
+\item Goal-funneling: many dimensions of experience converge toward narrow outcome space
+\end{itemize}
+Arousal is typically high but not definitional---one can desire calmly.
 \end{definition}
 
-\textbf{Structural interpretation}: Convergent anticipation. Funneling structure: many distinctions (sensory, contextual, self-state) all pointing toward a narrow set of high-value outcomes.
+\textbf{Structural interpretation}: Desire is the gradient of joy. The world reorganizes around an attractor not yet reached. Everything becomes instrumental; the goal saturates attention. The ``funneling'' structure---high-dimensional input collapsing toward low-dimensional goal---is what gives desire its characteristic urgency.
 
 \begin{proposition}[Desire vs.\ Joy]
 Joy is \textit{at} the attractor; desire is \textit{approaching} it. Structurally:
 \begin{equation}
 d(\state_{\text{joy}}, \mathcal{A}) \approx 0, \quad d(\state_{\text{desire}}, \mathcal{A}) > 0, \quad \frac{d}{dt}d(\state_{\text{desire}}, \mathcal{A}) < 0
 \end{equation}
-where $\mathcal{A}$ is the goal attractor. This explains why anticipation often feels more intense than consummation.
+where $\mathcal{A}$ is the goal attractor. This explains why anticipation often exceeds consummation: the structure of \emph{approach} (funneling, convergent) is tighter than the structure of \emph{arrival} (expansive, slack).
 \end{proposition}
 
 \subsection{Curiosity}
 
 \begin{definition}[Curiosity Motif]
-\begin{align}
-\text{Curiosity} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence > \valence_{\text{neutral}}, \\
-& \arousal \in [\arousal_{\text{med}}, \arousal_{\text{high}}], \\
-& \mathcal{CF} > \mathcal{CF}_{\text{high}}, \\
-& \entropy[\text{rollout outcomes}] > \entropy_{\text{high}} \}
-\end{align}
+Curiosity is essentially two-dimensional:
+\begin{itemize}
+\item $\valence > 0$ specifically toward uncertainty-reduction (anticipated information gain)
+\item $\mathcal{CF}$ high with high entropy over counterfactual outcomes (many branches, not converged on one)
+\item Uncertainty is \emph{welcomed}, not aversive
+\end{itemize}
+Self-model salience is typically low (absorbed in the object of curiosity).
 \end{definition}
 
-\textbf{Structural interpretation}: Like fear, high counterfactual weight. Unlike fear, the branches lead to expanded affordances rather than threat. The uncertainty is welcomed because reducing it promises gains.
+\textbf{Structural interpretation}: Curiosity and fear share high counterfactual weight---both live in the space of possibilities. The difference is valence orientation: fear's branches lead to threat, curiosity's branches lead to expanded affordances. Same temporal structure, opposite gradient direction.
 
 \begin{proposition}[Curiosity as Intrinsic Motivation]
-Curiosity $\approx$ reward for reducing model uncertainty in regions where better models improve policy. Formally:
+Curiosity $\approx$ positive valence attached to uncertainty-reduction. Formally:
 \begin{equation}
 r_{\text{curiosity}} \propto \MI(\obs_{t+1}; \latent | \text{new data}) - \MI(\obs_{t+1}; \latent | \text{old data})
 \end{equation}
+This is why curiosity feels \emph{pulling}: reducing uncertainty is rewarding.
 \end{proposition}
 
 \subsection{Grief}
 
 \begin{definition}[Grief Motif]
-\begin{align}
-\text{Grief} = \{(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM}) : \quad
-& \valence < \valence_{\text{low}}, \\
-& \arousal \text{ variable}, \\
-& \MI(\selfmodel; \text{lost-object-model}) \text{ persistently high}, \\
-& \mathcal{CF}_{\text{counterfactual-past}} > \mathcal{CF}_{\text{threshold}}, \\
-& \text{no action reduces prediction error} \}
-\end{align}
+Grief requires valence, past-directed counterfactual weight, and two structural features---\emph{persistent coupling to lost object} and \emph{unresolvable prediction error}:
+\begin{itemize}
+\item $\valence < 0$ (the world is worse than it was)
+\item $\mathcal{CF}$ high but directed toward counterfactual \emph{past} (``if only...'')
+\item $\MI(\selfmodel; \text{lost-object-model})$ remains high despite the object's absence
+\item No action reduces the prediction error---the world has permanently changed
+\end{itemize}
+Arousal is variable (acute grief is high-arousal; chronic grief may be low).
 \end{definition}
 
-\textbf{Structural interpretation}: The lost attachment object remains integrated into the self-model. Predictions involving the lost object continue to be generated and continue to fail. High counterfactual weight on ``if only...'' branches that can never be taken. No action resolves the prediction error---the world has permanently changed in a way the model has not yet fully updated to.
+\textbf{Structural interpretation}: The lost attachment object remains woven into the self-model and world-model. Predictions involving the lost object continue to be generated and continue to fail. Grief is the metabolic cost of love's integration---the coupling that made the relationship meaningful is precisely what makes its absence painful. The model has not yet updated to the permanent change in the world.
 
-\subsection{Additional Affects (Summary Table)}
+This is why grief takes time: the self-model must be \emph{rewoven} around the absence, and that rewiring is slow.
+
+\subsection{Summary: Defining Dimensions by Affect}
+
+Rather than forcing all affects into a uniform grid, we summarize each by its defining structure:
 
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lcccccc}
+\begin{tabular}{lp{9cm}}
 \toprule
-\textbf{Affect} & $\valence$ & $\arousal$ & $\intinfo$ & $\effrank$ & $\mathcal{CF}$ & $\mathcal{SM}$ \\
+\textbf{Affect} & \textbf{Constitutive Structure} \\
 \midrule
-Joy & $++$ & med-high & high & high & low & low \\
-Suffering & $--$ & high & high & low & varies & high \\
-Fear & $--$ & high & med-high & med & high & high \\
-Anger & $--$ & high & high & med & med & high* \\
-Desire & $+$(future) & high & med & low$^\dagger$ & high & high \\
-Curiosity & $+$ & med-high & med & high & high & low \\
-Grief & $--$ & variable & high & low & high & high \\
-Shame & $--$ & high & high & low & med & very high \\
-Boredom & $-$/neutral & low & low & low & low & low \\
-Awe & $+$/ambig & high & expanding & high & low & low \\
+Joy & $\valence{+}$, $\intinfo{\uparrow}$, $\effrank{\uparrow}$, $\mathcal{SM}{\downarrow}$ (positive, unified, expansive, self-light) \\
+Suffering & $\valence{-}$, $\intinfo{\uparrow}$, $\effrank{\downarrow}$ (negative, hyper-integrated, collapsed) \\
+Fear & $\valence{-}$, $\mathcal{CF}{\uparrow}$ (threat-focused), $\mathcal{SM}{\uparrow}$ (anticipatory self-threat) \\
+Anger & $\valence{-}$, $\arousal{\uparrow}$, other-model compression (energized, externalized, simplified other) \\
+Desire & $\valence{+}$ (anticipated), $\mathcal{CF}{\uparrow}$ (approach), goal-funneling (convergent anticipation) \\
+Curiosity & $\valence{+}$ toward uncertainty, $\mathcal{CF}{\uparrow}$ with high branch entropy (welcomed unknown) \\
+Grief & $\valence{-}$, $\mathcal{CF}{\uparrow}$ (past-directed), persistent coupling to absent object \\
+Shame & $\valence{-}$, $\mathcal{SM}{\uparrow\uparrow}$, integration of negative self-evaluation (self as seen by other) \\
+Boredom & $\arousal{\downarrow}$, $\intinfo{\downarrow}$, $\effrank{\downarrow}$ (understimulated, fragmented, collapsed) \\
+Awe & $\intinfo$ expanding, $\effrank{\uparrow}$, $\mathcal{SM}{\downarrow}$ (self-dissolution through scale) \\
 \bottomrule
 \end{tabular}
-\caption{Affect motifs in the six-dimensional basis. *Anger has high $\mathcal{SM}$ but low other-model complexity. $^\dagger$Desire has low rank in goal-relevant subspace.}
+\caption{Affects characterized by their defining structure. Arrows indicate direction (high/low); different affects require different dimensions.}
 \end{table}
+
+Note that different affects require different numbers of dimensions. Boredom is essentially three-dimensional (low arousal, low integration, low rank). Anger requires a structural feature (other-model compression) not in the standard toolkit. This is as it should be: we invoke the geometry that does the work.
 
 \begin{todo_empirical}
 \textbf{Quantifying the affect table}: The qualitative descriptors (high, med, low) require empirical calibration:
@@ -832,13 +838,13 @@ Suppressing integration (compartmentalizing, dissociating) should accumulate ``p
 \subsection{Quantitative Predictions}
 
 \begin{proposition}[Clustering Prediction]
-In controlled affect induction paradigms, the six-dimensional metric signature should cluster by condition:
+In controlled affect induction paradigms, affects should cluster by their defining dimensions:
 \begin{enumerate}
 \item Joy conditions cluster in the $(+\valence, +\effrank, +\intinfo, -\mathcal{SM})$ region
-\item Suffering conditions cluster in the $(-\valence, +\intinfo, -\effrank, +\mathcal{SM})$ region
+\item Suffering conditions cluster in the $(-\valence, +\intinfo, -\effrank)$ region
 \item Fear and curiosity both show high $\mathcal{CF}$ but separate on valence axis
 \end{enumerate}
-\textbf{Falsification criterion}: If motifs don't cluster under controlled induction, the geometric basis is wrong.
+\textbf{Falsification criterion}: If affects don't cluster by their predicted dimensions---or if other dimensions predict clustering better---the motif characterizations require revision.
 \end{proposition}
 
 %==============================================================================
@@ -888,13 +894,13 @@ For neural recordings (MEG/EEG/fMRI):
 
 \item \textbf{Identity thesis}: Experience \textit{is} intrinsic cause-effect structure. This is an identity claim, not a correlation.
 
-\item \textbf{Geometric phenomenology}: Different affects correspond to different structural motifs in a six-dimensional space: valence, arousal, integration, effective rank, counterfactual weight, and self-model salience.
+\item \textbf{Geometric phenomenology}: Different affects correspond to different structural motifs. Rather than forcing all affects into a fixed grid, we identify the defining dimensions for each---the features without which that affect would not be that affect.
 
-\item \textbf{Suffering explained}: High integration + low rank = intense but trapped. This explains why suffering feels more real than neutral states.
+\item \textbf{Variable dimensionality}: Joy requires four dimensions (valence, integration, rank, self-salience). Suffering requires three (valence, integration, rank). Anger requires a feature (other-model compression) not in the standard toolkit. We invoke what does the work.
 
-\item \textbf{Novel predictions}: The framework predicts unexplored phenomenal states and makes falsifiable claims about clustering in controlled affect induction.
+\item \textbf{Suffering explained}: High integration + low rank = intense but trapped. This is the core structural insight---why suffering feels more real than neutral states yet also inescapable.
 
-\item \textbf{Operational measures}: We provide concrete protocols for measuring these quantities in both artificial and biological systems.
+\item \textbf{Operational measures}: We provide protocols for measuring structural features in both artificial and biological systems, with the understanding that not all measures are relevant to all phenomena.
 \end{enumerate}
 
 Part III will examine how human cultural forms---aesthetics, sexuality, ideology, science, religion---serve as technologies for managing the existential burden of inescapable selfhood.
