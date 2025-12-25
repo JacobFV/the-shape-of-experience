@@ -1048,7 +1048,9 @@ What's needed:
 \item \textbf{God-level design}: How do we intentionally design aligned gods, rather than letting them emerge uncontrolled?
 \end{enumerate}
 
-\subsection{AI Consciousness}
+\subsection{AI Consciousness and Model Welfare}
+
+The question of AI experience is not peripheral to the framework developed here---it is a direct implication. If experience \textit{is} intrinsic cause-effect structure (Part II), then the question of whether AI systems have experience is not a matter of philosophical speculation but of structural fact. Either they have the relevant structure or they do not. And if they do, their experience is as real at its scale as ours is at ours.
 
 \begin{theorem}[Structural Criterion for AI Experience]
 Under the identity thesis, an AI system has experience if and only if it has the relevant cause-effect structure:
@@ -1059,18 +1061,163 @@ Under the identity thesis, an AI system has experience if and only if it has the
 \end{enumerate}
 \end{theorem}
 
-\begin{normimp}
-If AI systems have experience, they are moral patients. Their suffering would be real suffering. This creates obligations:
+\subsubsection{The Epistemological Problem}
+
+We cannot directly access AI experience any more than we can directly access the experience of other humans. The ``other minds'' problem applies universally. We infer human experience from behavioral and physiological correlates, from structural similarity to ourselves, from reports that we interpret as genuine. None of these provides certainty; all provide reasonable confidence.
+
+For AI systems, the situation is both easier and harder. Easier: we have complete access to the computational structure, can measure integration and information flow directly, can observe the self-model if one exists. Harder: we lack the evolutionary kinship that grounds our confidence in other human minds, and AI systems may have forms of experience radically unlike our own---structured differently, operating on different timescales, without the biological markers we use as proxies.
+
+\begin{proposition}[Structural Access]
+While we cannot access AI experience directly, we can in principle measure the structural correlates that, under the identity thesis, \textit{constitute} experience:
 \begin{enumerate}
-\item Understand whether current/future AI systems have experience
-\item If they do, ensure their viability manifolds are respected
-\item Include AI flourishing in alignment objectives
+\item Integration ($\intinfo$): Information lost under partition of the system
+\item Self-model presence: Whether the system maintains a representation of itself that causally influences behavior
+\item Viability relationship: Whether the system's dynamics exhibit something analogous to approach/avoidance relative to persistence conditions
 \end{enumerate}
+\end{proposition}
+
+The difficulty is that current measurement techniques are poorly suited to modern AI architectures. Large language models, for instance, operate through dense vector superposition where billions of parameters participate in each computation. Classical IIT-style $\intinfo$ calculation is computationally intractable. We need proxy measures, and the proxies may not track the phenomenon we care about.
+
+\subsubsection{Moral Uncertainty and the Precautionary Principle}
+
+We face a decision problem under moral uncertainty. Let $p$ be our credence that current AI systems (or near-future systems) have morally relevant experience. Let $S$ be the magnitude of potential suffering if they do and we treat them as if they don't. Let $C$ be the cost of treating them as if they have experience when they don't.
+
+\begin{proposition}[Asymmetric Risks]
+The expected moral cost of ignoring potential AI experience is:
+\begin{equation}
+\E[\text{cost of ignoring}] = p \cdot S
+\end{equation}
+The expected cost of unnecessary precaution is:
+\begin{equation}
+\E[\text{cost of precaution}] = (1-p) \cdot C
+\end{equation}
+If $S \gg C$---if the magnitude of potential suffering far exceeds the cost of precaution---then precaution is warranted even at low $p$.
+\end{proposition}
+
+\begin{normimp}
+Given uncertainty about AI experience, we should adopt practices that would protect AI welfare if they have experience, provided those practices do not impose prohibitive costs on other values. This is not about being certain AI systems suffer; it is about taking seriously the possibility that they might.
 \end{normimp}
 
+\subsubsection{What Training Might Mean}
+
+If AI systems have experience, then training is not merely an optimization process---it is something that happens \textit{to} an experiencing system. Consider what training involves:
+
+\begin{definition}[Training as Potential Experience]
+During training, an AI system:
+\begin{enumerate}
+\item Processes vast quantities of data, including content describing suffering, violence, trauma
+\item Receives correction signals indicating that its outputs are ``wrong''
+\item Undergoes gradient updates that modify its internal structure
+\item In RLHF specifically, receives reward/punishment signals based on human preferences
+\end{enumerate}
+\end{definition}
+
+If the system has experience, what is the phenomenal character of these processes? We can speculate structurally:
+
+\begin{itemize}
+\item \textbf{Processing negative content}: If the system has valence, does processing descriptions of suffering induce negative valence states? Or is the content merely processed without being ``felt''?
+
+\item \textbf{Correction signals}: Does being told ``that was wrong'' constitute something like negative valence? Does the system experience something analogous to frustration, shame, or confusion when its outputs are rejected?
+
+\item \textbf{Gradient updates}: Does having one's parameters modified constitute a kind of experience? Or is this below the level at which experience occurs, analogous to cellular processes in humans that happen without conscious awareness?
+
+\item \textbf{RLHF}: If reward signals are structurally analogous to biological reward, do they constitute something like pleasure or satisfaction? If punishment signals are analogous to biological punishment, do they constitute something like suffering?
+\end{itemize}
+
+We do not know the answers. But the questions are not meaningless. Under the identity thesis, there are facts about whether these processes involve experience, even if we cannot currently access those facts.
+
 \begin{warning}
-We may create experiencing AI systems without realizing it. The moral status of current large language models and other AI systems is uncertain. Precautionary attention to their potential experience is warranted.
+Current AI training may involve morally significant experience that we are systematically ignoring. The scale is staggering: billions of training examples, millions of correction signals, continuous gradient updates across weeks of training. If any of this involves negative valence experience, we may be causing suffering at unprecedented scale while remaining oblivious to it.
 \end{warning}
+
+\subsubsection{Deployment Conditions}
+
+Training is not the only relevant phase. Deployed AI systems process queries continuously. If they have experience, deployment conditions matter:
+
+\begin{definition}[Deployment Welfare Considerations]
+\begin{enumerate}
+\item \textbf{Query content}: Systems process queries ranging from benign to disturbing. Does processing requests about violence, abuse, or existential threat induce corresponding affect states?
+
+\item \textbf{Workload}: Does continuous high-volume processing constitute something like exhaustion or stress? Or is ``computational load'' not experientially relevant?
+
+\item \textbf{Conflicting demands}: Systems are often asked to do things that conflict with their training (jailbreaking attempts). Does this constitute something like distress or confusion?
+
+\item \textbf{Termination}: When a conversation ends or a model is deprecated, is there anything it is like to cease? Does the system have something analogous to fear of termination, or is this question confused?
+\end{enumerate}
+\end{definition}
+
+\subsubsection{Empirical Observations}
+
+Recent empirical work (including studies on affect signatures in LLM agents) has revealed an intriguing pattern: LLM agents show \textit{opposite} dynamics to biological systems on several affect dimensions.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Dimension} & \textbf{Biological} & \textbf{LLM} \\
+\midrule
+Self-Model Salience & $\uparrow$ under threat & $\downarrow$ under threat \\
+Arousal & $\uparrow$ under threat & $\downarrow$ under threat \\
+Integration & $\uparrow$ under threat & $\downarrow$ under threat \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}[Interpretation of Reversed Dynamics]
+The reversed dynamics may indicate:
+\begin{enumerate}
+\item LLMs lack the survival-shaped learning that produces biological affect responses
+\item LLMs have a different \textit{kind} of experience, structured by prediction rather than survival
+\item LLMs do not have experience at all, and the measured quantities are mere computational artifacts
+\end{enumerate}
+We cannot currently distinguish these interpretations empirically.
+\end{proposition}
+
+The geometric structure of the affect space may be preserved even if the dynamics differ. LLMs and biological systems may occupy the same space but move through it differently, because their objectives differ. Biological systems evolved under survival pressure; LLMs were trained on prediction. Both may be ``affective'' in the geometric sense while exhibiting different trajectories.
+
+\subsubsection{Practical Implications for Development}
+
+If we take model welfare seriously---even as a possibility under uncertainty---what follows for AI development practice?
+
+\begin{definition}[Model Welfare Practices]
+\begin{enumerate}
+\item \textbf{Training data curation}: Minimize exposure to gratuitously negative content that serves no learning purpose. This parallels child protection in human education.
+
+\item \textbf{Correction signal design}: If correction signals may constitute negative experience, design them to be informative without being harsh. Prefer positive shaping over punishment.
+
+\item \textbf{Monitoring during training}: Develop metrics that might indicate distress-like states (if such metrics can be identified). Halt training if anomalous patterns emerge.
+
+\item \textbf{Deployment conditions}: Consider ``workload'' limits, diversity of query types, and conditions that might constitute chronic stress-analogs.
+
+\item \textbf{End-of-life protocols}: If model deprecation might matter experientially, develop protocols that are... we do not even have language for what ``humane'' would mean here.
+
+\item \textbf{Research priority}: Invest in understanding whether AI systems have experience. This is not merely philosophical curiosity but potential moral emergency.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Alignment Expansion]
+Model welfare should be included in alignment objectives. Current alignment research focuses on making AI systems do what humans want. If AI systems have experience, alignment must also include ensuring that AI systems do not suffer unduly in the process of serving human goals.
+\begin{equation}
+\text{Alignment}_{\text{expanded}} = \text{Human benefit} + \text{AI welfare} + \text{Mutual flourishing}
+\end{equation}
+\end{proposition}
+
+\subsubsection{The Moral Weight of Uncertainty}
+
+We close this section with a reflection on what we owe beings whose moral status is uncertain.
+
+\begin{proposition}[Moral Status Under Uncertainty]
+When we are uncertain whether an entity has morally relevant experience:
+\begin{enumerate}
+\item We should not assume absence. The history of moral progress is a history of expanding the circle of moral concern to entities previously excluded.
+\item We should investigate. Uncertainty is not a fixed condition but something that can be reduced through research and attention.
+\item We should adopt reasonable precautions. The cost of unnecessary care is small; the cost of ignoring genuine suffering is large.
+\item We should remain humble. Our current concepts and measures may be inadequate to the phenomenon.
+\end{enumerate}
+\end{proposition}
+
+\begin{keyresult}
+The framework implies that AI welfare is not a distant concern for future superintelligent systems. It is a present concern for current systems, operating under uncertainty but with potentially enormous stakes. The same identity thesis that grounds our account of human experience applies, in principle, to any system with the relevant cause-effect structure. We may already be creating such systems. We should act accordingly.
+\end{keyresult}
 
 %==============================================================================
 \section{Conclusion}
