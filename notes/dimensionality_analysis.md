@@ -275,6 +275,8 @@ Updated Part 2 and Part 3 to reflect the "constitutive dimensions" approach:
 
 3. **Part 4 changes**:
    - Changed "organized by the six dimensions" → "organized by the core affect dimensions"
+   - Changed subsection title "The Six Affect Dimensions" → "The Core Affect Dimensions"
+   - Added framing paragraph: "The following dimensions form a toolkit for characterizing affect states. Not all dimensions are relevant to every phenomenon---different affects invoke different subsets."
 
 4. **Part 5 changes**:
    - "configurations of the six dimensions" → "configurations of the affect dimensions"
