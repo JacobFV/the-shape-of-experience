@@ -1,0 +1,21 @@
+{
+  "affect_joy.png": "affect_dance.png",
+  "affect_suffering.png": "affect_blue.png",
+  "affect_grief.png": "affect_melancholy.png",
+  "affect_neutral.png": "affect_lamentation.png",
+  "art_vermeer.png": "attention_milkmaid.png",
+  "art_caravaggio.png": "art_caravaggio.png",
+  "horror_uncanny.png": "horror_uncanny.png",
+  "horror_body.png": "horror_goya.png",
+  "horror_proportions.png": "horror_bosch_met.png",
+  "self_eyecontact.png": "self_rembrandt.png",
+  "self_mirror.png": "self_vangogh.png",
+  "self_portrait.png": "self_rembrandt2.png",
+  "social_crowd.png": "social_nightwatch.png",
+  "social_architecture.png": "social_harvesters.png",
+  "social_sacred.png": "design_baroque.png",
+  "sublime_scale.png": "sublime_toledo.png",
+  "sublime_abstract.png": "sublime_wave.png",
+  "design_baroque.png": "affect_ecstasy.png",
+  "counterfactual_empty.png": "counterfactual_blake.png"
+}

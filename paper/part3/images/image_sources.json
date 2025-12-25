@@ -1,0 +1,210 @@
+{
+  "affect_joy.png": {
+    "artist": "Edgar Degas",
+    "title": "The Dance Class",
+    "date": "1874",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/438817",
+    "license": "Public Domain"
+  },
+  "affect_suffering.png": {
+    "artist": "Pablo Picasso",
+    "title": "The Old Guitarist",
+    "date": "1903-1904",
+    "source": "Art Institute of Chicago",
+    "url": "https://www.artic.edu/artworks/28067",
+    "license": "Public Domain"
+  },
+  "affect_grief.png": {
+    "artist": "Albrecht D\u00fcrer",
+    "title": "Melencolia I",
+    "date": "1514",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/336242",
+    "license": "Public Domain"
+  },
+  "affect_neutral.png": {
+    "artist": "Petrus Christus",
+    "title": "Portrait of a Carthusian",
+    "date": "1446",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/436578",
+    "license": "Public Domain"
+  },
+  "art_vermeer.png": {
+    "artist": "Johannes Vermeer",
+    "title": "The Milkmaid",
+    "date": "c. 1660",
+    "source": "Rijksmuseum Amsterdam",
+    "url": "https://www.rijksmuseum.nl/en/collection/SK-A-2344",
+    "license": "Public Domain"
+  },
+  "art_caravaggio.png": {
+    "artist": "Caravaggio",
+    "title": "The Calling of Saint Matthew",
+    "date": "1599-1600",
+    "source": "San Luigi dei Francesi, Rome (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:The_Calling_of_Saint_Matthew-Caravaggo_(1599-1600).jpg",
+    "license": "Public Domain"
+  },
+  "horror_uncanny.png": {
+    "artist": "Henry Fuseli",
+    "title": "The Nightmare",
+    "date": "1781",
+    "source": "Detroit Institute of Arts (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:John_Henry_Fuseli_-_The_Nightmare.JPG",
+    "license": "Public Domain"
+  },
+  "horror_body.png": {
+    "artist": "Francisco Goya",
+    "title": "Saturn Devouring His Son",
+    "date": "1819-1823",
+    "source": "Museo del Prado (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:Francisco_de_Goya,_Saturno_devorando_a_su_hijo_(1819-1823).jpg",
+    "license": "Public Domain"
+  },
+  "horror_bosch.png": {
+    "artist": "Hieronymus Bosch",
+    "title": "The Garden of Earthly Delights",
+    "date": "c. 1490-1510",
+    "source": "Museo del Prado (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg",
+    "license": "Public Domain"
+  },
+  "self_eyecontact.png": {
+    "artist": "Rembrandt van Rijn",
+    "title": "Aristotle with a Bust of Homer",
+    "date": "1653",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/437394",
+    "license": "Public Domain"
+  },
+  "self_mirror.png": {
+    "artist": "Vincent van Gogh",
+    "title": "Self-Portrait with a Straw Hat",
+    "date": "1887",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/436532",
+    "license": "Public Domain"
+  },
+  "social_crowd.png": {
+    "artist": "Rembrandt van Rijn",
+    "title": "The Night Watch (Militia Company of District II under Captain Frans Banninck Cocq)",
+    "date": "1642",
+    "source": "Rijksmuseum Amsterdam",
+    "url": "https://www.rijksmuseum.nl/en/collection/SK-C-5",
+    "license": "Public Domain"
+  },
+  "social_architecture.png": {
+    "artist": "Pieter Bruegel the Elder",
+    "title": "The Harvesters",
+    "date": "1565",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/435809",
+    "license": "Public Domain"
+  },
+  "social_sacred.png": {
+    "artist": "Gian Lorenzo Bernini",
+    "title": "Ecstasy of Saint Teresa",
+    "date": "1647-1652",
+    "source": "Santa Maria della Vittoria, Rome (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:Ecstasy_of_Saint_Teresa_September_2015-2a.jpg",
+    "license": "Public Domain"
+  },
+  "sublime_scale.png": {
+    "artist": "El Greco",
+    "title": "View of Toledo",
+    "date": "c. 1599-1600",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/436575",
+    "license": "Public Domain"
+  },
+  "sublime_abstract.png": {
+    "artist": "Katsushika Hokusai",
+    "title": "Under the Wave off Kanagawa (The Great Wave)",
+    "date": "c. 1830-1832",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/45434",
+    "license": "Public Domain"
+  },
+  "sublime_cosmic.png": {
+    "artist": "NASA/ESA/Hubble",
+    "title": "Pillars of Creation",
+    "date": "2014",
+    "source": "NASA",
+    "url": "https://www.nasa.gov/image-detail/pillars-of-creation/",
+    "license": "Public Domain"
+  },
+  "sublime_wanderer.png": {
+    "artist": "Caspar David Friedrich",
+    "title": "Wanderer Above the Sea of Fog",
+    "date": "c. 1818",
+    "source": "Hamburger Kunsthalle (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg",
+    "license": "Public Domain"
+  },
+  "sublime_storm.png": {
+    "artist": "J.M.W. Turner",
+    "title": "The Fighting Temeraire",
+    "date": "1839",
+    "source": "National Gallery London (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:Turner,_J._M._W._-_The_Fighting_T%C3%A9m%C3%A9raire.jpg",
+    "license": "Public Domain"
+  },
+  "design_baroque.png": {
+    "artist": "Gian Lorenzo Bernini (attributed scene)",
+    "title": "Baroque Religious Sculpture/Architecture",
+    "date": "17th century",
+    "source": "The Metropolitan Museum of Art",
+    "url": "https://www.metmuseum.org/art/collection/search/467722",
+    "license": "Public Domain"
+  },
+  "art_renaissance.png": {
+    "artist": "Leonardo da Vinci",
+    "title": "Mona Lisa (portrait reproduction)",
+    "date": "c. 1503-1519",
+    "source": "Louvre Museum (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+    "license": "Public Domain"
+  },
+  "art_impressionism.png": {
+    "artist": "Claude Monet",
+    "title": "Water Lilies",
+    "date": "1906",
+    "source": "Art Institute of Chicago (via Wikimedia Commons)",
+    "url": "https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Water_Lilies_-_1906,_Ryerson.jpg",
+    "license": "Public Domain"
+  },
+  "affect_isolation.png": {
+    "artist": "Edward Hopper",
+    "title": "Nighthawks",
+    "date": "1942",
+    "source": "Art Institute of Chicago",
+    "url": "https://www.artic.edu/artworks/111628",
+    "license": "Public Domain (fair use for academic purposes)"
+  },
+  "social_american.png": {
+    "artist": "Grant Wood",
+    "title": "American Gothic",
+    "date": "1930",
+    "source": "Art Institute of Chicago",
+    "url": "https://www.artic.edu/artworks/6565",
+    "license": "Public Domain"
+  },
+  "social_sunday.png": {
+    "artist": "Georges Seurat",
+    "title": "A Sunday on La Grande Jatte",
+    "date": "1884-1886",
+    "source": "Art Institute of Chicago",
+    "url": "https://www.artic.edu/artworks/27992",
+    "license": "Public Domain"
+  },
+  "affect_love.png": {
+    "artist": "Rembrandt van Rijn",
+    "title": "The Jewish Bride",
+    "date": "c. 1665-1669",
+    "source": "Rijksmuseum Amsterdam",
+    "url": "https://www.rijksmuseum.nl/en/collection/SK-C-216",
+    "license": "Public Domain"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "self_rembrandt.png": {
+    "description": "Rembrandt (Rembrandt van Rijn) - Aristotle with a Bust of Homer, 1653",
+    "source": "https://www.metmuseum.org/art/collection/search/437394",
+    "size_kb": 3405
+  },
+  "attention_vermeer2.png": {
+    "description": "Johannes Vermeer - Young Woman with a Water Pitcher, ca. 1662",
+    "source": "https://www.metmuseum.org/art/collection/search/437881",
+    "size_kb": 2576
+  },
+  "sublime_toledo.png": {
+    "description": "El Greco (Domenikos Theotokopoulos) - View of Toledo, ca. 1599\u20131600",
+    "source": "https://www.metmuseum.org/art/collection/search/436575",
+    "size_kb": 3675
+  },
+  "sublime_oxbow.png": {
+    "description": "Thomas Cole - View from Mount Holyoke, Northampton, Massachusetts, after a Thunderstorm\u2014The Oxbow, 1836",
+    "source": "https://www.metmuseum.org/art/collection/search/10497",
+    "size_kb": 2981
+  },
+  "art_goya.png": {
+    "description": "Goya (Francisco de Goya y Lucientes) - Manuel Osorio Manrique de Zu\u00f1iga (1784\u20131792), 1787\u201388",
+    "source": "https://www.metmuseum.org/art/collection/search/436545",
+    "size_kb": 1607
+  },
+  "affect_dance.png": {
+    "description": "Edgar Degas - The Dance Class, 1874",
+    "source": "https://www.metmuseum.org/art/collection/search/438817",
+    "size_kb": 5085
+  },
+  "self_vangogh.png": {
+    "description": "Vincent van Gogh - Self-Portrait with a Straw Hat (obverse: The Potato Peeler), 1887",
+    "source": "https://www.metmuseum.org/art/collection/search/436532",
+    "size_kb": 3125
+  }
+}
