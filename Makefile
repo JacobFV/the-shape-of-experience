@@ -1,7 +1,7 @@
 LATEX = /Library/TeX/texbin/pdflatex
 FLAGS = -interaction=nonstopmode
 
-all: part1 part2 part3 part4 part5
+all: cleanall part1 part2 part3 part4 part5
 
 part1:
 	cd paper/part1 && $(LATEX) $(FLAGS) thesis_part1.tex || true
