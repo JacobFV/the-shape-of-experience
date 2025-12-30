@@ -1,0 +1,209 @@
+\documentclass[11pt,a4paper,openany]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing,decorations.pathreplacing}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{images/}{part1/images/}{part2/images/}{part3/images/}{part4/images/}{part5/images/}}
+
+\geometry{margin=1in}
+
+% --- Sidebar and info box environments ---
+\newtcolorbox{historical}{
+  colback=gray!5!white,
+  colframe=gray!60!black,
+  title={\faBook\hspace{0.5em}Historical Context},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Connection to Existing Theory},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{empirical}{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  title={\faFlask\hspace{0.5em}Empirical Grounding},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{todo_empirical}{
+  colback=yellow!10!white,
+  colframe=yellow!60!black,
+  title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
+  fonttitle=\bfseries\small
+}
+
+\newtcolorbox{sidebar}[1][]{
+  colback=blue!3!white,
+  colframe=blue!40!black,
+  fonttitle=\bfseries\small,
+  before upper={\faInfoCircle\hspace{0.5em}},
+  #1
+}
+
+\newtcolorbox{software}{
+  colback=cyan!5!white,
+  colframe=cyan!60!black,
+  title={\faCode\hspace{0.5em}\textsc{Proposed Software Implementation}},
+  fonttitle=\bfseries\small
+}
+
+% Theorem environments - use chapter numbering for book
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+% Custom commands
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\MI}{\mathrm{I}}
+\newcommand{\entropy}{\mathrm{H}}
+\newcommand{\argmax}{\operatorname{argmax}}
+\newcommand{\argmin}{\operatorname{argmin}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\clos}{\operatorname{cl}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\manifold}{\mathcal{M}}
+\newcommand{\viable}{\mathcal{V}}
+\newcommand{\belief}{\mathbf{b}}
+\newcommand{\state}{\mathbf{s}}
+\newcommand{\action}{\mathbf{a}}
+\newcommand{\obs}{\mathbf{o}}
+\newcommand{\latent}{\mathbf{z}}
+\newcommand{\policy}{\pi}
+\newcommand{\value}{V}
+\newcommand{\qfunc}{Q}
+\newcommand{\reward}{r}
+\newcommand{\transition}{T}
+\newcommand{\emission}{O}
+\newcommand{\freeenergy}{\mathcal{F}}
+\newcommand{\intinfo}{\Phi}
+\newcommand{\selfmodel}{\mathcal{S}}
+\newcommand{\worldmodel}{\mathcal{W}}
+\newcommand{\effrank}{r_{\text{eff}}}
+\newcommand{\valence}{\mathcal{V}\hspace{-0.8pt}\mathit{al}}
+\newcommand{\arousal}{\mathcal{A}\hspace{-0.5pt}\mathit{r}}
+\newcommand{\cestructure}{\mathcal{C\!E}}
+\newcommand{\phenom}{\mathcal{P}}
+\newcommand{\distinction}{\delta}
+\newcommand{\relation}{\rho}
+
+% Aliases for Parts IV and V notation compatibility
+\newcommand{\Val}{\valence}
+\newcommand{\Ar}{\arousal}
+\newcommand{\reff}{\effrank}
+\newcommand{\cfweight}{\mathrm{CF}}
+\newcommand{\selfsal}{\mathrm{SM}}
+
+% --- styled callout boxes ---
+\newtcolorbox{keyresult}{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  title={\faLightbulb\hspace{0.5em}Key Result},
+  fonttitle=\bfseries
+}
+\newtcolorbox{phenomenal}{
+  colback=purple!5!white,
+  colframe=purple!75!black,
+  title=Phenomenal Correspondence
+}
+\newtcolorbox{warning}{
+  colback=red!5!white,
+  colframe=red!75!black,
+  title=Warning
+}
+\newenvironment{normimp}{\begin{quote}\textbf{Normative Implication.} }{\end{quote}}
+
+% Title and author
+\title{\Huge\textbf{Inevitability}\\[0.5em]
+\Large The Shape of Experience:\\
+A Geometric Theory of Affect for Biological and Artificial Systems}
+\author{}
+\date{}
+
+\begin{document}
+
+% Front matter
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+% Introduction
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\input{introduction}
+
+% Main matter
+\mainmatter
+
+% Part I
+\part{Thermodynamic Foundations and the Ladder of Emergence}
+\input{part1/chapter}
+
+% Part II
+\part{The Identity Thesis and the Geometry of Feeling}
+\input{part2/chapter}
+
+% Part III
+\part{Signatures of Affect Under the Existential Burden}
+\input{part3/chapter}
+
+% Part IV
+\part{Interventions Across Scale---From Neurons to Nations}
+\input{part4/chapter}
+
+% Part V
+\part{The Transcendence of the Self}
+\input{part5/chapter}
+
+% Back matter
+\backmatter
+
+% Epilogue
+\chapter*{Epilogue}
+\addcontentsline{toc}{chapter}{Epilogue}
+\input{epilogue}
+
+\end{document}

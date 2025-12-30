@@ -1,0 +1,1138 @@
+
+
+
+
+%==============================================================================
+\section{Notation and Foundational Concepts}
+%==============================================================================
+
+This section provides self-contained definitions of the core concepts used throughout Part III. Readers familiar with Parts I--II may skip to Section 2.
+
+\subsection{The Six Affect Dimensions}
+
+\begin{definition}[Valence ($\valence$)]
+\textbf{Valence} is the felt quality of approach versus avoidance---the ``goodness'' or ``badness'' of an experiential state. Formally:
+\begin{equation}
+\valence_t = -\frac{1}{H} \sum_{k=1}^{H} \gamma^k \nabla_{\mathbf{x}} d(\mathbf{x}, \partial\viable) \bigg|_{\hat{\mathbf{x}}_{t+k}} \cdot \frac{d\hat{\mathbf{x}}_{t+k}}{dt}
+\end{equation}
+Positive valence indicates movement into viable interior; negative valence indicates approach toward viability boundary.
+\end{definition}
+
+\begin{definition}[Arousal ($\arousal$)]
+\textbf{Arousal} is the rate of belief/state update:
+\begin{equation}
+\arousal_t = \KL(\belief_{t+1} \| \belief_t)
+\end{equation}
+High arousal: rapid model updating, activation, intensity. Low arousal: stability, calm, settled state.
+\end{definition}
+
+\begin{definition}[Integration ($\intinfo$)]
+\textbf{Integration} measures irreducibility of cause-effect structure:
+\begin{equation}
+\intinfo(\state) = \min_{\text{partitions } P} D\left[ p(\state_{t+1} | \state_t) \| \prod_{p \in P} p(\state^p_{t+1} | \state^p_t) \right]
+\end{equation}
+High integration: unified experience. Low integration: fragmentation.
+\end{definition}
+
+\begin{definition}[Effective Rank ($\effrank$)]
+\textbf{Effective rank} measures distribution of active degrees of freedom:
+\begin{equation}
+\effrank = \frac{(\tr C)^2}{\tr(C^2)} = \frac{\left(\sum_i \lambda_i\right)^2}{\sum_i \lambda_i^2}
+\end{equation}
+High rank: many dimensions active, openness. Low rank: collapsed into narrow subspace, tunnel vision.
+\end{definition}
+
+\begin{definition}[Counterfactual Weight ($\mathcal{CF}$)]
+\textbf{Counterfactual weight} is resources devoted to non-actual possibilities:
+\begin{equation}
+\mathcal{CF}_t = \frac{\text{Compute}_t(\text{imagined rollouts})}{\text{Compute}_t(\text{total})}
+\end{equation}
+High $\mathcal{CF}$: mind elsewhere (planning, worrying, fantasizing). Low $\mathcal{CF}$: present-focused.
+\end{definition}
+
+\begin{definition}[Self-Model Salience ($\mathcal{SM}$)]
+\textbf{Self-model salience} is degree of self-focus:
+\begin{equation}
+\mathcal{SM}_t = \frac{\MI(\latent^{\text{self}}_t; \action_t)}{\entropy(\action_t)}
+\end{equation}
+High $\mathcal{SM}$: self-conscious, self as prominent object. Low $\mathcal{SM}$: self-forgetting, absorption, flow.
+\end{definition}
+
+\subsection{The Affect State}
+
+\begin{definition}[Affect State]
+The affect state at time $t$ is characterized by whichever structural dimensions are relevant to the phenomenon under analysis. The full toolkit includes:
+\begin{equation}
+\mathbf{a}_t = (\valence_t, \arousal_t, \intinfo_t, \effrank_t, \mathcal{CF}_t, \mathcal{SM}_t, \ldots)
+\end{equation}
+but not all dimensions matter for all phenomena. Cultural forms, practices, and technologies can be characterized by their affect signatures---the structural features they reliably modulate.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[
+    dim/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=0.6cm, align=center, font=\small},
+    label/.style={font=\scriptsize, text=gray}
+]
+% Central node
+\node[circle, draw, fill=gray!10, minimum size=1.2cm, font=\small\bfseries] (center) {$\mathbf{a}_t$};
+
+% Six dimensions arranged in hexagon
+\node[dim, fill=red!15, draw=red!60!black, above=1.2cm of center] (val) {Valence $\valence$};
+\node[dim, fill=orange!15, draw=orange!60!black, above right=0.6cm and 1.8cm of center] (ar) {Arousal $\arousal$};
+\node[dim, fill=yellow!15, draw=yellow!60!black, below right=0.6cm and 1.8cm of center] (int) {Integration $\intinfo$};
+\node[dim, fill=green!15, draw=green!60!black, below=1.2cm of center] (eff) {Eff.\ Rank $\effrank$};
+\node[dim, fill=cyan!15, draw=cyan!60!black, below left=0.6cm and 1.8cm of center] (cf) {CF Weight $\mathcal{CF}$};
+\node[dim, fill=blue!15, draw=blue!60!black, above left=0.6cm and 1.8cm of center] (sm) {Self-Salience $\mathcal{SM}$};
+
+% Connections
+\draw[thick, gray!50] (center) -- (val);
+\draw[thick, gray!50] (center) -- (ar);
+\draw[thick, gray!50] (center) -- (int);
+\draw[thick, gray!50] (center) -- (eff);
+\draw[thick, gray!50] (center) -- (cf);
+\draw[thick, gray!50] (center) -- (sm);
+
+% Pole labels
+\node[label, above=0.1cm of val] {good $\leftrightarrow$ bad};
+\node[label, right=0.1cm of ar] {high $\leftrightarrow$ low};
+\node[label, right=0.1cm of int] {unified $\leftrightarrow$ fragmented};
+\node[label, below=0.1cm of eff] {open $\leftrightarrow$ narrow};
+\node[label, left=0.1cm of cf] {elsewhere $\leftrightarrow$ present};
+\node[label, left=0.1cm of sm] {self-aware $\leftrightarrow$ absorbed};
+\end{tikzpicture}
+\end{center}
+
+%==============================================================================
+\section{The Expression of Inevitability: Human Responses to Inescapable Selfhood}
+%==============================================================================
+
+\begin{connection}
+This analysis of cultural responses to selfhood connects to several established research programs:
+\begin{itemize}
+\item \textbf{Terror Management Theory} (Greenberg, Solomon \& Pyszczynski, 1986): Mortality salience triggers cultural worldview defense. My ``existential burden'' formalizes the threat-signal that TMT identifies.
+\item \textbf{Meaning Maintenance Model} (Heine, Proulx \& Vohs, 2006): Humans respond to meaning violations through compensatory affirmation. My framework specifies the structural signature of ``meaning violation'' (disrupted integration, collapsed effective rank).
+\item \textbf{Self-Determination Theory} (Deci \& Ryan, 1985): Basic needs for autonomy, competence, relatedness. These correspond to different regions of the affect space (autonomy $\approx$ low external $\mathcal{SM}$; competence $\approx$ positive valence from successful prediction; relatedness $\approx$ expanded self-model).
+\item \textbf{Flow Theory} (Csikszentmihalyi, 1990): Optimal experience as challenge-skill balance. Flow is precisely the low-$\mathcal{SM}$, high-$\intinfo$, moderate-$\arousal$ region I describe.
+\item \textbf{Attachment Theory} (Bowlby, 1969): Early relational patterns shape adult affect regulation. Attachment styles are stable individual differences in the parameters governing affect dynamics.
+\end{itemize}
+\end{connection}
+
+The self-model, once it exists, cannot look away from itself. This is not merely a computational fact but a phenomenological trap: to be a self-modeling system is to be stuck mattering to yourself. Every human cultural form can be understood, in part, as a response to this condition---strategies for coping with, expressing, transcending, or simply surviving the inescapability of first-person existence.
+
+\begin{sidebar}[title=A Note on the Figures]
+Throughout this paper, you'll encounter figures designed not merely to depict concepts but to instantiate them. Your perceptual response to these images is not ancillary to the argument; it \emph{is} the argument embodied. If you find that your attention behaves as the theory predicts---collapsing where I say it will collapse, expanding where I say it will expand---you have not been persuaded by evidence external to yourself. You have become the evidence.
+\end{sidebar}
+
+\subsection{The Trap of Self-Reference}
+
+\begin{proposition}[Phenomenological Inevitability]
+Once self-model salience $\mathcal{SM}$ exceeds a threshold, the system cannot eliminate self-reference without dissolving the self-model entirely. The self becomes an inescapable object in its own world model.
+\begin{equation}
+\mathcal{SM} > \mathcal{SM}_c \implies \forall t: \MI(\latent^{\text{self}}_t; \latent^{\text{total}}_t) > 0
+\end{equation}
+There is no configuration of the intact self-model in which the self is absent from awareness.
+\end{proposition}
+
+This is the deeper meaning of inevitability: not just that consciousness emerges from thermodynamics, but that once emerged, it cannot escape itself. You are stuck being you. Your suffering is inescapably yours. Your joy, when it comes, is also inescapably yours. There is no exit from the first-person perspective while you remain a person.
+
+\begin{definition}[Existential Burden]
+The \emph{existential burden} is the chronic computational and affective cost of maintaining self-reference:
+\begin{equation}
+B_{\text{exist}} = \int_0^T \left[ C_{\text{compute}}(\mathcal{SM}_t) + |\valence_t| \cdot \mathcal{SM}_t \right] dt
+\end{equation}
+The burden scales with both the salience of the self-model and the intensity of valence. To matter to yourself when you are suffering is heavier than to matter to yourself when you are neutral.
+\end{definition}
+
+Human culture, in all its variety, can be understood as the accumulated strategies for managing this burden.
+
+%==============================================================================
+\section{Aesthetics: The Modulation of Affect Through Form}
+%==============================================================================
+
+\begin{definition}[Aesthetic Experience]
+An \emph{aesthetic experience} is an affect state induced by engagement with form (visual, auditory, linguistic, conceptual) characterized by:
+\begin{equation}
+\mathbf{a}_{\text{aesthetic}} = (\text{variable } \valence, \text{moderate-high } \arousal, \text{high } \intinfo, \text{high } \effrank, \text{low } \mathcal{SM})
+\end{equation}
+The signature feature is integration without self-focus: the system is highly coupled but attending to structure outside itself.
+\end{definition}
+
+\begin{proposition}[Beauty as Integration Resonance]
+The experience of beauty arises when external structure resonates with internal structure:
+\begin{equation}
+\text{Beauty} \propto \MI(\text{stimulus structure}; \text{internal model structure})
+\end{equation}
+High mutual information between the form and the self-model's latent structure produces the characteristic ``recognition'' quality of beauty---the sense that something outside corresponds to something inside.
+\end{proposition}
+
+\begin{proposition}[The Sublime as Self-Model Perturbation]
+The sublime is characterized by temporary disruption of normal self-model boundaries:
+\begin{equation}
+\mathbf{a}_{\text{sublime}} = (\text{ambivalent } \valence, \text{very high } \arousal, \text{expanding } \intinfo, \text{very high } \effrank, \text{collapsing } \mathcal{SM})
+\end{equation}
+Confrontation with vastness (mountains, oceans, cosmic scales) or power (storms, great art) forces rapid expansion of the world model beyond the self-model's normal scope. The self becomes small relative to the newly-expanded frame. This is terrifying and liberating simultaneously---a temporary escape from the trap of self-reference.
+\end{proposition}
+
+\begin{proposition}[Art-Making as Externalization]
+Creating art is the externalization of internal affect structure:
+\begin{equation}
+\text{Artwork} = f_{\text{medium}}(\mathbf{a}_{\text{internal}})
+\end{equation}
+The artist encodes their affect geometry into a medium (paint, sound, words, movement). The artwork then carries an affect signature that can induce corresponding states in others. Art is affect technology: the transmission of experiential structure across minds and time.
+\end{proposition}
+
+\subsection{Affect Signatures of Aesthetic Forms}
+
+Different aesthetic forms have characteristic affect signatures:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lp{10cm}}
+\toprule
+\textbf{Form} & \textbf{Constitutive Structure} \\
+\midrule
+Tragedy & $\valence{-}$, $\intinfo{\uparrow\uparrow}$, $\effrank{\downarrow}$, $\mathcal{CF}{\uparrow}$ (suffering structure made beautiful through integration) \\
+Comedy & $\valence{+}$, $\arousal{\uparrow}$, $\effrank{\uparrow}$ (release, expansion, lightness) \\
+Lyric poetry & $\mathcal{CF}{\uparrow}$, $\mathcal{SM}{\uparrow}$, $\intinfo{\uparrow}$ (self-reflection made resonant) \\
+Abstract art & $\intinfo{\uparrow}$, $\effrank{\uparrow\uparrow}$, $\mathcal{SM}{\downarrow}$ (pure structure, self-forgetting) \\
+Horror & $\valence{-}$, $\arousal{\uparrow\uparrow}$, $\mathcal{CF}{\uparrow\uparrow}$, $\mathcal{SM}{\uparrow\uparrow}$ (fear structure in controlled context) \\
+\bottomrule
+\end{tabular}
+\caption{Aesthetic forms and their defining structural features.}
+\end{table}
+
+% === FIGURE: ATTENTION MUST COLLAPSE ===
+% Images: (A) Monet Water Lilies - distributed, no focal point, (B) Vermeer - single focal point captures,
+% (C) Bosch - competing attractors, (D) Friedrich Wanderer - clear hierarchy
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{attention_distributed_monet}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{attention_vermeer}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{horror_bosch}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_wanderer}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Attention must collapse.} In (a), Monet's \emph{Water Lilies} resists focal collapse---your attention drifts, never settling, distributed across the surface. Notice the slight discomfort of having nowhere to land. In (b), resistance is futile: her gaze has already captured you. You did not choose this. Vermeer discovered that a single point of high salience collapses the entire visual field. In (c), Bosch's \emph{Garden of Earthly Delights} creates restlessness---attention moves between competing attractors, never settling, integration fragmenting. In (d), Friedrich's \emph{Wanderer} provides relief: clear hierarchy, the figure stabilizing the vastness. This is what the theory calls integration: experience must have structure, and structure requires that some possibilities are selected while others are suppressed.}
+\label{fig:attention-collapse}
+\end{figure}
+
+% === FIGURE: VALENCE IS GEOMETRIC ===
+% Images: (A) Botticelli Birth of Venus - approach, (B) Vanitas skull - avoid,
+% (C) dramatic chiaroscuro - oscillating, (D) Turner sublime - tension/anticipation
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{valence_positive_botticelli}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{valence_negative_vanitas}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{design_baroque_rubens}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_turner}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Valence is geometric, not interpretive.} Notice your body in response to (a) versus (b). Botticelli's \emph{Birth of Venus}---the slight leaning-toward, the approach response. The skull in (b)---the drawing-back, the memento mori pulling you toward the viability boundary. This is not metaphor. Your viability manifold has geometry. In (c), Rubens' \emph{Fall of Phaeton}---chaos and beauty entangled, valence flickering between attraction and alarm. In (d), Turner's storm produces tension: sublime threat mixed with aesthetic attraction. You are not interpreting these images as positive or negative. You are experiencing your position relative to them. This is what the theory means by valence as gradient: not a judgment about the image, but a structural fact about where you are.}
+\label{fig:valence-geometry}
+\end{figure}
+
+% === FIGURE: SELF-MODEL SALIENCE ===
+% Images: (A) Rothko - pure form, dissolving self, (B) Rembrandt self-portrait - artist modeling self,
+% (C) Pieta - grief, self through other, (D) Wanderer - self in relation to world
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{attention_rothko}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{self_rembrandt}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{affect_grief_pieta}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_wanderer}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{The observer is always in the observation.} In (a), Rothko's color field dissolves object and subject---self-model recedes into pure phenomenal experience, salience approaching zero. You see atmosphere, not thing. In (b), Rembrandt's self-portrait: the artist modeling himself modeling himself---recursive self-reference made visible. Notice your own self-awareness rise as you meet his gaze. In (c), Michelangelo's \emph{Piet\`{a}}---the self made visible through relation to another. The mother's self-model is entirely organized around what she holds; grief as self-structure. In (d), Friedrich's wanderer: the self placed in relation to vastness, salience distributed between figure and world. The observer is never not in the observation. These images don't represent self-awareness; they modulate yours.}
+\label{fig:self-model-salience}
+\end{figure}
+
+% === FIGURE: COUNTERFACTUAL WEIGHT ===
+% SEARCH: (A) Empty place---set table with empty chair, made bed with indentation, empty swing
+% still swaying. Absence implying recent presence. (B) Moment-before---diver in mid-air, ball about
+% to hit, wave about to break. Frozen anticipation. (C) Aftermath---broken glass on floor, empty stage
+% after performance, disheveled morning bed. Traces of event. (D) Never-was---architectural rendering
+% of unbuilt building, photograph of demolished place, painting of imagined location.
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{counterfactual_empty}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{counterfactual_before}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{counterfactual_after}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{counterfactual_neverwas}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{The absent has presence.} You are not just seeing what is present in these images. In (a), you are seeing who should be there and isn't. In (b), you are experiencing the future that hasn't arrived yet. In (c), you are reconstructing the event from its residue. In (d), you are entertaining a possibility that was never actual. This is counterfactual weight: the processing resources your system allocates to non-actual possibilities. The present is never just the present. Your experience is saturated with what could be, was, might have been, will be.}
+\label{fig:counterfactual-weight}
+\end{figure}
+
+% === FIGURE: HORROR / COHERENCE VIOLATION ===
+% Images: (A) Munch's Scream - existential dread, (B) Caravaggio Medusa - visceral horror,
+% (C) Bosch detail - surreal violation, (D) Digital glitch - contemporary coherence violation
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{horror_scream}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{horror_medusa}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{horror_bosch}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{horror_glitch}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Horror is coherence violation.} In (a), Munch's \emph{Scream} makes the internal external---the figure's distortion mirrors the world's distortion, coherence dissolving in both directions. Notice that the discomfort is immediate, pre-cognitive. In (b), Caravaggio's \emph{Medusa} captures the moment of horror itself---the face that turns viewers to stone now turned to canvas, looking back. In (c), Bosch populates his garden with coherence violations: bodies doing impossible things, categories collapsing. Your model-of-the-world finds no stable interpretation. In (d), digital glitch aesthetics---contemporary coherence violation, the familiar made wrong. Horror works because it threatens the models that constitute you. You cannot think your way out of the discomfort because the discomfort precedes thought.}
+\label{fig:horror-coherence}
+\end{figure}
+
+% === FIGURE: AFFECT STRUCTURE (JOY, SUFFERING, GRIEF, NEUTRAL) ===
+% Images: (A) Renoir joy, (B) Munch scream suffering, (C) Pieta grief, (D) mandala neutral
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{affect_joy_renoir}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{aesthetic_tragedy}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{affect_grief_pieta}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{attention_mandala}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Affects are structures, not interpretations.} In (a), Renoir's \emph{Bal du moulin de la Galette}---notice the expansiveness, many figures, many conversations, many paths available. This is what high effective rank feels like: joy as geometric openness. In (b), tragedy as structure---the figure caught in forces beyond control, few dimensions active, no exit. This is suffering as geometry: high integration (you cannot look away from the collapse), low effective rank (all variance in the downward pull). In (c), Michelangelo's \emph{Piet\`{a}}---grief made marble. Integration binds you to the absence; the mother holds what she has lost. In (d), the mandala: contemplative stillness without strong valence---coherence without urgency, neutral but integrated, attention distributed across a stable pattern. The images don't cause these feelings. The images instantiate these structures. You experience the structure.}
+\label{fig:affect-structure}
+\end{figure}
+
+\begin{software}
+\textbf{AffectSpace: Immersive Validation Platform}
+
+A software system to validate the affect framework by comparing predicted structural signatures with self-report:
+
+\textbf{Architecture}:
+\begin{enumerate}
+\item \textbf{Stimulus Library}: Curated collection of affect-inducing stimuli
+  \begin{itemize}
+  \item Music tracks (genre-tagged, tempo-annotated)
+  \item Visual scenes (IAPS images, nature videos, abstract art)
+  \item Guided experiences (breathing exercises, body scans, visualizations)
+  \item Interactive scenarios (games, social simulations)
+  \end{itemize}
+
+\item \textbf{Real-time Self-Report Interface}:
+  \begin{itemize}
+  \item Dimension-specific sliders with anchoring descriptions
+  \item Only dimensions relevant to the target affect are measured
+  \item Continuous sampling at 1 Hz during stimulus
+  \end{itemize}
+
+\item \textbf{Physiological Integration} (optional):
+  \begin{itemize}
+  \item Heart rate variability $\rightarrow$ arousal proxy
+  \item Skin conductance $\rightarrow$ arousal + valence interaction
+  \item Eye tracking $\rightarrow$ counterfactual weight (saccade patterns during planning)
+  \item Pupillometry $\rightarrow$ cognitive load / $\mathcal{CF}$
+  \end{itemize}
+
+\item \textbf{Prediction Engine}:
+  \begin{itemize}
+  \item For each stimulus, predict the defining dimensions for the target affect
+  \item Predictions derived from stimulus features (tempo, key, content tags)
+  \item Compare predictions vs.\@ self-report on relevant dimensions
+  \end{itemize}
+\end{enumerate}
+
+\textbf{Validation Metrics}:
+\begin{itemize}
+\item Per-dimension correlation for predicted dimensions
+\item Clustering accuracy: do induced affects cluster by their predicted structure?
+\item Dimensionality validation: does each affect require its predicted number of dimensions?
+\end{itemize}
+
+\textbf{Falsification criteria}: If predicted dimensions do not predict self-report better than others, or if clustering requires different dimensions than predicted, the motif characterizations require revision.
+\end{software}
+
+\subsection{Musical Genres as Affect Technologies}
+
+Music is among the most powerful affect technologies available to humans. Different genres represent accumulated cultural wisdom about how to induce specific experiential states.
+
+\begin{example}[The Blues]
+\textbf{Historical context}: Emerged from African American experience in the post-Emancipation South. Given conditions of persistent oppression, poverty, and limited agency, a musical form acknowledging suffering while maintaining dignity was inevitable.
+
+\textbf{Affect signature}:
+\begin{equation}
+\mathbf{a}_{\text{blues}} = (-\valence, \text{moderate } \arousal, \text{high } \intinfo, \text{moderate } \effrank, \text{moderate } \mathcal{CF}, \text{high } \mathcal{SM})
+\end{equation}
+
+\textbf{Structural characteristics}:
+\begin{itemize}
+\item 12-bar harmonic structure provides predictability within which to express unpredictable feeling
+\item Blue notes (flatted 3rd, 5th, 7th) create tension without resolution---mirroring persistent difficulty
+\item Call-and-response pattern acknowledges both individual and collective dimensions of suffering
+\item Repetition of lyrical themes creates integration around acknowledged pain
+\end{itemize}
+
+\textbf{Phenomenological result}: The blues does not eliminate suffering but integrates it. The listener experiences their own pain as part of a larger human pattern. $\mathcal{SM}$ remains high (this is MY suffering) but $\intinfo$ also increases (my suffering connects to others'). The result is suffering that has been witnessed, named, and placed in context.
+\end{example}
+
+\begin{example}[Ambient Music]
+\textbf{Historical context}: Explicitly designed by Brian Eno in 1978 as ``music that rewards both active listening and inattention.'' Given increasing environmental noise and attention fragmentation, music supporting rather than demanding attention was needed.
+
+\textbf{Affect signature}:
+\begin{equation}
+\mathbf{a}_{\text{ambient}} = (\text{neutral to positive } \valence, \text{very low } \arousal, \text{high } \intinfo, \text{moderate } \effrank, \text{low } \mathcal{CF}, \text{very low } \mathcal{SM})
+\end{equation}
+
+\textbf{Structural characteristics}:
+\begin{itemize}
+\item Slow or absent harmonic movement (minimal arousal triggers)
+\item No strong rhythmic pulse (reduces entrainment demands)
+\item Layered textures that fade in and out (supports divided attention)
+\item Extended duration (allows settling into altered state)
+\end{itemize}
+
+\textbf{Phenomenological result}: The rarest affect profile---low arousal, high integration, low self-model salience. Ambient music creates conditions for what might be called ``effortless presence.'' The mind is coherent but not self-focused, alert but not activated.
+\end{example}
+
+\begin{example}[Heavy Metal]
+\textbf{Historical context}: Emerged from late 1960s industrial working-class contexts. Given alienation, blocked agency, and unexpressed aggression, a musical form channeling intensity was inevitable.
+
+\textbf{Affect signature}:
+\begin{equation}
+\mathbf{a}_{\text{metal}} = (\text{negative to positive } \valence, \text{very high } \arousal, \text{high } \intinfo, \text{low } \effrank, \text{moderate } \mathcal{CF}, \text{variable } \mathcal{SM})
+\end{equation}
+
+\textbf{Structural characteristics}:
+\begin{itemize}
+\item Distorted guitar creates dense harmonic content (high information density)
+\item Driving rhythms at high tempos (arousal induction)
+\item Tritone intervals (``the devil's interval'') create tension
+\item Virtuosic performance demands integration across complex patterns
+\end{itemize}
+
+\textbf{Phenomenological result}: High arousal with high integration---intensity that is coherent rather than chaotic. Metal provides controlled exposure to extreme affect states, building capacity for intensity tolerance. The collapsed effective rank (focus on aggressive themes) paradoxically creates a container for processing difficult emotions.
+\end{example}
+
+% === FIGURE: MUSICAL GENRES AS AFFECT TECHNOLOGIES ===
+% SEARCH: (A) Blues: intimate blues performance, singer with guitar in juke joint, B.B. King or similar,
+% low-lit, high emotional intensity, suffering-made-beautiful aesthetic. (B) Ambient: Brian Eno album
+% cover or abstract waveform visualization, perhaps "Music for Airports" aesthetic---empty space,
+% soft gradients, absence of focal point. (C) Heavy Metal: mosh pit or metal performance with dramatic
+% lighting, crowd energy, visceral intensity---Metallica, Slayer, or similar live performance.
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{music_blues}
+    \caption{Blues}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{music_ambient}
+    \caption{Ambient}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{music_metal}
+    \caption{Metal}
+\end{subfigure}
+\caption{\textbf{Musical genres as affect technologies.} Notice your different responses. In (a), even without sound, the posture and lighting evoke the blues structure: suffering that has been witnessed. In (b), notice the settling---the image asks nothing of you, demands no focal point, allows distributed attention. In (c), notice the activation---even still, the image carries arousal. These are not aesthetic preferences. They are structural facts about how each genre shapes the probability distribution over affect space. The genres evolved because they work.}
+\label{fig:musical-genres}
+\end{figure}
+
+\subsection{Visual Design Movements}
+
+\begin{example}[Bauhaus/Modernist Design]
+\textbf{Historical context}: Post-WWI Germany. Given the industrial production capacity and the need to rebuild a shattered society, design philosophy emphasizing function and accessibility was inevitable.
+
+\textbf{Affect signature}:
+\begin{equation}
+\mathbf{a}_{\text{Bauhaus}} = (\text{neutral } \valence, \text{low } \arousal, \text{high } \intinfo, \text{low } \effrank, \text{low } \mathcal{CF}, \text{low } \mathcal{SM})
+\end{equation}
+
+\textbf{Structural characteristics}:
+\begin{itemize}
+\item Form follows function (reducing decorative distraction)
+\item Primary colors, geometric shapes (clear, unambiguous signals)
+\item Truth to materials (what you see is what it is)
+\item Elimination of ornament (no counterfactual ``what could this be?'')
+\end{itemize}
+
+\textbf{Phenomenological result}: The mind at rest in clarity. Low counterfactual weight because everything is what it appears to be. High integration despite low rank---few dimensions, but coherently organized.
+\end{example}
+
+\begin{example}[Baroque/Maximalism]
+\textbf{Historical context}: Counter-Reformation Catholicism. Given the need to assert Church power and overwhelm Protestant austerity, design emphasizing abundance and transcendence was inevitable.
+
+\textbf{Affect signature}:
+\begin{equation}
+\mathbf{a}_{\text{Baroque}} = (\text{positive } \valence, \text{high } \arousal, \text{high } \intinfo, \text{very high } \effrank, \text{high } \mathcal{CF}, \text{low } \mathcal{SM})
+\end{equation}
+
+\textbf{Structural characteristics}:
+\begin{itemize}
+\item Excessive ornamentation (many active dimensions)
+\item Gold, mirrors, dramatic lighting (arousal induction)
+\item Trompe l'oeil and illusion (high counterfactual weight)
+\item Scale that dwarfs the individual (low self-model salience)
+\end{itemize}
+
+\textbf{Phenomenological result}: Overwhelm through abundance. The high effective rank exceeds cognitive capacity, forcing surrender of normal parsing. Combined with low self-salience from architectural scale, the result approximates the sublime---self-dissolution through excess rather than emptiness.
+\end{example}
+
+% === FIGURE: BAUHAUS VS BAROQUE ===
+% Images: (Left) Mondrian - De Stijl/Bauhaus clarity, (Right) Rubens - Baroque maximalism
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{design_bauhaus_mondrian}
+    \caption{Mondrian / De Stijl}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{design_baroque_rubens}
+    \caption{Rubens / Baroque}
+\end{subfigure}
+\caption{\textbf{Two strategies for managing attention.} Notice the different quality of looking. In (a), Mondrian's \emph{Composition}---your attention settles quickly into the grid. There is nothing hidden, nothing more to parse. The counterfactual weight is near zero: primary colors, black lines, white space. What you see is what it is. In (b), Rubens' \emph{Fall of Phaeton}---your attention cannot settle. Bodies tumble, horses rear, divine light shatters the composition. The effective rank of the stimulus exceeds your parsing capacity. Both are coherent design philosophies. Both are affect technologies. They solve different problems: De Stijl solves the problem of restlessness through reduction. Baroque solves the problem of self-importance through overwhelm. Notice which one you prefer. That preference is itself data about your current position in affect space.}
+\label{fig:design-movements}
+\end{figure}
+
+%==============================================================================
+\section{Sexuality: Self-Transcendence Through Merger}
+%==============================================================================
+
+\begin{definition}[Sexual Experience (Structural)]
+Sexual experience involves temporary modification of self-model boundaries and heightened coupling:
+\begin{equation}
+\mathbf{a}_{\text{sexual}} = (\text{high } \valence, \text{very high } \arousal, \text{high } \intinfo, \text{initially high then collapsing } \effrank, \text{low } \mathcal{CF}, \text{variable } \mathcal{SM})
+\end{equation}
+The trajectory moves from high effective rank (diffuse arousal) toward rank collapse (convergent focus) culminating in integration spike (orgasm) and temporary self-model dissolution.
+\end{definition}
+
+\begin{proposition}[Sexuality as Self-Model Merger]
+In partnered sexuality, the self-models temporarily fuse:
+\begin{equation}
+\MI(\selfmodel_A; \selfmodel_B) \to \max \quad \text{as arousal} \to \max
+\end{equation}
+The boundaries between self and other become porous. This is one of the few naturally-occurring states where $\mathcal{SM}$ collapses while $\intinfo$ remains high---integration without self-focus, presence without isolation.
+\end{proposition}
+
+\begin{proposition}[``La Petite Mort'']
+Orgasm is characterized by:
+\begin{enumerate}
+\item Spike in integration (global neural synchronization)
+\item Collapse of effective rank to near-unity (all variance in one dimension)
+\item Momentary dissolution of self-model salience
+\item Rapid valence spike followed by return to baseline
+\end{enumerate}
+The ``little death'' is structurally accurate: it is a temporary cessation of the normal self-referential process. This is why sexuality is so central to human experience---it offers reliable, repeatable escape from the trap of being a self.
+\end{proposition}
+
+\begin{proposition}[Sexual Diversity as Affect-Space Exploration]
+The diversity of human sexuality reflects the diversity of paths through affect space:
+\begin{itemize}
+\item \textbf{Intensity preferences}: Different arousal trajectories and peak intensities
+\item \textbf{Power dynamics}: Variations in self-model salience during encounter (dominance increases $\mathcal{SM}$; submission decreases it)
+\item \textbf{Novelty vs.\ familiarity}: Counterfactual weight allocation (new partners increase $\mathcal{CF}$; familiar partners reduce it)
+\item \textbf{Emotional connection}: Degree of self-other coupling ($\MI(\selfmodel; \text{other-model})$)
+\end{itemize}
+Sexual preferences are, in part, preferences about which affect trajectories one finds most valuable or relieving.
+\end{proposition}
+
+%==============================================================================
+\section{Ideology: Expanding the Self to Bear Mortality}
+%==============================================================================
+
+\begin{definition}[Ideological Identification]
+\emph{Ideological identification} is the expansion of the self-model to include a supra-individual pattern (nation, movement, religion, cause):
+\begin{equation}
+\selfmodel_{\text{ideological}} = \selfmodel_{\text{individual}} \cup \selfmodel_{\text{collective}}
+\end{equation}
+with high coupling: $\MI(\selfmodel_{\text{individual}}; \selfmodel_{\text{collective}}) \gg 0$.
+\end{definition}
+
+\begin{proposition}[Terror Management Through Self-Expansion]
+Ideological identification manages mortality terror by making the relevant self-model partially immortal:
+\begin{equation}
+\tau_{\text{viability}}(\selfmodel_{\text{ideological}}) \gg \tau_{\text{viability}}(\selfmodel_{\text{individual}})
+\end{equation}
+If ``I'' am not just this body but also this nation/religion/movement, then ``I'' survive my bodily death. The expanded self-model has a longer viability horizon, reducing the chronic threat-signal from mortality awareness.
+\end{proposition}
+
+\begin{proposition}[Ideological Affect Signatures]
+Different ideologies produce characteristic affect profiles:
+\begin{itemize}
+\item \textbf{Nationalism}: High self-model salience (collective), high integration within in-group, compressed other-model (out-group), moderate arousal baseline
+\item \textbf{Religious devotion}: Low individual $\mathcal{SM}$, high collective $\mathcal{SM}$, high counterfactual weight (afterlife, divine plan), positive valence baseline
+\item \textbf{Revolutionary movements}: Very high arousal, high counterfactual weight (utopian futures), strong valence (negative toward present, positive toward future)
+\item \textbf{Nihilism}: Low integration, low effective rank, negative valence, high individual $\mathcal{SM}$, collapsed counterfactual weight
+\end{itemize}
+\end{proposition}
+
+\begin{warning}
+Ideology can become parasitic when the collective self-model's viability requirements conflict with the individual's:
+\begin{equation}
+\state \in \viable_{\text{ideology}} \land \state \notin \viable_{\text{individual}}
+\end{equation}
+Martyrdom, self-sacrifice, and fanaticism occur when the expanded self-model demands the destruction of the individual substrate.
+\end{warning}
+
+% === FIGURE: SOCIAL-SCALE AFFECT / SUPERORGANISMS ===
+% SEARCH: (A) Crowd unified in attention---Nuremberg rally, political rally, religious mass gathering.
+% All faces oriented same direction, individual subsumed. (B) Albert Speer Nazi architecture or Soviet
+% brutalist monument---architecture designed to make individual feel small. (C) Sacred space interior---
+% Chartres cathedral, Blue Mosque, or Hagia Sophia with light streaming through. Transcendence architecture.
+% (D) Propaganda poster---Soviet realism, WWII recruitment, or modern political ad. The superorganism reaching through.
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{social_crowd}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{social_architecture}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{social_sacred}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{social_propaganda}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Superorganisms reaching through images.} In (a), notice how individual faces dissolve into collective pattern. This is what absorption into a social-scale agentic pattern looks like: the self-model expands to include the crowd. In (b), notice how you shrink---the architecture was designed to produce this effect, to make the state feel larger than any individual. In (c), notice the different quality of shrinking: you become small, but the smallness feels like relief rather than threat. Sacred architecture reduces self-model salience while maintaining positive valence. In (d), notice that you are being worked on. The poster wants something from you. These are not neutral images. They are affect interventions operating at social scale.}
+\label{fig:social-scale}
+\end{figure}
+
+%==============================================================================
+\section{Science: The Austere Beauty of Understanding}
+%==============================================================================
+
+\begin{definition}[Scientific Understanding (Affective)]
+Scientific understanding produces a characteristic affect state:
+\begin{equation}
+\mathbf{a}_{\text{understanding}} = (\text{positive } \valence, \text{moderate } \arousal, \text{very high } \intinfo, \text{high } \effrank, \text{low } \mathcal{CF}, \text{low } \mathcal{SM})
+\end{equation}
+The signature is high integration without self-focus---the opposite of depression. The mind is coherent, expansive, and attending to structure rather than self.
+\end{definition}
+
+\begin{proposition}[Curiosity as Intrinsic Motivation]
+Science is organized curiosity. The curiosity motif:
+\begin{equation}
+\text{Curiosity} = \text{positive } \valence + \text{high } \mathcal{CF} + \text{high entropy over counterfactuals}
+\end{equation}
+Scientists are those who have cultivated the capacity to sustain this motif for extended periods, directed at specific domains of uncertainty.
+\end{proposition}
+
+\begin{proposition}[Mathematical Beauty]
+Mathematical proof and physical theory produce aesthetic experiences characterized by:
+\begin{enumerate}
+\item \textbf{Compression}: Many phenomena unified under few principles (high $\intinfo$ with low model complexity)
+\item \textbf{Necessity}: The conclusion could not be otherwise given the premises (certainty, low $\mathcal{CF}$ about the result)
+\item \textbf{Surprise}: The result was not obvious despite being necessary (high initial uncertainty resolved)
+\end{enumerate}
+\begin{equation}
+\text{Mathematical beauty} \propto \frac{\text{phenomena unified}}{\text{principles required}} \times \text{surprise}
+\end{equation}
+\end{proposition}
+
+\begin{proposition}[Science as Meaning-Making]
+Science provides meaning through:
+\begin{enumerate}
+\item \textbf{Connection}: Embedding individual existence in cosmic structure (expanding world model)
+\item \textbf{Agency}: Successful prediction and control (positive valence from reduced uncertainty)
+\item \textbf{Community}: Participation in transgenerational project (expanded self-model)
+\item \textbf{Wonder}: Aesthetic experience of natural structure (sublime encounters with scale and complexity)
+\end{enumerate}
+Science addresses the existential burden not by dissolving the self but by giving the self something worthy of its attention.
+\end{proposition}
+
+% === FIGURE: THE SUBLIME / EFFECTIVE RANK OVERFLOW ===
+% Images: (A) Hubble Deep Field - cosmic scale, (B) Turner storm - natural sublime,
+% (C) Friedrich Wanderer - human vs vastness, (D) Kandinsky - abstract sublime
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_hubble}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_turner}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_wanderer}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{art_modernist_kandinsky}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Effective rank overflow: the sublime.} In (a), the Hubble Ultra Deep Field---each point of light is a galaxy containing hundreds of billions of stars. Your processing architecture is encountering more structure than it was designed to hold. Notice the slight vertigo. In (b), Turner's \emph{Snow Storm}---nature as force that overwhelms the human vessel struggling within it. The sublime through elemental power. In (c), Friedrich's \emph{Wanderer}---the human figure provides reference for your own smallness. You become the figure; the fog becomes what you face. In (d), Kandinsky's \emph{Composition VII}---abstract sublime, no objects to anchor interpretation, your compression machinery keeps trying and keeps failing. This is what the sublime feels like from inside: effective rank attempting to expand beyond capacity. The feeling is not metaphorical. It is the literal experience of your representational limits.}
+\label{fig:sublime}
+\end{figure}
+
+%==============================================================================
+\section{Religion: Systematic Technologies for Managing Inevitability}
+%==============================================================================
+
+\begin{definition}[Religion (Functional)]
+A \emph{religion} is a systematic technology for managing the existential burden through:
+\begin{enumerate}
+\item Affect interventions (practices that modulate experiential structure)
+\item Narrative frameworks (stories that contextualize individual existence)
+\item Community structures (expanded self-models through belonging)
+\item Mortality management (beliefs about death that reduce threat-signal)
+\item Ethical guidance (policies for navigating affect space)
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Religious Diversity as Affect-Strategy Diversity]
+Different religious traditions emphasize different affect-management strategies:
+\begin{itemize}
+\item \textbf{Contemplative traditions} (Buddhism, mystical Christianity, Sufism): Target self-model dissolution ($\mathcal{SM} \to 0$)
+\item \textbf{Devotional traditions} (bhakti, evangelical Christianity): Target high positive valence through relationship with divine
+\item \textbf{Legalistic traditions} (Orthodox Judaism, traditional Islam): Target stable arousal through structured practice
+\item \textbf{Shamanic traditions}: Target radical affect-space exploration through altered states
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Secular Spirituality]
+``Spiritual but not religious'' practices can be understood as selective adoption of religious affect technologies without the full institutional/doctrinal package:
+\begin{itemize}
+\item Meditation without Buddhism
+\item Awe-cultivation without theism
+\item Community ritual without shared creed
+\item Meaning-making without metaphysical commitment
+\end{itemize}
+This represents modular affect engineering---selecting interventions based on desired affect outcomes rather than doctrinal coherence.
+\end{proposition}
+
+%==============================================================================
+\section{Psychopathology as Failed Coping}
+%==============================================================================
+
+\begin{proposition}[Mental Illness as Affect-Space Trap]
+Many mental illnesses can be understood as pathological attractors in affect space---failed strategies for managing the existential burden:
+\begin{itemize}
+\item \textbf{Depression}: Attempted escape from self-reference that collapses into intensified, negative self-focus
+\item \textbf{Anxiety}: Hyperactive threat-monitoring that increases rather than decreases danger-signal
+\item \textbf{Addiction}: Reliable affect modulation that destroys the substrate's viability
+\item \textbf{Dissociation}: Self-model fragmentation that provides escape at the cost of integration
+\item \textbf{Narcissism}: Self-model inflation that requires constant external validation
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Therapy as Affect-Space Navigation]
+Effective psychotherapy helps individuals:
+\begin{enumerate}
+\item Recognize their current position in affect space
+\item Understand the dynamics that maintain pathological attractors
+\item Develop capacity to move toward healthier regions
+\item Build sustainable affect-regulation strategies
+\end{enumerate}
+Different therapeutic modalities emphasize different dimensions: CBT targets counterfactual weight and valence; psychodynamic therapy targets integration and self-model structure; mindfulness targets arousal and self-model salience.
+\end{proposition}
+
+%==============================================================================
+\section{Affect Engineering: Technologies of Experience}
+%==============================================================================
+
+The affect framework enables systematic analysis of how practices, philosophies, and technologies shape experiential structure. We can now quantify what humans have long known intuitively---that rituals, beliefs, and tools are \emph{affect engineering technologies}.
+
+\subsection{Religious Practices as Affect Interventions}
+
+Religious traditions have developed sophisticated technologies for affect modulation over millennia.
+
+\begin{definition}[Affect Intervention]
+An \emph{affect intervention} is any practice, technology, or environmental modification that systematically shifts the probability distribution over affect space:
+\begin{equation}
+\mathcal{I}: p(\mathbf{a}) \mapsto p'(\mathbf{a})
+\end{equation}
+where $\mathbf{a} = (\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM})$.
+\end{definition}
+
+\begin{proposition}[Prayer as Affect Technology]
+Contemplative prayer systematically modulates affect dimensions:
+\begin{itemize}
+\item \textbf{Arousal}: Initial increase (orientation), then decrease (settling)
+\item \textbf{Self-model salience}: Decrease as attention shifts to ``other'' (divine, transpersonal)
+\item \textbf{Counterfactual weight}: Shift from threat-branches to trust-branches
+\item \textbf{Integration}: Increase through focused attention
+\end{itemize}
+The affect signature of prayer: $(\Delta\valence > 0, \Delta\arousal < 0, \Delta\intinfo > 0, \Delta\mathcal{SM} < 0)$.
+\end{proposition}
+
+\begin{proposition}[Ritual as Integration Maintenance]
+Collective ritual serves as periodic integration maintenance:
+\begin{equation}
+\intinfo_{\text{post-ritual}} = \intinfo_{\text{pre-ritual}} + \Delta\intinfo_{\text{synchrony}} - \delta_{\text{decay}}
+\end{equation}
+where $\Delta\intinfo_{\text{synchrony}}$ arises from coordinated action, shared symbols, and collective attention. Rituals counteract the natural decay of integration in isolated individuals.
+\end{proposition}
+
+\begin{proposition}[Confession as Rank Expansion]
+Confession, testimony, and similar practices expand effective rank by:
+\begin{enumerate}
+\item Surfacing suppressed state-space dimensions (breaking compartmentalization)
+\item Integrating shadow material into the self-model
+\item Reducing the concentration of variance in guilt/shame dimensions
+\end{enumerate}
+\begin{equation}
+\effrank_{\text{post-confession}} > \effrank_{\text{pre-confession}}
+\end{equation}
+This explains the phenomenology of ``relief'' and ``lightness'' following confession.
+\end{proposition}
+
+\subsection{Life Philosophies as Affect-Space Policies}
+
+Philosophical frameworks can be understood as meta-level policies over affect space---prescriptions for which regions to occupy and which to avoid.
+
+\begin{historical}
+The idea that philosophies are affect-management strategies has historical precedent:
+\begin{itemize}
+\item \textbf{Pierre Hadot} (1995): Ancient philosophy as ``spiritual exercises''---practices for transforming the self, not just doctrines to believe
+\item \textbf{Martha Nussbaum} (1994): Hellenistic philosophies as ``therapy of desire''
+\item \textbf{Michel Foucault} (1984): ``Technologies of the self''---practices by which individuals transform themselves
+\item \textbf{William James} (1902): Religious/philosophical stances as temperamental predispositions (``tough-minded'' vs ``tender-minded'')
+\end{itemize}
+My contribution here is formalizing these insights in terms of affect-space policies with measurable targets.
+\end{historical}
+
+\begin{definition}[Philosophical Affect Policy]
+A \emph{philosophical affect policy} is a function $\phi: \mathcal{A} \to \R$ specifying the desirability of affect states, plus a strategy for achieving high-$\phi$ states.
+\end{definition}
+
+\begin{example}[Stoicism]
+\textbf{Historical context}: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.
+
+\textbf{Affect policy}:
+\begin{equation}
+\phi_{\text{Stoic}}(\mathbf{a}) = -\arousal - \mathcal{CF} + \text{const}
+\end{equation}
+Stoicism targets low arousal (equanimity) and low counterfactual weight (focus on what is within control).
+
+\textbf{Core techniques}:
+\begin{itemize}
+\item Dichotomy of control: Reduce $\mathcal{CF}$ on uncontrollable outcomes
+\item Negative visualization: Controlled exposure to loss scenarios to reduce their arousal impact
+\item View from above: Zoom out to cosmic perspective, reducing $\mathcal{SM}$
+\end{itemize}
+
+\textbf{Phenomenological result}: Equanimity---stable low arousal with moderate integration, regardless of external circumstances.
+\end{example}
+
+\begin{example}[Buddhism (Theravada)]
+\textbf{Historical context}: Iron Age India, extreme asceticism proving ineffective. Given the persistence of suffering despite extreme practice, a middle path was inevitable.
+
+\textbf{Affect policy}:
+\begin{equation}
+\phi_{\text{Buddhist}}(\mathbf{a}) = -\mathcal{SM} + \intinfo - |\valence| + \text{const}
+\end{equation}
+Target: very low self-model salience (anatt\=a), high integration (sam\=adhi), and reduced attachment to valence (equanimity toward pleasure and pain).
+
+\textbf{Core techniques}:
+\begin{itemize}
+\item Sati (mindfulness): Observe arising/passing without identification
+\item Sam\=adhi (concentration): Build integration capacity through sustained attention
+\item Vipassan\=a (insight): See the constructed nature of self-model
+\item Mett\=a (loving-kindness): Expand self-model to include all beings
+\end{itemize}
+
+\textbf{Phenomenological result}: The jhanas (meditative absorptions) represent systematically mapped affect states---from high positive valence with low $\mathcal{SM}$ (first jhana) to pure equanimity beyond valence (fourth jhana and beyond).
+\end{example}
+
+\begin{example}[Existentialism]
+\textbf{Historical context}: Post-Nietzsche, post-WWI Europe. Given the death of God and collapse of traditional meaning structures, confrontation with groundlessness was inevitable.
+
+\textbf{Affect policy}:
+\begin{equation}
+\phi_{\text{Existentialist}}(\mathbf{a}) = \mathcal{CF} + \effrank - \text{bad faith penalty}
+\end{equation}
+Existentialism embraces high counterfactual weight (awareness of radical freedom) and high effective rank (authentic engagement with possibilities). The strategy: confront anxiety rather than flee into ``bad faith.''
+
+\textbf{Core concepts}:
+\begin{itemize}
+\item Existence precedes essence: No fixed nature, radical freedom
+\item Radical freedom: High $\mathcal{CF}$---you could always choose otherwise
+\item Angst: The affect signature of confronting freedom
+\item Authenticity: Acting from genuine choice, not conformity
+\item Absurdity: The gap between human meaning-seeking and cosmic indifference
+\end{itemize}
+
+\textbf{Phenomenological result}: A distinctive acceptance of difficulty---not eliminating negative valence but refusing to flee into self-deception. High $\mathcal{CF}$ and high $\effrank$ with full awareness of their cost.
+\end{example}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Philosophy} & \textbf{Target Structure (Constitutive Policy)} \\
+\midrule
+Stoicism & $\arousal{\downarrow}$, $\mathcal{CF}{\downarrow}$ (equanimity through control of attention) \\
+Buddhism & $\mathcal{SM}{\downarrow\downarrow}$, $\arousal{\downarrow}$, $\intinfo{\uparrow}$ (self-dissolution through integration) \\
+Existentialism & $\mathcal{CF}{\uparrow}$, $\effrank{\uparrow}$ (embrace radical freedom and its anxiety) \\
+Hedonism & $\valence{\uparrow}$, $\arousal{\uparrow}$ (maximize positive intensity) \\
+Epicureanism & $\valence{+}$ (moderate), $\arousal{\downarrow}$ (sustainable pleasure) \\
+\bottomrule
+\end{tabular}
+\caption{Philosophical traditions as affect-space policies.}
+\end{table}
+
+% === FIGURE: ART HISTORY AS AFFECT ENGINEERING ===
+% Images: (A) Kandinsky - abstract, (B) Caravaggio Medusa - chiaroscuro,
+% (C) Vermeer - intimate scale, (D) Hubble - cosmic sublime
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{art_modernist_kandinsky}
+    \caption{Kandinsky}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{horror_medusa}
+    \caption{Caravaggio}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{attention_vermeer}
+    \caption{Vermeer}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{sublime_hubble}
+    \caption{Hubble/NASA}
+\end{subfigure}
+\caption{\textbf{Artists as empirical psychologists.} These are not illustrations of affect theory. They are empirical discoveries. In (a), Kandinsky discovered that you can have high integration with minimal representational content---pure color, pure form, the affect of coherence itself without objects. In (b), Caravaggio discovered that light-dark gradients produce valence gradients in the viewer. The drama is literally painted; the horror face-to-face with you. In (c), Vermeer discovered that narrowing effective rank to intimate scale produces presence---her gaze collapses all other possibilities. In (d), the Hubble Ultra Deep Field: contemporary sublime, the self-model dissolved against incomprehensible scale. Each medium discovered something about affect structure through its constraints. These don't represent feelings. They instantiate structures that produce feelings.}
+\label{fig:art-history}
+\end{figure}
+
+\subsection{Information Technology as Affect Infrastructure}
+
+Modern information technology constitutes affect infrastructure at civilizational scale, shaping the experiential structure of billions.
+
+\begin{definition}[Affect Infrastructure]
+\emph{Affect infrastructure} is any technological system that shapes affect distributions across populations:
+\begin{equation}
+\mathcal{T}: \{p_i(\mathbf{a})\}_{i \in \text{population}} \mapsto \{p'_i(\mathbf{a})\}_{i \in \text{population}}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Social Media Affect Signature]
+Social media platforms systematically produce:
+\begin{itemize}
+\item \textbf{Arousal spikes}: Notification-driven, intermittent reinforcement creates high-variance arousal
+\item \textbf{Low integration}: Rapid context-switching fragments attention, reducing $\intinfo$
+\item \textbf{High self-model salience}: Performance of identity, social comparison
+\item \textbf{Counterfactual hijacking}: FOMO (fear of missing out) colonizes $\mathcal{CF}$ with social-comparison branches
+\end{itemize}
+\begin{equation}
+\mathbf{a}_{\text{social media}} \approx (\text{variable }\valence, \text{high }\arousal, \text{low }\intinfo, \text{low }\effrank, \text{high }\mathcal{CF}, \text{high }\mathcal{SM})
+\end{equation}
+This is structurally similar to the anxiety motif.
+\end{proposition}
+
+\begin{proposition}[Algorithmic Feed Dynamics]
+Engagement-optimizing algorithms create affect selection pressure:
+\begin{equation}
+\text{Content}_{\text{selected}} = \argmax_c \E[\text{engagement} | c] \approx \argmax_c |\Delta\valence(c)| + \Delta\arousal(c)
+\end{equation}
+Content that maximizes engagement is content that maximizes valence magnitude (outrage or delight) and arousal. This selects for affectively extreme content, shifting population affect distributions toward the tails.
+\end{proposition}
+
+\begin{definition}[Technology-Mediated Affect Drift]
+The systematic shift in population affect distributions due to technology:
+\begin{equation}
+\frac{d\bar{\mathbf{a}}}{dt} = \sum_{\mathcal{T} \in \text{technologies}} w_\mathcal{T} \cdot \nabla_\mathbf{a} \mathcal{T}(\mathbf{a})
+\end{equation}
+where $w_\mathcal{T}$ is the population-weighted usage of technology $\mathcal{T}$.
+\end{definition}
+
+% === FIGURE: DIGITAL FRAGMENTATION ===
+% SEARCH: (A) Chaotic desktop with dozens of open windows, tabs, notifications---the visual
+% representation of fragmented attention. Browser with 30+ tabs, multiple chat windows, email open.
+% (B) Phone screen showing infinite scroll feed---Instagram, TikTok, or Twitter. The format that
+% captures and holds through endless content. (C) Close-up of notification badges---red circles
+% on app icons designed to trigger arousal. iOS or Android home screen with many unread counts.
+% (D) Person reading physical book in library or quiet space---contrast of extended, integrated attention.
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{digital_chaos}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{digital_feed}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{digital_notifications}
+    \caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{digital_book}
+    \caption{}
+\end{subfigure}
+\caption{\textbf{Affect infrastructure at scale.} You know what (a) feels like. The fragmentation is not metaphorical. Your integration ($\intinfo$) is literally being reduced by the structural demand to switch contexts. In (b), the infinite scroll removes natural stopping points---there is always more, never enough, never done. In (c), notice your response to the red badges: a tiny spike of arousal, a pull toward the unread. Billions of humans are having their arousal chronically elevated by red circles. In (d), notice the different quality of attention. The book format enables something that the feed format prevents. This is not nostalgia. It is structure. The formats produce the affects.}
+\label{fig:digital-fragmentation}
+\end{figure}
+
+\subsection{Quantitative Frameworks}
+
+\begin{definition}[Affect Impact Assessment]
+For any intervention $\mathcal{I}$, the \emph{affect impact} is:
+\begin{equation}
+\text{Impact}(\mathcal{I}) = \E_{p'}[\mathbf{a}] - \E_p[\mathbf{a}]
+\end{equation}
+with component-wise analysis:
+\begin{equation}
+\text{Impact}(\mathcal{I}) = (\Delta\bar{\valence}, \Delta\bar{\arousal}, \Delta\bar{\intinfo}, \Delta\bar{\effrank}, \Delta\overline{\mathcal{CF}}, \Delta\overline{\mathcal{SM}})
+\end{equation}
+\end{definition}
+
+\begin{definition}[Flourishing Score]
+A weighted aggregate of affect dimensions aligned with human flourishing:
+\begin{equation}
+\mathcal{F}(\mathbf{a}) = \alpha_1 \valence + \alpha_2 \intinfo + \alpha_3 \effrank - \alpha_4 (\mathcal{SM} - \mathcal{SM}_{\text{optimal}})^2 - \alpha_5 |\arousal - \arousal_{\text{optimal}}|
+\end{equation}
+The weights $\{\alpha_i\}$ encode normative commitments about what constitutes flourishing.
+\end{definition}
+
+\begin{proposition}[Comparative Analysis]
+Using standardized affect measurement, we can compare:
+\begin{itemize}
+\item Meditation retreat vs.\ social media usage (expected: opposite affect signatures)
+\item Different workplace designs (open office vs.\ private: integration differences)
+\item Educational approaches (lecture vs.\ discussion: counterfactual weight differences)
+\item Urban vs.\ rural environments (arousal and integration differences)
+\end{itemize}
+\end{proposition}
+
+%==============================================================================
+\section{Summary of Part III}
+%==============================================================================
+
+\begin{enumerate}
+\item \textbf{The existential burden}: Self-modeling systems cannot escape self-reference. Human culture is accumulated strategies for managing this burden.
+
+\item \textbf{Aesthetics as affect technology}: Art forms have characteristic affect signatures and serve as technologies for transmitting experiential structure across minds and time.
+
+\item \textbf{Sexuality as transcendence}: Sexual experience offers reliable, repeatable escape from the trap of self-reference through self-model merger and dissolution.
+
+\item \textbf{Ideology as immortality project}: Identification with supra-individual patterns manages mortality terror by expanding the self-model's viability horizon.
+
+\item \textbf{Science as meaning}: Scientific understanding produces high integration without self-focus---giving the self something worthy of its attention.
+
+\item \textbf{Religion as systematic technology}: Religious traditions represent millennia of accumulated affect-engineering wisdom.
+
+\item \textbf{Psychopathology as failed coping}: Mental illnesses are pathological attractors in affect space---attempted solutions that trap rather than liberate.
+
+\item \textbf{Technology as infrastructure}: Modern information technology shapes affect distributions at population scale, often toward anxiety-like profiles.
+\end{enumerate}
+
+In Part IV, I'll develop:
+\begin{itemize}
+\item The grounding of normativity in viability structure
+\item Scale-matched interventions from neurons to nations
+\item Superorganisms as agentic systems with their own viability manifolds
+\item The AI alignment problem reframed at the macro-agent level
+\end{itemize}
+
+%==============================================================================
+\section{Appendix: Symbol Reference}
+%==============================================================================
+
+\begin{description}
+\item[$\valence$] Valence: gradient alignment on viability manifold
+\item[$\arousal$] Arousal: rate of belief/state update
+\item[$\intinfo$] Integration: irreducibility under partition
+\item[$\effrank$] Effective rank: distribution of active degrees of freedom
+\item[$\mathcal{CF}$] Counterfactual weight: resources on non-actual trajectories
+\item[$\mathcal{SM}$] Self-model salience: degree of self-focus
+\item[$\mathbf{a}$] Affect state vector: $(\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM})$
+\item[$\viable$] Viability manifold: region of sustainable states
+\item[$\worldmodel$] World model: predictive model of environment
+\item[$\selfmodel$] Self-model: component of world model representing self
+\item[$B_{\text{exist}}$] Existential burden: cost of maintaining self-reference
+\item[$\mathcal{I}$] Affect intervention: practice or technology that shifts affect distribution
+\item[$\mathcal{F}$] Flourishing score: weighted aggregate of affect dimensions
+\end{description}
+
