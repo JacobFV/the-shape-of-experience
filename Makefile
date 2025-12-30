@@ -1,38 +1,26 @@
 LATEX = /Library/TeX/texbin/pdflatex
 FLAGS = -interaction=nonstopmode
 
-all: cleanall part1 part2 part3 part4 part5
+all:
+	$(MAKE) -C book distclean
+	$(MAKE) -C book book
 
-part1:
-	cd paper/part1 && $(LATEX) $(FLAGS) thesis_part1.tex || true
-	cd paper/part1 && $(LATEX) $(FLAGS) thesis_part1.tex || true
-	cd paper/part1 && $(LATEX) $(FLAGS) thesis_part1.tex || true
+parts:
+	$(MAKE) -C book parts
 
-part2:
-	cd paper/part2 && $(LATEX) $(FLAGS) thesis_part2.tex || true
-	cd paper/part2 && $(LATEX) $(FLAGS) thesis_part2.tex || true
-	cd paper/part2 && $(LATEX) $(FLAGS) thesis_part2.tex || true
+draft:
+	$(MAKE) -C book draft
 
-part3:
-	cd paper/part3 && $(LATEX) $(FLAGS) thesis_part3.tex || true
-	cd paper/part3 && $(LATEX) $(FLAGS) thesis_part3.tex || true
-	cd paper/part3 && $(LATEX) $(FLAGS) thesis_part3.tex || true
-
-part4:
-	cd paper/part4 && $(LATEX) $(FLAGS) thesis_part4.tex || true
-	cd paper/part4 && $(LATEX) $(FLAGS) thesis_part4.tex || true
-	cd paper/part4 && $(LATEX) $(FLAGS) thesis_part4.tex || true
-
-part5:
-	cd paper/part5 && $(LATEX) $(FLAGS) thesis_part5.tex || true
-	cd paper/part5 && $(LATEX) $(FLAGS) thesis_part5.tex || true
-	cd paper/part5 && $(LATEX) $(FLAGS) thesis_part5.tex || true
+view:
+	$(MAKE) -C book view
 
 clean:
-	rm -f paper/*/*.aux paper/*/*.log paper/*/*.out paper/*/*.toc
-	rm -f paper/*/*.fls paper/*/*.fdb_latexmk paper/*/*.synctex.gz
+	$(MAKE) -C book clean
 
-cleanall: clean
-	rm -f paper/*/*.pdf
+distclean:
+	$(MAKE) -C book distclean
 
-.PHONY: all part1 part2 part3 part4 part5 clean cleanall
+help:
+	$(MAKE) -C book help
+
+.PHONY: all parts draft view clean distclean help
