@@ -16,6 +16,12 @@
 \usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing,decorations.pathreplacing}
 \usepackage{enumitem}
 \usepackage{booktabs}
+% Disable LaTeX3 tagging to prevent debug output on pages
+\ExplSyntaxOn
+\cs_if_exist:NT \NewTaggingSocket { \cs_set_eq:NN \NewTaggingSocket \use_none:nn }
+\cs_if_exist:NT \NewTaggingSocketPlug { \cs_set_eq:NN \NewTaggingSocketPlug \use_none:nnn }
+\cs_if_exist:NT \AssignTaggingSocketPlug { \cs_set_eq:NN \AssignTaggingSocketPlug \use_none:nn }
+\ExplSyntaxOff
 \usepackage{tcolorbox}
 \usepackage{fontawesome5}
 \usepackage{multirow}
