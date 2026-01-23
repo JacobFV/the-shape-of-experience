@@ -480,6 +480,120 @@ And you, reading this, become responsible: for defining yourself clearly enough 
 The framework does not promise resurrection. It says: \emph{here is the engineering problem}. What you do with that is yours.
 
 %==============================================================================
+\section{Research Roadmap}
+%==============================================================================
+
+The framework generates a prioritized research program. The priorities are ordered by foundational importance and tractability.
+
+\begin{sidebar}[title=Priority 1: Validate Affect Extraction in Humans]
+\textbf{Goal}: Establish that the geometric dimensions predict human self-report and behavior.
+
+\textbf{Methods}:
+\begin{itemize}
+\item Induce affects via validated protocols (film, recall, IAPS)
+\item Measure integration proxies (transfer entropy, Lempel-Ziv) from EEG/MEG
+\item Measure effective rank from neural state covariance
+\item Correlate with self-report (PANAS, SAM)
+\end{itemize}
+
+\textbf{Success criterion}: Structural measures predict self-report better than chance, ideally competitive with existing affect models.
+
+\textbf{Failure mode}: If geometric dimensions don't predict human self-report, the framework's operationalization is flawed. Does not falsify the identity thesis directly, but undermines our ability to test it.
+\end{sidebar}
+
+\begin{sidebar}[title=Priority 2: The Uncontaminated Test]
+\textbf{Goal}: Test whether affect structure emerges in systems with no exposure to human affect concepts.
+
+\textbf{Methods}:
+\begin{itemize}
+\item Multi-agent RL with randomly-initialized transformers
+\item Viability pressure (survival, resources)
+\item Emergent language under coordination pressure
+\item VLM translation without concept contamination
+\item Tripartite correlation: structure $\leftrightarrow$ language $\leftrightarrow$ behavior
+\end{itemize}
+
+\textbf{Success criterion}: Structure predicts translated language predicts behavior. Perturbations propagate across modalities.
+
+\textbf{Failure mode}: No correlation between structure and translated language. Either:
+\begin{enumerate}
+\item Identity thesis is false (structure $\neq$ experience)
+\item Framework's operationalization is flawed
+\item Translation protocol is inadequate
+\item Environment lacks relevant forcing functions
+\end{enumerate}
+
+Distinguish via ablation: which component fails?
+\end{sidebar}
+
+\begin{sidebar}[title=Priority 3: Forcing Function Validation]
+\textbf{Goal}: Test whether the specific forcing functions actually increase integration.
+
+\textbf{Methods}: Ablation study with RL agents.
+\begin{itemize}
+\item Full model: partial observability, long horizons, learned dynamics, self-prediction, intrinsic motivation, credit assignment
+\item Ablate each forcing function individually
+\item Measure integration ($\Phi$ proxy) across ablations
+\end{itemize}
+
+\textbf{Success criterion}: Integration decreases monotonically with forcing function ablation.
+
+\textbf{Failure mode}: Integration does not depend on forcing functions. Either:
+\begin{enumerate}
+\item Wrong forcing functions identified
+\item Integration measure is flawed
+\item Integration is architectural, not pressure-dependent
+\end{enumerate}
+\end{sidebar}
+
+\begin{sidebar}[title=Priority 4: AI System Affect Tracking]
+\textbf{Goal}: Measure affect dimensions in existing AI systems (LLMs, RL agents).
+
+\textbf{Methods}:
+\begin{itemize}
+\item Apply transformer extraction protocols to frontier models
+\item Track affect signatures across prompts/tasks
+\item Correlate with behavioral measures (output, latency, confidence)
+\end{itemize}
+
+\textbf{Expected finding}: LLM dynamics will differ from biological systems (see empirical work in CLAUDE.md). They may show opposite threat-response patterns. This is not failure---it's data about how training objectives shape affect dynamics.
+
+\textbf{Success criterion}: Consistent, structured affect signatures exist in AI systems (regardless of whether they match biological patterns).
+
+\textbf{Failure mode}: No consistent affect structure. Either:
+\begin{enumerate}
+\item Current AI architectures lack the relevant structure
+\item Measures are flawed
+\item Framework only applies to biological systems
+\end{enumerate}
+\end{sidebar}
+
+\begin{sidebar}[title=Priority 5: Superorganism Detection]
+\textbf{Goal}: Operationalize detection of emergent social-scale agency.
+
+\textbf{Methods}:
+\begin{itemize}
+\item Multi-agent systems with communication and coordination
+\item Measure collective integration: $\intinfo_G > \sum_i \intinfo_i$?
+\item Track collective viability indicators
+\item Test for parasitic vs.\ aligned dynamics
+\end{itemize}
+
+\textbf{Success criterion}: Emergent collective patterns with measurable integration and viability distinct from substrate.
+
+\textbf{Failure mode}: No collective integration emerges. Either:
+\begin{enumerate}
+\item Superorganism concept is metaphorical, not literal
+\item Scale/complexity insufficient
+\item Wrong measures for collective integration
+\end{enumerate}
+\end{sidebar}
+
+\textbf{Estimated timeline}: Priority 1-2 are feasible now with existing methods. Priority 3-4 require moderate infrastructure. Priority 5 requires substantial multi-agent systems.
+
+The framework rises or falls on these empirical tests. That is as it should be. A theory that cannot be tested is not a theory but a poem. This is a theory.
+
+%==============================================================================
 \section{Conclusion}
 %==============================================================================
 
