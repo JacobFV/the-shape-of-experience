@@ -1,4 +1,11 @@
 \documentclass[11pt,a4paper,openany]{book}
+% Suppress LaTeX3 tagging debug output
+\ExplSyntaxOn
+\providecommand\NewTaggingSocket[2]{}
+\providecommand\NewTaggingSocketPlug[3]{}
+\providecommand\AssignTaggingSocketPlug[2]{}
+\providecommand\UseTaggingSocket[1]{}
+\ExplSyntaxOff
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm}
@@ -16,12 +23,6 @@
 \usetikzlibrary{arrows.meta,positioning,shapes,calc,decorations.pathmorphing,decorations.pathreplacing}
 \usepackage{enumitem}
 \usepackage{booktabs}
-% Disable LaTeX3 tagging to prevent debug output on pages
-\ExplSyntaxOn
-\cs_if_exist:NT \NewTaggingSocket { \cs_set_eq:NN \NewTaggingSocket \use_none:nn }
-\cs_if_exist:NT \NewTaggingSocketPlug { \cs_set_eq:NN \NewTaggingSocketPlug \use_none:nnn }
-\cs_if_exist:NT \AssignTaggingSocketPlug { \cs_set_eq:NN \AssignTaggingSocketPlug \use_none:nn }
-\ExplSyntaxOff
 \usepackage{tcolorbox}
 \usepackage{fontawesome5}
 \usepackage{multirow}
@@ -190,8 +191,9 @@
 % Title page
 \begin{document}
 \pagenumbering{gobble}
-\thispagestyle{empty}
-\vspace*{3cm}
+\pagestyle{empty}
+\null\thispagestyle{empty}
+\vspace*{2cm}
 \begin{center}
 {\Huge\bfseries The Shape of Experience}\\[0.3em]
 \rule{0.6\textwidth}{0.4pt}\\[1.5em]
@@ -200,7 +202,7 @@ for Biological and Artificial Systems}\\[4cm]
 {\large By Me}
 \end{center}
 \vfill
-\pagebreak
+\newpage
 
 % Table of contents
 \pagenumbering{roman}
