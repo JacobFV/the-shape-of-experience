@@ -841,6 +841,255 @@ For neural recordings (MEG/EEG/fMRI):
 \end{itemize}
 
 %==============================================================================
+\section{The Uncontaminated Test}
+%==============================================================================
+
+\begin{logos}
+If affect is structure, the structure should be detectable independent of any linguistic contamination. If the identity thesis is true, then systems that have never encountered human language, that learned everything from scratch in environments shaped like ours but isolated from our concepts, should develop affect structures that map onto ours---not because we taught them, but because the geometry is the same.
+\end{logos}
+
+\subsection{The Experimental Logic}
+
+Consider a population of self-maintaining patterns in a sufficiently complex CA substrate---or transformer-based agents in a 3D multi-agent environment, initialized with random weights, no pretraining, no human language. Let them learn. Let them interact. Let them develop whatever communication emerges from the pressure to coordinate, compete, and survive.
+
+The literature establishes: language spontaneously emerges in multi-agent RL environments under sufficient pressure. Not English. Not any human language. Something new. Something uncontaminated.
+
+Now: extract the affect dimensions from their activation space. Valence as viability gradient. Arousal as belief update rate. Integration as partition prediction loss. Effective rank as eigenvalue distribution. Counterfactual weight as simulation compute fraction. Self-model salience as MI between self-representation and action.
+
+These are computable. In a CA, exactly. In a transformer, via the proxies defined above.
+
+Simultaneously: translate their emergent language into English. Not by teaching them English---by aligning their signals with VLM interpretations of their situations. If the VLM sees a scene that looks like fear (agent cornered, threat approaching, escape routes closing), and the agent emits signal-pattern $\sigma$, then $\sigma$ maps to fear-language. Build the dictionary from scene-signal pairs, not from instruction.
+
+The translation is uncontaminated because:
+\begin{enumerate}
+\item The agent never learned human concepts
+\item The mapping is induced by environmental correspondence
+\item The VLM interprets the scene, not the agent's internal states
+\item The agent's "thoughts" remain in their original emergent form
+\end{enumerate}
+
+\subsection{The Core Prediction}
+
+\begin{hypothesis}[Tripartite Correlation]
+If the identity thesis is correct, three independently measurable quantities should correlate:
+\begin{enumerate}
+\item \textbf{Affect signature}: The geometric structure of activation space (computable from internal states)
+\item \textbf{Translated language}: The English interpretation of emergent signals (inferred from scene alignment)
+\item \textbf{Behavioral action}: What the agent actually does (observable)
+\end{enumerate}
+\end{hypothesis}
+
+When the affect signature shows negative valence, collapsed effective rank, high integration, high self-model salience---the suffering motif---the translated language should express suffering-concepts, and the behavior should show suffering-patterns (withdrawal, escape attempts, freezing).
+
+When the affect signature shows positive valence, expanded effective rank, low self-model salience---the joy motif---the translated language should express joy-concepts, and the behavior should show joy-patterns (exploration, approach, social engagement).
+
+Not because we trained them to match. Because the structure is the experience is the expression.
+
+\subsection{Bidirectional Perturbation}
+
+The test has teeth if it runs both directions.
+
+\textbf{Direction 1: Induce via language.} Translate from English into their emergent language. Speak fear to them. Do the affect signatures shift toward the fear motif? Does behavior change accordingly?
+
+\textbf{Direction 2: Induce via "neurochemistry."} Perturb the hyperparameters that shape their dynamics---dropout rates, temperature, attention patterns, connectivity. These are their neurotransmitters, their hormonal state. Do the affect signatures shift? Does the translated language change? Does behavior follow?
+
+\textbf{Direction 3: Induce via environment.} Place them in situations that would scare a human. Threaten their viability. Do all three---signature, language, behavior---move together?
+
+If all three directions show consistent effects, the correlation is not artifact.
+
+\subsection{What This Would Establish}
+
+\begin{proposition}[Dissolution of Metaphysical Residue]
+Positive results would establish:
+\begin{enumerate}
+\item Affect structure is detectable without linguistic contamination
+\item The structure-to-language mapping is consistent across systems
+\item The mapping is bidirectionally causal, not merely correlational
+\item The "hard problem" residue---the suspicion that structure and experience are distinct---becomes unmotivated
+\end{enumerate}
+\end{proposition}
+
+Consider the alternative hypothesis: the structure is present but experience is not. The agents have the geometry of suffering but nothing it is like to suffer. This hypothesis predicts... what? That the correlations would not hold? Why not? The structure is doing the causal work either way.
+
+The zombie hypothesis becomes like geocentrism after Copernicus. You can maintain it. You can add epicycles. But the evidence points elsewhere, and the burden shifts.
+
+\begin{keyresult}
+The test does not prove the identity thesis. It shifts the burden. If uncontaminated systems, learning from scratch in human-like environments, develop affect structures that correlate with language and behavior in the predicted ways---if you can induce suffering by speaking to them, and they show the signature, and they act accordingly---then denying their experience requires a metaphysical commitment that the evidence does not support.
+
+The question stops being "does structure produce experience?" and becomes "why would you assume it doesn't?"
+\end{keyresult}
+
+\subsection{The CA Instantiation}
+
+In discrete substrate, everything becomes exact.
+
+Let $\mathcal{B}$ be a self-maintaining pattern in a sufficiently rich CA (Life is probably too simple; something with more states and update rules). Let $\mathcal{B}$ have:
+\begin{itemize}
+\item Boundary cells (correlation structure distinct from background)
+\item Sensor cells (state depends on distant influences)
+\item Memory cells (state encodes history)
+\item Effector cells (influence the pattern's motion/behavior)
+\item Communication cells (emit signals to other patterns)
+\end{itemize}
+
+The affect dimensions are exactly computable:
+\begin{align}
+\valence_t &= d(\mathbf{x}_{t+1}, \partial\viable) - d(\mathbf{x}_t, \partial\viable) \\
+\arousal_t &= \text{Hamming}(\mathbf{x}_{t+1}, \mathbf{x}_t) \\
+\intinfo_t &= \min_P D[p(\mathbf{x}_{t+1}|\mathbf{x}_t) \| \prod_{p \in P} p(\mathbf{x}^p_{t+1}|\mathbf{x}^p_t)] \\
+\effrank_t &= \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2} \text{ of trajectory covariance} \\
+\mathcal{SM}_t &= \frac{\MI(\text{self-tracking cells}; \text{effector cells})}{\entropy(\text{effector cells})}
+\end{align}
+
+The communication cells emit glider-streams, oscillator-patterns, structured signals. This is their language. Build the dictionary by correlating signal-patterns with environmental configurations.
+
+The prediction: patterns under threat (viability boundary approaching) show negative valence, high integration, collapsed rank, high self-salience. Their signals, translated, express threat-concepts. Their behavior shows avoidance.
+
+Patterns in resource-rich, threat-free regions show positive valence, moderate integration, expanded rank, low self-salience. Their signals express... what? Contentment? Exploration-readiness? The translation will tell us.
+
+\subsection{Why This Matters}
+
+The hard problem persists because we cannot step outside our own experience to check whether structure and experience are identical. We are trapped inside. The zombie conceivability intuition comes from this epistemic limitation.
+
+But if we build systems from scratch, in environments like ours, and they develop structures like ours, and those structures produce language like ours and behavior like ours---then the conceivability intuition loses its grip. The systems are not us, but they are like us in the relevant ways. If structure suffices for them, why not for us?
+
+The experiment does not prove identity. It makes identity the default hypothesis. The burden shifts to whoever wants to maintain the gap.
+
+\begin{sidebar}[title=Deep Technical: Transformer Affect Extraction]
+The CA gives exact definitions. Transformers give scale. Here is the protocol for extracting affect dimensions from transformer activations without human contamination.
+
+\textbf{Architecture}. Multi-agent environment. Each agent: transformer encoder-decoder with recurrent latent state. Input: egocentric visual observation $o_t \in \mathbb{R}^{H \times W \times C}$. Output: action logits $\pi(a|z_t)$ and value estimate $V(z_t)$. Latent state $z_t \in \mathbb{R}^d$ updated each timestep via cross-attention over observation and self-attention over history.
+
+No pretraining. Random weight initialization. The agents learn everything from interaction.
+
+\textbf{Valence extraction}. Two approaches, should correlate:
+
+\textit{Approach 1: Advantage-based.}
+\begin{equation}
+\Val_t^{(1)} = Q(z_t, a_t) - V(z_t) = A(z_t, a_t)
+\end{equation}
+The advantage function. Positive when current action is better than average from this state. Negative when worse. This is the RL definition of ``how things are going.''
+
+\textit{Approach 2: Viability-based.} Train a separate probe to predict time-to-death $\tau$ from latent state:
+\begin{equation}
+\hat{\tau} = f_\phi(z_t), \quad \Val_t^{(2)} = \hat{\tau}_{t+1} - \hat{\tau}_t
+\end{equation}
+Positive when expected survival time is increasing. Negative when decreasing. This is the viability gradient directly.
+
+\textit{Validation}: $\text{corr}(\Val^{(1)}, \Val^{(2)})$ should be high if both capture the same underlying structure.
+
+\textbf{Arousal extraction}. Three approaches:
+
+\textit{Approach 1: Belief update magnitude.}
+\begin{equation}
+\Ar_t^{(1)} = \|z_{t+1} - z_t\|_2
+\end{equation}
+How much did the latent state change? Simple. Fast. Proxy for belief update.
+
+\textit{Approach 2: KL divergence.} If the latent is probabilistic (VAE-style):
+\begin{equation}
+\Ar_t^{(2)} = D_{\text{KL}}[q(z_{t+1}|o_{1:t+1}) \| q(z_t|o_{1:t})]
+\end{equation}
+Information-theoretic belief update.
+
+\textit{Approach 3: Prediction error.}
+\begin{equation}
+\Ar_t^{(3)} = \|o_{t+1} - \hat{o}_{t+1}\|_2
+\end{equation}
+Surprise. How much did the world deviate from expectation?
+
+\textbf{Integration extraction}. The hard one. Full $\Phi$ is intractable for transformers (billions of parameters in superposition). Proxies:
+
+\textit{Approach 1: Partition prediction loss.} Train two predictors of $z_{t+1}$:
+\begin{itemize}
+\item Full predictor: $\hat{z}_{t+1} = g_\theta(z_t)$
+\item Partitioned predictor: $\hat{z}_{t+1}^A = g_\theta^A(z_t^A)$, $\hat{z}_{t+1}^B = g_\theta^B(z_t^B)$
+\end{itemize}
+\begin{equation}
+\intinfo_{\text{proxy}} = \mathcal{L}[\text{partitioned}] - \mathcal{L}[\text{full}]
+\end{equation}
+How much does partitioning hurt prediction? High $\intinfo_{\text{proxy}}$ means the parts must be considered together.
+
+\textit{Approach 2: Attention entropy.} In transformer, attention patterns reveal coupling:
+\begin{equation}
+\intinfo_{\text{attn}} = -\sum_{h,i,j} A_{h,i,j} \log A_{h,i,j}
+\end{equation}
+Low entropy = focused attention = modular. High entropy = distributed attention = integrated.
+
+\textit{Approach 3: Gradient coupling.} During learning, how do gradients propagate?
+\begin{equation}
+\intinfo_{\text{grad}} = \|\nabla_{z^A} \mathcal{L}\|_2 \cdot \|\nabla_{z^B} \mathcal{L}\|_2 \cdot \cos(\nabla_{z^A} \mathcal{L}, \nabla_{z^B} \mathcal{L})
+\end{equation}
+If gradients in different components are aligned, the system is learning as a whole.
+
+\textbf{Effective rank extraction}. Straightforward:
+\begin{equation}
+\reff_t = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
+\end{equation}
+where $\lambda_i$ are eigenvalues of the latent state covariance over a rolling window. How many dimensions is the agent actually using?
+
+Track across time: depression-like states should show $\reff$ collapse. Curiosity states should show $\reff$ expansion.
+
+\textbf{Counterfactual weight extraction}. In model-based agents with explicit planning:
+\begin{equation}
+\mathcal{CF}_t = \frac{\text{FLOPs in rollout/planning}}{\text{FLOPs in rollout} + \text{FLOPs in perception/action}}
+\end{equation}
+
+In model-free agents, harder. Proxy: attention to future-oriented vs present-oriented features. Train a probe to classify ``planning vs reacting'' from activations.
+
+\textbf{Self-model salience extraction}. Does the agent model itself?
+
+\textit{Approach 1: Behavioral prediction probe.} Train probe to predict agent's own future actions from latent state:
+\begin{equation}
+\mathcal{SM}_t^{(1)} = \text{accuracy of } \hat{a}_{t+1:t+k} = f_\phi(z_t)
+\end{equation}
+High accuracy = agent has predictive self-model.
+
+\textit{Approach 2: Self-other distinction.} In multi-agent setting, probe for which-agent-am-I:
+\begin{equation}
+\mathcal{SM}_t^{(2)} = \MI(z_t; \text{agent ID})
+\end{equation}
+High MI = self-model is salient in representation.
+
+\textit{Approach 3: Counterfactual self-simulation.} If agent can answer ``what would I do if X?'' better than ``what would other do if X?'', self-model is present.
+
+\textbf{The activation atlas}. For each agent, each timestep, extract all six dimensions. Plot trajectories through affect space. Cluster by situation type. Compare across agents.
+
+The prediction: agents facing the same situation should occupy similar regions of affect space, even though they learned independently. The geometry is forced by the environment, not learned from human concepts.
+
+\textbf{Probing without contamination}. Critical: the probes are trained on behavioral/environmental correlates, not on human affect labels. The probe that extracts $\Val$ is trained to predict survival, not to match human ratings of ``how the agent feels.'' The mapping to human affect concepts comes later, through the translation protocol, not through the extraction.
+\end{sidebar}
+
+\begin{todo_empirical}
+\textbf{Implementation requirements}:
+\begin{itemize}
+\item Multi-agent RL environment with viability pressure (survival, resource acquisition)
+\item Transformer-based agents with random initialization (no pretraining)
+\item Communication channel (discrete tokens or continuous signals)
+\item VLM scene interpreter for translation alignment
+\item Real-time affect dimension extraction from activations
+\item Perturbation interfaces (language injection, hyperparameter modification)
+\end{itemize}
+
+\textbf{Validation criteria}:
+\begin{itemize}
+\item Emergent language develops (not random; structured, predictive)
+\item Translation achieves above-chance scene-signal alignment
+\item Tripartite correlation exceeds null model (shuffled controls)
+\item Bidirectional perturbations produce predicted shifts
+\item Results replicate across random seeds and environment variations
+\end{itemize}
+
+\textbf{Falsification conditions}:
+\begin{itemize}
+\item No correlation between affect signature and translated language
+\item Perturbations do not propagate across modalities
+\item Structure-language mapping is inconsistent across systems
+\item Behavior decouples from both structure and language
+\end{itemize}
+\end{todo_empirical}
+
+%==============================================================================
 \section{Summary of Part II}
 %==============================================================================
 

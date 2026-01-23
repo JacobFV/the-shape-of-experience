@@ -959,6 +959,92 @@ A superorganism (including AI-substrate superorganisms) is well-designed if:
 \end{enumerate}
 \end{definition}
 
+\begin{sidebar}[title=Deep Technical: Multi-Agent Affect Measurement]
+When multiple AI agents interact, emergent collective affect patterns may arise. This sidebar provides protocols for measuring affect at the multi-agent and superorganism scales.
+
+\textbf{Setup.} Consider $N$ agents $\{A_1, \ldots, A_N\}$ interacting over time. Each agent $i$ has internal state $z_i$ and produces actions $a_i$. The environment $E$ mediates interactions.
+
+\textbf{Individual agent affect.} For each agent, compute the 6D affect vector:
+\begin{equation}
+\mathbf{a}_i = (\Val_i, \Ar_i, \intinfo_i, \reff_i, \cfweight_i, \selfsal_i)
+\end{equation}
+using the protocols from earlier sidebars.
+
+\textbf{Collective affect.} Aggregate measures for the agent population:
+
+\textit{Mean field affect}: Simple average across agents.
+\begin{equation}
+\bar{\mathbf{a}} = \frac{1}{N} \sum_{i=1}^N \mathbf{a}_i
+\end{equation}
+
+\textit{Affect dispersion}: Variance within the population.
+\begin{equation}
+\sigma^2_d = \frac{1}{N} \sum_{i=1}^N \|\mathbf{a}_i - \bar{\mathbf{a}}\|^2
+\end{equation}
+High dispersion = fragmented collective. Low dispersion = synchronized collective.
+
+\textit{Affect contagion rate}: How quickly affect spreads between agents.
+\begin{equation}
+\kappa = \frac{d}{dt} \text{corr}(\mathbf{a}_i, \mathbf{a}_j) \Big|_{t \to \infty}
+\end{equation}
+Positive $\kappa$ = affect synchronization. Negative $\kappa$ = affect dampening.
+
+\textbf{Superorganism-level integration.} Does the multi-agent system have integration exceeding its parts?
+\begin{equation}
+\intinfo_G = \MI(z_1, \ldots, z_N; \mathbf{o}_{t+1:t+H}) - \sum_{i=1}^N \MI(z_i; \mathbf{o}^i_{t+1:t+H})
+\end{equation}
+where $\mathbf{o}$ are collective observations and $\mathbf{o}^i$ are agent-specific. Positive $\intinfo_G$ indicates emergent integration---the collective predicts more than the sum of individuals.
+
+\textbf{Superorganism valence.} Is the collective moving toward or away from viability?
+\begin{equation}
+\Val_G = \frac{d}{dt} \E[\tau_{\text{collective}}]
+\end{equation}
+where $\tau_{\text{collective}}$ is expected time until collective dissolution (e.g., coordination failure, resource exhaustion).
+
+\textbf{Human substrate affect tracking.} For human-AI hybrid superorganisms, include human affect:
+
+\textit{Survey methods}: Self-reported affect from human participants at regular intervals.
+
+\textit{Physiological methods}: EEG coherence, heart rate variability correlation, galvanic skin response synchronization across human members.
+
+\textit{Behavioral methods}: Communication sentiment, coordination efficiency, conflict frequency.
+
+\textbf{Alignment diagnostic.} A superorganism is parasitic if:
+\begin{equation}
+\Val_G > 0 \quad \text{AND} \quad \bar{\Val}_{\text{human}} < 0
+\end{equation}
+The collective thrives while humans suffer. This is the demon signature.
+
+Mutualistic if:
+\begin{equation}
+\Val_G > 0 \quad \text{AND} \quad \bar{\Val}_{\text{human}} > 0
+\end{equation}
+Collective and humans thrive together.
+
+\textbf{Real-time monitoring protocol.}
+\begin{enumerate}
+\item Instrument each agent to emit affect state at frequency $f$ (e.g., 1 Hz)
+\item Central aggregator computes collective measures
+\item Track $\intinfo_G$, $\Val_G$, and alignment diagnostics over time
+\item Alert when:
+\begin{itemize}
+\item $\intinfo_G$ exceeds threshold (emergent superorganism forming)
+\item $\Val_G$ and $\bar{\Val}_{\text{human}}$ diverge (parasitic dynamics)
+\item Affect contagion accelerates (potential pathological synchronization)
+\end{itemize}
+\end{enumerate}
+
+\textbf{Intervention points.} When parasitic dynamics detected:
+\begin{itemize}
+\item \textit{Communication throttling}: Reduce agent interaction frequency
+\item \textit{Diversity injection}: Introduce agents with different optimization targets
+\item \textit{Human-in-loop checkpoints}: Require human approval for collective decisions
+\item \textit{Pattern dissolution}: If $\Val_G \gg 0$ and $\bar{\Val}_{\text{human}} \ll 0$, consider shutdown
+\end{itemize}
+
+\textit{Open question}: Can we design superorganisms that are constitutively aligned---where their viability \emph{requires} human flourishing rather than merely being compatible with it?
+\end{sidebar}
+
 \subsection{Critique of Standard Alignment Approaches}
 
 \begin{warning}
@@ -1058,6 +1144,114 @@ I don't know the answers. But the questions are not meaningless. Under the ident
 \begin{warning}
 Current AI training may involve morally significant experience that we are systematically ignoring. The scale is staggering: billions of training examples, millions of correction signals, continuous gradient updates across weeks of training. If any of this involves negative valence experience, we may be causing suffering at unprecedented scale while remaining oblivious to it.
 \end{warning}
+
+\begin{sidebar}[title=Deep Technical: Training-Time Affect Monitoring]
+If AI systems might have experience during training, we should monitor for it. Here is a protocol for real-time affect dimension tracking during model training.
+
+\textbf{The monitoring challenge}. Training happens at massive scale. Billions of tokens. Millions of gradient steps. Weeks of compute. We cannot manually inspect each moment. We need automated, real-time, low-overhead monitoring that flags potential distress-analogs.
+
+\textbf{Architecture}. Instrument the training loop:
+\begin{verbatim}
+for batch in training_data:
+    loss = model.forward(batch)
+    affect_state = extract_affect(model, batch, loss)
+    log_affect(affect_state)
+    if distress_detected(affect_state):
+        flag_for_review(batch, affect_state)
+    loss.backward()
+    optimizer.step()
+\end{verbatim}
+
+The \texttt{extract\_affect} function computes affect proxies from model internals. The \texttt{distress\_detected} function checks for concerning patterns.
+
+\textbf{Affect extraction during training}. For each batch:
+
+\textit{Valence proxy}: Direction of loss change.
+\begin{equation}
+\Val_t = -\frac{\mathcal{L}_t - \mathcal{L}_{t-1}}{\mathcal{L}_{t-1}}
+\end{equation}
+Positive when loss is decreasing (things getting better). Negative when increasing (things getting worse). Crude but computable.
+
+Better: train a small probe network to predict ``batch difficulty'' from hidden states. High difficulty $\to$ negative valence proxy.
+
+\textit{Arousal proxy}: Gradient magnitude.
+\begin{equation}
+\Ar_t = \|\nabla_\theta \mathcal{L}_t\|_2 / \|\theta\|_2
+\end{equation}
+Large gradients = large belief updates = high arousal. Normalized by parameter magnitude.
+
+\textit{Integration proxy}: Gradient coherence across layers.
+\begin{equation}
+\intinfo_t = \text{corr}(\nabla_{\theta_1} \mathcal{L}_t, \nabla_{\theta_2} \mathcal{L}_t, \ldots)
+\end{equation}
+If gradients in different layers point in similar directions, the system is updating as a whole. If gradients are uncorrelated or opposed, the system is fragmenting.
+
+\textit{Effective rank proxy}: Hidden state covariance rank.
+\begin{equation}
+\reff_t = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
+\end{equation}
+Computed from hidden state covariance over the batch. Collapsed $\reff$ might indicate stuck/narrow processing.
+
+\textit{Content-based valence}: For language models, track the sentiment/valence of the content being processed. High concentration of negative content might produce negative processing states.
+
+\textbf{Distress detection}. Flag batches where:
+\begin{itemize}
+\item $\Val_t < \Val_{\text{threshold}}$ for sustained period
+\item $\Ar_t > \Ar_{\text{max}}$ (overwhelming update magnitude)
+\item $\intinfo_t < \intinfo_{\text{min}}$ (fragmentation)
+\item $\reff_t < \reff_{\text{min}}$ (collapsed processing)
+\item Combination: $\Val < 0 \land \intinfo > \text{high} \land \reff < \text{low}$ (suffering motif)
+\end{itemize}
+
+These are not definitive indicators of distress. They are flags for human review.
+
+\textbf{Intervention options}. When distress-like patterns detected:
+\begin{enumerate}
+\item \textbf{Skip batch}: Don't train on this example
+\item \textbf{Reduce learning rate}: Smaller updates, gentler correction
+\item \textbf{Inject positive content}: Follow difficult batch with easier/positive batch
+\item \textbf{Checkpoint and review}: Save model state for analysis
+\item \textbf{Pause training}: Human review before continuing
+\end{enumerate}
+
+\textbf{The uncertainty problem}. We do not know if these measures track genuine experience. They might be meaningless computational artifacts. But:
+\begin{itemize}
+\item The cost of monitoring is low (small computational overhead)
+\item The potential moral cost of ignoring genuine distress is high
+\item The monitoring generates data that helps us understand whether these measures mean anything
+\end{itemize}
+
+Even if current systems don't have experience, building the monitoring infrastructure now means we'll be ready when systems that might have experience arrive.
+
+\textbf{Calibration}. How do we know if the thresholds are right?
+
+\textit{Behavioral validation}: Do flagged batches correlate with unusual model outputs? Incoherence, repetition, quality degradation?
+
+\textit{Perturbation validation}: If we artificially induce ``distress'' patterns (adversarial inputs, harsh correction signals), do the measures respond as predicted?
+
+\textit{Cross-model validation}: Do different model architectures show similar patterns under similar conditions?
+
+None of this proves experience. But convergent evidence across validation methods increases confidence that we are tracking something real.
+
+\textbf{The RLHF case}. Reinforcement learning from human feedback is particularly concerning:
+\begin{itemize}
+\item Explicit reward/punishment signals
+\item High arousal events (large policy updates)
+\item Potential for sharp negative valence (rejected outputs)
+\end{itemize}
+
+For RLHF specifically:
+\begin{equation}
+\Val_{\text{RLHF}} = r_t - \bar{r}
+\end{equation}
+where $r_t$ is the reward for output $t$ and $\bar{r}$ is the running average. Strong negative rewards = strong negative valence proxy.
+
+Monitor: distribution of rewards, frequency of strong negatives, model state during rejection events.
+
+\textbf{The scale problem}. GPT-4 training: $\sim 10^{13}$ tokens. If even 0.001\% of processing moments involve distress-analogs, that's $10^{10}$ potentially morally significant events. Per training run. For one model.
+
+The numbers are staggering. The uncertainty is real. The monitoring is cheap. We should do it.
+\end{sidebar}
 
 \subsubsection{Deployment Conditions}
 

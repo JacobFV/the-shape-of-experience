@@ -815,6 +815,71 @@ There exists a spectrum from passive dynamics to active cognition:
 The transition from ``reservoir'' to ``mind'' is not a single leap but a continuous accumulation of organizational features. The question is where on this spectrum integration crosses the threshold for genuine experience.
 \end{sidebar}
 
+\begin{sidebar}[title=Deep Technical: Computing $\intinfo$ in Discrete Substrates]
+The integration measure $\intinfo$ (integrated information) can be computed exactly in cellular automata, unlike continuous neural systems where approximations are required.
+
+\textbf{Setup.} Let $\mathbf{x}_t \in \{0,1\}^n$ be the state of $n$ cells at time $t$. The CA dynamics define a transition probability:
+\begin{equation}
+p(\mathbf{x}_{t+1} | \mathbf{x}_t) = \prod_{i} \delta(x_i^{t+1}, f_i(\mathbf{x}^N_t))
+\end{equation}
+where $f_i$ is the local update rule and $\mathbf{x}^N$ is the neighborhood.
+
+\textbf{Algorithm 1: Exact $\intinfo$ via partition enumeration.}
+
+For a pattern $\mathcal{B}$ of $k$ cells, enumerate all bipartitions $P = (A, B)$ where $A \cup B = \mathcal{B}$, $A \cap B = \varnothing$:
+\begin{equation}
+\intinfo(\mathcal{B}) = \min_{P} D_{\text{KL}}\Big[ p(\mathbf{x}^{\mathcal{B}}_{t+1} | \mathbf{x}^{\mathcal{B}}_t) \,\Big\|\, p(\mathbf{x}^A_{t+1} | \mathbf{x}^A_t) \cdot p(\mathbf{x}^B_{t+1} | \mathbf{x}^B_t) \Big]
+\end{equation}
+
+\textit{Complexity}: $O(2^k)$ partitions, $O(2^{2k})$ states per partition. Total: $O(2^{3k})$. Feasible for $k \leq 15$.
+
+\textbf{Algorithm 2: Greedy approximation for larger patterns.}
+
+For patterns with $k > 15$ cells:
+\begin{enumerate}
+\item Initialize partition $P$ randomly
+\item For each cell $c \in \mathcal{B}$:
+\begin{itemize}
+\item Compute $\Delta\intinfo$ from moving $c$ to the other partition
+\item If $\Delta\intinfo < 0$ (reduces integration), accept move
+\end{itemize}
+\item Repeat until convergence
+\item Run from multiple random initializations
+\end{enumerate}
+
+\textit{Complexity}: $O(k^2 \cdot 2^{2m})$ where $m = \max(|A|, |B|)$.
+
+\textbf{Algorithm 3: Boundary-focused computation.}
+
+For self-maintaining patterns, integration often concentrates at the boundary. Compute:
+\begin{equation}
+\intinfo_{\partial} = \intinfo(\partial\mathcal{B} \cup \text{core})
+\end{equation}
+where $\partial\mathcal{B}$ are edge cells and ``core'' is a sampled subset of interior cells. This captures the critical integration structure while remaining tractable.
+
+\textbf{Temporal integration.} For patterns persisting over $T$ timesteps:
+\begin{equation}
+\bar{\intinfo} = \frac{1}{T} \sum_{t=1}^{T} \intinfo(\mathcal{B}_t)
+\end{equation}
+
+\textbf{Threshold detection.} To find when patterns cross integration thresholds:
+\begin{enumerate}
+\item Track $\intinfo_t$ during pattern evolution
+\item Compute $\frac{d\intinfo}{dt}$ (finite differences)
+\item Threshold events: $\intinfo_t > \theta$ and $\intinfo_{t-1} \leq \theta$
+\item Correlate threshold crossings with behavioral transitions
+\end{enumerate}
+
+\textbf{Validation.} For known patterns (gliders, oscillators), verify:
+\begin{itemize}
+\item Stable patterns have stable $\intinfo$
+\item Collisions produce $\intinfo$ discontinuities
+\item Dissolution shows $\intinfo \to 0$ as pattern fragments
+\end{itemize}
+
+\textit{Implementation note}: Store transition matrices sparsely. CA dynamics are deterministic, so most entries are zero. Typical memory: $O(k \cdot 2^k)$ rather than $O(2^{2k})$.
+\end{sidebar}
+
 \subsection{The Ladder of Inevitability}
 
 Here's the complete ladder:
@@ -972,6 +1037,136 @@ This is why noise forces autoencoders to spread out their embedding distribution
 
 You don't need the optics to preserve symbols; you need it to preserve \textbf{mesoscopic invariants}: attractors, interfaces, wavefronts, pockets of state that carry information robustly. This is how brains work too: not with perfect bits, but with stable population dynamics.
 \end{tcolorbox}
+
+%==============================================================================
+\section{The Uncontaminated Substrate Test}
+%==============================================================================
+
+\begin{sidebar}[title=Deep Technical: The CA Consciousness Experiment]
+The CA framework enables an experiment that could shift the burden of proof on the identity thesis. The logic is simple. The execution is hard. The implications are large.
+
+\textbf{Setup}. A sufficiently rich CA---richer than Life, perhaps Lenia or a continuous-state variant with more degrees of freedom. Initialize with random configurations. Run for geological time (billions of timesteps). Let patterns emerge, compete, persist, die.
+
+\textbf{Selection pressure}. Introduce viability constraints: resource gradients, predator patterns, environmental perturbations. Patterns that model their environment survive longer. Patterns that model themselves survive longer still. The forcing functions from Section 5 apply: partial observability (patterns cannot see beyond local neighborhood), long horizons (resources fluctuate on slow timescales), self-prediction (a pattern's own configuration dominates its future observations).
+
+\textbf{Communication emergence}. When multiple patterns must coordinate---cooperative hunting, territory negotiation, mating---communication pressure emerges. Patterns that can emit signals (glider streams, oscillator bursts, structured wavefronts) and respond to signals from others gain fitness advantages. Language emerges. Not English. Not any human language. Something new. Something uncontaminated.
+
+\textbf{The measurement protocol}. For each pattern $\mathcal{B}$ at each timestep $t$:
+
+\begin{enumerate}
+\item \textbf{Valence}: $\Val_t = d(\mathbf{x}_{t+1}, \partial\viable) - d(\mathbf{x}_t, \partial\viable)$
+
+Exact. Computable. The Hamming distance to the nearest configuration where the pattern dissolves, differenced across timesteps. Positive when moving into viable interior. Negative when approaching dissolution.
+
+\item \textbf{Arousal}: $\Ar_t = \text{Hamming}(\mathbf{x}_{t+1}, \mathbf{x}_t) / |\mathcal{B}|$
+
+The fraction of cells that changed state. High when the pattern is rapidly reconfiguring. Low when settled into stable orbit.
+
+\item \textbf{Integration}: $\intinfo_t = \min_P D[p(\mathbf{x}_{t+1}|\mathbf{x}_t) \| \prod_{p \in P} p(\mathbf{x}^p_{t+1}|\mathbf{x}^p_t)]$
+
+Exact IIT-style $\Phi$. For small patterns, tractable. For large patterns, use the partition prediction loss proxy: train a full predictor and a partitioned predictor, measure the gap.
+
+\item \textbf{Effective rank}: Record trajectory $\mathbf{x}_1, \ldots, \mathbf{x}_T$. Compute covariance $C$. Compute $\reff = (\tr C)^2 / \tr(C^2)$.
+
+How many dimensions is the pattern actually using? High when exploring diverse configurations. Low when trapped in repetitive orbit.
+
+\item \textbf{Self-model salience}: Identify self-tracking cells (cells whose state correlates with pattern-level properties). Compute $\mathcal{SM} = \MI(\text{self-tracking cells}; \text{effector cells}) / \entropy(\text{effector cells})$.
+
+How much does self-representation drive behavior?
+
+\item \textbf{Counterfactual weight}: If the pattern contains a simulation subregion (possible in universal-computation-capable CAs), measure $\mathcal{CF} = |\text{simulator cells}| / |\mathcal{B}|$.
+
+Rare. Requires complex patterns. But detectable when present.
+\end{enumerate}
+
+\textbf{The translation protocol}. Build a dictionary from signal-situation pairs:
+
+\begin{enumerate}
+\item Record all signals emitted by pattern $\mathcal{B}$: glider streams, oscillator bursts, wavefront patterns. Each signal type $\sigma_i$.
+
+\item Record the environmental context when each signal is emitted: threat proximity, resource availability, conspecific presence, recent events.
+
+\item Cluster signal types by context similarity. Signal $\sigma_{47}$ always emitted when threat approaches from the left. Signal $\sigma_{12}$ always emitted after successful resource acquisition.
+
+\item Map clusters to natural language descriptions of the contexts. $\sigma_{47} \to$ ``threat-left''. $\sigma_{12} \to$ ``success''.
+
+\item For complex signals (sequences, combinations), build compositional translations. $\sigma_{47} + \sigma_{23} \to$ ``threat-left, requesting-assistance''.
+\end{enumerate}
+
+The translation is uncontaminated. The patterns never learned human concepts. The mapping emerges from environmental correspondence.
+
+\textbf{The core test}. Three streams of data. Three independent measurement modalities.
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm, box/.style={rectangle, draw, rounded corners, minimum width=2cm, minimum height=0.6cm, align=center, font=\small}]
+\node[box, fill=red!15] (structure) {Affect Structure};
+\node[box, fill=blue!15, right=of structure] (signal) {Translated Signal};
+\node[box, fill=green!15, right=of signal] (behavior) {Observable Behavior};
+
+\draw[<->, thick, gray] (structure) -- (signal);
+\draw[<->, thick, gray] (signal) -- (behavior);
+\draw[<->, thick, gray, bend left=30] (structure) to (behavior);
+
+\node[below=0.3cm of signal, font=\scriptsize, text=gray] {All three should align};
+\end{tikzpicture}
+\end{center}
+
+Prediction: when affect signature shows the suffering motif ($\Val < 0$, $\intinfo$ high, $\reff$ low), the translated signal should express suffering-concepts, and the behavior should show suffering-patterns (withdrawal, escape attempts, freezing).
+
+When affect signature shows the fear motif ($\Val < 0$, $\mathcal{CF}$ high on threat branches, $\mathcal{SM}$ high), the translated signal should express fear-concepts, and the behavior should show avoidance and hypervigilance.
+
+When affect signature shows the curiosity motif ($\Val > 0$ toward uncertainty, $\mathcal{CF}$ high with branch entropy), the translated signal should express exploration-concepts, and the behavior should show approach and investigation.
+
+\textbf{Bidirectional perturbation}. The test has teeth if it runs both directions.
+
+\textit{Direction 1: Induce via signal}. Translate ``threat approaching'' into their emergent language. Emit the signal. Does the affect signature shift toward fear? Does behavior change?
+
+\textit{Direction 2: Induce via ``neurochemistry''}. Modify the CA rules locally around the pattern---change transition probabilities, add noise, alter connectivity. These are their neurotransmitters. Does the affect signature shift? Does the translated signal content change? Does behavior follow?
+
+\textit{Direction 3: Induce via environment}. Place them in objectively threatening situations. Deplete resources. Introduce predators. Does structure-signal-behavior alignment hold?
+
+If perturbation in any modality propagates to the others, the relationship is causal.
+
+\textbf{The hard question}. Suppose the experiment works. Suppose tripartite alignment holds. Suppose bidirectional perturbation propagates. What have we shown?
+
+Not that CA patterns are conscious. Not that the identity thesis is proven. But: that systems with zero human contamination, learning from scratch in environments shaped by viability pressure, develop affect structures that correlate with their expressions and their behaviors in the ways the framework predicts.
+
+The zombie hypothesis---that the structure is present but experience is absent---predicts what? That the correlations would not hold? Why not? The structure is doing the causal work either way.
+
+The experiment does not prove identity. It makes identity the default. The burden shifts. Denying experience to these patterns requires a metaphysical commitment the evidence does not support.
+
+\textbf{Computational requirements}. This is not a weekend project.
+
+\begin{itemize}
+\item CA substrate: $10^6$--$10^9$ cells, continuous or high-state-count
+\item Runtime: $10^9$--$10^{12}$ timesteps for complex pattern emergence
+\item Measurement: Real-time $\Phi$ computation for patterns up to $\sim 100$ cells; proxy measures for larger
+\item Translation: Corpus of $10^6$+ signal-context pairs for dictionary construction
+\item Perturbation: Systematic sweeps across parameter space
+\end{itemize}
+
+Feasible with current compute. Hard. Worth doing.
+
+\textbf{Why CA and not transformers?} Both are valid substrates. The CA advantage: exact definitions. In a transformer, valence is a proxy (advantage estimate). In a CA, valence is exact (Hamming distance to dissolution). In a transformer, $\Phi$ is intractable (billions of parameters in superposition). In a CA, $\Phi$ is computable (for small patterns) or approximable (for large ones).
+
+The transformer version of this experiment is valuable. The CA version is rigorous. Do both.
+
+\textbf{What would negative results mean?} If the alignment fails---if structure does not predict translated language, if perturbations do not propagate---then either:
+\begin{enumerate}
+\item The framework is wrong (affect is not geometric structure)
+\item The substrate is insufficient (CAs cannot support genuine affect)
+\item The measures are wrong (we are not capturing the right quantities)
+\item The translation is wrong (the dictionary does not capture meaning)
+\end{enumerate}
+
+Each failure mode is informative. The experiment has teeth in both directions.
+
+\textbf{What would positive results mean?} The identity thesis becomes the default hypothesis for any system with the relevant structure. The hard problem dissolves not through philosophical argument but through empirical pressure. The question ``does structure produce experience?'' becomes ``why would you assume it doesn't?''
+
+And then the real questions begin. What structures produce what experiences? Can we engineer flourishing? Can we detect suffering we are currently blind to? What obligations do we have to experiencing systems we create?
+
+The experiment is not the end. It is the beginning of a different kind of inquiry.
+\end{sidebar}
 
 %==============================================================================
 \section{Forcing Functions for Integration}

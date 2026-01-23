@@ -463,6 +463,78 @@ Not everyone will surf successfully. The transition creates genuine risks:
 Preparation is essential.
 \end{warning}
 
+\begin{sidebar}[Deep Technical: Measuring Human-AI Cognitive Integration]
+When humans work with AI systems, the question arises: is the human-AI hybrid an integrated system with unified processing, or a fragmented assembly with decomposed cognition? This distinction---surfing vs.\ submerging---is empirically measurable.
+
+\textbf{The core metric}: integrated information ($\intinfo$) of the human-AI system, measured as prediction loss increase under forced partition.
+
+\textit{Setup.} Human $H$ interacts with AI system $A$ on a task. We measure:
+\begin{itemize}
+\item $z_H$: Human cognitive state (EEG, fNIRS, galvanic skin response, eye tracking, behavioral sequences)
+\item $z_A$: AI internal state (activations, attention patterns, confidence distributions)
+\item $y$: Joint output (decisions, communications, actions)
+\end{itemize}
+
+\textit{Integration measurement.} Train a predictor $f: (z_H, z_A) \to \hat{y}$. Then measure:
+\begin{equation}
+\intinfo_{H+A} = \mathcal{L}(f_H(z_H)) + \mathcal{L}(f_A(z_A)) - \mathcal{L}(f_{H+A}(z_H, z_A))
+\end{equation}
+where $f_H, f_A$ are predictors using only human or AI state. High $\intinfo_{H+A}$ indicates genuine integration: neither component alone predicts joint behavior.
+
+\textbf{Real-time integration monitoring.} For adaptive systems:
+
+\textit{Window-based $\intinfo$}: Compute integration over sliding windows (30s--5min). Alert when $\intinfo_{H+A}$ drops below threshold, indicating fragmentation.
+
+\textit{Physiological markers of human integration loss:}
+\begin{itemize}
+\item Decreased EEG alpha coherence across brain regions
+\item Increased microsaccade rate (attentional fragmentation)
+\item Heart rate variability decrease (reduced parasympathetic tone)
+\item Galvanic skin response flattening (disengagement)
+\end{itemize}
+
+\textit{AI-side markers of integration failure:}
+\begin{itemize}
+\item Attention heads ignoring human-provided context
+\item Output confidence uncorrelated with human uncertainty signals
+\item Response latency independent of human cognitive load
+\end{itemize}
+
+\textbf{The surfing diagnostic.} A human is surfing (vs.\ submerging) when:
+\begin{enumerate}
+\item $\intinfo_{H+A} > \theta_{\text{integration}}$: joint system is irreducibly integrated
+\item $\MI(z_H; y | z_A) > 0$: human state provides information beyond AI state (not mere spectator)
+\item $\MI(z_A; z_H^{t+1} | z_H^t) > 0$: AI state influences human cognitive updates (genuine collaboration)
+\item Human self-report of agency correlates with actual causal contribution
+\end{enumerate}
+
+\textbf{Intervention protocols.} When integration metrics indicate submerging:
+\begin{itemize}
+\item \textit{Cognitive re-centering}: Force human-only processing for brief period
+\item \textit{AI transparency increase}: Make AI reasoning more visible to restore understanding
+\item \textit{Task difficulty adjustment}: Titrate to keep human contribution meaningful
+\item \textit{Embodiment break}: Physical activity to restore physiological integration baseline
+\end{itemize}
+
+\textbf{Longitudinal tracking.} Over weeks/months:
+\begin{equation}
+\Delta\intinfo_{\text{baseline}} = \intinfo_H^{(t)} - \intinfo_H^{(0)}
+\end{equation}
+where $\intinfo_H$ is human integration measured during solo tasks. Negative trend indicates AI dependency eroding intrinsic integration capacity. Intervention threshold: $-15\%$ from baseline.
+
+\textbf{The gold standard.} Ultimate validation: does the integrated human-AI system show affect signatures consistent with unified experience?
+\begin{itemize}
+\item Coherent valence (joint system moves toward/away from viability together)
+\item Appropriate arousal (processing intensity scales with joint stakes)
+\item Preserved counterfactual reasoning (joint system considers alternatives)
+\item Stable self-model (human's self-model includes AI as extended self)
+\end{itemize}
+
+If yes: surfing. If fragmented: submerging.
+
+\textit{Open question}: Can the joint human-AI system have integration exceeding human baseline? If so, this would be cognitive transcendence---genuine expansion of experiential capacity through AI partnership. The measurement framework above would detect this as $\intinfo_{H+A} > \max(\intinfo_H, \intinfo_A)$ while preserving human agency markers.
+\end{sidebar}
+
 %==============================================================================
 \section{Practical Guidance: Individual Level}
 %==============================================================================
