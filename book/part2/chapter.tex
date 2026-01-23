@@ -955,8 +955,27 @@ But if we build systems from scratch, in environments like ours, and they develo
 
 The experiment does not prove identity. It makes identity the default hypothesis. The burden shifts to whoever wants to maintain the gap.
 
+\begin{proposition}[Scale Correspondence Principle]
+The exact definitions computable in discrete substrates (CA) and the proxy measures extractable from continuous substrates (transformers) are related by the principle: \emph{both track the same structural invariant at their respective scales.}
+
+For each affect dimension:
+\begin{center}
+\begin{tabular}{lll}
+\textbf{Dimension} & \textbf{CA (exact)} & \textbf{Transformer (proxy)} \\
+\hline
+Valence & Hamming to $\partial\viable$ & Advantage / survival predictor \\
+Arousal & Configuration change rate & Latent state $\Delta$ / KL \\
+Integration & Partition prediction loss & Attention entropy / grad coupling \\
+Effective rank & Trajectory covariance rank & Latent covariance rank \\
+$\mathcal{CF}$ & Counterfactual cell activity & Planning compute fraction \\
+$\mathcal{SM}$ & Self-tracking MI & Self-model component MI
+\end{tabular}
+\end{center}
+The CA definitions are computable but don't scale. The transformer proxies scale but are approximations. Validity comes from convergence: if CA and transformer measures correlate when applied to the same underlying dynamics, both are tracking the real structure.
+\end{proposition}
+
 \begin{sidebar}[title=Deep Technical: Transformer Affect Extraction]
-The CA gives exact definitions. Transformers give scale. Here is the protocol for extracting affect dimensions from transformer activations without human contamination.
+The CA gives exact definitions. Transformers give scale. The correspondence principle above justifies treating transformer proxies as measurements of the same structural invariants. Here is the protocol for extracting affect dimensions from transformer activations without human contamination.
 
 \textbf{Architecture}. Multi-agent environment. Each agent: transformer encoder-decoder with recurrent latent state. Input: egocentric visual observation $o_t \in \mathbb{R}^{H \times W \times C}$. Output: action logits $\pi(a|z_t)$ and value estimate $V(z_t)$. Latent state $z_t \in \mathbb{R}^d$ updated each timestep via cross-attention over observation and self-attention over history.
 
