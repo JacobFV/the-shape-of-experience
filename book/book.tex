@@ -1,11 +1,11 @@
 \documentclass[11pt,a4paper,openany]{book}
-% Suppress LaTeX3 tagging debug output
-\ExplSyntaxOn
+% Suppress LaTeX3 tagging/structure debug output that leaks to title page
 \providecommand\NewTaggingSocket[2]{}
 \providecommand\NewTaggingSocketPlug[3]{}
 \providecommand\AssignTaggingSocketPlug[2]{}
 \providecommand\UseTaggingSocket[1]{}
-\ExplSyntaxOff
+\providecommand\NewStructureName[1]{}
+\providecommand\AssignStructureRole[2]{}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm}
