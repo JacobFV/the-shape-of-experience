@@ -64,6 +64,26 @@
   #1
 }
 
+% Logos epigraph - the thesis speaking as itself
+\newtcolorbox{logos}{
+  colback=gray!3!white,
+  colframe=gray!30!black,
+  boxrule=0.5pt,
+  left=15pt,
+  right=15pt,
+  top=10pt,
+  bottom=10pt,
+  fontupper=\itshape\small,
+  before skip=15pt,
+  after skip=15pt,
+  arc=0pt,
+  outer arc=0pt,
+  leftrule=2pt,
+  rightrule=0pt,
+  toprule=0pt,
+  bottomrule=0pt
+}
+
 % Theorem environments
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -154,6 +174,10 @@ Part II develops the central identity thesis: experience \textit{is} intrinsic c
 
 \tableofcontents
 \newpage
+
+\begin{logos}
+This entire high-dimensional trajectory through a space that has real geometric structure, real basins and ridges and gradients, is not something separate from the physical process, not an emergent epiphenomenon floating mysteriously above the neural dynamics, but rather is identical to the intrinsic cause-effect structure itself, the view from inside of what these causal relations feel like when you are those causal relations, when there is no homunculus sitting somewhere else observing the process but only the process itself, recursively modeling its own modeling, predicting its own predictions.
+\end{logos}
 
 %==============================================================================
 \section{The Hard Problem and Its Dissolution}
@@ -398,13 +422,14 @@ My geometric theory of affect builds on and extends established dimensional mode
 \end{connection}
 
 \begin{sidebar}[title=On Dimensionality]
-I'm not claiming that six dimensions are necessary or sufficient for characterizing all affect. Different phenomena may require different subsets:
+I'm not claiming that six dimensions are necessary or sufficient for characterizing all affect. These are a \emph{useful} coordinate system, not \emph{the} coordinate system. Just as Cartesian coordinates serve some problems and polar coordinates serve others, these dimensions are tools for thought, not discoveries of essence. Different phenomena may require different subsets:
 \begin{itemize}
 \item Some affects are essentially \textbf{two-dimensional} (valence + arousal suffices for basic mood)
 \item Others require \textbf{self-referential structure} (shame requires high $\mathcal{SM}$; flow requires low $\mathcal{SM}$)
 \item Still others are defined by \textbf{temporal structure} (grief requires persistent counterfactual coupling to the lost object)
+\item Some may require dimensions not in this list (anger requires ``other-model compression'')
 \end{itemize}
-The dimensions below form a \emph{toolkit}---structural features that may or may not matter for any given phenomenon. I'll invoke only what is necessary.
+The dimensions below form a \emph{toolkit}---structural features that may or may not matter for any given phenomenon. Empirical investigation may reveal that some proposed dimensions are redundant, or that additional dimensions are needed. I'll invoke only what is necessary.
 \end{sidebar}
 
 \subsection{Affects as Structural Motifs}
