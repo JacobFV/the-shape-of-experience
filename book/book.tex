@@ -6,7 +6,7 @@
 \usepackage{physics}
 \usepackage{bm}
 \usepackage{geometry}
-\usepackage{hyperref}
+\usepackage[pdfpagelabels,plainpages=false]{hyperref}
 \usepackage{cleveref}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -38,8 +38,14 @@
 \newtcolorbox{connection}{
   colback=green!5!white,
   colframe=green!60!black,
-  title={\faBook\hspace{0.5em}Connection to Existing Theory},
-  fonttitle=\bfseries\small
+  title={\faBook\hspace{0.5em}Existing Theory},
+  fonttitle=\bfseries\small,
+  width=0.85\textwidth,
+  left=5pt,
+  right=5pt,
+  top=3pt,
+  bottom=3pt,
+  fontupper=\small
 }
 
 \newtcolorbox{empirical}{
@@ -175,19 +181,28 @@
   bottomrule=0pt
 }
 
-% Title and author
-\title{\Huge\textbf{Inevitability}\\[0.5em]
-\Large The Shape of Experience:\\
-A Geometric Theory of Affect for Biological and Artificial Systems}
-\author{}
-\date{}
-
+% Title and author - custom title page
 \begin{document}
 
 % Front matter
 \frontmatter
-\maketitle
+\pagenumbering{roman}
+\pagestyle{empty}
 
+% Custom title page
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Shape of Experience}\\[0.3em]
+\rule{0.6\textwidth}{0.4pt}\\[1.5em]
+{\Large A Geometric Theory of Affect\\[0.3em]
+for Biological and Artificial Systems}\\[4cm]
+{\large By Me}\\[0.5em]
+{\small\itshape (as a jest at the self-referential nature of existence)}
+\vfill
+\end{titlepage}
+
+\pagestyle{plain}
 \tableofcontents
 
 % Introduction
