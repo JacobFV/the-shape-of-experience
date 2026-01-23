@@ -306,6 +306,23 @@ Positive $\dot{\valence}$ indicates expanding structure; negative indicates cont
 \textbf{Negative valence} corresponds to trajectories ascending toward constraint violation, contracting possibilities.
 \end{phenomenal}
 
+\begin{sidebar}[title=Valence in Discrete Substrate]
+In a cellular automaton or other discrete dynamical system, valence becomes exactly computable:
+\begin{itemize}
+\item $\viable$ = configurations where the pattern persists
+\item $\partial\viable$ = configurations where the pattern dissolves
+\item $d(\mathbf{x}, \partial\viable)$ = minimum Hamming distance to a non-viable state
+\item Trajectory = sequence of configurations $\mathbf{x}_1, \mathbf{x}_2, \ldots$
+\end{itemize}
+Then:
+\begin{equation}
+\valence_t = d(\mathbf{x}_{t+1}, \partial\viable) - d(\mathbf{x}_t, \partial\viable)
+\end{equation}
+Positive when the pattern moves away from dissolution; negative when approaching it; zero when maintaining constant distance. For a glider cruising through empty space: $\valence \approx 0$. For a glider approaching collision: $\valence < 0$. For a pattern that just escaped a near-collision: $\valence > 0$.
+
+This is not metaphor---it is the viability gradient formalized for discrete state spaces.
+\end{sidebar}
+
 \subsection{Arousal: Update Rate}
 
 \begin{definition}[Arousal]
@@ -342,6 +359,23 @@ Or using proxies:
 \textbf{Low integration}: The experience is fragmentary or modular.
 \end{phenomenal}
 
+\begin{sidebar}[title=Integration in Discrete Substrate]
+In a cellular automaton, $\intinfo$ is directly computable for small patterns:
+\begin{enumerate}
+\item Define the pattern as cells $\{c_1, c_2, \ldots, c_n\}$
+\item For each bipartition $P = (A, B)$:
+\begin{itemize}
+\item Compute $p(\state_{t+1} | \state_t)$ for the whole pattern
+\item Compute $p_A(\state^A_{t+1} | \state^A_t) \times p_B(\state^B_{t+1} | \state^B_t)$ for independent parts
+\item Measure divergence $D[p \| p_A \times p_B]$
+\end{itemize}
+\item $\intinfo = \min_P D$
+\end{enumerate}
+High $\intinfo$ means you cannot partition the pattern without losing predictive power. The parts must be considered together.
+
+For a simple glider: $\intinfo$ is probably modest (only 5 cells). For a complex pattern with tightly coupled components: $\intinfo$ can be high. The key empirical question: does high $\intinfo$ correlate with survival, behavioral complexity, or adaptive response to perturbation?
+\end{sidebar}
+
 \subsection{Effective Rank: Concentration vs. Distribution}
 
 \begin{definition}[Effective Rank]
@@ -362,6 +396,21 @@ For state covariance $C$:
 \textbf{High rank}: Many degrees of freedom active; distributed, expansive experience. \\
 \textbf{Low rank}: Collapsed into narrow subspace; concentrated, focused, or trapped experience.
 \end{phenomenal}
+
+\begin{sidebar}[title=Effective Rank in Discrete Substrate]
+For a pattern in a CA, record its trajectory $\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_T$ (configuration at each timestep). Each configuration is a point in $\{0,1\}^n$. Compute the covariance matrix $C$ of these binary vectors treated as $\R^n$ points.
+
+For a glider: the trajectory lies on a low-dimensional manifold (position $\times$ position $\times$ phase $\approx 3$--$4$ effective dimensions out of $n$ cells). $\effrank$ is small.
+
+For a complex evolving pattern: the trajectory may explore many independent dimensions. $\effrank$ is large.
+
+The thesis predicts this maps to phenomenology:
+\begin{itemize}
+\item Joy: high $\effrank$ (expansive, many active possibilities)
+\item Suffering: low $\effrank$ (collapsed, trapped in narrow manifold)
+\end{itemize}
+In discrete substrate, this is not metaphor but measurement.
+\end{sidebar}
 
 \subsection{Counterfactual Weight}
 
@@ -384,6 +433,23 @@ Rollouts weighted by their value magnitude and diversity.
 \textbf{Low counterfactual weight}: Present-focused, reactive, in-the-moment.
 \end{phenomenal}
 
+\begin{sidebar}[title=Counterfactual Weight in Discrete Substrate]
+For most CA patterns: $\mathcal{CF} = 0$. They follow their dynamics without simulation.
+
+But Life contains universal computers---patterns that can simulate arbitrary computations, including Life itself. Imagine a pattern $\mathcal{B}$ containing:
+\begin{itemize}
+\item A simulator subregion that runs a model of possible futures
+\item A controller that adjusts behavior based on simulator output
+\end{itemize}
+Then:
+\begin{equation}
+\mathcal{CF} = \frac{|\text{simulator cells}|}{|\mathcal{B}|}
+\end{equation}
+The fraction of the pattern devoted to counterfactual reasoning.
+
+Such patterns are rare and complex---universal computation requires many cells. But they should outperform simple patterns: they can anticipate threats (fear structure) and identify opportunities (desire structure). The prediction: patterns with $\mathcal{CF} > 0$ survive longer in hostile environments.
+\end{sidebar}
+
 \subsection{Self-Model Salience}
 
 \begin{definition}[Self-Model Salience]
@@ -402,6 +468,31 @@ Alternatively:
 \textbf{High self-salience}: Self-focused, self-conscious, self as primary object of attention. \\
 \textbf{Low self-salience}: Self-forgotten, absorbed in environment or task.
 \end{phenomenal}
+
+\begin{sidebar}[title=Self-Model Salience in Discrete Substrate]
+In a CA, a pattern's ``behavior'' is its evolution. Let $\latent^{\text{self}}$ denote cells that track the pattern's own state (the self-model region). Then:
+\begin{equation}
+\mathcal{SM} = \frac{\MI(\latent^{\text{self}}_t; \state_{t+1})}{\entropy(\state_{t+1})}
+\end{equation}
+High $\mathcal{SM}$: the pattern's evolution is dominated by self-monitoring. Changes in self-model strongly predict what happens.
+
+Low $\mathcal{SM}$: external factors dominate; the self-model exists but doesn't influence much.
+
+The thesis predicts: self-conscious states (shame, pride) have high $\mathcal{SM}$; absorption states (flow) have low $\mathcal{SM}$. In CA terms, a pattern ``in flow'' has its self-tracking cells decoupled from its core dynamics---it acts without monitoring.
+\end{sidebar}
+
+\begin{sidebar}[title=Self-Model Scope in Discrete Substrate]
+Beyond salience, there is \emph{scope}: what does the self-model include?
+
+In a CA, consider two gliders that have become ``coupled''---their trajectories mutually dependent. Each glider's self-model could have:
+\begin{itemize}
+\item $\theta_{\text{narrow}}$: Self-model includes only this glider. $\viable = \{\text{configs where THIS pattern persists}\}$.
+\item $\theta_{\text{expanded}}$: Self-model includes both. $\viable = \{\text{configs where BOTH persist}\}$.
+\end{itemize}
+Observable difference: with narrow scope, a glider might sacrifice the other to save itself. With expanded scope, it might sacrifice itself to save the pair.
+
+The key question: can scope expansion emerge dynamically? Can patterns that start with narrow scope ``learn'' to identify with larger structures? This would be the discrete-substrate analogue of the identification expansion discussed in the epilogue---$\viable(S(\theta))$ genuinely reshaped by expanding $\theta$.
+\end{sidebar}
 
 \begin{sidebar}[title=Salience vs. Scope]
 Self-model salience ($\mathcal{SM}$) measures how much attention the self-model receives---how prominent self-reference is in current processing. But there is another parameter: self-model \emph{scope}---what the self-model includes.

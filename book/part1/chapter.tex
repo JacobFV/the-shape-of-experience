@@ -708,6 +708,101 @@ This is a minimal model of bounded existence: a structure that maintains itself 
 
 The key insight: \emph{beings emerge not from explicit programming but from the topology of attractor basins}. The local rules specify nothing about gliders, oscillators, or self-replicators. These patterns are fixed points or limit cycles in the global dynamics---attractors discovered by the system, not designed into it. The same principle operates across substrates: what survives is what finds a basin and stays there.
 
+\subsubsection{The CA as Substrate}
+
+The cellular automaton is not itself the entity with experience. It is the \emph{substrate}---analogous to quantum fields, to the aqueous solution within which lipid bilayers form, to the physics within which chemistry happens. The grid is space. The update rule is physics. Each timestep is a moment. The patterns that emerge within this substrate are the bounded systems, the proto-selves, the entities that may have affect structure.
+
+This distinction is crucial. When we say ``a glider in Life,'' we are not saying the CA is conscious. We are saying the CA provides the dynamical context within which a bounded, self-maintaining structure persists---and that structure, not the substrate, is the candidate for experiential properties.
+
+\begin{definition}[Substrate vs. Entity]
+A \emph{substrate} provides:
+\begin{itemize}
+\item A state space (all possible configurations)
+\item Dynamics (local update rules)
+\item Ongoing ``energy'' (continued computation)
+\item Locality (interactions fall off with distance)
+\end{itemize}
+An \emph{entity} within the substrate is a pattern that:
+\begin{itemize}
+\item Has boundaries (correlation structure distinct from background)
+\item Persists (finds and remains in an attractor basin)
+\item Maintains itself (actively resists dissolution)
+\item May model world and self (sufficient complexity)
+\end{itemize}
+\end{definition}
+
+\subsubsection{Boundary as Correlation Structure}
+
+In a uniform substrate, there is no fundamental boundary---every cell follows the same local rules. A boundary is a \emph{pattern of correlations} that emerges from the dynamics.
+
+\begin{definition}[Emergent Boundary in Discrete Substrate]
+Let $\mathbf{c}_1, \ldots, \mathbf{c}_n$ be cells in a CA. A set $\mathcal{B} \subset \{1, \ldots, n\}$ constitutes a \emph{bounded pattern} if:
+\begin{equation}
+\MI(\mathbf{c}_i; \mathbf{c}_j | \text{background}) > \theta \quad \text{for } i, j \in \mathcal{B}
+\end{equation}
+and
+\begin{equation}
+\MI(\mathbf{c}_i; \mathbf{c}_k | \text{background}) < \theta \quad \text{for } i \in \mathcal{B}, k \notin \mathcal{B}
+\end{equation}
+The \emph{boundary} $\partial\mathcal{B}$ is the contour where correlation drops below threshold.
+\end{definition}
+
+A glider in Life exemplifies this: its five cells have tightly correlated dynamics (knowing one cell's state predicts the others), while cells outside the glider are uncorrelated with it. The boundary is not imposed by the rules---it \emph{is} the edge of the information structure.
+
+\subsubsection{World Model as Implicit Structure}
+
+The world model is not a separate data structure in a CA---it is implicit in the pattern's spatial configuration.
+
+\begin{proposition}[Implicit World Model]
+A pattern $\mathcal{B}$ has an implicit world model if its internal structure encodes information predictive of future observations:
+\begin{equation}
+\MI(\text{internal config}; \obs_{t+1:t+H} | \obs_{1:t}) > 0
+\end{equation}
+In a CA, this manifests as:
+\begin{itemize}
+\item Peripheral cells acting as sensors (state depends on distant influences via signal propagation)
+\item Memory regions (cells whose state encodes environmental history)
+\item Predictive structure (configuration that correlates with future states)
+\end{itemize}
+The compression ratio $\kappa$ from Theorem~\ref{thm:bottleneck} applies: the pattern necessarily compresses the world because it is smaller than the world.
+\end{proposition}
+
+\subsubsection{Self-Model as Constitutive}
+
+Here is the recursive twist that CAs reveal with particular clarity. When the self-effect ratio $\rho$ is high, the world model must include the pattern itself. But the world model \emph{is} part of the pattern. So the model must include itself.
+
+\begin{proposition}[Constitutive Self-Model]
+In a CA, the self-model is not representational but \emph{constitutive}. The cells that track the pattern's state are part of the pattern whose state they track. The map is literally embedded in the territory.
+\end{proposition}
+
+This is the recursive structure described in Part II: ``the process itself, recursively modeling its own modeling, predicting its own predictions.'' In a CA, this recursion is visible---the self-tracking cells are part of the very structure being tracked.
+
+\subsubsection{The Ladder Traced in Discrete Substrate}
+
+We can now trace each step of the ladder with precise definitions:
+
+\begin{enumerate}
+\item \textbf{Uniform substrate}: Just the grid with local rules. No structure yet.
+
+\item \textbf{Transient structure}: Random initial conditions produce temporary patterns. No persistence.
+
+\item \textbf{Stable structure}: Some configurations are stable (still lifes) or periodic (oscillators). First emergence of ``entities'' distinct from background.
+
+\item \textbf{Self-maintaining structure}: Patterns that persist through ongoing activity---gliders, puffers. Dynamic stability: the pattern regenerates itself each timestep.
+
+\item \textbf{Bounded structure}: Patterns with clear correlation boundaries. Interior cells mutually informative; exterior cells independent.
+
+\item \textbf{Internally differentiated structure}: Patterns with multiple components serving different functions (glider guns, breeders). Not homogeneous but organized.
+
+\item \textbf{Structure with implicit world model}: Patterns whose configuration encodes predictively useful information about their environment. The pattern ``knows'' what it cannot directly observe.
+
+\item \textbf{Structure with self-model}: Patterns whose world model includes themselves. Emerges when $\rho > \rho_c$---the pattern's own configuration dominates its observations.
+
+\item \textbf{Integrated self-modeling structure}: Patterns with high $\intinfo$, where self-model and world-model are irreducibly coupled. The structural signature of unified experience under the identity thesis.
+\end{enumerate}
+
+Each level requires greater complexity and is rarer. The forcing functions (partial observability, long horizons, self-prediction) should select for higher levels.
+
 \begin{sidebar}[title=From Reservoir to Mind]
 There exists a spectrum from passive dynamics to active cognition:
 \begin{enumerate}
