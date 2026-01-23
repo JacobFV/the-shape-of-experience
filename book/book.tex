@@ -186,21 +186,19 @@
 
 % Front matter
 \frontmatter
-\pagenumbering{roman}
-\pagestyle{empty}
 
-% Custom title page
-\begin{titlepage}
-\centering
+% Custom title page - no blank pages before
+\thispagestyle{empty}
+\begin{center}
 \vspace*{3cm}
 {\Huge\bfseries The Shape of Experience}\\[0.3em]
 \rule{0.6\textwidth}{0.4pt}\\[1.5em]
 {\Large A Geometric Theory of Affect\\[0.3em]
 for Biological and Artificial Systems}\\[4cm]
-{\large By Me}\\[0.5em]
-{\small\itshape (as a jest at the self-referential nature of existence)}
+{\large By Me}
 \vfill
-\end{titlepage}
+\end{center}
+\newpage
 
 \pagestyle{plain}
 \tableofcontents
