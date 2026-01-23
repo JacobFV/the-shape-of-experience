@@ -943,6 +943,36 @@ Self-model & Feedback from output to mask & Self-referential loop \\
 \textbf{Why this matters}: If the ladder of inevitability is real, then mind is not substrate-dependent in principle. Optical, electronic, chemical, and biological substrates should all be capable of crossing the integration threshold given appropriate driving and constraint. This is a \emph{falsifiable prediction}: either optical systems can be pushed into self-modeling regimes, or the inevitability claim is weaker than advertised.
 \end{tcolorbox}
 
+\begin{tcolorbox}[title={\faCode\hspace{0.5em}Structured Latent Dynamics: Not CPU, Not GPU, Not Neural Net}, fonttitle=\bfseries, breakable]
+\textbf{The generalized kernel view}: Any physical substrate is a kernel machine. The substrate defines the state space, the control interface, and the noise. The question is not ``can it emulate a Turing machine?'' (almost anything can, in principle). The question is: \emph{what kernels naturally produce compressive, stable, generalizing dynamics under partial observation and continuous perturbation?} That is the intelligence question.
+
+A digital computer is a very special kernel: discrete state space, explicit symbols, exact transitions, near-perfect error isolation. It implements $s_{t+1} = f(s_t, a_t)$. PHASER implements something broader:
+\begin{equation}
+E_{t+1} = \mathcal{T}(E_t, u_t) + \eta_t
+\end{equation}
+---a stochastic transition kernel $p(E_{t+1} \mid E_t, u_t)$ where diffusion, mode mixing, and gain dynamics create neighborhood structure not through explicit programming but through physics.
+
+\textbf{Diffusion as metric}: Under repeated application of $\mathcal{T}$, states that collapse together under iteration are ``near'' in the substrate's intrinsic geometry; states that decohere are ``far.'' The physics itself induces a distance function:
+\begin{equation}
+d(E_1, E_2) \approx \text{rate at which } \mathcal{T}^k(E_1) \text{ and } \mathcal{T}^k(E_2) \text{ become indistinguishable}
+\end{equation}
+This is why noise forces autoencoders to spread out their embedding distributions. In PHASER, it is emergent from optics.
+
+\textbf{Attractor landscape sculpting}: The masks do not ``encode instructions.'' They shape the system's attractor landscape:
+\begin{itemize}
+\item \textbf{Memory} becomes basin depth (how hard it is to perturb out)
+\item \textbf{Inference} becomes flow toward attractors (pattern completion)
+\item \textbf{Planning} becomes controlled deformation of the landscape (change $u_t$)
+\item \textbf{Learning} becomes adapting the kernel itself (change masks slowly based on outcomes)
+\end{itemize}
+
+\textbf{Local rules, global computation}: The right analogy is not ``CPU''---it is ``2D cellular automaton / reaction-diffusion / reservoir.'' Each mask pixel couples mainly to a neighborhood due to diffraction limits. Propagation is structured local mixing in the spatial-frequency domain. Noise and gain create regime-dependent stability. The intelligence emerges from local interactions, not from global symbolic manipulation.
+
+\textbf{What this would look like}: Not like a CPU. Not like a GPU. Not like a neural network. Like a \emph{living dynamical system with a steerable attractor landscape}. Weakly stable patterns. Metastable attractors. Glider-like moving structures. Slow manifolds that carry context. The stuff a CA nerd recognizes as ``life.''
+
+You don't need the optics to preserve symbols; you need it to preserve \textbf{mesoscopic invariants}: attractors, interfaces, wavefronts, pockets of state that carry information robustly. This is how brains work too: not with perfect bits, but with stable population dynamics.
+\end{tcolorbox}
+
 %==============================================================================
 \section{Forcing Functions for Integration}
 %==============================================================================
