@@ -563,7 +563,7 @@ This is the core structural signature. Self-model salience is often high (the se
 \begin{keyresult}
 The $\intinfo$-$\effrank$ dissociation is the key insight: suffering feels \textit{more real} than neutral states because it is actually more integrated. But it feels \textit{trapped} because the integration is constrained to a narrow manifold.
 
-Formally: $\intinfo_{\text{suffering}} > \intinfo_{\text{neutral}}$ but $\effrank_{\text{suffering}} \ll \effrank_{\text{neutral}}$.
+Formally: $\intinfo_{\text{suffering}} > \intinfo_{\text{neutral}}$ but $\effrank[\text{suffering}] \ll \effrank[\text{neutral}]$.
 
 This is why you cannot simply ``think your way out'' of suffering---the very integration that makes it vivid also makes it inescapable.
 \end{keyresult}
@@ -853,11 +853,11 @@ For artificial agents (world-model RL agents):
     \State $\valence_t \gets \E[A^\policy(\latent_t, \action_t)]$
     \State $\arousal_t \gets \KL(\latent_{t+1} \| \latent_t)$
     \State $\intinfo_t \gets \Delta_P$ (prediction loss under partition)
-    \State $\effrank_t \gets (\tr C_t)^2 / \tr(C_t^2)$
+    \State $\effrank[t] \gets (\tr C_t)^2 / \tr(C_t^2)$
     \State $\mathcal{CF}_t \gets$ rollout compute fraction
     \State $\mathcal{SM}_t \gets \MI(\latent^{\text{self}}_t; \action_t) / \entropy(\action_t)$
 \EndFor
-\State \textbf{Output}: Time series $\{(\valence_t, \arousal_t, \intinfo_t, \effrank_t, \mathcal{CF}_t, \mathcal{SM}_t)\}$
+\State \textbf{Output}: Time series $\{(\valence_t, \arousal_t, \intinfo_t, \effrank[t], \mathcal{CF}_t, \mathcal{SM}_t)\}$
 \end{algorithmic}
 \end{algorithm}
 
@@ -992,7 +992,7 @@ The affect dimensions are exactly computable:
 \valence_t &= d(\mathbf{x}_{t+1}, \partial\viable) - d(\mathbf{x}_t, \partial\viable) \\
 \arousal_t &= \text{Hamming}(\mathbf{x}_{t+1}, \mathbf{x}_t) \\
 \intinfo_t &= \min_P D[p(\mathbf{x}_{t+1}|\mathbf{x}_t) \| \prod_{p \in P} p(\mathbf{x}^p_{t+1}|\mathbf{x}^p_t)] \\
-\effrank_t &= \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2} \text{ of trajectory covariance} \\
+\effrank[t] &= \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2} \text{ of trajectory covariance} \\
 \mathcal{SM}_t &= \frac{\MI(\text{self-tracking cells}; \text{effector cells})}{\entropy(\text{effector cells})}
 \end{align}
 
@@ -1098,7 +1098,7 @@ If gradients in different components are aligned, the system is learning as a wh
 
 \textbf{Effective rank extraction}. Straightforward:
 \begin{equation}
-\reff_t = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
+\effrank[t] = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
 \end{equation}
 where $\lambda_i$ are eigenvalues of the latent state covariance over a rolling window. How many dimensions is the agent actually using?
 

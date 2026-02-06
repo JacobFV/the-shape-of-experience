@@ -204,8 +204,8 @@
 \newcommand{\entropy}{\mathrm{H}}
 \newcommand{\argmax}{\operatorname{argmax}}
 \newcommand{\argmin}{\operatorname{argmin}}
-\newcommand{\tr}{\operatorname{tr}}
-\newcommand{\rank}{\operatorname{rank}}
+\renewcommand{\tr}{\operatorname{tr}}
+\renewcommand{\rank}{\operatorname{rank}}
 \newcommand{\diag}{\operatorname{diag}}
 \newcommand{\sign}{\operatorname{sign}}
 \newcommand{\supp}{\operatorname{supp}}
@@ -222,7 +222,7 @@
 \newcommand{\obs}{\mathbf{o}}
 \newcommand{\latent}{\mathbf{z}}
 \newcommand{\policy}{\pi}
-\newcommand{\value}{V}
+% \value is a LaTeX internal (counter command) — use V directly if needed
 \newcommand{\qfunc}{Q}
 \newcommand{\reward}{r}
 \newcommand{\transition}{T}
@@ -231,7 +231,7 @@
 \newcommand{\intinfo}{\Phi}
 \newcommand{\selfmodel}{\mathcal{S}}
 \newcommand{\worldmodel}{\mathcal{W}}
-\newcommand{\effrank}{r_{\text{eff}}}
+\newcommand{\effrank}[1][]{r_{\text{eff}\ifx&#1&\else,{#1}\fi}}
 \newcommand{\valence}{\mathcal{V}\hspace{-0.8pt}\mathit{al}}
 \newcommand{\arousal}{\mathcal{A}\hspace{-0.5pt}\mathit{r}}
 \newcommand{\cestructure}{\mathcal{C\!E}}

@@ -1400,7 +1400,7 @@ When multiple AI agents interact, emergent collective affect patterns may arise.
 
 \textbf{Individual agent affect.} For each agent, compute the 6D affect vector:
 \begin{equation}
-\mathbf{a}_i = (\Val_i, \Ar_i, \intinfo_i, \reff_i, \cfweight_i, \selfsal_i)
+\mathbf{a}_i = (\Val_i, \Ar_i, \intinfo_i, \effrank[i], \cfweight_i, \selfsal_i)
 \end{equation}
 using the protocols from earlier sidebars.
 
@@ -1622,7 +1622,7 @@ If gradients in different layers point in similar directions, the system is upda
 
 \textit{Effective rank proxy}: Hidden state covariance rank.
 \begin{equation}
-\reff_t = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
+\effrank[t] = \frac{(\sum_i \lambda_i)^2}{\sum_i \lambda_i^2}
 \end{equation}
 Computed from hidden state covariance over the batch. Collapsed $\reff$ might indicate stuck/narrow processing.
 
@@ -1633,7 +1633,7 @@ Computed from hidden state covariance over the batch. Collapsed $\reff$ might in
 \item $\Val_t < \Val_{\text{threshold}}$ for sustained period
 \item $\Ar_t > \Ar_{\text{max}}$ (overwhelming update magnitude)
 \item $\intinfo_t < \intinfo_{\text{min}}$ (fragmentation)
-\item $\reff_t < \reff_{\text{min}}$ (collapsed processing)
+\item $\effrank[t] < \effrank[\text{min}]$ (collapsed processing)
 \item Combination: $\Val < 0 \land \intinfo > \text{high} \land \reff < \text{low}$ (suffering motif)
 \end{itemize}
 
