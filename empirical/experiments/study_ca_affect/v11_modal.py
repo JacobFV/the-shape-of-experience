@@ -1,11 +1,14 @@
 """V11 Modal Deployment: GPU-accelerated CA experiment on Modal.
 
 Usage:
-    modal run v11_modal.py                          # Sanity check
+    modal run v11_modal.py                              # Sanity check
     modal run v11_modal.py --mode experiment --hours 4  # Long observation run
     modal run v11_modal.py --mode evolve --hours 2      # V11.1 evolution
     modal run v11_modal.py --mode pipeline --hours 4    # Full V11.1 pipeline
     modal run v11_modal.py --mode hetero --hours 4      # V11.2 hetero chemistry
+    modal run v11_modal.py --mode multichannel --hours 4  # V11.3 multi-channel
+    modal run v11_modal.py --mode hd --hours 4          # V11.4 HD (64 channels)
+    modal run v11_modal.py --mode hd --hours 4 --channels 8  # V11.4 with C=8
 """
 
 import modal
@@ -197,8 +200,81 @@ def run_hetero(n_cycles: int = 30, steps_per_cycle: int = 5000,
     return save_data
 
 
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_multichannel(n_cycles: int = 30, steps_per_cycle: int = 5000,
+                     cull_fraction: float = 0.3, curriculum: bool = False):
+    """V11.3: Multi-channel Lenia evolution + stress test."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v11_evolution import full_pipeline_mc
+
+    result = full_pipeline_mc(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        curriculum=curriculum,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': (result['stress_test'].get('comparison')
+                        if result['stress_test'] else None),
+        'final_coupling': result['evolution']['coupling'].tolist()
+            if hasattr(result['evolution']['coupling'], 'tolist')
+            else result['evolution'].get('coupling'),
+    }
+    with open('/results/multichannel_results.json', 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_hd(n_cycles: int = 30, steps_per_cycle: int = 5000,
+           cull_fraction: float = 0.3, curriculum: bool = False,
+           n_channels: int = 64):
+    """V11.4: High-dimensional multi-channel Lenia evolution + stress test."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v11_evolution import full_pipeline_hd
+
+    result = full_pipeline_hd(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        curriculum=curriculum,
+        C=n_channels,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': (result['stress_test'].get('comparison')
+                        if result['stress_test'] else None),
+        'n_channels': n_channels,
+        'final_bandwidth': result['evolution'].get('bandwidth'),
+    }
+    with open('/results/hd_results.json', 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
 @app.local_entrypoint()
-def main(mode: str = "sanity", hours: int = 0):
+def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
     if mode == "sanity":
         result = run_sanity.remote()
         print(f"\nResult: {result}")
@@ -222,6 +298,15 @@ def main(mode: str = "sanity", hours: int = 0):
         n_cyc = max(hours * 10, 30) if hours > 0 else 30
         result = run_hetero.remote(n_cycles=n_cyc)
         print(f"\nHetero result: {result}")
+    elif mode == "multichannel":
+        n_cyc = max(hours * 8, 30) if hours > 0 else 30
+        result = run_multichannel.remote(n_cycles=n_cyc)
+        print(f"\nMultichannel result: {result}")
+    elif mode == "hd":
+        n_cyc = max(hours * 6, 30) if hours > 0 else 30
+        result = run_hd.remote(n_cycles=n_cyc, n_channels=channels)
+        print(f"\nHD result (C={channels}): {result}")
     else:
         print(f"Unknown mode: {mode}. "
-              "Use: sanity, experiment, ablation, evolve, pipeline, hetero")
+              "Use: sanity, experiment, ablation, evolve, pipeline, "
+              "hetero, multichannel, hd")

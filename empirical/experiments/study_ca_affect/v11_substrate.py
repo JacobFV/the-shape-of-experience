@@ -409,3 +409,259 @@ def mutate_param_fields(mu_field, sigma_field, rng, cells,
     new_sigma = jnp.clip(new_sigma, sigma_range[0], sigma_range[1])
 
     return new_mu, new_sigma
+
+
+# ============================================================================
+# V11.3: Multi-Channel Lenia
+# ============================================================================
+
+MULTICHANNEL_CONFIG = {
+    'grid_size': 256,
+    'dt': 0.1,
+    'n_channels': 3,
+    'channel_configs': [
+        # Channel 0: Structure — spatial pattern boundaries
+        {'kernel_radius': 13, 'kernel_peak': 0.5, 'kernel_width': 0.15,
+         'growth_mu': 0.15, 'growth_sigma': 0.035},
+        # Channel 1: Metabolism — internal energy processing
+        {'kernel_radius': 7,  'kernel_peak': 0.5, 'kernel_width': 0.2,
+         'growth_mu': 0.20, 'growth_sigma': 0.04},
+        # Channel 2: Signaling — communication/coordination
+        {'kernel_radius': 20, 'kernel_peak': 0.5, 'kernel_width': 0.1,
+         'growth_mu': 0.12, 'growth_sigma': 0.05},
+    ],
+    'coupling_matrix': [[1.0, 0.4, 0.3],
+                         [0.4, 1.0, 0.3],
+                         [0.3, 0.3, 1.0]],
+    # Resource dynamics (shared across channels)
+    'resource_max': 1.0,
+    'resource_regen': 0.005,
+    'resource_consume': 0.03,
+    'resource_half_sat': 0.2,
+    'noise_amp': 0.003,
+    'decay_rate': 0.0,
+}
+
+
+def make_kernels_fft(channel_configs, N):
+    """Pre-compute kernel FFTs for all channels.
+
+    Each channel has its own kernel radius/peak/width, yielding
+    different neighborhood structures:
+    - Structure: standard range (R=13)
+    - Metabolism: local (R=7)
+    - Signaling: wide-range (R=20)
+    """
+    kernel_ffts = []
+    for cfg in channel_configs:
+        k = make_kernel(cfg['kernel_radius'], cfg['kernel_peak'],
+                        cfg['kernel_width'])
+        kernel_ffts.append(make_kernel_fft(k, N))
+    return kernel_ffts
+
+
+def _step_inner_mc(grid, resource, kernel_ffts, coupling, rng,
+                   dt, channel_configs, noise_amp,
+                   resource_consume, resource_regen,
+                   resource_max, resource_half_sat, decay_rate):
+    """Single timestep of multi-channel Lenia.
+
+    Grid shape: (C, N, N) where C = number of channels.
+    Each channel has its own kernel and growth function.
+    Cross-channel coupling: growth in channel c is modulated by
+    local values of all channels via the coupling matrix.
+
+    Growth for channel c:
+      potential_c = K_c * grid_c          (FFT convolution)
+      cross_term = sum_j W[c,j] * grid_j  (cross-channel modulation)
+      g_c = growth_fn(potential_c, mu_c, sigma_c)
+      g_c = g_c * (0.5 + 0.5 * sigmoid(cross_term))
+
+    This creates irreducible 3-way dependencies — cutting any channel
+    changes the others' dynamics — exactly what Phi should detect.
+    """
+    rng, k_noise = random.split(rng)
+    C = grid.shape[0]
+    N = grid.shape[1]
+
+    # Resource factor (shared across channels)
+    rf = resource / (resource + resource_half_sat)
+
+    new_channels = []
+    for c in range(C):
+        cfg = channel_configs[c]
+        mu_c = jnp.float32(cfg['growth_mu'])
+        sigma_c = jnp.float32(cfg['growth_sigma'])
+
+        # 1. Neighborhood potential via FFT convolution
+        potential_c = jnp.fft.irfft2(
+            jnp.fft.rfft2(grid[c]) * kernel_ffts[c], s=(N, N))
+
+        # 2. Cross-channel coupling: weighted sum of all channels locally
+        cross_term = jnp.zeros((N, N))
+        for j in range(C):
+            cross_term = cross_term + coupling[c, j] * grid[j]
+
+        # 3. Growth from potential
+        g_c = growth_fn(potential_c, mu_c, sigma_c)
+
+        # 4. Modulate by cross-channel coupling (steep sigmoid gate)
+        # Steep gain makes the gate sensitive to channel removal.
+        # Off-diagonal coupling sums to ~0.6-0.7 per channel when all present.
+        # Removing one channel drops cross_term by ~0.3 -> gate drops ~30%.
+        gate = jax.nn.sigmoid(5.0 * (cross_term - 0.3))
+        g_c = g_c * gate
+
+        # 5. Resource modulation on positive growth
+        g_c = jnp.where(g_c > 0, g_c * rf, g_c)
+
+        # 6. Decay
+        g_c = g_c - decay_rate
+
+        new_channels.append(g_c)
+
+    # Stack growth and update
+    growth = jnp.stack(new_channels, axis=0)  # (C, N, N)
+    noise = noise_amp * random.normal(k_noise, grid.shape)
+    new_grid = jnp.clip(grid + dt * growth + noise, 0.0, 1.0)
+
+    # Resource dynamics: consumption per channel (not summed — avoids 3x drain)
+    total_activity = jnp.mean(grid, axis=0)  # (N, N) mean across channels
+    new_resource = resource \
+        - resource_consume * total_activity * resource * dt \
+        + resource_regen * (resource_max - resource) * dt
+    new_resource = jnp.clip(new_resource, 0.0, resource_max)
+
+    return new_grid, new_resource, rng
+
+
+def make_mc_params(config):
+    """Convert multi-channel config to JIT-friendly params."""
+    return {
+        'dt': jnp.float32(config['dt']),
+        'channel_configs': config['channel_configs'],
+        'noise_amp': jnp.float32(config['noise_amp']),
+        'resource_consume': jnp.float32(config['resource_consume']),
+        'resource_regen': jnp.float32(config['resource_regen']),
+        'resource_max': jnp.float32(config['resource_max']),
+        'resource_half_sat': jnp.float32(config['resource_half_sat']),
+        'decay_rate': jnp.float32(config.get('decay_rate', 0.0)),
+    }
+
+
+@partial(jit, static_argnums=(5,))
+def run_chunk_mc(grid, resource, kernel_ffts, coupling, rng, n_steps,
+                 dt, channel_mus, channel_sigmas, noise_amp,
+                 resource_consume, resource_regen,
+                 resource_max, resource_half_sat, decay_rate):
+    """Run n_steps of multi-channel Lenia on GPU.
+
+    Uses lax.scan for efficient compilation. Channel configs are passed
+    as separate arrays (mus, sigmas) for JAX traceability.
+
+    Args:
+        grid: (C, N, N) multi-channel state
+        resource: (N, N) shared resource field
+        kernel_ffts: list of C pre-computed kernel FFTs
+        coupling: (C, C) coupling matrix
+        rng: JAX random key
+        n_steps: number of steps (static)
+        dt, channel_mus, channel_sigmas, ...: scalar/array params
+    """
+    C = grid.shape[0]
+    N = grid.shape[1]
+
+    def body(carry, _):
+        g, r, k = carry
+        k, k_noise = random.split(k)
+
+        rf = r / (r + resource_half_sat)
+
+        new_channels = []
+        for c in range(C):
+            potential_c = jnp.fft.irfft2(
+                jnp.fft.rfft2(g[c]) * kernel_ffts[c], s=(N, N))
+
+            cross_term = jnp.zeros((N, N))
+            for j in range(C):
+                cross_term = cross_term + coupling[c, j] * g[j]
+
+            g_c = growth_fn(potential_c, channel_mus[c], channel_sigmas[c])
+            gate = jax.nn.sigmoid(5.0 * (cross_term - 0.3))
+            g_c = g_c * gate
+            g_c = jnp.where(g_c > 0, g_c * rf, g_c)
+            g_c = g_c - decay_rate
+            new_channels.append(g_c)
+
+        growth = jnp.stack(new_channels, axis=0)
+        noise = noise_amp * random.normal(k_noise, g.shape)
+        g_new = jnp.clip(g + dt * growth + noise, 0.0, 1.0)
+
+        total_activity = jnp.mean(g, axis=0)
+        r_new = jnp.clip(
+            r - resource_consume * total_activity * r * dt
+            + resource_regen * (resource_max - r) * dt,
+            0.0, resource_max)
+
+        return (g_new, r_new, k), None
+
+    (grid, resource, rng), _ = lax.scan(
+        body, (grid, resource, rng), None, length=n_steps
+    )
+    return grid, resource, rng
+
+
+def run_chunk_mc_wrapper(grid, resource, kernel_ffts, coupling, rng,
+                         config, n_steps):
+    """Convenience wrapper that unpacks config into run_chunk_mc args."""
+    C = len(config['channel_configs'])
+    channel_mus = jnp.array([cfg['growth_mu'] for cfg in config['channel_configs']])
+    channel_sigmas = jnp.array([cfg['growth_sigma'] for cfg in config['channel_configs']])
+
+    return run_chunk_mc(
+        grid, resource, kernel_ffts, coupling, rng, n_steps,
+        jnp.float32(config['dt']),
+        channel_mus, channel_sigmas,
+        jnp.float32(config['noise_amp']),
+        jnp.float32(config['resource_consume']),
+        jnp.float32(config['resource_regen']),
+        jnp.float32(config['resource_max']),
+        jnp.float32(config['resource_half_sat']),
+        jnp.float32(config.get('decay_rate', 0.0)),
+    )
+
+
+def init_soup_mc(N, C, rng, n_seeds=50, channel_configs=None):
+    """Initialize multi-channel random soup.
+
+    Each channel gets its own soup tuned to its growth_mu.
+    Structure channel gets more seeds (it's the spatial backbone),
+    Metabolism gets moderate, Signaling gets sparse.
+    """
+    if channel_configs is None:
+        channel_configs = MULTICHANNEL_CONFIG['channel_configs']
+
+    # Fewer seeds than single-channel — channels multiply activity
+    seed_counts = [n_seeds // 2, n_seeds // 3, n_seeds // 4]
+    channels = []
+
+    for c in range(C):
+        rng, k = random.split(rng)
+        mu_c = channel_configs[c]['growth_mu']
+        n_c = seed_counts[c] if c < len(seed_counts) else n_seeds // 3
+        ch_grid, _ = init_soup(N, k, n_seeds=n_c, growth_mu=mu_c)
+        channels.append(ch_grid)
+
+    grid = jnp.stack(channels, axis=0)  # (C, N, N)
+
+    # Shared resource field
+    rng, k = random.split(rng)
+    yy, xx = np.mgrid[0:N, 0:N]
+    resource = jnp.full((N, N), 0.3)
+    for hx, hy in [(N//3, N//3), (2*N//3, 2*N//3),
+                    (N//3, 2*N//3), (2*N//3, N//3)]:
+        dist_h = np.sqrt((xx - hx)**2 + (yy - hy)**2)
+        resource = resource + jnp.array(0.7 * np.exp(-(dist_h**2) / (2 * 30**2)))
+    resource = jnp.clip(resource, 0.0, 1.0)
+
+    return grid, resource

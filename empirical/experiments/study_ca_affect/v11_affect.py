@@ -351,3 +351,250 @@ def measure_all(pattern, prev_mass, prev_values, history_entries,
         mass=pattern.mass,
         size=pattern.size,
     )
+
+
+# ============================================================================
+# V11.3: Multi-Channel Affect Measurement
+# ============================================================================
+
+def measure_integration_mc(grid_mc, kernel_ffts, coupling, cells,
+                           channel_configs, N):
+    """Multi-channel Phi: integration across spatial AND channel partitions.
+
+    Two types of partition:
+    1. SPATIAL: cut the pattern in half spatially (same as single-channel,
+       but summed across channels). How much does the other spatial half
+       matter to each channel's growth?
+    2. CHANNEL: remove one channel entirely. How much does that channel
+       matter to the others' growth? This is the KEY new measurement:
+       cross-channel integration.
+
+    Total Phi = min(spatial_phi, channel_phi) — MIP across both types.
+    This follows IIT: the MIP is whichever partition loses LEAST info.
+    """
+    C = grid_mc.shape[0]
+
+    if len(cells) < 4:
+        return 0.0, 0.0, 0.0  # total, spatial, channel
+
+    # ---- Spatial partition Phi (generalized to multi-channel) ----
+    # Compute full potentials for all channels
+    potentials_full = []
+    for c in range(C):
+        pot = jnp.fft.irfft2(
+            jnp.fft.rfft2(grid_mc[c]) * kernel_ffts[c], s=(N, N))
+        potentials_full.append(pot)
+
+    best_spatial_phi = float('inf')
+
+    for split in ['vertical', 'horizontal']:
+        from v11_affect import _make_partition_masks
+        mask_a_np, mask_b_np = _make_partition_masks(cells, N, split)
+
+        if mask_a_np.sum() < 2 or mask_b_np.sum() < 2:
+            continue
+
+        mask_a = jnp.array(mask_a_np)
+        mask_b = jnp.array(mask_b_np)
+
+        phi_split = 0.0
+        for c in range(C):
+            cfg = channel_configs[c]
+            mu_c = jnp.float32(cfg['growth_mu'])
+            sigma_c = jnp.float32(cfg['growth_sigma'])
+
+            # Cross-channel coupling at full
+            cross_full = jnp.zeros((N, N))
+            for j in range(C):
+                cross_full = cross_full + coupling[c, j] * grid_mc[j]
+            gate_full = jax.nn.sigmoid(5.0 * (cross_full - 0.3))
+
+            g_full = growth_fn(potentials_full[c], mu_c, sigma_c) * gate_full
+
+            # Remove B's contribution to channel c
+            cross_b = jnp.fft.irfft2(
+                jnp.fft.rfft2(grid_mc[c] * mask_b) * kernel_ffts[c], s=(N, N))
+            g_without_b = growth_fn(
+                potentials_full[c] - cross_b, mu_c, sigma_c) * gate_full
+
+            # Remove A's contribution to channel c
+            cross_a = jnp.fft.irfft2(
+                jnp.fft.rfft2(grid_mc[c] * mask_a) * kernel_ffts[c], s=(N, N))
+            g_without_a = growth_fn(
+                potentials_full[c] - cross_a, mu_c, sigma_c) * gate_full
+
+            phi_a = float(jnp.sum(mask_a * (g_full - g_without_b)**2) /
+                          (jnp.sum(mask_a) + 1e-10))
+            phi_b = float(jnp.sum(mask_b * (g_full - g_without_a)**2) /
+                          (jnp.sum(mask_b) + 1e-10))
+            phi_split += phi_a + phi_b
+
+        best_spatial_phi = min(best_spatial_phi, phi_split)
+
+    if best_spatial_phi == float('inf'):
+        best_spatial_phi = 0.0
+
+    # ---- Channel partition Phi ----
+    # Remove one channel at a time, measure impact on remaining channels
+    best_channel_phi = float('inf')
+
+    for removed in range(C):
+        phi_this_removal = 0.0
+
+        for c in range(C):
+            if c == removed:
+                continue
+
+            cfg = channel_configs[c]
+            mu_c = jnp.float32(cfg['growth_mu'])
+            sigma_c = jnp.float32(cfg['growth_sigma'])
+
+            # Full cross-channel coupling
+            cross_full = jnp.zeros((N, N))
+            for j in range(C):
+                cross_full = cross_full + coupling[c, j] * grid_mc[j]
+            gate_full = jax.nn.sigmoid(5.0 * (cross_full - 0.3))
+
+            g_full = growth_fn(potentials_full[c], mu_c, sigma_c) * gate_full
+
+            # Cross-channel coupling WITHOUT the removed channel
+            cross_without = jnp.zeros((N, N))
+            for j in range(C):
+                if j == removed:
+                    continue
+                cross_without = cross_without + coupling[c, j] * grid_mc[j]
+            gate_without = jax.nn.sigmoid(5.0 * (cross_without - 0.3))
+
+            g_without = growth_fn(potentials_full[c], mu_c, sigma_c) * gate_without
+
+            # Measure impact at pattern cells
+            mask = jnp.zeros((N, N))
+            mask = mask.at[cells[:, 0], cells[:, 1]].set(1.0)
+
+            phi_c = float(jnp.sum(mask * (g_full - g_without)**2) /
+                          (jnp.sum(mask) + 1e-10))
+            phi_this_removal += phi_c
+
+        best_channel_phi = min(best_channel_phi, phi_this_removal)
+
+    if best_channel_phi == float('inf'):
+        best_channel_phi = 0.0
+
+    # Total Phi = MIP across spatial and channel partitions
+    total_phi = min(best_spatial_phi, best_channel_phi)
+
+    return total_phi, best_spatial_phi, best_channel_phi
+
+
+def measure_arousal_mc(current_values_mc, prev_values_mc):
+    """Arousal for multi-channel patterns.
+
+    current_values_mc, prev_values_mc: (N_cells, C) arrays.
+    Arousal = mean absolute change across all channels and cells.
+    """
+    if prev_values_mc is None or len(prev_values_mc) == 0:
+        return 0.0
+    if current_values_mc.shape != prev_values_mc.shape:
+        return abs(current_values_mc.sum() - prev_values_mc.sum()) / \
+               (prev_values_mc.sum() + 1e-10)
+    diff = np.abs(current_values_mc - prev_values_mc)
+    return float(diff.mean() / (current_values_mc.mean() + 1e-10))
+
+
+def measure_effective_rank_mc(history_entries, max_window=50, embed_size=16):
+    """Effective rank for multi-channel patterns.
+
+    Embeds each state as C * embed_size * embed_size, then computes PCA rank.
+    More channels = richer state space = potentially higher rank.
+    """
+    if len(history_entries) < 5:
+        return 1.0
+
+    entries = history_entries[-max_window:]
+    embeddings = []
+
+    for entry in entries:
+        cells = entry['cells']
+        values = entry['values']
+        if len(cells) < 2:
+            continue
+
+        r_min, c_min = cells.min(axis=0)
+        r_max, c_max = cells.max(axis=0)
+        h = max(r_max - r_min + 1, 1)
+        w = max(c_max - c_min + 1, 1)
+
+        # values may be (N_cells,) or (N_cells, C)
+        if values.ndim == 1:
+            C = 1
+            values_2d = values[:, None]
+        else:
+            C = values.shape[1]
+            values_2d = values
+
+        from scipy.ndimage import zoom as scipy_zoom
+        channel_embeds = []
+        for c in range(C):
+            patch = np.zeros((h, w), dtype=np.float32)
+            for idx, (r, col) in enumerate(cells):
+                patch[r - r_min, col - c_min] = values_2d[idx, c]
+
+            if h > 1 and w > 1:
+                scale_r = embed_size / h
+                scale_c = embed_size / w
+                embedded = scipy_zoom(patch, (scale_r, scale_c), order=1)
+                embedded = embedded[:embed_size, :embed_size]
+                if embedded.shape != (embed_size, embed_size):
+                    tmp = np.zeros((embed_size, embed_size), dtype=np.float32)
+                    sh, sw = embedded.shape
+                    tmp[:sh, :sw] = embedded
+                    embedded = tmp
+            else:
+                embedded = np.zeros((embed_size, embed_size), dtype=np.float32)
+            channel_embeds.append(embedded.ravel())
+
+        embeddings.append(np.concatenate(channel_embeds).astype(np.float64))
+
+    if len(embeddings) < 3:
+        return 1.0
+
+    try:
+        X = np.array(embeddings)
+        scale = np.abs(X).max()
+        if scale > 0:
+            X = X / scale
+        X = X - X.mean(axis=0)
+        _, S, _ = np.linalg.svd(X, full_matrices=False)
+        eigenvalues = S**2 / (len(X) - 1)
+        trace = eigenvalues.sum()
+        trace_sq = (eigenvalues**2).sum()
+        if trace_sq < 1e-20:
+            return 1.0
+        return float(trace**2 / trace_sq)
+    except Exception:
+        return 1.0
+
+
+def measure_all_mc(pattern, prev_mass, prev_values, history_entries,
+                   grid_mc, kernel_ffts, coupling, channel_configs, grid_size,
+                   step_num=-1):
+    """Compute all affect dimensions for a multi-channel pattern.
+
+    Returns AffectState with integration = total Phi (MIP of spatial + channel).
+    """
+    phi_total, phi_spatial, phi_channel = measure_integration_mc(
+        grid_mc, kernel_ffts, coupling, pattern.cells,
+        channel_configs, grid_size,
+    )
+
+    return AffectState(
+        valence=measure_valence(pattern.mass, prev_mass),
+        arousal=measure_arousal_mc(pattern.values, prev_values),
+        integration=phi_total,
+        effective_rank=measure_effective_rank_mc(history_entries),
+        self_model_salience=measure_self_model_salience(history_entries),
+        pattern_id=pattern.id,
+        step=step_num,
+        mass=pattern.mass,
+        size=pattern.size,
+    ), phi_spatial, phi_channel

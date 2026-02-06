@@ -10,6 +10,10 @@ Usage:
     python v11_run.py pipeline    # Full V11.1: discover -> evolve -> stress test
     python v11_run.py hetero [N]  # V11.2 hetero chemistry evolution (N cycles)
     python v11_run.py hetero-pipeline  # Full V11.2: hetero evolve -> stress test
+    python v11_run.py multichannel [N] # V11.3 multi-channel evolution (N cycles)
+    python v11_run.py mc-pipeline      # Full V11.3: multi-channel evolve -> stress test
+    python v11_run.py hd [N] [--channels C]  # V11.4 HD evolution (N cycles, C channels)
+    python v11_run.py hd-pipeline [--channels C]  # Full V11.4: HD evolve -> stress test
 """
 
 import sys
@@ -610,8 +614,46 @@ if __name__ == '__main__':
         from v11_evolution import full_pipeline_hetero
         result = full_pipeline_hetero()
 
+    elif mode == 'multichannel':
+        from v11_evolution import evolve_multichannel, stress_test_mc
+        n_cycles = int(sys.argv[2]) if len(sys.argv) > 2 else 30
+        curriculum = '--curriculum' in sys.argv
+        result = evolve_multichannel(n_cycles=n_cycles, curriculum=curriculum)
+        print("\nRunning stress test...")
+        stress = stress_test_mc(
+            result['final_grid'], result['final_resource'],
+            result['coupling'])
+
+    elif mode == 'mc-pipeline':
+        from v11_evolution import full_pipeline_mc
+        result = full_pipeline_mc()
+
+    elif mode == 'hd':
+        from v11_evolution import evolve_hd, stress_test_hd
+        n_cycles = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2].isdigit() else 30
+        # Parse --channels flag
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        curriculum = '--curriculum' in sys.argv
+        result = evolve_hd(n_cycles=n_cycles, curriculum=curriculum, C=C)
+        print("\nRunning stress test...")
+        stress = stress_test_hd(
+            result['final_grid'], result['final_resource'],
+            result['coupling'], C=C,
+            bandwidth=result.get('bandwidth', 8.0))
+
+    elif mode == 'hd-pipeline':
+        from v11_evolution import full_pipeline_hd
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        result = full_pipeline_hd(C=C)
+
     else:
         print(f"Unknown mode: {mode}")
         print("Usage: python v11_run.py "
               "[sanity|perturb|experiment|ablation|evolve|seeds|pipeline"
-              "|hetero|hetero-pipeline]")
+              "|hetero|hetero-pipeline|multichannel|mc-pipeline|hd|hd-pipeline]")

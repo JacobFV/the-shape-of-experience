@@ -65,6 +65,54 @@ def detect_patterns(grid_np, threshold=0.1, min_size=8, max_size=8000):
     return patterns
 
 
+def detect_patterns_mc(grid_mc_np, threshold=0.2, min_size=8, max_size=15000):
+    """Find coherent patterns in multi-channel Lenia field.
+
+    Thresholds on the mean across channels (per-channel activity).
+    Pattern `values` becomes (N_cells, C) — per-channel values at each cell.
+    Pattern `mass` = sum across all channels and cells.
+
+    Higher max_size than single-channel because multi-channel patterns
+    tend to be larger (3x the active mass).
+
+    Args:
+        grid_mc_np: (C, N, N) numpy array of channel states
+    """
+    C = grid_mc_np.shape[0]
+    aggregate = grid_mc_np.mean(axis=0)  # (N, N) — mean per channel
+
+    binary = (aggregate > threshold).astype(np.int32)
+    labeled, n_features = ndimage.label(binary)
+
+    patterns = []
+    for label_id in range(1, n_features + 1):
+        cells = np.argwhere(labeled == label_id)
+        if not (min_size <= len(cells) <= max_size):
+            continue
+
+        # Per-channel values at pattern cells
+        values_mc = grid_mc_np[:, cells[:, 0], cells[:, 1]].T  # (N_cells, C)
+        values_agg = aggregate[cells[:, 0], cells[:, 1]]  # (N_cells,) for weighting
+
+        weights = values_agg / (values_agg.sum() + 1e-10)
+        center = np.average(cells.astype(float), axis=0, weights=weights)
+        mass = float(values_mc.sum())
+        r_min, c_min = cells.min(axis=0)
+        r_max, c_max = cells.max(axis=0)
+
+        patterns.append(Pattern(
+            id=-1,
+            cells=cells,
+            values=values_mc,  # (N_cells, C) instead of (N_cells,)
+            center=center,
+            mass=mass,
+            size=len(cells),
+            bbox=(int(r_min), int(r_max), int(c_min), int(c_max)),
+        ))
+
+    return patterns
+
+
 class PatternTracker:
     """Maintains persistent identity for patterns across timesteps.
 
