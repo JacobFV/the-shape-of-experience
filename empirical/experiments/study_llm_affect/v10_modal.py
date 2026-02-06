@@ -129,7 +129,7 @@ def analyze_results():
     from v10_affect import compute_affect_for_agent
     from v10_analysis import (run_rsa_analysis, plot_ablation_comparison,
                                plot_rsa_results, plot_affect_trajectories,
-                               generate_report, RSAResult)
+                               plot_training_curves, generate_report, RSAResult)
 
     conditions = [
         'full', 'no_partial_obs', 'no_long_horizon',
@@ -189,6 +189,13 @@ def analyze_results():
                 plot_affect_trajectories(affect_mat,
                                         f'{cond_dir}/affect_trajectories.png')
 
+                # Training curves
+                metrics = results.get('metrics_history', [])
+                ep_rewards = results.get('episode_rewards', [])
+                if metrics or ep_rewards:
+                    plot_training_curves(metrics, ep_rewards,
+                                       f'{cond_dir}/training_curves.png')
+
             except Exception as e:
                 import traceback
                 print(f"Error: {condition}/seed_{seed}: {e}", flush=True)
@@ -202,6 +209,17 @@ def analyze_results():
             print(f"  {cond:25s}: {result.summary()}", flush=True)
 
         plot_ablation_comparison(ablation_results, "/results/ablation_comparison.png")
+
+        # Generate full report for any condition that has full data
+        for cond in ablation_results:
+            if cond in all_data:
+                data = all_data[cond]
+                report = generate_report(
+                    data['affect_mat'], data['emb_mat'],
+                    ablation_results if len(ablation_results) > 1 else None,
+                    output_dir=f'/results/{cond}',
+                )
+
         results_volume.commit()
 
     return {k: v.to_dict() for k, v in ablation_results.items()}

@@ -486,6 +486,71 @@ def plot_affect_trajectories(
     return save_path
 
 
+def plot_training_curves(
+    metrics_history: List[Dict],
+    episode_rewards: List[float],
+    save_path: str = 'results/v10/training_curves.png',
+) -> str:
+    """Plot training metrics over time."""
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+    # 1. Episode rewards
+    ax = axes[0, 0]
+    if episode_rewards:
+        ax.plot(episode_rewards, alpha=0.3, linewidth=0.5)
+        window = min(100, len(episode_rewards) // 5)
+        if window > 1:
+            rolling = np.convolve(episode_rewards, np.ones(window)/window, mode='valid')
+            ax.plot(np.arange(window-1, window-1+len(rolling)), rolling, 'r-', linewidth=2)
+        ax.set_xlabel('Episode')
+        ax.set_ylabel('Return')
+        ax.set_title('Episode Returns')
+
+    # 2. Health/Hunger from metrics
+    ax = axes[0, 1]
+    if metrics_history:
+        steps = [m.get('step', i) for i, m in enumerate(metrics_history)]
+        health = [m.get('health', 0) for m in metrics_history]
+        hunger = [m.get('hunger', 0) for m in metrics_history]
+        if any(h > 0 for h in health):
+            ax.plot(steps, health, label='Health', alpha=0.7)
+        if any(h > 0 for h in hunger):
+            ax.plot(steps, hunger, label='Hunger', alpha=0.7)
+        ax.set_xlabel('Step')
+        ax.set_ylabel('Value')
+        ax.set_title('Agent Vitals')
+        ax.legend()
+
+    # 3. Loss
+    ax = axes[1, 0]
+    if metrics_history:
+        loss = [m.get('total_loss', m.get('policy_loss', 0)) for m in metrics_history]
+        if any(l != 0 for l in loss):
+            ax.plot(steps, loss, alpha=0.7)
+            ax.set_xlabel('Step')
+            ax.set_ylabel('Loss')
+            ax.set_title('Training Loss')
+
+    # 4. Signal entropy
+    ax = axes[1, 1]
+    if metrics_history:
+        sig_h = [m.get('signal_entropy', 0) for m in metrics_history]
+        if any(s != 0 for s in sig_h):
+            ax.plot(steps, sig_h, alpha=0.7)
+            ax.set_xlabel('Step')
+            ax.set_ylabel('Entropy (nats)')
+            ax.set_title('Signal Entropy (Communication)')
+
+    plt.suptitle('V10 Training Metrics', fontsize=14)
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150, bbox_inches='tight')
+    plt.close()
+    print(f"Training curves saved to {save_path}")
+    return save_path
+
+
 # ============================================================================
 # Full analysis report
 # ============================================================================
@@ -539,7 +604,34 @@ def generate_report(
         json.dump(report, f, indent=2)
     print(f"\nReport saved to {output_dir}/analysis_report.json")
 
-    # 6. Summary verdict
+    # 6. Random baseline comparison
+    print("\n" + "=" * 60)
+    print("Random Baseline: 6 random linear projections of embedding space")
+    print("=" * 60)
+    n_baselines = 10
+    baseline_rhos = []
+    for b in range(n_baselines):
+        rand_proj = np.random.randn(embedding_affect_matrix.shape[1], 6)
+        rand_affect = embedding_affect_matrix @ rand_proj
+        # Subsample same way
+        N_sub = min(500, len(rand_affect))
+        idx = np.random.choice(len(rand_affect), N_sub, replace=False)
+        D_rand = compute_rdm(rand_affect[idx])
+        D_emb = compute_rdm(embedding_affect_matrix[idx])
+        rho_rand, _ = rsa_correlation(D_rand, D_emb)
+        baseline_rhos.append(rho_rand)
+    baseline_mean = np.mean(baseline_rhos)
+    baseline_std = np.std(baseline_rhos)
+    print(f"  Random baseline RSA: ρ={baseline_mean:.3f} ± {baseline_std:.3f}")
+    print(f"  Real affect RSA:     ρ={rsa_result.mantel_rho:.3f}")
+    print(f"  Improvement over random: {rsa_result.mantel_rho - baseline_mean:.3f}")
+    report['random_baseline'] = {
+        'mean_rho': float(baseline_mean),
+        'std_rho': float(baseline_std),
+        'improvement': float(rsa_result.mantel_rho - baseline_mean),
+    }
+
+    # 7. Summary verdict
     print("\n" + "=" * 60)
     print("VERDICT")
     print("=" * 60)
