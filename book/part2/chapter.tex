@@ -659,6 +659,40 @@ Arousal is variable (acute grief is high-arousal; chronic grief may be low).
 
 This is why grief takes time: the self-model must be \emph{rewoven} around the absence, and that rewiring is slow.
 
+Note a deeper implication: grief is proof of alignment. You can only grieve what you were genuinely coupled to. The depth of grief measures the depth of the integration that preceded it. If a relationship was purely transactional, its ending produces disappointment, not grief. Grief requires that the lost object was woven into the self-model---that the relationship's viability manifold was genuinely contained within the participants' viability manifolds ($\viable_R \subseteq \viable_A \cap \viable_B$). Grief, for all its pain, is evidence that something real existed.
+
+\subsection{Shame}
+
+\begin{definition}[Shame Motif]
+Shame is defined by three dimensions plus a structural feature---\emph{involuntary manifold exposure}:
+\begin{itemize}
+\item $\valence < 0$ (the self is wrong, not the world)
+\item $\mathcal{SM}$ very high (self foregrounded as the object of evaluation)
+\item $\intinfo$ high (the negative evaluation permeates---cannot be compartmentalized)
+\item Involuntary exposure: the self-model is seen from outside, and what is seen is unacceptable
+\end{itemize}
+Arousal is typically high in acute shame (flushing, gaze aversion) but may be low in chronic shame (withdrawal, numbness).
+\end{definition}
+
+\textbf{Structural interpretation}: Shame is not about what you \emph{did} (that is guilt, which is action-focused and reparable). Shame is about what you \emph{are}---or more precisely, about the manifold you are on being visible when it should not be, or being visible to someone whose evaluation you cannot escape. The person caught in a lie does not feel ashamed of the lie (guilt); they feel ashamed that the lie has revealed the underlying manifold---that they are the kind of person who lies, and now someone knows.
+
+This is why shame's phenomenology is so distinctive: the impulse to hide, to disappear, to cease existing as visible. The self wants to withdraw from the visual field of the other. Not because the other will punish (that is fear) but because the other can now \emph{see the manifold}, and the manifold is wrong.
+
+\begin{hypothesis}[Shame vs.\ Guilt as Distinct Affect Structures]
+The clinical literature (Tangney, Lewis) distinguishes shame from guilt. The framework offers a structural reading of why they differ:
+\begin{itemize}
+\item \textbf{Guilt}: ``I did a bad thing.'' Action-focused, reparable through changed behavior. The self-model is intact; it was the action that violated the gradient. $\mathcal{SM}$ is moderate (the self is the \emph{agent} of repair).
+\item \textbf{Shame}: ``I \emph{am} bad.'' Self-focused, not easily repaired because the problem is structural. The manifold itself is wrong. $\mathcal{SM}$ is very high (the self is the \emph{object} of the problem).
+\end{itemize}
+If this structural distinction is right, it explains why guilt is reparable through action while shame requires what we might call manifold reconstruction---deeper and slower work. But we need to check: does the $\mathcal{SM}$ difference actually hold up in measurement? Do shame and guilt show the predicted dissociation on self-model salience measures?
+\end{hypothesis}
+
+\begin{experiment}
+\textbf{Shame vs.\ guilt affect-structure study.} Induce shame and guilt via established protocols (autobiographical recall, vignette self-projection). Measure: (1) self-model salience via self-referential processing tasks (response time to self-relevant vs.\ other-relevant stimuli), (2) integration via EEG coherence measures, (3) the ``involuntary exposure'' component via gaze aversion and physiological hiding responses (muscle activation in neck/shoulder flexion). The framework predicts that shame shows significantly higher $\mathcal{SM}$ and higher integration-in-narrow-subspace than guilt, and that the hiding response (gaze aversion, postural curling) is specific to shame, not guilt. If shame and guilt show the same $\mathcal{SM}$ profile, the structural distinction as formulated here is wrong.
+\end{experiment}
+
+The connection to the topology of social bonds (Part IV) is suggestive: shame may arise when the manifold you are actually on is exposed and differs from the manifold you are presenting. The person performing friendship while operating on the transaction manifold would feel shame when the discrepancy is detected---not guilt (``I should not have done that specific transactional thing'') but shame (``I am the kind of person whose care is instrumental, and now someone can see it''). If this is right, shame is the affect system's internal alarm for one's own manifold contamination. But this reading goes beyond the existing clinical data and should be treated as a hypothesis to test, not an established finding.
+
 \subsection{Summary: Defining Dimensions by Affect}
 
 Rather than forcing all affects into a uniform grid, let's summarize each by its defining structure:
@@ -870,20 +904,41 @@ The translation is uncontaminated because:
 
 \subsection{The Core Prediction}
 
-\begin{hypothesis}[Tripartite Correlation]
-If the identity thesis is correct, three independently measurable quantities should correlate:
-\begin{enumerate}
-\item \textbf{Affect signature}: The geometric structure of activation space (computable from internal states)
-\item \textbf{Translated language}: The English interpretation of emergent signals (inferred from scene alignment)
-\item \textbf{Behavioral action}: What the agent actually does (observable)
-\end{enumerate}
+The claim is not merely that affect structure, language, and behavior should ``correlate.'' Correlation is weak---marginal correlations can arise from confounds. The claim is geometric: the \emph{distance structure} in the information-theoretic affect space should be isomorphic to the distance structure in the embedding-predicted affect space. Not just ``these two things covary,'' but ``these two spaces have the same shape.''
+
+\begin{hypothesis}[Geometric Alignment]
+Let $\mathbf{a}_i \in \mathbb{R}^6$ be the information-theoretic affect vector for agent-state $i$, computed from internal dynamics (viability gradient, belief update rate, partition loss, eigenvalue distribution, simulation fraction, self-model MI). Let $\mathbf{e}_i \in \mathbb{R}^d$ be the affect embedding predicted from the VLM-translated situation description, projected into a standardized affect concept space.
+
+For $N$ agent-states sampled across diverse situations, compute pairwise distance matrices:
+\begin{align}
+D^{(a)}_{ij} &= \|\mathbf{a}_i - \mathbf{a}_j\| \quad \text{(info-theoretic affect space)} \\
+D^{(e)}_{ij} &= \|\mathbf{e}_i - \mathbf{e}_j\| \quad \text{(embedding-predicted affect space)}
+\end{align}
+
+The prediction: Representational Similarity Analysis (RSA) correlation between the upper triangles of these matrices exceeds the null:
+\begin{equation}
+\rho_{\text{RSA}}(D^{(a)}, D^{(e)}) > \rho_{\text{null}}
+\end{equation}
+where $\rho_{\text{null}}$ is established by permutation (Mantel test).
 \end{hypothesis}
 
-When the affect signature shows negative valence, collapsed effective rank, high integration, high self-model salience---the suffering motif---the translated language should express suffering-concepts, and the behavior should show suffering-patterns (withdrawal, escape attempts, freezing).
+This is strictly stronger than marginal correlation. Two spaces can have correlated means but completely different geometries. RSA tests whether states that are \emph{nearby} in one space are nearby in the other---whether the topology is preserved.
 
-When the affect signature shows positive valence, expanded effective rank, low self-model salience---the joy motif---the translated language should express joy-concepts, and the behavior should show joy-patterns (exploration, approach, social engagement).
+The specific predictions that fall out: when the affect vector shows the \emph{suffering motif}---negative valence, collapsed effective rank, high integration, high self-model salience---the embedding-predicted vector should land in the same region of affect concept space. States with the \emph{joy motif}---positive valence, expanded rank, low self-salience---should cluster together in both spaces. And crucially, the \emph{distances between} suffering and joy, between fear and curiosity, between boredom and rage, should be preserved across the two measurement modalities.
 
 Not because we trained them to match. Because the structure is the experience is the expression.
+
+\begin{sidebar}[title=Technical: Representational Similarity Analysis]
+RSA compares the geometry of two representation spaces without requiring them to share dimensionality or units. The method (Kriegeskorte et al., 2008) is standard in computational neuroscience for comparing neural representations across brain regions, species, and models.
+
+\textbf{Procedure}. Given $N$ stimuli represented in two spaces ($\mathbf{a}_i \in \mathbb{R}^p$, $\mathbf{e}_i \in \mathbb{R}^q$), compute the $N \times N$ pairwise distance matrices $D^{(a)}$ and $D^{(e)}$. The RSA statistic is the Spearman rank correlation between the upper triangles of these matrices---$\binom{N}{2}$ pairs.
+
+\textbf{Significance}. The Mantel test: permute rows/columns of one matrix, recompute correlation, repeat $10^4$ times. The $p$-value is the fraction of permuted correlations exceeding the observed.
+
+\textbf{Alternative: CKA}. Centered Kernel Alignment (Kornblith et al., 2019) compares centered similarity matrices rather than distance matrices. More robust to outliers and does not require choosing a distance metric. We report both.
+
+\textbf{Why RSA over marginal correlation}. Marginal correlation asks: does valence in space $A$ predict valence in space $B$? RSA asks: does the \emph{entire relational structure} transfer? Two states might have similar valence but differ on integration and self-salience. RSA captures this. It tests whether the spaces are geometrically aligned, not merely univariately correlated.
+\end{sidebar}
 
 \subsection{Bidirectional Perturbation}
 

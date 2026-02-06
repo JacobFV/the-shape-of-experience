@@ -33,9 +33,36 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{cutwin}
+\usepackage{marginnote}
+\usepackage{changepage}  % for adjustwidth
 \graphicspath{{images/}{part1/images/}{part2/images/}{part3/images/}{part4/images/}{part5/images/}}
 
 \geometry{margin=1in}
+
+% --- Layout switching: 1-col breathing room with side margins ---
+% Use \begin{widebreath}...\end{widebreath} around sections that need
+% single-column layout with wide margins for phenomenological prose.
+% These force page breaks (inherent to column switching in book class).
+\newenvironment{widebreath}{%
+  \onecolumn
+  \newgeometry{left=1.6in, right=1.6in, top=1.2in, bottom=1.2in}%
+}{%
+  \restoregeometry
+  \twocolumn
+}
+
+% Use \begin{widemargin}...\end{widemargin} for 1-col with a wide
+% right margin for margin notes / side-column content.
+\newenvironment{widemargin}{%
+  \onecolumn
+  \newgeometry{left=1.3in, right=3.2in, top=1.2in, bottom=1.2in, marginparwidth=2.6in, marginparsep=0.3in}%
+}{%
+  \restoregeometry
+  \twocolumn
+}
+
+% Margin detail command (works in both modes, but best in widemargin)
+\newcommand{\detail}[1]{\marginnote{\footnotesize\color{gray!70!black}#1}}
 
 % --- Sidebar and info box environments ---
 \newtcolorbox{historical}{
@@ -87,7 +114,26 @@
   colback=yellow!10!white,
   colframe=yellow!60!black,
   title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
-  fonttitle=\bfseries\small
+  fonttitle=\bfseries\small,
+  breakable
+}
+
+% Open question: genuinely unresolved, inviting investigation
+\newtcolorbox{openquestion}{
+  colback=violet!3!white,
+  colframe=violet!40!black,
+  title={\faQuestion\hspace{0.5em}Open Question},
+  fonttitle=\bfseries\small,
+  breakable
+}
+
+% Proposed experiment: specific study design to test a claim
+\newtcolorbox{experiment}{
+  colback=teal!5!white,
+  colframe=teal!60!black,
+  title={\faFlask\hspace{0.5em}Proposed Experiment},
+  fonttitle=\bfseries\small,
+  breakable
 }
 
 \newtcolorbox{sidebar}[1][]{

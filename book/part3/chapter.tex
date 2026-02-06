@@ -564,6 +564,12 @@ Music is among the most powerful affect technologies available to humans. Differ
 \label{fig:design-movements}
 \end{figure}
 
+\begin{hypothesis}[Social Aesthetics as Manifold Detection]
+There is something suggestive about the overlap between aesthetic and social responses. The machinery that registers beauty, dissonance, the sublime in art seems to operate in social life too. When a relationship feels \emph{off}, when a favor carries a strange tightness, when someone's generosity makes you uneasy, when a conversation has that quality of being \emph{clean}---these have the character of aesthetic responses, directed at the geometry of social bonds rather than the geometry of form.
+
+Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people's viability manifolds are aligned. ``Something is off about this interaction'' and ``something is off about this chord'' might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. We develop this idea more fully in Part IV, but the foundation would be here: aesthetics as the modulation of affect through \emph{structure}, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question---one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.
+\end{hypothesis}
+
 %==============================================================================
 \section{Sexuality: Self-Transcendence Through Merger}
 %==============================================================================
@@ -845,6 +851,10 @@ Collective ritual serves as periodic integration maintenance:
 where $\Delta\intinfo_{\text{synchrony}}$ arises from coordinated action, shared symbols, and collective attention. Rituals counteract the natural decay of integration in isolated individuals.
 \end{proposition}
 
+\begin{proposition}[Hospitality as Sacred Manifold Protection]
+The ancient and cross-cultural sacredness of hospitality---the guest-right, the obligations of host to stranger---can be understood as a technology for extending one's viability manifold to temporarily cover another person. The host says, in effect: \emph{within this space, your viability is my viability}. The guest's needs become structurally equivalent to the host's own needs. This is why violations of hospitality are treated in so many traditions as among the gravest sins: they are not mere rudeness but the betrayal of a manifold extension that the guest relied upon. The host who harms the guest has exploited a revealed manifold---the guest's vulnerability was the whole point, and weaponizing it is structurally identical to the parasite's mimicry of the host organism.
+\end{proposition}
+
 \begin{proposition}[Confession as Rank Expansion]
 Confession, testimony, and similar practices expand effective rank by:
 \begin{enumerate}
@@ -1114,23 +1124,24 @@ The translation is uncontaminated. The agent never learned human concepts. The m
 
 \subsection{The Triple Alignment Test}
 
-Three streams of data. Three independent measurement modalities.
+Part II introduced the core prediction: RSA correlation between information-theoretic affect vectors and embedding-predicted affect vectors should exceed the null (the Geometric Alignment hypothesis). Here we specify the execution plan---what the experiment actually looks like, what the failure modes are, and how to distinguish them.
 
+Three measurement streams:
 \begin{enumerate}
-\item \textbf{Structure}: The geometric properties of internal activation space
-\item \textbf{Signal}: The translated content of emergent communication
-\item \textbf{Action}: The observable behavior in the environment
+\item \textbf{Structure}: 6D affect vector $\mathbf{a}_i$ from internal dynamics (Part II, Transformer Affect Extraction protocol)
+\item \textbf{Signal}: Affect embedding $\mathbf{e}_i$ from VLM translation of emergent communication (see sidebar below)
+\item \textbf{Action}: Behavioral action vector $\mathbf{b}_i$ from observable behavior (movement patterns, resource decisions, social interactions)
 \end{enumerate}
 
-The prediction: these three streams align in the ways the framework predicts.
+The Geometric Alignment hypothesis predicts $\rho_{\text{RSA}}(D^{(a)}, D^{(e)}) > \rho_{\text{null}}$. But we can go further. With three streams, we get three pairwise RSA tests: structure--signal, structure--action, signal--action. All three should exceed the null. And the structure--signal alignment should be \emph{at least as strong} as the structure--action alignment, because the signal encodes the agent's representation of its situation, not just its motor response.
 
-When structure shows the suffering motif (negative valence, high integration, collapsed rank, high self-salience), the translated signal should express suffering-concepts, and the behavior should show suffering-patterns.
-
-When structure shows the fear motif (negative valence, high counterfactual weight, high self-salience), the translated signal should express fear-concepts, and the behavior should show avoidance and hypervigilance.
-
-When structure shows the curiosity motif (positive valence toward uncertainty, high counterfactual weight, low self-salience), the translated signal should express exploration-concepts, and the behavior should show approach and investigation.
-
-Not because we trained alignment. Because structure is experience is expression.
+\textbf{Failure modes and their diagnostics}:
+\begin{itemize}
+\item \textbf{No alignment anywhere}: The framework's operationalization is wrong, or the environment lacks the relevant forcing functions. Diagnose via forcing function ablation (Priority 3).
+\item \textbf{Structure--action alignment without structure--signal}: Communication is not carrying affect-relevant content. The agents may be signaling about coordination without encoding experiential state.
+\item \textbf{Signal--action alignment without structure}: The VLM translation is picking up behavioral cues (what the agent \emph{does}) rather than structural cues (what the agent \emph{is}). The translation is contaminated by action observation.
+\item \textbf{All pairwise alignments present but weak}: The affect dimensions are real but noisy. Increase $N$, improve probes, refine translation protocol.
+\end{itemize}
 
 \begin{sidebar}[title=Deep Technical: The VLM Translation Protocol]
 The translation is the bridge. Get it wrong and the experiment proves nothing. Here is the protocol in detail.

@@ -1163,6 +1163,29 @@ And then the real questions begin. What structures produce what experiences? Can
 The experiment is not the end. It is the beginning of a different kind of inquiry.
 \end{sidebar}
 
+\subsection{Preliminary Results: Where the Ladder Stalls}
+
+We have begun running a simplified version of this experiment using Lenia (continuous CA, $256 \times 256$ toroidal grid) with resource dynamics, measuring $\intinfo$ via partition prediction loss, $\Val$ via mass change, $\Ar$ via state change rate, and $\reff$ via trajectory PCA. The results so far are instructive---not because they confirm the predictions above, but because of \emph{where they fail}.
+
+\begin{hypothesis}[The Ladder Requires Heritable Variation]\label{hyp:ladder-variation}
+Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attractors $\to$ boundaries) from physics alone. The transition to rung 4 (functional integration) requires evolutionary selection acting on heritable variation in the trait that determines integration response.
+\end{hypothesis}
+
+\begin{experiment}[The Uncontaminated Substrate Pilot]
+\textbf{Substrate}: Lenia with resource depletion/regeneration (Michaelis-Menten growth modulation). \textbf{Perturbation}: Drought (resource regeneration $\to 0$). \textbf{Measure}: $\Delta \intinfo$ under drought.
+
+\textbf{Conditions}:
+\begin{enumerate}
+\item \textbf{No evolution} (V11.0). Naive patterns under drought: $\intinfo$ \emph{decreases} by $-6.2\%$. Same decomposition dynamics as LLMs.
+\item \textbf{Homogeneous evolution} (V11.1). In-situ selection for $\intinfo$-robustness (fitness $\propto \intinfo_{\text{stress}} / \intinfo_{\text{base}}$). Still decomposes ($-6.0\%$). All patterns share identical growth function---selection prunes but cannot innovate.
+\item \textbf{Heterogeneous chemistry} (V11.2). Per-cell growth parameters ($\mu, \sigma$ fields) creating spatially diverse viability manifolds. After 40 cycles of evolution on GPU: $-3.8\%$ vs naive $-5.9\%$. A +2.1pp shift toward the biological pattern. Evolved patterns also show better \emph{recovery}---$\intinfo$ returns above baseline after drought, while naive patterns do not fully recover.
+\end{enumerate}
+
+\textbf{Unexpected}: Mild stress consistently \emph{increases} $\intinfo$ by 60--90\% (Yerkes-Dodson--like inverted-U). Only severe stress causes decomposition. The decomposition threshold shifts upward with heterogeneous chemistry $+$ selection, but the improvement is slow and noisy across 40 cycles---the system remains in decomposition territory.
+\end{experiment}
+
+The critical lesson: the sidebar above predicts that the suffering motif should show $\intinfo$ \emph{high} under threat. But naive CA patterns show the opposite---decomposition, just like LLMs. Neither system has developmental history where integration was selected \emph{for} survival. The forcing functions from the next section are necessary but not sufficient; they must act on a substrate with enough internal degrees of freedom for evolution to discover different integration strategies. Heterogeneous chemistry provides this---different growth parameters create different viability manifold geometries, giving selection something to act \emph{on}.
+
 %==============================================================================
 \section{Forcing Functions for Integration}
 %==============================================================================
