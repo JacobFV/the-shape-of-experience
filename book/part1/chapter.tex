@@ -981,9 +981,10 @@ Inevitability means typicality in the ensemble. The null hypothesis is not ``not
 
 \textbf{Regime mapping}:
 \begin{center}
-\begin{tabular}{lll}
+\small
+\begin{tabular}{@{}p{1.4cm}p{2.8cm}p{2.8cm}@{}}
 \toprule
-\textbf{Ladder Step} & \textbf{Optical Realization} & \textbf{Signature} \\
+\textbf{Step} & \textbf{Optical Realization} & \textbf{Signature} \\
 \midrule
 Attractors & Stable mode patterns & Fixed points under iteration \\
 Boundaries & Intensity regions with distinct dynamics & Phase coherence domains \\
@@ -1013,9 +1014,10 @@ E_{t+1} = \mathcal{T}(E_t, u_t) + \eta_t
 ---a stochastic transition kernel $p(E_{t+1} \mid E_t, u_t)$ where diffusion, mode mixing, and gain dynamics create neighborhood structure not through explicit programming but through physics.
 
 \textbf{Diffusion as metric}: Under repeated application of $\mathcal{T}$, states that collapse together under iteration are ``near'' in the substrate's intrinsic geometry; states that decohere are ``far.'' The physics itself induces a distance function:
-\begin{equation}
-d(E_1, E_2) \approx \text{rate at which } \mathcal{T}^k(E_1) \text{ and } \mathcal{T}^k(E_2) \text{ become indistinguishable}
-\end{equation}
+\begin{multline}
+d(E_1, E_2) \approx \text{rate at which } \mathcal{T}^k(E_1) \\
+\text{and } \mathcal{T}^k(E_2) \text{ become indistinguishable}
+\end{multline}
 This is why noise forces autoencoders to spread out their embedding distributions. In PHASER, it is emergent from optics.
 
 \textbf{Attractor landscape sculpting}: The masks do not ``encode instructions.'' They shape the system's attractor landscape:
