@@ -241,13 +241,17 @@ def spatial_phi_hd(grid_mc, kernel_ffts, coupling, cells,
 
 def measure_all_hd(pattern, prev_mass, prev_values, history_entries,
                    grid_mc, kernel_ffts, coupling, config, grid_size,
-                   step_num=-1, use_sampled_phi=False, rng=None):
+                   step_num=-1, use_sampled_phi=False, rng=None,
+                   fast=False):
     """Compute all affect dimensions for an HD multi-channel pattern.
 
     Uses spectral Phi by default (fast). Set use_sampled_phi=True for
     accurate MIP Phi (slower, used for fitness scoring in evolution).
 
-    Returns (AffectState, spectral_phi, spectral_eff_rank, [sampled_phi]).
+    Set fast=True to skip spatial Phi (expensive per-pattern FFTs).
+    Use fast=True during evolution cycles, fast=False for stress tests.
+
+    Returns (AffectState, spectral_phi, spectral_eff_rank, spatial_phi, sampled_phi).
     """
     channel_mus = config['channel_mus']
     channel_sigmas = config['channel_sigmas']
@@ -256,10 +260,13 @@ def measure_all_hd(pattern, prev_mass, prev_values, history_entries,
     phi_spectral, eff_rank = spectral_channel_phi(
         grid_mc, coupling, pattern.cells)
 
-    # Spatial Phi
-    phi_spatial = spatial_phi_hd(
-        grid_mc, kernel_ffts, coupling, pattern.cells,
-        channel_mus, channel_sigmas, grid_size)
+    # Spatial Phi (skip in fast mode — too expensive per-pattern)
+    if fast:
+        phi_spatial = float('inf')
+    else:
+        phi_spatial = spatial_phi_hd(
+            grid_mc, kernel_ffts, coupling, pattern.cells,
+            channel_mus, channel_sigmas, grid_size)
 
     # Sampled MIP Phi (optional — slower)
     phi_sampled = None

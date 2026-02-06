@@ -1979,6 +1979,7 @@ def evolve_hd(config=None, n_cycles=30, steps_per_cycle=5000,
                         p, pm, pv, hist,
                         jnp.array(grid_np), kernel_ffts, coupling,
                         config, N, step_num=step_base + step,
+                        fast=True,
                     )
                     baseline_affects[pid].append(affect)
                     prev_masses[pid] = p.mass
@@ -2016,6 +2017,7 @@ def evolve_hd(config=None, n_cycles=30, steps_per_cycle=5000,
                         p, pm, pv, hist,
                         jnp.array(grid_np), kernel_ffts, coupling,
                         config, N, step_num=step_base + baseline_steps + step,
+                        fast=True,
                     )
                     stress_affects[pid].append(affect)
                     prev_masses[pid] = p.mass
