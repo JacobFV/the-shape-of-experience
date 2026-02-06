@@ -642,13 +642,13 @@ Different ideologies produce characteristic affect profiles:
 \end{itemize}
 \end{proposition}
 
-\begin{warning}
+\begin{warningbox}
 Ideology can become parasitic when the collective self-model's viability requirements conflict with the individual's:
 \begin{equation}
 \state \in \viable_{\text{ideology}} \land \state \notin \viable_{\text{individual}}
 \end{equation}
 Martyrdom, self-sacrifice, and fanaticism occur when the expanded self-model demands the destruction of the individual substrate.
-\end{warning}
+\end{warningbox}
 
 % === FIGURE: SOCIAL-SCALE AFFECT / SUPERORGANISMS ===
 % SEARCH: (A) Crowd unified in attention---Nuremberg rally, political rally, religious mass gathering.
@@ -1142,6 +1142,31 @@ The Geometric Alignment hypothesis predicts $\rho_{\text{RSA}}(D^{(a)}, D^{(e)})
 \item \textbf{Signal--action alignment without structure}: The VLM translation is picking up behavioral cues (what the agent \emph{does}) rather than structural cues (what the agent \emph{is}). The translation is contaminated by action observation.
 \item \textbf{All pairwise alignments present but weak}: The affect dimensions are real but noisy. Increase $N$, improve probes, refine translation protocol.
 \end{itemize}
+
+\subsection{Preliminary Results: Structure--Representation Alignment}
+
+Before the full three-stream test, we can run a simpler version: does the 6D affect structure extracted from agent internals have geometric coherence with the agent's own representation space? This tests the foundation---whether the affect dimensions capture organized structure---without requiring the VLM translation pipeline.
+
+We train multi-agent RL systems (4 agents, Transformer encoder + GRU latent state, PPO) in a survival grid world with all six forcing functions active: partial observability (egocentric 7$\times$7 view, reduced at night), long horizons (2000-step episodes, seasonal resource scarcity), learned world model (auxiliary next-observation prediction), self-prediction (auxiliary next-latent prediction), intrinsic motivation (curiosity bonus from prediction error), and delayed rewards (credit assignment across episodes). The agents develop spontaneous communication using discrete signal tokens.
+
+After training, we extract 6D affect vectors from the GRU latent state $\mathbf{z}_t \in \mathbb{R}^{64}$ using post-hoc probes: valence from survival-time probe gradients and advantage estimates; arousal from $\|\mathbf{z}_{t+1} - \mathbf{z}_t\|$; integration from partition prediction loss (full vs.\ split predictor); effective rank from rolling covariance eigenvalues; counterfactual weight from latent variance proxy; self-model salience from action prediction accuracy of self-related dimensions.
+
+%% V10 RESULTS GO HERE — fill when training completes
+%% RSA: ρ=???, p=???, CKA_lin=???, CKA_rbf=???
+%% Random baseline: ρ=??? ± ???
+%% Per-dimension: which dimensions drive alignment?
+%% Ablation: 7 conditions, which forcing functions matter?
+
+%% UNCOMMENT AND FILL WHEN RESULTS ARRIVE:
+% \begin{keyresult}[Structure--Representation Alignment]
+% RSA between 6D affect space and 64D latent representation: $\rho_{\text{RSA}} = X.XXX$ ($p < X.XXXX$, Mantel test, $N = 500$ subsampled states). CKA (linear): $X.XXX$. Against random 6D projections of the same latent space: $\rho_{\text{random}} = X.XXX \pm X.XXX$. The structured affect dimensions capture $X\times$ more geometric alignment than random projections.
+% \end{keyresult}
+
+% \begin{experiment}[Forcing Function Ablation]
+% \textbf{Setup}: Train identical architectures with one forcing function removed per condition (7 conditions, 200k steps each). Compare RSA between 6D affect space and representation space across conditions.
+% \textbf{Results}: [TABLE WITH ABLATION DATA]
+% \textbf{Interpretation}: Which forcing functions are necessary for geometric alignment to emerge?
+% \end{experiment}
 
 \begin{sidebar}[title=Deep Technical: The VLM Translation Protocol]
 The translation is the bridge. Get it wrong and the experiment proves nothing. Here is the protocol in detail.
