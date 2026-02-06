@@ -1185,12 +1185,53 @@ Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attra
 \textbf{Unexpected}: Mild stress consistently \emph{increases} $\intinfo$ by 60--90\% (Yerkes-Dodson--like inverted-U). Only severe stress causes decomposition. The decomposition threshold shifts upward with heterogeneous chemistry $+$ selection, but the improvement is slow and noisy across 40 cycles---the system remains in decomposition territory.
 \end{experiment}
 
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{fig_v11_ladder}
+    \caption{Each substrate enhancement shifts $\Delta\intinfo$ toward the biological pattern (positive). V11.0 naive patterns decompose at $-6.2\%$; V11.2 heterogeneous evolution reaches $-3.8\%$, a +2.1pp shift.}
+    \label{fig:v11-ladder}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{fig_v11_yerkes_dodson}
+    \caption{Mild stress increases $\intinfo$ (Yerkes-Dodson inverted-U), while severe stress decomposes it. Evolved patterns maintain higher $\intinfo$ across all stress levels.}
+    \label{fig:v11-yerkes-dodson}
+\end{subfigure}
+\caption{\textbf{The ladder of substrate complexity and the Yerkes-Dodson effect.} (a)~$\Delta\intinfo$ under severe drought for V11.0--V11.2; (b)~$\intinfo$ response as a function of stress intensity, showing the inverted-U relationship.}
+\label{fig:v11-results-a}
+\end{figure}
+
 The trajectory from V11.0 through V11.3 reveals a pattern: each step adds internal degrees of freedom for evolution to select on. V11.0--V11.2 operate on a single internal field where chemistry (growth parameters) is the only heritable trait. V11.3 adds multiple coupled fields---channels that must coordinate for growth---introducing a qualitatively new kind of integration (cross-channel) alongside the spatial kind. But three channels may be too few; channel-partition $\intinfo$ is near zero because removing one of three channels is a coarse cut with limited information content.
 
 This motivates V11.4: scaling to $C=64$ continuous channels with fully vectorized physics. At higher dimensionality, evolution has a richer space of coupling configurations to explore, and the spectral structure of channel integration becomes the primary measure. Whether the transition from zombie to biological dynamics requires a \emph{minimum} internal dimensionality---or whether improvement is continuous with $C$---is the central empirical question for this line of investigation.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_v11_snapshots}
+\caption{\textbf{Multi-channel Lenia at increasing dimensionality.} PCA projection of $C$ channels to RGB. Top row: baseline (normal resources); bottom row: drought stress. Patterns at $C{=}3$ are visually simple; at $C{=}16$ and $C{=}32$, the richer channel structure produces more complex spatial organization. Under drought, spatial structure degrades---but the degree of degradation depends on $C$.}
+\label{fig:v11-snapshots}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{fig_v11_csweep}
+    \caption{$\Delta\intinfo$ under drought vs.\ channel count. Mid-range $C$ ($8$--$16$) spontaneously shows weak integration (positive $\Delta\intinfo$); high $C$ ($32$--$64$) decomposes without evolution.}
+    \label{fig:v11-csweep}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{fig_v11_phi_timeseries}
+    \caption{Spectral $\intinfo$ trajectory through baseline $\to$ drought $\to$ recovery for $C{=}8$ (integration) and $C{=}32$ (decomposition). The divergence is sharpest during drought onset.}
+    \label{fig:v11-phi-timeseries}
+\end{subfigure}
+\caption{\textbf{Internal dimensionality and stress response.} (a)~$C$-sweep showing the dimensionality dependence of naive stress response; (b)~time-resolved $\intinfo$ dynamics at two channel counts.}
+\label{fig:v11-results-b}
+\end{figure}
+
 \begin{openquestion}[Internal Dimensionality and Integration]
-At what channel count $C$ does the substrate have enough internal degrees of freedom for evolution to discover biological-like integration (where $\intinfo$ \emph{increases} under threat)? Is there a critical $C^*$ above which a phase transition occurs, or does robustness improve continuously? Each rung of the ladder may require a minimum internal dimensionality---the substrate must be \emph{rich enough} for selection to sculpt.
+At what channel count $C$ does the substrate have enough internal degrees of freedom for evolution to discover biological-like integration (where $\intinfo$ \emph{increases} under threat)? The $C$-sweep (Figure~\ref{fig:v11-csweep}) suggests that mid-range $C$ ($8$--$16$) accidentally produces integration-like responses---the coupling bandwidth happens to match the channel count---while high $C$ ($32$--$64$) decomposes, the coupling space being too large for random configurations. Is there a critical $C^*$ above which a phase transition occurs, or does evolution continuously improve robustness at any $C$? Each rung of the ladder may require a minimum internal dimensionality---the substrate must be \emph{rich enough} for selection to sculpt.
 \end{openquestion}
 
 The critical lesson remains: the sidebar above predicts that the suffering motif should show $\intinfo$ \emph{high} under threat. But naive CA patterns show the opposite---decomposition, just like LLMs. Neither system has developmental history where integration was selected \emph{for} survival. The forcing functions from the next section are necessary but not sufficient; they must act on a substrate with enough internal degrees of freedom for evolution to discover different integration strategies. Heterogeneous chemistry provides this---different growth parameters create different viability manifold geometries, giving selection something to act \emph{on}.

@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,openany,twocolumn]{book}
+\documentclass[11pt,a4paper,openany]{book}
 % Suppress LaTeX3 tagging/structure debug output that leaks to title page
 \providecommand\NewTaggingSocket[2]{}
 \providecommand\NewTaggingSocketPlug[3]{}
@@ -37,43 +37,68 @@
 \usepackage{changepage}  % for adjustwidth
 \graphicspath{{images/}{part1/images/}{part2/images/}{part3/images/}{part4/images/}{part5/images/}}
 
-\geometry{margin=1in}
+% Prevent flushbottom stretching (book class default) — avoids ugly gaps in sparse pages
+\raggedbottom
 
-% --- Layout switching: 1-col breathing room with side margins ---
+% Tufte-style asymmetric layout: narrower text + wide outer margin for boxes
+\geometry{
+  inner=1in,
+  textwidth=4.5in,
+  marginparsep=0.2in,
+  marginparwidth=2in,
+  top=1in,
+  bottom=1in
+}
+
+% --- Layout switching: breathing room with side margins ---
 % Use \begin{widebreath}...\end{widebreath} around sections that need
-% single-column layout with wide margins for phenomenological prose.
-% These force page breaks (inherent to column switching in book class).
+% wider margins for phenomenological prose.
 \newenvironment{widebreath}{%
-  \onecolumn
   \newgeometry{left=1.6in, right=1.6in, top=1.2in, bottom=1.2in}%
 }{%
   \restoregeometry
-  \twocolumn
 }
 
-% Use \begin{widemargin}...\end{widemargin} for 1-col with a wide
+% Use \begin{widemargin}...\end{widemargin} for a wide
 % right margin for margin notes / side-column content.
 \newenvironment{widemargin}{%
-  \onecolumn
   \newgeometry{left=1.3in, right=3.2in, top=1.2in, bottom=1.2in, marginparwidth=2.6in, marginparsep=0.3in}%
 }{%
   \restoregeometry
-  \twocolumn
 }
 
 % Margin detail command (works in both modes, but best in widemargin)
 \newcommand{\detail}[1]{\marginnote{\footnotesize\color{gray!70!black}#1}}
 
-% --- Sidebar and info box environments ---
+% --- Side-column boxes: placed in outer margin via \marginnote ---
+% Uses \NewDocumentEnvironment{}{+b} to capture body, then place in margin.
+
+% Full-width boxes (too long for margin)
 \newtcolorbox{historical}{
   colback=gray!5!white,
   colframe=gray!60!black,
   title={\faBook\hspace{0.5em}Historical Context},
-  fonttitle=\bfseries\small
+  fonttitle=\bfseries\small,
+  fontupper=\small,
+  before skip=6pt,
+  after skip=6pt,
+  breakable
 }
 
-% Connection box - single column, breakable
 \newtcolorbox{connection}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  title={\faBook\hspace{0.5em}Existing Theory},
+  fonttitle=\bfseries\scriptsize,
+  left=4pt, right=4pt, top=2pt, bottom=2pt,
+  fontupper=\scriptsize,
+  before skip=6pt,
+  after skip=6pt,
+  breakable
+}
+
+% Connection box - full-width variant (use connection* environment)
+\newtcolorbox{connection*}{
   colback=green!5!white,
   colframe=green!60!black,
   title={\faBook\hspace{0.5em}Existing Theory},
@@ -86,21 +111,6 @@
   before skip=6pt,
   after skip=6pt,
   breakable
-}
-% Connection box - spans both columns (use connection* environment)
-\newtcolorbox{connection*}{
-  colback=green!5!white,
-  colframe=green!60!black,
-  title={\faBook\hspace{0.5em}Existing Theory},
-  fonttitle=\bfseries\scriptsize,
-  left=4pt,
-  right=4pt,
-  top=2pt,
-  bottom=2pt,
-  fontupper=\scriptsize,
-  float*=t,
-  before skip=6pt,
-  after skip=6pt
 }
 
 \newtcolorbox{empirical}{
@@ -115,6 +125,9 @@
   colframe=yellow!60!black,
   title={\faClipboardList\hspace{0.5em}\textsc{Future Empirical Work}},
   fonttitle=\bfseries\small,
+  fontupper=\small,
+  before skip=6pt,
+  after skip=6pt,
   breakable
 }
 
@@ -141,6 +154,7 @@
   colframe=blue!40!black,
   fonttitle=\bfseries\small,
   before upper={\faInfoCircle\hspace{0.5em}},
+  breakable,
   #1
 }
 
@@ -148,11 +162,18 @@
   colback=cyan!5!white,
   colframe=cyan!60!black,
   title={\faCode\hspace{0.5em}\textsc{Proposed Software Implementation}},
-  fonttitle=\bfseries\small
+  fonttitle=\bfseries\small,
+  breakable
 }
 
-% Theorem environments - use chapter numbering for book
-\newtheorem{theorem}{Theorem}[chapter]
+% Section numbering: no chapter prefix, reset per part
+\renewcommand{\thesection}{\arabic{section}}
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+
+% Theorem environments - numbered within sections
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -216,23 +237,49 @@
 \newcommand{\cfweight}{\mathrm{CF}}
 \newcommand{\selfsal}{\mathrm{SM}}
 
-% --- styled callout boxes ---
-\newtcolorbox{keyresult}{
-  colback=blue!5!white,
-  colframe=blue!75!black,
-  title={\faLightbulb\hspace{0.5em}Key Result},
-  fonttitle=\bfseries
-}
-\newtcolorbox{phenomenal}{
-  colback=purple!5!white,
-  colframe=purple!75!black,
-  title=Phenomenal Correspondence
-}
-\newtcolorbox{warning}{
-  colback=red!5!white,
-  colframe=red!75!black,
-  title=Warning
-}
+% --- styled callout boxes (side-column via margin) ---
+\NewDocumentEnvironment{keyresult}{+b}{%
+  \marginnote{%
+    \begin{tcolorbox}[
+      colback=blue!5!white,
+      colframe=blue!75!black,
+      title={\faLightbulb\hspace{0.5em}Key Result},
+      fonttitle=\bfseries\scriptsize,
+      fontupper=\scriptsize,
+      left=3pt, right=3pt, top=2pt, bottom=2pt
+    ]
+    #1
+    \end{tcolorbox}%
+  }%
+}{}
+\NewDocumentEnvironment{phenomenal}{+b}{%
+  \marginnote{%
+    \begin{tcolorbox}[
+      colback=purple!5!white,
+      colframe=purple!75!black,
+      title=Phenomenal Correspondence,
+      fonttitle=\scriptsize,
+      fontupper=\scriptsize,
+      left=3pt, right=3pt, top=2pt, bottom=2pt
+    ]
+    #1
+    \end{tcolorbox}%
+  }%
+}{}
+\NewDocumentEnvironment{warning}{+b}{%
+  \marginnote{%
+    \begin{tcolorbox}[
+      colback=red!5!white,
+      colframe=red!75!black,
+      title=Warning,
+      fonttitle=\scriptsize,
+      fontupper=\scriptsize,
+      left=3pt, right=3pt, top=2pt, bottom=2pt
+    ]
+    #1
+    \end{tcolorbox}%
+  }%
+}{}
 \newenvironment{normimp}{\begin{quote}\textbf{Normative Implication.} }{\end{quote}}
 
 % Logos epigraph - the thesis speaking as itself
@@ -252,11 +299,13 @@
   leftrule=2pt,
   rightrule=0pt,
   toprule=0pt,
-  bottomrule=0pt
+  bottomrule=0pt,
+  breakable
 }
 
-% Title page
+% Title page (symmetric margins)
 \begin{document}
+\newgeometry{margin=1in}
 \pagenumbering{gobble}
 \pagestyle{empty}
 \null\thispagestyle{empty}
@@ -276,6 +325,7 @@ for Biological and Artificial Systems}\\[4cm]
 \setcounter{page}{1}
 \tableofcontents
 \pagebreak
+\restoregeometry  % back to asymmetric margin layout
 
 % Introduction
 \chapter*{Introduction}
@@ -286,23 +336,33 @@ for Biological and Artificial Systems}\\[4cm]
 \mainmatter
 
 % Part I
+\newgeometry{margin=1in}
 \part{Thermodynamic Foundations and the Ladder of Emergence}
+\restoregeometry
 \input{part1/chapter}
 
 % Part II
+\newgeometry{margin=1in}
 \part{The Identity Thesis and the Geometry of Feeling}
+\restoregeometry
 \input{part2/chapter}
 
 % Part III
+\newgeometry{margin=1in}
 \part{Signatures of Affect Under the Existential Burden}
+\restoregeometry
 \input{part3/chapter}
 
 % Part IV
+\newgeometry{margin=1in}
 \part{Interventions Across Scale---From Neurons to Nations}
+\restoregeometry
 \input{part4/chapter}
 
 % Part V
+\newgeometry{margin=1in}
 \part{The Transcendence of the Self}
+\restoregeometry
 \input{part5/chapter}
 
 % Back matter
