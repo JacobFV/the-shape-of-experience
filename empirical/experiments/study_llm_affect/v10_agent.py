@@ -552,6 +552,7 @@ def train(
     log_interval: int = 10_000,
     save_interval: int = 100_000,
     save_dir: str = 'results/v10',
+    post_checkpoint_callback=None,
 ) -> Dict:
     """
     Main training loop with JIT-compiled PPO updates.
@@ -731,6 +732,9 @@ def train(
             with open(f'{save_dir}/checkpoint_{steps_done}.pkl', 'wb') as f:
                 pickle.dump(checkpoint, f)
             print(f"  Saved checkpoint at step {steps_done}", flush=True)
+            if post_checkpoint_callback:
+                post_checkpoint_callback()
+                print(f"  Volume committed at step {steps_done}", flush=True)
 
     # Save final results
     results = {
@@ -747,6 +751,10 @@ def train(
     import pickle
     with open(f'{save_dir}/final_results.pkl', 'wb') as f:
         pickle.dump(results, f)
+    print(f"Saved final results to {save_dir}/final_results.pkl", flush=True)
+    if post_checkpoint_callback:
+        post_checkpoint_callback()
+        print("Volume committed with final results", flush=True)
 
     return results
 

@@ -1871,7 +1871,7 @@ def full_pipeline_mc(config=None, n_cycles=30, steps_per_cycle=5000,
 def evolve_hd(config=None, n_cycles=30, steps_per_cycle=5000,
               cull_fraction=0.3, mutate_top_n=5,
               mutation_noise=0.03, seed=42, curriculum=False,
-              C=64, bandwidth=8.0):
+              C=64, bandwidth=8.0, post_cycle_callback=None):
     """V11.4: Evolution with high-dimensional (C=64) channel Lenia.
 
     Fully vectorized substrate — no Python loops in physics.
@@ -2132,7 +2132,10 @@ def evolve_hd(config=None, n_cycles=30, steps_per_cycle=5000,
               f"Phi_stress={stats['mean_phi_stress']:.4f} ({phi_delta:+.1%}), "
               f"robust={stats['mean_robustness']:.3f}, "
               f"bw={bandwidth:.1f}, "
-              f"({elapsed:.1f}s)")
+              f"({elapsed:.1f}s)", flush=True)
+
+        if post_cycle_callback:
+            post_cycle_callback(cycle_stats)
 
     print()
     print("=" * 60)
@@ -2310,7 +2313,7 @@ def stress_test_hd(evolved_grid, evolved_resource, evolved_coupling,
 
 def full_pipeline_hd(config=None, n_cycles=30, steps_per_cycle=5000,
                      cull_fraction=0.3, seed=42, curriculum=False,
-                     C=64, bandwidth=8.0):
+                     C=64, bandwidth=8.0, post_cycle_callback=None):
     """V11.4 pipeline: HD evolve -> stress test."""
     hd = _import_hd()
 
@@ -2335,6 +2338,7 @@ def full_pipeline_hd(config=None, n_cycles=30, steps_per_cycle=5000,
         curriculum=curriculum,
         C=C,
         bandwidth=bandwidth,
+        post_cycle_callback=post_cycle_callback,
     )
 
     stress_result = stress_test_hd(

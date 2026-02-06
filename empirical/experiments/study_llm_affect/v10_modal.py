@@ -98,6 +98,8 @@ def train_condition(condition: str, seed: int, total_steps: int = 100_000):
         total_steps=total_steps,
         seed=seed,
         save_dir=save_dir,
+        save_interval=50_000,
+        post_checkpoint_callback=results_volume.commit,
     )
 
     results_volume.commit()

@@ -251,12 +251,24 @@ def run_hd(n_cycles: int = 30, steps_per_cycle: int = 5000,
     import json
     from v11_evolution import full_pipeline_hd
 
+    def save_and_commit(cycle_stats):
+        """Save intermediate results and commit volume after each cycle."""
+        save_data = {
+            'cycle_stats': cycle_stats,
+            'n_channels': n_channels,
+            'status': 'in_progress',
+        }
+        with open('/results/hd_results.json', 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
     result = full_pipeline_hd(
         n_cycles=n_cycles,
         steps_per_cycle=steps_per_cycle,
         cull_fraction=cull_fraction,
         curriculum=curriculum,
         C=n_channels,
+        post_cycle_callback=save_and_commit,
     )
 
     save_data = {
@@ -265,6 +277,7 @@ def run_hd(n_cycles: int = 30, steps_per_cycle: int = 5000,
                         if result['stress_test'] else None),
         'n_channels': n_channels,
         'final_bandwidth': result['evolution'].get('bandwidth'),
+        'status': 'complete',
     }
     with open('/results/hd_results.json', 'w') as f:
         json.dump(save_data, f, indent=2, default=str)
