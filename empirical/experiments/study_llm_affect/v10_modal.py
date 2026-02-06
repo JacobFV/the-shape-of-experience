@@ -25,20 +25,18 @@ SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Image with all dependencies + source code baked in
 image = (
-    modal.Image.debian_slim(python_version="3.12")
+    modal.Image.debian_slim(python_version="3.11")
     .pip_install(
-        "jax[cpu]",
+        "jax[cuda12]",
         "flax",
         "optax",
         "numpy",
         "scipy",
         "scikit-learn",
         "matplotlib",
-        "openai",
-        "python-dotenv",
     )
     .add_local_dir(SRC_DIR, remote_path="/root/experiment",
-                   ignore=lambda path: not path.name.endswith(".py"))
+                   ignore=["results/", "__pycache__/", "*.pyc", ".git"])
 )
 
 
@@ -64,9 +62,9 @@ def sanity_check():
 
 @app.function(
     image=image,
+    gpu="A10G",
     volumes={"/results": results_volume},
     timeout=3600 * 24,  # 24 hours
-    memory=16384,
 )
 def train_condition(condition: str, seed: int, total_steps: int = 100_000):
     """Train a single condition on Modal."""
@@ -116,7 +114,7 @@ def train_condition(condition: str, seed: int, total_steps: int = 100_000):
 @app.function(
     image=image,
     volumes={"/results": results_volume},
-    timeout=1800,
+    timeout=3600,
     memory=8192,
 )
 def analyze_results():
@@ -129,7 +127,9 @@ def analyze_results():
     import numpy as np
 
     from v10_affect import compute_affect_for_agent
-    from v10_analysis import run_rsa_analysis, plot_ablation_comparison, RSAResult
+    from v10_analysis import (run_rsa_analysis, plot_ablation_comparison,
+                               plot_rsa_results, plot_affect_trajectories,
+                               generate_report, RSAResult)
 
     conditions = [
         'full', 'no_partial_obs', 'no_long_horizon',
@@ -138,6 +138,7 @@ def analyze_results():
     ]
 
     ablation_results = {}
+    all_data = {}
 
     for condition in conditions:
         for seed in range(3):
@@ -145,31 +146,61 @@ def analyze_results():
             if not os.path.exists(results_path):
                 continue
 
+            print(f"\nAnalyzing {condition}/seed_{seed}...", flush=True)
             with open(results_path, 'rb') as f:
                 results = pickle.load(f)
 
             latent_history = results.get('latent_history', [])
             if not latent_history:
+                print(f"  No latent history, skipping", flush=True)
                 continue
 
             env_config = results['config']['env']
             agent_config = results['config']['agent']
 
             try:
+                # Extract 6D affect for agent 0
                 vectors, affect_mat = compute_affect_for_agent(
                     latent_history, 0,
                     agent_config.latent_dim, env_config.n_actions
                 )
 
-                # Synthetic embedding for now (VLM translation requires API)
-                emb_mat = np.random.randn(len(affect_mat), 16) * 0.5
+                # Use observation embedding as comparison space
+                # (perceptual representation vs processed affect representation)
+                if 'obs_embedding' in latent_history[0]:
+                    emb_mat = np.array([h['obs_embedding'][0] for h in latent_history])
+                else:
+                    # Fallback: use latent state z itself
+                    emb_mat = np.array([h['z'][0] for h in latent_history])
 
                 result = run_rsa_analysis(affect_mat, emb_mat, subsample=500)
                 ablation_results[condition] = result
+                all_data[condition] = {
+                    'affect_mat': affect_mat,
+                    'emb_mat': emb_mat,
+                    'metrics': results.get('metrics_history', []),
+                    'episode_rewards': results.get('episode_rewards', []),
+                }
+
+                # Per-condition plots
+                cond_dir = f"/results/{condition}"
+                plot_rsa_results(result, affect_mat, emb_mat,
+                               f'{cond_dir}/rsa_analysis.png')
+                plot_affect_trajectories(affect_mat,
+                                        f'{cond_dir}/affect_trajectories.png')
+
             except Exception as e:
-                print(f"Error: {condition}/seed_{seed}: {e}")
+                import traceback
+                print(f"Error: {condition}/seed_{seed}: {e}", flush=True)
+                traceback.print_exc()
 
     if ablation_results:
+        print(f"\n{'='*60}", flush=True)
+        print(f"ABLATION COMPARISON ({len(ablation_results)} conditions)", flush=True)
+        print(f"{'='*60}", flush=True)
+        for cond, result in ablation_results.items():
+            print(f"  {cond:25s}: {result.summary()}", flush=True)
+
         plot_ablation_comparison(ablation_results, "/results/ablation_comparison.png")
         results_volume.commit()
 
@@ -187,7 +218,7 @@ def main(
     Main entrypoint for Modal execution.
 
     Args:
-        mode: 'sanity', 'train', 'ablation', or 'full'
+        mode: 'sanity', 'train', 'ablation', 'analyze', or 'full'
         steps: training steps per condition
         seeds: number of random seeds
         condition: which ablation condition (for mode='train')
@@ -206,6 +237,13 @@ def main(
             result = future.get()
             print(f"Seed {i}: {result}")
 
+    elif mode == "analyze":
+        print("Running analysis on existing results...")
+        analysis = analyze_results.remote()
+        for cond, res in analysis.items():
+            sig = "***" if res['mantel_p'] < 0.001 else "**" if res['mantel_p'] < 0.01 else "*" if res['mantel_p'] < 0.05 else "ns"
+            print(f"  {cond:25s}: ρ={res['mantel_rho']:.3f} (p={res['mantel_p']:.4f}) {sig}")
+
     elif mode == "ablation":
         conditions = [
             'full', 'no_partial_obs', 'no_long_horizon',
@@ -213,6 +251,7 @@ def main(
             'no_intrinsic_motivation', 'no_delayed_rewards',
         ]
         print(f"Training all {len(conditions)} conditions for {steps} steps, {seeds} seeds")
+        print(f"Launching {len(conditions) * seeds} parallel GPU jobs...")
 
         futures = []
         for cond in conditions:
@@ -222,6 +261,12 @@ def main(
         for future in futures:
             result = future.get()
             print(f"Completed: {result}")
+
+        print("\nAll training done. Running analysis...")
+        analysis = analyze_results.remote()
+        for cond, res in analysis.items():
+            sig = "***" if res['mantel_p'] < 0.001 else "**" if res['mantel_p'] < 0.01 else "*" if res['mantel_p'] < 0.05 else "ns"
+            print(f"  {cond:25s}: ρ={res['mantel_rho']:.3f} (p={res['mantel_p']:.4f}) {sig}")
 
     elif mode == "full":
         conditions = [
@@ -243,4 +288,6 @@ def main(
 
         print("\nRunning analysis...")
         analysis = analyze_results.remote()
-        print(f"Analysis results: {analysis}")
+        for cond, res in analysis.items():
+            sig = "***" if res['mantel_p'] < 0.001 else "**" if res['mantel_p'] < 0.01 else "*" if res['mantel_p'] < 0.05 else "ns"
+            print(f"  {cond:25s}: ρ={res['mantel_rho']:.3f} (p={res['mantel_p']:.4f}) {sig}")

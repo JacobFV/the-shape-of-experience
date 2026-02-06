@@ -283,6 +283,8 @@ class PPOTrainer:
         }
         z_init = jnp.zeros((1, self.ac.latent_dim))
         params = self.network.init(rng, obs_shapes, z_init)
+        # JIT compile forward pass after init for speed
+        self._jit_apply = jax.jit(self.network.apply)
         return params
 
     def create_train_state(self, rng: jnp.ndarray) -> train_state.TrainState:
@@ -306,7 +308,8 @@ class PPOTrainer:
 
         Returns: (action, signal_tokens, log_prob, network_outputs)
         """
-        outputs = self.network.apply(params, obs, z)
+        apply_fn = getattr(self, '_jit_apply', self.network.apply)
+        outputs = apply_fn(params, obs, z)
 
         # Sample action
         action_logits = outputs['action_logits']
@@ -331,23 +334,27 @@ class PPOTrainer:
         dones: jnp.ndarray,
         last_value: jnp.ndarray,
     ) -> Tuple[jnp.ndarray, jnp.ndarray]:
-        """Compute GAE advantages and returns."""
+        """Compute GAE advantages and returns using reverse scan."""
         gamma = self.ac.gamma
         lam = self.ac.gae_lambda
-        n_steps = rewards.shape[0]
 
-        advantages = jnp.zeros_like(rewards)
-        last_gae = 0.0
-
-        for t in reversed(range(n_steps)):
-            if t == n_steps - 1:
-                next_value = last_value
-            else:
-                next_value = values[t + 1]
-            next_non_terminal = 1.0 - dones[t]
-            delta = rewards[t] + gamma * next_value * next_non_terminal - values[t]
+        def _gae_step(carry, t_data):
+            last_gae = carry
+            reward, value, done, next_value = t_data
+            next_non_terminal = 1.0 - done
+            delta = reward + gamma * next_value * next_non_terminal - value
             last_gae = delta + gamma * lam * next_non_terminal * last_gae
-            advantages = advantages.at[t].set(last_gae)
+            return last_gae, last_gae
+
+        # Build next_values: shifted values with last_value appended
+        next_values = jnp.concatenate([values[1:], last_value[None]])
+
+        # Reverse scan for GAE
+        t_data = (rewards, values, dones, next_values)
+        # Reverse the inputs, scan forward, reverse outputs
+        rev_data = jax.tree.map(lambda x: x[::-1], t_data)
+        _, rev_advantages = jax.lax.scan(_gae_step, 0.0, rev_data)
+        advantages = rev_advantages[::-1]
 
         returns = advantages + values
         return advantages, returns
@@ -451,65 +458,70 @@ def collect_rollout(
     """
     Collect a rollout of n_steps from the environment.
 
+    All agents are batched into a single forward pass per step.
+    Uses JIT-compiled env methods for speed.
     Returns: (transitions, final_env_state, final_z)
     """
     transitions = []
     na = env.config.n_agents
+    apply_fn = getattr(trainer, '_jit_apply', trainer.network.apply)
+    use_jit_env = hasattr(env, '_jit_step')
 
     for t in range(n_steps):
-        rng, step_rng = random.split(rng)
-        step_keys = random.split(step_rng, na)
+        rng, step_rng, action_rng = random.split(rng, 3)
 
-        # Get observations
-        obs = env._get_observations(env_state)
+        # Get observations — already (n_agents, ...) shaped
+        obs = env.jit_get_observations(env_state) if use_jit_env else env._get_observations(env_state)
 
-        # Each agent selects action
-        actions = []
-        signals = []
-        log_probs = []
-        values = []
-        z_list = []
-        obs_embeddings = []
+        # Batched forward pass: all agents at once
+        outputs = apply_fn(params, obs, z)
 
-        for i in range(na):
-            agent_obs = {k: v[i:i+1] for k, v in obs.items()}
-            agent_z = z[i:i+1]
+        # Sample actions for all agents
+        action_logits = outputs['action_logits']  # (n_agents, n_actions)
+        action_keys = random.split(action_rng, na)
+        actions = jax.vmap(
+            lambda logits, key: jax.random.categorical(key, logits)
+        )(action_logits, action_keys)
 
-            action, signal, log_prob, outputs = trainer.select_action(
-                params, agent_obs, agent_z, step_keys[i]
-            )
-            actions.append(action.squeeze())
-            signals.append(signal.squeeze())
-            log_probs.append(log_prob.squeeze())
-            values.append(outputs['value'].squeeze())
-            z_list.append(outputs['z'].squeeze())
-            obs_embeddings.append(outputs['obs_embedding'].squeeze())
+        # Log probs
+        log_probs_all = jax.nn.log_softmax(action_logits)
+        log_probs = jnp.take_along_axis(
+            log_probs_all, actions[..., None], axis=-1
+        ).squeeze(-1)
 
-        actions = jnp.stack(actions)
-        signals = jnp.stack(signals)
-        log_probs = jnp.stack(log_probs)
-        values_arr = jnp.stack(values)
-        z_new = jnp.stack(z_list)
-        obs_embs = jnp.stack(obs_embeddings)
+        # Sample signals — vectorized across tokens
+        signal_logits = outputs['signal_logits']  # (n_agents, n_tokens, vocab)
+        n_tok = trainer.ac.n_signal_tokens
+        signal_keys = random.split(step_rng, na * n_tok).reshape(na, n_tok, 2)
+        # Flatten to (na*n_tok, vocab), sample, reshape back
+        flat_logits = signal_logits.reshape(na * n_tok, -1)
+        flat_keys = signal_keys.reshape(na * n_tok, 2)
+        flat_signals = jax.vmap(
+            lambda logits, key: jax.random.categorical(key, logits)
+        )(flat_logits, flat_keys)
+        signals = flat_signals.reshape(na, n_tok).astype(jnp.int32)
 
-        # Step environment
-        env_state, next_obs, rewards, dones = env.step(env_state, actions, signals)
+        values_arr = outputs['value']  # (n_agents,)
+        z_new = outputs['z']  # (n_agents, latent_dim)
+        obs_embs = outputs['obs_embedding']  # (n_agents, hidden_dim)
 
-        # Compute intrinsic rewards
-        if trainer.ac.use_intrinsic_motivation:
-            next_obs_agent = env._get_observations(env_state)
-            for i in range(na):
-                agent_next_obs = {k: v[i:i+1] for k, v in next_obs_agent.items()}
-                next_emb = trainer.network.apply(
-                    params,
-                    agent_next_obs,
-                    z_new[i:i+1],
-                )['obs_embedding'].squeeze()
-                ir = trainer.compute_intrinsic_reward(
-                    params, {k: v[i:i+1] for k, v in obs.items()},
-                    z[i:i+1], next_emb[None]
-                )
-                rewards = rewards.at[i].add(ir)
+        # Step environment (JIT-compiled)
+        if use_jit_env:
+            env_state, next_obs, rewards, dones = env.jit_step(env_state, actions, signals)
+        else:
+            env_state, next_obs, rewards, dones = env.step(env_state, actions, signals)
+
+        # Compute intrinsic rewards (batched, but skip extra forward pass —
+        # use obs_embedding difference as proxy)
+        if trainer.ac.use_intrinsic_motivation and 'predicted_next_obs' in outputs:
+            next_obs_batch = env.jit_get_observations(env_state) if use_jit_env else env._get_observations(env_state)
+            next_outputs = apply_fn(params, next_obs_batch, z_new)
+            next_embs = next_outputs['obs_embedding']
+            pred_errors = jnp.mean(
+                (outputs['predicted_next_obs'] - next_embs) ** 2,
+                axis=-1)
+            intrinsic = jnp.tanh(pred_errors) * 0.1
+            rewards = rewards + intrinsic
 
         transitions.append(Transition(
             obs=obs,
@@ -542,11 +554,12 @@ def train(
     save_dir: str = 'results/v10',
 ) -> Dict:
     """
-    Main training loop.
+    Main training loop with JIT-compiled PPO updates.
 
     Returns dict with final params, training metrics, and latent state history.
     """
     import os
+    import time
     os.makedirs(save_dir, exist_ok=True)
 
     from v10_environment import SurvivalGridWorld
@@ -565,21 +578,51 @@ def train(
     metrics_history = []
     latent_history = []  # for affect extraction
     episode_rewards = []
-    total_reward = jnp.zeros(env_config.n_agents)
 
     steps_done = 0
     n_updates = 0
 
-    print(f"Starting V10 training: {total_steps} steps, {env_config.n_agents} agents")
+    print(f"Starting V10 training: {total_steps} steps, {env_config.n_agents} agents", flush=True)
     print(f"Forcing functions: WM={agent_config.use_world_model}, "
           f"SP={agent_config.use_self_prediction}, "
           f"IM={agent_config.use_intrinsic_motivation}, "
           f"PO={env_config.partial_observability}, "
           f"LH={env_config.long_horizons}, "
-          f"DR={env_config.delayed_rewards}")
+          f"DR={env_config.delayed_rewards}", flush=True)
+
+    # JIT-compile the PPO update step
+    @jax.jit
+    def _jit_update(params, batch, rng):
+        """Single JIT-compiled PPO update: loss + grad + metrics."""
+        (loss, metrics), grads = jax.value_and_grad(
+            lambda p: trainer.ppo_loss(p, batch, rng), has_aux=True
+        )(params)
+        return grads, loss, metrics
+
+    # JIT-compile GAE for a single agent
+    @jax.jit
+    def _jit_gae(rewards, values, dones, last_value):
+        return trainer.compute_gae(rewards, values, dones, last_value)
+
+    # Warm up JIT compilations
+    print("JIT compiling env step + observations...")
+    t0 = time.time()
+    _ = env.jit_get_observations(env_state)
+    rng, _rng = random.split(rng)
+    _actions = jnp.zeros(env_config.n_agents, dtype=jnp.int32)
+    _signals = jnp.zeros((env_config.n_agents, agent_config.n_signal_tokens), dtype=jnp.int32)
+    _ = env.jit_step(env_state, _actions, _signals)
+    print(f"  env JIT done ({time.time() - t0:.1f}s)")
+
+    print("JIT compiling forward pass...")
+    t0 = time.time()
+    apply_fn = trainer._jit_apply
+    _out = apply_fn(ts.params, obs, z)
+    print(f"  forward JIT done ({time.time() - t0:.1f}s)")
 
     while steps_done < total_steps:
         rng, rollout_rng = random.split(rng)
+        t_rollout = time.time()
 
         # Collect rollout
         transitions, env_state, z = collect_rollout(
@@ -587,14 +630,10 @@ def train(
             n_steps=agent_config.n_steps,
         )
 
-        # Compute last value for GAE
-        last_obs = env._get_observations(env_state)
-        last_values = []
-        for i in range(env_config.n_agents):
-            agent_obs = {k: v[i:i+1] for k, v in last_obs.items()}
-            out = trainer.network.apply(ts.params, agent_obs, z[i:i+1])
-            last_values.append(out['value'].squeeze())
-        last_value = jnp.stack(last_values)
+        # Compute last value for GAE (batched — all agents at once)
+        last_obs = env.jit_get_observations(env_state)
+        last_out = apply_fn(ts.params, last_obs, z)
+        last_value = last_out['value']  # (n_agents,)
 
         # Stack transitions
         rewards = jnp.stack([t.reward for t in transitions])  # (n_steps, n_agents)
@@ -610,16 +649,15 @@ def train(
                     'action': np.array(t.action),
                     'signal': np.array(t.signal),
                     'value': np.array(t.value),
+                    'obs_embedding': np.array(t.obs_embedding),
                     'step': steps_done,
                 })
 
-        # Per-agent GAE
+        # Per-agent GAE + PPO update
+        metrics = {}
         for i in range(env_config.n_agents):
-            agent_rewards = rewards[:, i]
-            agent_values = values[:, i]
-            agent_dones = dones[:, i]
-            advantages, returns = trainer.compute_gae(
-                agent_rewards, agent_values, agent_dones, last_value[i]
+            advantages, returns = _jit_gae(
+                rewards[:, i], values[:, i], dones[:, i], last_value[i]
             )
 
             # Build batch for this agent
@@ -645,11 +683,10 @@ def train(
                                      [z[i]])
                 batch['next_z'] = next_zs
 
-            # PPO update
+            # PPO update (JIT-compiled)
             rng, update_rng = random.split(rng)
             for epoch in range(agent_config.n_epochs):
-                loss, metrics = trainer.ppo_loss(ts.params, batch, update_rng)
-                grads = jax.grad(lambda p: trainer.ppo_loss(p, batch, update_rng)[0])(ts.params)
+                grads, loss, metrics = _jit_update(ts.params, batch, update_rng)
                 ts = ts.apply_gradients(grads=grads)
 
         steps_done += agent_config.n_steps
@@ -661,16 +698,19 @@ def train(
 
         # Logging
         if steps_done % log_interval < agent_config.n_steps:
+            dt = time.time() - t_rollout
             avg_reward = np.mean(episode_rewards[-100:]) if episode_rewards else 0
             avg_health = float(env_state.agent_health.mean())
             avg_hunger = float(env_state.agent_hunger.mean())
             signal_entropy = _signal_entropy(env_state.agent_signals, env_config.vocab_size)
+            sps = agent_config.n_steps / max(dt, 0.01)
             print(f"Step {steps_done}/{total_steps} | "
                   f"Reward: {avg_reward:.3f} | "
                   f"Health: {avg_health:.1f} | "
                   f"Hunger: {avg_hunger:.1f} | "
                   f"Signal H: {signal_entropy:.2f} | "
-                  f"Loss: {float(metrics.get('total_loss', 0)):.4f}")
+                  f"Loss: {float(metrics.get('total_loss', 0)):.4f} | "
+                  f"{sps:.0f} steps/s", flush=True)
             metrics_history.append({
                 'step': steps_done,
                 'reward': avg_reward,
@@ -690,7 +730,7 @@ def train(
             import pickle
             with open(f'{save_dir}/checkpoint_{steps_done}.pkl', 'wb') as f:
                 pickle.dump(checkpoint, f)
-            print(f"  Saved checkpoint at step {steps_done}")
+            print(f"  Saved checkpoint at step {steps_done}", flush=True)
 
     # Save final results
     results = {

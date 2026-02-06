@@ -154,6 +154,21 @@ class SurvivalGridWorld:
     def __init__(self, config: Optional[EnvConfig] = None):
         self.config = config or EnvConfig()
         self.c = self.config  # shorthand
+        # JIT-compiled versions (created after first use)
+        self._jit_step = None
+        self._jit_obs = None
+
+    def jit_step(self, state, actions, signal_tokens):
+        """JIT-compiled environment step."""
+        if self._jit_step is None:
+            self._jit_step = jax.jit(self.step)
+        return self._jit_step(state, actions, signal_tokens)
+
+    def jit_get_observations(self, state):
+        """JIT-compiled observation function."""
+        if self._jit_obs is None:
+            self._jit_obs = jax.jit(self._get_observations)
+        return self._jit_obs(state)
 
     def reset(self, rng: jnp.ndarray) -> Tuple[EnvState, jnp.ndarray]:
         """Initialize environment. Returns (state, observations)."""
@@ -178,9 +193,9 @@ class SurvivalGridWorld:
 
         # Place agents randomly
         agent_positions = random.randint(keys[3], (na, 2), 0, gs)
-        agent_health = jnp.full(na, self.c.max_health)
-        agent_hunger = jnp.full(na, self.c.max_hunger)
-        agent_thirst = jnp.full(na, self.c.max_thirst)
+        agent_health = jnp.full(na, self.c.max_health, dtype=jnp.float32)
+        agent_hunger = jnp.full(na, self.c.max_hunger, dtype=jnp.float32)
+        agent_thirst = jnp.full(na, self.c.max_thirst, dtype=jnp.float32)
         agent_alive = jnp.ones(na, dtype=jnp.bool_)
         agent_signals = jnp.zeros((na, self.c.n_signal_tokens), dtype=jnp.int32)
 
@@ -391,14 +406,17 @@ class SurvivalGridWorld:
                     state.agent_alive[i]
                 )
                 new_health = new_health.at[i].add(jnp.where(in_storm, -self.c.storm_damage, 0))
-                new_threat_grid = jnp.where(
-                    new_storm_active,
-                    new_threat_grid.at[
-                        jnp.clip(new_storm_center[0] - 1, 0, gs - 1):jnp.clip(new_storm_center[0] + 2, 0, gs),
-                        jnp.clip(new_storm_center[1] - 1, 0, gs - 1):jnp.clip(new_storm_center[1] + 2, 0, gs),
-                    ].set(0.5),  # storm threat marker
-                    new_threat_grid
-                )
+            # Storm threat marker (JIT-safe: use distance mask instead of dynamic slice)
+            row_idx = jnp.arange(gs)
+            storm_mask = (
+                (jnp.abs(row_idx[:, None] - new_storm_center[0]) <= 1) &
+                (jnp.abs(row_idx[None, :] - new_storm_center[1]) <= 1)
+            )
+            new_threat_grid = jnp.where(
+                new_storm_active & storm_mask,
+                jnp.maximum(new_threat_grid, 0.5),
+                new_threat_grid,
+            )
 
         # Storm timer
         new_storm_timer = jnp.maximum(0, new_storm_timer - 1)
@@ -537,14 +555,10 @@ class SurvivalGridWorld:
 
             # Apply partial observability mask (night reduces radius)
             if self.c.partial_observability:
-                mask = jnp.zeros((obs_size, obs_size))
-                for dx in range(-self.c.obs_radius, self.c.obs_radius + 1):
-                    for dy in range(-self.c.obs_radius, self.c.obs_radius + 1):
-                        dist = jnp.sqrt(dx**2 + dy**2)
-                        visible = dist <= obs_r
-                        mask = mask.at[center + dx, center + dy].set(
-                            jnp.where(visible, 1.0, 0.0)
-                        )
+                dx = jnp.arange(obs_size) - center
+                dy = jnp.arange(obs_size) - center
+                dist_grid = jnp.sqrt(dx[:, None]**2 + dy[None, :]**2)
+                mask = (dist_grid <= obs_r).astype(jnp.float32)
                 obs = obs * mask[:, :, None]
 
             all_obs.append(obs)
