@@ -652,8 +652,27 @@ if __name__ == '__main__':
                 C = int(sys.argv[i + 1])
         result = full_pipeline_hd(C=C)
 
+    elif mode == 'hier':
+        from v11_evolution import evolve_hier
+        n_cycles = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2].isdigit() else 30
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        curriculum = '--curriculum' in sys.argv
+        result = evolve_hier(n_cycles=n_cycles, curriculum=curriculum, C=C)
+
+    elif mode == 'hier-pipeline':
+        from v11_evolution import full_pipeline_hier
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        result = full_pipeline_hier(C=C)
+
     else:
         print(f"Unknown mode: {mode}")
         print("Usage: python v11_run.py "
               "[sanity|perturb|experiment|ablation|evolve|seeds|pipeline"
-              "|hetero|hetero-pipeline|multichannel|mc-pipeline|hd|hd-pipeline]")
+              "|hetero|hetero-pipeline|multichannel|mc-pipeline|hd|hd-pipeline"
+              "|hier|hier-pipeline]")

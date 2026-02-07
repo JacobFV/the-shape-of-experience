@@ -2358,3 +2358,434 @@ def full_pipeline_hd(config=None, n_cycles=30, steps_per_cycle=5000,
         'evolution': evo_result,
         'stress_test': stress_result,
     }
+
+
+# ============================================================================
+# V11.5: Hierarchical Multi-Timescale Evolution
+# ============================================================================
+
+def _import_hier():
+    from v11_substrate_hier import (
+        generate_hier_config, HIER_CONFIG, generate_hier_coupling,
+        make_kernels_fft_hier, run_chunk_hier_wrapper, init_soup_hier,
+        TIER_SENSORY, TIER_PROCESSING, TIER_MEMORY, TIER_PREDICTION,
+    )
+    from v11_affect_hier import measure_all_hier, HierAffectState
+    return {
+        'generate_hier_config': generate_hier_config,
+        'HIER_CONFIG': HIER_CONFIG,
+        'generate_hier_coupling': generate_hier_coupling,
+        'make_kernels_fft_hier': make_kernels_fft_hier,
+        'run_chunk_hier_wrapper': run_chunk_hier_wrapper,
+        'init_soup_hier': init_soup_hier,
+        'measure_all_hier': measure_all_hier,
+        'HierAffectState': HierAffectState,
+    }
+
+
+def score_fitness_hier(baseline_affects, stress_affects, survival_steps,
+                       total_steps):
+    """Fitness for hierarchical patterns.
+
+    Adds world-model accuracy and prediction accuracy to standard fitness.
+    """
+    if not baseline_affects:
+        return 0.0
+
+    survival_frac = survival_steps / max(total_steps, 1)
+    phi_base = np.mean([a.integration for a in baseline_affects])
+    phi_stress = np.mean([a.integration for a in stress_affects]) if stress_affects else phi_base
+    robustness = phi_stress / (phi_base + 1e-6)
+    wm_acc = np.mean([a.world_model_accuracy for a in baseline_affects])
+    sm_sal = np.mean([a.self_model_salience for a in baseline_affects])
+    tier_int = np.mean([a.tier_integration for a in baseline_affects])
+    mass = baseline_affects[-1].mass if baseline_affects else 1.0
+
+    fitness = (
+        survival_frac *
+        robustness *
+        (1.0 + phi_base) *
+        (1.0 + 0.5 * wm_acc) *
+        (1.0 + 0.3 * tier_int) *
+        (1.0 + 0.2 * sm_sal) *
+        np.log(max(mass, 1.0))
+    )
+    return float(fitness)
+
+
+def evolve_hier(config=None, n_cycles=30, steps_per_cycle=5000,
+                cull_fraction=0.3, mutate_top_n=5,
+                mutation_noise=0.03, seed=42, curriculum=False,
+                C=64, post_cycle_callback=None):
+    """V11.5: Evolution with hierarchical multi-timescale Lenia."""
+    hier = _import_hier()
+
+    if config is None:
+        config = hier['generate_hier_config'](C=C, N=256, seed=seed)
+
+    N = config['grid_size']
+    C = config['n_channels']
+    tier_assignments = config['tier_assignments']
+    rng = random.PRNGKey(seed)
+
+    kernel_ffts = hier['make_kernels_fft_hier'](config)
+    coupling = jnp.array(hier['generate_hier_coupling'](
+        C, tier_assignments, seed=seed))
+
+    stress_config = {**config, 'resource_regen': 0.001}
+
+    print("=" * 60)
+    print(f"V11.5 HIERARCHICAL LENIA EVOLUTION (C={C})")
+    print("=" * 60)
+    tier_sizes = config['tier_sizes']
+    print(f"  Tiers: S={tier_sizes[0]}, P={tier_sizes[1]}, "
+          f"M={tier_sizes[2]}, Pred={tier_sizes[3]}")
+    print(f"  Grid: {N}x{N}, Cycles: {n_cycles}")
+    print()
+
+    # Initialize
+    print("Phase 0: Initializing hierarchical soup...")
+    rng, k = random.split(rng)
+    grid, resource = hier['init_soup_hier'](N, C, k, config)
+
+    print("  JIT compiling...", end=" ", flush=True)
+    t0 = time.time()
+    grid, resource, rng = hier['run_chunk_hier_wrapper'](
+        grid, resource, kernel_ffts, coupling, rng, config, 100)
+    grid.block_until_ready()
+    print(f"done ({time.time()-t0:.1f}s)")
+
+    grid, resource, rng = hier['run_chunk_hier_wrapper'](
+        grid, resource, kernel_ffts, coupling, rng, config, 4900)
+    grid.block_until_ready()
+
+    grid_np = np.array(grid)
+    initial_patterns = detect_patterns_mc(grid_np, threshold=0.15)
+    print(f"  {len(initial_patterns)} patterns after warmup\n")
+
+    tracker = PatternTracker()
+    prev_masses = {}
+    prev_values = {}
+    cycle_stats = []
+
+    baseline_steps = int(steps_per_cycle * 0.6)
+    stress_steps = steps_per_cycle - baseline_steps
+
+    for cycle in range(n_cycles):
+        t0 = time.time()
+        step_base = cycle * steps_per_cycle
+        chunk = 100
+        measure_every = max(200, baseline_steps // 10)
+
+        cycle_stress_config = stress_config
+        if curriculum:
+            difficulty = cycle / max(n_cycles - 1, 1)
+            cycle_stress_config = {
+                **config,
+                'resource_regen': 0.001 * (1.0 - 0.8 * difficulty),
+            }
+
+        # ---- BASELINE PHASE ----
+        baseline_affects = {}
+        baseline_survival = {}
+        step = 0
+        while step < baseline_steps:
+            grid, resource, rng = hier['run_chunk_hier_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng, config, chunk)
+            step += chunk
+
+            if step % measure_every < chunk:
+                grid_np = np.array(grid)
+                resource_np = np.array(resource)
+                patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                tracker.update(patterns, step=step_base + step)
+
+                for p in tracker.active.values():
+                    pid = p.id
+                    if pid not in baseline_affects:
+                        baseline_affects[pid] = []
+                    baseline_survival[pid] = step
+                    pm = prev_masses.get(pid)
+                    pv = prev_values.get(pid)
+                    affect = hier['measure_all_hier'](
+                        p, pm, pv, [],
+                        jnp.array(grid_np), jnp.array(resource_np),
+                        coupling, config, N,
+                        step_num=step_base + step, fast=True)
+                    baseline_affects[pid].append(affect)
+                    prev_masses[pid] = p.mass
+                    prev_values[pid] = p.values.copy()
+
+        # ---- STRESS PHASE ----
+        stress_affects = {}
+        measure_every_stress = max(200, stress_steps // 8)
+        step = 0
+        while step < stress_steps:
+            grid, resource, rng = hier['run_chunk_hier_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng,
+                cycle_stress_config, chunk)
+            step += chunk
+
+            if step % measure_every_stress < chunk:
+                grid_np = np.array(grid)
+                resource_np = np.array(resource)
+                patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                tracker.update(patterns, step=step_base + baseline_steps + step)
+
+                for p in tracker.active.values():
+                    pid = p.id
+                    if pid not in stress_affects:
+                        stress_affects[pid] = []
+                    if pid in baseline_survival:
+                        baseline_survival[pid] = baseline_steps + step
+                    pm = prev_masses.get(pid)
+                    pv = prev_values.get(pid)
+                    affect = hier['measure_all_hier'](
+                        p, pm, pv, [],
+                        jnp.array(grid_np), jnp.array(resource_np),
+                        coupling, config, N,
+                        step_num=step_base + baseline_steps + step, fast=True)
+                    stress_affects[pid].append(affect)
+                    prev_masses[pid] = p.mass
+                    prev_values[pid] = p.values.copy()
+
+        # ---- SCORE ----
+        grid_np = np.array(grid)
+        patterns = detect_patterns_mc(grid_np, threshold=0.15)
+        tracker.update(patterns, step=step_base + steps_per_cycle)
+
+        scored = []
+        for p in tracker.active.values():
+            pid = p.id
+            ba = baseline_affects.get(pid, [])
+            sa = stress_affects.get(pid, [])
+            surv = baseline_survival.get(pid, 0)
+            fitness = score_fitness_hier(ba, sa, surv, steps_per_cycle)
+            phi_base = float(np.mean([a.integration for a in ba])) if ba else 0.0
+            phi_stress = float(np.mean([a.integration for a in sa])) if sa else phi_base
+            robustness = phi_stress / phi_base if phi_base > 1e-6 else 1.0
+            wm_acc = float(np.mean([a.world_model_accuracy for a in ba])) if ba else 0.0
+            tier_int = float(np.mean([a.tier_integration for a in ba])) if ba else 0.0
+            cf_wt = float(np.mean([a.counterfactual_weight for a in ba])) if ba else 0.0
+            scored.append((p, fitness, phi_base, phi_stress, robustness,
+                          wm_acc, tier_int, cf_wt))
+
+        scored.sort(key=lambda x: x[1])
+
+        if not scored:
+            print(f"Cycle {cycle+1:>3d}: EXTINCTION — reseeding")
+            rng, k = random.split(rng)
+            grid, resource = hier['init_soup_hier'](N, C, k, config)
+            grid, resource, rng = hier['run_chunk_hier_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng, config, 3000)
+            tracker = PatternTracker()
+            prev_masses = {}
+            prev_values = {}
+            cycle_stats.append({
+                'cycle': cycle + 1, 'n_survived': 0, 'extinction': True})
+            continue
+
+        # ---- CULL ----
+        n_cull = max(1, int(len(scored) * cull_fraction))
+        to_kill = scored[:n_cull]
+        kill_mask = np.ones((N, N), dtype=np.float32)
+        for p, *_ in to_kill:
+            kill_mask[p.cells[:, 0], p.cells[:, 1]] = 0.0
+        grid = grid * jnp.array(kill_mask)[None, :, :]
+
+        # ---- BOOST + MUTATE ----
+        top_patterns = scored[-mutate_top_n:]
+        for p, *_ in top_patterns:
+            cx, cy = int(p.center[1]), int(p.center[0])
+            resource = perturb_resource_bloom(resource, (cx, cy), radius=20, intensity=0.3)
+
+        for p, *_ in top_patterns:
+            rng, k1 = random.split(rng)
+            r_min, r_max = max(0, p.bbox[0]-5), min(N-1, p.bbox[1]+5)
+            c_min, c_max = max(0, p.bbox[2]-5), min(N-1, p.bbox[3]+5)
+            h, w = r_max-r_min+1, c_max-c_min+1
+            noise = mutation_noise * random.normal(k1, (C, h, w))
+            region = grid[:, r_min:r_max+1, c_min:c_max+1]
+            grid = grid.at[:, r_min:r_max+1, c_min:c_max+1].set(
+                jnp.clip(region + noise, 0.0, 1.0))
+
+        # Restore resources
+        resource = jnp.clip(
+            resource + 0.1 * (config['resource_max'] - resource),
+            0.0, config['resource_max'])
+
+        elapsed = time.time() - t0
+        all_phi_base = [pb for _, _, pb, *_ in scored]
+        all_phi_stress = [ps for _, _, _, ps, *_ in scored]
+        all_robust = [r for _, _, _, _, r, *_ in scored]
+        all_wm = [wm for _, _, _, _, _, wm, *_ in scored]
+        all_ti = [ti for _, _, _, _, _, _, ti, _ in scored]
+        all_cf = [cf for _, _, _, _, _, _, _, cf in scored]
+
+        stats = {
+            'cycle': cycle + 1,
+            'n_patterns': len(scored),
+            'n_culled': n_cull,
+            'mean_phi_base': float(np.mean(all_phi_base)),
+            'mean_phi_stress': float(np.mean(all_phi_stress)),
+            'mean_robustness': float(np.mean(all_robust)),
+            'mean_world_model': float(np.mean(all_wm)),
+            'mean_tier_integration': float(np.mean(all_ti)),
+            'mean_cf_weight': float(np.mean(all_cf)),
+            'elapsed': elapsed,
+        }
+        cycle_stats.append(stats)
+
+        phi_delta = (stats['mean_phi_stress'] - stats['mean_phi_base']) / (
+            stats['mean_phi_base'] + 1e-10)
+        print(f"Cycle {cycle+1:>3d}/{n_cycles}: "
+              f"n={len(scored):>3d}(-{n_cull}), "
+              f"Phi={stats['mean_phi_base']:.4f}/{stats['mean_phi_stress']:.4f}({phi_delta:+.0%}), "
+              f"WM={stats['mean_world_model']:.3f}, "
+              f"TI={stats['mean_tier_integration']:.3f}, "
+              f"CF={stats['mean_cf_weight']:.3f}, "
+              f"({elapsed:.0f}s)", flush=True)
+
+        if post_cycle_callback:
+            post_cycle_callback(cycle_stats)
+
+    print()
+    print("=" * 60)
+    print(f"V11.5 HIERARCHICAL EVOLUTION COMPLETE (C={C})")
+    print("=" * 60)
+    if len(cycle_stats) >= 2:
+        first = next((s for s in cycle_stats if 'mean_phi_base' in s), None)
+        last = next((s for s in reversed(cycle_stats) if 'mean_phi_base' in s), None)
+        if first and last:
+            for key in ['mean_phi_base', 'mean_phi_stress', 'mean_robustness',
+                        'mean_world_model', 'mean_tier_integration', 'mean_cf_weight']:
+                label = key.replace('mean_', '').replace('_', ' ').title()
+                print(f"  {label:20s}: {first[key]:.4f} -> {last[key]:.4f}")
+
+    return {
+        'cycle_stats': cycle_stats,
+        'final_grid': grid,
+        'final_resource': resource,
+        'coupling': coupling,
+        'config': config,
+    }
+
+
+def full_pipeline_hier(config=None, n_cycles=30, steps_per_cycle=5000,
+                       cull_fraction=0.3, seed=42, curriculum=False,
+                       C=64, post_cycle_callback=None):
+    """V11.5 pipeline: Hierarchical evolve -> stress test."""
+    hier = _import_hier()
+
+    if config is None:
+        config = hier['generate_hier_config'](C=C, N=256, seed=seed)
+
+    t_start = time.time()
+    print()
+    print("+" + "=" * 58 + "+")
+    print(f"| V11.5 PIPELINE: Hier Evolve (C={C}) -> Stress Test" +
+          " " * (8 - len(str(C))) + "|")
+    print("+" + "=" * 58 + "+")
+
+    evo_result = evolve_hier(
+        config=config, n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle, cull_fraction=cull_fraction,
+        seed=seed, curriculum=curriculum, C=C,
+        post_cycle_callback=post_cycle_callback)
+
+    stress_result = stress_test_hier(
+        evo_result['final_grid'], evo_result['final_resource'],
+        evo_result['coupling'], config=config, seed=seed + 2, C=C)
+
+    elapsed = time.time() - t_start
+    print(f"\nTotal pipeline time: {elapsed:.0f}s ({elapsed/60:.1f}min)")
+
+    return {'evolution': evo_result, 'stress_test': stress_result}
+
+
+def stress_test_hier(evolved_grid, evolved_resource, evolved_coupling,
+                     config=None, seed=99, C=64):
+    """Compare evolved-hierarchical vs naive under drought."""
+    hier = _import_hier()
+
+    if config is None:
+        config = hier['generate_hier_config'](C=C, N=256, seed=seed)
+
+    N = config['grid_size']
+    C = config['n_channels']
+    tier_assignments = config['tier_assignments']
+    rng = random.PRNGKey(seed)
+
+    kernel_ffts = hier['make_kernels_fft_hier'](config)
+    naive_coupling = jnp.array(hier['generate_hier_coupling'](
+        C, tier_assignments, seed=seed + 100))
+
+    print()
+    print("=" * 60)
+    print(f"V11.5 STRESS TEST: Evolved vs Naive (C={C})")
+    print("=" * 60)
+
+    rng, k = random.split(rng)
+    naive_grid, naive_resource = hier['init_soup_hier'](N, C, k, config)
+    naive_grid, naive_resource, rng = hier['run_chunk_hier_wrapper'](
+        naive_grid, naive_resource, kernel_ffts, naive_coupling, rng, config, 5000)
+
+    phases = [('baseline', config, 2000),
+              ('drought', {**config, 'resource_regen': 0.0005}, 3000),
+              ('recovery', config, 2000)]
+
+    results = {'evolved': [], 'naive': []}
+
+    for condition, (grid, res, coup, label) in enumerate([
+        (evolved_grid, evolved_resource, evolved_coupling, 'evolved'),
+        (naive_grid, naive_resource, naive_coupling, 'naive'),
+    ]):
+        print(f"\n  Testing {label}...")
+        g, r = jnp.array(grid), jnp.array(res)
+        rng_test = random.PRNGKey(seed + 42 + condition)
+
+        for phase_name, phase_config, phase_steps in phases:
+            chunk = 100
+            step = 0
+            phase_affects = []
+
+            while step < phase_steps:
+                g, r, rng_test = hier['run_chunk_hier_wrapper'](
+                    g, r, kernel_ffts, coup, rng_test, phase_config, chunk)
+                step += chunk
+
+                if step % 500 < chunk:
+                    g_np = np.array(g)
+                    r_np = np.array(r)
+                    patterns = detect_patterns_mc(g_np, threshold=0.15)
+                    for p in patterns[:20]:
+                        if p.size < 10:
+                            continue
+                        affect = hier['measure_all_hier'](
+                            p, None, None, [],
+                            jnp.array(g_np), jnp.array(r_np),
+                            coup, config, N, fast=True)
+                        phase_affects.append(affect)
+
+            if phase_affects:
+                phase_data = {
+                    'phase': phase_name,
+                    'mean_phi': float(np.mean([a.integration for a in phase_affects])),
+                    'mean_wm': float(np.mean([a.world_model_accuracy for a in phase_affects])),
+                    'mean_tier_int': float(np.mean([a.tier_integration for a in phase_affects])),
+                    'mean_cf': float(np.mean([a.counterfactual_weight for a in phase_affects])),
+                    'mean_sm': float(np.mean([a.self_model_salience for a in phase_affects])),
+                    'mean_eff_rank': float(np.mean([a.effective_rank for a in phase_affects])),
+                }
+                results[label].append(phase_data)
+                print(f"    {phase_name:10s}: Phi={phase_data['mean_phi']:.4f}, "
+                      f"WM={phase_data['mean_wm']:.3f}, TI={phase_data['mean_tier_int']:.3f}")
+
+    print("\n  COMPARISON:")
+    for phase_name in ['baseline', 'drought', 'recovery']:
+        evo_p = next((p for p in results['evolved'] if p['phase'] == phase_name), None)
+        naive_p = next((p for p in results['naive'] if p['phase'] == phase_name), None)
+        if evo_p and naive_p:
+            print(f"    {phase_name:10s}: evo={evo_p['mean_phi']:.4f} vs naive={naive_p['mean_phi']:.4f}")
+
+    return {'comparison': results}

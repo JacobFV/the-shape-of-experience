@@ -286,6 +286,54 @@ def run_hd(n_cycles: int = 30, steps_per_cycle: int = 5000,
     return save_data
 
 
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_hier(n_cycles: int = 30, steps_per_cycle: int = 5000,
+             cull_fraction: float = 0.3, curriculum: bool = False,
+             n_channels: int = 64):
+    """V11.5: Hierarchical multi-timescale Lenia evolution + stress test."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v11_evolution import full_pipeline_hier
+
+    def save_and_commit(cycle_stats):
+        save_data = {
+            'cycle_stats': cycle_stats,
+            'n_channels': n_channels,
+            'status': 'in_progress',
+        }
+        with open('/results/hier_results.json', 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
+    result = full_pipeline_hier(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        curriculum=curriculum,
+        C=n_channels,
+        post_cycle_callback=save_and_commit,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': (result['stress_test'].get('comparison')
+                        if result['stress_test'] else None),
+        'n_channels': n_channels,
+        'status': 'complete',
+    }
+    with open('/results/hier_results.json', 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
 @app.local_entrypoint()
 def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
     if mode == "sanity":
@@ -319,7 +367,11 @@ def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
         n_cyc = max(hours * 6, 30) if hours > 0 else 30
         result = run_hd.remote(n_cycles=n_cyc, n_channels=channels)
         print(f"\nHD result (C={channels}): {result}")
+    elif mode == "hier":
+        n_cyc = max(hours * 5, 30) if hours > 0 else 30
+        result = run_hier.remote(n_cycles=n_cyc, n_channels=channels)
+        print(f"\nHier result (C={channels}): {result}")
     else:
         print(f"Unknown mode: {mode}. "
               "Use: sanity, experiment, ablation, evolve, pipeline, "
-              "hetero, multichannel, hd")
+              "hetero, multichannel, hd, hier")
