@@ -712,6 +712,8 @@ Formally, $\selfmodel_t = f_\psi(\latent^{\text{internal}}_t)$ where $\latent^{\
 Self-modeling becomes the cheapest way to improve control once the agent's actions dominate its observations. The ``self'' is not mystical; it is the minimal latent variable that makes the agent's own behavior predictable.
 \end{keyresult}
 
+Note a consequence that will become important in Part II: the self-model has \emph{interiority}. It does not merely describe the agent's body from outside; it captures the intrinsic perspective---goals, beliefs, anticipations, the agent's own experience of what it is to be an agent. Once this self-model exists, the cheapest strategy for modeling \emph{other} entities whose behavior resembles the agent's is to reuse the same architecture. The self-model becomes the template for modeling the world. This has a name in Part II---participatory perception---and a parameter that governs how much of the self-model template leaks into the world model. That parameter, the inhibition coefficient $\iota$, will turn out to shape much of what follows.
+
 \subsection{The Cellular Automaton Perspective}
 
 The emergence of self-maintaining patterns can be illustrated with striking clarity in cellular automata---discrete dynamical systems where local update rules generate global emergent structure.
@@ -1238,7 +1240,7 @@ Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attra
 \centering
 \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{fig_v11_ladder}
-    \caption{Each substrate enhancement shifts $\Delta\intinfo$ toward the biological pattern (positive). V11.0 naive patterns decompose at $-6.2\%$; V11.2 heterogeneous evolution reaches $-3.8\%$, a +2.1pp shift.}
+    \caption{$\Delta\intinfo$ under severe drought across substrate conditions. V11.0--V11.2 show progressive improvement; V11.4 (HD, $C{=}64$) further reduces decomposition. V11.5 reveals \emph{stress overfitting}: evolved patterns decompose $-9.3\%$ while naive patterns integrate $+6.2\%$.}
     \label{fig:v11-ladder}
 \end{subfigure}
 \hfill
@@ -1247,7 +1249,7 @@ Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attra
     \caption{Mild stress increases $\intinfo$ (Yerkes-Dodson inverted-U), while severe stress decomposes it. Evolved patterns maintain higher $\intinfo$ across all stress levels.}
     \label{fig:v11-yerkes-dodson}
 \end{subfigure}
-\caption{\textbf{The ladder of substrate complexity and the Yerkes-Dodson effect.} (a)~$\Delta\intinfo$ under severe drought for V11.0--V11.2; (b)~$\intinfo$ response as a function of stress intensity, showing the inverted-U relationship.}
+\caption{\textbf{The ladder of substrate complexity and the Yerkes-Dodson effect.} (a)~$\Delta\intinfo$ under severe drought for V11.0--V11.5; (b)~$\intinfo$ response as a function of stress intensity, showing the inverted-U (Yerkes-Dodson) relationship.}
 \label{fig:v11-results-a}
 \end{figure}
 
@@ -1257,7 +1259,14 @@ V11.5 introduces directed coupling structure (feedforward/feedback pathways) to 
 
 The V11.5 stress test reveals an unexpected phenomenon: \emph{stress overfitting}. Evolved patterns have 10.5\% higher baseline $\intinfo$ and 19\% higher self-model salience than naive patterns---but under severe drought they decompose 9.3\% while naive patterns actually \emph{integrate} by 6.2\%. Evolution selected for high-$\intinfo$ configurations tuned to mild stress (which each training cycle applies), creating states that are simultaneously more integrated and more fragile than their unoptimized counterparts.
 
-This has a direct parallel in affective neuroscience: anxiety disorders involve heightened integration and self-monitoring that is adaptive under moderate threat but catastrophically maladaptive under extreme stress. The suffering motif---high $\intinfo$, low $\reff$, high $\selfmodel$---may describe a system that has been selected \emph{too precisely} for a particular threat level. The evolved CA patterns show exactly this signature: high baseline $\intinfo$ (0.076) with high self-model salience (0.99) that collapses under a regime shift.
+This has a direct parallel in affective neuroscience: anxiety disorders involve heightened integration and self-monitoring that is adaptive under moderate threat but catastrophically maladaptive under extreme stress. The suffering motif---high $\intinfo$, low $\reff$, high $\selfmodel$---may describe a system that has been selected \emph{too precisely} for a particular threat level. The evolved CA patterns show exactly this signature: high baseline $\intinfo$ (0.076) with high self-model salience (0.99) that collapses under a regime shift (Figure~\ref{fig:v11-stress-comparison}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{fig_v11_stress_comparison}
+\caption{\textbf{V11.5 stress test: evolved vs.\ naive patterns through baseline, drought, and recovery.} (a)~Evolved patterns have higher baseline $\intinfo$ but decompose $-9.3\%$ under drought, while naive patterns \emph{integrate} $+6.2\%$. (b)~Evolved patterns maintain high self-model salience ($>0.97$) across all phases; naive patterns show lower and declining salience.}
+\label{fig:v11-stress-comparison}
+\end{figure}
 
 Whether evolution on this substrate can discover integration strategies that are robust to \emph{novel} stresses---not just the training distribution---likely requires curriculum learning (gradually increasing stress intensity) or environmental diversity (varying the type and severity of perturbation). This connects to the forcing function framework developed in the next section: the quality of the forcing function matters as much as its presence.
 
@@ -1278,10 +1287,10 @@ Whether evolution on this substrate can discover integration strategies that are
 \hfill
 \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{fig_v11_phi_timeseries}
-    \caption{Spectral $\intinfo$ trajectory through baseline $\to$ drought $\to$ recovery for $C{=}8$ (integration) and $C{=}32$ (decomposition). The divergence is sharpest during drought onset.}
+    \caption{V11.5 hierarchical evolution trajectory over 30 cycles ($C{=}64$). Top: $\intinfo_{\rm base}$ and $\intinfo_{\rm stress}$ per cycle. Bottom: robustness (ratio), oscillating around 1.0 with no clear trend toward integration.}
     \label{fig:v11-phi-timeseries}
 \end{subfigure}
-\caption{\textbf{Internal dimensionality and stress response.} (a)~$C$-sweep showing the dimensionality dependence of naive stress response; (b)~time-resolved $\intinfo$ dynamics at two channel counts.}
+\caption{\textbf{Internal dimensionality and evolution dynamics.} (a)~$C$-sweep showing the dimensionality dependence of stress response for both evolved and naive populations; (b)~V11.5 evolution trajectory showing $\intinfo$ and robustness over 30 cycles.}
 \label{fig:v11-results-b}
 \end{figure}
 
