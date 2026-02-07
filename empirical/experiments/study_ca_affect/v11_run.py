@@ -14,6 +14,10 @@ Usage:
     python v11_run.py mc-pipeline      # Full V11.3: multi-channel evolve -> stress test
     python v11_run.py hd [N] [--channels C]  # V11.4 HD evolution (N cycles, C channels)
     python v11_run.py hd-pipeline [--channels C]  # Full V11.4: HD evolve -> stress test
+    python v11_run.py metabolic [N] [--channels C]  # V11.6 metabolic Lenia (lethal resources)
+    python v11_run.py metabolic-pipeline [--channels C]  # Full V11.6 pipeline
+    python v11_run.py curriculum [N] [--channels C]  # V11.7 curriculum evolution
+    python v11_run.py curriculum-pipeline [--channels C]  # Full V11.7 pipeline
 """
 
 import sys
@@ -670,9 +674,54 @@ if __name__ == '__main__':
                 C = int(sys.argv[i + 1])
         result = full_pipeline_hier(C=C)
 
+    elif mode == 'metabolic':
+        from v11_evolution import evolve_metabolic, stress_test_metabolic
+        n_cycles = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2].isdigit() else 30
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        result = evolve_metabolic(n_cycles=n_cycles, C=C)
+        print("\nRunning stress test...")
+        stress = stress_test_metabolic(
+            result['final_grid'], result['final_resource'],
+            result['coupling'], C=C,
+            bandwidth=result.get('bandwidth', 8.0))
+
+    elif mode == 'metabolic-pipeline':
+        from v11_evolution import full_pipeline_metabolic
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        result = full_pipeline_metabolic(C=C)
+
+    elif mode == 'curriculum':
+        from v11_evolution import evolve_curriculum, stress_test_curriculum
+        n_cycles = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2].isdigit() else 30
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        result = evolve_curriculum(n_cycles=n_cycles, C=C)
+        print("\nRunning stress test...")
+        stress = stress_test_curriculum(
+            result['final_grid'], result['final_resource'],
+            result['coupling'], C=C,
+            bandwidth=result.get('bandwidth', 8.0))
+
+    elif mode == 'curriculum-pipeline':
+        from v11_evolution import full_pipeline_curriculum
+        C = 64
+        for i, arg in enumerate(sys.argv):
+            if arg == '--channels' and i + 1 < len(sys.argv):
+                C = int(sys.argv[i + 1])
+        result = full_pipeline_curriculum(C=C)
+
     else:
         print(f"Unknown mode: {mode}")
         print("Usage: python v11_run.py "
               "[sanity|perturb|experiment|ablation|evolve|seeds|pipeline"
               "|hetero|hetero-pipeline|multichannel|mc-pipeline|hd|hd-pipeline"
-              "|hier|hier-pipeline]")
+              "|hier|hier-pipeline|metabolic|metabolic-pipeline"
+              "|curriculum|curriculum-pipeline]")

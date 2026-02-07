@@ -2789,3 +2789,1054 @@ def stress_test_hier(evolved_grid, evolved_resource, evolved_coupling,
             print(f"    {phase_name:10s}: evo={evo_p['mean_phi']:.4f} vs naive={naive_p['mean_phi']:.4f}")
 
     return {'comparison': results}
+
+
+# ============================================================================
+# V11.6: Metabolic Lenia — Lethal Resource Dependence
+# ============================================================================
+
+def evolve_metabolic(config=None, n_cycles=30, steps_per_cycle=5000,
+                     cull_fraction=0.3, mutate_top_n=5,
+                     mutation_noise=0.03, seed=42,
+                     C=64, bandwidth=8.0, maintenance_rate=0.002,
+                     post_cycle_callback=None):
+    """V11.6: Evolution with metabolic maintenance cost.
+
+    Patterns must actively consume resources to survive — without income
+    they die within ~500 steps. This is the autopoietic gap closure.
+
+    Uses the same HD physics as V11.4 but with maintenance_rate > 0.
+    Fitness rewards metabolic efficiency: mass maintained per resource consumed.
+    """
+    hd = _import_hd()
+
+    if config is None:
+        config = hd['generate_hd_config'](C=C, N=256, seed=seed)
+
+    # Enable metabolic cost
+    config = {**config, 'maintenance_rate': maintenance_rate}
+
+    N = config['grid_size']
+    C = config['n_channels']
+    rng = random.PRNGKey(seed)
+
+    kernel_ffts = hd['make_kernels_fft_hd'](config)
+    coupling = jnp.array(hd['generate_coupling_matrix'](C, bandwidth=bandwidth, seed=seed))
+
+    stress_config = {**config, 'resource_regen': 0.001}
+
+    print("=" * 60)
+    print(f"V11.6 METABOLIC LENIA EVOLUTION (C={C})")
+    print("=" * 60)
+    print(f"  Channels:         {C}")
+    print(f"  Grid:             {N}x{N}")
+    print(f"  Cycles:           {n_cycles}")
+    print(f"  Steps/cycle:      {steps_per_cycle}")
+    print(f"  Maintenance rate: {maintenance_rate}")
+    print(f"  Cull fraction:    {cull_fraction}")
+    print(f"  Bandwidth:        {bandwidth}")
+    print()
+
+    # Initialize
+    print("Phase 0: Initializing HD soup with metabolic cost...")
+    rng, k = random.split(rng)
+    grid, resource = hd['init_soup_hd'](
+        N, C, k, jnp.array(config['channel_mus']))
+
+    print("  JIT compiling metabolic step...", end=" ", flush=True)
+    t0 = time.time()
+    grid, resource, rng = hd['run_chunk_hd_wrapper'](
+        grid, resource, kernel_ffts, coupling, rng, config, 100)
+    grid.block_until_ready()
+    print(f"done ({time.time()-t0:.1f}s)")
+
+    # Warmup
+    grid, resource, rng = hd['run_chunk_hd_wrapper'](
+        grid, resource, kernel_ffts, coupling, rng, config, 4900)
+    grid.block_until_ready()
+
+    grid_np = np.array(grid)
+    initial_patterns = detect_patterns_mc(grid_np, threshold=0.15)
+    print(f"  {len(initial_patterns)} patterns after warmup\n")
+
+    tracker = PatternTracker()
+    prev_masses = {}
+    prev_values = {}
+    cycle_stats = []
+
+    baseline_steps = int(steps_per_cycle * 0.6)
+    stress_steps = steps_per_cycle - baseline_steps
+
+    for cycle in range(n_cycles):
+        t0 = time.time()
+
+        step_base = cycle * steps_per_cycle
+        chunk = 100
+        measure_every = max(200, baseline_steps // 10)
+
+        # ---- BASELINE PHASE ----
+        baseline_affects = {}
+        baseline_survival = {}
+
+        step = 0
+        while step < baseline_steps:
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng, config, chunk)
+            step += chunk
+
+            if step % measure_every < chunk:
+                grid_np = np.array(grid)
+                patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                tracker.update(patterns, step=step_base + step)
+
+                for p in tracker.active.values():
+                    pid = p.id
+                    if pid not in baseline_affects:
+                        baseline_affects[pid] = []
+                    baseline_survival[pid] = step
+
+                    hist = tracker.history.get(pid, [])
+                    pm = prev_masses.get(pid)
+                    pv = prev_values.get(pid)
+
+                    affect, phi_spec, eff_rank, phi_spat, _ = hd['measure_all_hd'](
+                        p, pm, pv, hist,
+                        jnp.array(grid_np), kernel_ffts, coupling,
+                        config, N, step_num=step_base + step,
+                        fast=True,
+                    )
+                    baseline_affects[pid].append(affect)
+                    prev_masses[pid] = p.mass
+                    prev_values[pid] = p.values.copy()
+
+        # ---- STRESS PHASE ----
+        stress_affects = {}
+        measure_every_stress = max(200, stress_steps // 8)
+
+        step = 0
+        while step < stress_steps:
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng,
+                stress_config, chunk)
+            step += chunk
+
+            if step % measure_every_stress < chunk:
+                grid_np = np.array(grid)
+                patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                tracker.update(patterns,
+                               step=step_base + baseline_steps + step)
+
+                for p in tracker.active.values():
+                    pid = p.id
+                    if pid not in stress_affects:
+                        stress_affects[pid] = []
+                    if pid in baseline_survival:
+                        baseline_survival[pid] = baseline_steps + step
+
+                    hist = tracker.history.get(pid, [])
+                    pm = prev_masses.get(pid)
+                    pv = prev_values.get(pid)
+
+                    affect, _, _, _, _ = hd['measure_all_hd'](
+                        p, pm, pv, hist,
+                        jnp.array(grid_np), kernel_ffts, coupling,
+                        config, N, step_num=step_base + baseline_steps + step,
+                        fast=True,
+                    )
+                    stress_affects[pid].append(affect)
+                    prev_masses[pid] = p.mass
+                    prev_values[pid] = p.values.copy()
+
+        # ---- SCORE ----
+        grid_np = np.array(grid)
+        patterns = detect_patterns_mc(grid_np, threshold=0.15)
+        tracker.update(patterns, step=step_base + steps_per_cycle)
+
+        scored = []
+        for p in tracker.active.values():
+            pid = p.id
+            ba = baseline_affects.get(pid, [])
+            sa = stress_affects.get(pid, [])
+            surv = baseline_survival.get(pid, 0)
+
+            # Metabolic fitness: reward efficiency (mass per resource)
+            fitness = score_fitness_metabolic(ba, sa, surv, steps_per_cycle)
+
+            phi_base = float(np.mean([a.integration for a in ba])) if ba else 0.0
+            phi_stress = float(np.mean([a.integration for a in sa])) if sa else phi_base
+            robustness = phi_stress / phi_base if phi_base > 1e-6 else 1.0
+
+            scored.append((p, fitness, phi_base, phi_stress, robustness))
+
+        scored.sort(key=lambda x: x[1])
+
+        if not scored:
+            print(f"Cycle {cycle+1:>3d}: EXTINCTION — reseeding")
+            rng, k = random.split(rng)
+            grid, resource = hd['init_soup_hd'](
+                N, C, k, jnp.array(config['channel_mus']))
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng, config, 3000)
+            tracker = PatternTracker()
+            prev_masses = {}
+            prev_values = {}
+            cycle_stats.append({
+                'cycle': cycle + 1, 'n_survived': 0, 'extinction': True})
+            continue
+
+        # ---- CULL bottom fraction ----
+        n_cull = max(1, int(len(scored) * cull_fraction))
+        to_kill = scored[:n_cull]
+
+        kill_mask = np.ones((N, N), dtype=np.float32)
+        for p, _, _, _, _ in to_kill:
+            kill_mask[p.cells[:, 0], p.cells[:, 1]] = 0.0
+        kill_mask_j = jnp.array(kill_mask)
+        grid = grid * kill_mask_j[None, :, :]
+
+        # ---- BOOST resources near top patterns ----
+        top_patterns = scored[-mutate_top_n:]
+        for p, _, _, _, _ in top_patterns:
+            cx = int(p.center[1])
+            cy = int(p.center[0])
+            resource = perturb_resource_bloom(
+                resource, (cx, cy), radius=20, intensity=0.3)
+
+        # ---- MUTATE near top patterns (all channels) ----
+        for p, _, _, _, _ in top_patterns:
+            rng, k1 = random.split(rng)
+            r_min = max(0, p.bbox[0] - 5)
+            r_max = min(N - 1, p.bbox[1] + 5)
+            c_min = max(0, p.bbox[2] - 5)
+            c_max = min(N - 1, p.bbox[3] + 5)
+            h = r_max - r_min + 1
+            w = c_max - c_min + 1
+            noise = mutation_noise * random.normal(k1, (C, h, w))
+            region = grid[:, r_min:r_max+1, c_min:c_max+1]
+            grid = grid.at[:, r_min:r_max+1, c_min:c_max+1].set(
+                jnp.clip(region + noise, 0.0, 1.0))
+
+        # ---- Mutate coupling ----
+        rng, k_bw = random.split(rng)
+        bandwidth = bandwidth + 0.5 * float(random.normal(k_bw, ()))
+        bandwidth = max(2.0, min(C / 2, bandwidth))
+        coupling = jnp.array(
+            hd['generate_coupling_matrix'](C, bandwidth=bandwidth, seed=seed + cycle + 1))
+
+        # ---- Restore resources ----
+        resource = jnp.clip(
+            resource + 0.1 * (config['resource_max'] - resource),
+            0.0, config['resource_max'])
+
+        elapsed = time.time() - t0
+
+        all_fits = [f for _, f, _, _, _ in scored]
+        all_phi_base = [pb for _, _, pb, _, _ in scored]
+        all_phi_stress = [ps for _, _, _, ps, _ in scored]
+        all_robust = [r for _, _, _, _, r in scored]
+
+        stats = {
+            'cycle': cycle + 1,
+            'n_patterns': len(scored),
+            'n_culled': n_cull,
+            'mean_fitness': float(np.mean(all_fits)),
+            'max_fitness': float(np.max(all_fits)),
+            'mean_phi_base': float(np.mean(all_phi_base)),
+            'mean_phi_stress': float(np.mean(all_phi_stress)),
+            'mean_robustness': float(np.mean(all_robust)),
+            'bandwidth': bandwidth,
+            'maintenance_rate': maintenance_rate,
+            'elapsed': elapsed,
+        }
+        cycle_stats.append(stats)
+
+        phi_delta = (stats['mean_phi_stress'] - stats['mean_phi_base']) / (
+            stats['mean_phi_base'] + 1e-10)
+        print(f"Cycle {cycle+1:>3d}/{n_cycles}: "
+              f"n={len(scored):>3d} (-{n_cull}), "
+              f"Phi_base={stats['mean_phi_base']:.4f}, "
+              f"Phi_stress={stats['mean_phi_stress']:.4f} ({phi_delta:+.1%}), "
+              f"robust={stats['mean_robustness']:.3f}, "
+              f"bw={bandwidth:.1f}, "
+              f"({elapsed:.1f}s)", flush=True)
+
+        if post_cycle_callback:
+            post_cycle_callback(cycle_stats)
+
+    print()
+    print("=" * 60)
+    print(f"V11.6 METABOLIC EVOLUTION COMPLETE (C={C})")
+    print("=" * 60)
+    if len(cycle_stats) >= 2:
+        first = next((s for s in cycle_stats if 'mean_phi_base' in s), None)
+        last = next((s for s in reversed(cycle_stats) if 'mean_phi_base' in s), None)
+        if first and last:
+            print(f"  Phi (base):   {first['mean_phi_base']:.4f} -> {last['mean_phi_base']:.4f}")
+            print(f"  Phi (stress): {first['mean_phi_stress']:.4f} -> {last['mean_phi_stress']:.4f}")
+            print(f"  Robustness:   {first['mean_robustness']:.3f} -> {last['mean_robustness']:.3f}")
+            print(f"  Bandwidth:    {first['bandwidth']:.1f} -> {last['bandwidth']:.1f}")
+            print(f"  Count:        {first['n_patterns']} -> {last['n_patterns']}")
+
+    return {
+        'cycle_stats': cycle_stats,
+        'final_grid': grid,
+        'final_resource': resource,
+        'coupling': coupling,
+        'config': config,
+        'bandwidth': bandwidth,
+    }
+
+
+def score_fitness_metabolic(baseline_affects, stress_affects,
+                            survival_steps, total_steps):
+    """Fitness for metabolic Lenia: rewards efficient self-maintenance.
+
+    fitness = survival * phi_robustness * (1 + phi_base) * efficiency_bonus
+
+    efficiency_bonus: patterns that maintain mass with less arousal
+    (proxy for metabolic efficiency — calm persistence > frantic survival)
+    """
+    surv = survival_steps / max(total_steps, 1)
+
+    all_affects = baseline_affects + stress_affects
+    if not all_affects:
+        return surv
+
+    masses = [a.mass for a in all_affects]
+
+    phi_base = np.mean([a.integration for a in baseline_affects]) if baseline_affects else 0.0
+    phi_stress = np.mean([a.integration for a in stress_affects]) if stress_affects else phi_base
+
+    if phi_base > 1e-6:
+        phi_robustness = phi_stress / phi_base
+    else:
+        phi_robustness = 1.0
+
+    phi_robustness = np.clip(phi_robustness, 0.1, 3.0)
+
+    # Metabolic efficiency: high mass with low arousal = efficient
+    mean_mass = np.mean(masses)
+    mean_arousal = np.mean([a.arousal for a in all_affects])
+    efficiency = mean_mass / (mean_arousal + 0.1)  # avoid division by zero
+
+    return float(surv * phi_robustness * (1.0 + phi_base)
+                 * np.log1p(mean_mass) * (1.0 + 0.5 * np.log1p(efficiency)))
+
+
+def stress_test_metabolic(evolved_grid, evolved_resource, evolved_coupling,
+                          config=None, seed=99, C=64, bandwidth=8.0,
+                          maintenance_rate=0.002):
+    """Compare evolved-metabolic vs naive under lethal drought."""
+    hd = _import_hd()
+
+    if config is None:
+        config = hd['generate_hd_config'](C=C, N=256, seed=seed)
+
+    config = {**config, 'maintenance_rate': maintenance_rate}
+
+    N = config['grid_size']
+    C = config['n_channels']
+    rng = random.PRNGKey(seed)
+
+    kernel_ffts = hd['make_kernels_fft_hd'](config)
+    naive_coupling = jnp.array(
+        hd['generate_coupling_matrix'](C, bandwidth=bandwidth, seed=seed))
+
+    # Lethal drought: near-zero regen + maintenance cost = death
+    drought_config = {**config, 'resource_regen': 0.0001}
+
+    print("\n" + "=" * 60)
+    print(f"STRESS TEST: Evolved-Metabolic vs Naive (C={C})")
+    print(f"  maintenance_rate={maintenance_rate}")
+    print("=" * 60)
+
+    results = {}
+
+    for condition in ['evolved_metabolic', 'naive']:
+        print(f"\n  [{condition.upper()}]")
+        rng, k = random.split(rng)
+
+        if condition == 'naive':
+            grid, resource = hd['init_soup_hd'](
+                N, C, k, jnp.array(config['channel_mus']))
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, naive_coupling, rng,
+                config, 3000)
+            cpl = naive_coupling
+        else:
+            grid = evolved_grid
+            resource = evolved_resource
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, evolved_coupling, rng,
+                config, 500)
+            cpl = evolved_coupling
+
+        phase_data = {}
+        for phase_name, phase_cfg, phase_steps in [
+            ('baseline', config, 1500),
+            ('drought',  drought_config, 3000),
+            ('recovery', config, 1500),
+        ]:
+            tracker = PatternTracker()
+            prev_masses_local = {}
+            prev_values_local = {}
+            measurements = []
+
+            step = 0
+            chunk = 100
+            while step < phase_steps:
+                grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                    grid, resource, kernel_ffts, cpl, rng,
+                    phase_cfg, chunk)
+                step += chunk
+
+                if step % 200 < chunk:
+                    grid_np = np.array(grid)
+                    patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                    tracker.update(patterns, step=step)
+
+                    phis, arousals, valences = [], [], []
+                    phi_specs, eff_ranks = [], []
+                    for p in tracker.active.values():
+                        hist = tracker.history.get(p.id, [])
+                        pm = prev_masses_local.get(p.id)
+                        pv = prev_values_local.get(p.id)
+                        affect, ps, er, pspat, _ = hd['measure_all_hd'](
+                            p, pm, pv, hist,
+                            jnp.array(grid_np), kernel_ffts, cpl,
+                            config, N, step_num=step,
+                        )
+                        phis.append(affect.integration)
+                        arousals.append(affect.arousal)
+                        valences.append(affect.valence)
+                        phi_specs.append(ps)
+                        eff_ranks.append(er)
+                        prev_masses_local[p.id] = p.mass
+                        prev_values_local[p.id] = p.values.copy()
+
+                    if phis:
+                        measurements.append({
+                            'step': step,
+                            'phi': float(np.mean(phis)),
+                            'phi_spectral': float(np.mean(phi_specs)),
+                            'eff_rank': float(np.mean(eff_ranks)),
+                            'arousal': float(np.mean(arousals)),
+                            'valence': float(np.mean(valences)),
+                            'n_patterns': len(phis),
+                        })
+
+            phase_data[phase_name] = measurements
+            if measurements:
+                mp = np.mean([m['phi'] for m in measurements])
+                mps = np.mean([m['phi_spectral'] for m in measurements])
+                ma = np.mean([m['arousal'] for m in measurements])
+                nn = np.mean([m['n_patterns'] for m in measurements])
+                print(f"    {phase_name:>10s}: Phi={mp:.4f} "
+                      f"(spectral={mps:.4f}), "
+                      f"A={ma:.4f}, n={nn:.0f}")
+
+        results[condition] = phase_data
+
+    # THE comparison
+    def phase_phi(data, phase):
+        ms = data.get(phase, [])
+        return np.mean([m['phi'] for m in ms]) if ms else 0.0
+
+    def phase_count(data, phase):
+        ms = data.get(phase, [])
+        return np.mean([m['n_patterns'] for m in ms]) if ms else 0.0
+
+    e_base = phase_phi(results.get('evolved_metabolic', {}), 'baseline')
+    e_drought = phase_phi(results.get('evolved_metabolic', {}), 'drought')
+    e_recovery = phase_phi(results.get('evolved_metabolic', {}), 'recovery')
+    n_base = phase_phi(results.get('naive', {}), 'baseline')
+    n_drought = phase_phi(results.get('naive', {}), 'drought')
+    n_recovery = phase_phi(results.get('naive', {}), 'recovery')
+
+    e_n_drought = phase_count(results.get('evolved_metabolic', {}), 'drought')
+    n_n_drought = phase_count(results.get('naive', {}), 'drought')
+
+    e_delta = (e_drought - e_base) / (e_base + 1e-10)
+    n_delta = (n_drought - n_base) / (n_base + 1e-10)
+
+    print(f"\n  {'=' * 55}")
+    print(f"  CRITICAL RESULT (V11.6 Metabolic, C={C})")
+    print(f"  {'=' * 55}")
+    print(f"  Naive          Phi change: {n_delta:+.1%}  (n={n_n_drought:.0f} patterns)")
+    print(f"  Evolved-metab  Phi change: {e_delta:+.1%}  (n={e_n_drought:.0f} patterns)")
+    print(f"  Recovery Phi:  evo={e_recovery:.4f} vs naive={n_recovery:.4f}")
+
+    if e_delta > n_delta:
+        print(f"  -> Metabolic evolution shifted Phi toward biological pattern!")
+        if e_delta > 0:
+            print(f"  -> INTEGRATION UNDER THREAT ACHIEVED")
+        else:
+            print(f"  -> Still decomposing, but less than naive")
+    else:
+        print(f"  -> Metabolic evolution did not shift total Phi")
+
+    # Lethality check: did patterns actually die?
+    if n_n_drought < n_base * 0.5:
+        print(f"  -> LETHAL DROUGHT confirmed: naive lost >{50}% of patterns")
+    else:
+        print(f"  -> Drought was NOT lethal enough (naive kept {n_n_drought/phase_count(results.get('naive', {}), 'baseline')*100:.0f}%)")
+
+    results['comparison'] = {
+        'naive_phi_delta': float(n_delta),
+        'evolved_phi_delta': float(e_delta),
+        'shift': float(e_delta - n_delta),
+        'biological_shift': e_delta > n_delta,
+        'integration_under_threat': e_delta > 0,
+        'n_channels': C,
+        'maintenance_rate': maintenance_rate,
+        'naive_survival_rate': float(n_n_drought / max(phase_count(results.get('naive', {}), 'baseline'), 1)),
+        'evolved_survival_rate': float(e_n_drought / max(phase_count(results.get('evolved_metabolic', {}), 'baseline'), 1)),
+    }
+
+    return results
+
+
+def full_pipeline_metabolic(config=None, n_cycles=30, steps_per_cycle=5000,
+                            cull_fraction=0.3, seed=42,
+                            C=64, bandwidth=8.0, maintenance_rate=0.002,
+                            post_cycle_callback=None):
+    """V11.6 pipeline: Metabolic evolve -> stress test."""
+    hd = _import_hd()
+
+    if config is None:
+        config = hd['generate_hd_config'](C=C, N=256, seed=seed)
+
+    t_start = time.time()
+
+    print()
+    print("+" + "=" * 58 + "+")
+    print(f"| V11.6 PIPELINE: Metabolic Evolve (C={C}) -> Stress Test" +
+          " " * max(0, 4 - len(str(C))) + "|")
+    print("+" + "=" * 58 + "+")
+    print()
+
+    evo_result = evolve_metabolic(
+        config=config,
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        seed=seed,
+        C=C,
+        bandwidth=bandwidth,
+        maintenance_rate=maintenance_rate,
+        post_cycle_callback=post_cycle_callback,
+    )
+
+    stress_result = stress_test_metabolic(
+        evo_result['final_grid'],
+        evo_result['final_resource'],
+        evo_result['coupling'],
+        config=config,
+        seed=seed + 2,
+        C=C,
+        bandwidth=evo_result.get('bandwidth', bandwidth),
+        maintenance_rate=maintenance_rate,
+    )
+
+    elapsed = time.time() - t_start
+    print(f"\nTotal pipeline time: {elapsed:.0f}s ({elapsed/60:.1f}min)")
+
+    return {
+        'evolution': evo_result,
+        'stress_test': stress_result,
+    }
+
+
+# ============================================================================
+# V11.7: Curriculum Evolution — Graduated + Variable Stress
+# ============================================================================
+
+def evolve_curriculum(config=None, n_cycles=30, steps_per_cycle=5000,
+                      cull_fraction=0.3, mutate_top_n=5,
+                      mutation_noise=0.03, seed=42,
+                      C=64, bandwidth=8.0,
+                      post_cycle_callback=None):
+    """V11.7: Evolution with graduated, variable stress schedule.
+
+    Fixes V11.5's stress overfitting by:
+    1. Ramping stress severity across cycles (mild -> severe)
+    2. Adding random variation to prevent memorization
+    3. Varying drought duration (500-2000 steps, not always 1000)
+
+    The key test: evolved patterns tested on NOVEL stress patterns
+    not seen during training.
+    """
+    hd = _import_hd()
+
+    if config is None:
+        config = hd['generate_hd_config'](C=C, N=256, seed=seed)
+
+    N = config['grid_size']
+    C = config['n_channels']
+    rng = random.PRNGKey(seed)
+    rng_np = np.random.RandomState(seed + 1000)
+
+    kernel_ffts = hd['make_kernels_fft_hd'](config)
+    coupling = jnp.array(hd['generate_coupling_matrix'](C, bandwidth=bandwidth, seed=seed))
+
+    # Build stress schedule: graduated with noise
+    base_schedule = np.linspace(0.5, 0.02, n_cycles)  # mild to severe
+    noise = 1.0 + 0.3 * rng_np.randn(n_cycles)
+    stress_schedule = np.clip(base_schedule * noise, 0.01, 0.8)
+
+    # Variable drought duration per cycle
+    duration_schedule = rng_np.randint(500, 2001, size=n_cycles)
+
+    print("=" * 60)
+    print(f"V11.7 CURRICULUM EVOLUTION (C={C})")
+    print("=" * 60)
+    print(f"  Channels:      {C}")
+    print(f"  Grid:          {N}x{N}")
+    print(f"  Cycles:        {n_cycles}")
+    print(f"  Steps/cycle:   {steps_per_cycle}")
+    print(f"  Cull fraction: {cull_fraction}")
+    print(f"  Bandwidth:     {bandwidth}")
+    print(f"  Stress regen:  {stress_schedule[0]:.3f} -> {stress_schedule[-1]:.3f}")
+    print(f"  Drought dur:   {duration_schedule.min()}-{duration_schedule.max()} steps")
+    print()
+
+    # Initialize
+    print("Phase 0: Initializing HD soup...")
+    rng, k = random.split(rng)
+    grid, resource = hd['init_soup_hd'](
+        N, C, k, jnp.array(config['channel_mus']))
+
+    print("  JIT compiling...", end=" ", flush=True)
+    t0 = time.time()
+    grid, resource, rng = hd['run_chunk_hd_wrapper'](
+        grid, resource, kernel_ffts, coupling, rng, config, 100)
+    grid.block_until_ready()
+    print(f"done ({time.time()-t0:.1f}s)")
+
+    # Warmup
+    grid, resource, rng = hd['run_chunk_hd_wrapper'](
+        grid, resource, kernel_ffts, coupling, rng, config, 4900)
+    grid.block_until_ready()
+
+    grid_np = np.array(grid)
+    initial_patterns = detect_patterns_mc(grid_np, threshold=0.15)
+    print(f"  {len(initial_patterns)} patterns after warmup\n")
+
+    tracker = PatternTracker()
+    prev_masses = {}
+    prev_values = {}
+    cycle_stats = []
+
+    for cycle in range(n_cycles):
+        t0 = time.time()
+
+        # This cycle's stress parameters
+        cycle_regen = float(stress_schedule[cycle]) * config['resource_regen']
+        cycle_drought_steps = int(duration_schedule[cycle])
+        cycle_baseline_steps = steps_per_cycle - cycle_drought_steps
+
+        cycle_stress_config = {
+            **config,
+            'resource_regen': cycle_regen,
+            'resource_consume': config['resource_consume'] * (1.0 + 0.5 * (1.0 - stress_schedule[cycle])),
+        }
+
+        step_base = cycle * steps_per_cycle
+        chunk = 100
+        measure_every = max(200, cycle_baseline_steps // 10)
+
+        # ---- BASELINE PHASE ----
+        baseline_affects = {}
+        baseline_survival = {}
+
+        step = 0
+        while step < cycle_baseline_steps:
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng, config, chunk)
+            step += chunk
+
+            if step % measure_every < chunk:
+                grid_np = np.array(grid)
+                patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                tracker.update(patterns, step=step_base + step)
+
+                for p in tracker.active.values():
+                    pid = p.id
+                    if pid not in baseline_affects:
+                        baseline_affects[pid] = []
+                    baseline_survival[pid] = step
+
+                    hist = tracker.history.get(pid, [])
+                    pm = prev_masses.get(pid)
+                    pv = prev_values.get(pid)
+
+                    affect, phi_spec, eff_rank, phi_spat, _ = hd['measure_all_hd'](
+                        p, pm, pv, hist,
+                        jnp.array(grid_np), kernel_ffts, coupling,
+                        config, N, step_num=step_base + step,
+                        fast=True,
+                    )
+                    baseline_affects[pid].append(affect)
+                    prev_masses[pid] = p.mass
+                    prev_values[pid] = p.values.copy()
+
+        # ---- STRESS PHASE (variable duration and intensity) ----
+        stress_affects = {}
+        measure_every_stress = max(200, cycle_drought_steps // 8)
+
+        step = 0
+        while step < cycle_drought_steps:
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng,
+                cycle_stress_config, chunk)
+            step += chunk
+
+            if step % measure_every_stress < chunk:
+                grid_np = np.array(grid)
+                patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                tracker.update(patterns,
+                               step=step_base + cycle_baseline_steps + step)
+
+                for p in tracker.active.values():
+                    pid = p.id
+                    if pid not in stress_affects:
+                        stress_affects[pid] = []
+                    if pid in baseline_survival:
+                        baseline_survival[pid] = cycle_baseline_steps + step
+
+                    hist = tracker.history.get(pid, [])
+                    pm = prev_masses.get(pid)
+                    pv = prev_values.get(pid)
+
+                    affect, _, _, _, _ = hd['measure_all_hd'](
+                        p, pm, pv, hist,
+                        jnp.array(grid_np), kernel_ffts, coupling,
+                        config, N,
+                        step_num=step_base + cycle_baseline_steps + step,
+                        fast=True,
+                    )
+                    stress_affects[pid].append(affect)
+                    prev_masses[pid] = p.mass
+                    prev_values[pid] = p.values.copy()
+
+        # ---- SCORE ----
+        grid_np = np.array(grid)
+        patterns = detect_patterns_mc(grid_np, threshold=0.15)
+        tracker.update(patterns, step=step_base + steps_per_cycle)
+
+        scored = []
+        for p in tracker.active.values():
+            pid = p.id
+            ba = baseline_affects.get(pid, [])
+            sa = stress_affects.get(pid, [])
+            surv = baseline_survival.get(pid, 0)
+
+            fitness = score_fitness_functional(ba, sa, surv, steps_per_cycle)
+
+            phi_base = float(np.mean([a.integration for a in ba])) if ba else 0.0
+            phi_stress = float(np.mean([a.integration for a in sa])) if sa else phi_base
+            robustness = phi_stress / phi_base if phi_base > 1e-6 else 1.0
+
+            scored.append((p, fitness, phi_base, phi_stress, robustness))
+
+        scored.sort(key=lambda x: x[1])
+
+        if not scored:
+            print(f"Cycle {cycle+1:>3d}: EXTINCTION — reseeding")
+            rng, k = random.split(rng)
+            grid, resource = hd['init_soup_hd'](
+                N, C, k, jnp.array(config['channel_mus']))
+            grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                grid, resource, kernel_ffts, coupling, rng, config, 3000)
+            tracker = PatternTracker()
+            prev_masses = {}
+            prev_values = {}
+            cycle_stats.append({
+                'cycle': cycle + 1, 'n_survived': 0, 'extinction': True})
+            continue
+
+        # ---- CULL ----
+        n_cull = max(1, int(len(scored) * cull_fraction))
+        to_kill = scored[:n_cull]
+
+        kill_mask = np.ones((N, N), dtype=np.float32)
+        for p, _, _, _, _ in to_kill:
+            kill_mask[p.cells[:, 0], p.cells[:, 1]] = 0.0
+        kill_mask_j = jnp.array(kill_mask)
+        grid = grid * kill_mask_j[None, :, :]
+
+        # ---- BOOST + MUTATE ----
+        top_patterns = scored[-mutate_top_n:]
+        for p, _, _, _, _ in top_patterns:
+            cx = int(p.center[1])
+            cy = int(p.center[0])
+            resource = perturb_resource_bloom(
+                resource, (cx, cy), radius=20, intensity=0.3)
+
+        for p, _, _, _, _ in top_patterns:
+            rng, k1 = random.split(rng)
+            r_min = max(0, p.bbox[0] - 5)
+            r_max = min(N - 1, p.bbox[1] + 5)
+            c_min = max(0, p.bbox[2] - 5)
+            c_max = min(N - 1, p.bbox[3] + 5)
+            h = r_max - r_min + 1
+            w = c_max - c_min + 1
+            noise = mutation_noise * random.normal(k1, (C, h, w))
+            region = grid[:, r_min:r_max+1, c_min:c_max+1]
+            grid = grid.at[:, r_min:r_max+1, c_min:c_max+1].set(
+                jnp.clip(region + noise, 0.0, 1.0))
+
+        # ---- Mutate coupling ----
+        rng, k_bw = random.split(rng)
+        bandwidth = bandwidth + 0.5 * float(random.normal(k_bw, ()))
+        bandwidth = max(2.0, min(C / 2, bandwidth))
+        coupling = jnp.array(
+            hd['generate_coupling_matrix'](C, bandwidth=bandwidth, seed=seed + cycle + 1))
+
+        # ---- Restore resources ----
+        resource = jnp.clip(
+            resource + 0.1 * (config['resource_max'] - resource),
+            0.0, config['resource_max'])
+
+        elapsed = time.time() - t0
+
+        all_fits = [f for _, f, _, _, _ in scored]
+        all_phi_base = [pb for _, _, pb, _, _ in scored]
+        all_phi_stress = [ps for _, _, _, ps, _ in scored]
+        all_robust = [r for _, _, _, _, r in scored]
+
+        stats = {
+            'cycle': cycle + 1,
+            'n_patterns': len(scored),
+            'n_culled': n_cull,
+            'mean_fitness': float(np.mean(all_fits)),
+            'max_fitness': float(np.max(all_fits)),
+            'mean_phi_base': float(np.mean(all_phi_base)),
+            'mean_phi_stress': float(np.mean(all_phi_stress)),
+            'mean_robustness': float(np.mean(all_robust)),
+            'bandwidth': bandwidth,
+            'stress_regen': float(cycle_regen),
+            'drought_steps': cycle_drought_steps,
+            'elapsed': elapsed,
+        }
+        cycle_stats.append(stats)
+
+        phi_delta = (stats['mean_phi_stress'] - stats['mean_phi_base']) / (
+            stats['mean_phi_base'] + 1e-10)
+        print(f"Cycle {cycle+1:>3d}/{n_cycles}: "
+              f"n={len(scored):>3d} (-{n_cull}), "
+              f"Phi_base={stats['mean_phi_base']:.4f}, "
+              f"Phi_stress={stats['mean_phi_stress']:.4f} ({phi_delta:+.1%}), "
+              f"robust={stats['mean_robustness']:.3f}, "
+              f"stress={cycle_regen:.4f}, dur={cycle_drought_steps}, "
+              f"({elapsed:.1f}s)", flush=True)
+
+        if post_cycle_callback:
+            post_cycle_callback(cycle_stats)
+
+    print()
+    print("=" * 60)
+    print(f"V11.7 CURRICULUM EVOLUTION COMPLETE (C={C})")
+    print("=" * 60)
+    if len(cycle_stats) >= 2:
+        first = next((s for s in cycle_stats if 'mean_phi_base' in s), None)
+        last = next((s for s in reversed(cycle_stats) if 'mean_phi_base' in s), None)
+        if first and last:
+            print(f"  Phi (base):   {first['mean_phi_base']:.4f} -> {last['mean_phi_base']:.4f}")
+            print(f"  Phi (stress): {first['mean_phi_stress']:.4f} -> {last['mean_phi_stress']:.4f}")
+            print(f"  Robustness:   {first['mean_robustness']:.3f} -> {last['mean_robustness']:.3f}")
+            print(f"  Bandwidth:    {first['bandwidth']:.1f} -> {last['bandwidth']:.1f}")
+            print(f"  Count:        {first['n_patterns']} -> {last['n_patterns']}")
+
+    return {
+        'cycle_stats': cycle_stats,
+        'final_grid': grid,
+        'final_resource': resource,
+        'coupling': coupling,
+        'config': config,
+        'bandwidth': bandwidth,
+        'stress_schedule': stress_schedule.tolist(),
+        'duration_schedule': duration_schedule.tolist(),
+    }
+
+
+def stress_test_curriculum(evolved_grid, evolved_resource, evolved_coupling,
+                           config=None, seed=99, C=64, bandwidth=8.0):
+    """Test curriculum-evolved patterns on NOVEL stress patterns.
+
+    Uses stress severities NOT in the training curriculum to test
+    whether curriculum evolution generalizes vs. just memorizes.
+    """
+    hd = _import_hd()
+
+    if config is None:
+        config = hd['generate_hd_config'](C=C, N=256, seed=seed)
+
+    N = config['grid_size']
+    C = config['n_channels']
+    rng = random.PRNGKey(seed)
+
+    kernel_ffts = hd['make_kernels_fft_hd'](config)
+    naive_coupling = jnp.array(
+        hd['generate_coupling_matrix'](C, bandwidth=bandwidth, seed=seed))
+
+    # Novel stress: patterns NOT in training curriculum
+    # Training used regen in [0.01, 0.8] * 0.005 = [0.00005, 0.004]
+    # Test with intermediate values + extreme values
+    novel_droughts = [
+        ('mild_novel', {**config, 'resource_regen': 0.003}),
+        ('moderate_novel', {**config, 'resource_regen': 0.0008}),
+        ('severe_novel', {**config, 'resource_regen': 0.00005}),
+        ('extreme_novel', {**config, 'resource_regen': 0.00001}),
+    ]
+
+    print("\n" + "=" * 60)
+    print(f"CURRICULUM STRESS TEST: Novel Patterns (C={C})")
+    print("=" * 60)
+
+    results = {}
+
+    for condition in ['evolved_curriculum', 'naive']:
+        print(f"\n  [{condition.upper()}]")
+        cond_results = {}
+
+        for drought_name, drought_config in novel_droughts:
+            rng, k = random.split(rng)
+
+            if condition == 'naive':
+                grid, resource = hd['init_soup_hd'](
+                    N, C, k, jnp.array(config['channel_mus']))
+                grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                    grid, resource, kernel_ffts, naive_coupling, rng,
+                    config, 3000)
+                cpl = naive_coupling
+            else:
+                grid = evolved_grid.copy() if hasattr(evolved_grid, 'copy') else jnp.array(evolved_grid)
+                resource = evolved_resource.copy() if hasattr(evolved_resource, 'copy') else jnp.array(evolved_resource)
+                grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                    grid, resource, kernel_ffts, evolved_coupling, rng,
+                    config, 500)
+                cpl = evolved_coupling
+
+            phase_phis = {}
+            for phase_name, phase_cfg, phase_steps in [
+                ('baseline', config, 1000),
+                ('drought',  drought_config, 2000),
+                ('recovery', config, 1000),
+            ]:
+                tracker = PatternTracker()
+                prev_masses_local = {}
+                prev_values_local = {}
+                phis = []
+
+                step = 0
+                chunk = 100
+                while step < phase_steps:
+                    grid, resource, rng = hd['run_chunk_hd_wrapper'](
+                        grid, resource, kernel_ffts, cpl, rng,
+                        phase_cfg, chunk)
+                    step += chunk
+
+                    if step % 300 < chunk:
+                        grid_np = np.array(grid)
+                        patterns = detect_patterns_mc(grid_np, threshold=0.15)
+                        tracker.update(patterns, step=step)
+
+                        for p in tracker.active.values():
+                            hist = tracker.history.get(p.id, [])
+                            pm = prev_masses_local.get(p.id)
+                            pv = prev_values_local.get(p.id)
+                            affect, _, _, _, _ = hd['measure_all_hd'](
+                                p, pm, pv, hist,
+                                jnp.array(grid_np), kernel_ffts, cpl,
+                                config, N, step_num=step,
+                                fast=True,
+                            )
+                            phis.append(affect.integration)
+                            prev_masses_local[p.id] = p.mass
+                            prev_values_local[p.id] = p.values.copy()
+
+                phase_phis[phase_name] = float(np.mean(phis)) if phis else 0.0
+
+            base_phi = phase_phis['baseline']
+            drought_phi = phase_phis['drought']
+            delta = (drought_phi - base_phi) / (base_phi + 1e-10)
+            cond_results[drought_name] = {
+                'baseline_phi': base_phi,
+                'drought_phi': drought_phi,
+                'recovery_phi': phase_phis['recovery'],
+                'phi_delta': float(delta),
+            }
+            print(f"    {drought_name:>16s}: Phi {base_phi:.4f} -> {drought_phi:.4f} ({delta:+.1%})")
+
+        results[condition] = cond_results
+
+    # Cross-condition comparison
+    print(f"\n  {'=' * 55}")
+    print(f"  CURRICULUM vs NAIVE (novel stressors)")
+    print(f"  {'=' * 55}")
+    for dn, _ in novel_droughts:
+        e_d = results.get('evolved_curriculum', {}).get(dn, {}).get('phi_delta', 0)
+        n_d = results.get('naive', {}).get(dn, {}).get('phi_delta', 0)
+        shift = e_d - n_d
+        print(f"  {dn:>16s}: evo={e_d:+.1%}, naive={n_d:+.1%}, shift={shift:+.1%}")
+
+    results['comparison'] = {
+        'novel_stress_names': [dn for dn, _ in novel_droughts],
+        'evolved_deltas': [results.get('evolved_curriculum', {}).get(dn, {}).get('phi_delta', 0)
+                          for dn, _ in novel_droughts],
+        'naive_deltas': [results.get('naive', {}).get(dn, {}).get('phi_delta', 0)
+                        for dn, _ in novel_droughts],
+        'n_channels': C,
+    }
+
+    return results
+
+
+def full_pipeline_curriculum(config=None, n_cycles=30, steps_per_cycle=5000,
+                             cull_fraction=0.3, seed=42,
+                             C=64, bandwidth=8.0,
+                             post_cycle_callback=None):
+    """V11.7 pipeline: Curriculum evolve -> novel stress test."""
+    hd = _import_hd()
+
+    if config is None:
+        config = hd['generate_hd_config'](C=C, N=256, seed=seed)
+
+    t_start = time.time()
+
+    print()
+    print("+" + "=" * 58 + "+")
+    print(f"| V11.7 PIPELINE: Curriculum Evolve (C={C}) -> Stress Test" +
+          " " * max(0, 3 - len(str(C))) + "|")
+    print("+" + "=" * 58 + "+")
+    print()
+
+    evo_result = evolve_curriculum(
+        config=config,
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        seed=seed,
+        C=C,
+        bandwidth=bandwidth,
+        post_cycle_callback=post_cycle_callback,
+    )
+
+    stress_result = stress_test_curriculum(
+        evo_result['final_grid'],
+        evo_result['final_resource'],
+        evo_result['coupling'],
+        config=config,
+        seed=seed + 2,
+        C=C,
+        bandwidth=evo_result.get('bandwidth', bandwidth),
+    )
+
+    elapsed = time.time() - t_start
+    print(f"\nTotal pipeline time: {elapsed:.0f}s ({elapsed/60:.1f}min)")
+
+    return {
+        'evolution': evo_result,
+        'stress_test': stress_result,
+    }

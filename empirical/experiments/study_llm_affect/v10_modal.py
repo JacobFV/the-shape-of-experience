@@ -66,7 +66,7 @@ def sanity_check():
     volumes={"/results": results_volume},
     timeout=3600 * 24,  # 24 hours
 )
-def train_condition(condition: str, seed: int, total_steps: int = 100_000):
+def train_condition(condition: str, seed: int, total_steps: int = 200_000):
     """Train a single condition on Modal."""
     import sys, os
     if "/root/experiment" not in sys.path:
@@ -230,7 +230,7 @@ def analyze_results():
 @app.local_entrypoint()
 def main(
     mode: str = "sanity",
-    steps: int = 100_000,
+    steps: int = 200_000,
     seeds: int = 1,
     condition: str = "full",
 ):

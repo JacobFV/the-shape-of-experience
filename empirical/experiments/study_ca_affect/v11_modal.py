@@ -9,6 +9,8 @@ Usage:
     modal run v11_modal.py --mode multichannel --hours 4  # V11.3 multi-channel
     modal run v11_modal.py --mode hd --hours 4          # V11.4 HD (64 channels)
     modal run v11_modal.py --mode hd --hours 4 --channels 8  # V11.4 with C=8
+    modal run v11_modal.py --mode metabolic --hours 6   # V11.6 metabolic Lenia
+    modal run v11_modal.py --mode curriculum --hours 6  # V11.7 curriculum evolution
 """
 
 import modal
@@ -334,6 +336,106 @@ def run_hier(n_cycles: int = 30, steps_per_cycle: int = 5000,
     return save_data
 
 
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_metabolic(n_cycles: int = 30, steps_per_cycle: int = 5000,
+                  cull_fraction: float = 0.3,
+                  n_channels: int = 64, maintenance_rate: float = 0.002):
+    """V11.6: Metabolic Lenia evolution + stress test."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v11_evolution import full_pipeline_metabolic
+
+    def save_and_commit(cycle_stats):
+        save_data = {
+            'cycle_stats': cycle_stats,
+            'n_channels': n_channels,
+            'maintenance_rate': maintenance_rate,
+            'status': 'in_progress',
+        }
+        with open('/results/metabolic_results.json', 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
+    result = full_pipeline_metabolic(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        C=n_channels,
+        maintenance_rate=maintenance_rate,
+        post_cycle_callback=save_and_commit,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': (result['stress_test'].get('comparison')
+                        if result['stress_test'] else None),
+        'n_channels': n_channels,
+        'maintenance_rate': maintenance_rate,
+        'final_bandwidth': result['evolution'].get('bandwidth'),
+        'status': 'complete',
+    }
+    with open('/results/metabolic_results.json', 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_curriculum(n_cycles: int = 30, steps_per_cycle: int = 5000,
+                   cull_fraction: float = 0.3,
+                   n_channels: int = 64):
+    """V11.7: Curriculum evolution + novel stress test."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v11_evolution import full_pipeline_curriculum
+
+    def save_and_commit(cycle_stats):
+        save_data = {
+            'cycle_stats': cycle_stats,
+            'n_channels': n_channels,
+            'status': 'in_progress',
+        }
+        with open('/results/curriculum_results.json', 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
+    result = full_pipeline_curriculum(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        C=n_channels,
+        post_cycle_callback=save_and_commit,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': (result['stress_test'].get('comparison')
+                        if result['stress_test'] else None),
+        'n_channels': n_channels,
+        'stress_schedule': result['evolution'].get('stress_schedule'),
+        'final_bandwidth': result['evolution'].get('bandwidth'),
+        'status': 'complete',
+    }
+    with open('/results/curriculum_results.json', 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
 @app.local_entrypoint()
 def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
     if mode == "sanity":
@@ -371,7 +473,15 @@ def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
         n_cyc = max(hours * 5, 30) if hours > 0 else 30
         result = run_hier.remote(n_cycles=n_cyc, n_channels=channels)
         print(f"\nHier result (C={channels}): {result}")
+    elif mode == "metabolic":
+        n_cyc = max(hours * 5, 30) if hours > 0 else 30
+        result = run_metabolic.remote(n_cycles=n_cyc, n_channels=channels)
+        print(f"\nMetabolic result (C={channels}): {result}")
+    elif mode == "curriculum":
+        n_cyc = max(hours * 5, 30) if hours > 0 else 30
+        result = run_curriculum.remote(n_cycles=n_cyc, n_channels=channels)
+        print(f"\nCurriculum result (C={channels}): {result}")
     else:
         print(f"Unknown mode: {mode}. "
               "Use: sanity, experiment, ablation, evolve, pipeline, "
-              "hetero, multichannel, hd, hier")
+              "hetero, multichannel, hd, hier, metabolic, curriculum")

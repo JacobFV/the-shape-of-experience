@@ -69,6 +69,7 @@ def generate_hd_config(C=64, N=256, seed=42):
         'resource_half_sat': 0.2,
         'noise_amp': 0.003,
         'decay_rate': 0.0,
+        'maintenance_rate': 0.0,  # V11.6: metabolic drain per step per unit mass
     }
 
 
@@ -136,7 +137,8 @@ def make_kernels_fft_hd(config):
 def run_chunk_hd(grid, resource, kernel_ffts, coupling, rng, n_steps,
                  dt, channel_mus, channel_sigmas, coupling_row_sums,
                  noise_amp, resource_consume, resource_regen,
-                 resource_max, resource_half_sat, decay_rate):
+                 resource_max, resource_half_sat, decay_rate,
+                 maintenance_rate):
     """Run n_steps of HD multi-channel Lenia on GPU.
 
     ALL channel operations are vectorized — zero Python loops in body.
@@ -194,6 +196,9 @@ def run_chunk_hd(grid, resource, kernel_ffts, coupling, rng, n_steps,
         noise = noise_amp * random.normal(k_noise, g.shape)
         g_new = jnp.clip(g + dt * growth + noise, 0.0, 1.0)
 
+        # 7b. Metabolic maintenance cost (V11.6): cells pay to exist
+        g_new = jnp.maximum(g_new - maintenance_rate * g_new * dt, 0.0)
+
         # 8. Resource dynamics (consumption uses mean across channels)
         total_activity = jnp.mean(g, axis=0)  # (N, N)
         r_new = jnp.clip(
@@ -226,6 +231,7 @@ def run_chunk_hd_wrapper(grid, resource, kernel_ffts, coupling, rng,
         jnp.float32(config['resource_max']),
         jnp.float32(config['resource_half_sat']),
         jnp.float32(config.get('decay_rate', 0.0)),
+        jnp.float32(config.get('maintenance_rate', 0.0)),
     )
 
 
