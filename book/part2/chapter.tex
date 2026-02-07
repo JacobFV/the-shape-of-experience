@@ -550,6 +550,10 @@ For a self-modeling system with compression ratio $\kappa$, modeling novel entit
 This is why animistic perception is cross-culturally universal and developmentally early. It is not a cultural invention but a computational inevitability for systems that (a) model themselves and (b) must model other things cheaply. Children have lower inhibition of this default than adults---not because children are confused but because the suppression is learned.
 \end{hypothesis}
 
+\begin{experiment}
+\textbf{The computational animism test.} Train RL agents in a multi-entity environment with two conditions: (a) agents with a self-prediction module (self-model), and (b) matched agents without one. Then introduce novel moving objects whose trajectories are partially predictable but non-agentive (e.g., bouncing balls with momentum). Measure: (1) Do self-modeling agents' internal representations of these objects contain more goal/agency features (extracted via probes trained on actual agents vs.\ objects)? (2) Does the effect scale with self-model richness (size of self-prediction module) and compression pressure (information bottleneck $\beta$)? (3) Do self-modeling agents under higher compression pressure ($\beta$) show \emph{more} animistic attribution, because reusing the self-model template saves more bits? The compression argument predicts yes to all three. The control condition (no self-model) predicts no agency attribution beyond chance. If self-modeling agents attribute agency to non-agents in proportion to compression pressure, the ``animism as computational default'' hypothesis is supported.
+\end{experiment}
+
 Participatory perception has five structural features, each with a precise characterization:
 \begin{enumerate}
 \item \textbf{No sharp self/world partition.} The mutual information between self-model and world-model is high: $\MI(\mathcal{S}; \mathcal{W}) \gg 0$. Perception and projection are entangled rather than modular.
