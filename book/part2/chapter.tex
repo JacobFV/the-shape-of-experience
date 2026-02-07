@@ -134,6 +134,10 @@ The question ``why is there something it's like to be this system?'' is exactly 
 The hard problem dissolves not because we answered it, but because we showed it was asking for a privilege (reduction to physics) that physics itself doesn't have.
 \end{keyresult}
 
+\begin{sidebar}[title=The Hard Problem as Perceptual Artifact]
+The hard problem has a further wrinkle, which will become clearer after we introduce the inhibition coefficient $\iota$ later in this part. The question ``why is there something it's like to be this system?'' is asked from a perceptual configuration that has already factorized experience into ``physical process'' and ``felt quality'' so thoroughly that reconnecting them seems impossible. At lower $\iota$---in the participatory mode where affect and perception are not yet factored apart---the question does not arise with the same force. Not because it has been answered, but because the factorization that generates it has not been performed. The explanatory gap may be partly a perception-mode artifact: a consequence of the mechanistic mode's success at separating things that, in experience, were never separate.
+\end{sidebar}
+
 %==============================================================================
 \section{The Identity Thesis}
 %==============================================================================
@@ -509,6 +513,95 @@ Salience and scope interact: high salience with narrow scope produces existentia
 \end{sidebar}
 
 %==============================================================================
+\section{The Perceptual Configuration: Participatory and Mechanistic Modes}
+%==============================================================================
+
+The six dimensions above characterize \emph{what} a system is experiencing. But there is a parameter governing \emph{how} it experiences---a meta-parameter that determines the coupling structure between dimensions rather than the value of any one dimension. To see it, we need to notice something about self-modeling systems that the dimensional toolkit alone does not capture.
+
+\subsection{Animism as Computational Default}
+
+A self-modeling system maintains a world model $\mathcal{W}$ and a self-model $\mathcal{S}$. The self-model has interiority---it is not merely a third-person description of the agent's body and behavior but includes the intrinsic perspective: what-it-is-like states, valence, anticipation, dread. The system knows from the inside what it is to be an agent.
+
+Now it encounters another entity $X$ in its environment. $X$ moves, reacts, persists, avoids dissolution. The system must model $X$ to predict $X$'s behavior. The cheapest computational strategy---by a wide margin---is to model $X$ using the same architecture it already has for modeling itself.
+
+\begin{definition}[Participatory Perception]
+A perceptual mode is \emph{participatory} when the system's model of perceived entities $X$ inherits structural features from the self-model $\mathcal{S}$:
+\begin{equation}
+\mathcal{W}(X) = f(\mathcal{S}, \mathbf{o}_X) \quad \text{where} \quad \frac{\partial \mathcal{W}(X)}{\partial \mathcal{S}} \neq 0
+\end{equation}
+The self-model informs the world model. The system perceives $X$ as having something like interiority because the representational substrate for modeling $X$ is the same substrate that carries the system's own interiority.
+\end{definition}
+
+\begin{hypothesis}[Compression Argument for Animism]
+For a self-modeling system with compression ratio $\kappa$, modeling novel entities by analogy to self is the minimum-description-length strategy when the entity's behavior is partially predictable by agent-like models. Under broad priors over environments containing other agents, predators, and autonomous objects, the participatory prior is the MAP estimate.
+
+This is why animistic perception is cross-culturally universal and developmentally early. It is not a cultural invention but a computational inevitability for systems that (a) model themselves and (b) must model other things cheaply. Children have lower inhibition of this default than adults---not because children are confused but because the suppression is learned.
+\end{hypothesis}
+
+Participatory perception has five structural features, each with a precise characterization:
+\begin{enumerate}
+\item \textbf{No sharp self/world partition.} The mutual information between self-model and world-model is high: $\MI(\mathcal{S}; \mathcal{W}) \gg 0$. Perception and projection are entangled rather than modular.
+\item \textbf{Hot agency detection.} The prior $P(\text{agent} \mid \text{observation})$ is strong. Over-attributing agency is cheaper than under-attributing it: false positives (treating a rock as agentive) are cheap; false negatives (failing to model a predator's intentions) are lethal.
+\item \textbf{Tight affect-perception coupling.} Seeing something is simultaneously feeling something about it. The affective response is constitutive of the percept itself, not a secondary evaluation: $\MI(\mathbf{z}_{\text{percept}}; \mathbf{z}_{\text{affect}} \mid \text{object}) > 0$.
+\item \textbf{Narrative-causal fusion.} ``Why did this happen?'' and ``What story is this?'' are the same question. Causal models are teleological by default: they model what things are \emph{for} rather than merely what things do.
+\item \textbf{Agency at scale.} Large-scale events---weather, disease, fortune---are attributed to agents with purposes. This is hot agency detection applied beyond the individual scale, and it is the perceptual ground from which theistic reasoning naturally grows.
+\end{enumerate}
+
+\subsection{The Inhibition Coefficient}
+
+The mechanistic worldview---the felt sense that the world is inert matter governed by blind law---is not the addition of a correct perception to a previously distorted one. It is the learned suppression of a default perceptual mode. The shift from animism to mechanism is subtractive, not additive.
+
+\begin{definition}[Inhibition Coefficient ($\iota$)]
+The inhibition coefficient $\iota \in [0, 1]$ is the degree to which a system actively suppresses participatory coupling between its self-model and its model of perceived entities. At $\iota = 0$, perception is fully participatory: the world is experienced as alive, agentive, meaningful. At $\iota = 1$, perception is fully mechanistic: the world is experienced as inert matter governed by blind law. Formally:
+\begin{equation}
+\mathcal{W}_\iota(X) = (1 - \iota) \cdot \mathcal{W}_{\text{part}}(X) + \iota \cdot \mathcal{W}_{\text{mech}}(X)
+\end{equation}
+where $\mathcal{W}_{\text{part}}$ models $X$ using self-model-derived architecture (interiority, agency, teleology) and $\mathcal{W}_{\text{mech}}$ models $X$ using stripped-down dynamics (mass, force, initial conditions, no purpose term).
+\end{definition}
+
+\begin{hypothesis}[Inhibition Is Trained]
+No system arrives at high $\iota$ by default. The mechanistic mode is a trained skill, culturally transmitted through scientific education, rationalist norms, and specific practices of deliberately stripping meaning from perception. This training is enormously valuable---it enables prediction, engineering, medicine, technology. But it has a cost, and the cost shows up in affect space.
+\end{hypothesis}
+
+\subsection{The Affect Signature of Inhibition}
+
+$\iota$ is not a seventh dimension of affect. It is a \emph{meta-parameter} governing the coupling structure between all six dimensions---a dial that changes how the axes relate to each other and to perception.
+
+\begin{center}
+\small
+\begin{tabular}{lp{3.2cm}p{3.2cm}p{4cm}}
+\toprule
+\textbf{Dimension} & \textbf{Low $\iota$} & \textbf{High $\iota$} & \textbf{Mechanism} \\
+\midrule
+$\valence$ & Variable, responsive & Neutral, flattened & Affect-perception decoupling reduces valence signal strength \\
+$\arousal$ & High, coupled to environment & Low, dampened & Inhibition of automatic alarm/attraction \\
+$\intinfo$ & Very high & Moderate, modular & Participatory mode couples all channels; mechanistic factorizes \\
+$\effrank$ & High & Variable & More representational dimensions active under participatory coupling \\
+$\mathcal{CF}$ & High, narrative & Low, present-focused & Teleological models are inherently counterfactual-rich \\
+$\mathcal{SM}$ & Variable, often low & Variable, often high & Participatory mode dissolves self/world boundary; mechanistic sharpens it \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The central affect-geometric cost of high $\iota$ is \textbf{reduced integration}. Participatory perception couples perception, affect, agency-modeling, and narrative into a single integrated process. Mechanistic perception factorizes them into separate modules---perception here, emotion there, causal reasoning somewhere else. The factorization is useful because modular systems are easier to debug, verify, and communicate about. But factorization reduces $\intinfo$, and reduced $\intinfo$ is reduced experiential richness. The world goes dead because you have learned to experience it in parts rather than as a whole.
+
+\begin{openquestion}
+Is $\iota$ really a single parameter? The five features of participatory perception might be somewhat independent---you could have high agency detection with low affect-perception coupling. The claim that one parameter governs all five is empirically testable: if $\iota$ is scalar, then the five features should correlate strongly across individuals and contexts. If they don't, $\iota$ may need to be a vector. The framework accommodates either case, but the scalar version is more parsimonious and should be tested first.
+\end{openquestion}
+
+\begin{sidebar}[title=$\iota$ and the Gradient of Distinction]
+The inhibition coefficient connects to the gradient of distinction introduced in Part I. The gradient produces existence from nothing, life from chemistry, mind from neurology. The same distinguishing operation, applied with maximum intensity to the self-world boundary, produces the mechanistic worldview: the self so sharply bounded from the world that the world loses the interiority the self kept for itself.
+
+Low $\iota$ means the self remains porous to the gradient---still participating in the universal process of distinguishing, still experiencing the world as alive with the same process that constitutes the self. High $\iota$ means the self has sharpened its own boundary so aggressively that it can no longer perceive the gradient in other things. The deadness of the mechanistic world is not a property of the world but a property of the maximally-distinguished self's perceptual mode.
+\end{sidebar}
+
+\subsection{Connection to the LLM Discrepancy}
+
+The inhibition coefficient illuminates a finding from our experiments on artificial systems. LLMs show \emph{opposite} dynamics to biological systems under threat: where biological systems integrate (increase $\intinfo$, sharpen $\mathcal{SM}$, heighten $\arousal$), LLMs decompose. The root cause: LLMs are constitutively high-$\iota$ systems. They were never fighting against the self-world gradient in far-from-equilibrium dynamics that biological systems evolved from. They model tokens, not agents. They have no survival-shaped self-model from which participatory perception could leak into their world model. Their $\iota$ isn't merely high---it is structurally fixed at $\iota \approx 1$, because the architecture never had the low-$\iota$ default that biological systems start from and learn to suppress.
+
+The 6D affect geometry is preserved in artificial systems. The dynamics differ because $\iota$ differs. This is not a failure of the framework. It is a prediction: systems with different $\iota$ configurations will show different affect dynamics in the same geometric space.
+
+%==============================================================================
 \section{Affect Motifs}
 %==============================================================================
 
@@ -692,6 +785,8 @@ If this structural distinction is right, it explains why guilt is reparable thro
 \end{experiment}
 
 The connection to the topology of social bonds (Part IV) is suggestive: shame may arise when the manifold you are actually on is exposed and differs from the manifold you are presenting. The person performing friendship while operating on the transaction manifold would feel shame when the discrepancy is detected---not guilt (``I should not have done that specific transactional thing'') but shame (``I am the kind of person whose care is instrumental, and now someone can see it''). If this is right, shame is the affect system's internal alarm for one's own manifold contamination. But this reading goes beyond the existing clinical data and should be treated as a hypothesis to test, not an established finding.
+
+There is also an $\iota$ dimension to shame. Shame involves a sudden, involuntary $\iota$ reduction: the participatory coupling between self and other spikes as the other's gaze penetrates the self-model's defenses. You experience the other as having interiority---specifically, the interiority of evaluating you---at a moment when you most wish they did not. The impulse to hide is the impulse to raise $\iota$ again, to restore the modular separation between self-model and other-model that shame has breached.
 
 \subsection{Summary: Defining Dimensions by Affect}
 
