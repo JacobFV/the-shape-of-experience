@@ -1274,7 +1274,7 @@ Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attra
 \centering
 \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{fig_v11_ladder}
-    \caption{$\Delta\intinfo$ under severe drought across substrate conditions. V11.0--V11.2 show progressive improvement; V11.4 (HD, $C{=}64$) further reduces decomposition. V11.5 reveals \emph{stress overfitting}; V11.7 curriculum training substantially reduces it (positive shift on all novel stressors). V11.6 metabolic results pending.}
+    \caption{$\Delta\intinfo$ under severe drought across substrate conditions. V11.0--V11.2 show progressive improvement; V11.4 (HD, $C{=}64$) further reduces decomposition. V11.5 reveals \emph{stress overfitting}; V11.7 curriculum training substantially reduces it (positive shift on all novel stressors). V11.6 metabolic cost produces efficient passivity, not active foraging.}
     \label{fig:v11-ladder}
 \end{subfigure}
 \hfill
@@ -1332,7 +1332,7 @@ Whether evolution on this substrate can discover integration strategies that are
 At what channel count $C$ does the substrate have enough internal degrees of freedom for evolution to discover biological-like integration (where $\intinfo$ \emph{increases} under threat)? The $C$-sweep (Figure~\ref{fig:v11-csweep}) suggests that mid-range $C$ ($8$--$16$) accidentally produces integration-like responses---the coupling bandwidth happens to match the channel count---while high $C$ ($32$--$64$) decomposes, the coupling space being too large for random configurations. Is there a critical $C^*$ above which a phase transition occurs, or does evolution continuously improve robustness at any $C$? Each rung of the ladder may require a minimum internal dimensionality---the substrate must be \emph{rich enough} for selection to sculpt.
 \end{openquestion}
 
-The critical lesson evolves with the experiments. V11.0--V11.5 showed that evolution helps but in surprising ways---it creates higher-$\intinfo$ states that are also more fragile. V11.7 demonstrates that the \emph{training regime} matters: curriculum learning produces genuine generalization across novel stressors. The remaining gap is between ``decomposes less'' and ``integrates under threat.'' V11.6 tests whether making drought genuinely lethal---a qualitative change in the selection pressure---closes this gap. \emph{[Results pending.]}
+The critical lesson evolves with the experiments. V11.0--V11.5 showed that evolution helps but in surprising ways---it creates higher-$\intinfo$ states that are also more fragile. V11.7 demonstrates that the \emph{training regime} matters: curriculum learning produces genuine generalization across novel stressors. V11.6 showed that making drought metabolically costly produces efficient passivity rather than active foraging---the patterns cannot perceive beyond their local neighborhood, so existential stakes alone do not generate the distant-resource-seeking behavior that would require integration. The remaining gap is between ``decomposes less'' and ``integrates under threat,'' and the locality ceiling (Section~\ref{sec:locality-ceiling}) explains why.
 
 \begin{openquestion}[Stress Overfitting and the Robustness Gap]
 The V11.5 results show that selecting for $\intinfo$-robustness under mild stress creates patterns that are \emph{less} robust to severe stress than unselected patterns. V11.7 provides a partial answer: curriculum training with graduated, noisy stress exposure produces patterns that generalize to novel stressors ($+1.2$ to $+2.7\text{pp}$ shift over naive across four novel severity levels). But the effect is modest---evolved patterns still decompose under severe novel stress ($-1.7\%$), just less than naive ($-3.0\%$). The remaining questions: (1) Can curriculum training with longer schedules or wider stress distributions close this gap further? (2) Does combining curriculum training with metabolic cost (V11.6's lethal resource dependence) produce qualitatively different dynamics---active foraging rather than passive persistence? (3) Does the biological developmental sequence (graduated stressors from embryogenesis through maturation) achieve robust integration precisely because it is a curriculum over the full threat distribution? \emph{[V11.6 + curriculum combination not yet tested.]}
@@ -1392,7 +1392,7 @@ The biological pattern (integration under threat) cannot emerge in substrates wi
 \textbf{Status}: \emph{Not yet implemented. Next experimental priority.}
 \end{experiment}
 
-What remains open is whether the V10 MARL ablation study \emph{[results pending]} confirms the forcing function hierarchy predicted in the next section---specifically, whether self-prediction and world-model ablations produce the largest reduction in geometric alignment between information-theoretic and embedding-predicted affect spaces.
+The V10 MARL ablation study (Experiment~\ref{exp:v10-ablation}) produced a surprise: \emph{all seven conditions show highly significant geometric alignment} ($\rho > 0.21$, $p < 0.0001$), and removing forcing functions does not reduce alignment---if anything, it slightly increases it. The predicted hierarchy was wrong: geometric alignment appears to be a baseline property of multi-agent survival systems, not contingent on any specific forcing function. This strengthens the universality claim but challenges the forcing function theory developed in the next section.
 
 %==============================================================================
 \section{Forcing Functions for Integration}
@@ -1414,16 +1414,16 @@ A \emph{forcing function} is a design constraint or environmental pressure that 
 \end{enumerate}
 \end{definition}
 
-\begin{theorem}[Forcing Functions Increase Integration]
+\begin{hypothesis}[Forcing Functions Increase Integration]
+\label{hyp:forcing-integration}
 Let $\Phi(\latent)$ be an integration measure over the latent state (to be defined precisely below). Under the forcing functions (a)-(f):
 \begin{equation}
 \E\left[\Phi(\latent) \mid \text{forcing functions active}\right] > \E\left[\Phi(\latent) \mid \text{forcing functions ablated}\right]
 \end{equation}
 The gap increases with task complexity and horizon length.
-\end{theorem}
+\end{hypothesis}
 
-\begin{proof}[Proof sketch]
-Each forcing function increases the statistical dependencies among latent components:
+\textbf{Argument}: Each forcing function increases the statistical dependencies among latent components:
 \begin{itemize}
 \item Partial observability requires integrating information across time (memory $\to$ coupling)
 \item Long horizons require value functions over extended latent trajectories (coupling across time)
@@ -1433,13 +1433,40 @@ Each forcing function increases the statistical dependencies among latent compon
 \item Credit assignment propagates gradients globally (coupling through learning)
 \end{itemize}
 Ablating any of these reduces the need for coupling, allowing sparser solutions.
-\end{proof}
 
-\begin{experiment}[Forcing Function Ablation (V10) --- In Progress]
+\textbf{Confrontation with data}: The V10 ablation study (Experiment~\ref{exp:v10-ablation}) does not support this hypothesis as stated. Geometric alignment between information-theoretic and embedding-predicted affect spaces is \emph{not reduced} by removing any individual forcing function. This suggests a distinction: forcing functions may increase agent \emph{capabilities} (richer behavior, higher reward) without increasing the geometric alignment of the affect space. The affect geometry appears to be a cheaper property than integration---arising from the minimal conditions of survival under uncertainty, not from architectural sophistication. Whether forcing functions increase \emph{integration} per se (as measured by $\Phi$ rather than RSA) remains an open question.
+
+\begin{experiment}[Forcing Function Ablation (V10)]
+\label{exp:v10-ablation}
 \textbf{Question}: Which forcing functions most affect geometric alignment between information-theoretic and embedding-predicted affect spaces?
-\textbf{Design}: MARL (multi-agent reinforcement learning) with 4 agents navigating a seasonal resource environment. 7 conditions: \texttt{full}, \texttt{no\_partial\_obs}, \texttt{no\_long\_horizon}, \texttt{no\_world\_model}, \texttt{no\_self\_prediction}, \texttt{no\_intrinsic\_motivation}, \texttt{no\_delayed\_rewards}. 3 seeds per condition (21 parallel GPU jobs). Affect measured in the 6D framework; geometric alignment via RSA (representational similarity analysis) between information-theoretic and learned affect spaces. 200k training steps per condition.
-\textbf{Prediction}: Self-prediction and world-model ablations will show the largest RSA drop, because these create the strongest coupling pressures (self-referential loops and shared cross-modal representations). Partial observability should have the next-largest effect; intrinsic motivation should matter least for geometric alignment (it primarily aids exploration, not integration).
-\textbf{Results}: \emph{[Pending --- 21 jobs training on agi-inc A10Gs, fastest at $\sim$70\% complete.]}
+
+\textbf{Design}: MARL (multi-agent reinforcement learning) with 4 agents navigating a seasonal resource environment. 7 conditions: \texttt{full}, \texttt{no\_partial\_obs}, \texttt{no\_long\_horizon}, \texttt{no\_world\_model}, \texttt{no\_self\_prediction}, \texttt{no\_intrinsic\_motivation}, \texttt{no\_delayed\_rewards}. 3 seeds per condition (21 parallel GPU runs, A10G). Affect measured in the 6D framework; geometric alignment via RSA (representational similarity analysis) with Mantel test ($N{=}500$, 5000 permutations) between information-theoretic and observation-embedding affect spaces. 200k training steps per condition.
+
+\textbf{Prediction}: Self-prediction and world-model ablations will show the largest RSA drop, because these create the strongest coupling pressures.
+
+\textbf{Results}: \emph{All seven conditions show highly significant geometric alignment} ($p < 0.0001$ in all 21 runs). The predicted hierarchy was wrong:
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Condition & RSA $\rho$ & $\pm$ std & CKA$_{\text{lin}}$ & CKA$_{\text{rbf}}$ \\
+\midrule
+\texttt{full} & 0.212 & 0.058 & 0.092 & 0.105 \\
+\texttt{no\_partial\_obs} & 0.217 & 0.016 & 0.123 & 0.126 \\
+\texttt{no\_long\_horizon} & 0.215 & 0.027 & 0.075 & 0.110 \\
+\texttt{no\_world\_model} & 0.227 & 0.005 & 0.091 & 0.103 \\
+\texttt{no\_self\_prediction} & 0.240 & 0.022 & 0.100 & 0.120 \\
+\texttt{no\_intrinsic\_motivation} & 0.212 & 0.011 & 0.084 & 0.116 \\
+\texttt{no\_delayed\_rewards} & 0.254 & 0.051 & 0.147 & 0.146 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Removing forcing functions \emph{slightly increases} alignment ($\Delta\rho$ from $+0.003$ to $+0.041$), the opposite of our prediction. The cross-seed variance of the full model ($\sigma{=}0.058$) exceeds most condition differences, so no individual ablation is statistically distinguishable from full---but the consistent \emph{direction} (all ablations $\geq$ full) is noteworthy.
+
+\textbf{Interpretation}: Geometric alignment is a \emph{baseline property} of multi-agent survival, not contingent on any single forcing function. The forcing functions add representational complexity (more latent dimensions active, richer dynamics) that slightly \emph{obscures} rather than strengthens the underlying affect geometry. This supports the universality claim: the 6D affect structure emerges from the minimal conditions of agents navigating uncertainty under resource constraints, not from architectural extras.
+
+\textbf{Caveat}: This does not mean forcing functions are unimportant---they clearly affect agent \emph{capabilities} (the full model achieves higher rewards and more sophisticated behavior). But their contribution is to agent \emph{competence}, not to the geometric structure of affect. The geometry is cheaper than we thought.
 \end{experiment}
 
 \begin{sidebar}[title=Forcing Functions and the Inhibition Coefficient]
