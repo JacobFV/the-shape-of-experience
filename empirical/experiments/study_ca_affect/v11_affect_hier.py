@@ -159,47 +159,48 @@ def measure_tier_integration(grid_mc, coupling, cells, tier_assignments):
         return 0.0
 
     # Extract values at pattern cells: (C, n_cells)
-    vals = grid_mc[:, cells[:, 0], cells[:, 1]]
+    vals = np.asarray(grid_mc[:, cells[:, 0], cells[:, 1]], dtype=np.float64)
+    vals = np.clip(vals, 0.0, 1.0)
     n = vals.shape[1]
+    if n < 4:
+        return 0.0
 
-    # Full covariance
+    # Only include channels with nonzero variance
+    var_per_ch = np.var(vals, axis=1)
+    active_ch = var_per_ch > 1e-12
+    if np.sum(active_ch) < 2:
+        return 0.0
+    vals = vals[active_ch]
+    # Remap tier assignments for active channels only
+    active_tier_assignments = np.asarray(tier_assignments)[active_ch]
+
+    # Full covariance (float64 for numerical stability at C=64)
     vals_c = vals - vals.mean(axis=1, keepdims=True)
     cov_full = (vals_c @ vals_c.T) / max(n - 1, 1)
 
     # Block-diagonal covariance (zero out cross-tier blocks)
-    mask = np.zeros((C, C), dtype=np.float32)
+    n_active = int(np.sum(active_ch))
+    mask = np.zeros((n_active, n_active), dtype=np.float64)
     for tier in range(4):
-        idx = np.where(np.asarray(tier_assignments) == tier)[0]
-        mask[np.ix_(idx, idx)] = 1.0
+        idx = np.where(active_tier_assignments == tier)[0]
+        if len(idx) > 0:
+            mask[np.ix_(idx, idx)] = 1.0
 
-    cov_within = cov_full * jnp.array(mask)
+    cov_within = cov_full * mask
 
-    # Integration = trace(cov_full) - trace(cov_within)
-    # (information lost when removing cross-tier correlations)
-    # Normalized by trace(cov_full)
-    tr_full = jnp.trace(cov_full)
-    tr_within = jnp.trace(cov_within)
-    tr_cross = tr_full - tr_within
+    # Effective rank difference: full vs block-diagonal (all numpy float64)
+    eigvals_full = np.linalg.eigvalsh(cov_full)
+    eigvals_full = np.maximum(eigvals_full, 0.0)
+    sum_sq_full = np.sum(eigvals_full**2)
+    eff_rank_full = np.sum(eigvals_full)**2 / sum_sq_full if sum_sq_full > 1e-20 else 1.0
 
-    # Also measure via effective rank difference
-    eigvals_full = jnp.linalg.eigvalsh(cov_full)
-    eigvals_full = jnp.maximum(eigvals_full, 0.0)
-    eff_rank_full = jnp.where(
-        jnp.sum(eigvals_full**2) > 1e-20,
-        jnp.sum(eigvals_full)**2 / jnp.sum(eigvals_full**2),
-        1.0
-    )
+    eigvals_within = np.linalg.eigvalsh(cov_within)
+    eigvals_within = np.maximum(eigvals_within, 0.0)
+    sum_sq_within = np.sum(eigvals_within**2)
+    eff_rank_within = np.sum(eigvals_within)**2 / sum_sq_within if sum_sq_within > 1e-20 else 1.0
 
-    eigvals_within = jnp.linalg.eigvalsh(cov_within)
-    eigvals_within = jnp.maximum(eigvals_within, 0.0)
-    eff_rank_within = jnp.where(
-        jnp.sum(eigvals_within**2) > 1e-20,
-        jnp.sum(eigvals_within)**2 / jnp.sum(eigvals_within**2),
-        1.0
-    )
-
-    # Tier integration = fraction of effective rank that comes from cross-tier
-    tier_phi = float((eff_rank_full - eff_rank_within) / jnp.maximum(eff_rank_full, 1.0))
+    # Tier integration = fraction of effective rank from cross-tier correlations
+    tier_phi = float((eff_rank_full - eff_rank_within) / max(eff_rank_full, 1.0))
 
     return max(0.0, tier_phi)
 
@@ -251,19 +252,27 @@ def measure_effective_rank_hier(pattern_values, tier_assignments):
     if pattern_values is None:
         return 0.0, {}
 
-    vals = np.asarray(pattern_values)  # (N_cells, C)
+    vals = np.asarray(pattern_values, dtype=np.float64)  # (N_cells, C)
+    vals = np.clip(vals, 0.0, 1.0)  # ensure valid range
     if vals.shape[0] < 4:
         return 0.0, {}
 
-    # Global effective rank
-    vals_c = vals - vals.mean(axis=0, keepdims=True)
-    cov = (vals_c.T @ vals_c) / max(vals.shape[0] - 1, 1)
+    # Only include channels with nonzero variance
+    var_per_ch = np.var(vals, axis=0)
+    active_ch = var_per_ch > 1e-12
+    if np.sum(active_ch) < 2:
+        return 0.0, {}
+    vals_active = vals[:, active_ch]
+
+    # Global effective rank (float64 for numerical stability)
+    vals_c = vals_active - vals_active.mean(axis=0, keepdims=True)
+    cov = (vals_c.T @ vals_c) / max(vals_active.shape[0] - 1, 1)
     eigvals = np.linalg.eigvalsh(cov)
     eigvals = np.maximum(eigvals, 0.0)
 
     tr = np.sum(eigvals)
     tr_sq = np.sum(eigvals**2)
-    global_rank = (tr**2 / tr_sq) / len(eigvals) if tr_sq > 1e-20 else 0.0
+    global_rank = (tr**2 / tr_sq) / vals_active.shape[1] if tr_sq > 1e-20 else 0.0
 
     # Per-tier rank
     tier_ranks = {}
@@ -361,10 +370,13 @@ def measure_self_model_hier(pattern_values, tier_assignments):
     expected_fraction = len(pred_ch) / C
     actual_fraction = pred_energy / total_energy
 
-    # Salience = how much prediction is overrepresented
-    salience = actual_fraction / max(expected_fraction, 1e-8)
+    # Salience = how much prediction is overrepresented, normalized to [0, 1]
+    # 1.0 = prediction has ALL the energy; 0.0 = prediction has expected share or less
+    ratio = actual_fraction / max(expected_fraction, 1e-8)
+    # Sigmoid mapping: ratio=1 → 0, ratio=3 → ~0.73, ratio=5+ → ~0.95
+    salience = 1.0 - np.exp(-max(0.0, ratio - 1.0) / 2.0)
 
-    return float(np.clip(salience, 0.0, 5.0))  # cap at 5x overrepresentation
+    return float(np.clip(salience, 0.0, 1.0))
 
 
 # ============================================================================

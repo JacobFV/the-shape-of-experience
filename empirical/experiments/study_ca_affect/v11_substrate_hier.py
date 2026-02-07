@@ -90,12 +90,10 @@ def generate_hier_config(C=64, N=256, seed=42):
     tier_assignments[n_sens + n_proc:n_sens + n_proc + n_mem] = TIER_MEMORY
     tier_assignments[n_sens + n_proc + n_mem:] = TIER_PREDICTION
 
-    # Per-channel dt (timescale)
-    dt_per_channel = np.zeros(C, dtype=np.float32)
-    dt_per_channel[tier_assignments == TIER_SENSORY] = 0.1      # fast
-    dt_per_channel[tier_assignments == TIER_PROCESSING] = 0.05   # medium
-    dt_per_channel[tier_assignments == TIER_MEMORY] = 0.01       # slow (persistent)
-    dt_per_channel[tier_assignments == TIER_PREDICTION] = 0.05   # medium
+    # Per-channel dt — uniform base rate; timescale separation emerges
+    # from kernel radii (memory has large kernels → slow spatial dynamics)
+    # and coupling structure (memory accumulates slowly via asymmetric coupling)
+    dt_per_channel = np.full(C, 0.05, dtype=np.float32)
 
     # Kernel radii by tier
     kernel_radii = np.zeros(C, dtype=int)
@@ -165,77 +163,56 @@ HIER_CONFIG = generate_hier_config(C=64, N=256, seed=42)
 # ============================================================================
 
 def generate_hier_coupling(C, tier_assignments, seed=42,
-                           within_bw=3.0, ff_strength=0.8,
-                           fb_strength=0.3, pred_mod_strength=0.15):
-    """Asymmetric hierarchical coupling matrix.
+                           bandwidth=8.0, asym_strength=0.15):
+    """Hierarchical coupling: symmetric base + asymmetric directional bias.
 
-    Within-tier: Gaussian banded (bandwidth=within_bw)
-    Cross-tier: directed feedforward and feedback pathways
+    Base: V11.4-style banded symmetric coupling (proven to sustain patterns).
+    Bias: small asymmetric component creating feedforward/feedback pathways.
 
-    Sensory → Processing: strong feedforward (ff_strength)
-    Processing → Memory: strong write (ff_strength)
-    Memory → Processing: moderate read/feedback (fb_strength)
-    Memory → Prediction: strong input to prediction (ff_strength)
-    Prediction → Sensory: weak modulatory (pred_mod_strength)
-    Other cross-tier: zero
+    The asymmetric bias creates directional information flow:
+      Sensory → Processing → Memory → Prediction → Sensory (loop)
+    Without breaking the symmetric base that lets all channels sustain growth.
 
-    Returns (C, C) float32 array (NOT symmetric).
+    Returns (C, C) float32 array.
     """
-    rng = np.random.RandomState(seed)
-    W = np.zeros((C, C), dtype=np.float32)
+    from v11_substrate_hd import generate_coupling_matrix
 
-    # Within-tier coupling (Gaussian banded)
-    for tier in range(4):
-        tier_channels = np.where(tier_assignments == tier)[0]
-        n_t = len(tier_channels)
-        if n_t < 2:
-            continue
-        for i, ci in enumerate(tier_channels):
-            for j, cj in enumerate(tier_channels):
-                d = min(abs(i - j), n_t - abs(i - j))  # toroidal within tier
-                W[ci, cj] = np.exp(-d**2 / (2 * within_bw**2))
+    # Base: proven V11.4 symmetric coupling
+    W_base = generate_coupling_matrix(C, bandwidth=bandwidth)
 
-    # Cross-tier feedforward connections
+    # Asymmetric bias: directional flow between tiers
+    W_asym = np.zeros((C, C), dtype=np.float32)
+
     sens_ch = np.where(tier_assignments == TIER_SENSORY)[0]
     proc_ch = np.where(tier_assignments == TIER_PROCESSING)[0]
     mem_ch = np.where(tier_assignments == TIER_MEMORY)[0]
     pred_ch = np.where(tier_assignments == TIER_PREDICTION)[0]
 
-    def _add_cross_tier(from_ch, to_ch, strength, spread=0.5):
-        """Add cross-tier coupling with spatial spread."""
-        n_from = len(from_ch)
-        n_to = len(to_ch)
+    def _add_directed(from_ch, to_ch, strength, spread=0.5):
+        """Add directed coupling (additive, breaks symmetry)."""
+        n_from, n_to = len(from_ch), len(to_ch)
         for i, ci in enumerate(to_ch):
-            # Each target channel receives from a spread of source channels
             center = i * n_from / max(n_to, 1)
             for j, cj in enumerate(from_ch):
                 d = abs(j - center) / max(n_from, 1)
-                W[ci, cj] += strength * np.exp(-d**2 / (2 * spread**2))
+                W_asym[ci, cj] += strength * np.exp(-d**2 / (2 * spread**2))
 
-    # Sensory → Processing (feedforward)
-    _add_cross_tier(sens_ch, proc_ch, ff_strength)
+    # Feedforward: S→P→M→Pred
+    _add_directed(sens_ch, proc_ch, asym_strength)
+    _add_directed(proc_ch, mem_ch, asym_strength, spread=0.7)
+    _add_directed(mem_ch, pred_ch, asym_strength, spread=0.7)
 
-    # Processing → Memory (write)
-    _add_cross_tier(proc_ch, mem_ch, ff_strength, spread=0.7)
+    # Feedback: Pred→S (closes the loop)
+    _add_directed(pred_ch, sens_ch, asym_strength * 0.5, spread=0.5)
 
-    # Memory → Processing (feedback/read)
-    _add_cross_tier(mem_ch, proc_ch, fb_strength, spread=0.7)
+    # Combine: base symmetric + small asymmetric bias
+    W = W_base + W_asym
 
-    # Memory → Prediction (prediction input)
-    _add_cross_tier(mem_ch, pred_ch, ff_strength, spread=0.8)
-
-    # Prediction → Sensory (weak modulatory feedback)
-    _add_cross_tier(pred_ch, sens_ch, pred_mod_strength, spread=0.5)
-
-    # Diagonal = 1.0
-    np.fill_diagonal(W, 1.0)
-
-    # Normalize: row sums <= 4.0 (slightly higher than V11.4 since more connections)
-    diag = np.diag(W).copy()
+    # Re-normalize off-diagonal to keep row sums ≤ 4.0
     np.fill_diagonal(W, 0.0)
     row_sums = W.sum(axis=1, keepdims=True)
     scale = np.where(row_sums > 0, 3.0 / np.maximum(row_sums, 1e-8), 0.0)
-    W = W * scale
+    W = W * np.minimum(scale, 1.0)  # only scale down, never up
     np.fill_diagonal(W, 1.0)
 
     return W.astype(np.float32)
@@ -295,18 +272,22 @@ def run_chunk_hier(grid, resource, kernel_ffts, coupling, rng, n_steps,
         g_fft = jnp.fft.rfft2(g)  # (C, N, N//2+1)
         potentials = jnp.fft.irfft2(g_fft * kernel_ffts, s=(N, N))  # (C, N, N)
 
-        # 2. Cross-channel coupling (asymmetric)
+        # 2. Cross-channel coupling: mix coupled activity into potential
+        #    This lets sensory activity "drive" processing/memory channels
+        #    by shifting their effective potential toward their growth peak
         cross_terms = jnp.einsum('cj,jnm->cnm', coupling, g)  # (C, N, N)
+        row_sums = coupling_row_sums[:, None, None]
+        coupling_input = cross_terms / row_sums  # normalized, (C, N, N)
 
-        # 3. Growth from potential (per-channel)
+        # 3. Effective potential = self-convolution + coupling injection
+        #    50/50 mix: coupling provides strong cross-tier drive,
+        #    allowing processing/memory channels to be sustained by sensory input
+        effective_potential = 0.5 * potentials + 0.5 * coupling_input
+
+        # 4. Growth from effective potential (per-channel)
         mus = channel_mus[:, None, None]
         sigs = channel_sigmas[:, None, None]
-        growth = 2.0 * jnp.exp(-((potentials - mus)**2) / (2 * sigs**2)) - 1.0
-
-        # 4. Cross-channel gate (normalized)
-        row_sums = coupling_row_sums[:, None, None]
-        gate = jax.nn.sigmoid(5.0 * (cross_terms / row_sums - 0.3))
-        growth = growth * gate
+        growth = 2.0 * jnp.exp(-((effective_potential - mus)**2) / (2 * sigs**2)) - 1.0
 
         # 5. Prediction signal: prediction channels get bonus if they
         #    correlate with current sensory channels (they were "predicting"
@@ -365,19 +346,18 @@ def run_chunk_hier(grid, resource, kernel_ffts, coupling, rng, n_steps,
 
 def run_chunk_hier_wrapper(grid, resource, kernel_ffts, coupling, rng,
                            config, n_steps):
-    """Convenience wrapper that unpacks config into run_chunk_hier args."""
-    tier_assignments = config['tier_assignments']
-    C = config['n_channels']
+    """Convenience wrapper using V11.4 HD physics with hierarchical coupling.
 
-    # Build channel masks
-    pred_mask = np.zeros(C, dtype=np.float32)
-    pred_mask[tier_assignments == TIER_PREDICTION] = 1.0
-    sens_mask = np.zeros(C, dtype=np.float32)
-    sens_mask[tier_assignments == TIER_SENSORY] = 1.0
+    Key insight: the hierarchy lives in the COUPLING STRUCTURE (asymmetric,
+    directed pathways), not in different physics per tier. All channels use
+    the same proven Lenia dynamics from V11.4. The tier assignments are used
+    for affect measurement, not for differential physics.
+    """
+    from v11_substrate_hd import run_chunk_hd
 
-    return run_chunk_hier(
+    return run_chunk_hd(
         grid, resource, kernel_ffts, coupling, rng, n_steps,
-        jnp.array(config['dt_per_channel']),
+        jnp.float32(0.05),  # uniform dt
         jnp.array(config['channel_mus']),
         jnp.array(config['channel_sigmas']),
         jnp.sum(coupling, axis=1),
@@ -387,9 +367,6 @@ def run_chunk_hier_wrapper(grid, resource, kernel_ffts, coupling, rng,
         jnp.float32(config['resource_max']),
         jnp.float32(config['resource_half_sat']),
         jnp.float32(config.get('decay_rate', 0.0)),
-        jnp.array(pred_mask),
-        jnp.array(sens_mask),
-        jnp.float32(config.get('prediction_strength', 0.5)),
     )
 
 
@@ -398,76 +375,10 @@ def run_chunk_hier_wrapper(grid, resource, kernel_ffts, coupling, rng,
 # ============================================================================
 
 def init_soup_hier(N, C, rng, config):
-    """Initialize hierarchical soup.
+    """Initialize hierarchical soup using V11.4 proven init.
 
-    Each tier gets different initialization:
-    - Sensory: random blobs (standard)
-    - Processing: low-amplitude noise (learns from sensory)
-    - Memory: near-zero (fills up over time via slow dynamics)
-    - Prediction: low random (learns from memory)
+    All channels get equal treatment (same as V11.4 HD).
+    The hierarchy lives in the coupling structure, not in initialization.
     """
-    tier_assignments = config['tier_assignments']
-    channel_mus = config['channel_mus']
-    seeds_per_channel = max(2, 30 // C)
-
-    channels = []
-    yy, xx = np.mgrid[0:N, 0:N]
-
-    for c in range(C):
-        rng, k = random.split(rng)
-        tier = tier_assignments[c]
-        mu_c = float(channel_mus[c])
-
-        if tier == TIER_SENSORY:
-            # Full random blobs
-            rng, k_bg = random.split(rng)
-            ch_grid = 0.02 * np.array(random.uniform(k_bg, (N, N)))
-            for _ in range(seeds_per_channel):
-                rng, ks = random.split(rng)
-                keys = random.split(ks, 4)
-                cx = int(random.randint(keys[0], (), 20, N - 20))
-                cy = int(random.randint(keys[1], (), 20, N - 20))
-                r = float(random.uniform(keys[2], (), minval=6, maxval=16))
-                center_val = mu_c + float(random.uniform(keys[3], (), minval=-0.03, maxval=0.03))
-                dist = np.sqrt((xx - cx)**2 + (yy - cy)**2)
-                ch_grid += center_val * np.exp(-(dist**2) / (2 * (r * 0.6)**2))
-
-        elif tier == TIER_PROCESSING:
-            # Low-amplitude noise + thin blobs
-            rng, k_bg = random.split(rng)
-            ch_grid = 0.03 * np.array(random.uniform(k_bg, (N, N)))
-            for _ in range(max(1, seeds_per_channel // 2)):
-                rng, ks = random.split(rng)
-                keys = random.split(ks, 3)
-                cx = int(random.randint(keys[0], (), 20, N - 20))
-                cy = int(random.randint(keys[1], (), 20, N - 20))
-                r = float(random.uniform(keys[2], (), minval=8, maxval=20))
-                dist = np.sqrt((xx - cx)**2 + (yy - cy)**2)
-                ch_grid += 0.5 * mu_c * np.exp(-(dist**2) / (2 * (r * 0.5)**2))
-
-        elif tier == TIER_MEMORY:
-            # Near-zero (memory fills up over time)
-            rng, k_bg = random.split(rng)
-            ch_grid = 0.01 * np.array(random.uniform(k_bg, (N, N)))
-
-        elif tier == TIER_PREDICTION:
-            # Low random
-            rng, k_bg = random.split(rng)
-            ch_grid = 0.02 * np.array(random.uniform(k_bg, (N, N)))
-
-        else:
-            ch_grid = np.zeros((N, N), dtype=np.float32)
-
-        channels.append(np.clip(ch_grid, 0.0, 1.0).astype(np.float32))
-
-    grid = jnp.array(np.stack(channels, axis=0))  # (C, N, N)
-
-    # Resource field
-    resource = jnp.full((N, N), 0.3)
-    for hx, hy in [(N//3, N//3), (2*N//3, 2*N//3),
-                    (N//3, 2*N//3), (2*N//3, N//3)]:
-        dist_h = np.sqrt((xx - hx)**2 + (yy - hy)**2)
-        resource = resource + jnp.array(0.7 * np.exp(-(dist_h**2) / (2 * 30**2)))
-    resource = jnp.clip(resource, 0.0, 1.0)
-
-    return grid, resource
+    from v11_substrate_hd import init_soup_hd
+    return init_soup_hd(N, C, rng, config['channel_mus'])
