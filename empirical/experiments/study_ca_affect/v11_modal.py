@@ -1,4 +1,4 @@
-"""V11 Modal Deployment: GPU-accelerated CA experiment on Modal.
+"""V11/V12 Modal Deployment: GPU-accelerated CA experiment on Modal.
 
 Usage:
     modal run v11_modal.py                              # Sanity check
@@ -11,6 +11,9 @@ Usage:
     modal run v11_modal.py --mode hd --hours 4 --channels 8  # V11.4 with C=8
     modal run v11_modal.py --mode metabolic --hours 6   # V11.6 metabolic Lenia
     modal run v11_modal.py --mode curriculum --hours 6  # V11.7 curriculum evolution
+    modal run v11_modal.py --mode attention --hours 6 --channels 16  # V12 evolvable attention (B)
+    modal run v11_modal.py --mode attention-fixed --hours 6 --channels 16  # V12 fixed attention (A)
+    modal run v11_modal.py --mode attention-sanity --channels 8  # V12 quick sanity check
 """
 
 import modal
@@ -436,8 +439,71 @@ def run_curriculum(n_cycles: int = 30, steps_per_cycle: int = 5000,
     return save_data
 
 
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_attention(n_cycles: int = 30, steps_per_cycle: int = 5000,
+                  cull_fraction: float = 0.3,
+                  n_channels: int = 16, grid_size: int = 128,
+                  fixed_window: bool = False, seed: int = 42):
+    """V12: Attention-based Lenia evolution + stress test."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v12_evolution import full_pipeline_attention
+
+    condition = "A_fixed" if fixed_window else "B_evolvable"
+    results_file = f'/results/v12_{condition}_C{n_channels}_N{grid_size}_s{seed}.json'
+
+    def save_and_commit(cycle_stats):
+        save_data = {
+            'cycle_stats': cycle_stats,
+            'n_channels': n_channels,
+            'grid_size': grid_size,
+            'condition': condition,
+            'seed': seed,
+            'status': 'in_progress',
+        }
+        with open(results_file, 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
+    result = full_pipeline_attention(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        C=n_channels,
+        N=grid_size,
+        fixed_window=fixed_window,
+        seed=seed,
+        post_cycle_callback=save_and_commit,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': result['stress_test'],
+        'n_channels': n_channels,
+        'grid_size': grid_size,
+        'condition': condition,
+        'seed': seed,
+        'w_soft': result['evolution'].get('w_soft'),
+        'tau': result['evolution'].get('tau'),
+        'bandwidth': result['evolution'].get('bandwidth'),
+        'status': 'complete',
+    }
+    with open(results_file, 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
 @app.local_entrypoint()
-def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
+def main(mode: str = "sanity", hours: int = 0, channels: int = 64,
+         grid_size: int = 128, seed: int = 42):
     if mode == "sanity":
         result = run_sanity.remote()
         print(f"\nResult: {result}")
@@ -481,7 +547,26 @@ def main(mode: str = "sanity", hours: int = 0, channels: int = 64):
         n_cyc = max(hours * 5, 30) if hours > 0 else 30
         result = run_curriculum.remote(n_cycles=n_cyc, n_channels=channels)
         print(f"\nCurriculum result (C={channels}): {result}")
+    elif mode == "attention":
+        n_cyc = max(hours * 4, 30) if hours > 0 else 30
+        result = run_attention.remote(
+            n_cycles=n_cyc, n_channels=channels,
+            grid_size=grid_size, fixed_window=False, seed=seed)
+        print(f"\nAttention B result (C={channels}, N={grid_size}): {result}")
+    elif mode == "attention-fixed":
+        n_cyc = max(hours * 4, 30) if hours > 0 else 30
+        result = run_attention.remote(
+            n_cycles=n_cyc, n_channels=channels,
+            grid_size=grid_size, fixed_window=True, seed=seed)
+        print(f"\nAttention A result (C={channels}, N={grid_size}): {result}")
+    elif mode == "attention-sanity":
+        result = run_attention.remote(
+            n_cycles=2, steps_per_cycle=500,
+            n_channels=channels, grid_size=grid_size,
+            fixed_window=False, seed=seed)
+        print(f"\nAttention sanity result: {result}")
     else:
         print(f"Unknown mode: {mode}. "
               "Use: sanity, experiment, ablation, evolve, pipeline, "
-              "hetero, multichannel, hd, hier, metabolic, curriculum")
+              "hetero, multichannel, hd, hier, metabolic, curriculum, "
+              "attention, attention-fixed, attention-sanity")

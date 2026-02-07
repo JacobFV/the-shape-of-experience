@@ -1389,7 +1389,14 @@ The biological pattern (integration under threat) cannot emerge in substrates wi
 \textbf{Design}: Replace the convolution kernel with windowed self-attention: each cell updates its state by attending to cells within a local window, with attention weights computed from cell states (query-key mechanism). The window size is evolvable---evolution can expand or contract the perceptual range. Resources, drought, and selection pressure follow the V11 protocol.
 \textbf{Critical prediction}: Under survival pressure, evolution should expand the attention window (increasing perceptual range), and patterns should show the biological pattern---$\intinfo$ \emph{increasing} under moderate stress---because they can dynamically reallocate information flow to maintain core integration. The attention patterns themselves should narrow under stress (focused measurement) and broaden during safety (diffuse exploration).
 \textbf{Control for the free-lunch problem}: Start with strictly local attention (window $= R$, matching Lenia's kernel radius). If integration under threat emerges only after evolution expands the window, the biological pattern is an adaptive achievement, not an architectural gift.
-\textbf{Status}: \emph{Not yet implemented. Next experimental priority.}
+\textbf{Status}: \emph{Implemented as V12. Three conditions designed:}
+\begin{description}
+\item[A (Fixed-local attention)] Window size fixed at kernel radius $R$. Tests whether attention expressivity alone (without range expansion) is sufficient. Free-lunch control.
+\item[B (Evolvable attention)] Window size $w \in [R, 32]$ is evolvable. The main hypothesis test: does evolution expand perceptual range, and does this enable the biological pattern?
+\item[C (FFT convolution)] V11.4 physics as known baseline. Anchors the comparison at $-3\%$ to $-6\%$ $\Phi$ under severe stress.
+\end{description}
+\emph{Implementation}: Windowed self-attention replaces Step 1 (FFT convolution) of the Lenia scan body. Query-key projections ($W_q, W_k \in \mathbb{R}^{d \times C}$) are shared across space, evolved slowly. Soft distance mask via $\sigma(\beta(w_{\text{soft}}^2 - r^2))$ enables smooth window expansion. Temperature $\tau$ governs attention sharpness. All other physics (growth function, coupling gate, resource dynamics, decay, maintenance) remain identical to V11.4. Curriculum training protocol from V11.7. \\
+\emph{Ready for GPU deployment. 9 jobs (3 conditions $\times$ 3 seeds) on A10G.}
 \end{experiment}
 
 The V10 MARL ablation study (Experiment~\ref{exp:v10-ablation}) produced a surprise: \emph{all seven conditions show highly significant geometric alignment} ($\rho > 0.21$, $p < 0.0001$), and removing forcing functions does not reduce alignment---if anything, it slightly increases it. The predicted hierarchy was wrong: geometric alignment appears to be a baseline property of multi-agent survival systems, not contingent on any specific forcing function. This strengthens the universality claim but challenges the forcing function theory developed in the next section.
