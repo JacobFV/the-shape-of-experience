@@ -1026,6 +1026,8 @@ Epicureanism & $\valence{+}$ (moderate), $\arousal{\downarrow}$ (sustainable ple
 \caption{Philosophical traditions as affect-space policies.}
 \end{table}
 
+Each of these traditions also operates at a characteristic $\iota$ configuration, though none of them names it as such. Stoicism is a philosophy of \emph{moderate, fixed $\iota$}: the Stoic neither dissolves into participatory merger with the world (that would violate equanimity) nor strips it of all meaning (that would undermine the Stoic's commitment to living according to nature). The Stoic's equanimity is the equanimity of a perceiver who has stabilized their $\iota$ at a setting where things matter moderately but cannot overwhelm. Buddhism is explicitly an $\iota$ flexibility training program. The progression through concentration (sam\=adhi) to insight (vipassan\=a) is the progression from stabilizing perception to modulating it voluntarily---the meditator learns to lower $\iota$ (nondual awareness, perception of dependent origination as alive and flowing) and to raise it (analytical discernment of dharmas as empty of inherent nature). The jhanas are waypoints on the $\iota$ descent: each absorption involves deeper participatory coupling with the object of meditation. Existentialism operates at a distinctively moderate-to-high $\iota$ that it refuses to either raise or lower further. The existentialist confronts a world stripped of inherent meaning (high $\iota$) but will not take the next step to mechanism (that would be bad faith---hiding from freedom behind determinism) nor retreat to low $\iota$ (that would be bad faith---hiding from freedom behind comforting illusions of purpose). The existentialist's ``authentic'' stance is the deliberate maintenance of the $\iota$ setting at which freedom is visible and terrifying: meaning is not given, and you must not pretend otherwise.
+
 % === FIGURE: ART HISTORY AS AFFECT ENGINEERING ===
 % Images: (A) Kandinsky - abstract, (B) Caravaggio Medusa - chiaroscuro,
 % (C) Vermeer - intimate scale, (D) Hubble - cosmic sublime
@@ -1143,9 +1145,9 @@ with component-wise analysis:
 \begin{definition}[Flourishing Score]
 A weighted aggregate of affect dimensions aligned with human flourishing:
 \begin{equation}
-\mathcal{F}(\mathbf{a}) = \alpha_1 \valence + \alpha_2 \intinfo + \alpha_3 \effrank - \alpha_4 (\mathcal{SM} - \mathcal{SM}_{\text{optimal}})^2 - \alpha_5 |\arousal - \arousal_{\text{optimal}}|
+\mathcal{F}(\mathbf{a}) = \alpha_1 \valence + \alpha_2 \intinfo + \alpha_3 \effrank - \alpha_4 (\mathcal{SM} - \mathcal{SM}_{\text{optimal}})^2 - \alpha_5 |\arousal - \arousal_{\text{optimal}}| + \alpha_6 \cdot \text{flex}(\iota)
 \end{equation}
-The weights $\{\alpha_i\}$ encode normative commitments about what constitutes flourishing.
+where $\text{flex}(\iota) = \frac{1}{\tau}\int_0^\tau |\dot{\iota}(t)| \, dt$ measures the time-averaged $\iota$ flexibility---the capacity to modulate the inhibition coefficient in response to context. The weights $\{\alpha_i\}$ encode normative commitments about what constitutes flourishing. The $\iota$ flexibility term deserves special emphasis: a system with positive valence, high integration, and high rank but \emph{rigid} $\iota$ is fragile. The $\iota$ rigidity hypothesis (Section 6) predicts that flexibility in perceptual configuration is itself a core component of wellbeing, independent of where on the $\iota$ spectrum one happens to be.
 \end{definition}
 
 \begin{proposition}[Comparative Analysis]
