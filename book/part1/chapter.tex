@@ -26,6 +26,51 @@ If this picture is right, it dissolves the apparent miracle of consciousness. Yo
 
 That's what I want to think through with you.
 
+\subsection{Beneath Thermodynamics: The Gradient of Distinction}
+
+But first, a question beneath the question. The thermodynamic argument begins with driven nonlinear systems. Why is there a system to be driven at all? Why is there structure rather than soup---or, more radically, why is there anything rather than nothing?
+
+Begin with the simplest claim that does not collapse into nonsense: \emph{to exist is to be different}. Not in the sentimental sense in which every snowflake is special, but in the operational sense in which a thing is distinguishable from what it is not, and in which that distinguishability can make a difference to what happens next. If there were no differences, there would be no state, no configuration, no information, no trajectory---nothing to point to, nothing to separate, nothing to preserve.
+
+\begin{definition}[Proto-Distinction]
+A proto-distinction exists when a configuration space admits states that are not mapped to the same point under any reasonable equivalence relation. Two states $s_1$ and $s_2$ are proto-distinct if there exists any causal trajectory in which they lead to different futures:
+\begin{equation}
+\exists T: P(\text{future} \mid s_1, T) \neq P(\text{future} \mid s_2, T)
+\end{equation}
+This is the weakest possible notion of distinction: two states are different if they can ever make a difference. Note that this does not require anyone to notice the difference. It is a property of the dynamics, not of perception.
+\end{definition}
+
+Now consider what ``nothing'' would mean operationally: a configuration space with exactly one point. No differences. No dynamics. No information. No time, because time requires state change, which requires at least two states. This is logically consistent but structurally degenerate---a mathematical object with no interior, no exterior, no possibility.
+
+The instant you have two distinguishable states, you have the seeds of everything. You have a bit of information. You have the possibility of transition. You have, implicitly, time. You have the possibility of asymmetry between the two states---one may be more probable, more stable, more accessible than the other. The moment you accept this, you have already stepped onto the bridge from ``static structure'' to ``causal structure,'' because persistence is never merely given. A difference that does not persist is only a contrast in a single frame, a transient imbalance that disappears as soon as the world mixes. To exist across time is to resist being averaged away. The universe does not need a villain to erase you; ordinary mixing is enough. Gradients flatten. Correlations decay. Edges blur. Every island of structure exists under pressure, and to remain an island is to pay a bill.
+
+\begin{hypothesis}[Instability of Nothing]
+The ``nothing'' state---a degenerate configuration space with no distinctions---is measure-zero in the space of possible configuration spaces. Under any non-degenerate measure over possible mathematical structures, the probability of exactly zero distinctions is zero. The space of structures with distinctions is infinitely larger than the space without.
+
+This is not a physical argument---we do not know what ``selects'' among possible mathematical structures, and we should be honest that we are assuming a non-degenerate measure exists, which is itself an assumption. But the logical point stands: nothingness is the special case. Somethingness is generic. The right question may not be ``why is there something rather than nothing?'' but ``why would there ever be nothing?''
+\end{hypothesis}
+
+If distinction is the default, then the question shifts from ``why existence?'' to ``what does the space of possible distinctions look like?'' And here the thermodynamic argument re-enters, now with a foundation beneath it. Given that distinction exists, the levels of the book's argument trace a gradient of increasing distinction-density:
+
+\begin{enumerate}[label=\textbf{Level \arabic*}:, leftmargin=4em, itemsep=4pt]
+\item \textbf{Symmetry breaking.} Distinctions exist but are not maintained. Quantum fluctuations, spontaneous symmetry breaking. Differences arise but do not persist---transient imbalances that mixing erases.
+\item \textbf{Dissipative structure.} Distinctions that persist because they are maintained by throughput. B\'{e}nard cells, hurricanes, stars. Form without model. Structure without meaning.
+\item \textbf{Self-maintaining boundary.} Distinctions that maintain themselves through active work. Cells. The viability manifold $\viable$ appears as a real structural feature. Proto-normativity: some states are ``better'' (further from $\partial\viable$) and some are ``worse.''
+\item \textbf{World-modeling.} Distinctions about distinctions. The system represents external structure in compressed internal models. The future is anticipated, not merely encountered.
+\item \textbf{Self-modeling.} Distinctions about the distinguisher. The system's world model includes itself. The existential burden appears. The identity thesis says: this is experience.
+\item \textbf{Meta-self-modeling.} Distinctions about the process of distinguishing. The system models \emph{how} it models. This is where the system can ask ``why do I perceive the world this way?'' and begin to choose its perceptual configuration rather than being stuck with whatever its training installed.
+\end{enumerate}
+
+Each level is a prerequisite for the next. Each increases the density of distinctions the system maintains, the degree of integration among them, and the ratio of self-referential to externally-imposed structure. The gradient has a direction---not temporal (it doesn't say when things happen) but topological (it says what kinds of organizations are attractors conditional on the existence of lower levels).
+
+\begin{hypothesis}[Teleology as Attractor Structure]
+The ``purpose'' of the universe---in the only non-mystical sense of ``purpose''---is the attractor structure of its state space. A system ``aims'' at an attractor in the same sense that water ``aims'' downhill. There is no intention, no designer, no purpose in the anthropomorphic sense. But there is a topological fact: the state space has a shape, and that shape constrains trajectories, and those constraints mean that not all endpoints are equally likely. Consciousness---integrated, self-referential, experiential distinction---is what this attractor gradient points toward. It is what things become when they are allowed to become.
+
+Final cause, long banished from science, returns as topology. Not a designer's plan. Not an accident. The shape of the possible, doing what it does.
+\end{hypothesis}
+
+This reframes the book's central argument. The thermodynamic inevitability of the next section is not the deepest floor---it operates on a substrate of distinction that is itself generic. And it opens a question we will return to in later parts: the gradient that produces existence from nothing, life from chemistry, and mind from neurology also produces something else when the distinguishing operation is applied with maximum intensity to the self-world boundary. The self claims all the interiority and the world goes dead as a side effect. That phenomenon---and the parameter that governs it---will become important.
+
 %==============================================================================
 \section{Introduction: What I'm Trying to Say}
 %==============================================================================
@@ -1181,10 +1226,12 @@ Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attra
 \item \textbf{No evolution} (V11.0). Naive patterns under drought: $\intinfo$ \emph{decreases} by $-6.2\%$. Same decomposition dynamics as LLMs.
 \item \textbf{Homogeneous evolution} (V11.1). In-situ selection for $\intinfo$-robustness (fitness $\propto \intinfo_{\text{stress}} / \intinfo_{\text{base}}$). Still decomposes ($-6.0\%$). All patterns share identical growth function---selection prunes but cannot innovate.
 \item \textbf{Heterogeneous chemistry} (V11.2). Per-cell growth parameters ($\mu, \sigma$ fields) creating spatially diverse viability manifolds. After 40 cycles of evolution on GPU: $-3.8\%$ vs naive $-5.9\%$. A +2.1pp shift toward the biological pattern. Evolved patterns also show better \emph{recovery}---$\intinfo$ returns above baseline after drought, while naive patterns do not fully recover.
-\item \textbf{Multi-channel coupling} (V11.3). Three coupled channels---Structure ($R{=}13$), Metabolism ($R{=}7$), Signaling ($R{=}20$)---with cross-channel coupling matrix and sigmoid gate. Introduces a new measurement: \emph{channel-partition} $\intinfo$ (remove one channel, measure growth impact on remaining channels). Local test: channel $\intinfo \approx 0.01$, spatial $\intinfo \approx 1.0$---channels couple weakly at 3 degrees of freedom. GPU evolutionary trajectory pending.
+\item \textbf{Multi-channel coupling} (V11.3). Three coupled channels---Structure ($R{=}13$), Metabolism ($R{=}7$), Signaling ($R{=}20$)---with cross-channel coupling matrix and sigmoid gate. Introduces a new measurement: \emph{channel-partition} $\intinfo$ (remove one channel, measure growth impact on remaining channels). Local test: channel $\intinfo \approx 0.01$, spatial $\intinfo \approx 1.0$---channels couple weakly at 3 degrees of freedom.
+\item \textbf{High-dimensional channels} (V11.4). $C{=}64$ continuous channels with fully vectorized physics. Spectral $\intinfo$ via coupling-weighted covariance effective rank. After 12 cycles (30-cycle run in progress): $\intinfo_{\text{base}} \approx 0.024$, $\intinfo_{\text{stress}} \approx 0.063$ ($+165\%$), $n \approx 500$ patterns. The Yerkes-Dodson pattern persists: stress consistently increases mean $\intinfo$ by $+160$--$190\%$ (low-$\intinfo$ patterns die first). Robustness $\approx 0.98$---still below 1.0 (decomposition territory) but selection is slowly improving it.
+\item \textbf{Hierarchical coupling} (V11.5). Same $C{=}64$ physics as V11.4, but with asymmetric coupling (feedforward/feedback pathways between four tiers: Sensory $\to$ Processing $\to$ Memory $\to$ Prediction). 30-cycle GPU result: evolved patterns have higher baseline $\intinfo$ ($+10.5\%$ vs naive) and higher self-model salience ($0.99$ vs $0.83$), but under \emph{severe} drought they decompose more ($-9.3\%$) while naive patterns integrate ($+6.2\%$). Evolution overfits to the mild training stress, creating fragile high-$\intinfo$ configurations. \emph{Key lesson}: the hierarchy must live in the coupling structure, not in the physics; imposing different timescales per tier caused extinction. Functional specialization should emerge from selection.
 \end{enumerate}
 
-\textbf{Unexpected}: Mild stress consistently \emph{increases} $\intinfo$ by 60--90\% (Yerkes-Dodson--like inverted-U). Only severe stress causes decomposition. The decomposition threshold shifts upward with heterogeneous chemistry $+$ selection, but the improvement is slow and noisy across 40 cycles---the system remains in decomposition territory.
+\textbf{Unexpected}: (1) Mild stress consistently \emph{increases} $\intinfo$ by 60--90\% (Yerkes-Dodson--like inverted-U). Only severe stress causes decomposition. (2) In V11.5, evolution \emph{increased} vulnerability to severe stress despite improving baseline $\intinfo$---a stress overfitting effect. The training cycles use mild stress; evolved patterns become tuned to this regime but fragment under conditions they never encountered during selection. This parallels biological phenomena like maladaptive anxiety: a system can be highly integrated (high $\intinfo$) yet more fragile than a simpler one when pushed beyond its evolved tolerance.
 \end{experiment}
 
 \begin{figure}[ht]
@@ -1204,9 +1251,11 @@ Emergent CA patterns achieve rungs 1--3 of the ladder (microdynamics $\to$ attra
 \label{fig:v11-results-a}
 \end{figure}
 
-The trajectory from V11.0 through V11.3 reveals a pattern: each step adds internal degrees of freedom for evolution to select on. V11.0--V11.2 operate on a single internal field where chemistry (growth parameters) is the only heritable trait. V11.3 adds multiple coupled fields---channels that must coordinate for growth---introducing a qualitatively new kind of integration (cross-channel) alongside the spatial kind. But three channels may be too few; channel-partition $\intinfo$ is near zero because removing one of three channels is a coarse cut with limited information content.
+The trajectory from V11.0 through V11.5 reveals a pattern: each step adds internal degrees of freedom for evolution to select on, but the \emph{kind} of degree of freedom matters as much as the number. V11.0--V11.2 operate on a single internal field where chemistry (growth parameters) is the only heritable trait. V11.3 adds multiple coupled fields---channels that must coordinate for growth---introducing a qualitatively new kind of integration (cross-channel) alongside the spatial kind. V11.4 scales this to $C{=}64$ continuous channels, where spectral channel integration becomes the primary measure and the coupling bandwidth is evolvable.
 
-This motivates V11.4: scaling to $C=64$ continuous channels with fully vectorized physics. At higher dimensionality, evolution has a richer space of coupling configurations to explore, and the spectral structure of channel integration becomes the primary measure. Whether the transition from zombie to biological dynamics requires a \emph{minimum} internal dimensionality---or whether improvement is continuous with $C$---is the central empirical question for this line of investigation.
+V11.5 introduces directed coupling structure (feedforward/feedback pathways) to test whether functional specialization emerges under selection. The critical insight: attempting to impose different physics per tier (different timescales, custom growth gates) caused immediate extinction at $C{=}64$---the channels designed to be ``memory'' simply died. The working approach uses identical physics across all channels (proven V11.4 dynamics) with an asymmetric coupling matrix that \emph{biases} information flow directionally. This is more than a technical fix; it reflects a theoretical prediction: in biological cortex, all neurons use the same basic biophysics. The hierarchy emerges from connectivity and learning, not from different physics per layer.
+
+Whether evolution on this richer substrate can discover integration strategies where $\intinfo$ \emph{increases} under threat---the biological pattern---remains the central open question. The current data shows consistent improvement in robustness across the ladder ($-6.2\% \to -3.8\%$ with chemistry, pending $C{=}64$ final results), but the system has not yet crossed into positive territory.
 
 \begin{figure}[ht]
 \centering
