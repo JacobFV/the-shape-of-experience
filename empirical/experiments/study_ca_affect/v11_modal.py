@@ -1,25 +1,34 @@
 """V11/V12 Modal Deployment: GPU-accelerated CA experiment on Modal.
 
-Usage:
+V12 experiments run on agi-inc/research environment:
+    MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention --channels 16
+    MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention-fixed --channels 16
+    MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode convolution-baseline --channels 16
+    MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention-sanity --channels 8
+
+Full V12 comparison (9 jobs = 3 conditions × 3 seeds):
+    for seed in 42 123 7; do
+      MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention --channels 16 --seed $seed
+      MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention-fixed --channels 16 --seed $seed
+      MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode convolution-baseline --channels 16 --seed $seed
+    done
+
+Legacy V11 modes (were on agi-inc/main, now archived):
     modal run v11_modal.py                              # Sanity check
-    modal run v11_modal.py --mode experiment --hours 4  # Long observation run
     modal run v11_modal.py --mode evolve --hours 2      # V11.1 evolution
-    modal run v11_modal.py --mode pipeline --hours 4    # Full V11.1 pipeline
     modal run v11_modal.py --mode hetero --hours 4      # V11.2 hetero chemistry
-    modal run v11_modal.py --mode multichannel --hours 4  # V11.3 multi-channel
     modal run v11_modal.py --mode hd --hours 4          # V11.4 HD (64 channels)
-    modal run v11_modal.py --mode hd --hours 4 --channels 8  # V11.4 with C=8
-    modal run v11_modal.py --mode metabolic --hours 6   # V11.6 metabolic Lenia
     modal run v11_modal.py --mode curriculum --hours 6  # V11.7 curriculum evolution
-    modal run v11_modal.py --mode attention --hours 6 --channels 16  # V12 evolvable attention (B)
-    modal run v11_modal.py --mode attention-fixed --hours 6 --channels 16  # V12 fixed attention (A)
-    modal run v11_modal.py --mode attention-sanity --channels 8  # V12 quick sanity check
 """
 
 import modal
 import os
 
 app = modal.App("v11-ca-affect")
+
+# V12+ experiments run on agi-inc/research environment.
+# Deploy with: MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention ...
+MODAL_ENV = os.environ.get("MODAL_ENVIRONMENT", "research")
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
@@ -35,7 +44,7 @@ image = (
     )
 )
 
-vol = modal.Volume.from_name("v11-ca-results", create_if_missing=True)
+vol = modal.Volume.from_name("v12-ca-results", create_if_missing=True)
 
 
 @app.function(
@@ -501,6 +510,65 @@ def run_attention(n_cycles: int = 30, steps_per_cycle: int = 5000,
     return save_data
 
 
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=12 * 3600,
+    volumes={"/results": vol},
+)
+def run_convolution_baseline(n_cycles: int = 30, steps_per_cycle: int = 5000,
+                             cull_fraction: float = 0.3,
+                             n_channels: int = 16, grid_size: int = 128,
+                             seed: int = 42):
+    """V12 Condition C: FFT convolution baseline for comparison."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v12_evolution import full_pipeline_convolution_baseline
+
+    results_file = f'/results/v12_C_convolution_C{n_channels}_N{grid_size}_s{seed}.json'
+
+    def save_and_commit(cycle_stats):
+        save_data = {
+            'cycle_stats': cycle_stats,
+            'n_channels': n_channels,
+            'grid_size': grid_size,
+            'condition': 'C_convolution',
+            'seed': seed,
+            'status': 'in_progress',
+        }
+        with open(results_file, 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
+    result = full_pipeline_convolution_baseline(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        cull_fraction=cull_fraction,
+        C=n_channels,
+        N=grid_size,
+        seed=seed,
+        post_cycle_callback=save_and_commit,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': (result['stress_test'].get('comparison')
+                        if result.get('stress_test') else None),
+        'n_channels': n_channels,
+        'grid_size': grid_size,
+        'condition': 'C_convolution',
+        'seed': seed,
+        'bandwidth': result['evolution'].get('bandwidth'),
+        'status': 'complete',
+    }
+    with open(results_file, 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
 @app.local_entrypoint()
 def main(mode: str = "sanity", hours: int = 0, channels: int = 64,
          grid_size: int = 128, seed: int = 42):
@@ -559,6 +627,12 @@ def main(mode: str = "sanity", hours: int = 0, channels: int = 64,
             n_cycles=n_cyc, n_channels=channels,
             grid_size=grid_size, fixed_window=True, seed=seed)
         print(f"\nAttention A result (C={channels}, N={grid_size}): {result}")
+    elif mode == "convolution-baseline":
+        n_cyc = max(hours * 4, 30) if hours > 0 else 30
+        result = run_convolution_baseline.remote(
+            n_cycles=n_cyc, n_channels=channels,
+            grid_size=grid_size, seed=seed)
+        print(f"\nConvolution baseline result (C={channels}, N={grid_size}): {result}")
     elif mode == "attention-sanity":
         result = run_attention.remote(
             n_cycles=2, steps_per_cycle=500,

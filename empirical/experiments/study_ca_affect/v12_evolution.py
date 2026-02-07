@@ -43,7 +43,7 @@ from v11_substrate_hd import (
 # ============================================================================
 
 def mutate_attention_params(W_q, W_k, w_soft, tau, rng,
-                            w_min=5.0, w_max=32.0, fixed_window=False):
+                            w_min=5.0, w_max=16.0, fixed_window=False):
     """Mutate attention parameters for evolution.
 
     Args:
@@ -86,7 +86,7 @@ def evolve_attention(config=None, n_cycles=30, steps_per_cycle=5000,
                      cull_fraction=0.3, mutate_top_n=5,
                      mutation_noise=0.03, seed=42,
                      C=16, N=128, bandwidth=8.0, d_attn=16,
-                     w_max=32, fixed_window=False,
+                     w_max=16, fixed_window=False,
                      post_cycle_callback=None):
     """V12: Evolution with attention-based physics and curriculum stress.
 
@@ -622,7 +622,7 @@ def stress_test_attention(evolved_grid, evolved_resource, evolved_coupling,
 def full_pipeline_attention(config=None, n_cycles=30, steps_per_cycle=5000,
                             cull_fraction=0.3, seed=42,
                             C=16, N=128, bandwidth=8.0,
-                            d_attn=16, w_max=32, fixed_window=False,
+                            d_attn=16, w_max=16, fixed_window=False,
                             post_cycle_callback=None):
     """V12 full pipeline: attention evolution -> stress test."""
     if config is None:
