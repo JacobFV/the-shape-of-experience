@@ -781,6 +781,10 @@ body {
     hyphens: none;
   }
 
+  .audio-player {
+    padding-left: 3.5rem;
+  }
+
   .landing-header {
     padding-top: 1rem;
   }
