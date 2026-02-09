@@ -1,0 +1,24 @@
+{
+  "name": "the-shape-of-experience",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/convert.mjs && next dev",
+    "build": "bash scripts/install-pandoc.sh && node scripts/convert.mjs && next build",
+    "start": "next start",
+    "convert": "node scripts/convert.mjs",
+    "deploy": "npm run build && cd out && vercel deploy --yes --prod"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "katex": "^0.16.18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}
