@@ -6,3 +6,5 @@ bin/
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+.env.local
+public/audio/

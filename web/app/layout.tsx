@@ -55,60 +55,6 @@ export default function RootLayout({
         <main className="main-content">
           {children}
         </main>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.addEventListener("DOMContentLoaded", function() {
-                if (typeof renderMathInElement !== 'undefined') {
-                  renderMathInElement(document.body, {
-                    delimiters: [
-                      {left: "$$", right: "$$", display: true},
-                      {left: "\\\\[", right: "\\\\]", display: true},
-                      {left: "$", right: "$", display: false},
-                      {left: "\\\\(", right: "\\\\)", display: false}
-                    ],
-                    macros: {
-                      "\\\\E": "\\\\mathbb{E}",
-                      "\\\\R": "\\\\mathbb{R}",
-                      "\\\\N": "\\\\mathbb{N}",
-                      "\\\\Z": "\\\\mathbb{Z}",
-                      "\\\\prob": "\\\\mathbb{P}",
-                      "\\\\KL": "\\\\mathrm{KL}",
-                      "\\\\MI": "\\\\mathrm{I}",
-                      "\\\\entropy": "\\\\mathrm{H}",
-                      "\\\\manifold": "\\\\mathcal{M}",
-                      "\\\\viable": "\\\\mathcal{V}",
-                      "\\\\belief": "\\\\mathbf{b}",
-                      "\\\\state": "\\\\mathbf{s}",
-                      "\\\\action": "\\\\mathbf{a}",
-                      "\\\\obs": "\\\\mathbf{o}",
-                      "\\\\latent": "\\\\mathbf{z}",
-                      "\\\\policy": "\\\\pi",
-                      "\\\\freeenergy": "\\\\mathcal{F}",
-                      "\\\\intinfo": "\\\\Phi",
-                      "\\\\selfmodel": "\\\\mathcal{S}",
-                      "\\\\worldmodel": "\\\\mathcal{W}",
-                      "\\\\effrank": "r_{\\\\text{eff}}",
-                      "\\\\valence": "\\\\mathcal{V}\\\\hspace{-0.8pt}\\\\mathit{al}",
-                      "\\\\arousal": "\\\\mathcal{A}\\\\hspace{-0.5pt}\\\\mathit{r}",
-                      "\\\\cestructure": "\\\\mathcal{C\\\\!E}",
-                      "\\\\phenom": "\\\\mathcal{P}",
-                      "\\\\distinction": "\\\\delta",
-                      "\\\\relation": "\\\\rho",
-                      "\\\\Val": "\\\\mathcal{V}\\\\hspace{-0.8pt}\\\\mathit{al}",
-                      "\\\\Ar": "\\\\mathcal{A}\\\\hspace{-0.5pt}\\\\mathit{r}",
-                      "\\\\reff": "r_{\\\\text{eff}}",
-                      "\\\\cfweight": "\\\\mathrm{CF}",
-                      "\\\\selfsal": "\\\\mathrm{SM}",
-                      "\\\\dd": "\\\\mathrm{d}"
-                    },
-                    throwOnError: false
-                  });
-                }
-              });
-            `,
-          }}
-        />
       </body>
     </html>
   );

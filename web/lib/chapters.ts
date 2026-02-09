@@ -7,6 +7,12 @@ export interface Chapter {
   shortTitle: string;
 }
 
+export interface AudioSection {
+  id: string;
+  title: string;
+  audioUrl: string;
+}
+
 export const chapters: Chapter[] = [
   { slug: 'introduction', title: 'Introduction', shortTitle: 'Introduction' },
   { slug: 'part-1', title: 'Part I: Thermodynamic Foundations and the Ladder of Emergence', shortTitle: 'Part I: Foundations' },
@@ -35,4 +41,15 @@ export function getAdjacentChapters(slug: string): { prev?: Chapter; next?: Chap
     prev: idx > 0 ? chapters[idx - 1] : undefined,
     next: idx < chapters.length - 1 ? chapters[idx + 1] : undefined,
   };
+}
+
+export function getChapterAudio(slug: string): AudioSection[] {
+  const manifestPath = join(process.cwd(), 'public', 'audio', 'manifest.json');
+  if (!existsSync(manifestPath)) return [];
+  try {
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+    return manifest[slug] ?? [];
+  } catch {
+    return [];
+  }
 }

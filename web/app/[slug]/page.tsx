@@ -1,5 +1,7 @@
-import { chapters, getChapterHtml, getChapterBySlug, getAdjacentChapters } from '../../lib/chapters';
+import { chapters, getChapterHtml, getChapterBySlug, getAdjacentChapters, getChapterAudio } from '../../lib/chapters';
 import ChapterNav from '../../components/ChapterNav';
+import MathRenderer from '../../components/MathRenderer';
+import AudioPlayer from '../../components/AudioPlayer';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -28,6 +30,7 @@ export default async function ChapterPage({ params }: Props) {
 
   const html = getChapterHtml(slug);
   const { prev, next } = getAdjacentChapters(slug);
+  const audioSections = getChapterAudio(slug);
 
   return (
     <article className="chapter">
@@ -35,10 +38,15 @@ export default async function ChapterPage({ params }: Props) {
         <h1 className="chapter-title">{chapter.title}</h1>
       </header>
 
-      <div
-        className="chapter-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      {audioSections.length > 0 && (
+        <AudioPlayer
+          sections={audioSections}
+          chapterTitle={chapter.shortTitle}
+          slug={slug}
+        />
+      )}
+
+      <MathRenderer html={html} />
 
       <ChapterNav
         prev={prev ? { slug: prev.slug, shortTitle: prev.shortTitle } : undefined}
