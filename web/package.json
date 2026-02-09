@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/convert.mjs && next dev",
-    "build": "bash scripts/install-pandoc.sh && node scripts/convert.mjs && next build",
+    "build": "bash scripts/install-pandoc.sh && node scripts/render-tikz.mjs && node scripts/convert.mjs && next build",
+    "render-tikz": "node scripts/render-tikz.mjs",
     "start": "next start",
     "convert": "node scripts/convert.mjs",
     "generate-audio": "node scripts/generate-audio.mjs",

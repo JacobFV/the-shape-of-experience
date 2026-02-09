@@ -2,6 +2,7 @@ import { chapters, getChapterHtml, getChapterBySlug, getAdjacentChapters, getCha
 import ChapterNav from '../../components/ChapterNav';
 import MathRenderer from '../../components/MathRenderer';
 import AudioPlayer from '../../components/AudioPlayer';
+import HighlightManager from '../../components/HighlightManager';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -47,6 +48,7 @@ export default async function ChapterPage({ params }: Props) {
       )}
 
       <MathRenderer html={html} />
+      <HighlightManager slug={slug} />
 
       <ChapterNav
         prev={prev ? { slug: prev.slug, shortTitle: prev.shortTitle } : undefined}

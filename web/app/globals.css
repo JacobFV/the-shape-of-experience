@@ -994,3 +994,518 @@ body {
     gap: 1rem;
   }
 }
+
+/* ==========================================================================
+   Reading Progress Bar
+   ========================================================================== */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   Reader Toolbar
+   ========================================================================== */
+.reader-toolbar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-family: var(--font-sans);
+}
+
+.reader-toolbar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.45rem;
+  border-radius: 5px;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.reader-toolbar-btn:hover {
+  background: rgba(0,0,0,0.06);
+  color: var(--text);
+}
+
+.reader-toolbar-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.reader-toolbar-btn-small {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.35rem;
+}
+
+.font-size-minus, .font-size-plus {
+  font-size: 0.65rem;
+  vertical-align: super;
+}
+
+.bookmark-flash {
+  color: #d4a017;
+}
+
+.bookmark-count {
+  font-size: 0.65rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
+  padding: 0 4px;
+  min-width: 14px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.reader-toolbar-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.reader-toolbar-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  min-width: 240px;
+  max-height: 350px;
+  overflow-y: auto;
+  z-index: 210;
+}
+
+.reader-toolbar-menu-empty {
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.reader-toolbar-menu-group {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.75rem 0.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.reader-toolbar-menu-group:first-child {
+  border-top: none;
+}
+
+.reader-toolbar-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.reader-toolbar-menu-link {
+  flex: 1;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1.35;
+  font-family: var(--font-sans);
+}
+
+.reader-toolbar-menu-link:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+.reader-toolbar-menu-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.reader-toolbar-menu-remove:hover {
+  opacity: 1;
+  color: #cc4444;
+}
+
+/* ==========================================================================
+   Highlight Popover & Marks
+   ========================================================================== */
+.highlight-popover {
+  position: fixed;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  border-radius: 6px;
+  padding: 2px;
+  display: flex;
+  gap: 2px;
+  z-index: 300;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  font-family: var(--font-sans);
+}
+
+.highlight-popover button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+}
+
+.highlight-popover button:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+mark.user-highlight {
+  background: rgba(255, 213, 79, 0.4);
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 1px 0;
+}
+
+/* ==========================================================================
+   TikZ Diagram (rendered SVG)
+   ========================================================================== */
+.tikz-diagram {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.tikz-diagram img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   Dark Mode
+   ========================================================================== */
+[data-theme="dark"] {
+  --text: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --bg: #1a1a1e;
+  --bg-sidebar: #222226;
+  --border: #3a3a3e;
+  --accent: #6b9edd;
+  --accent-light: #2a3a52;
+}
+
+[data-theme="dark"] body {
+  color-scheme: dark;
+}
+
+/* Sidebar */
+[data-theme="dark"] .toc a:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .toc li.active a {
+  background: var(--accent-light);
+}
+
+[data-theme="dark"] .toc-pdf-cover {
+  border-color: var(--border);
+}
+
+/* Buttons */
+[data-theme="dark"] .sidebar-toggle {
+  background: var(--bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .landing-start {
+  background: #e0e0e0;
+  color: #1a1a1e;
+}
+
+[data-theme="dark"] .landing-start:hover {
+  background: #ccc;
+}
+
+[data-theme="dark"] .landing-pdf {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .landing-pdf:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+/* Chapter content */
+[data-theme="dark"] .chapter-content h1 {
+  border-top-color: #333;
+}
+
+[data-theme="dark"] .chapter-content blockquote {
+  border-left-color: #555;
+}
+
+[data-theme="dark"] .chapter-content th,
+[data-theme="dark"] .chapter-content td {
+  border-bottom-color: #3a3a3e;
+}
+
+/* Environment boxes — dark backgrounds with preserved border colors */
+[data-theme="dark"] .env-logos {
+  background: #222;
+  border-left-color: #555;
+}
+
+[data-theme="dark"] .env-sidebar {
+  background: #1e2430;
+  border-left-color: #4a6fa5;
+}
+[data-theme="dark"] .env-sidebar .env-title { color: #7aa3d4; }
+
+[data-theme="dark"] .env-connection {
+  background: #1e2a1e;
+  border-left-color: #4a8a4a;
+}
+[data-theme="dark"] .env-connection .env-title { color: #6ab06a; }
+
+[data-theme="dark"] .env-historical {
+  background: #252525;
+  border-left-color: #666;
+}
+[data-theme="dark"] .env-historical .env-title { color: #999; }
+
+[data-theme="dark"] .env-empirical {
+  background: #2a2218;
+  border-left-color: #b07520;
+}
+[data-theme="dark"] .env-empirical .env-title { color: #d4932a; }
+
+[data-theme="dark"] .env-todo-empirical {
+  background: #28261a;
+  border-left-color: #998a22;
+}
+[data-theme="dark"] .env-todo-empirical .env-title { color: #c9b833; }
+
+[data-theme="dark"] .env-openquestion {
+  background: #261e30;
+  border-left-color: #7744aa;
+}
+[data-theme="dark"] .env-openquestion .env-title { color: #b088dd; }
+
+[data-theme="dark"] .env-warningbox {
+  background: #2a1a1a;
+  border-left-color: #aa3333;
+}
+[data-theme="dark"] .env-warningbox .env-title { color: #dd5555; }
+
+[data-theme="dark"] .env-experiment {
+  background: #1a2828;
+  border-left-color: #3a8888;
+}
+[data-theme="dark"] .env-experiment .env-title { color: #5ababa; }
+
+[data-theme="dark"] .env-software {
+  background: #1a2530;
+  border-left-color: #3a7aaa;
+}
+[data-theme="dark"] .env-software .env-title { color: #5a9acc; }
+
+/* Theorem environments */
+[data-theme="dark"] .env-definition {
+  background: #1e2230;
+  border-left-color: #4a6fa5;
+}
+
+[data-theme="dark"] .env-proposition,
+[data-theme="dark"] .env-theorem {
+  background: #252420;
+  border-left-color: #8a7a5a;
+}
+
+[data-theme="dark"] .env-hypothesis {
+  background: #241e2a;
+  border-left-color: #8a5aaa;
+}
+
+[data-theme="dark"] .env-example {
+  background: #1e2a1e;
+  border-left-color: #5a8a5a;
+}
+
+[data-theme="dark"] .env-remark {
+  background: #232323;
+  border-left-color: #666;
+}
+
+[data-theme="dark"] .env-conjecture {
+  background: #2a2418;
+  border-left-color: #aa8a5a;
+}
+
+[data-theme="dark"] .env-axiom,
+[data-theme="dark"] .env-lemma,
+[data-theme="dark"] .env-corollary {
+  background: #242422;
+  border-left-color: #6a6a5a;
+}
+
+[data-theme="dark"] .env-proof {
+  background: #222;
+  border-left-color: #444;
+}
+
+/* Margin notes & special */
+[data-theme="dark"] .margin-note {
+  background: #252520;
+  border-left-color: #444;
+  color: #999;
+}
+
+[data-theme="dark"] .env-keyresult {
+  background: #1e2430;
+  border-left-color: #4a7acc;
+}
+
+[data-theme="dark"] .env-phenomenal {
+  background: #261e30;
+  border-left-color: #9966cc;
+}
+
+[data-theme="dark"] .env-warning-margin {
+  background: #2a1a1a;
+  border-left-color: #cc4444;
+}
+
+[data-theme="dark"] .env-normimp {
+  background: #252420;
+  border-left-color: #8a7a5a;
+}
+
+[data-theme="dark"] .tikz-placeholder {
+  background: #252525;
+  border-color: #444;
+}
+
+/* Audio player */
+[data-theme="dark"] .audio-player {
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .audio-play-btn {
+  background: #e0e0e0;
+  color: #1a1a1e;
+}
+
+[data-theme="dark"] .audio-play-btn:hover {
+  background: #ccc;
+}
+
+[data-theme="dark"] .audio-progress {
+  background: #333;
+}
+
+[data-theme="dark"] .audio-progress-bar {
+  background: var(--text);
+}
+
+[data-theme="dark"] .audio-dropdown-menu {
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .audio-dropdown-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .audio-dropdown-item.active {
+  background: var(--accent-light);
+}
+
+/* Reader toolbar */
+[data-theme="dark"] .reader-toolbar {
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+[data-theme="dark"] .reader-toolbar-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .reader-toolbar-menu {
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .reader-toolbar-menu-link:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Highlights */
+[data-theme="dark"] .highlight-popover {
+  background: #e0e0e0;
+  color: #1a1a1e;
+}
+
+[data-theme="dark"] .highlight-popover button {
+  color: #1a1a1e;
+}
+
+[data-theme="dark"] .highlight-popover button:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] mark.user-highlight {
+  background: rgba(255, 213, 79, 0.25);
+}
+
+/* KaTeX */
+[data-theme="dark"] .katex {
+  color: var(--text);
+}
+
+/* TikZ SVG inversion for dark mode */
+[data-theme="dark"] .tikz-diagram img {
+  filter: invert(0.88) hue-rotate(180deg);
+}
+
+/* Mobile adjustments for toolbar */
+@media (max-width: 900px) {
+  .reader-toolbar {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}

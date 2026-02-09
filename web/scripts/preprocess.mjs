@@ -58,10 +58,12 @@ const THEOREM_ENVS = [
 
 let theoremCounter = 0;
 let sectionCounter = 0;
+let tikzCounter = 0;
 
 export function resetCounters() {
   theoremCounter = 0;
   sectionCounter = 0;
+  tikzCounter = 0;
 }
 
 export function preprocess(tex, chapterSlug) {
@@ -220,11 +222,11 @@ export function preprocess(tex, chapterSlug) {
   out = out.replace(/\\opencmark/g, '');
   out = out.replace(/\\closecmark/g, '');
 
-  // TikZ → placeholder marker
+  // TikZ → indexed marker (for SVG rendering)
   out = out.replace(/\\begin\{tikzpicture\}[\s\S]*?\\end\{tikzpicture\}/g,
-    `${M}TIKZ${M}`);
+    () => `${M}TIKZ_${tikzCounter++}${M}`);
   out = out.replace(/\\begin\{pgfplot\}[\s\S]*?\\end\{pgfplot\}/g,
-    `${M}TIKZ${M}`);
+    () => `${M}TIKZ_${tikzCounter++}${M}`);
 
   // Caption cleanup
   out = out.replace(/\\caption\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}/g, '');
@@ -350,7 +352,13 @@ export function postprocess(html, chapter) {
   out = out.replace(/XENVMARKERXIMG_(\/images\/[^\s]*)XENVMARKERX/g,
     '<img src="$1" alt="" />');
 
-  // TikZ placeholder
+  // TikZ diagrams — use SVG if available, otherwise placeholder
+  out = out.replace(/XENVMARKERXTIKZ_(\d+)XENVMARKERX/g, (_, idx) => {
+    const slug = chapter?.slug || '';
+    const svgPath = `/diagrams/${slug}-${idx}.svg`;
+    return `<figure class="tikz-diagram"><img src="${svgPath}" alt="Diagram ${parseInt(idx) + 1}" onerror="this.parentElement.className='tikz-placeholder';this.parentElement.innerHTML='<em>[Diagram — see PDF version]</em>'" /></figure>`;
+  });
+  // Legacy unindexed markers
   out = out.replace(/XENVMARKERXTIKZXENVMARKERX/g,
     '<div class="tikz-placeholder"><em>[Diagram — see PDF version]</em></div>');
 
