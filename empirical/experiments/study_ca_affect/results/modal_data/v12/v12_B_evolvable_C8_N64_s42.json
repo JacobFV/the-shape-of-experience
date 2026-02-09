@@ -1,0 +1,26 @@
+{
+  "cycle_stats": [
+    {
+      "cycle": 1,
+      "n_patterns": 1,
+      "n_culled": 1,
+      "mean_fitness": 0.0,
+      "max_fitness": 0.0,
+      "mean_phi_base": 0.0,
+      "mean_phi_stress": 0.22760146111249924,
+      "mean_robustness": 1.0,
+      "bandwidth": 4.0,
+      "w_soft": 14.34516954421997,
+      "tau": 0.8424805402755737,
+      "mean_attn_entropy": 6.113481521606445,
+      "stress_regen": 0.0018605141478180093,
+      "drought_steps": 1202,
+      "elapsed": 147.543883562088
+    }
+  ],
+  "n_channels": 8,
+  "grid_size": 64,
+  "condition": "B_evolvable",
+  "seed": 42,
+  "status": "in_progress"
+}
