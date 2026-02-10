@@ -1,14 +1,41 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import './globals.css';
 import Sidebar from './Sidebar';
 import ReadingProgress from '../components/ReadingProgress';
 import ReaderToolbar from '../components/ReaderToolbar';
+import Providers from '../components/Providers';
+import SyncOnLogin from '../components/SyncOnLogin';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#2c5aa0' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a1e' },
+  ],
+};
 
 export const metadata: Metadata = {
   title: 'The Shape of Experience',
   description: 'A Geometric Theory of Affect for Biological and Artificial Systems',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    title: 'Shape of Exp.',
+    statusBarStyle: 'default',
+  },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icons/favicon-32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/icons/apple-touch-icon.png',
+  },
 };
 
 function loadSectionData(): Record<string, { level: number; id: string; text: string }[]> {
@@ -56,14 +83,22 @@ export default function RootLayout({
           src="https://cdn.jsdelivr.net/npm/katex@0.16.18/dist/contrib/auto-render.min.js"
           crossOrigin="anonymous"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js')})}`,
+          }}
+        />
       </head>
       <body>
-        <ReadingProgress />
-        <Sidebar sectionData={sectionData} />
-        <ReaderToolbar />
-        <main className="main-content">
-          {children}
-        </main>
+        <Providers>
+          <ReadingProgress />
+          <Sidebar sectionData={sectionData} />
+          <ReaderToolbar />
+          <SyncOnLogin />
+          <main className="main-content">
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
