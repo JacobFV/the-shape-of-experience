@@ -380,6 +380,12 @@ body {
 }
 
 /* --- Chapter Content Typography --- */
+.chapter-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
 .chapter-content h1 {
   font-size: 1.6rem;
   font-weight: 400;
@@ -410,6 +416,8 @@ body {
   margin-bottom: 1.1rem;
   text-align: justify;
   hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .chapter-content blockquote {
@@ -417,6 +425,9 @@ body {
   padding: 0 0 0 1.25rem;
   border-left: 3px solid var(--border);
   color: var(--text-secondary);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .chapter-content ol, .chapter-content ul {
@@ -807,6 +818,11 @@ body {
   .chapter-content p {
     text-align: left;
     hyphens: none;
+    word-break: break-word;
+  }
+
+  .chapter-content blockquote {
+    padding: 0 0 0 0.75rem;
   }
 
   .audio-player {
