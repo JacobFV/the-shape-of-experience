@@ -249,10 +249,12 @@ body {
   flex: 1;
   min-height: 100vh;
   max-width: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 3rem 2rem;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* --- Landing Page --- */
@@ -805,9 +807,10 @@ body {
 
   .main-content {
     margin-left: 0;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 0.5rem;
     padding-top: 4rem;
     max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .chapter {
@@ -1039,8 +1042,9 @@ body {
   }
 
   .main-content {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0.5rem;
     padding-top: 3.5rem;
+    overflow-x: hidden;
   }
 
   .chapter-title {
@@ -2137,15 +2141,15 @@ mark.user-highlight .published-icon {
   .reader-toolbar {
     top: auto;
     bottom: 1rem;
-    right: 1rem;
+    right: 0.5rem;
   }
 
   .reader-toolbar-menu {
     position: fixed;
     top: auto;
     bottom: 3.5rem;
-    right: 1rem;
-    left: 1rem;
+    right: 0.5rem;
+    left: 0.5rem;
     min-width: 0;
     max-height: 60vh;
   }
