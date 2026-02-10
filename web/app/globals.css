@@ -7,6 +7,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  max-width: 100%;
 }
 
 :root {
@@ -259,6 +260,7 @@ body {
   max-width: var(--content-width);
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .landing-header {
@@ -365,6 +367,7 @@ body {
   max-width: var(--content-width);
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .chapter-header {
@@ -858,6 +861,8 @@ body {
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   font-family: var(--font-sans);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .audio-player-top {
