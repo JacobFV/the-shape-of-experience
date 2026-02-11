@@ -1545,40 +1545,42 @@ body {
   background: rgba(255,255,255,0.15);
 }
 
-/* Paragraph play button */
+/* Paragraph play button — tooltip style matching highlight-popover */
 .para-play-btn {
   position: fixed;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  cursor: pointer;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  border-radius: 6px;
+  padding: 2px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
   z-index: 250;
-  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  font-family: var(--font-sans);
   animation: paraPlayFadeIn 0.15s ease;
 }
 
-.para-play-btn:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.para-play-btn button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.para-play-btn button:hover {
+  background: rgba(255,255,255,0.15);
 }
 
 @keyframes paraPlayFadeIn {
-  from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-
-[data-theme="dark"] .para-play-btn {
-  background: var(--bg);
-  border-color: var(--border);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  from { opacity: 0; transform: translateX(-50%) scale(0.9); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
 }
 
 mark.user-highlight {

@@ -179,8 +179,8 @@ export default function HighlightManager({ slug }: { slug: string }) {
     const headingId = findNearestHeadingId(para);
     const rect = para.getBoundingClientRect();
     setParaPlayBtn({
-      x: rect.right - 8,
-      y: rect.top + rect.height / 2,
+      x: rect.left + rect.width / 2,
+      y: rect.top - 8,
       headingId,
     });
   }, [audioAvailable]);
@@ -427,16 +427,17 @@ export default function HighlightManager({ slug }: { slug: string }) {
 
       {/* Paragraph play button */}
       {paraPlayBtn && (
-        <button
+        <div
           className="para-play-btn"
           style={{ left: paraPlayBtn.x, top: paraPlayBtn.y }}
-          onClick={doParaPlay}
-          aria-label="Play from here"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </button>
+          <button onClick={doParaPlay} aria-label="Play from here">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Play
+          </button>
+        </div>
       )}
 
       {/* Toast */}
