@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import UserButton from './UserButton';
+import SearchOverlay from './SearchOverlay';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -76,10 +77,12 @@ export default function ReaderToolbar() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [justBookmarked, setJustBookmarked] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const isChapter = pathname !== '/' && pathname !== '';
   const slug = pathname.replace(/^\//, '');
+  const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
+  const isReadingPage = READING_SLUGS.includes(slug);
 
   useEffect(() => {
     const t = getTheme();
@@ -108,13 +111,11 @@ export default function ReaderToolbar() {
     return () => document.removeEventListener('mousedown', onClick);
   }, [showBookmarks]);
 
-  const cycleTheme = useCallback(() => {
-    const order: ThemeMode[] = ['light', 'dark', 'system'];
-    const next = order[(order.indexOf(theme) + 1) % order.length];
-    setTheme(next);
-    localStorage.setItem('soe-theme', next);
-    applyTheme(next);
-  }, [theme]);
+  const selectTheme = useCallback((mode: ThemeMode) => {
+    setTheme(mode);
+    localStorage.setItem('soe-theme', mode);
+    applyTheme(mode);
+  }, []);
 
   const changeFontSize = useCallback((dir: -1 | 1) => {
     const idx = FONT_ORDER.indexOf(fontSize);
@@ -125,7 +126,7 @@ export default function ReaderToolbar() {
   }, [fontSize]);
 
   const addBookmark = useCallback(() => {
-    if (!isChapter) return;
+    if (!isReadingPage) return;
     const heading = findNearestHeading();
     const bm: Bookmark = {
       id: `bm-${Date.now()}`,
@@ -140,7 +141,7 @@ export default function ReaderToolbar() {
     setBookmarks(updated);
     setJustBookmarked(true);
     setTimeout(() => setJustBookmarked(false), 1500);
-  }, [isChapter, slug]);
+  }, [isReadingPage, slug]);
 
   const removeBookmark = useCallback((id: string) => {
     const updated = getBookmarks().filter(b => b.id !== id);
@@ -169,9 +170,6 @@ export default function ReaderToolbar() {
     }
   }, [slug, router]);
 
-  const themeIcon = theme === 'dark' ? '\u263E' : theme === 'light' ? '\u2600' : '\u25D1';
-  const themeLabel = theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'System';
-
   // Group bookmarks by slug
   const grouped: Record<string, Bookmark[]> = {};
   for (const bm of bookmarks) {
@@ -180,35 +178,72 @@ export default function ReaderToolbar() {
 
   return (
     <div className="reader-toolbar">
-      {/* Theme toggle */}
+      {/* Search */}
       <button
         className="reader-toolbar-btn"
-        onClick={cycleTheme}
-        title={`Theme: ${themeLabel}`}
-        aria-label={`Theme: ${themeLabel}`}
+        onClick={() => setSearchOpen(true)}
+        title="Search"
+        aria-label="Search"
       >
-        {themeIcon}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+        </svg>
       </button>
 
-      {/* Font size */}
-      <button
-        className="reader-toolbar-btn"
-        onClick={() => changeFontSize(-1)}
-        disabled={fontSize === 'small'}
-        title="Decrease font size"
-        aria-label="Decrease font size"
-      >
-        A<span className="font-size-minus">&minus;</span>
-      </button>
-      <button
-        className="reader-toolbar-btn"
-        onClick={() => changeFontSize(1)}
-        disabled={fontSize === 'xlarge'}
-        title="Increase font size"
-        aria-label="Increase font size"
-      >
-        A<span className="font-size-plus">+</span>
-      </button>
+      {/* Theme toggle - 3 segment */}
+      <div className="theme-toggle" role="radiogroup" aria-label="Theme">
+        <button
+          className={`theme-toggle-btn${theme === 'light' ? ' active' : ''}`}
+          onClick={() => selectTheme('light')}
+          aria-label="Light theme"
+          title="Light"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>
+        </button>
+        <button
+          className={`theme-toggle-btn${theme === 'dark' ? ' active' : ''}`}
+          onClick={() => selectTheme('dark')}
+          aria-label="Dark theme"
+          title="Dark"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+        <button
+          className={`theme-toggle-btn${theme === 'system' ? ' active' : ''}`}
+          onClick={() => selectTheme('system')}
+          aria-label="System theme"
+          title="System"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Font size - small A / big A */}
+      <div className="fontsize-toggle">
+        <button
+          className="fontsize-btn fontsize-btn-small"
+          onClick={() => changeFontSize(-1)}
+          disabled={fontSize === 'small'}
+          title="Decrease font size"
+          aria-label="Decrease font size"
+        >A</button>
+        <button
+          className="fontsize-btn fontsize-btn-large"
+          onClick={() => changeFontSize(1)}
+          disabled={fontSize === 'xlarge'}
+          title="Increase font size"
+          aria-label="Increase font size"
+        >A</button>
+      </div>
 
       {/* User */}
       <UserButton />
@@ -217,9 +252,9 @@ export default function ReaderToolbar() {
       <div className="reader-toolbar-dropdown" ref={dropdownRef}>
         <button
           className={`reader-toolbar-btn ${justBookmarked ? 'bookmark-flash' : ''}`}
-          onClick={isChapter ? addBookmark : () => setShowBookmarks(!showBookmarks)}
-          title={isChapter ? 'Add bookmark' : 'View bookmarks'}
-          aria-label={isChapter ? 'Add bookmark' : 'View bookmarks'}
+          onClick={isReadingPage ? addBookmark : () => setShowBookmarks(!showBookmarks)}
+          title={isReadingPage ? 'Add bookmark' : 'View bookmarks'}
+          aria-label={isReadingPage ? 'Add bookmark' : 'View bookmarks'}
         >
           {justBookmarked ? '\u2605' : '\u2606'}
         </button>
@@ -265,6 +300,8 @@ export default function ReaderToolbar() {
           </div>
         )}
       </div>
+
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }

@@ -68,6 +68,16 @@ export default function HighlightManager({ slug }: { slug: string }) {
   const [editPopover, setEditPopover] = useState<{ x: number; y: number; annotation: Annotation } | null>(null);
   const [noteEditor, setNoteEditor] = useState<{ id: string; note: string } | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [audioAvailable, setAudioAvailable] = useState(false);
+
+  // Check if audio is available on this page
+  useEffect(() => {
+    const check = () => setAudioAvailable(document.body.dataset.hasAudio === 'true');
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['data-has-audio'] });
+    return () => observer.disconnect();
+  }, []);
   const popoverRef = useRef<HTMLDivElement>(null);
   const restoredRef = useRef(false);
   const prevAnnotationsRef = useRef<string>('');
@@ -145,6 +155,47 @@ export default function HighlightManager({ slug }: { slug: string }) {
       }
     }, 800);
   }, []);
+
+  // Paragraph play button on click (no selection)
+  const [paraPlayBtn, setParaPlayBtn] = useState<{ x: number; y: number; headingId: string } | null>(null);
+
+  useEffect(() => {
+    if (!paraPlayBtn) return;
+    const timer = setTimeout(() => setParaPlayBtn(null), 3000);
+    return () => clearTimeout(timer);
+  }, [paraPlayBtn]);
+
+  const onParagraphClick = useCallback((e: MouseEvent) => {
+    if (!audioAvailable) return;
+    const target = e.target as HTMLElement;
+    // Only trigger on paragraph elements in chapter content
+    const para = target.closest('.chapter-content p, .chapter-content li');
+    if (!para) return;
+    // Don't show if there's a text selection
+    const sel = window.getSelection();
+    if (sel && !sel.isCollapsed) return;
+    // Don't show if clicking on interactive elements
+    if (target.closest('button, a, mark, .highlight-popover, .para-play-btn')) return;
+
+    const headingId = findNearestHeadingId(para);
+    const rect = para.getBoundingClientRect();
+    setParaPlayBtn({
+      x: rect.right - 8,
+      y: rect.top + rect.height / 2,
+      headingId,
+    });
+  }, [audioAvailable]);
+
+  useEffect(() => {
+    document.addEventListener('click', onParagraphClick);
+    return () => document.removeEventListener('click', onParagraphClick);
+  }, [onParagraphClick]);
+
+  const doParaPlay = useCallback(() => {
+    if (!paraPlayBtn) return;
+    window.dispatchEvent(new CustomEvent('play-section', { detail: { headingId: paraPlayBtn.headingId } }));
+    setParaPlayBtn(null);
+  }, [paraPlayBtn]);
 
   // Handle text selection
   const onMouseUp = useCallback((e: MouseEvent) => {
@@ -241,6 +292,14 @@ export default function HighlightManager({ slug }: { slug: string }) {
     showToast('Link copied');
   }, [popover, slug, showToast]);
 
+  const doPlay = useCallback(() => {
+    if (!popover) return;
+    const headingId = findNearestHeadingId(popover.range.startContainer);
+    window.dispatchEvent(new CustomEvent('play-section', { detail: { headingId } }));
+    window.getSelection()?.removeAllRanges();
+    setPopover(null);
+  }, [popover]);
+
   const doEditNote = useCallback(() => {
     if (!editPopover) return;
     setNoteEditor({ id: editPopover.annotation.id, note: editPopover.annotation.note });
@@ -280,6 +339,7 @@ export default function HighlightManager({ slug }: { slug: string }) {
           <button onClick={doNote}>Note</button>
           <button onClick={doBookmark}>Bookmark</button>
           <button onClick={doShare}>Share</button>
+          {audioAvailable && <button onClick={doPlay}>Play</button>}
         </div>
       )}
 
@@ -316,6 +376,20 @@ export default function HighlightManager({ slug }: { slug: string }) {
             <button onClick={() => setNoteEditor(null)}>Cancel</button>
           </div>
         </div>
+      )}
+
+      {/* Paragraph play button */}
+      {paraPlayBtn && (
+        <button
+          className="para-play-btn"
+          style={{ left: paraPlayBtn.x, top: paraPlayBtn.y }}
+          onClick={doParaPlay}
+          aria-label="Play from here"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
       )}
 
       {/* Toast */}

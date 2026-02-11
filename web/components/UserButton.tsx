@@ -3,12 +3,14 @@
 import { useSession, signOut } from 'next-auth/react';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useProfileImage } from '../lib/hooks/useProfileImage';
 
 export default function UserButton() {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const profileImage = useProfileImage();
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -48,9 +50,9 @@ export default function UserButton() {
         title={session.user.name || session.user.email || 'Account'}
         aria-label="Account menu"
       >
-        {session.user.image ? (
+        {profileImage ? (
           <img
-            src={session.user.image}
+            src={profileImage}
             alt=""
             width={20}
             height={20}

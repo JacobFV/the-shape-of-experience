@@ -18,7 +18,7 @@ export async function GET() {
     .limit(1);
 
   return NextResponse.json(
-    settings || { showCommunityNotes: true, displayName: '', bio: '' }
+    settings || { showCommunityNotes: true, displayName: '', bio: '', profileImage: null }
   );
 }
 
@@ -34,6 +34,7 @@ export async function PATCH(req: Request) {
   if ('showCommunityNotes' in body) values.showCommunityNotes = body.showCommunityNotes;
   if ('displayName' in body) values.displayName = body.displayName;
   if ('bio' in body) values.bio = body.bio;
+  if ('profileImage' in body) values.profileImage = body.profileImage;
 
   const [updated] = await db
     .insert(userSettings)

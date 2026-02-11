@@ -5,6 +5,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useMobileUI } from '../lib/MobileUIContext';
 import { useBookmarks, type Bookmark } from '../lib/hooks/useBookmarks';
+import { useProfileImage } from '../lib/hooks/useProfileImage';
+import SearchOverlay from './SearchOverlay';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -51,6 +53,7 @@ function findNearestHeading(): { id: string; text: string } {
 export default function MobileHeader() {
   const { sidebarOpen, setSidebarOpen, audioAvailable, audioStarted, audioToggleRef } = useMobileUI();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>('system');
   const [fontSize, setFontSize] = useState<FontSize>('medium');
   const [showBookmarks, setShowBookmarks] = useState(false);
@@ -60,9 +63,11 @@ export default function MobileHeader() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const { items: bookmarks, add: addBookmarkApi, remove: removeBookmark } = useBookmarks();
+  const profileImage = useProfileImage();
 
-  const isChapter = pathname !== '/' && pathname !== '';
   const slug = pathname.replace(/^\//, '');
+  const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
+  const isReadingPage = READING_SLUGS.includes(slug);
 
   useEffect(() => {
     setTheme(getTheme());
@@ -90,13 +95,11 @@ export default function MobileHeader() {
     return () => document.removeEventListener('mousedown', onMouseDown);
   }, [menuOpen]);
 
-  const cycleTheme = useCallback(() => {
-    const order: ThemeMode[] = ['light', 'dark', 'system'];
-    const next = order[(order.indexOf(theme) + 1) % order.length];
-    setTheme(next);
-    localStorage.setItem('soe-theme', next);
-    applyTheme(next);
-  }, [theme]);
+  const selectTheme = useCallback((mode: ThemeMode) => {
+    setTheme(mode);
+    localStorage.setItem('soe-theme', mode);
+    applyTheme(mode);
+  }, []);
 
   const changeFontSize = useCallback((dir: -1 | 1) => {
     const idx = FONT_ORDER.indexOf(fontSize);
@@ -107,7 +110,7 @@ export default function MobileHeader() {
   }, [fontSize]);
 
   const addBookmark = useCallback(async () => {
-    if (!isChapter) return;
+    if (!isReadingPage) return;
     const heading = findNearestHeading();
     await addBookmarkApi({
       slug,
@@ -117,7 +120,7 @@ export default function MobileHeader() {
     });
     setJustBookmarked(true);
     setTimeout(() => setJustBookmarked(false), 1500);
-  }, [isChapter, slug, addBookmarkApi]);
+  }, [isReadingPage, slug, addBookmarkApi]);
 
   const navigateToBookmark = useCallback((bm: Bookmark) => {
     setMenuOpen(false);
@@ -137,9 +140,6 @@ export default function MobileHeader() {
       }
     }
   }, [slug, router]);
-
-  const themeIcon = theme === 'dark' ? '\u263E' : theme === 'light' ? '\u2600\uFE0E' : '\u25D1';
-  const themeLabel = theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'System';
 
   const grouped: Record<string, Bookmark[]> = {};
   for (const bm of bookmarks) (grouped[bm.slug] ||= []).push(bm);
@@ -180,6 +180,17 @@ export default function MobileHeader() {
 
           <button
             className="mobile-header-btn"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </button>
+
+          <button
+            className="mobile-header-btn"
             onClick={() => { setMenuOpen(!menuOpen); if (menuOpen) setShowBookmarks(false); }}
             aria-label="Settings"
           >
@@ -192,29 +203,67 @@ export default function MobileHeader() {
 
           {menuOpen && (
             <div className="mobile-header-menu">
-              <button className="mobile-menu-item" onClick={cycleTheme}>
-                <span className="mobile-menu-icon">{themeIcon}</span>
-                <span>Theme: {themeLabel}</span>
-              </button>
-
-              <div className="mobile-menu-item mobile-menu-fontsize">
-                <span className="mobile-menu-icon">A</span>
-                <span>Text size</span>
-                <div className="mobile-menu-fontsize-controls">
+              <div className="mobile-menu-item mobile-menu-theme-row">
+                <span className="mobile-menu-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                </span>
+                <span>Theme</span>
+                <div className="mobile-theme-toggle" role="radiogroup" aria-label="Theme">
                   <button
-                    onClick={() => changeFontSize(-1)}
-                    disabled={fontSize === 'small'}
-                    aria-label="Decrease font size"
-                  >&minus;</button>
+                    className={`mobile-theme-btn${theme === 'light' ? ' active' : ''}`}
+                    onClick={() => selectTheme('light')}
+                    aria-label="Light"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <circle cx="12" cy="12" r="5" />
+                      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                  </button>
                   <button
-                    onClick={() => changeFontSize(1)}
-                    disabled={fontSize === 'xlarge'}
-                    aria-label="Increase font size"
-                  >+</button>
+                    className={`mobile-theme-btn${theme === 'dark' ? ' active' : ''}`}
+                    onClick={() => selectTheme('dark')}
+                    aria-label="Dark"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                    </svg>
+                  </button>
+                  <button
+                    className={`mobile-theme-btn${theme === 'system' ? ' active' : ''}`}
+                    onClick={() => selectTheme('system')}
+                    aria-label="System"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <path d="M8 21h8M12 17v4" />
+                    </svg>
+                  </button>
                 </div>
               </div>
 
-              {isChapter && (
+              <div className="mobile-menu-item mobile-menu-fontsize">
+                <span className="mobile-menu-icon" style={{ fontSize: '0.75rem' }}>A</span>
+                <span>Text size</span>
+                <div className="mobile-menu-fontsize-controls">
+                  <button
+                    className="fontsize-btn-small"
+                    onClick={() => changeFontSize(-1)}
+                    disabled={fontSize === 'small'}
+                    aria-label="Decrease font size"
+                  >A</button>
+                  <button
+                    className="fontsize-btn-large"
+                    onClick={() => changeFontSize(1)}
+                    disabled={fontSize === 'xlarge'}
+                    aria-label="Increase font size"
+                  >A</button>
+                </div>
+              </div>
+
+              {isReadingPage && (
                 <button className="mobile-menu-item" onClick={addBookmark}>
                   <span className="mobile-menu-icon">{justBookmarked ? '\u2605' : '\u2606'}</span>
                   <span>{justBookmarked ? 'Bookmarked!' : 'Add bookmark'}</span>
@@ -257,8 +306,8 @@ export default function MobileHeader() {
               {status === 'authenticated' && session?.user ? (
                 <>
                   <div className="mobile-menu-user-header">
-                    {session.user.image ? (
-                      <img src={session.user.image} alt="" width={24} height={24} style={{ borderRadius: '50%' }} />
+                    {profileImage ? (
+                      <img src={profileImage} alt="" width={24} height={24} style={{ borderRadius: '50%' }} />
                     ) : (
                       <span className="mobile-menu-user-initial">
                         {(session.user.name?.[0] || '?').toUpperCase()}
@@ -294,6 +343,7 @@ export default function MobileHeader() {
           )}
         </div>
       </div>
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

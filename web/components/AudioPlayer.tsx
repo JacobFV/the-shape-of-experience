@@ -206,6 +206,57 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
     return () => { audioToggleRef.current = null; };
   }, [togglePlay, audioToggleRef]);
 
+  // Listen for play-section custom events (from paragraph play buttons)
+  useEffect(() => {
+    function onPlaySection(e: Event) {
+      const detail = (e as CustomEvent).detail;
+      if (!detail?.headingId) {
+        // No heading — just start playing current section
+        if (!isPlaying) togglePlay();
+        return;
+      }
+
+      // Find the section that matches this heading
+      const headingSlug = detail.headingId
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+
+      let bestIdx = 0;
+      for (let i = 0; i < sections.length; i++) {
+        const sectionSlug = sections[i].id.toLowerCase();
+        if (sectionSlug === headingSlug || headingSlug.includes(sectionSlug) || sectionSlug.includes(headingSlug)) {
+          bestIdx = i;
+          break;
+        }
+      }
+
+      if (bestIdx !== currentIndex) {
+        selectSection(bestIdx);
+      }
+      // Start playing
+      setTimeout(() => {
+        const audio = audioRef.current;
+        if (audio) {
+          audio.play().then(() => {
+            setIsPlaying(true);
+            if (!everPlayed) setEverPlayed(true);
+          }).catch(() => {});
+        }
+      }, 100);
+    }
+
+    window.addEventListener('play-section', onPlaySection);
+    return () => window.removeEventListener('play-section', onPlaySection);
+  }, [sections, currentIndex, isPlaying, togglePlay, selectSection, everPlayed]);
+
+  // Broadcast current playback state for paragraph play buttons
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('audio-state-change', {
+      detail: { isPlaying, currentSectionId: sections[currentIndex]?.id || '' }
+    }));
+  }, [isPlaying, currentIndex, sections]);
+
   const handleTimeUpdate = useCallback(() => {
     const audio = audioRef.current;
     if (audio) setCurrentTime(audio.currentTime);

@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { setProfileImageCache } from '../../lib/hooks/useProfileImage';
 
 interface Settings {
   showCommunityNotes: boolean;
   displayName: string;
   bio: string;
+  profileImage: string | null;
 }
 
 export default function SettingsPage() {
@@ -17,9 +19,11 @@ export default function SettingsPage() {
     showCommunityNotes: true,
     displayName: '',
     bio: '',
+    profileImage: null,
   });
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -35,6 +39,7 @@ export default function SettingsPage() {
           showCommunityNotes: data.showCommunityNotes ?? true,
           displayName: data.displayName || session?.user?.name || '',
           bio: data.bio || '',
+          profileImage: data.profileImage || null,
         });
       })
       .catch(() => {});
@@ -50,6 +55,7 @@ export default function SettingsPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(settings),
     });
+    setProfileImageCache(settings.profileImage);
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
@@ -70,12 +76,64 @@ export default function SettingsPage() {
     URL.revokeObjectURL(url);
   }
 
+  function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 512 * 1024) {
+      alert('Image must be under 512KB');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      setSettings({ ...settings, profileImage: dataUrl });
+    };
+    reader.readAsDataURL(file);
+  }
+
   return (
     <div className="app-page">
       <h1>Settings</h1>
 
       <div className="settings-section">
         <h2>Profile</h2>
+        <div className="settings-profile-picture">
+          <div
+            className="settings-avatar"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            {settings.profileImage ? (
+              <img src={settings.profileImage} alt="Profile" />
+            ) : session?.user?.image ? (
+              <img src={session.user.image} alt="Profile" />
+            ) : (
+              <span className="settings-avatar-initial">
+                {(session?.user?.name?.[0] || '?').toUpperCase()}
+              </span>
+            )}
+            <div className="settings-avatar-overlay">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+                <circle cx="12" cy="13" r="4" />
+              </svg>
+            </div>
+          </div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            style={{ display: 'none' }}
+          />
+          {settings.profileImage && (
+            <button
+              className="settings-remove-avatar"
+              onClick={() => setSettings({ ...settings, profileImage: null })}
+            >
+              Remove
+            </button>
+          )}
+        </div>
         <div className="settings-field">
           <label>Display name</label>
           <input

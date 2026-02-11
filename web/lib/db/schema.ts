@@ -99,4 +99,5 @@ export const userSettings = pgTable('user_settings', {
   showCommunityNotes: boolean('show_community_notes').default(true),
   displayName: text('display_name'),
   bio: text('bio'),
+  profileImage: text('profile_image'),
 });
