@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import { ComponentType } from 'react';
 
 export interface Chapter {
   slug: string;
@@ -23,12 +24,21 @@ export const chapters: Chapter[] = [
   { slug: 'epilogue', title: 'Epilogue', shortTitle: 'Epilogue' },
 ];
 
-export function getChapterHtml(slug: string): string {
-  const htmlPath = join(process.cwd(), 'generated', 'chapters', `${slug}.html`);
-  if (!existsSync(htmlPath)) {
-    return '<p>Chapter not found.</p>';
-  }
-  return readFileSync(htmlPath, 'utf-8');
+const chapterModules: Record<string, () => Promise<{ default: ComponentType }>> = {
+  'introduction': () => import('../content/introduction'),
+  'part-1': () => import('../content/part-1'),
+  'part-2': () => import('../content/part-2'),
+  'part-3': () => import('../content/part-3'),
+  'part-4': () => import('../content/part-4'),
+  'part-5': () => import('../content/part-5'),
+  'epilogue': () => import('../content/epilogue'),
+};
+
+export async function getChapterComponent(slug: string): Promise<ComponentType | null> {
+  const loader = chapterModules[slug];
+  if (!loader) return null;
+  const mod = await loader();
+  return mod.default;
 }
 
 export function getChapterBySlug(slug: string): Chapter | undefined {

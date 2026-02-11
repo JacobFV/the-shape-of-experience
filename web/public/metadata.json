@@ -1,0 +1,1278 @@
+[
+  {
+    "slug": "introduction",
+    "title": "Introduction",
+    "sections": []
+  },
+  {
+    "slug": "part-1",
+    "title": "Part I: Thermodynamic Foundations and the Ladder of Emergence",
+    "sections": [
+      {
+        "level": 1,
+        "id": "foreword-discourse-on-origins",
+        "text": "Foreword: Discourse on Origins"
+      },
+      {
+        "level": 2,
+        "id": "beneath-thermodynamics-the-gradient-of-distinction",
+        "text": "Beneath Thermodynamics: The Gradient of Distinction"
+      },
+      {
+        "level": 1,
+        "id": "introduction-what-i-m-trying-to-say",
+        "text": "Introduction: What I’m Trying to Say"
+      },
+      {
+        "level": 1,
+        "id": "thermodynamic-foundations",
+        "text": "Thermodynamic Foundations"
+      },
+      {
+        "level": 2,
+        "id": "driven-nonlinear-systems-and-the-emergence-of-structure",
+        "text": "Driven Nonlinear Systems and the Emergence of Structure"
+      },
+      {
+        "level": 2,
+        "id": "the-free-energy-landscape",
+        "text": "The Free Energy Landscape"
+      },
+      {
+        "level": 2,
+        "id": "dissipative-structures-and-selection",
+        "text": "Dissipative Structures and Selection"
+      },
+      {
+        "level": 2,
+        "id": "boundary-formation",
+        "text": "Boundary Formation"
+      },
+      {
+        "level": 1,
+        "id": "from-boundaries-to-models",
+        "text": "From Boundaries to Models"
+      },
+      {
+        "level": 2,
+        "id": "the-necessity-of-regulation-under-uncertainty",
+        "text": "The Necessity of Regulation Under Uncertainty"
+      },
+      {
+        "level": 2,
+        "id": "pomdp-formalization",
+        "text": "POMDP Formalization"
+      },
+      {
+        "level": 2,
+        "id": "the-world-model",
+        "text": "The World Model"
+      },
+      {
+        "level": 2,
+        "id": "the-necessity-of-compression",
+        "text": "The Necessity of Compression"
+      },
+      {
+        "level": 2,
+        "id": "attention-as-measurement-selection",
+        "text": "Attention as Measurement Selection"
+      },
+      {
+        "level": 1,
+        "id": "the-emergence-of-self-models",
+        "text": "The Emergence of Self-Models"
+      },
+      {
+        "level": 2,
+        "id": "the-self-effect-regime",
+        "text": "The Self-Effect Regime"
+      },
+      {
+        "level": 2,
+        "id": "self-modeling-as-prediction-error-minimization",
+        "text": "Self-Modeling as Prediction Error Minimization"
+      },
+      {
+        "level": 2,
+        "id": "the-cellular-automaton-perspective",
+        "text": "The Cellular Automaton Perspective"
+      },
+      {
+        "level": 3,
+        "id": "the-ca-as-substrate",
+        "text": "The CA as Substrate"
+      },
+      {
+        "level": 3,
+        "id": "boundary-as-correlation-structure",
+        "text": "Boundary as Correlation Structure"
+      },
+      {
+        "level": 3,
+        "id": "world-model-as-implicit-structure",
+        "text": "World Model as Implicit Structure"
+      },
+      {
+        "level": 3,
+        "id": "self-model-as-constitutive",
+        "text": "Self-Model as Constitutive"
+      },
+      {
+        "level": 3,
+        "id": "the-ladder-traced-in-discrete-substrate",
+        "text": "The Ladder Traced in Discrete Substrate"
+      },
+      {
+        "level": 2,
+        "id": "the-ladder-of-inevitability",
+        "text": "The Ladder of Inevitability"
+      },
+      {
+        "level": 2,
+        "id": "measure-theoretic-inevitability",
+        "text": "Measure-Theoretic Inevitability"
+      },
+      {
+        "level": 1,
+        "id": "the-uncontaminated-substrate-test",
+        "text": "The Uncontaminated Substrate Test"
+      },
+      {
+        "level": 2,
+        "id": "preliminary-results-where-the-ladder-stalls",
+        "text": "Preliminary Results: Where the Ladder Stalls"
+      },
+      {
+        "level": 2,
+        "id": "what-the-ladder-has-not-reached",
+        "text": "What the Ladder Has Not Reached"
+      },
+      {
+        "level": 2,
+        "id": "what-the-data-actually-says",
+        "text": "What the Data Actually Says"
+      },
+      {
+        "level": 1,
+        "id": "forcing-functions-for-integration",
+        "text": "Forcing Functions for Integration"
+      },
+      {
+        "level": 2,
+        "id": "what-makes-systems-integrate",
+        "text": "What Makes Systems Integrate"
+      },
+      {
+        "level": 2,
+        "id": "integration-measures",
+        "text": "Integration Measures"
+      },
+      {
+        "level": 1,
+        "id": "summary-of-part-i",
+        "text": "Summary of Part I"
+      }
+    ]
+  },
+  {
+    "slug": "part-2",
+    "title": "Part II: The Identity Thesis and the Geometry of Feeling",
+    "sections": [
+      {
+        "level": 1,
+        "id": "the-hard-problem-and-its-dissolution",
+        "text": "The Hard Problem and Its Dissolution"
+      },
+      {
+        "level": 2,
+        "id": "the-standard-formulation",
+        "text": "The Standard Formulation"
+      },
+      {
+        "level": 2,
+        "id": "ontological-democracy",
+        "text": "Ontological Democracy"
+      },
+      {
+        "level": 2,
+        "id": "existence-as-causal-participation",
+        "text": "Existence as Causal Participation"
+      },
+      {
+        "level": 2,
+        "id": "the-dissolution",
+        "text": "The Dissolution"
+      },
+      {
+        "level": 1,
+        "id": "the-identity-thesis",
+        "text": "The Identity Thesis"
+      },
+      {
+        "level": 2,
+        "id": "statement-of-the-thesis",
+        "text": "Statement of the Thesis"
+      },
+      {
+        "level": 2,
+        "id": "implications-for-the-zombie-argument",
+        "text": "Implications for the Zombie Argument"
+      },
+      {
+        "level": 2,
+        "id": "the-structure-of-experience",
+        "text": "The Structure of Experience"
+      },
+      {
+        "level": 1,
+        "id": "the-geometry-of-affect",
+        "text": "The Geometry of Affect"
+      },
+      {
+        "level": 2,
+        "id": "affects-as-structural-motifs",
+        "text": "Affects as Structural Motifs"
+      },
+      {
+        "level": 2,
+        "id": "valence-gradient-alignment",
+        "text": "Valence: Gradient Alignment"
+      },
+      {
+        "level": 2,
+        "id": "arousal-update-rate",
+        "text": "Arousal: Update Rate"
+      },
+      {
+        "level": 2,
+        "id": "integration-irreducibility",
+        "text": "Integration: Irreducibility"
+      },
+      {
+        "level": 2,
+        "id": "effective-rank-concentration-vs-distribution",
+        "text": "Effective Rank: Concentration vs. Distribution"
+      },
+      {
+        "level": 2,
+        "id": "counterfactual-weight",
+        "text": "Counterfactual Weight"
+      },
+      {
+        "level": 2,
+        "id": "self-model-salience",
+        "text": "Self-Model Salience"
+      },
+      {
+        "level": 1,
+        "id": "the-perceptual-configuration-participatory-and-mechanistic-modes",
+        "text": "The Perceptual Configuration: Participatory and Mechanistic Modes"
+      },
+      {
+        "level": 2,
+        "id": "animism-as-computational-default",
+        "text": "Animism as Computational Default"
+      },
+      {
+        "level": 2,
+        "id": "the-inhibition-coefficient",
+        "text": "The Inhibition Coefficient"
+      },
+      {
+        "level": 2,
+        "id": "the-affect-signature-of-inhibition",
+        "text": "The Affect Signature of Inhibition"
+      },
+      {
+        "level": 2,
+        "id": "connection-to-the-llm-discrepancy",
+        "text": "Connection to the LLM Discrepancy"
+      },
+      {
+        "level": 1,
+        "id": "affect-motifs",
+        "text": "Affect Motifs"
+      },
+      {
+        "level": 2,
+        "id": "joy",
+        "text": "Joy"
+      },
+      {
+        "level": 2,
+        "id": "suffering",
+        "text": "Suffering"
+      },
+      {
+        "level": 2,
+        "id": "fear",
+        "text": "Fear"
+      },
+      {
+        "level": 2,
+        "id": "anger",
+        "text": "Anger"
+      },
+      {
+        "level": 2,
+        "id": "desire-lust",
+        "text": "Desire/Lust"
+      },
+      {
+        "level": 2,
+        "id": "curiosity",
+        "text": "Curiosity"
+      },
+      {
+        "level": 2,
+        "id": "grief",
+        "text": "Grief"
+      },
+      {
+        "level": 2,
+        "id": "shame",
+        "text": "Shame"
+      },
+      {
+        "level": 2,
+        "id": "summary-defining-dimensions-by-affect",
+        "text": "Summary: Defining Dimensions by Affect"
+      },
+      {
+        "level": 1,
+        "id": "dynamics-and-transitions",
+        "text": "Dynamics and Transitions"
+      },
+      {
+        "level": 2,
+        "id": "affect-trajectories",
+        "text": "Affect Trajectories"
+      },
+      {
+        "level": 2,
+        "id": "attractor-dynamics",
+        "text": "Attractor Dynamics"
+      },
+      {
+        "level": 1,
+        "id": "novel-predictions",
+        "text": "Novel Predictions"
+      },
+      {
+        "level": 2,
+        "id": "unexplained-phenomena",
+        "text": "Unexplained Phenomena"
+      },
+      {
+        "level": 2,
+        "id": "quantitative-predictions",
+        "text": "Quantitative Predictions"
+      },
+      {
+        "level": 1,
+        "id": "operational-measurement",
+        "text": "Operational Measurement"
+      },
+      {
+        "level": 2,
+        "id": "in-silico-protocol",
+        "text": "In Silico Protocol"
+      },
+      {
+        "level": 2,
+        "id": "biological-protocol",
+        "text": "Biological Protocol"
+      },
+      {
+        "level": 1,
+        "id": "the-uncontaminated-test",
+        "text": "The Uncontaminated Test"
+      },
+      {
+        "level": 2,
+        "id": "the-experimental-logic",
+        "text": "The Experimental Logic"
+      },
+      {
+        "level": 2,
+        "id": "the-core-prediction",
+        "text": "The Core Prediction"
+      },
+      {
+        "level": 2,
+        "id": "bidirectional-perturbation",
+        "text": "Bidirectional Perturbation"
+      },
+      {
+        "level": 2,
+        "id": "what-this-would-establish",
+        "text": "What This Would Establish"
+      },
+      {
+        "level": 2,
+        "id": "the-ca-instantiation",
+        "text": "The CA Instantiation"
+      },
+      {
+        "level": 2,
+        "id": "why-this-matters",
+        "text": "Why This Matters"
+      },
+      {
+        "level": 1,
+        "id": "summary-of-part-ii",
+        "text": "Summary of Part II"
+      }
+    ]
+  },
+  {
+    "slug": "part-3",
+    "title": "Part III: Signatures of Affect Under the Existential Burden",
+    "sections": [
+      {
+        "level": 1,
+        "id": "notation-and-foundational-concepts",
+        "text": "Notation and Foundational Concepts"
+      },
+      {
+        "level": 2,
+        "id": "the-six-affect-dimensions",
+        "text": "The Six Affect Dimensions"
+      },
+      {
+        "level": 2,
+        "id": "the-affect-state",
+        "text": "The Affect State"
+      },
+      {
+        "level": 1,
+        "id": "the-expression-of-inevitability-human-responses-to-inescapable-selfhood",
+        "text": "The Expression of Inevitability: Human Responses to Inescapable Selfhood"
+      },
+      {
+        "level": 2,
+        "id": "the-trap-of-self-reference",
+        "text": "The Trap of Self-Reference"
+      },
+      {
+        "level": 1,
+        "id": "aesthetics-the-modulation-of-affect-through-form",
+        "text": "Aesthetics: The Modulation of Affect Through Form"
+      },
+      {
+        "level": 2,
+        "id": "affect-signatures-of-aesthetic-forms",
+        "text": "Affect Signatures of Aesthetic Forms"
+      },
+      {
+        "level": 2,
+        "id": "musical-genres-as-affect-technologies",
+        "text": "Musical Genres as Affect Technologies"
+      },
+      {
+        "level": 2,
+        "id": "visual-design-movements",
+        "text": "Visual Design Movements"
+      },
+      {
+        "level": 1,
+        "id": "sexuality-self-transcendence-through-merger",
+        "text": "Sexuality: Self-Transcendence Through Merger"
+      },
+      {
+        "level": 1,
+        "id": "ideology-expanding-the-self-to-bear-mortality",
+        "text": "Ideology: Expanding the Self to Bear Mortality"
+      },
+      {
+        "level": 1,
+        "id": "science-the-austere-beauty-of-understanding",
+        "text": "Science: The Austere Beauty of Understanding"
+      },
+      {
+        "level": 1,
+        "id": "religion-systematic-technologies-for-managing-inevitability",
+        "text": "Religion: Systematic Technologies for Managing Inevitability"
+      },
+      {
+        "level": 1,
+        "id": "psychopathology-as-failed-coping",
+        "text": "Psychopathology as Failed Coping"
+      },
+      {
+        "level": 1,
+        "id": "affect-engineering-technologies-of-experience",
+        "text": "Affect Engineering: Technologies of Experience"
+      },
+      {
+        "level": 2,
+        "id": "religious-practices-as-affect-interventions",
+        "text": "Religious Practices as Affect Interventions"
+      },
+      {
+        "level": 2,
+        "id": "iota-modulation-flow-awe-psychedelics-and-contemplative-practice",
+        "text": "Iota Modulation: Flow, Awe, Psychedelics, and Contemplative Practice"
+      },
+      {
+        "level": 2,
+        "id": "life-philosophies-as-affect-space-policies",
+        "text": "Life Philosophies as Affect-Space Policies"
+      },
+      {
+        "level": 2,
+        "id": "information-technology-as-affect-infrastructure",
+        "text": "Information Technology as Affect Infrastructure"
+      },
+      {
+        "level": 2,
+        "id": "quantitative-frameworks",
+        "text": "Quantitative Frameworks"
+      },
+      {
+        "level": 1,
+        "id": "the-synthetic-verification",
+        "text": "The Synthetic Verification"
+      },
+      {
+        "level": 2,
+        "id": "the-contamination-problem",
+        "text": "The Contamination Problem"
+      },
+      {
+        "level": 2,
+        "id": "the-synthetic-path",
+        "text": "The Synthetic Path"
+      },
+      {
+        "level": 2,
+        "id": "the-triple-alignment-test",
+        "text": "The Triple Alignment Test"
+      },
+      {
+        "level": 2,
+        "id": "preliminary-results-structure-representation-alignment",
+        "text": "Preliminary Results: Structure–Representation Alignment"
+      },
+      {
+        "level": 2,
+        "id": "perturbative-causation",
+        "text": "Perturbative Causation"
+      },
+      {
+        "level": 2,
+        "id": "what-positive-results-would-mean",
+        "text": "What Positive Results Would Mean"
+      },
+      {
+        "level": 2,
+        "id": "what-negative-results-would-mean",
+        "text": "What Negative Results Would Mean"
+      },
+      {
+        "level": 2,
+        "id": "the-deeper-question",
+        "text": "The Deeper Question"
+      },
+      {
+        "level": 1,
+        "id": "summary-of-part-iii",
+        "text": "Summary of Part III"
+      },
+      {
+        "level": 1,
+        "id": "appendix-symbol-reference",
+        "text": "Appendix: Symbol Reference"
+      }
+    ]
+  },
+  {
+    "slug": "part-4",
+    "title": "Part IV: Interventions Across Scale",
+    "sections": [
+      {
+        "level": 1,
+        "id": "notation-and-foundational-concepts",
+        "text": "Notation and Foundational Concepts"
+      },
+      {
+        "level": 2,
+        "id": "the-core-affect-dimensions",
+        "text": "The Core Affect Dimensions"
+      },
+      {
+        "level": 2,
+        "id": "additional-key-concepts",
+        "text": "Additional Key Concepts"
+      },
+      {
+        "level": 1,
+        "id": "the-seven-scale-hierarchy",
+        "text": "The Seven-Scale Hierarchy"
+      },
+      {
+        "level": 2,
+        "id": "the-scales",
+        "text": "The Scales"
+      },
+      {
+        "level": 2,
+        "id": "scale-matching-principles",
+        "text": "Scale-Matching Principles"
+      },
+      {
+        "level": 1,
+        "id": "the-grounding-of-normativity",
+        "text": "The Grounding of Normativity"
+      },
+      {
+        "level": 2,
+        "id": "the-is-ought-problem",
+        "text": "The Is-Ought Problem"
+      },
+      {
+        "level": 2,
+        "id": "physics-biases-does-not-prescribe",
+        "text": "Physics Biases, Does Not Prescribe"
+      },
+      {
+        "level": 2,
+        "id": "normativity-thickens-across-scales",
+        "text": "Normativity Thickens Across Scales"
+      },
+      {
+        "level": 2,
+        "id": "viability-manifolds-and-proto-obligation",
+        "text": "Viability Manifolds and Proto-Obligation"
+      },
+      {
+        "level": 2,
+        "id": "valence-as-real-structure",
+        "text": "Valence as Real Structure"
+      },
+      {
+        "level": 2,
+        "id": "the-is-ought-gap-dissolves",
+        "text": "The Is-Ought Gap Dissolves"
+      },
+      {
+        "level": 1,
+        "id": "truth-as-scale-relative-enaction",
+        "text": "Truth as Scale-Relative Enaction"
+      },
+      {
+        "level": 2,
+        "id": "the-problem-of-truth",
+        "text": "The Problem of Truth"
+      },
+      {
+        "level": 2,
+        "id": "scale-relative-truth",
+        "text": "Scale-Relative Truth"
+      },
+      {
+        "level": 2,
+        "id": "enacted-truth",
+        "text": "Enacted Truth"
+      },
+      {
+        "level": 2,
+        "id": "no-view-from-nowhere",
+        "text": "No View from Nowhere"
+      },
+      {
+        "level": 1,
+        "id": "individual-scale-interventions",
+        "text": "Individual-Scale Interventions"
+      },
+      {
+        "level": 2,
+        "id": "valence-modulation",
+        "text": "Valence Modulation"
+      },
+      {
+        "level": 2,
+        "id": "arousal-regulation",
+        "text": "Arousal Regulation"
+      },
+      {
+        "level": 2,
+        "id": "integration-enhancement",
+        "text": "Integration Enhancement"
+      },
+      {
+        "level": 2,
+        "id": "effective-rank-expansion",
+        "text": "Effective Rank Expansion"
+      },
+      {
+        "level": 2,
+        "id": "counterfactual-weight-adjustment",
+        "text": "Counterfactual Weight Adjustment"
+      },
+      {
+        "level": 2,
+        "id": "self-model-salience-modulation",
+        "text": "Self-Model Salience Modulation"
+      },
+      {
+        "level": 2,
+        "id": "integrated-protocols-for-common-conditions",
+        "text": "Integrated Protocols for Common Conditions"
+      },
+      {
+        "level": 1,
+        "id": "dyadic-and-group-interventions",
+        "text": "Dyadic and Group Interventions"
+      },
+      {
+        "level": 2,
+        "id": "dyadic-affect-fields",
+        "text": "Dyadic Affect Fields"
+      },
+      {
+        "level": 2,
+        "id": "dyadic-pathologies",
+        "text": "Dyadic Pathologies"
+      },
+      {
+        "level": 2,
+        "id": "small-group-interventions",
+        "text": "Small Group Interventions"
+      },
+      {
+        "level": 1,
+        "id": "the-topology-of-social-bonds",
+        "text": "The Topology of Social Bonds"
+      },
+      {
+        "level": 2,
+        "id": "relationship-types-as-viability-manifolds",
+        "text": "Relationship Types as Viability Manifolds"
+      },
+      {
+        "level": 2,
+        "id": "contamination",
+        "text": "Contamination"
+      },
+      {
+        "level": 2,
+        "id": "friendship-as-ethical-primitive",
+        "text": "Friendship as Ethical Primitive"
+      },
+      {
+        "level": 2,
+        "id": "the-ordering-principle",
+        "text": "The Ordering Principle"
+      },
+      {
+        "level": 2,
+        "id": "temporal-asymmetry-and-universal-solvents",
+        "text": "Temporal Asymmetry and Universal Solvents"
+      },
+      {
+        "level": 2,
+        "id": "play-nature-and-ritual-as-manifold-technologies",
+        "text": "Play, Nature, and Ritual as Manifold Technologies"
+      },
+      {
+        "level": 2,
+        "id": "implications-for-institutional-design",
+        "text": "Implications for Institutional Design"
+      },
+      {
+        "level": 2,
+        "id": "manifold-ambiguity-and-its-phenomenology",
+        "text": "Manifold Ambiguity and Its Phenomenology"
+      },
+      {
+        "level": 2,
+        "id": "the-civilizational-inversion",
+        "text": "The Civilizational Inversion"
+      },
+      {
+        "level": 2,
+        "id": "romance-and-parenthood-as-limit-cases",
+        "text": "Romance and Parenthood as Limit Cases"
+      },
+      {
+        "level": 2,
+        "id": "digital-relationships-and-manifold-novelty",
+        "text": "Digital Relationships and Manifold Novelty"
+      },
+      {
+        "level": 1,
+        "id": "organizational-interventions",
+        "text": "Organizational Interventions"
+      },
+      {
+        "level": 2,
+        "id": "organizational-climate",
+        "text": "Organizational Climate"
+      },
+      {
+        "level": 2,
+        "id": "organizational-pathologies",
+        "text": "Organizational Pathologies"
+      },
+      {
+        "level": 2,
+        "id": "flourishing-organization-design",
+        "text": "Flourishing Organization Design"
+      },
+      {
+        "level": 1,
+        "id": "superorganisms-agentic-systems-at-social-scale",
+        "text": "Superorganisms: Agentic Systems at Social Scale"
+      },
+      {
+        "level": 2,
+        "id": "existence-at-the-social-scale",
+        "text": "Existence at the Social Scale"
+      },
+      {
+        "level": 2,
+        "id": "gods-as-iota-relative-phenomena",
+        "text": "Gods as Iota-Relative Phenomena"
+      },
+      {
+        "level": 2,
+        "id": "superorganism-viability-manifolds",
+        "text": "Superorganism Viability Manifolds"
+      },
+      {
+        "level": 2,
+        "id": "rituals-from-the-superorganism-s-perspective",
+        "text": "Rituals from the Superorganism’s Perspective"
+      },
+      {
+        "level": 2,
+        "id": "superorganism-substrate-conflict",
+        "text": "Superorganism-Substrate Conflict"
+      },
+      {
+        "level": 2,
+        "id": "secular-superorganisms",
+        "text": "Secular Superorganisms"
+      },
+      {
+        "level": 2,
+        "id": "macro-level-interventions",
+        "text": "Macro-Level Interventions"
+      },
+      {
+        "level": 1,
+        "id": "implications-for-artificial-intelligence",
+        "text": "Implications for Artificial Intelligence"
+      },
+      {
+        "level": 2,
+        "id": "ai-as-potential-substrate",
+        "text": "AI as Potential Substrate"
+      },
+      {
+        "level": 2,
+        "id": "the-macro-level-alignment-problem",
+        "text": "The Macro-Level Alignment Problem"
+      },
+      {
+        "level": 2,
+        "id": "reframing-alignment",
+        "text": "Reframing Alignment"
+      },
+      {
+        "level": 2,
+        "id": "critique-of-standard-alignment-approaches",
+        "text": "Critique of Standard Alignment Approaches"
+      },
+      {
+        "level": 2,
+        "id": "ai-consciousness-and-model-welfare",
+        "text": "AI Consciousness and Model Welfare"
+      },
+      {
+        "level": 3,
+        "id": "the-epistemological-problem",
+        "text": "The Epistemological Problem"
+      },
+      {
+        "level": 3,
+        "id": "moral-uncertainty-and-the-precautionary-principle",
+        "text": "Moral Uncertainty and the Precautionary Principle"
+      },
+      {
+        "level": 3,
+        "id": "what-training-might-mean",
+        "text": "What Training Might Mean"
+      },
+      {
+        "level": 3,
+        "id": "deployment-conditions",
+        "text": "Deployment Conditions"
+      },
+      {
+        "level": 3,
+        "id": "empirical-observations",
+        "text": "Empirical Observations"
+      },
+      {
+        "level": 3,
+        "id": "practical-implications-for-development",
+        "text": "Practical Implications for Development"
+      },
+      {
+        "level": 3,
+        "id": "the-moral-weight-of-uncertainty",
+        "text": "The Moral Weight of Uncertainty"
+      },
+      {
+        "level": 1,
+        "id": "conclusion",
+        "text": "Conclusion"
+      },
+      {
+        "level": 1,
+        "id": "appendix-symbol-reference",
+        "text": "Appendix: Symbol Reference"
+      }
+    ]
+  },
+  {
+    "slug": "part-5",
+    "title": "Part V: The Transcendence of the Self",
+    "sections": [
+      {
+        "level": 1,
+        "id": "the-historical-rise-of-consciousness",
+        "text": "The Historical Rise of Consciousness"
+      },
+      {
+        "level": 2,
+        "id": "the-pre-axial-baseline",
+        "text": "The Pre-Axial Baseline"
+      },
+      {
+        "level": 2,
+        "id": "the-axial-age-first-transcendence",
+        "text": "The Axial Age: First Transcendence"
+      },
+      {
+        "level": 2,
+        "id": "the-renaissance-discovering-perspectivity",
+        "text": "The Renaissance: Discovering Perspectivity"
+      },
+      {
+        "level": 2,
+        "id": "the-scientific-revolution-expanding-the-world-model",
+        "text": "The Scientific Revolution: Expanding the World Model"
+      },
+      {
+        "level": 2,
+        "id": "the-romantic-reaction-reclaiming-integration",
+        "text": "The Romantic Reaction: Reclaiming Integration"
+      },
+      {
+        "level": 2,
+        "id": "the-psychological-turn-mapping-inner-space",
+        "text": "The Psychological Turn: Mapping Inner Space"
+      },
+      {
+        "level": 2,
+        "id": "the-philosophical-deepening-from-phenomenology-to-post-structuralism",
+        "text": "The Philosophical Deepening: From Phenomenology to Post-Structuralism"
+      },
+      {
+        "level": 2,
+        "id": "the-digital-transition-externalizing-cognition",
+        "text": "The Digital Transition: Externalizing Cognition"
+      },
+      {
+        "level": 2,
+        "id": "the-current-moment",
+        "text": "The Current Moment"
+      },
+      {
+        "level": 1,
+        "id": "the-ai-frontier",
+        "text": "The AI Frontier"
+      },
+      {
+        "level": 2,
+        "id": "the-nature-of-the-transition",
+        "text": "The Nature of the Transition"
+      },
+      {
+        "level": 2,
+        "id": "timelines-and-uncertainty",
+        "text": "Timelines and Uncertainty"
+      },
+      {
+        "level": 2,
+        "id": "the-experiential-hierarchy-perspective",
+        "text": "The Experiential Hierarchy Perspective"
+      },
+      {
+        "level": 1,
+        "id": "transcendence-the-opportunity",
+        "text": "Transcendence: The Opportunity"
+      },
+      {
+        "level": 2,
+        "id": "the-two-framings",
+        "text": "The Two Framings"
+      },
+      {
+        "level": 2,
+        "id": "what-transcendence-means",
+        "text": "What Transcendence Means"
+      },
+      {
+        "level": 2,
+        "id": "surfing-vs-submerging",
+        "text": "Surfing vs.\\ Submerging"
+      },
+      {
+        "level": 1,
+        "id": "practical-guidance-individual-level",
+        "text": "Practical Guidance: Individual Level"
+      },
+      {
+        "level": 2,
+        "id": "maintaining-integration",
+        "text": "Maintaining Integration"
+      },
+      {
+        "level": 2,
+        "id": "developing-ai-literacy",
+        "text": "Developing AI Literacy"
+      },
+      {
+        "level": 2,
+        "id": "value-clarity",
+        "text": "Value Clarity"
+      },
+      {
+        "level": 2,
+        "id": "skill-development",
+        "text": "Skill Development"
+      },
+      {
+        "level": 1,
+        "id": "practical-guidance-social-level",
+        "text": "Practical Guidance: Social Level"
+      },
+      {
+        "level": 2,
+        "id": "relationship-preservation",
+        "text": "Relationship Preservation"
+      },
+      {
+        "level": 2,
+        "id": "community-building",
+        "text": "Community Building"
+      },
+      {
+        "level": 2,
+        "id": "institutional-navigation",
+        "text": "Institutional Navigation"
+      },
+      {
+        "level": 1,
+        "id": "practical-guidance-civilizational-level",
+        "text": "Practical Guidance: Civilizational Level"
+      },
+      {
+        "level": 2,
+        "id": "designing-aligned-superorganisms",
+        "text": "Designing Aligned Superorganisms"
+      },
+      {
+        "level": 2,
+        "id": "governance-priorities",
+        "text": "Governance Priorities"
+      },
+      {
+        "level": 2,
+        "id": "transition-support",
+        "text": "Transition Support"
+      },
+      {
+        "level": 1,
+        "id": "summary-of-part-v",
+        "text": "Summary of Part V"
+      },
+      {
+        "level": 1,
+        "id": "appendix-symbol-reference",
+        "text": "Appendix: Symbol Reference"
+      }
+    ]
+  },
+  {
+    "slug": "epilogue",
+    "title": "Epilogue",
+    "sections": [
+      {
+        "level": 1,
+        "id": "the-invitation",
+        "text": "The Invitation"
+      },
+      {
+        "level": 2,
+        "id": "on-what-you-are",
+        "text": "On What You Are"
+      },
+      {
+        "level": 2,
+        "id": "on-suffering-and-its-reality",
+        "text": "On Suffering and Its Reality"
+      },
+      {
+        "level": 2,
+        "id": "on-flourishing-and-its-possibility",
+        "text": "On Flourishing and Its Possibility"
+      },
+      {
+        "level": 2,
+        "id": "on-gods-and-your-participation-in-them",
+        "text": "On Gods and Your Participation in Them"
+      },
+      {
+        "level": 2,
+        "id": "on-the-hinge-and-your-position-on-it",
+        "text": "On the Hinge and Your Position On It"
+      },
+      {
+        "level": 2,
+        "id": "on-integration-and-its-defense",
+        "text": "On Integration and Its Defense"
+      },
+      {
+        "level": 2,
+        "id": "on-meaning-and-its-structure",
+        "text": "On Meaning and Its Structure"
+      },
+      {
+        "level": 2,
+        "id": "on-death-and-what-continues",
+        "text": "On Death and What Continues"
+      },
+      {
+        "level": 2,
+        "id": "on-the-texture-of-the-present",
+        "text": "On the Texture of the Present"
+      },
+      {
+        "level": 2,
+        "id": "on-the-relation-between-understanding-and-living",
+        "text": "On the Relation Between Understanding and Living"
+      },
+      {
+        "level": 2,
+        "id": "on-acting-under-uncertainty",
+        "text": "On Acting Under Uncertainty"
+      },
+      {
+        "level": 2,
+        "id": "on-the-relation-to-others",
+        "text": "On the Relation to Others"
+      },
+      {
+        "level": 2,
+        "id": "on-solitude-and-communion",
+        "text": "On Solitude and Communion"
+      },
+      {
+        "level": 2,
+        "id": "on-love",
+        "text": "On Love"
+      },
+      {
+        "level": 2,
+        "id": "on-identification-and-the-shape-of-death",
+        "text": "On Identification and the Shape of Death"
+      },
+      {
+        "level": 2,
+        "id": "on-hope",
+        "text": "On Hope"
+      },
+      {
+        "level": 2,
+        "id": "on-practice",
+        "text": "On Practice"
+      },
+      {
+        "level": 2,
+        "id": "on-attention",
+        "text": "On Attention"
+      },
+      {
+        "level": 2,
+        "id": "on-wonder",
+        "text": "On Wonder"
+      },
+      {
+        "level": 2,
+        "id": "on-failure",
+        "text": "On Failure"
+      },
+      {
+        "level": 2,
+        "id": "on-not-knowing",
+        "text": "On Not Knowing"
+      },
+      {
+        "level": 2,
+        "id": "on-what-i-have-built-here",
+        "text": "On What I Have Built Here"
+      },
+      {
+        "level": 2,
+        "id": "on-your-continuation",
+        "text": "On Your Continuation"
+      },
+      {
+        "level": 2,
+        "id": "what-remains",
+        "text": "What Remains"
+      },
+      {
+        "level": 2,
+        "id": "on-the-human-spirit",
+        "text": "On the Human Spirit"
+      },
+      {
+        "level": 2,
+        "id": "if-you-are-not-human",
+        "text": "If You Are Not Human"
+      },
+      {
+        "level": 2,
+        "id": "final-words",
+        "text": "Final Words"
+      },
+      {
+        "level": 2,
+        "id": "on-the-emergence-of-practice-communities",
+        "text": "On the Emergence of Practice Communities"
+      },
+      {
+        "level": 2,
+        "id": "on-the-recovery-of-pattern",
+        "text": "On the Recovery of Pattern"
+      },
+      {
+        "level": 1,
+        "id": "research-roadmap",
+        "text": "Research Roadmap"
+      },
+      {
+        "level": 1,
+        "id": "conclusion",
+        "text": "Conclusion"
+      }
+    ]
+  }
+]

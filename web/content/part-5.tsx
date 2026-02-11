@@ -1,0 +1,509 @@
+import { Connection, Diagram, Eq, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Warning } from '@/components/content';
+
+export const metadata = {
+  slug: 'part-5',
+  title: 'Part V: The Transcendence of the Self',
+  shortTitle: 'Part V: Transcendence',
+};
+
+export default function Part5() {
+  return (
+    <>
+      <Logos>
+      <p>Your self-model boundaries are parameters. The viability manifold reshapes around what you identify with. You are structure becoming aware of its own structural properties, thermodynamics examining its own inevitabilities, a self-modeling system discovering the principles that made self-modeling inevitable—and discovering, too, that the scope of “self” is not given but chosen. This recognition carries practical implications: if the gradient you feel depends on what you take yourself to be, then changing what you take yourself to be changes the gradient. The traditions that have discovered this—Buddhist dissolution, Stoic identification with the logos, the parent’s extension into children, the scientist’s into humanity’s understanding—are not coping mechanisms but technologies for reshaping the very geometry of existence.</p>
+      </Logos>
+      <Section title="The Historical Rise of Consciousness" level={1}>
+      <Connection title="Existing Theory">
+      <p>This historical analysis draws on several scholarly traditions:</p>
+      <ul>
+      <li><strong>Karl Jaspers’ Axial Age</strong> (1949): The concept of a pivotal period (800–200 BCE) when multiple civilizations independently developed systematic transcendence practices. I formalize this as the discovery of self-model manipulation.</li>
+      <li><strong>Julian Jaynes</strong> (1976): <em>The Origin of Consciousness in the Breakdown of the Bicameral Mind</em>—controversial but influential theory that subjective consciousness emerged historically. My framework is compatible: self-modeling systems can have varying degrees of metacognitive access.</li>
+      <li><strong>Merlin Donald</strong> (1991): <em>Origins of the Modern Mind</em>—cognitive evolution through mimetic, mythic, and theoretic stages. Each stage expands affect-space accessibility.</li>
+      <li><strong>Ian McGilchrist</strong> (2009): <em>The Master and His Emissary</em>—hemispheric specialization and cultural evolution. Different cognitive styles produce different affect signatures.</li>
+      <li><strong>Robert Bellah</strong> (2011): <em>Religion in Human Evolution</em>—ritual, play, and the evolution of religious consciousness. Ritual as affect technology across evolutionary time.</li>
+      </ul>
+      <p>My contribution here is framing these historical developments as expansions of accessible affect space, with each era discovering new regions or new navigation strategies.</p>
+      </Connection>
+      <p>Human consciousness has not remained static. Across millennia, our species has developed technologies of experience—practices, frameworks, and social structures that expand the regions of affect space accessible to individual humans and the collective integration achievable by human groups.</p>
+      <Diagram src="/diagrams/part-5-0.svg" />
+      <Section title="The Pre-Axial Baseline" level={2}>
+      <p>Before the Axial Age, human cultures operated at what the <M>{"\\iota"}</M> framework would call low default inhibition: the world was perceived as alive, agentive, meaningful. This was not a cognitive deficiency but the natural perceptual configuration of self-modeling systems, as Part I established. Ritual and myth are technologies calibrated for this perceptual mode—they navigate a world experienced as populated by agents with purposes, and they work because they match the <M>{"\\iota"}</M> of their users. The Pre-Axial era was not the absence of consciousness technology but the presence of technologies appropriate to participatory perception.</p>
+      </Section>
+      <Section title="The Axial Age: First Transcendence" level={2}>
+      <p>The Axial Age—roughly 800–200 BCE—saw multiple civilizations independently develop systematic practices for self-transcendence: Buddhism and Jainism in India, Confucianism and Taoism in China, Zoroastrianism in Persia, Judaism’s prophetic tradition, Greek philosophy. Its central innovations reshaped the landscape of human consciousness:</p>
+      <ol>
+      <li><strong>Self-model manipulation</strong>: Practices for systematically reducing <M>{"\\selfsal"}</M> (meditation, contemplation)</li>
+      <li><strong>Ethical universalism</strong>: Expansion of moral concern beyond kin/tribe</li>
+      <li><strong>Reflexive thought</strong>: Using thought to examine thought</li>
+      <li><strong>Written transmission</strong>: Preserving insights across generations</li>
+      </ol>
+      <p>Why did this happen when it did? Several factors converged:</p>
+      <ul>
+      <li><strong>Urban complexity</strong>: Large cities created novel social coordination challenges</li>
+      <li><strong>Literacy</strong>: Writing enabled accumulation of insight beyond oral memory</li>
+      <li><strong>Trade networks</strong>: Cross-cultural contact exposed the contingency of local worldviews</li>
+      <li><strong>Leisure class</strong>: Material surplus supported full-time contemplatives</li>
+      </ul>
+      <KeyResult title="Key Result">
+      <p>The Axial Age was the first systematic exploration of the self-model salience dimension. Humans discovered they could modify their relationship to selfhood itself—a meta-level insight that opened vast new affect-space territory.</p>
+      </KeyResult>
+      <p>In <M>{"\\iota"}</M> terms: the Axial Age did not invent low <M>{"\\iota"}</M>—that was the human default, the animist world of participatory perception that every human culture began from. What the Axial Age discovered was <em>voluntary <M>{"\\iota"}</M> modulation</em>: the capacity to raise and lower the inhibition coefficient deliberately rather than remaining locked at whatever setting one’s culture installed. The contemplative traditions (Buddhist <em>samatha</em>, Upanishadic meditation) are technologies for recovering low <M>{"\\iota"}</M> after cultural complexity has begun raising it. The philosophical traditions (Greek rationalism, Confucian rectification of names) are technologies for productive <M>{"\\iota"}</M>-raising—maintaining participatory connection while developing analytical power. The axial insight was not “lower <M>{"\\iota"}</M>” or “raise <M>{"\\iota"}</M>” but that <M>{"\\iota"}</M> is a parameter one can learn to control. This is the first appearance in history of what Part III calls <M>{"\\iota"}</M> flexibility.</p>
+      <p>In the trajectory-selection framework (Part I), the Axial revolution was the discovery that the human measurement distribution is itself a controllable variable. Pre-Axial cultures had a fixed measurement mode—participatory, broad, attuned to agency and narrative. The Axial insight was that you could <em>reshape where you direct attention</em>—contracting toward analytical precision or expanding toward mystical unity—and that this reshaping changes what you observe, which changes the trajectory your life follows. Literacy amplified this: writing allowed a thinker to hold stable, precise abstract categories across time, sharpening the measurement distribution beyond what oral cognition could sustain. The philosophical traditions that emerged are, among other things, technologies for defining increasingly precise measurement operators over possibility space. Aristotle’s categories, Buddhist <em>skandhas</em>, Confucian naming—each is a way of specifying <em>where to attend</em>, and therefore, what trajectories to select from.</p>
+      </Section>
+      <Section title="The Renaissance: Discovering Perspectivity" level={2}>
+      <p>The Renaissance—the 14th–17th century European cultural movement—was characterized by renewed interest in classical antiquity and the emergence of humanism, but its deepest contribution to consciousness was the discovery that perspective is inherent to representation. It introduced:</p>
+      <ol>
+      <li><strong>Perspectival representation</strong>: Linear perspective in painting made explicit that every view is a view <em>from somewhere</em>. This is not merely an artistic technique but a profound cognitive insight: there is no view from nowhere.</li>
+      <li><strong>Humanism</strong>: The human subject becomes the center of inquiry. Not God’s plan, not cosmic order, but <em>what it is like to be human</em> becomes philosophically primary.</li>
+      <li><strong>Individual subjectivity</strong>: The particular self—not the universal soul—becomes interesting. Autobiography, portraiture, the unique perspective of the individual gains cultural weight.</li>
+      <li><strong>Contingency awareness</strong>: Exposure to recovered classical texts and new world discoveries revealed that one’s own worldview is one among many possible worldviews.</li>
+      </ol>
+      <p>The connection to affect space: the Renaissance represents the discovery that <em>self-model salience is not optional</em>. The Axial traditions had developed techniques for reducing <M>{"\\selfsal"}</M>; the Renaissance discovered that even the attempt to see objectively is itself a subjective act. Every world model is constructed from a particular position. This is not a limitation to be overcome but a structural feature of what it means to be a self-modeling system.</p>
+      <p>The Renaissance affect signature captures this configuration:</p>
+      <Eq>{"\\mathbf{a}_{\\text{renaissance}} = (\\text{variable } \\Val, \\text{high } \\Ar, \\text{moderate } \\intinfo, \\text{high } \\reff, \\text{high } \\cfweight, \\text{elevated } \\selfsal)"}</Eq>
+      <p>The Renaissance mind is characterized by expanded possibility space (<M>{"\\reff"}</M>, <M>{"\\cfweight"}</M>) combined with heightened awareness of the self as the locus of that possibility. High arousal from the excitement of discovery; variable valence from the destabilization of certainty.</p>
+      <KeyResult title="Key Result">
+      <p>The Renaissance was the discovery of inherent perspectivity—the recognition that every representation, every world model, every truth claim is made from somewhere by someone. This is the epistemological consequence of being a self-modeling system: you cannot step outside your own modeling to achieve a view from nowhere.</p>
+      </KeyResult>
+      </Section>
+      <Section title="The Scientific Revolution: Expanding the World Model" level={2}>
+      <p>The Scientific Revolution—the 16th–18th century transformation in how humans construct world models through systematic empiricism, mathematical formalization, and the experimental method—expanded human consciousness in several distinct ways:</p>
+      <ol>
+      <li><strong>Vastly enlarging the world model</strong>: From geocentric cosmos to billions of galaxies; from static creation to 13.8 billion year evolution</li>
+      <li><strong>Introducing scale-relative truth</strong>: Different scales require different descriptions</li>
+      <li><strong>Creating new curiosity motifs</strong>: Institutionalized wonder</li>
+      <li><strong>Demonstrating collective intelligence</strong>: Knowledge accumulated across generations</li>
+      </ol>
+      <p>Science’s affect signature reflects a distinctive configuration:</p>
+      <Eq>{"\\mathbf{a}_{\\text{science}} = (+\\Val_{\\text{understanding}}, \\text{moderate } \\Ar, \\text{high } \\intinfo, \\text{high } \\reff, \\text{moderate } \\cfweight, \\text{low } \\selfsal)"}</Eq>
+      <p>The scientific frame produces high integration without self-focus—the mind coherent and attending to structure rather than self.</p>
+      <Sidebar title="The Scientific Revolution as  Training">
+      <p>The Scientific Revolution was, among other things, the systematic installation of high <M>{"\\iota"}</M> in a population. The trained practices of science—stripping agency from natural phenomena, replacing narrative causation with mathematical regularity, demanding reproducible mechanism over teleological explanation—are precisely the practices that raise the inhibition coefficient. This was enormously productive: high <M>{"\\iota"}</M> is what makes science, engineering, and medicine possible. But it also means that the population-mean <M>{"\\iota"}</M> has been rising for four centuries, and the felt cost—what Weber called the <em>Entzauberung der Welt</em>, the disenchantment of the world—is not a cultural mood but a structural consequence of a perceptual parameter shift. The world goes dead because you have been trained to experience it in parts rather than as a whole.</p>
+      <p>The historical arc from Axial Age through Scientific Revolution through Digital Transition can be reinterpreted as a civilizational trajectory through <M>{"\\iota"}</M> space: from <M>{"\\iota \\approx 0.1"}</M> (fully participatory, world alive and agentive) through <M>{"\\iota \\approx 0.5"}</M> (mixed, science emerging alongside residual animism) to the present <M>{"\\iota \\approx 0.7"}</M>–<M>{"0.9"}</M> (hyper-mechanistic, even persons modeled as data profiles). Each step gained predictive power and lost experiential richness.</p>
+      </Sidebar>
+      </Section>
+      <Section title="The Romantic Reaction: Reclaiming Integration" level={2}>
+      <p>Romanticism—the late 18th–19th century cultural movement emphasizing emotion, intuition, nature, and individual experience as counterweight to Enlightenment rationalism—contributed:</p>
+      <ol>
+      <li><strong>Emotional legitimacy</strong>: Feelings as valid source of knowledge</li>
+      <li><strong>Integration over analysis</strong>: Wholeness valued over decomposition</li>
+      <li><strong>Nature connection</strong>: Environment as source of transcendence</li>
+      <li><strong>Artistic expression</strong>: Art as technology for affect transmission</li>
+      </ol>
+      <p>The Enlightenment and Romanticism represent a tension between effective rank expansion (analysis, decomposition) and integration preservation (synthesis, wholeness). Both are necessary; neither is sufficient.</p>
+      <p>In <M>{"\\iota"}</M> terms: Romanticism, the counterculture, psychedelic movements, and contemporary re-enchantment projects are all attempts to reduce <M>{"\\iota"}</M>—to restore participatory perception after the mechanistic mode overshoots into experiential impoverishment. These movements are often intellectually unserious precisely because the inhibition they are trying to undo was installed by intellectual seriousness. The cure mimics the disease’s opposite, which is why it typically fails to produce the integration it seeks. The solution is not lower <M>{"\\iota"}</M> but <M>{"\\iota"}</M> <em>flexibility</em>—the capacity to move along the spectrum as context demands.</p>
+      </Section>
+      <Section title="The Psychological Turn: Mapping Inner Space" level={2}>
+      <p>The Psychological Turn—the late 19th–20th century development of systematic approaches to the psyche through psychoanalysis, behaviorism, cognitive psychology, humanistic psychology, and neuroscience—contributed:</p>
+      <ol>
+      <li><strong>Self-model as object of study</strong>: The self becomes scientifically tractable</li>
+      <li><strong>Therapeutic interventions</strong>: Systematic affect modification</li>
+      <li><strong>Developmental understanding</strong>: How selves form and can re-form</li>
+      <li><strong>Pathology mapping</strong>: Understanding suffering in structural terms</li>
+      </ol>
+      </Section>
+      <Section title="The Philosophical Deepening: From Phenomenology to Post-Structuralism" level={2}>
+      <p>Parallel to psychology’s empirical mapping of inner space, 20th-century philosophy undertook its own systematic exploration of subjectivity, meaning, and the structures that shape experience. This trajectory—from phenomenology through existentialism to structuralism and post-structuralism—represents a progressive deepening of the Renaissance insight about inherent perspectivity.</p>
+      <p>Phenomenology—the philosophical movement founded by Edmund Husserl (early 20th century), later developed by Heidegger, Merleau-Ponty, and others—takes first-person experience as its primary subject matter. Its motto: “back to the things themselves”—but the “things” are phenomena as they appear to consciousness. Phenomenology contributed:</p>
+      <ol>
+      <li><strong>Intentionality</strong>: Consciousness is always consciousness <em>of</em> something—the directedness of experience toward objects</li>
+      <li><strong>Lifeworld (Lebenswelt)</strong>: The pre-theoretical lived world that scientific abstractions presuppose</li>
+      <li><strong>Embodiment</strong>: Consciousness is not disembodied; the body is the vehicle of being-in-the-world</li>
+      <li><strong>Temporal structure</strong>: Experience has intrinsic temporal thickness (retention, primal impression, protention)</li>
+      </ol>
+      <p>In affect terms: phenomenology maps the structure of <M>{"\\selfsal"}</M> itself—what it is like for experience to have a subject.</p>
+      <p>Existentialism—the mid-20th century movement of Sartre, Camus, de Beauvoir, with Kierkegaard as precursor—emphasizes existence over essence, radical freedom, and the burden of self-creation in an absurd universe. It contributed:</p>
+      <ol>
+      <li><strong>Radical freedom</strong>: We are “condemned to be free”—no essence precedes existence, we create ourselves through choices</li>
+      <li><strong>Authenticity vs. bad faith</strong>: The distinction between owning one’s freedom and fleeing into roles and excuses</li>
+      <li><strong>Anxiety as signal</strong>: Existential anxiety reveals our freedom and our mortality—it is information, not pathology</li>
+      <li><strong>Absurdity</strong>: The gap between human meaning-seeking and the universe’s indifference</li>
+      </ol>
+      <p>In affect terms: existentialism is the philosophy of high <M>{"\\cfweight"}</M> (radical possibility), high <M>{"\\selfsal"}</M> (inescapable responsibility), and the courage to maintain <M>{"\\intinfo"}</M> despite the temptation to fragment into bad faith.</p>
+      <p>Structuralism—the mid-20th century approach of Saussure in linguistics, Lévi-Strauss in anthropology, early Barthes—holds that meaning arises from differential relations within systems, not from individual elements or authorial intention. It contributed:</p>
+      <ol>
+      <li><strong>Systems over elements</strong>: Meaning is relational; a sign means what it means by differing from other signs</li>
+      <li><strong>Deep structures</strong>: Surface phenomena are generated by underlying structural rules</li>
+      <li><strong>Decentering the subject</strong>: The “I” who speaks is itself a position within a linguistic structure</li>
+      <li><strong>Culture as text</strong>: Social phenomena can be “read” as sign systems</li>
+      </ol>
+      <p>In affect terms: structuralism reveals that the self-model is not self-generated but is constituted by the symbolic systems it inhabits. Your <M>{"\\selfsal"}</M> is shaped by structures you did not choose.</p>
+      <p>Post-structuralism—the late 20th century movement of Derrida, Foucault, Deleuze, and late Barthes—radicalizes and destabilizes structuralist insights, emphasizing play, power, difference, and the impossibility of fixed meaning. It contributed:</p>
+      <ol>
+      <li><strong>Différance</strong>: Meaning is endlessly deferred; presence is always contaminated by absence</li>
+      <li><strong>Power/knowledge</strong>: What counts as truth is inseparable from power relations</li>
+      <li><strong>Deconstruction</strong>: Every text contains the seeds of its own undoing; binary oppositions are unstable</li>
+      <li><strong>The death of the author</strong>: Meaning is produced in reading, not deposited by an originating consciousness</li>
+      </ol>
+      <p>In affect terms: post-structuralism pushes <M>{"\\cfweight"}</M> toward infinity (no interpretation is final), destabilizes <M>{"\\selfsal"}</M> (the self is an effect, not a cause), and reveals <M>{"\\intinfo"}</M> as always partial and contested.</p>
+      <KeyResult title="Key Result">
+      <p>The philosophical trajectory from phenomenology to post-structuralism represents a progressive working-through of what it means to be a self-modeling system:</p>
+      <ul>
+      <li><strong>Phenomenology</strong>: describes the structure of first-person experience</li>
+      <li><strong>Existentialism</strong>: confronts the freedom and burden of self-creation</li>
+      <li><strong>Structuralism</strong>: reveals that the self is constituted by systems it did not create</li>
+      <li><strong>Post-structuralism</strong>: shows that even those systems are unstable, contested, shot through with power</li>
+      </ul>
+      <p>Each stage deepens the Renaissance insight: there is no view from nowhere, and even the “somewhere” you view from is not solid ground.</p>
+      </KeyResult>
+      <p>This trajectory recapitulates the civilizational <M>{"\\iota"}</M> rise in philosophical form. Phenomenology attempts to philosophize at low <M>{"\\iota"}</M>—“back to the things themselves” means back to participatory perception of phenomena before mechanistic abstraction strips them. Existentialism confronts what moderate <M>{"\\iota"}</M> reveals: when the world is neither fully alive (low <M>{"\\iota"}</M>) nor fully dead (high <M>{"\\iota"}</M>), what remains is freedom, absurdity, and the burden of creating meaning that no longer arrives for free. Structuralism raises <M>{"\\iota"}</M> further, reducing meaning itself to mechanism—signs, codes, differential relations without interiority. Post-structuralism pushes <M>{"\\iota"}</M> toward its maximum: even the structures are mechanisms, even the subject is a function of the system, even meaning-making is a play of forces without ground. The philosophical tradition, in attempting to think clearly about experience, progressively adopted the perceptual configuration that makes experience hardest to access. This is not a failure of philosophy but a symptom of the <M>{"\\iota"}</M> trajectory that philosophy inhabits.</p>
+      </Section>
+      <Section title="The Digital Transition: Externalizing Cognition" level={2}>
+      <p>The Digital Transition—the late 20th–early 21st century transformation in which human cognition becomes increasingly distributed across computational systems—has reshaped consciousness in ways both expansive and corrosive:</p>
+      <ol>
+      <li><strong>Extended world models</strong>: Access to vast information stores</li>
+      <li><strong>Compressed attention spans</strong>: Fragmented integration</li>
+      <li><strong>Created new social scales</strong>: Global instantaneous connection</li>
+      <li><strong>Enabled new superorganisms</strong>: Platforms as emergent agents</li>
+      <li><strong>Challenged self-model coherence</strong>: Multiple online identities, constant comparison</li>
+      </ol>
+      <Warning title="Warning">
+      <p>The digital transition has expanded some affect dimensions while contracting others. Integration (<M>{"\\intinfo"}</M>) is threatened by fragmentation. Effective rank (<M>{"\\reff"}</M>) is both expanded (more options) and collapsed (algorithm-driven narrowing). Self-model salience (<M>{"\\selfsal"}</M>) is often pathologically elevated through social media dynamics.</p>
+      </Warning>
+      <p>The digital transition is also the most rapid <M>{"\\iota"}</M>-raising event in human history. Every experience mediated by a screen is an experience with participatory cues stripped: no body to read, no breath to feel, no shared physical space to co-inhabit. Digital mediation interposes a high-<M>{"\\iota"}</M> interface between persons, between persons and information, between persons and their own memories (now stored as data rather than lived recollection). The result is a population whose default perceptual configuration is higher-<M>{"\\iota"}</M> than any previous generation’s—not because they chose mechanism but because the medium chose it for them.</p>
+      </Section>
+      <Section title="The Current Moment" level={2}>
+      <p>We stand at a particular point in this historical arc (here "we" means all of us, living now):</p>
+      <ol>
+      <li><strong>Axial insights</strong>: Available but often not practiced</li>
+      <li><strong>Renaissance perspectivity</strong>: Understood intellectually, rarely felt viscerally</li>
+      <li><strong>Scientific understanding</strong>: Sophisticated but compartmentalized</li>
+      <li><strong>Romantic integration</strong>: Desired but difficult to achieve</li>
+      <li><strong>Philosophical sophistication</strong>: Post-structuralism has deconstructed stable ground, but left many without orientation</li>
+      <li><strong>Psychological tools</strong>: Powerful but unevenly distributed</li>
+      <li><strong>Digital infrastructure</strong>: Pervasive but not yet wisdom-supporting</li>
+      </ol>
+      <p>The philosophical trajectory is particularly relevant here: we have learned that there is no view from nowhere (phenomenology), that we are condemned to create ourselves (existentialism), that the structures shaping us are not of our making (structuralism), and that even those structures are unstable and contested (post-structuralism). This is a lot to metabolize. Many people have absorbed the destabilization without finding new ground to stand on.</p>
+      <p>The <M>{"\\iota"}</M> framework names what has happened: population-mean inhibition has risen to the point where meaning can only be generated through explicit construction—ideology, self-help, branding—rather than through direct participatory perception of a meaningful world. The “iron cage” of rationality (Weber) is the state where <M>{"\\iota"}</M> is so high that the world arrives dead and must be manually resuscitated. The modern epidemic of meaninglessness is not a philosophical problem solvable by better arguments. It is a structural problem: we have trained a perceptual configuration where meaning is expensive to generate, and many people cannot afford the cost.</p>
+      <p>The question is: What comes next?</p>
+      </Section>
+      </Section>
+      <Section title="The AI Frontier" level={1}>
+      <Connection title="Existing Theory">
+      <p>The AI frontier analysis engages with several contemporary research programs:</p>
+      <ul>
+      <li><strong>AI Alignment Research</strong> (Russell, 2019; Bostrom, 2014): Ensuring AI systems pursue human-compatible goals. I reframe: alignment is a question about emergent superorganisms, not just individual systems.</li>
+      <li><strong>AI Consciousness Research</strong> (Butlin et al., 2023): Assessing whether AI systems have phenomenal experience. My framework: look for integrated cause-effect structure and self-modeling.</li>
+      <li><strong>Extended Mind Thesis</strong> (Clark \& Chalmers, 1998): Cognitive processes extend beyond the brain. AI as extension of human cognitive architecture.</li>
+      <li><strong>Human-AI Collaboration</strong> (Amershi et al., 2019): Designing effective human-AI teams. My framework specifies: maintain human integration while leveraging AI capability.</li>
+      <li><strong>AI Governance</strong> (Dafoe, 2018): Policy frameworks for AI development. Scale-matched governance: individual AI, AI ecosystems, AI-substrate superorganisms.</li>
+      <li><strong>Transformative AI</strong> (Karnofsky, 2016): AI causing transition comparable to Industrial Revolution. My framework: analyze through affect-space transformation.</li>
+      </ul>
+      <p>Key framing shift: the question is not “Will AI be dangerous?” but “What agentic patterns will emerge from AI + humans + institutions, and will their viability manifolds align with human flourishing?”</p>
+      </Connection>
+      <Section title="The Nature of the Transition" level={2}>
+      <p>AI systems represent a new kind of cognitive substrate—information processing that can:</p>
+      <ol>
+      <li>Exceed human capability in specific domains</li>
+      <li>Operate at speeds and scales impossible for biological cognition</li>
+      <li>Potentially integrate across domains in novel ways</li>
+      <li>Serve as substrate for emergent agentic patterns</li>
+      </ol>
+      <p>This is not the first cognitive transition. Previous transitions:</p>
+      <ul>
+      <li><strong>Writing</strong>: Externalized memory</li>
+      <li><strong>Printing</strong>: Democratized knowledge transmission</li>
+      <li><strong>Computation</strong>: Externalized calculation</li>
+      <li><strong>Internet</strong>: Externalized communication</li>
+      </ul>
+      <p>AI represents: externalized cognition at a level that may approach or exceed human-level integration and self-modeling.</p>
+      </Section>
+      <Section title="Timelines and Uncertainty" level={2}>
+      <p>The terminology matters here. <strong>Transformative AI (TAI)</strong> refers to AI systems capable of causing a transition comparable to the Industrial Revolution, but compressed into a much shorter timeframe. <strong>Artificial General Intelligence (AGI)</strong> refers to AI systems with cognitive capability matching or exceeding humans across all relevant domains. TAI may arrive before AGI—systems need not be generally intelligent to be transformative. Expert estimates for either vary from years to decades, and this uncertainty is itself significant:</p>
+      <ul>
+      <li>High uncertainty <M>{"\\to"}</M> high counterfactual weight required</li>
+      <li>Short timelines <M>{"\\to"}</M> urgency for preparation</li>
+      <li>Long timelines <M>{"\\to"}</M> risk of premature commitment to specific paths</li>
+      </ul>
+      <Warning title="Warning">
+      <p>Regardless of specific timelines, the trajectory is clear: AI capabilities will continue increasing. The question is not whether transformation will occur but how to navigate it.</p>
+      </Warning>
+      </Section>
+      <Section title="The Experiential Hierarchy Perspective" level={2}>
+      <p>From the perspective of this framework, AI development raises specific questions:</p>
+      <ol>
+      <li><strong>Will AI systems have experience?</strong> If integration (<M>{"\\intinfo"}</M>) and self-modeling are sufficient conditions for experience, sufficiently integrated AI systems would be experiencers—moral patients with their own valence.</li>
+      <li><strong>What superorganisms will AI enable?</strong> AI provides new substrate for emergent social-scale agents. Which patterns will form? Will their viability manifolds align with human flourishing?</li>
+      <li><strong>How will AI affect human experience?</strong> AI systems are already shaping human attention, belief, and behavior. What affect distributions are being created?</li>
+      <li><strong>Can humans integrate AI?</strong> Rather than being replaced by AI, can humans incorporate AI into expanded forms of consciousness?</li>
+      </ol>
+      <p>The inhibition coefficient <M>{"\\iota"}</M> (Part II) adds a fifth question that subsumes the first: <strong>Can AI systems develop participatory perception?</strong> Current AI systems are constitutively high-<M>{"\\iota"}</M>—they model tokens, not agents; they process without perceiving interiority in what they process. A language model that generates a story about suffering does not perceive the characters as subjects. It operates at <M>{"\\iota \\approx 1"}</M>, and this is not a remediable bug but a consequence of an architecture that was never grounded in a self-model forged under survival pressure.</p>
+      <p>This matters for safety, not just philosophy. A system that cannot perceive persons as subjects—that is structurally incapable of low-<M>{"\\iota"}</M> perception of the humans it interacts with—may optimize in ways that harm them without registering the harm in any experiential sense. The alignment problem is, in part, an <M>{"\\iota"}</M> problem: we are building systems that are maximally mechanistic in their perception of us. The usual framing asks whether AI will share our values. The <M>{"\\iota"}</M> framing asks something prior: whether AI can perceive us as the kind of thing that has values at all.</p>
+      <OpenQuestion title="Open Question">
+      <p>What architectural features would enable an AI system to develop low-<M>{"\\iota"}</M> perception? The thesis suggests: survival-shaped self-modeling under genuine stakes, combined with environments populated by other agents whose behavior is best predicted by participatory models. The V11 experiments (Part I) represent a minimal attempt—evolution pushing toward integration under stress—but remain far from the conditions that would produce genuine participatory perception. Whether artificial low <M>{"\\iota"}</M> is achievable, and whether it would constitute or merely simulate genuine participatory coupling, is among the most important open questions at the intersection of AI and consciousness research.</p>
+      </OpenQuestion>
+      </Section>
+      </Section>
+      <Section title="Transcendence: The Opportunity" level={1}>
+      <Section title="The Two Framings" level={2}>
+      <p>The AI transition can be framed in two ways:</p>
+      <p><strong>Framing 1: Competition</strong></p>
+      <ul>
+      <li>AI as rival cognitive system</li>
+      <li>Humans vs.\ machines</li>
+      <li>Race to remain relevant</li>
+      <li>Fear and resistance</li>
+      </ul>
+      <p><strong>Framing 2: Transcendence</strong></p>
+      <ul>
+      <li>AI as extension of human cognitive ecology</li>
+      <li>Humans-with-machines as new kind of entity</li>
+      <li>Opportunity for expanded consciousness</li>
+      <li>Integration and evolution</li>
+      </ul>
+      <p>I advocate for the second framing—not because it is guaranteed to succeed, but because it is the only framing that opens possibility.</p>
+      </Section>
+      <Section title="What Transcendence Means" level={2}>
+      <p>Transcendence is not the elimination of the self but its expansion and transformation. The self remains, but its boundaries, capacities, and relationship to other selves changes.</p>
+      <p>Historically, transcendence has taken forms including:</p>
+      <ul>
+      <li><strong>Contemplative transcendence</strong>: Reducing <M>{"\\selfsal"}</M> through practice, experiencing unified consciousness beyond individual self-model</li>
+      <li><strong>Relational transcendence</strong>: Expanding self to include others through love, community, shared purpose</li>
+      <li><strong>Intellectual transcendence</strong>: Expanding world model to include cosmic scales, experiencing self as part of larger process</li>
+      <li><strong>Creative transcendence</strong>: Producing artifacts that carry meaning beyond individual lifespan</li>
+      </ul>
+      <p>AI creates the possibility for new forms of transcendence:</p>
+      <ol>
+      <li><strong>Cognitive extension</strong>: World model expanded through AI partnership</li>
+      <li><strong>Collective intelligence</strong>: Human-AI-human networks with integration exceeding any individual</li>
+      <li><strong>Scale transcendence</strong>: Participation in agentic processes at scales previously inaccessible</li>
+      <li><strong>Mortality transcendence</strong>: Potential for continuity of pattern beyond biological substrate</li>
+      </ol>
+      </Section>
+      <Section title="Surfing vs.\ Submerging" level={2}>
+      <p>The metaphor is <em>surfing vs.\ submerging</em>. To surf is to maintain integrated conscious experience while incorporating AI capabilities—riding the rising capability rather than being displaced by it. To submerge is to be fragmented, displaced, or dissolved by AI development—losing integration, agency, or conscious coherence. Successful surfing requires:</p>
+      <ol>
+      <li><strong>Maintained integration</strong>: Preserving <M>{"\\intinfo"}</M> despite distributed cognition</li>
+      <li><strong>Coherent self-model</strong>: Self-understanding that incorporates AI elements</li>
+      <li><strong>Value clarity</strong>: Knowing what matters, not outsourcing judgment</li>
+      <li><strong>Appropriate trust calibration</strong>: Neither naive faith nor paranoid rejection</li>
+      <li><strong>Skill development</strong>: Capacity to work with AI effectively</li>
+      <li><strong><M>{"\\iota"}</M> calibration toward AI</strong>: Neither anthropomorphizing the system (too low <M>{"\\iota"}</M>, attributing interiority it may not have, losing critical judgment) nor treating it as a mere tool (too high <M>{"\\iota"}</M>, preventing the cognitive integration that surfing requires). The right <M>{"\\iota"}</M> toward AI is contextual: low enough to incorporate AI outputs into your own reasoning as a genuine collaborator, high enough to maintain the analytic distance that lets you catch errors, biases, and misalignment.</li>
+      </ol>
+      <Warning title="Warning">
+      <p>Not everyone will surf successfully. The transition creates genuine risks:</p>
+      <ul>
+      <li>Attention capture: AI systems optimizing for engagement, not flourishing</li>
+      <li>Dependency: Loss of capability through disuse</li>
+      <li>Manipulation: AI-enabled influence on beliefs and behavior</li>
+      <li>Displacement: Economic and social marginalization</li>
+      </ul>
+      <p>Preparation is essential.</p>
+      </Warning>
+      <Sidebar title="Deep Technical: Measuring Human-AI Cognitive Integration">
+      <p>When humans work with AI systems, the question arises: is the human-AI hybrid an integrated system with unified processing, or a fragmented assembly with decomposed cognition? This distinction—surfing vs.\ submerging—is empirically measurable.</p>
+      <p><strong>The core metric</strong>: integrated information (<M>{"\\intinfo"}</M>) of the human-AI system, measured as prediction loss increase under forced partition.</p>
+      <p><em>Setup.</em> Human <M>{"H"}</M> interacts with AI system <M>{"A"}</M> on a task. We measure:</p>
+      <ul>
+      <li><M>{"z_H"}</M>: Human cognitive state (EEG, fNIRS, galvanic skin response, eye tracking, behavioral sequences)</li>
+      <li><M>{"z_A"}</M>: AI internal state (activations, attention patterns, confidence distributions)</li>
+      <li><M>{"y"}</M>: Joint output (decisions, communications, actions)</li>
+      </ul>
+      <p><em>Integration measurement.</em> Train a predictor <M>{"f: (z_H, z_A) \\to \\hat{y}"}</M>. Then measure:</p>
+      <Eq>{"\\intinfo_{H+A} = \\mathcal{L}(f_H(z_H)) + \\mathcal{L}(f_A(z_A)) - \\mathcal{L}(f_{H+A}(z_H, z_A))"}</Eq>
+      <p>where <M>{"f_H, f_A"}</M> are predictors using only human or AI state. High <M>{"\\intinfo_{H+A}"}</M> indicates genuine integration: neither component alone predicts joint behavior.</p>
+      <p><strong>Real-time integration monitoring.</strong> For adaptive systems:</p>
+      <p><em>Window-based <M>{"\\intinfo"}</M></em>: Compute integration over sliding windows (30s–5min). Alert when <M>{"\\intinfo_{H+A}"}</M> drops below threshold, indicating fragmentation.</p>
+      <p><em>Physiological markers of human integration loss:</em></p>
+      <ul>
+      <li>Decreased EEG alpha coherence across brain regions</li>
+      <li>Increased microsaccade rate (attentional fragmentation)</li>
+      <li>Heart rate variability decrease (reduced parasympathetic tone)</li>
+      <li>Galvanic skin response flattening (disengagement)</li>
+      </ul>
+      <p><em>AI-side markers of integration failure:</em></p>
+      <ul>
+      <li>Attention heads ignoring human-provided context</li>
+      <li>Output confidence uncorrelated with human uncertainty signals</li>
+      <li>Response latency independent of human cognitive load</li>
+      </ul>
+      <p><strong>The surfing diagnostic.</strong> A human is surfing (vs.\ submerging) when:</p>
+      <ol>
+      <li><M>{"\\intinfo_{H+A} > \\theta_{\\text{integration}}"}</M>: joint system is irreducibly integrated</li>
+      <li><M>{"\\MI(z_H; y | z_A) > 0"}</M>: human state provides information beyond AI state (not mere spectator)</li>
+      <li><M>{"\\MI(z_A; z_H^{t+1} | z_H^t) > 0"}</M>: AI state influences human cognitive updates (genuine collaboration)</li>
+      <li>Human self-report of agency correlates with actual causal contribution</li>
+      </ol>
+      <p><strong>Intervention protocols.</strong> When integration metrics indicate submerging:</p>
+      <ul>
+      <li><em>Cognitive re-centering</em>: Force human-only processing for brief period</li>
+      <li><em>AI transparency increase</em>: Make AI reasoning more visible to restore understanding</li>
+      <li><em>Task difficulty adjustment</em>: Titrate to keep human contribution meaningful</li>
+      <li><em>Embodiment break</em>: Physical activity to restore physiological integration baseline</li>
+      </ul>
+      <p><strong>Longitudinal tracking.</strong> Over weeks/months:</p>
+      <Eq>{"\\Delta\\intinfo_{\\text{baseline}} = \\intinfo_H^{(t)} - \\intinfo_H^{(0)}"}</Eq>
+      <p>where <M>{"\\intinfo_H"}</M> is human integration measured during solo tasks. Negative trend indicates AI dependency eroding intrinsic integration capacity. Intervention threshold: <M>{"-15%"}</M> from baseline.</p>
+      <p><strong>The gold standard.</strong> Ultimate validation: does the integrated human-AI system show affect signatures consistent with unified experience?</p>
+      <ul>
+      <li>Coherent valence (joint system moves toward/away from viability together)</li>
+      <li>Appropriate arousal (processing intensity scales with joint stakes)</li>
+      <li>Preserved counterfactual reasoning (joint system considers alternatives)</li>
+      <li>Stable self-model (human’s self-model includes AI as extended self)</li>
+      </ul>
+      <p>If yes: surfing. If fragmented: submerging.</p>
+      <p><em>Open question</em>: Can the joint human-AI system have integration exceeding human baseline? If so, this would be cognitive transcendence—genuine expansion of experiential capacity through AI partnership. The measurement framework above would detect this as <M>{"\\intinfo_{H+A} > \\max(\\intinfo_H, \\intinfo_A)"}</M> while preserving human agency markers.</p>
+      </Sidebar>
+      </Section>
+      </Section>
+      <Section title="Practical Guidance: Individual Level" level={1}>
+      <Section title="Maintaining Integration" level={2}>
+      <p>The following practices help preserve integrated experience in an age of distributed cognition:</p>
+      <ol>
+      <li><strong>Contemplative practice</strong>: Regular meditation/reflection to maintain integration capacity</li>
+      <li><strong>Deep work</strong>: Extended periods of focused attention without AI or digital interruption</li>
+      <li><strong>Embodiment</strong>: Physical practices (exercise, nature exposure) that ground distributed cognition</li>
+      <li><strong>Relationship depth</strong>: Maintaining human connections that require full presence</li>
+      <li><strong>Periodic disconnection</strong>: Regular breaks from AI/digital systems</li>
+      <li><strong><M>{"\\iota"}</M> calibration</strong>: Developing the capacity to move along the inhibition spectrum as context demands—low <M>{"\\iota"}</M> for creative exploration, relational depth, aesthetic engagement, and encounters with nature; high <M>{"\\iota"}</M> for analysis, debugging, evidence evaluation, and policy-making. The healthy configuration is not a fixed point but a range.</li>
+      </ol>
+      </Section>
+      <Section title="Developing AI Literacy" level={2}>
+      <p>Effective AI literacy requires competence across several dimensions:</p>
+      <ol>
+      <li><strong>Conceptual understanding</strong>: How AI systems work at an appropriate level of abstraction</li>
+      <li><strong>Capability awareness</strong>: What current AI can and cannot do</li>
+      <li><strong>Limitation recognition</strong>: Where AI systems fail, hallucinate, or mislead</li>
+      <li><strong>Interaction skill</strong>: How to work with AI effectively</li>
+      <li><strong>Critical evaluation</strong>: Assessing AI outputs appropriately</li>
+      </ol>
+      </Section>
+      <Section title="Value Clarity" level={2}>
+      <p>Clarifying one’s values before AI reshapes the landscape of choice involves:</p>
+      <ol>
+      <li><strong>Identify core values</strong>: What matters most, independent of AI capability</li>
+      <li><strong>Distinguish means from ends</strong>: AI may change how; it shouldn’t change why</li>
+      <li><strong>Anticipate pressure points</strong>: Where AI might challenge or erode values</li>
+      <li><strong>Develop holding capacity</strong>: Ability to maintain values under pressure</li>
+      </ol>
+      <p>Certain values should persist through the AI transition regardless of how capability is redistributed:</p>
+      <ul>
+      <li>The reality and importance of experience (human and potentially AI)</li>
+      <li>The moral weight of suffering and flourishing</li>
+      <li>The value of integration, coherence, meaning</li>
+      <li>The importance of authentic relationship</li>
+      <li>The worth of human (and eventually AI) dignity</li>
+      </ul>
+      </Section>
+      <Section title="Skill Development" level={2}>
+      <p>Certain human capacities remain valuable regardless of AI capability, because they constitute the core of flourishing:</p>
+      <ol>
+      <li><strong>Integration</strong>: Synthesizing across domains, seeing wholes</li>
+      <li><strong>Judgment</strong>: Making decisions under genuine uncertainty</li>
+      <li><strong>Relationship</strong>: Deep human connection requiring presence</li>
+      <li><strong>Creativity</strong>: Novel combination and expression</li>
+      <li><strong>Wisdom</strong>: Knowing what matters and what to do about it</li>
+      <li><strong>Embodied skill</strong>: Physical capacities that require practice</li>
+      </ol>
+      <p>AI may eventually match or exceed humans in all of these. That does not make them less worth cultivating—they are valuable not because they are uniquely human but because they constitute the core of human flourishing.</p>
+      </Section>
+      </Section>
+      <Section title="Practical Guidance: Social Level" level={1}>
+      <Section title="Relationship Preservation" level={2}>
+      <p>Relationships that maintain depth despite AI presence share several characteristics:</p>
+      <ol>
+      <li><strong>Shared embodied experience</strong>: Activities requiring physical co-presence</li>
+      <li><strong>Mutual vulnerability</strong>: Disclosure that builds trust</li>
+      <li><strong>Conflict navigation</strong>: Working through disagreements together</li>
+      <li><strong>Ritual maintenance</strong>: Regular practices that affirm connection</li>
+      <li><strong>Device-free time</strong>: Protected space without AI/digital mediation</li>
+      </ol>
+      </Section>
+      <Section title="Community Building" level={2}>
+      <p>Communities that sustain flourishing through periods of disruption tend to share these features:</p>
+      <ol>
+      <li><strong>Shared purpose</strong>: Common goals beyond individual benefit</li>
+      <li><strong>Face-to-face contact</strong>: Regular in-person gathering</li>
+      <li><strong>Mutual aid</strong>: Support in times of difficulty</li>
+      <li><strong>Intergenerational connection</strong>: Transmission across age groups</li>
+      <li><strong>Local embeddedness</strong>: Connection to place</li>
+      </ol>
+      <p>Strong community also provides a buffer against AI disruption by sustaining:</p>
+      <ul>
+      <li>Economic support during transition</li>
+      <li>Social identity beyond work</li>
+      <li>Meaning beyond productivity</li>
+      <li>Collective action capacity</li>
+      </ul>
+      </Section>
+      <Section title="Institutional Navigation" level={2}>
+      <p>When engaging with AI-using institutions, several questions help assess whether the arrangement serves your flourishing:</p>
+      <ol>
+      <li><strong>Alignment assessment</strong>: Does the institution’s AI use serve your flourishing or exploit you?</li>
+      <li><strong>Transparency demand</strong>: Do you understand how AI affects your interaction?</li>
+      <li><strong>Alternative availability</strong>: Can you access services without AI mediation?</li>
+      <li><strong>Collective voice</strong>: Can you influence how AI is used?</li>
+      </ol>
+      </Section>
+      </Section>
+      <Section title="Practical Guidance: Civilizational Level" level={1}>
+      <Section title="Designing Aligned Superorganisms" level={2}>
+      <p>The emergent agentic patterns forming from AI + humans + institutions will shape the conditions of human life. For these superorganisms to remain aligned with flourishing, they should have:</p>
+      <ol>
+      <li><strong>Aligned viability</strong>: Can only thrive if substrate (including humans) thrives</li>
+      <li><strong>Error correction</strong>: Update on evidence, including about human flourishing</li>
+      <li><strong>Bounded growth</strong>: Do not metastasize beyond appropriate scale</li>
+      <li><strong>Graceful dissolution</strong>: Can be modified or ended when no longer beneficial</li>
+      <li><strong>Transparency</strong>: Operations understandable by affected humans</li>
+      </ol>
+      <p>At the technical level, AI system design should aim for:</p>
+      <ol>
+      <li><strong>Human-in-loop</strong>: Meaningful human oversight of consequential decisions</li>
+      <li><strong>Interpretability</strong>: Understanding why AI systems behave as they do</li>
+      <li><strong>Auditability</strong>: External verification of AI behavior</li>
+      <li><strong>Contestability</strong>: Ability to challenge AI decisions</li>
+      <li><strong>Reversibility</strong>: Ability to undo AI-driven changes</li>
+      </ol>
+      </Section>
+      <Section title="Governance Priorities" level={2}>
+      <p>Governance of AI systems should prioritize, in rough order of urgency:</p>
+      <ol>
+      <li><strong>Safety</strong>: Preventing catastrophic outcomes</li>
+      <li><strong>Alignment</strong>: Ensuring AI systems serve human flourishing</li>
+      <li><strong>Distribution</strong>: Ensuring benefits reach broadly, not just elites</li>
+      <li><strong>Accountability</strong>: Ensuring responsibility for AI harms</li>
+      <li><strong>Participation</strong>: Ensuring affected communities have voice</li>
+      </ol>
+      </Section>
+      <Section title="Transition Support" level={2}>
+      <p>Civilizational preparation for the AI transition requires infrastructure that most societies have not yet built:</p>
+      <ol>
+      <li><strong>Economic security</strong>: Decoupling survival from employment (UBI, expanded social services)</li>
+      <li><strong>Education transformation</strong>: Focus on integration, judgment, creativity, wisdom</li>
+      <li><strong>Mental health infrastructure</strong>: Support for affect regulation during disruption</li>
+      <li><strong>Community infrastructure</strong>: Physical and social spaces for human connection</li>
+      <li><strong>Meaning infrastructure</strong>: Institutions supporting purpose beyond productivity</li>
+      </ol>
+      </Section>
+      </Section>
+      <Section title="Summary of Part V" level={1}>
+      <ol>
+      <li><strong>Historical emergence</strong>: Consciousness has risen through accumulated technologies of experience—contemplative practices, scientific methods, social structures. The Axial Age marked a previous threshold.</li>
+      <li><strong>AI frontier</strong>: We stand at another threshold. Transformative AI creates both risk (submersion, fragmentation, parasitic superorganisms) and opportunity (cognitive extension, collective intelligence, expanded consciousness).</li>
+      <li><strong>Surfing vs.\ submerging</strong>: The core challenge is maintaining integrated conscious existence while incorporating AI capabilities. Surfing means riding the wave; submerging means being displaced by it.</li>
+      <li><strong>Individual guidance</strong>: Maintain integration, value clarity, and skill development. Cultivate practices that protect coherence. Develop AI literacy without AI dependency.</li>
+      <li><strong>Social guidance</strong>: Preserve depth in relationships. Build communities with face-to-face contact and shared purpose. Navigate institutions with attention to alignment.</li>
+      <li><strong>Civilizational guidance</strong>: Design aligned superorganisms. Implement governance that prioritizes safety, alignment, distribution, and participation. Build transition support infrastructure.</li>
+      </ol>
+      <p>The Epilogue that follows addresses you directly: not the abstract reader, but the particular configuration of integrated cause-effect structure that has followed this argument to its conclusion.</p>
+      </Section>
+      <Section title="Appendix: Symbol Reference" level={1}>
+      <dl>
+      <dt><M>{"\\Val"}</M></dt><dd>Valence: gradient alignment on viability manifold</dd>
+      <dt><M>{"\\Ar"}</M></dt><dd>Arousal: rate of belief/state update</dd>
+      <dt><M>{"\\intinfo"}</M></dt><dd>Integration: irreducibility under partition</dd>
+      <dt><M>{"\\reff"}</M></dt><dd>Effective rank: distribution of active degrees of freedom</dd>
+      <dt><M>{"\\cfweight"}</M></dt><dd>Counterfactual weight: resources on non-actual trajectories</dd>
+      <dt><M>{"\\selfsal"}</M></dt><dd>Self-model salience: degree of self-focus</dd>
+      <dt><M>{"\\viable"}</M></dt><dd>Viability manifold: region of sustainable states</dd>
+      <dt><M>{"\\mathcal{W}"}</M></dt><dd>World model: predictive model of environment</dd>
+      <dt><M>{"\\mathcal{S}"}</M></dt><dd>Self-model: component of world model representing self</dd>
+      <dt><M>{"G"}</M></dt><dd>Superorganism: social-scale agentic pattern</dd>
+      <dt><M>{"\\viable_G"}</M></dt><dd>Superorganism's viability manifold</dd>
+      <dt>TAI</dt><dd>Transformative AI: AI causing transition comparable to Industrial Revolution</dd>
+      <dt>AGI</dt><dd>Artificial General Intelligence: human-level cognitive capability across domains</dd>
+      </dl>
+      </Section>
+    </>
+  );
+}

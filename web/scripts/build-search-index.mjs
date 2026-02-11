@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Build a search index from generated HTML chapter files.
+ * Build a search index from TSX content files.
+ * Strips JSX tags and extracts text content organized by section.
  * Output: public/search-index.json
  */
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -9,7 +10,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
-const chaptersDir = join(root, 'generated', 'chapters');
+const contentDir = join(root, 'content');
 const outPath = join(root, 'public', 'search-index.json');
 
 const chapters = [
@@ -22,11 +23,25 @@ const chapters = [
   { slug: 'epilogue', title: 'Epilogue' },
 ];
 
-function stripHtml(html) {
-  return html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+    .slice(0, 80);
+}
+
+function stripTsx(tsx) {
+  return tsx
+    // Remove JSX string expressions like {"\\math..."}
+    .replace(/\{"[^"]*"\}/g, '[math]')
+    // Remove JSX tags
     .replace(/<[^>]+>/g, ' ')
+    // Remove import/export lines
+    .replace(/^(import|export)\s.*/gm, '')
+    // Remove function declaration
+    .replace(/export default function.*\{/g, '')
+    // Clean up
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
@@ -37,46 +52,35 @@ function stripHtml(html) {
     .trim();
 }
 
-function extractSections(html) {
+function extractSections(tsx) {
   const sections = [];
-  // Split by h2/h3 headings
-  const headingRegex = /<h([23])\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/h[23]>/gi;
-  let lastIdx = 0;
-  let lastHeading = { id: '', text: '', level: 1 };
-  let match;
+  // Split by <Section title="..."> tags
+  const sectionRe = /<Section\s+title="([^"]+)"\s+level=\{(\d)\}/g;
+  const matches = [...tsx.matchAll(sectionRe)];
 
-  // Collect all heading positions
-  const headings = [];
-  while ((match = headingRegex.exec(html)) !== null) {
-    headings.push({
-      index: match.index,
-      level: parseInt(match[1]),
-      id: match[2],
-      text: stripHtml(match[3]),
-    });
+  if (matches.length === 0) {
+    // No sections — treat entire content as one section
+    const text = stripTsx(tsx);
+    if (text.length > 20) {
+      sections.push({ headingId: '', heading: '', text: text.slice(0, 2000) });
+    }
+    return sections;
   }
 
-  for (let i = 0; i < headings.length; i++) {
-    const start = i === 0 ? 0 : headings[i].index;
-    const end = i < headings.length - 1 ? headings[i + 1].index : html.length;
-    const sectionHtml = html.slice(start, end);
-    const text = stripHtml(sectionHtml);
+  for (let i = 0; i < matches.length; i++) {
+    const start = matches[i].index;
+    const end = i < matches.length - 1 ? matches[i + 1].index : tsx.length;
+    const sectionTsx = tsx.slice(start, end);
+    const text = stripTsx(sectionTsx);
+    const heading = matches[i][1];
+    const headingId = slugify(heading);
 
     if (text.length > 20) {
       sections.push({
-        headingId: headings[i].id,
-        heading: headings[i].text,
-        // Store first 500 chars for context, full text for search
+        headingId,
+        heading,
         text: text.slice(0, 2000),
       });
-    }
-  }
-
-  // If no headings found, treat entire content as one section
-  if (sections.length === 0) {
-    const text = stripHtml(html);
-    if (text.length > 20) {
-      sections.push({ headingId: '', heading: '', text: text.slice(0, 2000) });
     }
   }
 
@@ -86,11 +90,11 @@ function extractSections(html) {
 const index = [];
 
 for (const ch of chapters) {
-  const htmlPath = join(chaptersDir, `${ch.slug}.html`);
-  if (!existsSync(htmlPath)) continue;
+  const tsxPath = join(contentDir, `${ch.slug}.tsx`);
+  if (!existsSync(tsxPath)) continue;
 
-  const html = readFileSync(htmlPath, 'utf-8');
-  const sections = extractSections(html);
+  const tsx = readFileSync(tsxPath, 'utf-8');
+  const sections = extractSections(tsx);
 
   index.push({
     slug: ch.slug,

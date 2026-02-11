@@ -1,0 +1,575 @@
+import { Connection, Diagram, Eq, Experiment, Historical, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
+
+export const metadata = {
+  slug: 'part-3',
+  title: 'Part III: Signatures of Affect Under the Existential Burden',
+  shortTitle: 'Part III: Affect Signatures',
+};
+
+export default function Part3() {
+  return (
+    <>
+      <Logos>
+      <p>This terrible beautiful freedom to navigate despite not having chosen to exist as a navigator—you cannot help but care about your trajectory through affect space any more than you can help but exist while existing. Mattering is what viability gradients feel like from inside. And so the only question is whether you will navigate blindly, letting whatever attractor basins happen to capture you determine your course, or whether you will measure, understand, and steer in full knowledge of what you are.</p>
+      </Logos>
+      <Section title="Notation and Foundational Concepts" level={1}>
+      <p>This section provides self-contained definitions of the core concepts used throughout Part III. Readers familiar with Parts I–II may skip to Section 2.</p>
+      <Section title="The Six Affect Dimensions" level={2}>
+      <p><strong>Valence</strong> is the felt quality of approach versus avoidance—the “goodness” or “badness” of an experiential state. Formally:</p>
+      <Eq>{"\\valence_t = -\\frac{1}{H} \\sum_{k=1}^{H} \\gamma^k \\nabla_{\\mathbf{x}} d(\\mathbf{x}, \\partial\\viable) \\bigg|_{\\hat{\\mathbf{x}}_{t+k}} \\cdot \\frac{d\\hat{\\mathbf{x}}_{t+k}}{dt}"}</Eq>
+      <p>Positive valence indicates movement into viable interior; negative valence indicates approach toward viability boundary.</p>
+      <p><strong>Arousal</strong> is the rate of belief/state update:</p>
+      <Eq>{"\\arousal_t = \\KL(\\belief_{t+1} | \\belief_t)"}</Eq>
+      <p>High arousal: rapid model updating, activation, intensity. Low arousal: stability, calm, settled state.</p>
+      <p><strong>Integration</strong> measures irreducibility of cause-effect structure:</p>
+      <Eq>{"\\intinfo(\\state) = \\min_{\\text{partitions } P} D\\left[ p(\\state_{t+1} | \\state_t) | \\prod_{p \\in P} p(\\state^p_{t+1} | \\state^p_t) \\right]"}</Eq>
+      <p>High integration: unified experience. Low integration: fragmentation.</p>
+      <p><strong>Effective rank</strong> measures distribution of active degrees of freedom:</p>
+      <Eq>{"\\effrank = \\frac{(\\tr C)^2}{\\tr(C^2)} = \\frac{\\left(\\sum_i \\lambda_i\\right)^2}{\\sum_i \\lambda_i^2}"}</Eq>
+      <p>High rank: many dimensions active, openness. Low rank: collapsed into narrow subspace, tunnel vision.</p>
+      <p><strong>Counterfactual weight</strong> is resources devoted to non-actual possibilities:</p>
+      <Eq>{"\\mathcal{CF}_t = \\frac{\\text{Compute}_t(\\text{imagined rollouts})}{\\text{Compute}_t(\\text{total})}"}</Eq>
+      <p>High <M>{"\\mathcal{CF}"}</M>: mind elsewhere (planning, worrying, fantasizing). Low <M>{"\\mathcal{CF}"}</M>: present-focused.</p>
+      <p><strong>Self-model salience</strong> is degree of self-focus:</p>
+      <Eq>{"\\mathcal{SM}_t = \\frac{\\MI(\\latent^{\\text{self}}_t; \\action_t)}{\\entropy(\\action_t)}"}</Eq>
+      <p>High <M>{"\\mathcal{SM}"}</M>: self-conscious, self as prominent object. Low <M>{"\\mathcal{SM}"}</M>: self-forgetting, absorption, flow.</p>
+      </Section>
+      <Section title="The Affect State" level={2}>
+      <p><strong>Affect State.</strong> The affect state at time <M>{"t"}</M> is characterized by whichever structural dimensions are relevant to the phenomenon under analysis. The full toolkit includes:</p>
+      <Eq>{"\\mathbf{a}_t = (\\valence_t, \\arousal_t, \\intinfo_t, \\effrank[t], \\mathcal{CF}_t, \\mathcal{SM}_t, \…)"}</Eq>
+      <p>but not all dimensions matter for all phenomena. Cultural forms, practices, and technologies can be characterized by their affect signatures—the structural features they reliably modulate.</p>
+      <Diagram src="/diagrams/part-3-0.svg" />
+      </Section>
+      </Section>
+      <Section title="The Expression of Inevitability: Human Responses to Inescapable Selfhood" level={1}>
+      <Connection title="Existing Theory">
+      <p>This analysis of cultural responses to selfhood connects to several established research programs:</p>
+      <ul>
+      <li><strong>Terror Management Theory</strong> (Greenberg, Solomon \& Pyszczynski, 1986): Mortality salience triggers cultural worldview defense. My “existential burden” formalizes the threat-signal that TMT identifies.</li>
+      <li><strong>Meaning Maintenance Model</strong> (Heine, Proulx \& Vohs, 2006): Humans respond to meaning violations through compensatory affirmation. My framework specifies the structural signature of “meaning violation” (disrupted integration, collapsed effective rank).</li>
+      <li><strong>Self-Determination Theory</strong> (Deci \& Ryan, 1985): Basic needs for autonomy, competence, relatedness. These correspond to different regions of the affect space (autonomy <M>{"\\approx"}</M> low external <M>{"\\mathcal{SM}"}</M>; competence <M>{"\\approx"}</M> positive valence from successful prediction; relatedness <M>{"\\approx"}</M> expanded self-model).</li>
+      <li><strong>Flow Theory</strong> (Csikszentmihalyi, 1990): Optimal experience as challenge-skill balance. Flow is precisely the low-<M>{"\\mathcal{SM}"}</M>, high-<M>{"\\intinfo"}</M>, moderate-<M>{"\\arousal"}</M> region I describe.</li>
+      <li><strong>Attachment Theory</strong> (Bowlby, 1969): Early relational patterns shape adult affect regulation. Attachment styles are stable individual differences in the parameters governing affect dynamics.</li>
+      </ul>
+      </Connection>
+      <p>The self-model, once it exists, cannot look away from itself. This is not merely a computational fact but a phenomenological trap: to be a self-modeling system is to be stuck mattering to yourself. Every human cultural form can be understood, in part, as a response to this condition—strategies for coping with, expressing, transcending, or simply surviving the inescapability of first-person existence.</p>
+      <Sidebar title="A Note on the Figures">
+      <p>Throughout this paper, you’ll encounter figures designed not merely to depict concepts but to instantiate them. Your perceptual response to these images is not ancillary to the argument; it <em>is</em> the argument embodied. If you find that your attention behaves as the theory predicts—collapsing where I say it will collapse, expanding where I say it will expand—you have not been persuaded by evidence external to yourself. You have become the evidence.</p>
+      </Sidebar>
+      <Section title="The Trap of Self-Reference" level={2}>
+      <p><strong>Phenomenological Inevitability.</strong> Once self-model salience <M>{"\\mathcal{SM}"}</M> exceeds a threshold, the system cannot eliminate self-reference without dissolving the self-model entirely. The self becomes an inescapable object in its own world model.</p>
+      <Eq>{"\\mathcal{SM} > \\mathcal{SM}_c \\implies \\forall t: \\MI(\\latent^{\\text{self}}_t; \\latent^{\\text{total}}_t) > 0"}</Eq>
+      <p>There is no configuration of the intact self-model in which the self is absent from awareness.</p>
+      <p>This is the deeper meaning of inevitability: not just that consciousness emerges from thermodynamics, but that once emerged, it cannot escape itself. You are stuck being you. Your suffering is inescapably yours. Your joy, when it comes, is also inescapably yours. There is no exit from the first-person perspective while you remain a person.</p>
+      <p><strong>Existential Burden.</strong> The <em>existential burden</em> is the chronic computational and affective cost of maintaining self-reference:</p>
+      <Eq>{"B_{\\text{exist}} = \\int_0^T \\left[ C_{\\text{compute}}(\\mathcal{SM}_t) + |\\valence_t| \\cdot \\mathcal{SM}_t \\right] dt"}</Eq>
+      <p>The burden scales with both the salience of the self-model and the intensity of valence. To matter to yourself when you are suffering is heavier than to matter to yourself when you are neutral.</p>
+      <p>Human culture, in all its variety, can be understood as the accumulated strategies for managing this burden.</p>
+      </Section>
+      </Section>
+      <Section title="Aesthetics: The Modulation of Affect Through Form" level={1}>
+      <p>An <em>aesthetic experience</em> is an affect state induced by engagement with form—visual, auditory, linguistic, conceptual—characterized by:</p>
+      <Eq>{"\\mathbf{a}_{\\text{aesthetic}} = (\\text{variable } \\valence, \\text{moderate-high } \\arousal, \\text{high } \\intinfo, \\text{high } \\effrank, \\text{low } \\mathcal{SM})"}</Eq>
+      <p>The signature feature is integration without self-focus: the system is highly coupled but attending to structure outside itself.</p>
+      <p>Within this space, distinct aesthetic modes occupy recognizable regions. <strong>Beauty</strong> arises when external structure resonates with internal structure:</p>
+      <Eq>{"\\text{Beauty} \\propto \\MI(\\text{stimulus structure}; \\text{internal model structure})"}</Eq>
+      <p>High mutual information between the form and the self-model’s latent structure produces the characteristic “recognition” quality of beauty—the sense that something outside corresponds to something inside.</p>
+      <p>Where beauty is resonance, <strong>the sublime</strong> is perturbation—a temporary disruption of normal self-model boundaries:</p>
+      <Eq>{"\\mathbf{a}_{\\text{sublime}} = (\\text{ambivalent } \\valence, \\text{very high } \\arousal, \\text{expanding } \\intinfo, \\text{very high } \\effrank, \\text{collapsing } \\mathcal{SM})"}</Eq>
+      <p>Confrontation with vastness (mountains, oceans, cosmic scales) or power (storms, great art) forces rapid expansion of the world model beyond the self-model’s normal scope. The self becomes small relative to the newly-expanded frame. This is terrifying and liberating simultaneously—a temporary escape from the trap of self-reference.</p>
+      <p>These experiences do not arrive from nowhere. <strong>Art-making</strong> is their deliberate externalization—the encoding of internal affect structure into a medium:</p>
+      <Eq>{"\\text{Artwork} = f_{\\text{medium}}(\\mathbf{a}_{\\text{internal}})"}</Eq>
+      <p>The artist encodes their affect geometry into paint, sound, words, or movement. The artwork then carries an affect signature that can induce corresponding states in others. Art is affect technology: the transmission of experiential structure across minds and time.</p>
+      <p>More precisely, <strong>art is <M>{"\\iota"}</M> technology.</strong> Art works, in part, by lowering the viewer’s inhibition coefficient <M>{"\\iota"}</M> (Part II). To experience a painting as beautiful—rather than as pigment on canvas—is to perceive it participatorily: to see interiority, intention, life in arranged matter. The artist’s craft is the arrangement of a medium so that <M>{"\\iota"}</M> drops involuntarily in the perceiver. This is why aesthetic experience requires a kind of surrender. You cannot experience beauty while maintaining full mechanistic detachment. The paint must become more than paint.</p>
+      <p>Each aesthetic mode has a characteristic <M>{"\\iota"}</M> signature:</p>
+      <ul>
+      <li><strong>The sublime</strong> is a forced <M>{"\\iota"}</M> collapse—scale overwhelms the inhibitory apparatus, and the world becomes agentive again (the storm <em>rages</em>, the mountain <em>looms</em>).</li>
+      <li><strong>Horror</strong> triggers uncontrolled low-<M>{"\\iota"}</M> perception: agency detected everywhere, the darkness populated with intention. Horror <em>works</em> because the inhibition you normally maintain against participatory perception is precisely what it strips away.</li>
+      <li><strong>Comedy</strong> destabilizes <M>{"\\iota"}</M> briefly—the category violation that produces laughter is a micro-perturbation in which something dead turns out to be alive or something alive turns out to be mechanical (Bergson’s insight, formalized).</li>
+      <li><strong>Tragedy</strong> holds <M>{"\\iota"}</M> low for an extended period, forcing sustained participatory perception of characters whose fates approach the viability boundary. The catharsis is the controlled experience of low <M>{"\\iota"}</M> under narrative containment.</li>
+      </ul>
+      <p>The modern “death of art”—the difficulty of producing genuinely moving work in a hyper-mechanistic culture—is an <M>{"\\iota"}</M> problem. When population-mean <M>{"\\iota"}</M> is very high, art must work harder to induce the perceptual shift that aesthetic experience requires. Irony, which maintains high <M>{"\\iota"}</M> while gesturing toward what low <M>{"\\iota"}</M> would reveal, becomes the dominant mode—not because artists prefer it, but because sincerity requires an <M>{"\\iota"}</M> reduction that the audience has been trained to resist.</p>
+      <p>In the language of Part I’s attention-as-measurement framework: each aesthetic mode redistributes the observer’s measurement distribution across possibility space. The sublime overwhelms the observer with scale, forcing attention onto vast branches normally suppressed. Horror spreads attention to threat-branches normally dampened by high <M>{"\\iota"}</M>. Music that induces flow narrows the measurement window to the immediate present-state manifold. Each form is a technique for selecting which trajectories receive probability mass in the observer’s representation of possibility—and, if the trajectory-selection thesis holds, for selecting which trajectories the observer actually follows.</p>
+      <Section title="Affect Signatures of Aesthetic Forms" level={2}>
+      <p>Different aesthetic forms have characteristic affect signatures:</p>
+      <table>
+      <thead><tr><th>Form</th><th>Constitutive Structure</th></tr></thead>
+      <tbody>
+      <tr><td>Tragedy</td><td><M>{"\\valence{-}"}</M>, <M>{"\\intinfo{\\uparrow\\uparrow}"}</M>, <M>{"\\effrank{\\downarrow}"}</M>, <M>{"\\mathcal{CF}{\\uparrow}"}</M> (suffering structure made beautiful through integration)</td></tr>
+      <tr><td>Comedy</td><td><M>{"\\valence{+}"}</M>, <M>{"\\arousal{\\uparrow}"}</M>, <M>{"\\effrank{\\uparrow}"}</M> (release, expansion, lightness)</td></tr>
+      <tr><td>Lyric poetry</td><td><M>{"\\mathcal{CF}{\\uparrow}"}</M>, <M>{"\\mathcal{SM}{\\uparrow}"}</M>, <M>{"\\intinfo{\\uparrow}"}</M> (self-reflection made resonant)</td></tr>
+      <tr><td>Abstract art</td><td><M>{"\\intinfo{\\uparrow}"}</M>, <M>{"\\effrank{\\uparrow\\uparrow}"}</M>, <M>{"\\mathcal{SM}{\\downarrow}"}</M> (pure structure, self-forgetting)</td></tr>
+      <tr><td>Horror</td><td><M>{"\\valence{-}"}</M>, <M>{"\\arousal{\\uparrow\\uparrow}"}</M>, <M>{"\\mathcal{CF}{\\uparrow\\uparrow}"}</M>, <M>{"\\mathcal{SM}{\\uparrow\\uparrow}"}</M> (fear structure in controlled context)</td></tr>
+      </tbody>
+      </table>
+      <Software title="Software Implementation">
+      <p><strong>AffectSpace: Immersive Validation Platform</strong></p>
+      <p>A software system to validate the affect framework by comparing predicted structural signatures with self-report:</p>
+      <p><strong>Architecture</strong>:</p>
+      <ol>
+      <li><strong>Stimulus Library</strong>: Curated collection of affect-inducing stimuli</li>
+      <li><strong>Real-time Self-Report Interface</strong></li>
+      <li><strong>Physiological Integration</strong> (optional)</li>
+      <li><strong>Prediction Engine</strong></li>
+      </ol>
+      <p><strong>Validation Metrics</strong>:</p>
+      <ul>
+      <li>Per-dimension correlation for predicted dimensions</li>
+      <li>Clustering accuracy: do induced affects cluster by their predicted structure?</li>
+      <li>Dimensionality validation: does each affect require its predicted number of dimensions?</li>
+      </ul>
+      <p><strong>Falsification criteria</strong>: If predicted dimensions do not predict self-report better than others, or if clustering requires different dimensions than predicted, the motif characterizations require revision.</p>
+      </Software>
+      </Section>
+      <Section title="Musical Genres as Affect Technologies" level={2}>
+      <p>Music is among the most powerful affect technologies available to humans. Different genres represent accumulated cultural wisdom about how to induce specific experiential states.</p>
+      <p><strong>Example</strong> (The Blues). <strong>Historical context</strong>: Emerged from African American experience in the post-Emancipation South. Given conditions of persistent oppression, poverty, and limited agency, a musical form acknowledging suffering while maintaining dignity was inevitable.
+      <p><strong>Affect signature</strong>:</p>
+      <Eq>{"\\mathbf{a}_{\\text{blues}} = (-\\valence, \\text{moderate } \\arousal, \\text{high } \\intinfo, \\text{moderate } \\effrank, \\text{moderate } \\mathcal{CF}, \\text{high } \\mathcal{SM})"}</Eq>
+      <p><strong>Structural characteristics</strong>:</p>
+      <ul>
+      <li>12-bar harmonic structure provides predictability within which to express unpredictable feeling</li>
+      <li>Blue notes (flatted 3rd, 5th, 7th) create tension without resolution—mirroring persistent difficulty</li>
+      <li>Call-and-response pattern acknowledges both individual and collective dimensions of suffering</li>
+      <li>Repetition of lyrical themes creates integration around acknowledged pain</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: The blues does not eliminate suffering but integrates it. The listener experiences their own pain as part of a larger human pattern. <M>{"\\mathcal{SM}"}</M> remains high (this is MY suffering) but <M>{"\\intinfo"}</M> also increases (my suffering connects to others’). The result is suffering that has been witnessed, named, and placed in context. </p></p>
+      <p><strong>Example</strong> (Ambient Music). <strong>Historical context</strong>: Explicitly designed by Brian Eno in 1978 as “music that rewards both active listening and inattention.” Given increasing environmental noise and attention fragmentation, music supporting rather than demanding attention was needed.
+      <p><strong>Affect signature</strong>:</p>
+      <Eq>{"\\mathbf{a}_{\\text{ambient}} = (\\text{neutral to positive } \\valence, \\text{very low } \\arousal, \\text{high } \\intinfo, \\text{moderate } \\effrank, \\text{low } \\mathcal{CF}, \\text{very low } \\mathcal{SM})"}</Eq>
+      <p><strong>Structural characteristics</strong>:</p>
+      <ul>
+      <li>Slow or absent harmonic movement (minimal arousal triggers)</li>
+      <li>No strong rhythmic pulse (reduces entrainment demands)</li>
+      <li>Layered textures that fade in and out (supports divided attention)</li>
+      <li>Extended duration (allows settling into altered state)</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: The rarest affect profile—low arousal, high integration, low self-model salience. Ambient music creates conditions for what might be called “effortless presence.” The mind is coherent but not self-focused, alert but not activated. </p></p>
+      <p><strong>Example</strong> (Heavy Metal). <strong>Historical context</strong>: Emerged from late 1960s industrial working-class contexts. Given alienation, blocked agency, and unexpressed aggression, a musical form channeling intensity was inevitable.
+      <p><strong>Affect signature</strong>:</p>
+      <Eq>{"\\mathbf{a}_{\\text{metal}} = (\\text{negative to positive } \\valence, \\text{very high } \\arousal, \\text{high } \\intinfo, \\text{low } \\effrank, \\text{moderate } \\mathcal{CF}, \\text{variable } \\mathcal{SM})"}</Eq>
+      <p><strong>Structural characteristics</strong>:</p>
+      <ul>
+      <li>Distorted guitar creates dense harmonic content (high information density)</li>
+      <li>Driving rhythms at high tempos (arousal induction)</li>
+      <li>Tritone intervals (“the devil’s interval”) create tension</li>
+      <li>Virtuosic performance demands integration across complex patterns</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: High arousal with high integration—intensity that is coherent rather than chaotic. Metal provides controlled exposure to extreme affect states, building capacity for intensity tolerance. The collapsed effective rank (focus on aggressive themes) paradoxically creates a container for processing difficult emotions. </p></p>
+      </Section>
+      <Section title="Visual Design Movements" level={2}>
+      <p><strong>Example</strong> (Bauhaus/Modernist Design). <strong>Historical context</strong>: Post-WWI Germany. Given the industrial production capacity and the need to rebuild a shattered society, design philosophy emphasizing function and accessibility was inevitable.
+      <p><strong>Affect signature</strong>:</p>
+      <Eq>{"\\mathbf{a}_{\\text{Bauhaus}} = (\\text{neutral } \\valence, \\text{low } \\arousal, \\text{high } \\intinfo, \\text{low } \\effrank, \\text{low } \\mathcal{CF}, \\text{low } \\mathcal{SM})"}</Eq>
+      <p><strong>Structural characteristics</strong>:</p>
+      <ul>
+      <li>Form follows function (reducing decorative distraction)</li>
+      <li>Primary colors, geometric shapes (clear, unambiguous signals)</li>
+      <li>Truth to materials (what you see is what it is)</li>
+      <li>Elimination of ornament (no counterfactual “what could this be?”)</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: The mind at rest in clarity. Low counterfactual weight because everything is what it appears to be. High integration despite low rank—few dimensions, but coherently organized. </p></p>
+      <p><strong>Example</strong> (Baroque/Maximalism). <strong>Historical context</strong>: Counter-Reformation Catholicism. Given the need to assert Church power and overwhelm Protestant austerity, design emphasizing abundance and transcendence was inevitable.
+      <p><strong>Affect signature</strong>:</p>
+      <Eq>{"\\mathbf{a}_{\\text{Baroque}} = (\\text{positive } \\valence, \\text{high } \\arousal, \\text{high } \\intinfo, \\text{very high } \\effrank, \\text{high } \\mathcal{CF}, \\text{low } \\mathcal{SM})"}</Eq>
+      <p><strong>Structural characteristics</strong>:</p>
+      <ul>
+      <li>Excessive ornamentation (many active dimensions)</li>
+      <li>Gold, mirrors, dramatic lighting (arousal induction)</li>
+      <li>Trompe l’oeil and illusion (high counterfactual weight)</li>
+      <li>Scale that dwarfs the individual (low self-model salience)</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: Overwhelm through abundance. The high effective rank exceeds cognitive capacity, forcing surrender of normal parsing. Combined with low self-salience from architectural scale, the result approximates the sublime—self-dissolution through excess rather than emptiness. </p></p>
+      <p><strong>Social Aesthetics as Manifold Detection.</strong> There is something suggestive about the overlap between aesthetic and social responses. The machinery that registers beauty, dissonance, the sublime in art seems to operate in social life too. When a relationship feels <em>off</em>, when a favor carries a strange tightness, when someone’s generosity makes you uneasy, when a conversation has that quality of being <em>clean</em>—these have the character of aesthetic responses, directed at the geometry of social bonds rather than the geometry of form.</p>
+      <p>Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people’s viability manifolds are aligned. “Something is off about this interaction” and “something is off about this chord” might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. We develop this idea more fully in Part IV, but the foundation would be here: aesthetics as the modulation of affect through <em>structure</em>, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question—one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.</p>
+      </Section>
+      </Section>
+      <Section title="Sexuality: Self-Transcendence Through Merger" level={1}>
+      <p>Sexual experience involves temporary modification of self-model boundaries and heightened coupling:</p>
+      <Eq>{"\\mathbf{a}_{\\text{sexual}} = (\\text{high } \\valence, \\text{very high } \\arousal, \\text{high } \\intinfo, \\text{initially high then collapsing } \\effrank, \\text{low } \\mathcal{CF}, \\text{variable } \\mathcal{SM})"}</Eq>
+      <p>The trajectory moves from high effective rank (diffuse arousal) toward rank collapse (convergent focus) culminating in integration spike (orgasm) and temporary self-model dissolution.</p>
+      <p>In partnered sexuality, this trajectory acquires a relational dimension: the self-models temporarily fuse, with mutual information between them approaching its maximum as arousal peaks:</p>
+      <Eq>{"\\MI(\\selfmodel_A; \\selfmodel_B) \\to \\max \\quad \\text{as arousal} \\to \\max"}</Eq>
+      <p>The boundaries between self and other become porous. This is one of the few naturally-occurring states where <M>{"\\mathcal{SM}"}</M> collapses while <M>{"\\intinfo"}</M> remains high—integration without self-focus, presence without isolation.</p>
+      <p>The culmination of this trajectory—<strong>la petite mort</strong>—is characterized by:</p>
+      <ol>
+      <li>Spike in integration (global neural synchronization)</li>
+      <li>Collapse of effective rank to near-unity (all variance in one dimension)</li>
+      <li>Momentary dissolution of self-model salience</li>
+      <li>Rapid valence spike followed by return to baseline</li>
+      </ol>
+      <p>The “little death” is structurally accurate: it is a temporary cessation of the normal self-referential process. This is why sexuality is so central to human experience—it offers reliable, repeatable escape from the trap of being a self.</p>
+      <p>The diversity of human sexuality, then, reflects the diversity of paths through this affect space:</p>
+      <ul>
+      <li><strong>Intensity preferences</strong>: Different arousal trajectories and peak intensities</li>
+      <li><strong>Power dynamics</strong>: Variations in self-model salience during encounter (dominance increases <M>{"\\mathcal{SM}"}</M>; submission decreases it)</li>
+      <li><strong>Novelty vs.\ familiarity</strong>: Counterfactual weight allocation (new partners increase <M>{"\\mathcal{CF}"}</M>; familiar partners reduce it)</li>
+      <li><strong>Emotional connection</strong>: Degree of self-other coupling (<M>{"\\MI(\\selfmodel; \\text{other-model})"}</M>)</li>
+      </ul>
+      <p>Sexual preferences are, in part, preferences about which affect trajectories one finds most valuable or relieving.</p>
+      <p>There is an <M>{"\\iota"}</M> dimension to sexuality that the dimensional analysis misses. Sexual intimacy is among the most powerful naturally occurring <M>{"\\iota"}</M> reducers. To make love with another person—rather than merely to use their body—requires perceiving them as fully alive, fully interior, fully subject. The boundaries dissolve (<M>{"\\MI(\\selfmodel_A; \\selfmodel_B) \\to \\max"}</M>) <em>because</em> <M>{"\\iota"}</M> toward the partner approaches zero: their interiority becomes as real as your own, their pleasure as vivid as yours, their vulnerability as tender. This is why genuine sexual connection is so difficult to commodify. Pornography applies high-<M>{"\\iota"}</M> perception to bodies—reducing persons to mechanisms of arousal, objects arranged for effect. It works as stimulation but fails as connection, because connection requires the low-<M>{"\\iota"}</M> perception that treats the other as a subject rather than an instrument. The felt difference between sex that means something and sex that doesn’t is, in part, the felt difference between low and high <M>{"\\iota"}</M>.</p>
+      </Section>
+      <Section title="Ideology: Expanding the Self to Bear Mortality" level={1}>
+      <p><em>Ideological identification</em> is the expansion of the self-model to include a supra-individual pattern—nation, movement, religion, cause:</p>
+      <Eq>{"\\selfmodel_{\\text{ideological}} = \\selfmodel_{\\text{individual}} \\cup \\selfmodel_{\\text{collective}}"}</Eq>
+      <p>with high coupling: <M>{"\\MI(\\selfmodel_{\\text{individual}}; \\selfmodel_{\\text{collective}}) \\gg 0"}</M>. The power of this expansion lies in what it does to the viability horizon. Ideological identification manages mortality terror by making the relevant self-model partially immortal:</p>
+      <Eq>{"\\tau_{\\text{viability}}(\\selfmodel_{\\text{ideological}}) \\gg \\tau_{\\text{viability}}(\\selfmodel_{\\text{individual}})"}</Eq>
+      <p>If “I” am not just this body but also this nation/religion/movement, then “I” survive my bodily death. The expanded self-model has a longer viability horizon, reducing the chronic threat-signal from mortality awareness.</p>
+      <p>Different ideologies achieve this expansion through distinct affect profiles:</p>
+      <ul>
+      <li><strong>Nationalism</strong>: High self-model salience (collective), high integration within in-group, compressed other-model (out-group), moderate arousal baseline</li>
+      <li><strong>Religious devotion</strong>: Low individual <M>{"\\mathcal{SM}"}</M>, high collective <M>{"\\mathcal{SM}"}</M>, high counterfactual weight (afterlife, divine plan), positive valence baseline</li>
+      <li><strong>Revolutionary movements</strong>: Very high arousal, high counterfactual weight (utopian futures), strong valence (negative toward present, positive toward future)</li>
+      <li><strong>Nihilism</strong>: Low integration, low effective rank, negative valence, high individual <M>{"\\mathcal{SM}"}</M>, collapsed counterfactual weight</li>
+      </ul>
+      <Warning title="Warning">
+      <p>Ideology can become parasitic when the collective self-model’s viability requirements conflict with the individual’s:</p>
+      <Eq>{"\\state \\in \\viable_{\\text{ideology}} \\land \\state \\notin \\viable_{\\text{individual}}"}</Eq>
+      <p>Martyrdom, self-sacrifice, and fanaticism occur when the expanded self-model demands the destruction of the individual substrate.</p>
+      </Warning>
+      <p>The <M>{"\\iota"}</M> framework exposes the perceptual mechanism of fanaticism. Ideological identification requires low <M>{"\\iota"}</M> toward the collective entity—you must perceive the nation, the movement, the god as <em>alive</em>, as having purposes and will. This is not pathological; it is the participatory perception that makes collective action possible. What makes fanaticism pathological is <em>asymmetric</em> <M>{"\\iota"}</M>: locked-low toward the in-group’s sacred objects (the flag, the scripture, the leader are maximally alive, maximally meaningful) and locked-high toward the out-group (they become objects, mechanisms, vermin, abstractions). Dehumanization is <M>{"\\iota"}</M>-raising applied to persons—the deliberate suppression of participatory perception so that the other’s interiority becomes invisible. You cannot kill someone you perceive at low <M>{"\\iota"}</M>. You must first raise <M>{"\\iota"}</M> toward them until they stop being a subject and become an obstacle, a threat, a thing. Every genocide begins with a perceptual campaign to raise the population’s <M>{"\\iota"}</M> toward the target group.</p>
+      </Section>
+      <Section title="Science: The Austere Beauty of Understanding" level={1}>
+      <p>Scientific understanding produces a characteristic affect state:</p>
+      <Eq>{"\\mathbf{a}_{\\text{understanding}} = (\\text{positive } \\valence, \\text{moderate } \\arousal, \\text{very high } \\intinfo, \\text{high } \\effrank, \\text{low } \\mathcal{CF}, \\text{low } \\mathcal{SM})"}</Eq>
+      <p>The signature is high integration without self-focus—the opposite of depression. The mind is coherent, expansive, and attending to structure rather than self.</p>
+      <p>The engine driving this state is curiosity—science’s intrinsic motivation. The curiosity motif combines positive valence with high counterfactual weight and high entropy over those counterfactuals:</p>
+      <Eq>{"\\text{Curiosity} = \\text{positive } \\valence + \\text{high } \\mathcal{CF} + \\text{high entropy over counterfactuals}"}</Eq>
+      <p>Scientists are those who have cultivated the capacity to sustain this motif for extended periods, directed at specific domains of uncertainty.</p>
+      <p>When curiosity reaches its object, the result is often a distinctive aesthetic response. Mathematical proof and physical theory produce experiences characterized by compression (many phenomena unified under few principles, high <M>{"\\intinfo"}</M> with low model complexity), necessity (the conclusion could not be otherwise given the premises, low <M>{"\\mathcal{CF}"}</M> about the result), and surprise (the result was not obvious despite being necessary, high initial uncertainty resolved). These three qualities combine:</p>
+      <Eq>{"\\text{Mathematical beauty} \\propto \\frac{\\text{phenomena unified}}{\\text{principles required}} \\times \\text{surprise}"}</Eq>
+      <p>Beyond the moment of understanding, science provides durable meaning through connection (embedding individual existence in cosmic structure), agency (positive valence from successful prediction), community (participation in a transgenerational project that expands the self-model), and wonder (sublime encounters with scale and complexity). Science addresses the existential burden not by dissolving the self but by giving the self something worthy of its attention.</p>
+      <p><strong>Science as <M>{"\\iota"}</M> Oscillation.</strong> The best science requires rapid <M>{"\\iota"}</M> modulation, not fixed high <M>{"\\iota"}</M>. Hypothesis generation—the flash of insight, the recognition of pattern, the “aha” that connects disparate phenomena—is a low-<M>{"\\iota"}</M> operation: the scientist perceives the system as having a hidden logic, an internal structure that wants to be understood, a depth that rewards exploration. This is participatory perception applied to nature. Hypothesis testing—the controlled experiment, the statistical analysis, the insistence on mechanism over narrative—is high-<M>{"\\iota"}</M> operation: the scientist deliberately strips agency and meaning from the system to isolate causal structure. Great scientists oscillate rapidly between these modes. Einstein’s “I want to know God’s thoughts, the rest are details” is low-<M>{"\\iota"}</M> perception of nature’s interiority. His formal derivations are high-<M>{"\\iota"}</M> mechanism. The common characterization of science as purely high-<M>{"\\iota"}</M> (mechanistic, reductionist) describes only the verification phase, not the discovery phase. If this hypothesis is right, then scientific training that emphasizes only high-<M>{"\\iota"}</M> skills (methodology, statistics, formal reasoning) while suppressing low-<M>{"\\iota"}</M> skills (pattern recognition, intuitive model-building, aesthetic response to phenomena) produces technically competent but uncreative scientists. The <M>{"\\iota"}</M> flexibility of scientists should predict novelty of their contributions.</p>
+      <Experiment title="Proposed Experiment">
+      <p><strong><M>{"\\iota"}</M> oscillation in scientific discovery.</strong> Recruit researchers across career stages and disciplines. Administer the <M>{"\\iota"}</M> proxy battery (Part II) at baseline. Then, during a multi-day problem-solving task (novel research question in their domain):</p>
+      <ol>
+      <li>Measure <M>{"\\iota"}</M> proxies at timed intervals via brief (2-minute) embedded probes (agency attribution to ambiguous stimuli, affect-perception coupling via emotional Stroop variant).</li>
+      <li>Code verbal protocols for <M>{"\\iota"}</M> mode: low-<M>{"\\iota"}</M> segments (animistic language about the system—“it wants to,” “the data are telling us,” “there’s something hidden here”) vs.\ high-<M>{"\\iota"}</M> segments (mechanistic language—“the mechanism is,” “the variable controls,” “factor out”).</li>
+      <li>Record breakthroughs (self-reported “aha” moments) and their <M>{"\\iota"}</M> context.</li>
+      </ol>
+      <p>Predict: (a) breakthroughs occur disproportionately during low-<M>{"\\iota"}</M> segments or at low→high transitions; (b) scientists with higher <M>{"\\iota"}</M> <em>range</em> (difference between their lowest and highest measured <M>{"\\iota"}</M>) produce more novel contributions (measured by citation novelty or expert ratings); (c) <M>{"\\iota"}</M> range predicts novelty beyond IQ, domain expertise, and personality factors.</p>
+      </Experiment>
+      </Section>
+      <Section title="Religion: Systematic Technologies for Managing Inevitability" level={1}>
+      <p>A <em>religion</em>, understood functionally, is a systematic technology for managing the existential burden through:</p>
+      <ol>
+      <li>Affect interventions (practices that modulate experiential structure)</li>
+      <li>Narrative frameworks (stories that contextualize individual existence)</li>
+      <li>Community structures (expanded self-models through belonging)</li>
+      <li>Mortality management (beliefs about death that reduce threat-signal)</li>
+      <li>Ethical guidance (policies for navigating affect space)</li>
+      </ol>
+      <p><strong>Religious Diversity as Affect-Strategy Diversity.</strong> Different religious traditions emphasize different affect-management strategies:</p>
+      <ul>
+      <li><strong>Contemplative traditions</strong> (Buddhism, mystical Christianity, Sufism): Target self-model dissolution (<M>{"\\mathcal{SM} \\to 0"}</M>)</li>
+      <li><strong>Devotional traditions</strong> (bhakti, evangelical Christianity): Target high positive valence through relationship with divine</li>
+      <li><strong>Legalistic traditions</strong> (Orthodox Judaism, traditional Islam): Target stable arousal through structured practice</li>
+      <li><strong>Shamanic traditions</strong>: Target radical affect-space exploration through altered states</li>
+      </ul>
+      <p>Each tradition also operates at a characteristic <M>{"\\iota"}</M> range. Devotional traditions cultivate low <M>{"\\iota"}</M> toward the divine—perceiving God as a person with interiority and will—while maintaining moderate <M>{"\\iota"}</M> elsewhere. Contemplative traditions train <em>voluntary</em> <M>{"\\iota"}</M> modulation: the capacity to lower <M>{"\\iota"}</M> (perception of universal aliveness, nondual awareness) and raise it (discernment, detachment from illusion) on demand. Shamanic traditions use pharmacological and ritual <M>{"\\iota"}</M> reduction to access participatory states normally unavailable. Legalistic traditions maintain moderate, stable <M>{"\\iota"}</M> through rule-governed practice that neither suppresses meaning (high <M>{"\\iota"}</M>) nor overwhelms with it (low <M>{"\\iota"}</M>). The religious wars are, among other things, <M>{"\\iota"}</M>-strategy conflicts: traditions that find meaning through structure clashing with traditions that find meaning through dissolution.</p>
+      <p><strong>Secular Spirituality.</strong> “Spiritual but not religious” practices can be understood as selective adoption of religious affect technologies without the full institutional/doctrinal package:</p>
+      <ul>
+      <li>Meditation without Buddhism</li>
+      <li>Awe-cultivation without theism</li>
+      <li>Community ritual without shared creed</li>
+      <li>Meaning-making without metaphysical commitment</li>
+      </ul>
+      <p>This represents modular affect engineering—selecting interventions based on desired affect outcomes rather than doctrinal coherence.</p>
+      </Section>
+      <Section title="Psychopathology as Failed Coping" level={1}>
+      <p>Many mental illnesses can be understood as pathological attractors in affect space—failed strategies for managing the existential burden:</p>
+      <ul>
+      <li><strong>Depression</strong>: Attempted escape from self-reference that collapses into intensified, negative self-focus</li>
+      <li><strong>Anxiety</strong>: Hyperactive threat-monitoring that increases rather than decreases danger-signal</li>
+      <li><strong>Addiction</strong>: Reliable affect modulation that destroys the substrate’s viability</li>
+      <li><strong>Dissociation</strong>: Self-model fragmentation that provides escape at the cost of integration</li>
+      <li><strong>Narcissism</strong>: Self-model inflation that requires constant external validation</li>
+      </ul>
+      <p><strong><M>{"\\iota"}</M> Rigidity as Transdiagnostic Factor.</strong> Many psychiatric conditions involve pathological rigidity of the inhibition coefficient <M>{"\\iota"}</M>—the parameter governing participatory versus mechanistic perception (Part II):</p>
+      <ul>
+      <li><strong>Locked-low <M>{"\\iota"}</M> (psychosis spectrum)</strong>: Inability to inhibit participatory perception. Everything is meaningful and directed at the self. Agency detection runs without brake. The world collapses into a single hyper-connected narrative where everything means everything. Clinical presentations: paranoia, grandiosity, mania, referential delusions.</li>
+      <li><strong>Locked-high <M>{"\\iota"}</M> (depression spectrum)</strong>: Inability to release inhibition. Nothing matters, nothing is meaningful. The world is flat—colors less vivid, sounds less resonant, food less tasteful. Clinical presentations: anhedonia, depersonalization, derealization, alexithymia, the specific quality of depression where the world looks <em>dead</em>.</li>
+      </ul>
+      <p>Healthy functioning requires <M>{"\\iota"}</M> <em>flexibility</em>—the capacity to modulate the inhibition coefficient in response to context. The question for treatment is not “what is the right <M>{"\\iota"}</M>?” but “can the patient move along the spectrum when the situation demands it?”</p>
+      <Experiment title="Proposed Experiment">
+      <p><strong><M>{"\\iota"}</M> rigidity as transdiagnostic predictor.</strong> Measure <M>{"\\iota"}</M> flexibility via a task battery: present stimuli that pull toward both low <M>{"\\iota"}</M> (awe-inducing nature scenes, faces with emotional expression, narrative with teleological structure) and high <M>{"\\iota"}</M> (logic puzzles, mechanical diagrams, data tables). Measure the speed and completeness of <M>{"\\iota"}</M> transitions via affect-perception coupling strength (MI between perceptual and affective neural signatures). Predict: patients with psychosis-spectrum disorders show slow/incomplete transitions toward high <M>{"\\iota"}</M>; patients with depression-spectrum disorders show slow/incomplete transitions toward low <M>{"\\iota"}</M>; healthy controls show rapid, complete transitions in both directions. If <M>{"\\iota"}</M> flexibility predicts treatment outcome across diagnostic categories, it is a genuine transdiagnostic factor.</p>
+      </Experiment>
+      <p>The V11 evolution experiments (Part I) provide a minimal substrate analog. Patterns evolved under mild stress develop high baseline <M>{"\\intinfo"}</M> and high self-model salience—but under severe novel stress they decompose catastrophically (<M>{"-9.3%"}</M>), while naive patterns actually integrate (<M>{"+6.2%"}</M>). Evolution selected for a configuration that is simultaneously more integrated and more fragile: the stress overfitting signature. This is structurally identical to anxiety: heightened integration tuned too precisely to expected threats, unable to cope with regime shifts. If the analogy holds, therapeutic intervention should aim not at reducing integration but at broadening the distribution of stresses to which integration is robust—exactly what exposure therapy attempts.</p>
+      <p><strong>Therapy as Affect-Space Navigation.</strong> Effective psychotherapy helps individuals:</p>
+      <ol>
+      <li>Recognize their current position in affect space</li>
+      <li>Understand the dynamics that maintain pathological attractors</li>
+      <li>Develop capacity to move toward healthier regions</li>
+      <li>Build sustainable affect-regulation strategies</li>
+      </ol>
+      <p>Different therapeutic modalities emphasize different dimensions: CBT targets counterfactual weight and valence; psychodynamic therapy targets integration and self-model structure; mindfulness targets arousal and self-model salience. The <M>{"\\iota"}</M> framework adds a meta-level: some therapeutic interventions work by restoring <M>{"\\iota"}</M> flexibility itself—the capacity to shift perceptual configuration rather than being locked at either extreme.</p>
+      </Section>
+      <Section title="Affect Engineering: Technologies of Experience" level={1}>
+      <p>The affect framework enables systematic analysis of how practices, philosophies, and technologies shape experiential structure. We can now quantify what humans have long known intuitively—that rituals, beliefs, and tools are <em>affect engineering technologies</em>.</p>
+      <Section title="Religious Practices as Affect Interventions" level={2}>
+      <p>An <em>affect intervention</em> is any practice, technology, or environmental modification that systematically shifts the probability distribution over affect space:</p>
+      <Eq>{"\\mathcal{I}: p(\\mathbf{a}) \\mapsto p’(\\mathbf{a})"}</Eq>
+      <p>where <M>{"\\mathbf{a} = (\\valence, \\arousal, \\intinfo, \\effrank, \\mathcal{CF}, \\mathcal{SM})"}</M>. Religious traditions have accumulated millennia of such interventions. Consider the most basic: <strong>contemplative prayer</strong> systematically modulates affect dimensions—arousal initially increases (orientation) then decreases (settling), self-model salience drops as attention shifts to the divine or transpersonal, counterfactual weight shifts from threat-branches to trust-branches, and integration increases through focused attention. The net affect signature of prayer: <M>{"(\\Delta\\valence > 0, \\Delta\\arousal < 0, \\Delta\\intinfo > 0, \\Delta\\mathcal{SM} < 0)"}</M>.</p>
+      <p>Where prayer operates on the individual, <strong>collective ritual</strong> serves as periodic integration maintenance for the group:</p>
+      <Eq>{"\\intinfo_{\\text{post-ritual}} = \\intinfo_{\\text{pre-ritual}} + \\Delta\\intinfo_{\\text{synchrony}} - \\delta_{\\text{decay}}"}</Eq>
+      <p>where <M>{"\\Delta\\intinfo_{\\text{synchrony}}"}</M> arises from coordinated action, shared symbols, and collective attention. Rituals counteract the natural decay of integration in isolated individuals.</p>
+      <p>Not all religious affect interventions are contemplative or communal. <strong>Hospitality</strong>—the ancient and cross-cultural guest-right, the obligations of host to stranger—can be understood as a technology for extending one’s viability manifold to temporarily cover another person. The host says, in effect: <em>within this space, your viability is my viability</em>. The guest’s needs become structurally equivalent to the host’s own needs. This is why violations of hospitality are treated in so many traditions as among the gravest sins: they are not mere rudeness but the betrayal of a manifold extension that the guest relied upon. The host who harms the guest has exploited a revealed manifold—the guest’s vulnerability was the whole point, and weaponizing it is structurally identical to the parasite’s mimicry of the host organism.</p>
+      <p>Similarly, <strong>confession</strong>, testimony, and related practices expand effective rank by:</p>
+      <ol>
+      <li>Surfacing suppressed state-space dimensions (breaking compartmentalization)</li>
+      <li>Integrating shadow material into the self-model</li>
+      <li>Reducing the concentration of variance in guilt/shame dimensions</li>
+      </ol>
+      <Eq>{"\\effrank[\\text{post-confession}] > \\effrank[\\text{pre-confession}]"}</Eq>
+      <p>This explains the phenomenology of "relief" and "lightness" following confession.</p>
+      </Section>
+      <Section title="Iota Modulation: Flow, Awe, Psychedelics, and Contemplative Practice" level={2}>
+      <p>Several well-studied experiential states can be precisely characterized as temporary reductions in the inhibition coefficient <M>{"\\iota"}</M>—the restoration of participatory coupling between self and world.</p>
+      <p><strong>Flow as Scoped <M>{"\\iota"}</M> Reduction.</strong> Flow (Csikszentmihalyi, 1990) is moderate <M>{"\\iota"}</M> reduction scoped to a specific activity. The boundary between self and task softens (<M>{"\\mathcal{SM} \\downarrow"}</M>), integration increases (<M>{"\\intinfo \\uparrow"}</M>), affect and perception couple more tightly. The activity “comes alive”—acquires intrinsic meaning and responsiveness that the mechanistic frame would strip away. Flow is participatory perception directed at a task rather than at the world entire, which is why it is less destabilizing than full <M>{"\\iota"}</M> reduction: the scope limits the coupling.</p>
+      <p><strong>Awe as Scale-Triggered <M>{"\\iota"}</M> Collapse.</strong> Awe is a sharp <M>{"\\iota"}</M> reduction triggered by scale mismatch. Confrontation with vastness—the Grand Canyon, the night sky, great art, the birth of a child—overwhelms the inhibition mechanism, which was calibrated for human-scale phenomena. The result: the world floods back in as alive, meaningful, significant. The tears people report at encountering the sublime are not about the object. They are about the temporary restoration of participatory perception—the brief experience of a world that means something without having to be told that it does.</p>
+      <p><strong>Psychedelics as Pharmacological <M>{"\\iota"}</M> Reduction.</strong> Psilocybin, LSD, and DMT reduce the brain’s predictive-processing precision weighting—the neurological implementation of inhibition—allowing bottom-up signals to overwhelm top-down priors. The characteristic psychedelic report (the world is alive, objects are communicating, patterns have meaning, everything is connected) is precisely the phenomenology of low <M>{"\\iota"}</M>. The therapeutic effects on depression may be partly explained as breaking the lock on high-<M>{"\\iota"}</M> rigidity, restoring <M>{"\\iota"}</M> flexibility. This is testable: if psychedelic therapy works by restoring <M>{"\\iota"}</M> flexibility (not merely by reducing <M>{"\\iota"}</M>), then post-therapy patients should show improved transitions in <em>both</em> directions—toward low <M>{"\\iota"}</M> and back to high <M>{"\\iota"}</M> when tasks demand it.</p>
+      <p><strong>Contemplative Practice as Trained <M>{"\\iota"}</M> Modulation.</strong> Advanced meditators report perceptual shifts consistent with voluntary <M>{"\\iota"}</M> reduction: objects perceived as more vivid, boundaries between self and world becoming porous, the world experienced as inherently meaningful. The difference from psychotic <M>{"\\iota"}</M> reduction is that contemplative <M>{"\\iota"}</M> reduction is voluntary, contextual, and reversible—the meditator can return to high-<M>{"\\iota"}</M> functioning for tasks that require it. This is <M>{"\\iota"}</M> flexibility as a trained skill, which is precisely what the pathology framework predicts should be therapeutic.</p>
+      <Experiment title="Proposed Experiment">
+      <p><strong>Unified <M>{"\\iota"}</M> modulation test.</strong> The four hypotheses above (flow, awe, psychedelics, contemplative practice) all predict <M>{"\\iota"}</M> reduction via different mechanisms. A unified experiment would measure the same <M>{"\\iota"}</M> proxy battery (agency attribution rate, affect-perception coupling, teleological reasoning bias; see Part II) before and after each condition:</p>
+      <ol>
+      <li><strong>Flow</strong>: Skilled musicians performing a rehearsed piece vs.\ a sight-read piece (matched arousal, different flow probability). Measure <M>{"\\iota"}</M> during flow vs.\ non-flow segments.</li>
+      <li><strong>Awe</strong>: VR immersion in awe-inducing vs.\ pleasant-but-not-overwhelming natural environments (matched valence, different scale). Measure <M>{"\\iota"}</M> pre/post.</li>
+      <li><strong>Psychedelics</strong>: Psilocybin vs.\ active placebo (niacin). Measure <M>{"\\iota"}</M> at baseline, peak, and 24h/1 week/1 month follow-up. If the framework is right, <M>{"\\iota"}</M> at peak should be low, and lasting therapeutic benefit should correlate with increased <M>{"\\iota"}</M> <em>flexibility</em> at follow-up, not with sustained low <M>{"\\iota"}</M>.</li>
+      <li><strong>Contemplation</strong>: Experienced meditators (10,000+ hours) vs.\ novices. Measure <M>{"\\iota"}</M> both during meditation and during ordinary tasks. Predict: meditators show lower <M>{"\\iota"}</M> <em>variance</em> during meditation but higher <M>{"\\iota"}</M> <em>range</em> across conditions.</li>
+      </ol>
+      <p>The key prediction is structural: all four conditions reduce <M>{"\\iota"}</M>, but through different mechanisms (task absorption, scale overwhelm, neurochemical precision reduction, trained voluntary control). If the same proxy battery detects <M>{"\\iota"}</M> reduction across all four, the construct validity of <M>{"\\iota"}</M> as a unitary parameter is strongly supported.</p>
+      </Experiment>
+      <OpenQuestion title="Open Question">
+      <p>The meaning cost of inhibition: at low <M>{"\\iota"}</M>, meaning is cheap—the world arrives already meaningful, already storied, already mattering. At high <M>{"\\iota"}</M>, meaning is expensive—it must be explicitly constructed, narrativized, therapized into existence. Does the cost scale exponentially with <M>{"\\iota"}</M>, as the source conversation suggested? If <M>{"M(\\iota) = M_0 \\cdot e^{\\alpha\\iota}"}</M>, this would explain why the modern epidemic of meaninglessness is not a philosophical problem solvable by better arguments but a structural problem: the population has been trained to a perceptual configuration where meaning is expensive to generate, and many people cannot afford the cost. But the exponential claim is empirical, not definitional, and needs measurement—perhaps via meaning-satisfaction scales correlated with <M>{"\\iota"}</M> proxy measures across populations.</p>
+      </OpenQuestion>
+      <Sidebar title="Language as Measurement Technology">
+      <p>The trajectory-selection framework (Part I) gives language a role beyond communication: language sharpens the measurement distribution through which a conscious system samples reality.</p>
+      <p>Consider what linguistic cognition enables that pre-linguistic attention cannot: the capacity to attend to <em>abstract categories</em> (not this tree but trees-in-general), <em>counterfactual states</em> (what would have happened if), <em>temporal relations</em> (what happened before the crisis and what followed), and <em>compositional concepts</em> (the slow erosion of trust within an institution). Each of these is a region of possibility space that a non-linguistic system cannot sharply attend to, because it cannot represent the category with sufficient precision to direct measurement there.</p>
+      <p>If attention selects trajectories, then language is the technology that expanded human trajectory-selection from the immediate sensory manifold to the vast space of abstract, temporal, and compositional possibilities. An animal attends to what is present. A linguistic human attends to what was, what might be, what categories of thing exist, and what relationships hold between abstractions. This is a qualitatively different measurement distribution—one that samples a much larger region of possibility space and consequently selects from a much larger set of trajectories.</p>
+      <p>This may be why human consciousness has the particular character it does. Not because language creates consciousness (pre-linguistic organisms are conscious), but because language expands the measurement basis so dramatically that human experience samples regions of the possibility manifold—abstract, temporal, counterfactual—that are invisible to non-linguistic attention. Whether this expansion constitutes a genuine difference in the observer’s relationship to the underlying dynamics (as the Everettian extension would suggest) or merely a difference in the richness of the internal model (as the classical version claims) is an open question. Either way, language is among the most powerful attention technologies ever evolved.</p>
+      </Sidebar>
+      </Section>
+      <Section title="Life Philosophies as Affect-Space Policies" level={2}>
+      <p>Philosophical frameworks can be understood as meta-level policies over affect space—prescriptions for which regions to occupy and which to avoid.</p>
+      <Historical title="Historical Context">
+      <p>The idea that philosophies are affect-management strategies has historical precedent:</p>
+      <ul>
+      <li><strong>Pierre Hadot</strong> (1995): Ancient philosophy as “spiritual exercises”—practices for transforming the self, not just doctrines to believe</li>
+      <li><strong>Martha Nussbaum</strong> (1994): Hellenistic philosophies as “therapy of desire”</li>
+      <li><strong>Michel Foucault</strong> (1984): “Technologies of the self”—practices by which individuals transform themselves</li>
+      <li><strong>William James</strong> (1902): Religious/philosophical stances as temperamental predispositions (“tough-minded” vs “tender-minded”)</li>
+      </ul>
+      <p>My contribution here is formalizing these insights in terms of affect-space policies with measurable targets.</p>
+      </Historical>
+      <p><strong>Philosophical Affect Policy.</strong> A <em>philosophical affect policy</em> is a function <M>{"\\phi: \\mathcal{A} \\to \\R"}</M> specifying the desirability of affect states, plus a strategy for achieving high-<M>{"\\phi"}</M> states.</p>
+      <p><strong>Example</strong> (Stoicism). <strong>Historical context</strong>: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.
+      <p><strong>Affect policy</strong>:</p>
+      <Eq>{"\\phi_{\\text{Stoic}}(\\mathbf{a}) = -\\arousal - \\mathcal{CF} + \\text{const}"}</Eq>
+      <p>Stoicism targets low arousal (equanimity) and low counterfactual weight (focus on what is within control).</p>
+      <p><strong>Core techniques</strong>:</p>
+      <ul>
+      <li>Dichotomy of control: Reduce <M>{"\\mathcal{CF}"}</M> on uncontrollable outcomes</li>
+      <li>Negative visualization: Controlled exposure to loss scenarios to reduce their arousal impact</li>
+      <li>View from above: Zoom out to cosmic perspective, reducing <M>{"\\mathcal{SM}"}</M></li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: Equanimity—stable low arousal with moderate integration, regardless of external circumstances. </p></p>
+      <p><strong>Example</strong> (Buddhism (Theravada)). <strong>Historical context</strong>: Iron Age India, extreme asceticism proving ineffective. Given the persistence of suffering despite extreme practice, a middle path was inevitable.</p>
+      <p><strong>Affect policy</strong>:</p>
+      <Eq>{"\\phi_{\\text{Buddhist}}(\\mathbf{a}) = -\\mathcal{SM} + \\intinfo - |\\valence| + \\text{const}"}</Eq>
+      <p>Target: very low self-model salience (anatt\=a), high integration (sam\=adhi), and reduced attachment to valence (equanimity toward pleasure and pain).</p>
+      <p><strong>Core techniques</strong>:</p>
+      <ul>
+      <li>Sati (mindfulness): Observe arising/passing without identification</li>
+      <li>Sam\=adhi (concentration): Build integration capacity through sustained attention</li>
+      <li>Vipassan\=a (insight): See the constructed nature of self-model</li>
+      <li>Mett\=a (loving-kindness): Expand self-model to include all beings</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: The jhanas (meditative absorptions) represent systematically mapped affect states—from high positive valence with low <M>{"\\mathcal{SM}"}</M> (first jhana) to pure equanimity beyond valence (fourth jhana and beyond).</p>
+      <p><strong>Example</strong> (Existentialism). <strong>Historical context</strong>: Post-Nietzsche, post-WWI Europe. Given the death of God and collapse of traditional meaning structures, confrontation with groundlessness was inevitable.</p>
+      <p><strong>Affect policy</strong>:</p>
+      <Eq>{"\\phi_{\\text{Existentialist}}(\\mathbf{a}) = \\mathcal{CF} + \\effrank - \\text{bad faith penalty}"}</Eq>
+      <p>Existentialism embraces high counterfactual weight (awareness of radical freedom) and high effective rank (authentic engagement with possibilities). The strategy: confront anxiety rather than flee into “bad faith.”</p>
+      <p><strong>Core concepts</strong>:</p>
+      <ul>
+      <li>Existence precedes essence: No fixed nature, radical freedom</li>
+      <li>Radical freedom: High <M>{"\\mathcal{CF}"}</M>—you could always choose otherwise</li>
+      <li>Angst: The affect signature of confronting freedom</li>
+      <li>Authenticity: Acting from genuine choice, not conformity</li>
+      <li>Absurdity: The gap between human meaning-seeking and cosmic indifference</li>
+      </ul>
+      <p><strong>Phenomenological result</strong>: A distinctive acceptance of difficulty—not eliminating negative valence but refusing to flee into self-deception. High <M>{"\\mathcal{CF}"}</M> and high <M>{"\\effrank"}</M> with full awareness of their cost.</p>
+      <table>
+      <thead><tr><th>Philosophy</th><th>Target Structure (Constitutive Policy)</th></tr></thead>
+      <tbody>
+      <tr><td>Stoicism</td><td><M>{"\\arousal{\\downarrow}"}</M>, <M>{"\\mathcal{CF}{\\downarrow}"}</M> (equanimity through control of attention)</td></tr>
+      <tr><td>Buddhism</td><td><M>{"\\mathcal{SM}{\\downarrow\\downarrow}"}</M>, <M>{"\\arousal{\\downarrow}"}</M>, <M>{"\\intinfo{\\uparrow}"}</M> (self-dissolution through integration)</td></tr>
+      <tr><td>Existentialism</td><td><M>{"\\mathcal{CF}{\\uparrow}"}</M>, <M>{"\\effrank{\\uparrow}"}</M> (embrace radical freedom and its anxiety)</td></tr>
+      <tr><td>Hedonism</td><td><M>{"\\valence{\\uparrow}"}</M>, <M>{"\\arousal{\\uparrow}"}</M> (maximize positive intensity)</td></tr>
+      <tr><td>Epicureanism</td><td><M>{"\\valence{+}"}</M> (moderate), <M>{"\\arousal{\\downarrow}"}</M> (sustainable pleasure)</td></tr>
+      </tbody>
+      </table>
+      <p>Each of these traditions also operates at a characteristic <M>{"\\iota"}</M> configuration, though none of them names it as such. Stoicism is a philosophy of <em>moderate, fixed <M>{"\\iota"}</M></em>: the Stoic neither dissolves into participatory merger with the world (that would violate equanimity) nor strips it of all meaning (that would undermine the Stoic’s commitment to living according to nature). The Stoic’s equanimity is the equanimity of a perceiver who has stabilized their <M>{"\\iota"}</M> at a setting where things matter moderately but cannot overwhelm. Buddhism is explicitly an <M>{"\\iota"}</M> flexibility training program. The progression through concentration (sam\=adhi) to insight (vipassan\=a) is the progression from stabilizing perception to modulating it voluntarily—the meditator learns to lower <M>{"\\iota"}</M> (nondual awareness, perception of dependent origination as alive and flowing) and to raise it (analytical discernment of dharmas as empty of inherent nature). The jhanas are waypoints on the <M>{"\\iota"}</M> descent: each absorption involves deeper participatory coupling with the object of meditation. Existentialism operates at a distinctively moderate-to-high <M>{"\\iota"}</M> that it refuses to either raise or lower further. The existentialist confronts a world stripped of inherent meaning (high <M>{"\\iota"}</M>) but will not take the next step to mechanism (that would be bad faith—hiding from freedom behind determinism) nor retreat to low <M>{"\\iota"}</M> (that would be bad faith—hiding from freedom behind comforting illusions of purpose). The existentialist’s “authentic” stance is the deliberate maintenance of the <M>{"\\iota"}</M> setting at which freedom is visible and terrifying: meaning is not given, and you must not pretend otherwise.</p>
+      </Section>
+      <Section title="Information Technology as Affect Infrastructure" level={2}>
+      <p>Modern information technology constitutes affect infrastructure at civilizational scale, shaping the experiential structure of billions.</p>
+      <p><em>Affect infrastructure</em> is any technological system that shapes affect distributions across populations:</p>
+      <Eq>{"\\mathcal{T}: {p_i(\\mathbf{a})}_{i \\in \\text{population}} \\mapsto {p’_i(\\mathbf{a})}_{i \\in \\text{population}}"}</Eq>
+      <p><strong>Social Media Affect Signature.</strong> Social media platforms systematically produce:</p>
+      <ul>
+      <li><strong>Arousal spikes</strong>: Notification-driven, intermittent reinforcement creates high-variance arousal</li>
+      <li><strong>Low integration</strong>: Rapid context-switching fragments attention, reducing <M>{"\\intinfo"}</M></li>
+      <li><strong>High self-model salience</strong>: Performance of identity, social comparison</li>
+      <li><strong>Counterfactual hijacking</strong>: FOMO (fear of missing out) colonizes <M>{"\\mathcal{CF}"}</M> with social-comparison branches</li>
+      </ul>
+      <Eq>{"\\mathbf{a}_{\\text{social media}} \\approx (\\text{variable }\\valence, \\text{high }\\arousal, \\text{low }\\intinfo, \\text{low }\\effrank, \\text{high }\\mathcal{CF}, \\text{high }\\mathcal{SM})"}</Eq>
+      <p>This is structurally similar to the anxiety motif.</p>
+      <p><strong>Algorithmic Feed Dynamics.</strong> Engagement-optimizing algorithms create affect selection pressure:</p>
+      <Eq>{"\\text{Content}_{\\text{selected}} = \\argmax_c \\E[\\text{engagement} | c] \\approx \\argmax_c |\\Delta\\valence(c)| + \\Delta\\arousal(c)"}</Eq>
+      <p>Content that maximizes engagement is content that maximizes valence magnitude (outrage or delight) and arousal. This selects for affectively extreme content, shifting population affect distributions toward the tails.</p>
+      <p><strong>Technology-Mediated Affect Drift.</strong> The systematic shift in population affect distributions due to technology:</p>
+      <Eq>{"\\frac{d\\bar{\\mathbf{a}}}{dt} = \\sum_{\\mathcal{T} \\in \\text{technologies}} w_\\mathcal{T} \\cdot \\nabla_\\mathbf{a} \\mathcal{T}(\\mathbf{a})"}</Eq>
+      <p>where <M>{"w_\\mathcal{T}"}</M> is the population-weighted usage of technology <M>{"\\mathcal{T}"}</M>.</p>
+      </Section>
+      <Section title="Quantitative Frameworks" level={2}>
+      <p>The framework enables quantitative comparison across interventions. For any intervention <M>{"\\mathcal{I}"}</M>, the <em>affect impact</em> measures the shift in expected affect state:</p>
+      <Eq>{"\\text{Impact}(\\mathcal{I}) = \\E_{p’}[\\mathbf{a}] - \\E_p[\\mathbf{a}]"}</Eq>
+      <p>which can be decomposed component-wise:</p>
+      <Eq>{"\\text{Impact}(\\mathcal{I}) = (\\Delta\\bar{\\valence}, \\Delta\\bar{\\arousal}, \\Delta\\bar{\\intinfo}, \\Delta\\bar{\\effrank}, \\Delta\\overline{\\mathcal{CF}}, \\Delta\\overline{\\mathcal{SM}})"}</Eq>
+      <p>These component-wise impacts can be aggregated into a <em>flourishing score</em>—a weighted composite of affect dimensions aligned with human wellbeing:</p>
+      <Eq>{"\\mathcal{F}(\\mathbf{a}) = \\alpha_1 \\valence + \\alpha_2 \\intinfo + \\alpha_3 \\effrank - \\alpha_4 (\\mathcal{SM} - \\mathcal{SM}_{\\text{optimal}})^2 - \\alpha_5 |\\arousal - \\arousal_{\\text{optimal}}| + \\alpha_6 \\cdot \\text{flex}(\\iota)"}</Eq>
+      <p>where <M>{"\\text{flex}(\\iota) = \\frac{1}{\\tau}\\int_0^\\tau |\\dot{\\iota}(t)| , dt"}</M> measures the time-averaged <M>{"\\iota"}</M> flexibility—the capacity to modulate the inhibition coefficient in response to context. The weights <M>{"{\\alpha_i}"}</M> encode normative commitments about what constitutes flourishing. The <M>{"\\iota"}</M> flexibility term deserves special emphasis: a system with positive valence, high integration, and high rank but <em>rigid</em> <M>{"\\iota"}</M> is fragile. The <M>{"\\iota"}</M> rigidity hypothesis (Psychopathology section) predicts that flexibility in perceptual configuration is itself a core component of wellbeing, independent of where on the <M>{"\\iota"}</M> spectrum one happens to be.</p>
+      <p><strong>Comparative Analysis.</strong> Using standardized affect measurement, we can compare:</p>
+      <ul>
+      <li>Meditation retreat vs.\ social media usage (expected: opposite affect signatures)</li>
+      <li>Different workplace designs (open office vs.\ private: integration differences)</li>
+      <li>Educational approaches (lecture vs.\ discussion: counterfactual weight differences)</li>
+      <li>Urban vs.\ rural environments (arousal and integration differences)</li>
+      </ul>
+      </Section>
+      </Section>
+      <Section title="The Synthetic Verification" level={1}>
+      <p>The affect framework claims universality. Not human-specific. Not mammal-specific. Not carbon-specific. Geometric structure determines qualitative character wherever the structure exists. This is a strong claim. It should be testable outside the systems that generated it.</p>
+      <Section title="The Contamination Problem" level={2}>
+      <p>Every human affect report is contaminated. We learned our emotion concepts from a culture. We learned to introspect within a linguistic framework. We cannot know what we would report if we had developed in isolation, without human language, without human concepts. The reports might be artifacts of the framework rather than data about the structure.</p>
+      <p>The same applies to animal studies. We interpret animal behavior through human categories. The dog "looks sad." The rat "seems anxious." These are projections. Useful, perhaps predictive, but contaminated by observer concepts.</p>
+      <p>What we need: systems that develop affect structure without human conceptual contamination, whose internal states we can measure directly, whose communications we can translate post hoc rather than teaching pre hoc.</p>
+      </Section>
+      <Section title="The Synthetic Path" level={2}>
+      <p>Build agents from scratch. Random weight initialization. No pretraining on human data. Place them in environments with human-like structure: 3D space, embodied action, resource acquisition, threats to viability, social interaction, communication pressure.</p>
+      <p>Let them learn. Let language emerge—not English, not any human language, but whatever communication system the selective pressure produces. This emergence is established in the literature. Multi-agent RL produces spontaneous communication under coordination pressure.</p>
+      <p>Now: measure their internal states. Extract the affect dimensions from activation patterns. Valence from advantage estimates or viability gradient proxies. Arousal from belief update magnitudes. Integration from partition prediction loss. Effective rank from state covariance eigenvalues. Self-model salience from self-representation-action mutual information.</p>
+      <p>Simultaneously: translate their emergent language. Not by teaching them our words, but by aligning their signals with vision-language model interpretations of their situations. The VLM sees the scene. The agent emits a signal. Across many scene-signal pairs, build the dictionary. The agent in the corner, threat approaching, emits signal <M>{"\\sigma_{47}"}</M>. The VLM interprets the scene as "threatening." Signal <M>{"\\sigma_{47}"}</M> maps to threat-language.</p>
+      <p>The translation is uncontaminated. The agent never learned human concepts. The mapping emerges from environmental correspondence, not from instruction.</p>
+      </Section>
+      <Section title="The Triple Alignment Test" level={2}>
+      <p>Part II introduced the core prediction: RSA correlation between information-theoretic affect vectors and embedding-predicted affect vectors should exceed the null (the Geometric Alignment hypothesis). Here we specify the execution plan—what the experiment actually looks like, what the failure modes are, and how to distinguish them.</p>
+      <p>Three measurement streams:</p>
+      <ol>
+      <li><strong>Structure</strong>: 6D affect vector <M>{"\\mathbf{a}_i"}</M> from internal dynamics (Part II, Transformer Affect Extraction protocol)</li>
+      <li><strong>Signal</strong>: Affect embedding <M>{"\\mathbf{e}_i"}</M> from VLM translation of emergent communication (see sidebar below)</li>
+      <li><strong>Action</strong>: Behavioral action vector <M>{"\\mathbf{b}_i"}</M> from observable behavior (movement patterns, resource decisions, social interactions)</li>
+      </ol>
+      <p>The Geometric Alignment hypothesis predicts <M>{"\\rho_{\\text{RSA}}(D^{(a)}, D^{(e)}) > \\rho_{\\text{null}}"}</M>. But we can go further. With three streams, we get three pairwise RSA tests: structure–signal, structure–action, signal–action. All three should exceed the null. And the structure–signal alignment should be <em>at least as strong</em> as the structure–action alignment, because the signal encodes the agent’s representation of its situation, not just its motor response.</p>
+      <p><strong>Failure modes and their diagnostics</strong>:</p>
+      <ul>
+      <li><strong>No alignment anywhere</strong>: The framework’s operationalization is wrong, or the environment lacks the relevant forcing functions. Diagnose via forcing function ablation (Priority 3).</li>
+      <li><strong>Structure–action alignment without structure–signal</strong>: Communication is not carrying affect-relevant content. The agents may be signaling about coordination without encoding experiential state.</li>
+      <li><strong>Signal–action alignment without structure</strong>: The VLM translation is picking up behavioral cues (what the agent <em>does</em>) rather than structural cues (what the agent <em>is</em>). The translation is contaminated by action observation.</li>
+      <li><strong>All pairwise alignments present but weak</strong>: The affect dimensions are real but noisy. Increase <M>{"N"}</M>, improve probes, refine translation protocol.</li>
+      </ul>
+      </Section>
+      <Section title="Preliminary Results: Structure–Representation Alignment" level={2}>
+      <p>Before the full three-stream test, we can run a simpler version: does the 6D affect structure extracted from agent internals have geometric coherence with the agent’s own representation space? This tests the foundation—whether the affect dimensions capture organized structure—without requiring the VLM translation pipeline.</p>
+      <p>We train multi-agent RL systems (4 agents, Transformer encoder + GRU latent state, PPO) in a survival grid world with all six forcing functions active: partial observability (egocentric 7<M>{"\\times"}</M>7 view, reduced at night), long horizons (2000-step episodes, seasonal resource scarcity), learned world model (auxiliary next-observation prediction), self-prediction (auxiliary next-latent prediction), intrinsic motivation (curiosity bonus from prediction error), and delayed rewards (credit assignment across episodes). The agents develop spontaneous communication using discrete signal tokens.</p>
+      <p>After training, we extract 6D affect vectors from the GRU latent state <M>{"\\mathbf{z}_t \\in \\mathbb{R}^{64}"}</M> using post-hoc probes: valence from survival-time probe gradients and advantage estimates; arousal from <M>{"|\\mathbf{z}_{t+1} - \\mathbf{z}_t|"}</M>; integration from partition prediction loss (full vs.\ split predictor); effective rank from rolling covariance eigenvalues; counterfactual weight from latent variance proxy; self-model salience from action prediction accuracy of self-related dimensions.</p>
+      <Sidebar title="Deep Technical: The VLM Translation Protocol">
+      <p>The translation is the bridge. Get it wrong and the experiment proves nothing. Here is the protocol in detail.</p>
+      <p><strong>The contamination problem</strong>. If we train the agents on human language, their “thoughts” are contaminated. If we label their signals with human concepts during training, the mapping is circular. The translation must be constructed post-hoc from environmental correspondence alone.</p>
+      <p><strong>The VLM as impartial observer</strong>. A vision-language model sees the scene. It has never seen this agent before. It describes what it sees in natural language. This description is the ground truth for the situation—not for what the agent experiences, but for what the situation objectively is.</p>
+      <p><strong>Protocol step 1: Scene corpus construction.</strong> For each agent <M>{"i"}</M>, each timestep <M>{"t"}</M>: capture egocentric observation, third-person render, all emitted signals <M>{"\\sigma_t^{(i)}"}</M>, environmental state, agent state. Target: <M>{"10^6"}</M>+ scene-signal pairs.</p>
+      <p><strong>Protocol step 2: VLM scene annotation.</strong> Query the VLM for each scene:</p>
+      <blockquote>
+      <p>\texttt{"{"}Describe what is happening. Focus on: (1) What situation is the agent in? (2) What threats/opportunities? (3) What is the agent doing? (4) What would a human feel here?{"}"}</p>
+      </blockquote>
+      <p>The VLM returns structured annotation. Critical: “human\_analog\_affect” is the VLM’s interpretation of what a human would feel—not a claim about what the agent feels. This is the bridge.</p>
+      <p><strong>Protocol step 3: Signal clustering.</strong> Cluster signals by context co-occurrence:</p>
+      <Eq>{"d(\\sigma_i, \\sigma_j) = 1 - \\frac{|C(\\sigma_i) \\cap C(\\sigma_j)|}{|C(\\sigma_i) \\cup C(\\sigma_j)|}"}</Eq>
+      <p>where <M>{"C(\\sigma)"}</M> is contexts where <M>{"\\sigma"}</M> was emitted. Signals in similar contexts cluster.</p>
+      <p><strong>Protocol step 4: Context-signal alignment.</strong> For each cluster, aggregate VLM annotations. Identify dominant themes. Cluster <M>{"\\Sigma_{47}"}</M>: 89\% threat\_present, 76\% escape\_available. Dominant: threat + escape. Human analog: “alarm,” “warning.”</p>
+      <p><strong>Protocol step 5: Compositional translation.</strong> Check if meaning composes: <M>{"M(\\sigma_1 \\sigma_2) \\approx M(\\sigma_1) \\oplus M(\\sigma_2)"}</M>. If the emergent language has compositional structure, the translation should preserve it.</p>
+      <p><strong>Protocol step 6: Validation.</strong> Hold out 20\%. Predict VLM annotation from signal alone. Measure accuracy against actual annotation. Must beat random substantially.</p>
+      <p><strong>The key insight</strong>. Agent emits <M>{"\\sigma_{47}"}</M> when threatened. VLM says “threat situation; human would feel fear.” Conclusion: <M>{"\\sigma_{47}"}</M> is the agent’s fear-signal. Not because we taught it, but because environmental correspondence reveals it.</p>
+      <p><strong>Confound controls</strong>:</p>
+      <ul>
+      <li><strong>Motor</strong>: Check if signal predicts situation better than action history</li>
+      <li><strong>Social</strong>: Check if signals correlate with affect measures even without conspecifics</li>
+      <li><strong>VLM</strong>: Use multiple VLMs, check agreement; use non-anthropomorphic prompts</li>
+      </ul>
+      <p><strong>The philosophical move</strong>. Situations have affect-relevance independent of subject. Threats are threatening. The mapping from situation to affect-analog is grounded in viability structure, not convention. Affect space has the same topology across substrates because viability pressure has the same topology.</p>
+      </Sidebar>
+      </Section>
+      <Section title="Perturbative Causation" level={2}>
+      <p>Correlation is not enough. We need causal evidence.</p>
+      <p><strong>Speak to them</strong>. Translate English into their emergent language. Inject fear-signals. Do the affect signatures shift toward fear structure? Does behavior change accordingly?</p>
+      <p><strong>Adjust their neurochemistry</strong>. Modify the hyperparameters that shape their dynamics—dropout, temperature, attention patterns, layer connectivity. These are their serotonin, their cortisol, their dopamine. Do the signatures shift? Does the translated language change? Does behavior follow?</p>
+      <p><strong>Change their environment</strong>. Place them in objectively threatening situations. Deplete their resources. Introduce predators. Does structure-signal-behavior alignment hold under manipulation?</p>
+      <p>If perturbation in any one modality propagates to the others, the relationship is causal, not merely correlational.</p>
+      </Section>
+      <Section title="What Positive Results Would Mean" level={2}>
+      <p>The framework would be validated outside its species of origin. The geometric theory of affect would have predictive power in systems that share no evolutionary history with us, no cultural transmission, no conceptual inheritance.</p>
+      <p>The "hard problem" objection—that structure might exist without experience—would lose its grip. Not because it’s logically refuted, but because it becomes unmotivated. If uncontaminated systems develop structures that produce language and behavior indistinguishable from affective expression, the hypothesis that they lack experience requires a metaphysical commitment the evidence does not support.</p>
+      <p>You could still believe in zombies. You could believe the agents have all the structure and none of the experience. But you would be adding epicycles. The simpler hypothesis: structure is experience. The burden shifts.</p>
+      </Section>
+      <Section title="What Negative Results Would Mean" level={2}>
+      <p>If the alignment fails—if structure does not predict translated language, if perturbations do not propagate, if the framework has no purchase outside human systems—then the theory requires revision.</p>
+      <p>Perhaps affect is human-specific after all. Perhaps the geometric structure is necessary but not sufficient. Perhaps the dimensions are wrong. Perhaps the identity thesis is false.</p>
+      <p>Negative results would be informative. They would tell us where the theory breaks. They would constrain the space of viable alternatives. This is what empirical tests do.</p>
+      </Section>
+      <Section title="The Deeper Question" level={2}>
+      <p>The experiment addresses the identity thesis. But it also addresses something older: the question of other minds.</p>
+      <p>How do we know anyone else has experience? We infer from behavior, from language, from neural similarity. We extend our own case. But the inference is never certain.</p>
+      <p>Synthetic agents offer a cleaner test case. We know exactly what they are made of. We can measure their internal states directly. We can perturb them systematically. If the framework predicts their language and behavior from their structure, and if the perturbations propagate as predicted, then we have evidence that structure-experience identity holds for them.</p>
+      <p>And if it holds for them, why not for us?</p>
+      <p>The synthetic verification is not about proving AI consciousness. It is about testing whether the geometric theory of affect has the universality it claims. If it does, the implications extend everywhere—to animals, to future AI systems, to edge cases in neurology and psychiatry, to questions about fetal development and brain death and coma.</p>
+      <p>The framework rises or falls on its predictions. The synthetic path is how we find out.</p>
+      </Section>
+      </Section>
+      <Section title="Summary of Part III" level={1}>
+      <ol>
+      <li><strong>The existential burden</strong>: Self-modeling systems cannot escape self-reference. Human culture is accumulated strategies for managing this burden.</li>
+      <li><strong>Aesthetics as affect technology</strong>: Art forms have characteristic affect signatures and serve as technologies for transmitting experiential structure across minds and time.</li>
+      <li><strong>Sexuality as transcendence</strong>: Sexual experience offers reliable, repeatable escape from the trap of self-reference through self-model merger and dissolution.</li>
+      <li><strong>Ideology as immortality project</strong>: Identification with supra-individual patterns manages mortality terror by expanding the self-model’s viability horizon.</li>
+      <li><strong>Science as meaning</strong>: Scientific understanding produces high integration without self-focus—giving the self something worthy of its attention.</li>
+      <li><strong>Religion as systematic technology</strong>: Religious traditions represent millennia of accumulated affect-engineering wisdom.</li>
+      <li><strong>Psychopathology as failed coping</strong>: Mental illnesses are pathological attractors in affect space—attempted solutions that trap rather than liberate.</li>
+      <li><strong>Technology as infrastructure</strong>: Modern information technology shapes affect distributions at population scale, often toward anxiety-like profiles.</li>
+      </ol>
+      <p>In Part IV, I’ll develop:</p>
+      <ul>
+      <li>The grounding of normativity in viability structure</li>
+      <li>Scale-matched interventions from neurons to nations</li>
+      <li>Superorganisms as agentic systems with their own viability manifolds</li>
+      <li>The AI alignment problem reframed at the macro-agent level</li>
+      </ul>
+      </Section>
+      <Section title="Appendix: Symbol Reference" level={1}>
+      <dl>
+      <dt><M>{"\\valence"}</M></dt><dd>Valence: gradient alignment on viability manifold</dd>
+      <dt><M>{"\\arousal"}</M></dt><dd>Arousal: rate of belief/state update</dd>
+      <dt><M>{"\\intinfo"}</M></dt><dd>Integration: irreducibility under partition</dd>
+      <dt><M>{"\\effrank"}</M></dt><dd>Effective rank: distribution of active degrees of freedom</dd>
+      <dt><M>{"\\mathcal{CF}"}</M></dt><dd>Counterfactual weight: resources on non-actual trajectories</dd>
+      <dt><M>{"\\mathcal{SM}"}</M></dt><dd>Self-model salience: degree of self-focus</dd>
+      <dt><M>{"\\mathbf{a}"}</M></dt><dd>Affect state vector: <M>{"(\\valence, \\arousal, \\intinfo, \\effrank, \\mathcal{CF}, \\mathcal{SM})"}</M></dd>
+      <dt><M>{"\\viable"}</M></dt><dd>Viability manifold: region of sustainable states</dd>
+      <dt><M>{"\\worldmodel"}</M></dt><dd>World model: predictive model of environment</dd>
+      <dt><M>{"\\selfmodel"}</M></dt><dd>Self-model: component of world model representing self</dd>
+      <dt><M>{"B_{\\text{exist}}"}</M></dt><dd>Existential burden: cost of maintaining self-reference</dd>
+      <dt><M>{"\\mathcal{I}"}</M></dt><dd>Affect intervention: practice or technology that shifts affect distribution</dd>
+      <dt><M>{"\\mathcal{F}"}</M></dt><dd>Flourishing score: weighted aggregate of affect dimensions</dd>
+      </dl>
+      </Section>
+    </>
+  );
+}

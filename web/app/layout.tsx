@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import 'katex/dist/katex.min.css';
 import './globals.css';
 import Sidebar from './Sidebar';
 import ReadingProgress from '../components/ReadingProgress';
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 };
 
 function loadSectionData(): Record<string, { level: number; id: string; text: string }[]> {
-  const metaPath = join(process.cwd(), 'generated', 'chapters', 'metadata.json');
+  const metaPath = join(process.cwd(), 'public', 'metadata.json');
   if (!existsSync(metaPath)) return {};
   try {
     const raw = JSON.parse(readFileSync(metaPath, 'utf-8'));
@@ -68,21 +69,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('soe-theme');var d=document.documentElement;if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)){d.setAttribute('data-theme','dark')}else{d.setAttribute('data-theme','light')}var f=localStorage.getItem('soe-font-size');if(f){var m={small:15,medium:17,large:19,xlarge:21};if(m[f])d.style.fontSize=m[f]+'px'}}catch(e){}})();`,
           }}
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.16.18/dist/katex.min.css"
-          crossOrigin="anonymous"
-        />
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/katex@0.16.18/dist/katex.min.js"
-          crossOrigin="anonymous"
-        />
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/katex@0.16.18/dist/contrib/auto-render.min.js"
-          crossOrigin="anonymous"
         />
         <script
           dangerouslySetInnerHTML={{

@@ -1,6 +1,5 @@
-import { chapters, getChapterHtml, getChapterBySlug, getAdjacentChapters, getChapterAudio } from '../../lib/chapters';
+import { chapters, getChapterComponent, getChapterBySlug, getAdjacentChapters, getChapterAudio } from '../../lib/chapters';
 import ChapterNav from '../../components/ChapterNav';
-import MathRenderer from '../../components/MathRenderer';
 import AudioPlayer from '../../components/AudioPlayer';
 import HighlightManager from '../../components/HighlightManager';
 import CommunityHighlights from '../../components/CommunityHighlights';
@@ -30,7 +29,9 @@ export default async function ChapterPage({ params }: Props) {
   const chapter = getChapterBySlug(slug);
   if (!chapter) notFound();
 
-  const html = getChapterHtml(slug);
+  const ChapterContent = await getChapterComponent(slug);
+  if (!ChapterContent) notFound();
+
   const { prev, next } = getAdjacentChapters(slug);
   const audioSections = getChapterAudio(slug);
 
@@ -48,7 +49,9 @@ export default async function ChapterPage({ params }: Props) {
         />
       )}
 
-      <MathRenderer html={html} />
+      <div className="chapter-content">
+        <ChapterContent />
+      </div>
       <HighlightManager slug={slug} />
       <CommunityHighlights slug={slug} />
 
