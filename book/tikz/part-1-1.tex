@@ -1,0 +1,40 @@
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % Container
+  \draw[thick] (0,0) rectangle (8,2.5);
+
+  % Heat source (bottom)
+  \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5} {
+    \draw[red!70!black, thick, decorate, decoration={snake, amplitude=1pt, segment length=4pt}]
+      (\x,0) -- (\x,-0.3);
+  }
+  \node[below] at (4,-0.5) {\small Hot plate ($T_{\text{hot}}$)};
+
+  % Cold top
+  \node[above] at (4,2.7) {\small Cool surface ($T_{\text{cold}}$)};
+
+  % Convection cells (when J > J_c)
+  \draw[-{Stealth}, blue!60!black, thick] (1,0.3) -- (1,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (1,2.2) to[out=0,in=180] (2,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (2,2.2) -- (2,0.3);
+  \draw[-{Stealth}, blue!60!black, thick] (2,0.3) to[out=180,in=0] (1,0.3);
+
+  \draw[-{Stealth}, blue!60!black, thick] (3,0.3) -- (3,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (3,2.2) to[out=0,in=180] (4,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (4,2.2) -- (4,0.3);
+  \draw[-{Stealth}, blue!60!black, thick] (4,0.3) to[out=180,in=0] (3,0.3);
+
+  \draw[-{Stealth}, blue!60!black, thick] (5,0.3) -- (5,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (5,2.2) to[out=0,in=180] (6,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (6,2.2) -- (6,0.3);
+  \draw[-{Stealth}, blue!60!black, thick] (6,0.3) to[out=180,in=0] (5,0.3);
+
+  \draw[-{Stealth}, blue!60!black, thick] (7,0.3) -- (7,2.2);
+  \draw[-{Stealth}, blue!60!black, thick] (7,2.2) to[out=0,in=90] (7.7,1.25);
+
+  % Labels
+  \node at (1.5,1.25) {\tiny cell 1};
+  \node at (3.5,1.25) {\tiny cell 2};
+  \node at (5.5,1.25) {\tiny cell 3};
+\end{tikzpicture}
+\end{center}

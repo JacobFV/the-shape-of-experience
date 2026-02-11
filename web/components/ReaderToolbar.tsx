@@ -8,6 +8,8 @@ import { useAnnotations, type Annotation } from '@/lib/hooks/useAnnotations';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
+type FontFamily = 'georgia' | 'palatino' | 'system-sans' | 'inter' | 'mono';
+type AccentPreset = 'blue' | 'warm' | 'forest' | 'plum';
 
 const FONT_SIZES: Record<FontSize, number> = {
   small: 15,
@@ -18,6 +20,21 @@ const FONT_SIZES: Record<FontSize, number> = {
 
 const FONT_ORDER: FontSize[] = ['small', 'medium', 'large', 'xlarge'];
 
+const FONT_FAMILIES: Record<FontFamily, { label: string; stack: string }> = {
+  'georgia': { label: 'Georgia', stack: "Georgia, 'Times New Roman', serif" },
+  'palatino': { label: 'Palatino', stack: "'Palatino Linotype', 'Book Antiqua', Palatino, serif" },
+  'system-sans': { label: 'System Sans', stack: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" },
+  'inter': { label: 'Inter', stack: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" },
+  'mono': { label: 'Monospace', stack: "'SF Mono', 'Fira Code', 'JetBrains Mono', monospace" },
+};
+
+const ACCENT_PRESETS: Record<AccentPreset, { label: string; accent: string; accentLight: string; darkAccent: string; darkAccentLight: string }> = {
+  'blue': { label: 'Blue', accent: '#2c5aa0', accentLight: '#e8f0fe', darkAccent: '#6b9edd', darkAccentLight: '#2a3a52' },
+  'warm': { label: 'Warm', accent: '#b07520', accentLight: '#fef3e2', darkAccent: '#d4932a', darkAccentLight: '#3a2a18' },
+  'forest': { label: 'Forest', accent: '#3a7a3a', accentLight: '#e8f5e8', darkAccent: '#6ab06a', darkAccentLight: '#1e2a1e' },
+  'plum': { label: 'Plum', accent: '#7744aa', accentLight: '#f3e8fe', darkAccent: '#b088dd', darkAccentLight: '#261e30' },
+};
+
 function getTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'system';
   return (localStorage.getItem('soe-theme') as ThemeMode) || 'system';
@@ -26,6 +43,16 @@ function getTheme(): ThemeMode {
 function getFontSize(): FontSize {
   if (typeof window === 'undefined') return 'medium';
   return (localStorage.getItem('soe-font-size') as FontSize) || 'medium';
+}
+
+function getFontFamily(): FontFamily {
+  if (typeof window === 'undefined') return 'georgia';
+  return (localStorage.getItem('soe-font-family') as FontFamily) || 'georgia';
+}
+
+function getAccent(): AccentPreset {
+  if (typeof window === 'undefined') return 'blue';
+  return (localStorage.getItem('soe-accent') as AccentPreset) || 'blue';
 }
 
 function applyTheme(mode: ThemeMode) {
@@ -40,6 +67,18 @@ function applyTheme(mode: ThemeMode) {
 
 function applyFontSize(size: FontSize) {
   document.documentElement.style.fontSize = `${FONT_SIZES[size]}px`;
+}
+
+function applyFontFamily(family: FontFamily) {
+  const stack = FONT_FAMILIES[family]?.stack || FONT_FAMILIES.georgia.stack;
+  document.documentElement.style.setProperty('--font-body', stack);
+}
+
+function applyAccent(preset: AccentPreset) {
+  const p = ACCENT_PRESETS[preset] || ACCENT_PRESETS.blue;
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.style.setProperty('--accent', isDark ? p.darkAccent : p.accent);
+  document.documentElement.style.setProperty('--accent-light', isDark ? p.darkAccentLight : p.accentLight);
 }
 
 function findNearestHeading(): { id: string; text: string } {
@@ -59,10 +98,14 @@ export default function ReaderToolbar() {
   const router = useRouter();
   const [theme, setTheme] = useState<ThemeMode>('system');
   const [fontSize, setFontSize] = useState<FontSize>('medium');
+  const [fontFamily, setFontFamily] = useState<FontFamily>('georgia');
+  const [accent, setAccent] = useState<AccentPreset>('blue');
   const [showBookmarks, setShowBookmarks] = useState(false);
+  const [showFontPicker, setShowFontPicker] = useState(false);
   const [justBookmarked, setJustBookmarked] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const fontPickerRef = useRef<HTMLDivElement>(null);
 
   const slug = pathname.replace(/^\//, '');
   const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
@@ -76,33 +119,47 @@ export default function ReaderToolbar() {
   useEffect(() => {
     const t = getTheme();
     const f = getFontSize();
+    const ff = getFontFamily();
+    const a = getAccent();
     setTheme(t);
     setFontSize(f);
+    setFontFamily(ff);
+    setAccent(a);
     applyTheme(t);
     applyFontSize(f);
+    applyFontFamily(ff);
+    applyAccent(a);
 
     // Listen for system theme changes
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const onMqChange = () => { if (getTheme() === 'system') applyTheme('system'); };
+    const onMqChange = () => {
+      if (getTheme() === 'system') applyTheme('system');
+      applyAccent(getAccent());
+    };
     mq.addEventListener('change', onMqChange);
     return () => mq.removeEventListener('change', onMqChange);
   }, []);
 
-  // Close dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
     function onClick(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setShowBookmarks(false);
       }
+      if (fontPickerRef.current && !fontPickerRef.current.contains(e.target as Node)) {
+        setShowFontPicker(false);
+      }
     }
-    if (showBookmarks) document.addEventListener('mousedown', onClick);
+    if (showBookmarks || showFontPicker) document.addEventListener('mousedown', onClick);
     return () => document.removeEventListener('mousedown', onClick);
-  }, [showBookmarks]);
+  }, [showBookmarks, showFontPicker]);
 
   const selectTheme = useCallback((mode: ThemeMode) => {
     setTheme(mode);
     localStorage.setItem('soe-theme', mode);
     applyTheme(mode);
+    // Re-apply accent for the new theme
+    setTimeout(() => applyAccent(getAccent()), 0);
   }, []);
 
   const cycleTheme = useCallback(() => {
@@ -118,6 +175,19 @@ export default function ReaderToolbar() {
     localStorage.setItem('soe-font-size', next);
     applyFontSize(next);
   }, [fontSize]);
+
+  const changeFontFamily = useCallback((family: FontFamily) => {
+    setFontFamily(family);
+    localStorage.setItem('soe-font-family', family);
+    applyFontFamily(family);
+    setShowFontPicker(false);
+  }, []);
+
+  const changeAccent = useCallback((preset: AccentPreset) => {
+    setAccent(preset);
+    localStorage.setItem('soe-accent', preset);
+    applyAccent(preset);
+  }, []);
 
   const addBookmark = useCallback(async () => {
     if (!isReadingPage) return;
@@ -200,6 +270,49 @@ export default function ReaderToolbar() {
         )}
       </button>
 
+      {/* Font family picker */}
+      <div className="font-picker" ref={fontPickerRef}>
+        <button
+          className="reader-toolbar-btn"
+          onClick={() => setShowFontPicker(!showFontPicker)}
+          title={`Font: ${FONT_FAMILIES[fontFamily].label}`}
+          aria-label="Change font family"
+          style={{ fontFamily: FONT_FAMILIES[fontFamily].stack, fontSize: '0.8rem' }}
+        >
+          Aa
+        </button>
+        {showFontPicker && (
+          <div className="font-picker-menu">
+            {(Object.entries(FONT_FAMILIES) as [FontFamily, { label: string; stack: string }][]).map(([key, { label, stack }]) => (
+              <button
+                key={key}
+                className={`font-picker-option ${fontFamily === key ? 'active' : ''}`}
+                onClick={() => changeFontFamily(key)}
+                style={{ fontFamily: stack }}
+              >
+                {label}
+              </button>
+            ))}
+            <div style={{ borderTop: '1px solid var(--border)', margin: '4px 0', padding: '4px 6px 0' }}>
+              <div style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>Accent</div>
+              <div className="accent-picker">
+                {(Object.entries(ACCENT_PRESETS) as [AccentPreset, typeof ACCENT_PRESETS[AccentPreset]][]).map(([key, p]) => (
+                  <button
+                    key={key}
+                    className={`accent-dot ${accent === key ? 'active' : ''}`}
+                    onClick={() => changeAccent(key)}
+                    title={p.label}
+                    aria-label={`Accent: ${p.label}`}
+                  >
+                    <div className="accent-dot-inner" style={{ background: p.accent }} />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Font size - small A / big A */}
       <div className="fontsize-toggle">
         <button
@@ -217,6 +330,22 @@ export default function ReaderToolbar() {
           aria-label="Increase font size"
         >A</button>
       </div>
+
+      {/* Chat */}
+      <button
+        className="reader-toolbar-btn"
+        onClick={() => {
+          window.dispatchEvent(new CustomEvent('open-chat', {
+            detail: { slug, contextType: isReadingPage ? 'page' : 'book' },
+          }));
+        }}
+        title="Chat about this page"
+        aria-label="Chat about this page"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+        </svg>
+      </button>
 
       {/* User */}
       <UserButton />

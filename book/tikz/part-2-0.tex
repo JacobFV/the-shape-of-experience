@@ -1,0 +1,29 @@
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.45cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=4cm, minimum height=0.45cm, align=center, font=\small}
+]
+% Top-down gradient: violet (mind) to red (physics) to gray (unknown)
+\node[box, fill=violet!15, draw=violet!60!black] (phenom) {Phenomenal};
+\node[box, fill=blue!15, draw=blue!60!black, below=of phenom] (psych) {Psychological};
+\node[box, fill=cyan!15, draw=cyan!60!black, below=of psych] (bio) {Biological};
+\node[box, fill=green!15, draw=green!60!black, below=of bio] (chem) {Chemical};
+\node[box, fill=yellow!15, draw=yellow!60!black, below=of chem] (atom) {Atomic};
+\node[box, fill=orange!15, draw=orange!60!black, below=of atom] (subatom) {Subatomic};
+\node[box, fill=red!15, draw=red!60!black, below=of subatom] (qft) {Quantum Fields};
+\node[box, fill=gray!20, draw=gray!60!black, below=of qft] (base) {\textbf{???}};
+
+\draw[-{Stealth}, thick, gray] (phenom) -- (psych) node[midway, right, font=\footnotesize, text=gray!70!black] {reduces?};
+\draw[-{Stealth}, thick, gray] (psych) -- (bio);
+\draw[-{Stealth}, thick, gray] (bio) -- (chem);
+\draw[-{Stealth}, thick, gray] (chem) -- (atom);
+\draw[-{Stealth}, thick, gray] (atom) -- (subatom);
+\draw[-{Stealth}, thick, gray] (subatom) -- (qft);
+\draw[-{Stealth}, thick, gray, dashed] (qft) -- (base);
+
+% Brace on left indicating "equally real"
+\draw[decorate, decoration={brace, amplitude=8pt, mirror}, thick, gray!60]
+    ([xshift=-0.3cm]phenom.north west) -- ([xshift=-0.3cm]qft.south west)
+    node[midway, left=0.4cm, font=\scriptsize, text=gray, align=center, rotate=90] {equally real?};
+\end{tikzpicture}
+\end{center}

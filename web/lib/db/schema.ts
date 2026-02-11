@@ -80,6 +80,31 @@ export const annotations = pgTable('annotations', {
   updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow(),
 });
 
+export const conversations = pgTable('conversations', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  slug: text('slug'),
+  title: text('title').default('New conversation'),
+  contextType: text('context_type').notNull(), // 'highlight' | 'page' | 'book'
+  contextExact: text('context_exact').default(''),
+  contextHeadingId: text('context_heading_id').default(''),
+  isPublished: boolean('is_published').default(false),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
+  updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow(),
+});
+
+export const messages = pgTable('messages', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  conversationId: uuid('conversation_id')
+    .notNull()
+    .references(() => conversations.id, { onDelete: 'cascade' }),
+  role: text('role').notNull(), // 'user' | 'assistant'
+  content: text('content').notNull(),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
+});
+
 export const userSettings = pgTable('user_settings', {
   userId: uuid('user_id')
     .primaryKey()

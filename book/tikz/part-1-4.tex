@@ -1,0 +1,28 @@
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.6cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=5cm, minimum height=0.55cm, align=center, font=\small}
+]
+% Gradient from red (physics) through green (biology) to purple (mind)
+\node[box, fill=red!15, draw=red!60!black] (micro) {Unstable Microdynamics};
+\node[box, fill=red!10!orange!10, draw=orange!60!black, above=of micro] (attractor) {Metastable Attractors};
+\node[box, fill=yellow!15, draw=yellow!60!black, above=of attractor] (boundary) {Emergent Boundaries};
+\node[box, fill=green!15, draw=green!60!black, above=of boundary] (regulation) {Active Regulation};
+\node[box, fill=cyan!15, draw=cyan!60!black, above=of regulation] (world) {World Model};
+\node[box, fill=blue!15, draw=blue!60!black, above=of world] (self) {Self-Model};
+\node[box, fill=violet!20, draw=violet!60!black, above=of self] (meta) {Metacognitive Dimensionality};
+
+\draw[-{Stealth}, thick, gray] (micro) -- (attractor) node[midway, right, font=\footnotesize, text=gray!70!black] {bifurcation};
+\draw[-{Stealth}, thick, gray] (attractor) -- (boundary) node[midway, right, font=\footnotesize, text=gray!70!black] {selection};
+\draw[-{Stealth}, thick, gray] (boundary) -- (regulation) node[midway, right, font=\footnotesize, text=gray!70!black] {maintenance};
+\draw[-{Stealth}, thick, gray] (regulation) -- (world) node[midway, right, font=\footnotesize, text=gray!70!black] {POMDP structure};
+\draw[-{Stealth}, thick, gray] (world) -- (self) node[midway, right, font=\footnotesize, text=gray!70!black] {$\rho > \rho_c$};
+\draw[-{Stealth}, thick, gray] (self) -- (meta) node[midway, right, font=\footnotesize, text=gray!70!black] {recursion};
+
+% Scale labels on left
+\node[left=0.8cm of micro, font=\scriptsize, text=gray] {\textit{physics}};
+\node[left=0.8cm of boundary, font=\scriptsize, text=gray] {\textit{chemistry}};
+\node[left=0.8cm of regulation, font=\scriptsize, text=gray] {\textit{biology}};
+\node[left=0.8cm of self, font=\scriptsize, text=gray] {\textit{psychology}};
+\end{tikzpicture}
+\end{center}

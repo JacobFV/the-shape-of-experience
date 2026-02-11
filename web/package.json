@@ -5,15 +5,20 @@
   "scripts": {
     "dev": "node scripts/build-toc.mjs && next dev",
     "build": "node scripts/build-toc.mjs && node scripts/build-search-index.mjs && next build",
-    "render-tikz": "node scripts/render-tikz.mjs",
     "start": "next start",
     "convert-to-tsx": "node scripts/convert-to-tsx.mjs",
     "generate-audio": "node scripts/generate-audio.mjs",
+    "generate-latex": "node scripts/tsx-to-latex.mjs",
+    "generate-pdf": "node scripts/tsx-to-latex.mjs && cd ../book && latexmk -pdf book.tex",
+    "extract-text": "node scripts/extract-text.mjs",
     "generate-icons": "node scripts/generate-icons.mjs",
     "deploy": "vercel deploy --yes --prod"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.26",
+    "@ai-sdk/react": "^3.0.81",
     "@neondatabase/serverless": "^1.0.2",
+    "ai": "^6.0.79",
     "bcryptjs": "^3.0.3",
     "drizzle-orm": "^0.45.1",
     "katex": "^0.16.18",

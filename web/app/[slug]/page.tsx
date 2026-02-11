@@ -3,6 +3,7 @@ import ChapterNav from '../../components/ChapterNav';
 import AudioPlayer from '../../components/AudioPlayer';
 import HighlightManager from '../../components/HighlightManager';
 import CommunityHighlights from '../../components/CommunityHighlights';
+import CommunityConversations from '../../components/CommunityConversations';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -54,6 +55,7 @@ export default async function ChapterPage({ params }: Props) {
       </div>
       <HighlightManager slug={slug} />
       <CommunityHighlights slug={slug} />
+      <CommunityConversations slug={slug} />
 
       <ChapterNav
         prev={prev ? { slug: prev.slug, shortTitle: prev.shortTitle } : undefined}

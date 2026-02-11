@@ -1,0 +1,41 @@
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Viability region (irregular blob)
+  \fill[blue!10] plot[smooth cycle, tension=0.8] coordinates {
+    (-2.5,0) (-2,1.8) (-0.5,2.2) (1.5,1.8) (2.3,0.5) (2,-1) (0.5,-1.8) (-1.5,-1.5)
+  };
+
+  % Boundary
+  \draw[blue!70!black, thick] plot[smooth cycle, tension=0.8] coordinates {
+    (-2.5,0) (-2,1.8) (-0.5,2.2) (1.5,1.8) (2.3,0.5) (2,-1) (0.5,-1.8) (-1.5,-1.5)
+  };
+
+  % Label the region
+  \node at (0,0.3) {$\viable$};
+  \node[blue!70!black] at (2.8,1.2) {$\partial\viable$};
+
+  % Good trajectory (staying inside)
+  \draw[-{Stealth}, green!60!black, thick] (-1,0.5) to[out=30,in=150] (0.5,0.3);
+  \draw[-{Stealth}, green!60!black, thick, dashed] (0.5,0.3) to[out=-30,in=180] (1.2,-0.2);
+  \fill[green!60!black] (-1,0.5) circle (0.08);
+  \node[green!60!black, above] at (-0.2,0.7) {\small viable trajectory};
+
+  % Bad trajectory (approaching boundary)
+  \draw[-{Stealth}, red!70!black, thick] (0,-0.8) to[out=-45,in=135] (1.2,-1.5);
+  \draw[-{Stealth}, red!70!black, thick, dashed] (1.2,-1.5) to[out=-45,in=90] (1.8,-2.2);
+  \fill[red!70!black] (0,-0.8) circle (0.08);
+  \node[red!70!black, right] at (1.5,-1.8) {\small dissolution};
+
+  % Dissolution region
+  \node[gray] at (2.5,-2) {\small outside $\viable$};
+
+  % Attractor inside
+  \fill[black] (0.2,-0.3) circle (0.06);
+  \draw[gray, thin] (0.2,-0.3) circle (0.4);
+  \node[below, scale=0.8] at (0.2,-0.75) {\tiny attractor};
+
+  % Axes
+  \draw[-{Stealth}, thin, gray] (-3,-2.5) -- (3.2,-2.5) node[right] {\small $x_1$};
+  \draw[-{Stealth}, thin, gray] (-3,-2.5) -- (-3,2.7) node[above] {\small $x_2$};
+\end{tikzpicture}
+\end{center}

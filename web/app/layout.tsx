@@ -9,6 +9,7 @@ import ReaderToolbar from '../components/ReaderToolbar';
 import MobileHeader from '../components/MobileHeader';
 import Providers from '../components/Providers';
 import SyncOnLogin from '../components/SyncOnLogin';
+import ChatWrapper from '../components/ChatWrapper';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -67,7 +68,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('soe-theme');var d=document.documentElement;if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)){d.setAttribute('data-theme','dark')}else{d.setAttribute('data-theme','light')}var f=localStorage.getItem('soe-font-size');if(f){var m={small:15,medium:17,large:19,xlarge:21};if(m[f])d.style.fontSize=m[f]+'px'}}catch(e){}})();`,
+            __html: `(function(){try{var d=document.documentElement;var t=localStorage.getItem('soe-theme');var isDark=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);d.setAttribute('data-theme',isDark?'dark':'light');var f=localStorage.getItem('soe-font-size');if(f){var m={small:15,medium:17,large:19,xlarge:21};if(m[f])d.style.fontSize=m[f]+'px'}var ff=localStorage.getItem('soe-font-family');var fonts={georgia:"Georgia,'Times New Roman',serif",palatino:"'Palatino Linotype','Book Antiqua',Palatino,serif",'system-sans':"-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif",inter:"'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif",mono:"'SF Mono','Fira Code','JetBrains Mono',monospace"};if(ff&&fonts[ff])d.style.setProperty('--font-body',fonts[ff]);var ac=localStorage.getItem('soe-accent');var presets={blue:['#2c5aa0','#e8f0fe','#6b9edd','#2a3a52'],warm:['#b07520','#fef3e2','#d4932a','#3a2a18'],forest:['#3a7a3a','#e8f5e8','#6ab06a','#1e2a1e'],plum:['#7744aa','#f3e8fe','#b088dd','#261e30']};if(ac&&presets[ac]){var p=presets[ac];d.style.setProperty('--accent',isDark?p[2]:p[0]);d.style.setProperty('--accent-light',isDark?p[3]:p[1])}}catch(e){}})();`,
           }}
         />
         <script
@@ -83,6 +84,7 @@ export default function RootLayout({
           <Sidebar sectionData={sectionData} />
           <ReaderToolbar />
           <SyncOnLogin />
+          <ChatWrapper />
           <main className="main-content">
             {children}
           </main>

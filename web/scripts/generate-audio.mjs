@@ -3,7 +3,7 @@
  *
  * Usage: TTS_PROVIDER=openai OPENAI_API_KEY=... node scripts/generate-audio.mjs [slug]
  *
- * Reads generated HTML files, splits by <h1> boundaries, strips markup,
+ * Extracts text from TSX content files via extract-text.mjs,
  * calls TTS API with parallel concurrency, writes MP3 + manifest.json.
  *
  * Caching: stores text hashes alongside MP3s; skips unchanged sections.
@@ -13,10 +13,10 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
+import { extractChapterText } from './extract-text.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const GEN = resolve(ROOT, 'generated', 'chapters');
 const AUDIO_OUT = resolve(ROOT, 'public', 'audio');
 
 const DEEPGRAM_API_KEY = process.env.DEEPGRAM_API_KEY;
@@ -86,11 +86,12 @@ function stripMath(text) {
   return text;
 }
 
-function cleanTextForTts(html) {
-  let text = stripHtml(html);
+function cleanTextForTts(text) {
+  // Strip any residual math notation
   text = stripMath(text);
   text = text.replace(/\[fig:[^\]]*\]/g, '');
   text = text.replace(/\[\d+\]/g, '');
+  // Collapse whitespace
   text = text.replace(/\s+/g, ' ').trim();
   return text;
 }
@@ -283,14 +284,16 @@ async function main() {
   const metadataItems = []; // { slug, section } — for manifest (cached + generated)
 
   for (const slug of slugs) {
-    const htmlPath = resolve(GEN, `${slug}.html`);
-    if (!existsSync(htmlPath)) {
-      console.warn(`Skipping ${slug}: HTML file not found`);
+    let sections;
+    try {
+      sections = extractChapterText(slug);
+    } catch (err) {
+      console.warn(`Skipping ${slug}: ${err.message}`);
       continue;
     }
 
-    const html = readFileSync(htmlPath, 'utf-8');
-    const sections = splitSections(html, slug);
+    // Clean text for TTS
+    sections = sections.map(s => ({ ...s, text: cleanTextForTts(s.text) }));
 
     if (sections.length === 0) {
       console.log(`${slug}: no sections with enough text`);

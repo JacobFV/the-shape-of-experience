@@ -1,13 +1,47 @@
+'use client';
+
+import { type ComponentType } from 'react';
+import PitchforkBifurcation from '../diagrams/PitchforkBifurcation';
+import BenardCells from '../diagrams/BenardCells';
+import ViabilityManifold from '../diagrams/ViabilityManifold';
+import LipidBilayer from '../diagrams/LipidBilayer';
+import ScaleLadder from '../diagrams/ScaleLadder';
+import TripartiteAlignment from '../diagrams/TripartiteAlignment';
+import ReductionChain from '../diagrams/ReductionChain';
+import AffectSpace from '../diagrams/AffectSpace';
+import ScaleInterventions from '../diagrams/ScaleInterventions';
+import HistoricalTimeline from '../diagrams/HistoricalTimeline';
+
+/** Maps SVG paths to native React diagram components */
+const NATIVE: Record<string, ComponentType> = {
+  '/diagrams/part-1-0.svg': PitchforkBifurcation,
+  '/diagrams/part-1-1.svg': BenardCells,
+  '/diagrams/part-1-2.svg': ViabilityManifold,
+  '/diagrams/part-1-3.svg': LipidBilayer,
+  '/diagrams/part-1-4.svg': ScaleLadder,
+  '/diagrams/part-1-5.svg': TripartiteAlignment,
+  '/diagrams/part-2-0.svg': ReductionChain,
+  '/diagrams/part-3-0.svg': AffectSpace,
+  '/diagrams/part-4-0.svg': ScaleInterventions,
+  '/diagrams/part-5-0.svg': HistoricalTimeline,
+};
+
 interface DiagramProps {
   src: string;
   alt?: string;
 }
 
-export function Diagram({ src, alt = 'Diagram' }: DiagramProps) {
+export function Diagram({ src }: DiagramProps) {
+  const Native = NATIVE[src];
+
+  if (!Native) {
+    throw new Error(`No native diagram component for: ${src}`);
+  }
+
   return (
     <div className="center">
       <figure className="tikz-diagram">
-        <img src={src} alt={alt} />
+        <Native />
       </figure>
     </div>
   );

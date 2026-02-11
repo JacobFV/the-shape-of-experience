@@ -1,0 +1,33 @@
+\begin{center}
+\begin{tikzpicture}[
+    dim/.style={rectangle, draw, rounded corners, minimum width=2.8cm, minimum height=0.6cm, align=center, font=\small},
+    label/.style={font=\scriptsize, text=gray}
+]
+% Central node
+\node[circle, draw, fill=gray!10, minimum size=1.2cm, font=\small\bfseries] (center) {$\mathbf{a}_t$};
+
+% Six dimensions arranged in hexagon
+\node[dim, fill=red!15, draw=red!60!black, above=1.2cm of center] (val) {Valence $\valence$};
+\node[dim, fill=orange!15, draw=orange!60!black, above right=0.6cm and 1.8cm of center] (ar) {Arousal $\arousal$};
+\node[dim, fill=yellow!15, draw=yellow!60!black, below right=0.6cm and 1.8cm of center] (int) {Integration $\intinfo$};
+\node[dim, fill=green!15, draw=green!60!black, below=1.2cm of center] (eff) {Eff.\ Rank $\effrank$};
+\node[dim, fill=cyan!15, draw=cyan!60!black, below left=0.6cm and 1.8cm of center] (cf) {CF Weight $\mathcal{CF}$};
+\node[dim, fill=blue!15, draw=blue!60!black, above left=0.6cm and 1.8cm of center] (sm) {Self-Salience $\mathcal{SM}$};
+
+% Connections
+\draw[thick, gray!50] (center) -- (val);
+\draw[thick, gray!50] (center) -- (ar);
+\draw[thick, gray!50] (center) -- (int);
+\draw[thick, gray!50] (center) -- (eff);
+\draw[thick, gray!50] (center) -- (cf);
+\draw[thick, gray!50] (center) -- (sm);
+
+% Pole labels
+\node[label, above=0.1cm of val] {good $\leftrightarrow$ bad};
+\node[label, right=0.1cm of ar] {high $\leftrightarrow$ low};
+\node[label, right=0.1cm of int] {unified $\leftrightarrow$ fragmented};
+\node[label, below=0.1cm of eff] {open $\leftrightarrow$ narrow};
+\node[label, left=0.1cm of cf] {elsewhere $\leftrightarrow$ present};
+\node[label, left=0.1cm of sm] {self-aware $\leftrightarrow$ absorbed};
+\end{tikzpicture}
+\end{center}

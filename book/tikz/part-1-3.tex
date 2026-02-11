@@ -1,0 +1,65 @@
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % Stage 1: Dispersed phospholipids
+  \begin{scope}[shift={(-5,0)}]
+    \node[above] at (0,2.2) {\small \textbf{Stage 1}: Dispersed};
+
+    % Individual lipids (head + two tails)
+    \foreach \x/\y/\r in {-0.8/1.5/20, 0.5/0.8/-15, -0.3/-0.5/45, 0.8/1.8/-30, -0.9/-0.2/60, 0.2/0.3/0} {
+      \fill[blue!60] (\x,\y) circle (0.12);
+      \draw[thick, yellow!70!black] (\x,\y) -- ++({180+\r}:0.4);
+      \draw[thick, yellow!70!black] (\x,\y) -- ++({200+\r}:0.35);
+    }
+
+    % Water molecules (background)
+    \foreach \x/\y in {-1.2/1, 1/0, -0.5/1.8, 0.7/-0.3, -1/-1} {
+      \node[gray!50, scale=0.5] at (\x,\y) {$\sim$};
+    }
+  \end{scope}
+
+  % Arrow
+  \draw[-{Stealth}, thick] (-2.5,0.5) -- (-1.5,0.5) node[midway, above] {\tiny $\Delta G < 0$};
+
+  % Stage 2: Micelle
+  \begin{scope}[shift={(0,0)}]
+    \node[above] at (0,2.2) {\small \textbf{Stage 2}: Micelle};
+
+    % Micelle (circular arrangement)
+    \foreach \a in {0,30,...,330} {
+      \fill[blue!60] ({\a}:0.9) circle (0.1);
+      \draw[thick, yellow!70!black] ({\a}:0.9) -- ({\a}:0.5);
+      \draw[thick, yellow!70!black] ({\a}:0.9) -- ({\a+8}:0.55);
+    }
+    \node at (0,0) {\tiny hydro-};
+    \node at (0,-0.2) {\tiny phobic};
+  \end{scope}
+
+  % Arrow
+  \draw[-{Stealth}, thick] (1.5,0.5) -- (2.5,0.5) node[midway, above] {\tiny $c > c_{\text{crit}}$};
+
+  % Stage 3: Bilayer
+  \begin{scope}[shift={(5,0)}]
+    \node[above] at (0,2.2) {\small \textbf{Stage 3}: Bilayer};
+
+    % Upper leaflet
+    \foreach \x in {-1.2,-0.8,-0.4,0,0.4,0.8,1.2} {
+      \fill[blue!60] (\x,1) circle (0.1);
+      \draw[thick, yellow!70!black] (\x,1) -- (\x,0.6);
+      \draw[thick, yellow!70!black] (\x,1) -- ({\x+0.05},0.55);
+    }
+
+    % Lower leaflet
+    \foreach \x in {-1.2,-0.8,-0.4,0,0.4,0.8,1.2} {
+      \fill[blue!60] (\x,-0.2) circle (0.1);
+      \draw[thick, yellow!70!black] (\x,-0.2) -- (\x,0.2);
+      \draw[thick, yellow!70!black] (\x,-0.2) -- ({\x+0.05},0.25);
+    }
+
+    % Labels
+    \node[right, scale=0.7] at (1.5,1) {outside};
+    \node[right, scale=0.7] at (1.5,-0.2) {inside};
+    \draw[{Stealth}-{Stealth}, thin] (1.8,0.9) -- (1.8,-0.1);
+    \node[right, scale=0.6] at (1.9,0.4) {$\sim$5nm};
+  \end{scope}
+\end{tikzpicture}
+\end{center}

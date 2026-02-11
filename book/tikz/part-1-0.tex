@@ -1,0 +1,39 @@
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Title
+  \node[above] at (3,3.5) {\textbf{Supercritical Pitchfork Bifurcation}};
+
+  % Axes
+  \draw[-{Stealth}, thick] (-0.5,0) -- (6.5,0) node[right] {$J$ (driving)};
+  \draw[-{Stealth}, thick] (0,-2.5) -- (0,2.8) node[above] {$x^*$ (equilibria)};
+
+  % Critical point
+  \draw[dashed, gray] (3,-2.5) -- (3,2.5);
+  \node[below] at (3,-2.6) {$J_c$};
+
+  % Stable branch before bifurcation
+  \draw[blue!70!black, very thick] (0,0) -- (3,0);
+  \node[blue!70!black, above left] at (1.5,0.1) {\small stable};
+
+  % Unstable branch after bifurcation
+  \draw[red!70!black, thick, dashed] (3,0) -- (6,0);
+  \node[red!70!black, below] at (4.5,-0.2) {\small unstable};
+
+  % Upper stable branch
+  \draw[blue!70!black, very thick, domain=3:6, samples=50] plot (\x, {sqrt(\x-3)});
+  \node[blue!70!black, above] at (5.5,1.6) {\small stable};
+
+  % Lower stable branch
+  \draw[blue!70!black, very thick, domain=3:6, samples=50] plot (\x, {-sqrt(\x-3)});
+
+  % Annotations
+  \draw[{Stealth}-, gray] (1.5,0.5) -- (1.5,1.5) node[above, align=center, scale=0.8] {uniform\\state};
+  \draw[{Stealth}-, gray] (5,1.2) -- (5.8,2) node[above, align=center, scale=0.8] {structured\\attractor 1};
+  \draw[{Stealth}-, gray] (5,-1.2) -- (5.8,-2) node[below, align=center, scale=0.8] {structured\\attractor 2};
+
+  % Symmetry breaking arrow
+  \draw[-{Stealth}, thick, orange!80!black] (3.2,0.1) to[out=60,in=180] (4,0.8);
+  \draw[-{Stealth}, thick, orange!80!black] (3.2,-0.1) to[out=-60,in=180] (4,-0.8);
+  \node[orange!80!black, right, scale=0.8] at (4.2,0) {symmetry breaking};
+\end{tikzpicture}
+\end{center}

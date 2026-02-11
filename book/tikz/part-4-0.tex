@@ -1,0 +1,31 @@
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.55cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=5.5cm, minimum height=0.5cm, align=center, font=\small}
+]
+% Gradient from red (micro) through spectrum to violet (macro)
+\node[box, fill=red!15, draw=red!60!black] (neural) {1. Neural};
+\node[box, fill=orange!15, draw=orange!60!black, above=of neural] (individual) {2. Individual};
+\node[box, fill=yellow!15, draw=yellow!60!black, above=of individual] (dyadic) {3. Dyadic};
+\node[box, fill=green!15, draw=green!60!black, above=of dyadic] (group) {4. Small Group};
+\node[box, fill=cyan!15, draw=cyan!60!black, above=of group] (org) {5. Organizational};
+\node[box, fill=blue!15, draw=blue!60!black, above=of org] (cultural) {6. Cultural};
+\node[box, fill=violet!20, draw=violet!60!black, above=of cultural] (god) {7. Superorganism};
+
+\draw[-{Stealth}, thick, gray] (neural) -- (individual);
+\draw[-{Stealth}, thick, gray] (individual) -- (dyadic);
+\draw[-{Stealth}, thick, gray] (dyadic) -- (group);
+\draw[-{Stealth}, thick, gray] (group) -- (org);
+\draw[-{Stealth}, thick, gray] (org) -- (cultural);
+\draw[-{Stealth}, thick, gray] (cultural) -- (god);
+
+% Timescale annotations on right
+\node[right=0.6cm of neural, font=\scriptsize, text=gray] {ms--s};
+\node[right=0.6cm of individual, font=\scriptsize, text=gray] {min--yrs};
+\node[right=0.6cm of dyadic, font=\scriptsize, text=gray] {hrs--decades};
+\node[right=0.6cm of group, font=\scriptsize, text=gray] {days--yrs};
+\node[right=0.6cm of org, font=\scriptsize, text=gray] {months--decades};
+\node[right=0.6cm of cultural, font=\scriptsize, text=gray] {yrs--centuries};
+\node[right=0.6cm of god, font=\scriptsize, text=gray] {decades--millennia};
+\end{tikzpicture}
+\end{center}

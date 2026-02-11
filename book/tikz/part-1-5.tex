@@ -1,0 +1,13 @@
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm, box/.style={rectangle, draw, rounded corners, minimum width=2cm, minimum height=0.6cm, align=center, font=\small}]
+\node[box, fill=red!15] (structure) {Affect Structure};
+\node[box, fill=blue!15, right=of structure] (signal) {Translated Signal};
+\node[box, fill=green!15, right=of signal] (behavior) {Observable Behavior};
+
+\draw[<->, thick, gray] (structure) -- (signal);
+\draw[<->, thick, gray] (signal) -- (behavior);
+\draw[<->, thick, gray, bend left=30] (structure) to (behavior);
+
+\node[below=0.3cm of signal, font=\scriptsize, text=gray] {All three should align};
+\end{tikzpicture}
+\end{center}

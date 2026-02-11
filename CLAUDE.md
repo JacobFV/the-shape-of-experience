@@ -97,6 +97,12 @@ From the V9 reflection, these are the most promising next steps:
 - `paper/part{1-5}/thesis_part{1-5}.tex` - Thesis chapters
 - `empirical/experiments/study_llm_affect/REFLECTIONS_AFTER_V9` - Synthesis document
 
+### Environment Variables (Vercel / `.env.local`)
+- `POSTGRES_URL` — Neon PostgreSQL connection string
+- `OPENAI_API_KEY` — Main OpenAI key (uncapped). Used for TTS generation, CI, embeddings.
+- `OPENAI_CHAT_KEY` — Separate OpenAI key with **$50 spend limit**. Used exclusively for the public-facing AI chat feature (`/api/chat`). Keeps reader chat costs bounded.
+- `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET` — NextAuth providers
+
 ### Running Experiments
 - Python environment in project root
 - OpenAI API for gpt-4o-mini embeddings and completions

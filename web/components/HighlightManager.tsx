@@ -318,6 +318,26 @@ export default function HighlightManager({ slug }: { slug: string }) {
     setPopover(null);
   }, [popover]);
 
+  const doAskAI = useCallback(() => {
+    if (!popover) return;
+    const ctx = getContext(popover.range);
+    const headingId = findNearestHeadingId(popover.range.startContainer);
+    window.dispatchEvent(new CustomEvent('open-chat', {
+      detail: { slug, contextType: 'highlight', contextExact: ctx.exact, contextHeadingId: headingId },
+    }));
+    window.getSelection()?.removeAllRanges();
+    setPopover(null);
+  }, [popover, slug]);
+
+  const doAskAIFromEdit = useCallback(() => {
+    if (!editPopover) return;
+    const a = editPopover.annotation;
+    window.dispatchEvent(new CustomEvent('open-chat', {
+      detail: { slug, contextType: 'highlight', contextExact: a.exact, contextHeadingId: a.nearestHeadingId },
+    }));
+    setEditPopover(null);
+  }, [editPopover, slug]);
+
   const doEditNote = useCallback(() => {
     if (!editPopover) return;
     setNoteEditor({ id: editPopover.annotation.id, note: editPopover.annotation.note });
@@ -357,6 +377,7 @@ export default function HighlightManager({ slug }: { slug: string }) {
           <button onClick={doNote}>Note</button>
           <button onClick={doShare}>Share</button>
           {audioAvailable && <button onClick={doPlay}>Play</button>}
+          <button onClick={doAskAI}>Ask AI</button>
         </div>
       )}
 
@@ -374,6 +395,7 @@ export default function HighlightManager({ slug }: { slug: string }) {
               {editPopover.annotation.isPublished ? 'Unpublish' : 'Publish'}
             </button>
           )}
+          <button onClick={doAskAIFromEdit}>Ask AI</button>
           <button onClick={doRemove}>Remove</button>
         </div>
       )}
