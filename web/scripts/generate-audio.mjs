@@ -1,15 +1,15 @@
 /**
- * Generate TTS audio for each chapter section using Deepgram Aura-2.
+ * Generate TTS audio for each chapter section.
  *
- * Usage: DEEPGRAM_API_KEY=... node scripts/generate-audio.mjs [slug]
+ * Usage: TTS_PROVIDER=openai OPENAI_API_KEY=... node scripts/generate-audio.mjs [slug]
  *
  * Reads generated HTML files, splits by <h1> boundaries, strips markup,
- * calls Deepgram REST API, writes MP3 + manifest.json.
+ * calls TTS API with parallel concurrency, writes MP3 + manifest.json.
  *
  * Caching: stores text hashes alongside MP3s; skips unchanged sections.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
@@ -27,17 +27,44 @@ const DEEPGRAM_MODEL = 'aura-2-thalia-en';
 const OPENAI_MODEL = process.env.OPENAI_TTS_MODEL || 'tts-1';
 const OPENAI_VOICE = process.env.OPENAI_TTS_VOICE || 'nova';
 const CHUNK_LIMIT = TTS_PROVIDER === 'openai' ? 4000 : 1900;
+const CONCURRENCY = parseInt(process.env.TTS_CONCURRENCY || '15', 10);
+const MAX_RETRIES = 3;
 
 const CHAPTERS = [
   'introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue',
 ];
 
+// --- Concurrency pool ---
+
+function createPool(concurrency) {
+  let active = 0;
+  const queue = [];
+
+  function drain() {
+    while (queue.length > 0 && active < concurrency) {
+      active++;
+      const { fn, resolve: res, reject: rej } = queue.shift();
+      fn().then(res, rej).finally(() => {
+        active--;
+        drain();
+      });
+    }
+  }
+
+  return function run(fn) {
+    return new Promise((resolve, reject) => {
+      queue.push({ fn, resolve, reject });
+      drain();
+    });
+  };
+}
+
+const pool = createPool(CONCURRENCY);
+
 // --- Text cleaning ---
 
 function stripHtml(html) {
-  // Remove HTML tags
   let text = html.replace(/<[^>]*>/g, ' ');
-  // Decode common entities
   text = text.replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
@@ -50,13 +77,10 @@ function stripHtml(html) {
 }
 
 function stripMath(text) {
-  // Remove display math: $$...$$ and \[...\]
   text = text.replace(/\$\$[\s\S]*?\$\$/g, ' ');
   text = text.replace(/\\\[[\s\S]*?\\\]/g, ' ');
-  // Remove inline math: $...$ and \(...\)
   text = text.replace(/\$[^$]+\$/g, ' ');
   text = text.replace(/\\\([\s\S]*?\\\)/g, ' ');
-  // Remove stray LaTeX commands
   text = text.replace(/\\[a-zA-Z]+\{[^}]*\}/g, ' ');
   text = text.replace(/\\[a-zA-Z]+/g, ' ');
   return text;
@@ -65,11 +89,8 @@ function stripMath(text) {
 function cleanTextForTts(html) {
   let text = stripHtml(html);
   text = stripMath(text);
-  // Remove figure references like [fig:X]
   text = text.replace(/\[fig:[^\]]*\]/g, '');
-  // Remove footnote markers like [1], [2]
   text = text.replace(/\[\d+\]/g, '');
-  // Collapse whitespace
   text = text.replace(/\s+/g, ' ').trim();
   return text;
 }
@@ -78,12 +99,10 @@ function cleanTextForTts(html) {
 
 function splitSections(html, slug) {
   const sections = [];
-  // Split at <h1 boundaries
   const h1Regex = /<h1\s[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/h1>/gi;
   const matches = [...html.matchAll(h1Regex)];
 
   if (matches.length === 0) {
-    // No h1 headers (e.g., introduction) — treat whole content as one section
     const text = cleanTextForTts(html);
     if (text.length >= 50) {
       sections.push({ id: 'full', title: capitalizeSlug(slug), text });
@@ -91,14 +110,12 @@ function splitSections(html, slug) {
     return sections;
   }
 
-  // Content before first h1
   const preContent = html.slice(0, matches[0].index);
   const preText = cleanTextForTts(preContent);
   if (preText.length >= 50) {
     sections.push({ id: 'intro', title: 'Introduction', text: preText });
   }
 
-  // Each h1 section
   for (let i = 0; i < matches.length; i++) {
     const match = matches[i];
     const id = match[1];
@@ -131,11 +148,9 @@ function chunkText(text, limit = CHUNK_LIMIT) {
   let remaining = text;
 
   while (remaining.length > limit) {
-    // Find last sentence boundary within limit
     let breakPoint = -1;
     const searchText = remaining.slice(0, limit);
 
-    // Try period, then semicolon, then comma, then space
     for (const sep of ['. ', '! ', '? ', '; ', ', ', ' ']) {
       const idx = searchText.lastIndexOf(sep);
       if (idx > limit * 0.3) {
@@ -157,7 +172,22 @@ function chunkText(text, limit = CHUNK_LIMIT) {
   return chunks;
 }
 
-// --- TTS API ---
+// --- TTS API with retry ---
+
+async function synthesizeChunkWithRetry(text) {
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return TTS_PROVIDER === 'openai'
+        ? await synthesizeChunkOpenAI(text)
+        : await synthesizeChunkDeepgram(text);
+    } catch (err) {
+      if (attempt === MAX_RETRIES) throw err;
+      const delay = 1000 * Math.pow(2, attempt - 1);
+      console.warn(`    Retry ${attempt}/${MAX_RETRIES} after ${delay}ms: ${err.message}`);
+      await new Promise(r => setTimeout(r, delay));
+    }
+  }
+}
 
 async function synthesizeChunkDeepgram(text) {
   const url = `https://api.deepgram.com/v1/speak?model=${DEEPGRAM_MODEL}&encoding=mp3`;
@@ -201,30 +231,6 @@ async function synthesizeChunkOpenAI(text) {
   return Buffer.from(await res.arrayBuffer());
 }
 
-async function synthesizeChunk(text) {
-  return TTS_PROVIDER === 'openai'
-    ? synthesizeChunkOpenAI(text)
-    : synthesizeChunkDeepgram(text);
-}
-
-async function synthesizeSection(text, sectionId, slugDir) {
-  const chunks = chunkText(text);
-  const buffers = [];
-
-  for (let i = 0; i < chunks.length; i++) {
-    console.log(`    Chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)...`);
-    const buf = await synthesizeChunk(chunks[i]);
-    buffers.push(buf);
-    // Small delay to avoid rate limiting
-    if (i < chunks.length - 1) {
-      await new Promise(r => setTimeout(r, 250));
-    }
-  }
-
-  // Concatenate MP3 buffers (MP3 frames are independently decodable)
-  return Buffer.concat(buffers);
-}
-
 // --- Hashing / caching ---
 
 function textHash(text) {
@@ -239,63 +245,16 @@ function isCached(hashPath, currentHash) {
 
 // --- Main ---
 
-async function processChapter(slug) {
-  const htmlPath = resolve(GEN, `${slug}.html`);
-  if (!existsSync(htmlPath)) {
-    console.warn(`  Skipping ${slug}: HTML file not found`);
-    return [];
-  }
-
-  const html = readFileSync(htmlPath, 'utf-8');
-  const sections = splitSections(html, slug);
-
-  if (sections.length === 0) {
-    console.log(`  ${slug}: no sections with enough text`);
-    return [];
-  }
-
-  const slugDir = resolve(AUDIO_OUT, slug);
-  mkdirSync(slugDir, { recursive: true });
-
-  const results = [];
-
-  for (const section of sections) {
-    const mp3Path = resolve(slugDir, `${section.id}.mp3`);
-    const hashPath = resolve(slugDir, `${section.id}.hash`);
-    const hash = textHash(section.text);
-
-    if (isCached(hashPath, hash) && existsSync(mp3Path)) {
-      console.log(`  [cached] ${section.id}: "${section.title}"`);
-    } else {
-      console.log(`  [generate] ${section.id}: "${section.title}" (${section.text.length} chars)`);
-      const mp3 = await synthesizeSection(section.text, section.id, slugDir);
-      writeFileSync(mp3Path, mp3);
-      writeFileSync(hashPath, hash);
-    }
-
-    results.push({
-      id: section.id,
-      title: section.title,
-      audioUrl: `/audio/${slug}/${section.id}.mp3`,
-    });
-  }
-
-  return results;
-}
-
 async function main() {
   if (TTS_PROVIDER === 'deepgram' && !DEEPGRAM_API_KEY) {
     console.error('DEEPGRAM_API_KEY environment variable is required for Deepgram TTS.');
-    console.error('Set it in web/.env.local or export it, or set TTS_PROVIDER=openai.');
     process.exit(1);
   }
   if (TTS_PROVIDER === 'openai' && !OPENAI_API_KEY) {
     console.error('OPENAI_API_KEY environment variable is required for OpenAI TTS.');
-    console.error('Set it in web/.env.local or export it, or set TTS_PROVIDER=deepgram.');
     process.exit(1);
   }
 
-  // Allow filtering to specific slug(s) via CLI args
   const args = process.argv.slice(2);
   const slugs = args.length > 0 ? args.filter(s => CHAPTERS.includes(s)) : CHAPTERS;
 
@@ -307,10 +266,10 @@ async function main() {
   const providerLabel = TTS_PROVIDER === 'openai'
     ? `OpenAI ${OPENAI_MODEL} / ${OPENAI_VOICE}`
     : `Deepgram ${DEEPGRAM_MODEL}`;
-  console.log(`=== Audio Generation (${providerLabel}) ===\n`);
+  console.log(`=== Audio Generation (${providerLabel}, concurrency=${CONCURRENCY}) ===\n`);
   mkdirSync(AUDIO_OUT, { recursive: true });
 
-  // Load existing manifest if we're doing partial generation
+  // Load existing manifest
   let manifest = {};
   const manifestPath = resolve(AUDIO_OUT, 'manifest.json');
   if (existsSync(manifestPath)) {
@@ -319,21 +278,108 @@ async function main() {
     } catch { /* start fresh */ }
   }
 
+  // Phase 1: Collect all work items across all chapters
+  const workItems = []; // { slug, section, mp3Path, hashPath, hash, chunks }
+  const metadataItems = []; // { slug, section } — for manifest (cached + generated)
+
   for (const slug of slugs) {
-    console.log(`\n${slug}:`);
-    const sections = await processChapter(slug);
-    if (sections.length > 0) {
-      manifest[slug] = sections;
+    const htmlPath = resolve(GEN, `${slug}.html`);
+    if (!existsSync(htmlPath)) {
+      console.warn(`Skipping ${slug}: HTML file not found`);
+      continue;
+    }
+
+    const html = readFileSync(htmlPath, 'utf-8');
+    const sections = splitSections(html, slug);
+
+    if (sections.length === 0) {
+      console.log(`${slug}: no sections with enough text`);
+      continue;
+    }
+
+    const slugDir = resolve(AUDIO_OUT, slug);
+    mkdirSync(slugDir, { recursive: true });
+
+    for (const section of sections) {
+      const mp3Path = resolve(slugDir, `${section.id}.mp3`);
+      const hashPath = resolve(slugDir, `${section.id}.hash`);
+      const hash = textHash(section.text);
+
+      metadataItems.push({
+        slug,
+        section: {
+          id: section.id,
+          title: section.title,
+          audioUrl: `/audio/${slug}/${section.id}.mp3`,
+        },
+      });
+
+      if (isCached(hashPath, hash) && existsSync(mp3Path)) {
+        console.log(`  [cached] ${slug}/${section.id}`);
+        continue;
+      }
+
+      const chunks = chunkText(section.text);
+      workItems.push({ slug, section, mp3Path, hashPath, hash, chunks });
     }
   }
 
-  // Write manifest
-  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
-  console.log(`\nManifest written to ${manifestPath}`);
+  console.log(`\n${metadataItems.length} total sections, ${workItems.length} need generation`);
+  const totalChunks = workItems.reduce((sum, w) => sum + w.chunks.length, 0);
+  console.log(`${totalChunks} API calls to make (concurrency=${CONCURRENCY})\n`);
 
-  // Summary
+  // Phase 2: Fire all chunks through the concurrency pool
+  let completed = 0;
+  const startTime = Date.now();
+
+  await Promise.all(workItems.map(async (work) => {
+    const { slug, section, mp3Path, hashPath, hash, chunks } = work;
+    const label = `${slug}/${section.id}`;
+
+    // Fire all chunks for this section concurrently, maintain order
+    const buffers = await Promise.all(
+      chunks.map((chunk, i) =>
+        pool(async () => {
+          const buf = await synthesizeChunkWithRetry(chunk);
+          completed++;
+          const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
+          console.log(`  [${completed}/${totalChunks} ${elapsed}s] ${label} chunk ${i + 1}/${chunks.length} (${chunk.length} chars)`);
+          return buf;
+        })
+      )
+    );
+
+    const mp3 = Buffer.concat(buffers);
+    writeFileSync(mp3Path, mp3);
+    writeFileSync(hashPath, hash);
+  }));
+
+  // Phase 3: Build manifest
+  for (const item of metadataItems) {
+    if (!manifest[item.slug]) manifest[item.slug] = [];
+    const existing = manifest[item.slug].find(s => s.id === item.section.id);
+    if (!existing) {
+      manifest[item.slug].push(item.section);
+    }
+  }
+
+  // Deduplicate and maintain order per slug
+  for (const slug of slugs) {
+    if (manifest[slug]) {
+      const seen = new Set();
+      manifest[slug] = manifest[slug].filter(s => {
+        if (seen.has(s.id)) return false;
+        seen.add(s.id);
+        return true;
+      });
+    }
+  }
+
+  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+
+  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   const totalSections = Object.values(manifest).reduce((sum, s) => sum + s.length, 0);
-  console.log(`\n=== Done: ${totalSections} sections across ${Object.keys(manifest).length} chapters ===`);
+  console.log(`\n=== Done: ${totalSections} sections across ${Object.keys(manifest).length} chapters in ${elapsed}s ===`);
 }
 
 main().catch(err => {
