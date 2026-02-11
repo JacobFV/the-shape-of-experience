@@ -1989,6 +1989,61 @@ mark.user-highlight {
   color: #cc4444;
 }
 
+.settings-avatar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.settings-avatar-library-btn {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.settings-avatar-library-btn:hover {
+  text-decoration: underline;
+}
+
+.settings-avatar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.settings-avatar-preset {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 0;
+  background: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.settings-avatar-preset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.settings-avatar-preset:hover {
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.settings-avatar-preset.active {
+  border-color: var(--accent);
+}
+
 .settings-field {
   display: flex;
   flex-direction: column;
