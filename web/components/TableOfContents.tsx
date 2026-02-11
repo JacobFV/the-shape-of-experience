@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface Section {
   level: number;
@@ -26,16 +26,6 @@ const chapters: ChapterToc[] = [
   { slug: 'epilogue', shortTitle: 'Epilogue', sections: [] },
 ];
 
-// Load section data from generated metadata at module level
-let sectionsLoaded = false;
-function loadSections() {
-  if (sectionsLoaded) return;
-  try {
-    // metadata.json is copied to public/ during build
-    // But since this is client-side, we'll fetch it
-  } catch { /* ignore */ }
-}
-
 export default function TableOfContents({
   onNavigate,
   sectionData,
@@ -46,6 +36,65 @@ export default function TableOfContents({
   const pathname = usePathname();
   const currentSlug = pathname === '/' ? '' : pathname.slice(1);
   const [expandedSlug, setExpandedSlug] = useState<string | null>(currentSlug || null);
+  const [activeIds, setActiveIds] = useState<Set<string>>(new Set());
+  const rafRef = useRef(0);
+
+  // Track which section/subsection/subsubsection the user is scrolled to
+  useEffect(() => {
+    const sections = sectionData?.[currentSlug];
+    if (!sections?.length) {
+      setActiveIds(new Set());
+      return;
+    }
+
+    function updateActive() {
+      const scrollY = window.scrollY + 120;
+      const ids = new Set<string>();
+
+      // Walk sections in order. For each level-1 heading we pass, record it.
+      // For each level-2 heading we pass, record it (and its parent level-1).
+      let lastL1: string | null = null;
+      let lastL2: string | null = null;
+      let matchedAny = false;
+
+      for (const s of sections!) {
+        const el = document.getElementById(s.id);
+        if (!el) continue;
+        if (el.offsetTop > scrollY) break;
+        matchedAny = true;
+        if (s.level === 1) {
+          lastL1 = s.id;
+          lastL2 = null;
+        } else if (s.level === 2) {
+          lastL2 = s.id;
+        }
+      }
+
+      if (matchedAny) {
+        if (lastL1) ids.add(lastL1);
+        if (lastL2) ids.add(lastL2);
+      }
+
+      setActiveIds(prev => {
+        // Avoid re-render if same
+        if (prev.size === ids.size && [...ids].every(id => prev.has(id))) return prev;
+        return ids;
+      });
+    }
+
+    function onScroll() {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(updateActive);
+    }
+
+    // Initial check
+    updateActive();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [currentSlug, sectionData]);
 
   const handleChapterClick = (slug: string) => {
     setExpandedSlug(expandedSlug === slug ? null : slug);
@@ -83,7 +132,13 @@ export default function TableOfContents({
               {hasSections && isExpanded && (
                 <ul className="toc-sections">
                   {sections.map((s) => (
-                    <li key={s.id} className={s.level === 2 ? 'toc-subsection' : ''}>
+                    <li
+                      key={s.id}
+                      className={
+                        (s.level === 2 ? 'toc-subsection' : '') +
+                        (isActive && activeIds.has(s.id) ? ' toc-active' : '')
+                      }
+                    >
                       <Link
                         href={`/${ch.slug}#${s.id}`}
                         onClick={onNavigate}

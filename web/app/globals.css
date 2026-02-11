@@ -202,6 +202,12 @@ body {
   font-size: 0.7rem;
 }
 
+.toc-sections li.toc-active a {
+  color: var(--text);
+  font-weight: 600;
+  opacity: 1;
+}
+
 .toc-pdf {
   margin-top: 1.5rem;
   padding-top: 1rem;
