@@ -1109,16 +1109,11 @@ body {
   display: flex;
   align-items: center;
   gap: 2px;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
-  border: 0.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 4px;
-  box-shadow:
-    0 0 0 0.5px rgba(0,0,0,0.06),
-    0 2px 12px rgba(0,0,0,0.06),
-    inset 0 0.5px 0 rgba(255,255,255,0.8);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   font-family: var(--font-sans);
 }
 
@@ -1152,38 +1147,9 @@ body {
   padding: 0.2rem 0.35rem;
 }
 
-/* Theme toggle - 3-segment control */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  background: rgba(0,0,0,0.04);
-  border-radius: 6px;
-  padding: 2px;
-  gap: 1px;
-}
-
-.theme-toggle-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 4px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-  line-height: 1;
-}
-
-.theme-toggle-btn:hover {
-  color: var(--text);
-}
-
-.theme-toggle-btn.active {
-  background: var(--bg);
-  color: var(--text);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+/* Theme toggle - single cycling button (desktop) */
+.theme-cycle-btn {
+  /* inherits .reader-toolbar-btn styles via class */
 }
 
 /* Font size toggle - small A / big A */
@@ -1249,15 +1215,10 @@ body {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 0.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.08),
-    0 0 0 0.5px rgba(0,0,0,0.04),
-    inset 0 0.5px 0 rgba(255,255,255,0.8);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   min-width: 240px;
   max-height: 350px;
   overflow-y: auto;
@@ -1347,15 +1308,10 @@ body {
 .search-container {
   width: 90%;
   max-width: 540px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: saturate(200%) blur(24px);
-  -webkit-backdrop-filter: saturate(200%) blur(24px);
-  border: 0.5px solid rgba(255, 255, 255, 0.7);
-  border-radius: 16px;
-  box-shadow:
-    0 12px 48px rgba(0, 0, 0, 0.1),
-    0 0 0 0.5px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   animation: searchSlideIn 0.2s ease;
 }
@@ -1368,9 +1324,9 @@ body {
 .search-input-wrap {
   display: flex;
   align-items: center;
-  padding: 12px 16px;
+  padding: 14px 16px;
   gap: 10px;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .search-input-icon {
@@ -1432,13 +1388,13 @@ body {
   border: none;
   cursor: pointer;
   padding: 10px 16px;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid var(--border);
   transition: background 0.1s;
   font-family: var(--font-sans);
 }
 
 .search-result:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(0,0,0,0.03);
 }
 
 .search-result:last-child {
@@ -1473,19 +1429,17 @@ body {
 
 /* Dark mode search */
 [data-theme="dark"] .search-overlay {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] .search-container {
-  background: rgba(24, 24, 28, 0.6);
-  border-color: rgba(255, 255, 255, 0.06);
-  box-shadow:
-    0 12px 48px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .search-input-wrap {
-  border-bottom-color: rgba(255, 255, 255, 0.04);
+  border-bottom-color: var(--border);
 }
 
 [data-theme="dark"] .search-close:hover {
@@ -1497,7 +1451,38 @@ body {
 }
 
 [data-theme="dark"] .search-result {
-  border-bottom-color: rgba(255, 255, 255, 0.03);
+  border-bottom-color: var(--border);
+}
+
+/* Mobile search: taller, more vertical space */
+@media (max-width: 900px) {
+  .search-overlay {
+    padding-top: 0;
+    align-items: stretch;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-input-wrap {
+    padding: 16px;
+  }
+
+  .search-input {
+    font-size: 1.1rem;
+  }
+
+  .search-results {
+    max-height: none;
+    flex: 1;
+    overflow-y: auto;
+  }
 }
 
 /* ==========================================================================
@@ -1539,14 +1524,9 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow:
-    0 2px 8px rgba(0,0,0,0.1),
-    0 0 0 0.5px rgba(0,0,0,0.06),
-    inset 0 0.5px 0 rgba(255,255,255,0.8);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1559,10 +1539,7 @@ body {
 
 .para-play-btn:hover {
   transform: translate(-50%, -50%) scale(1.1);
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.15),
-    0 0 0 0.5px rgba(0,0,0,0.08),
-    inset 0 0.5px 0 rgba(255,255,255,0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 @keyframes paraPlayFadeIn {
@@ -1571,11 +1548,9 @@ body {
 }
 
 [data-theme="dark"] .para-play-btn {
-  background: rgba(40, 40, 44, 0.7);
-  box-shadow:
-    0 2px 8px rgba(0,0,0,0.25),
-    0 0 0 0.5px rgba(255,255,255,0.06),
-    inset 0 0.5px 0 rgba(255,255,255,0.06);
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 mark.user-highlight {
@@ -2410,37 +2385,25 @@ mark.user-highlight .published-icon {
 
 /* Reader toolbar */
 [data-theme="dark"] .reader-toolbar {
-  background: rgba(30, 30, 34, 0.45);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 0 0 0.5px rgba(255,255,255,0.04),
-    0 2px 12px rgba(0,0,0,0.2),
-    inset 0 0.5px 0 rgba(255,255,255,0.06);
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 [data-theme="dark"] .reader-toolbar-btn:hover {
   background: rgba(255,255,255,0.08);
 }
 
-[data-theme="dark"] .theme-toggle {
-  background: rgba(255,255,255,0.06);
-}
-
-[data-theme="dark"] .theme-toggle-btn.active {
-  background: rgba(255,255,255,0.12);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
+/* theme-toggle dark mode rules removed — desktop uses single cycling button now */
 
 [data-theme="dark"] .fontsize-btn:hover {
   background: rgba(255,255,255,0.08);
 }
 
 [data-theme="dark"] .reader-toolbar-menu {
-  background: rgba(24, 24, 28, 0.6);
-  border-color: rgba(255, 255, 255, 0.06);
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.25),
-    inset 0 0.5px 0 rgba(255,255,255,0.06);
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 
 [data-theme="dark"] .reader-toolbar-menu-link:hover {
@@ -2576,17 +2539,14 @@ mark.user-highlight .published-icon {
     display: none !important;
   }
 
-  /* --- Glass header bar --- */
+  /* --- Header bar --- */
   .mobile-header-bar {
     display: flex;
     align-items: center;
     height: calc(52px + env(safe-area-inset-top, 0px));
     padding: env(safe-area-inset-top, 0px) 4px 0;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
-    box-shadow: inset 0 -0.5px 0 rgba(0,0,0,0.06);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
   }
 
   .mobile-header-btn {
@@ -2630,15 +2590,10 @@ mark.user-highlight .published-icon {
     max-width: calc(100vw - 16px);
     max-height: calc(100vh - 72px);
     overflow-y: auto;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-radius: 16px;
-    border: 0.5px solid rgba(255, 255, 255, 0.6);
-    box-shadow:
-      0 8px 40px rgba(0, 0, 0, 0.08),
-      0 0 0 0.5px rgba(0, 0, 0, 0.04),
-      inset 0 0.5px 0 rgba(255,255,255,0.8);
+    background: var(--bg);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
     padding: 6px 0;
     font-family: var(--font-sans);
     z-index: 210;
@@ -2875,9 +2830,7 @@ mark.user-highlight .published-icon {
     border-right: none;
     border-top: none;
     padding-left: 1rem;
-    background: rgba(250, 250, 248, 0.92);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    background: var(--bg);
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
     transform: translateY(-100%);
     opacity: 0;
@@ -2903,9 +2856,8 @@ mark.user-highlight .published-icon {
 
   /* --- Dark mode for mobile header --- */
   [data-theme="dark"] .mobile-header-bar {
-    background: rgba(20, 20, 24, 0.4);
-    border-bottom-color: rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 -0.5px 0 rgba(255,255,255,0.03);
+    background: var(--bg);
+    border-bottom-color: var(--border);
   }
 
   [data-theme="dark"] .mobile-header-btn:active {
@@ -2913,12 +2865,9 @@ mark.user-highlight .published-icon {
   }
 
   [data-theme="dark"] .mobile-header-menu {
-    background: rgba(24, 24, 28, 0.55);
-    border-color: rgba(255, 255, 255, 0.06);
-    box-shadow:
-      0 8px 40px rgba(0, 0, 0, 0.25),
-      0 0 0 0.5px rgba(255, 255, 255, 0.04),
-      inset 0 0.5px 0 rgba(255,255,255,0.06);
+    background: var(--bg);
+    border-color: var(--border);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
   }
 
   [data-theme="dark"] .mobile-menu-item:active {
@@ -2939,6 +2888,6 @@ mark.user-highlight .published-icon {
   }
 
   [data-theme="dark"] .audio-player {
-    background: rgba(26, 26, 30, 0.92);
+    background: var(--bg);
   }
 }
