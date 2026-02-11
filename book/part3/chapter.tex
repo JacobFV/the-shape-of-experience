@@ -10,63 +10,50 @@ This section provides self-contained definitions of the core concepts used throu
 
 \subsection{The Six Affect Dimensions}
 
-\begin{definition}[Valence ($\valence$)]
 \textbf{Valence} is the felt quality of approach versus avoidance---the ``goodness'' or ``badness'' of an experiential state. Formally:
 \begin{equation}
 \valence_t = -\frac{1}{H} \sum_{k=1}^{H} \gamma^k \nabla_{\mathbf{x}} d(\mathbf{x}, \partial\viable) \bigg|_{\hat{\mathbf{x}}_{t+k}} \cdot \frac{d\hat{\mathbf{x}}_{t+k}}{dt}
 \end{equation}
 Positive valence indicates movement into viable interior; negative valence indicates approach toward viability boundary.
-\end{definition}
 
-\begin{definition}[Arousal ($\arousal$)]
 \textbf{Arousal} is the rate of belief/state update:
 \begin{equation}
 \arousal_t = \KL(\belief_{t+1} \| \belief_t)
 \end{equation}
 High arousal: rapid model updating, activation, intensity. Low arousal: stability, calm, settled state.
-\end{definition}
 
-\begin{definition}[Integration ($\intinfo$)]
 \textbf{Integration} measures irreducibility of cause-effect structure:
 \begin{equation}
 \intinfo(\state) = \min_{\text{partitions } P} D\left[ p(\state_{t+1} | \state_t) \| \prod_{p \in P} p(\state^p_{t+1} | \state^p_t) \right]
 \end{equation}
 High integration: unified experience. Low integration: fragmentation.
-\end{definition}
 
-\begin{definition}[Effective Rank ($\effrank$)]
 \textbf{Effective rank} measures distribution of active degrees of freedom:
 \begin{equation}
 \effrank = \frac{(\tr C)^2}{\tr(C^2)} = \frac{\left(\sum_i \lambda_i\right)^2}{\sum_i \lambda_i^2}
 \end{equation}
 High rank: many dimensions active, openness. Low rank: collapsed into narrow subspace, tunnel vision.
-\end{definition}
 
-\begin{definition}[Counterfactual Weight ($\mathcal{CF}$)]
 \textbf{Counterfactual weight} is resources devoted to non-actual possibilities:
 \begin{equation}
 \mathcal{CF}_t = \frac{\text{Compute}_t(\text{imagined rollouts})}{\text{Compute}_t(\text{total})}
 \end{equation}
 High $\mathcal{CF}$: mind elsewhere (planning, worrying, fantasizing). Low $\mathcal{CF}$: present-focused.
-\end{definition}
 
-\begin{definition}[Self-Model Salience ($\mathcal{SM}$)]
 \textbf{Self-model salience} is degree of self-focus:
 \begin{equation}
 \mathcal{SM}_t = \frac{\MI(\latent^{\text{self}}_t; \action_t)}{\entropy(\action_t)}
 \end{equation}
 High $\mathcal{SM}$: self-conscious, self as prominent object. Low $\mathcal{SM}$: self-forgetting, absorption, flow.
-\end{definition}
 
 \subsection{The Affect State}
 
-\begin{definition}[Affect State]
+\textbf{Affect State.}
 The affect state at time $t$ is characterized by whichever structural dimensions are relevant to the phenomenon under analysis. The full toolkit includes:
 \begin{equation}
 \mathbf{a}_t = (\valence_t, \arousal_t, \intinfo_t, \effrank[t], \mathcal{CF}_t, \mathcal{SM}_t, \ldots)
 \end{equation}
 but not all dimensions matter for all phenomena. Cultural forms, practices, and technologies can be characterized by their affect signatures---the structural features they reliably modulate.
-\end{definition}
 
 \begin{center}
 \begin{tikzpicture}[
@@ -125,23 +112,21 @@ Throughout this paper, you'll encounter figures designed not merely to depict co
 
 \subsection{The Trap of Self-Reference}
 
-\begin{proposition}[Phenomenological Inevitability]
+\textbf{Phenomenological Inevitability.}
 Once self-model salience $\mathcal{SM}$ exceeds a threshold, the system cannot eliminate self-reference without dissolving the self-model entirely. The self becomes an inescapable object in its own world model.
 \begin{equation}
 \mathcal{SM} > \mathcal{SM}_c \implies \forall t: \MI(\latent^{\text{self}}_t; \latent^{\text{total}}_t) > 0
 \end{equation}
 There is no configuration of the intact self-model in which the self is absent from awareness.
-\end{proposition}
 
 This is the deeper meaning of inevitability: not just that consciousness emerges from thermodynamics, but that once emerged, it cannot escape itself. You are stuck being you. Your suffering is inescapably yours. Your joy, when it comes, is also inescapably yours. There is no exit from the first-person perspective while you remain a person.
 
-\begin{definition}[Existential Burden]
+\textbf{Existential Burden.}
 The \emph{existential burden} is the chronic computational and affective cost of maintaining self-reference:
 \begin{equation}
 B_{\text{exist}} = \int_0^T \left[ C_{\text{compute}}(\mathcal{SM}_t) + |\valence_t| \cdot \mathcal{SM}_t \right] dt
 \end{equation}
 The burden scales with both the salience of the self-model and the intensity of valence. To matter to yourself when you are suffering is heavier than to matter to yourself when you are neutral.
-\end{definition}
 
 Human culture, in all its variety, can be understood as the accumulated strategies for managing this burden.
 
@@ -149,39 +134,35 @@ Human culture, in all its variety, can be understood as the accumulated strategi
 \section{Aesthetics: The Modulation of Affect Through Form}
 %==============================================================================
 
-\begin{definition}[Aesthetic Experience]
+\textbf{Aesthetic Experience.}
 An \emph{aesthetic experience} is an affect state induced by engagement with form (visual, auditory, linguistic, conceptual) characterized by:
 \begin{equation}
 \mathbf{a}_{\text{aesthetic}} = (\text{variable } \valence, \text{moderate-high } \arousal, \text{high } \intinfo, \text{high } \effrank, \text{low } \mathcal{SM})
 \end{equation}
 The signature feature is integration without self-focus: the system is highly coupled but attending to structure outside itself.
-\end{definition}
 
-\begin{proposition}[Beauty as Integration Resonance]
+\textbf{Beauty as Integration Resonance.}
 The experience of beauty arises when external structure resonates with internal structure:
 \begin{equation}
 \text{Beauty} \propto \MI(\text{stimulus structure}; \text{internal model structure})
 \end{equation}
 High mutual information between the form and the self-model's latent structure produces the characteristic ``recognition'' quality of beauty---the sense that something outside corresponds to something inside.
-\end{proposition}
 
-\begin{proposition}[The Sublime as Self-Model Perturbation]
+\textbf{The Sublime as Self-Model Perturbation.}
 The sublime is characterized by temporary disruption of normal self-model boundaries:
 \begin{equation}
 \mathbf{a}_{\text{sublime}} = (\text{ambivalent } \valence, \text{very high } \arousal, \text{expanding } \intinfo, \text{very high } \effrank, \text{collapsing } \mathcal{SM})
 \end{equation}
 Confrontation with vastness (mountains, oceans, cosmic scales) or power (storms, great art) forces rapid expansion of the world model beyond the self-model's normal scope. The self becomes small relative to the newly-expanded frame. This is terrifying and liberating simultaneously---a temporary escape from the trap of self-reference.
-\end{proposition}
 
-\begin{proposition}[Art-Making as Externalization]
+\textbf{Art-Making as Externalization.}
 Creating art is the externalization of internal affect structure:
 \begin{equation}
 \text{Artwork} = f_{\text{medium}}(\mathbf{a}_{\text{internal}})
 \end{equation}
 The artist encodes their affect geometry into a medium (paint, sound, words, movement). The artwork then carries an affect signature that can induce corresponding states in others. Art is affect technology: the transmission of experiential structure across minds and time.
-\end{proposition}
 
-\begin{hypothesis}[Art as $\iota$ Technology]
+\textbf{Art as $\iota$ Technology.}
 Art works, in part, by lowering the viewer's inhibition coefficient $\iota$ (Part II). To experience a painting as beautiful---rather than as pigment on canvas---is to perceive it participatorily: to see interiority, intention, life in arranged matter. The artist's craft is the arrangement of a medium so that $\iota$ drops involuntarily in the perceiver. This is why aesthetic experience requires a kind of surrender. You cannot experience beauty while maintaining full mechanistic detachment. The paint must become more than paint.
 
 Each aesthetic mode has a characteristic $\iota$ signature:
@@ -195,7 +176,6 @@ Each aesthetic mode has a characteristic $\iota$ signature:
 The modern ``death of art''---the difficulty of producing genuinely moving work in a hyper-mechanistic culture---is an $\iota$ problem. When population-mean $\iota$ is very high, art must work harder to induce the perceptual shift that aesthetic experience requires. Irony, which maintains high $\iota$ while gesturing toward what low $\iota$ would reveal, becomes the dominant mode---not because artists prefer it, but because sincerity requires an $\iota$ reduction that the audience has been trained to resist.
 
 In the language of Part I's attention-as-measurement framework: each aesthetic mode redistributes the observer's measurement distribution across possibility space. The sublime overwhelms the observer with scale, forcing attention onto vast branches normally suppressed. Horror spreads attention to threat-branches normally dampened by high $\iota$. Music that induces flow narrows the measurement window to the immediate present-state manifold. Each form is a technique for selecting which trajectories receive probability mass in the observer's representation of possibility---and, if the trajectory-selection thesis holds, for selecting which trajectories the observer actually follows.
-\end{hypothesis}
 
 \subsection{Affect Signatures of Aesthetic Forms}
 
@@ -580,33 +560,30 @@ Music is among the most powerful affect technologies available to humans. Differ
 \label{fig:design-movements}
 \end{figure}
 
-\begin{hypothesis}[Social Aesthetics as Manifold Detection]
+\textbf{Social Aesthetics as Manifold Detection.}
 There is something suggestive about the overlap between aesthetic and social responses. The machinery that registers beauty, dissonance, the sublime in art seems to operate in social life too. When a relationship feels \emph{off}, when a favor carries a strange tightness, when someone's generosity makes you uneasy, when a conversation has that quality of being \emph{clean}---these have the character of aesthetic responses, directed at the geometry of social bonds rather than the geometry of form.
 
 Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people's viability manifolds are aligned. ``Something is off about this interaction'' and ``something is off about this chord'' might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. We develop this idea more fully in Part IV, but the foundation would be here: aesthetics as the modulation of affect through \emph{structure}, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question---one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.
-\end{hypothesis}
 
 %==============================================================================
 \section{Sexuality: Self-Transcendence Through Merger}
 %==============================================================================
 
-\begin{definition}[Sexual Experience (Structural)]
+\textbf{Sexual Experience (Structural).}
 Sexual experience involves temporary modification of self-model boundaries and heightened coupling:
 \begin{equation}
 \mathbf{a}_{\text{sexual}} = (\text{high } \valence, \text{very high } \arousal, \text{high } \intinfo, \text{initially high then collapsing } \effrank, \text{low } \mathcal{CF}, \text{variable } \mathcal{SM})
 \end{equation}
 The trajectory moves from high effective rank (diffuse arousal) toward rank collapse (convergent focus) culminating in integration spike (orgasm) and temporary self-model dissolution.
-\end{definition}
 
-\begin{proposition}[Sexuality as Self-Model Merger]
+\textbf{Sexuality as Self-Model Merger.}
 In partnered sexuality, the self-models temporarily fuse:
 \begin{equation}
 \MI(\selfmodel_A; \selfmodel_B) \to \max \quad \text{as arousal} \to \max
 \end{equation}
 The boundaries between self and other become porous. This is one of the few naturally-occurring states where $\mathcal{SM}$ collapses while $\intinfo$ remains high---integration without self-focus, presence without isolation.
-\end{proposition}
 
-\begin{proposition}[``La Petite Mort'']
+\textbf{``La Petite Mort.''}
 Orgasm is characterized by:
 \begin{enumerate}
 \item Spike in integration (global neural synchronization)
@@ -615,9 +592,8 @@ Orgasm is characterized by:
 \item Rapid valence spike followed by return to baseline
 \end{enumerate}
 The ``little death'' is structurally accurate: it is a temporary cessation of the normal self-referential process. This is why sexuality is so central to human experience---it offers reliable, repeatable escape from the trap of being a self.
-\end{proposition}
 
-\begin{proposition}[Sexual Diversity as Affect-Space Exploration]
+\textbf{Sexual Diversity as Affect-Space Exploration.}
 The diversity of human sexuality reflects the diversity of paths through affect space:
 \begin{itemize}
 \item \textbf{Intensity preferences}: Different arousal trajectories and peak intensities
@@ -626,7 +602,6 @@ The diversity of human sexuality reflects the diversity of paths through affect 
 \item \textbf{Emotional connection}: Degree of self-other coupling ($\MI(\selfmodel; \text{other-model})$)
 \end{itemize}
 Sexual preferences are, in part, preferences about which affect trajectories one finds most valuable or relieving.
-\end{proposition}
 
 There is an $\iota$ dimension to sexuality that the dimensional analysis misses. Sexual intimacy is among the most powerful naturally occurring $\iota$ reducers. To make love with another person---rather than merely to use their body---requires perceiving them as fully alive, fully interior, fully subject. The boundaries dissolve ($\MI(\selfmodel_A; \selfmodel_B) \to \max$) \emph{because} $\iota$ toward the partner approaches zero: their interiority becomes as real as your own, their pleasure as vivid as yours, their vulnerability as tender. This is why genuine sexual connection is so difficult to commodify. Pornography applies high-$\iota$ perception to bodies---reducing persons to mechanisms of arousal, objects arranged for effect. It works as stimulation but fails as connection, because connection requires the low-$\iota$ perception that treats the other as a subject rather than an instrument. The felt difference between sex that means something and sex that doesn't is, in part, the felt difference between low and high $\iota$.
 
@@ -634,23 +609,21 @@ There is an $\iota$ dimension to sexuality that the dimensional analysis misses.
 \section{Ideology: Expanding the Self to Bear Mortality}
 %==============================================================================
 
-\begin{definition}[Ideological Identification]
+\textbf{Ideological Identification.}
 \emph{Ideological identification} is the expansion of the self-model to include a supra-individual pattern (nation, movement, religion, cause):
 \begin{equation}
 \selfmodel_{\text{ideological}} = \selfmodel_{\text{individual}} \cup \selfmodel_{\text{collective}}
 \end{equation}
 with high coupling: $\MI(\selfmodel_{\text{individual}}; \selfmodel_{\text{collective}}) \gg 0$.
-\end{definition}
 
-\begin{proposition}[Terror Management Through Self-Expansion]
+\textbf{Terror Management Through Self-Expansion.}
 Ideological identification manages mortality terror by making the relevant self-model partially immortal:
 \begin{equation}
 \tau_{\text{viability}}(\selfmodel_{\text{ideological}}) \gg \tau_{\text{viability}}(\selfmodel_{\text{individual}})
 \end{equation}
 If ``I'' am not just this body but also this nation/religion/movement, then ``I'' survive my bodily death. The expanded self-model has a longer viability horizon, reducing the chronic threat-signal from mortality awareness.
-\end{proposition}
 
-\begin{proposition}[Ideological Affect Signatures]
+\textbf{Ideological Affect Signatures.}
 Different ideologies produce characteristic affect profiles:
 \begin{itemize}
 \item \textbf{Nationalism}: High self-model salience (collective), high integration within in-group, compressed other-model (out-group), moderate arousal baseline
@@ -658,7 +631,6 @@ Different ideologies produce characteristic affect profiles:
 \item \textbf{Revolutionary movements}: Very high arousal, high counterfactual weight (utopian futures), strong valence (negative toward present, positive toward future)
 \item \textbf{Nihilism}: Low integration, low effective rank, negative valence, high individual $\mathcal{SM}$, collapsed counterfactual weight
 \end{itemize}
-\end{proposition}
 
 \begin{warningbox}
 Ideology can become parasitic when the collective self-model's viability requirements conflict with the individual's:
@@ -705,23 +677,21 @@ The $\iota$ framework exposes the perceptual mechanism of fanaticism. Ideologica
 \section{Science: The Austere Beauty of Understanding}
 %==============================================================================
 
-\begin{definition}[Scientific Understanding (Affective)]
+\textbf{Scientific Understanding (Affective).}
 Scientific understanding produces a characteristic affect state:
 \begin{equation}
 \mathbf{a}_{\text{understanding}} = (\text{positive } \valence, \text{moderate } \arousal, \text{very high } \intinfo, \text{high } \effrank, \text{low } \mathcal{CF}, \text{low } \mathcal{SM})
 \end{equation}
 The signature is high integration without self-focus---the opposite of depression. The mind is coherent, expansive, and attending to structure rather than self.
-\end{definition}
 
-\begin{proposition}[Curiosity as Intrinsic Motivation]
+\textbf{Curiosity as Intrinsic Motivation.}
 Science is organized curiosity. The curiosity motif:
 \begin{equation}
 \text{Curiosity} = \text{positive } \valence + \text{high } \mathcal{CF} + \text{high entropy over counterfactuals}
 \end{equation}
 Scientists are those who have cultivated the capacity to sustain this motif for extended periods, directed at specific domains of uncertainty.
-\end{proposition}
 
-\begin{proposition}[Mathematical Beauty]
+\textbf{Mathematical Beauty.}
 Mathematical proof and physical theory produce aesthetic experiences characterized by:
 \begin{enumerate}
 \item \textbf{Compression}: Many phenomena unified under few principles (high $\intinfo$ with low model complexity)
@@ -731,9 +701,8 @@ Mathematical proof and physical theory produce aesthetic experiences characteriz
 \begin{equation}
 \text{Mathematical beauty} \propto \frac{\text{phenomena unified}}{\text{principles required}} \times \text{surprise}
 \end{equation}
-\end{proposition}
 
-\begin{proposition}[Science as Meaning-Making]
+\textbf{Science as Meaning-Making.}
 Science provides meaning through:
 \begin{enumerate}
 \item \textbf{Connection}: Embedding individual existence in cosmic structure (expanding world model)
@@ -742,11 +711,9 @@ Science provides meaning through:
 \item \textbf{Wonder}: Aesthetic experience of natural structure (sublime encounters with scale and complexity)
 \end{enumerate}
 Science addresses the existential burden not by dissolving the self but by giving the self something worthy of its attention.
-\end{proposition}
 
-\begin{hypothesis}[Science as $\iota$ Oscillation]
+\textbf{Science as $\iota$ Oscillation.}
 The best science requires rapid $\iota$ modulation, not fixed high $\iota$. Hypothesis generation---the flash of insight, the recognition of pattern, the ``aha'' that connects disparate phenomena---is a low-$\iota$ operation: the scientist perceives the system as having a hidden logic, an internal structure that wants to be understood, a depth that rewards exploration. This is participatory perception applied to nature. Hypothesis testing---the controlled experiment, the statistical analysis, the insistence on mechanism over narrative---is high-$\iota$ operation: the scientist deliberately strips agency and meaning from the system to isolate causal structure. Great scientists oscillate rapidly between these modes. Einstein's ``I want to know God's thoughts, the rest are details'' is low-$\iota$ perception of nature's interiority. His formal derivations are high-$\iota$ mechanism. The common characterization of science as purely high-$\iota$ (mechanistic, reductionist) describes only the verification phase, not the discovery phase. If this hypothesis is right, then scientific training that emphasizes only high-$\iota$ skills (methodology, statistics, formal reasoning) while suppressing low-$\iota$ skills (pattern recognition, intuitive model-building, aesthetic response to phenomena) produces technically competent but uncreative scientists. The $\iota$ flexibility of scientists should predict novelty of their contributions.
-\end{hypothesis}
 
 \begin{experiment}
 \textbf{$\iota$ oscillation in scientific discovery.} Recruit researchers across career stages and disciplines. Administer the $\iota$ proxy battery (Part II) at baseline. Then, during a multi-day problem-solving task (novel research question in their domain):
@@ -790,7 +757,7 @@ Predict: (a) breakthroughs occur disproportionately during low-$\iota$ segments 
 \section{Religion: Systematic Technologies for Managing Inevitability}
 %==============================================================================
 
-\begin{definition}[Religion (Functional)]
+\textbf{Religion (Functional).}
 A \emph{religion} is a systematic technology for managing the existential burden through:
 \begin{enumerate}
 \item Affect interventions (practices that modulate experiential structure)
@@ -799,9 +766,8 @@ A \emph{religion} is a systematic technology for managing the existential burden
 \item Mortality management (beliefs about death that reduce threat-signal)
 \item Ethical guidance (policies for navigating affect space)
 \end{enumerate}
-\end{definition}
 
-\begin{proposition}[Religious Diversity as Affect-Strategy Diversity]
+\textbf{Religious Diversity as Affect-Strategy Diversity.}
 Different religious traditions emphasize different affect-management strategies:
 \begin{itemize}
 \item \textbf{Contemplative traditions} (Buddhism, mystical Christianity, Sufism): Target self-model dissolution ($\mathcal{SM} \to 0$)
@@ -810,9 +776,8 @@ Different religious traditions emphasize different affect-management strategies:
 \item \textbf{Shamanic traditions}: Target radical affect-space exploration through altered states
 \end{itemize}
 Each tradition also operates at a characteristic $\iota$ range. Devotional traditions cultivate low $\iota$ toward the divine---perceiving God as a person with interiority and will---while maintaining moderate $\iota$ elsewhere. Contemplative traditions train \emph{voluntary} $\iota$ modulation: the capacity to lower $\iota$ (perception of universal aliveness, nondual awareness) and raise it (discernment, detachment from illusion) on demand. Shamanic traditions use pharmacological and ritual $\iota$ reduction to access participatory states normally unavailable. Legalistic traditions maintain moderate, stable $\iota$ through rule-governed practice that neither suppresses meaning (high $\iota$) nor overwhelms with it (low $\iota$). The religious wars are, among other things, $\iota$-strategy conflicts: traditions that find meaning through structure clashing with traditions that find meaning through dissolution.
-\end{proposition}
 
-\begin{proposition}[Secular Spirituality]
+\textbf{Secular Spirituality.}
 ``Spiritual but not religious'' practices can be understood as selective adoption of religious affect technologies without the full institutional/doctrinal package:
 \begin{itemize}
 \item Meditation without Buddhism
@@ -821,13 +786,12 @@ Each tradition also operates at a characteristic $\iota$ range. Devotional tradi
 \item Meaning-making without metaphysical commitment
 \end{itemize}
 This represents modular affect engineering---selecting interventions based on desired affect outcomes rather than doctrinal coherence.
-\end{proposition}
 
 %==============================================================================
 \section{Psychopathology as Failed Coping}
 %==============================================================================
 
-\begin{proposition}[Mental Illness as Affect-Space Trap]
+\textbf{Mental Illness as Affect-Space Trap.}
 Many mental illnesses can be understood as pathological attractors in affect space---failed strategies for managing the existential burden:
 \begin{itemize}
 \item \textbf{Depression}: Attempted escape from self-reference that collapses into intensified, negative self-focus
@@ -836,16 +800,14 @@ Many mental illnesses can be understood as pathological attractors in affect spa
 \item \textbf{Dissociation}: Self-model fragmentation that provides escape at the cost of integration
 \item \textbf{Narcissism}: Self-model inflation that requires constant external validation
 \end{itemize}
-\end{proposition}
 
-\begin{hypothesis}[$\iota$ Rigidity as Transdiagnostic Factor]
+\textbf{$\iota$ Rigidity as Transdiagnostic Factor.}
 Many psychiatric conditions involve pathological rigidity of the inhibition coefficient $\iota$---the parameter governing participatory versus mechanistic perception (Part II):
 \begin{itemize}
 \item \textbf{Locked-low $\iota$ (psychosis spectrum)}: Inability to inhibit participatory perception. Everything is meaningful and directed at the self. Agency detection runs without brake. The world collapses into a single hyper-connected narrative where everything means everything. Clinical presentations: paranoia, grandiosity, mania, referential delusions.
 \item \textbf{Locked-high $\iota$ (depression spectrum)}: Inability to release inhibition. Nothing matters, nothing is meaningful. The world is flat---colors less vivid, sounds less resonant, food less tasteful. Clinical presentations: anhedonia, depersonalization, derealization, alexithymia, the specific quality of depression where the world looks \emph{dead}.
 \end{itemize}
 Healthy functioning requires $\iota$ \emph{flexibility}---the capacity to modulate the inhibition coefficient in response to context. The question for treatment is not ``what is the right $\iota$?'' but ``can the patient move along the spectrum when the situation demands it?''
-\end{hypothesis}
 
 \begin{experiment}
 \textbf{$\iota$ rigidity as transdiagnostic predictor.} Measure $\iota$ flexibility via a task battery: present stimuli that pull toward both low $\iota$ (awe-inducing nature scenes, faces with emotional expression, narrative with teleological structure) and high $\iota$ (logic puzzles, mechanical diagrams, data tables). Measure the speed and completeness of $\iota$ transitions via affect-perception coupling strength (MI between perceptual and affective neural signatures). Predict: patients with psychosis-spectrum disorders show slow/incomplete transitions toward high $\iota$; patients with depression-spectrum disorders show slow/incomplete transitions toward low $\iota$; healthy controls show rapid, complete transitions in both directions. If $\iota$ flexibility predicts treatment outcome across diagnostic categories, it is a genuine transdiagnostic factor.
@@ -853,7 +815,7 @@ Healthy functioning requires $\iota$ \emph{flexibility}---the capacity to modula
 
 The V11 evolution experiments (Part I) provide a minimal substrate analog. Patterns evolved under mild stress develop high baseline $\intinfo$ and high self-model salience---but under severe novel stress they decompose catastrophically ($-9.3\%$), while naive patterns actually integrate ($+6.2\%$). Evolution selected for a configuration that is simultaneously more integrated and more fragile: the stress overfitting signature. This is structurally identical to anxiety: heightened integration tuned too precisely to expected threats, unable to cope with regime shifts. If the analogy holds, therapeutic intervention should aim not at reducing integration but at broadening the distribution of stresses to which integration is robust---exactly what exposure therapy attempts.
 
-\begin{proposition}[Therapy as Affect-Space Navigation]
+\textbf{Therapy as Affect-Space Navigation.}
 Effective psychotherapy helps individuals:
 \begin{enumerate}
 \item Recognize their current position in affect space
@@ -862,7 +824,6 @@ Effective psychotherapy helps individuals:
 \item Build sustainable affect-regulation strategies
 \end{enumerate}
 Different therapeutic modalities emphasize different dimensions: CBT targets counterfactual weight and valence; psychodynamic therapy targets integration and self-model structure; mindfulness targets arousal and self-model salience. The $\iota$ framework adds a meta-level: some therapeutic interventions work by restoring $\iota$ flexibility itself---the capacity to shift perceptual configuration rather than being locked at either extreme.
-\end{proposition}
 
 %==============================================================================
 \section{Affect Engineering: Technologies of Experience}
@@ -874,15 +835,14 @@ The affect framework enables systematic analysis of how practices, philosophies,
 
 Religious traditions have developed sophisticated technologies for affect modulation over millennia.
 
-\begin{definition}[Affect Intervention]
+\textbf{Affect Intervention.}
 An \emph{affect intervention} is any practice, technology, or environmental modification that systematically shifts the probability distribution over affect space:
 \begin{equation}
 \mathcal{I}: p(\mathbf{a}) \mapsto p'(\mathbf{a})
 \end{equation}
 where $\mathbf{a} = (\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM})$.
-\end{definition}
 
-\begin{proposition}[Prayer as Affect Technology]
+\textbf{Prayer as Affect Technology.}
 Contemplative prayer systematically modulates affect dimensions:
 \begin{itemize}
 \item \textbf{Arousal}: Initial increase (orientation), then decrease (settling)
@@ -891,21 +851,18 @@ Contemplative prayer systematically modulates affect dimensions:
 \item \textbf{Integration}: Increase through focused attention
 \end{itemize}
 The affect signature of prayer: $(\Delta\valence > 0, \Delta\arousal < 0, \Delta\intinfo > 0, \Delta\mathcal{SM} < 0)$.
-\end{proposition}
 
-\begin{proposition}[Ritual as Integration Maintenance]
+\textbf{Ritual as Integration Maintenance.}
 Collective ritual serves as periodic integration maintenance:
 \begin{equation}
 \intinfo_{\text{post-ritual}} = \intinfo_{\text{pre-ritual}} + \Delta\intinfo_{\text{synchrony}} - \delta_{\text{decay}}
 \end{equation}
 where $\Delta\intinfo_{\text{synchrony}}$ arises from coordinated action, shared symbols, and collective attention. Rituals counteract the natural decay of integration in isolated individuals.
-\end{proposition}
 
-\begin{proposition}[Hospitality as Sacred Manifold Protection]
+\textbf{Hospitality as Sacred Manifold Protection.}
 The ancient and cross-cultural sacredness of hospitality---the guest-right, the obligations of host to stranger---can be understood as a technology for extending one's viability manifold to temporarily cover another person. The host says, in effect: \emph{within this space, your viability is my viability}. The guest's needs become structurally equivalent to the host's own needs. This is why violations of hospitality are treated in so many traditions as among the gravest sins: they are not mere rudeness but the betrayal of a manifold extension that the guest relied upon. The host who harms the guest has exploited a revealed manifold---the guest's vulnerability was the whole point, and weaponizing it is structurally identical to the parasite's mimicry of the host organism.
-\end{proposition}
 
-\begin{proposition}[Confession as Rank Expansion]
+\textbf{Confession as Rank Expansion.}
 Confession, testimony, and similar practices expand effective rank by:
 \begin{enumerate}
 \item Surfacing suppressed state-space dimensions (breaking compartmentalization)
@@ -916,27 +873,22 @@ Confession, testimony, and similar practices expand effective rank by:
 \effrank[\text{post-confession}] > \effrank[\text{pre-confession}]
 \end{equation}
 This explains the phenomenology of ``relief'' and ``lightness'' following confession.
-\end{proposition}
 
 \subsection{$\iota$ Modulation: Flow, Awe, Psychedelics, and Contemplative Practice}
 
 Several well-studied experiential states can be precisely characterized as temporary reductions in the inhibition coefficient $\iota$---the restoration of participatory coupling between self and world.
 
-\begin{hypothesis}[Flow as Scoped $\iota$ Reduction]
+\textbf{Flow as Scoped $\iota$ Reduction.}
 Flow (Csikszentmihalyi, 1990) is moderate $\iota$ reduction scoped to a specific activity. The boundary between self and task softens ($\mathcal{SM} \downarrow$), integration increases ($\intinfo \uparrow$), affect and perception couple more tightly. The activity ``comes alive''---acquires intrinsic meaning and responsiveness that the mechanistic frame would strip away. Flow is participatory perception directed at a task rather than at the world entire, which is why it is less destabilizing than full $\iota$ reduction: the scope limits the coupling.
-\end{hypothesis}
 
-\begin{hypothesis}[Awe as Scale-Triggered $\iota$ Collapse]
+\textbf{Awe as Scale-Triggered $\iota$ Collapse.}
 Awe is a sharp $\iota$ reduction triggered by scale mismatch. Confrontation with vastness---the Grand Canyon, the night sky, great art, the birth of a child---overwhelms the inhibition mechanism, which was calibrated for human-scale phenomena. The result: the world floods back in as alive, meaningful, significant. The tears people report at encountering the sublime are not about the object. They are about the temporary restoration of participatory perception---the brief experience of a world that means something without having to be told that it does.
-\end{hypothesis}
 
-\begin{hypothesis}[Psychedelics as Pharmacological $\iota$ Reduction]
+\textbf{Psychedelics as Pharmacological $\iota$ Reduction.}
 Psilocybin, LSD, and DMT reduce the brain's predictive-processing precision weighting---the neurological implementation of inhibition---allowing bottom-up signals to overwhelm top-down priors. The characteristic psychedelic report (the world is alive, objects are communicating, patterns have meaning, everything is connected) is precisely the phenomenology of low $\iota$. The therapeutic effects on depression may be partly explained as breaking the lock on high-$\iota$ rigidity, restoring $\iota$ flexibility. This is testable: if psychedelic therapy works by restoring $\iota$ flexibility (not merely by reducing $\iota$), then post-therapy patients should show improved transitions in \emph{both} directions---toward low $\iota$ and back to high $\iota$ when tasks demand it.
-\end{hypothesis}
 
-\begin{hypothesis}[Contemplative Practice as Trained $\iota$ Modulation]
+\textbf{Contemplative Practice as Trained $\iota$ Modulation.}
 Advanced meditators report perceptual shifts consistent with voluntary $\iota$ reduction: objects perceived as more vivid, boundaries between self and world becoming porous, the world experienced as inherently meaningful. The difference from psychotic $\iota$ reduction is that contemplative $\iota$ reduction is voluntary, contextual, and reversible---the meditator can return to high-$\iota$ functioning for tasks that require it. This is $\iota$ flexibility as a trained skill, which is precisely what the pathology framework predicts should be therapeutic.
-\end{hypothesis}
 
 \begin{experiment}
 \textbf{Unified $\iota$ modulation test.} The four hypotheses above (flow, awe, psychedelics, contemplative practice) all predict $\iota$ reduction via different mechanisms. A unified experiment would measure the same $\iota$ proxy battery (agency attribution rate, affect-perception coupling, teleological reasoning bias; see Part II) before and after each condition:
@@ -978,9 +930,8 @@ The idea that philosophies are affect-management strategies has historical prece
 My contribution here is formalizing these insights in terms of affect-space policies with measurable targets.
 \end{historical}
 
-\begin{definition}[Philosophical Affect Policy]
+\textbf{Philosophical Affect Policy.}
 A \emph{philosophical affect policy} is a function $\phi: \mathcal{A} \to \R$ specifying the desirability of affect states, plus a strategy for achieving high-$\phi$ states.
-\end{definition}
 
 \begin{example}[Stoicism]
 \textbf{Historical context}: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.
@@ -1093,14 +1044,13 @@ Each of these traditions also operates at a characteristic $\iota$ configuration
 
 Modern information technology constitutes affect infrastructure at civilizational scale, shaping the experiential structure of billions.
 
-\begin{definition}[Affect Infrastructure]
+\textbf{Affect Infrastructure.}
 \emph{Affect infrastructure} is any technological system that shapes affect distributions across populations:
 \begin{equation}
 \mathcal{T}: \{p_i(\mathbf{a})\}_{i \in \text{population}} \mapsto \{p'_i(\mathbf{a})\}_{i \in \text{population}}
 \end{equation}
-\end{definition}
 
-\begin{proposition}[Social Media Affect Signature]
+\textbf{Social Media Affect Signature.}
 Social media platforms systematically produce:
 \begin{itemize}
 \item \textbf{Arousal spikes}: Notification-driven, intermittent reinforcement creates high-variance arousal
@@ -1112,23 +1062,20 @@ Social media platforms systematically produce:
 \mathbf{a}_{\text{social media}} \approx (\text{variable }\valence, \text{high }\arousal, \text{low }\intinfo, \text{low }\effrank, \text{high }\mathcal{CF}, \text{high }\mathcal{SM})
 \end{equation}
 This is structurally similar to the anxiety motif.
-\end{proposition}
 
-\begin{proposition}[Algorithmic Feed Dynamics]
+\textbf{Algorithmic Feed Dynamics.}
 Engagement-optimizing algorithms create affect selection pressure:
 \begin{equation}
 \text{Content}_{\text{selected}} = \argmax_c \E[\text{engagement} | c] \approx \argmax_c |\Delta\valence(c)| + \Delta\arousal(c)
 \end{equation}
 Content that maximizes engagement is content that maximizes valence magnitude (outrage or delight) and arousal. This selects for affectively extreme content, shifting population affect distributions toward the tails.
-\end{proposition}
 
-\begin{definition}[Technology-Mediated Affect Drift]
+\textbf{Technology-Mediated Affect Drift.}
 The systematic shift in population affect distributions due to technology:
 \begin{equation}
 \frac{d\bar{\mathbf{a}}}{dt} = \sum_{\mathcal{T} \in \text{technologies}} w_\mathcal{T} \cdot \nabla_\mathbf{a} \mathcal{T}(\mathbf{a})
 \end{equation}
 where $w_\mathcal{T}$ is the population-weighted usage of technology $\mathcal{T}$.
-\end{definition}
 
 % === FIGURE: DIGITAL FRAGMENTATION ===
 % SEARCH: (A) Chaotic desktop with dozens of open windows, tabs, notifications---the visual
@@ -1164,7 +1111,7 @@ where $w_\mathcal{T}$ is the population-weighted usage of technology $\mathcal{T
 
 \subsection{Quantitative Frameworks}
 
-\begin{definition}[Affect Impact Assessment]
+\textbf{Affect Impact Assessment.}
 For any intervention $\mathcal{I}$, the \emph{affect impact} is:
 \begin{equation}
 \text{Impact}(\mathcal{I}) = \E_{p'}[\mathbf{a}] - \E_p[\mathbf{a}]
@@ -1173,17 +1120,15 @@ with component-wise analysis:
 \begin{equation}
 \text{Impact}(\mathcal{I}) = (\Delta\bar{\valence}, \Delta\bar{\arousal}, \Delta\bar{\intinfo}, \Delta\bar{\effrank}, \Delta\overline{\mathcal{CF}}, \Delta\overline{\mathcal{SM}})
 \end{equation}
-\end{definition}
 
-\begin{definition}[Flourishing Score]
+\textbf{Flourishing Score.}
 A weighted aggregate of affect dimensions aligned with human flourishing:
 \begin{equation}
 \mathcal{F}(\mathbf{a}) = \alpha_1 \valence + \alpha_2 \intinfo + \alpha_3 \effrank - \alpha_4 (\mathcal{SM} - \mathcal{SM}_{\text{optimal}})^2 - \alpha_5 |\arousal - \arousal_{\text{optimal}}| + \alpha_6 \cdot \text{flex}(\iota)
 \end{equation}
 where $\text{flex}(\iota) = \frac{1}{\tau}\int_0^\tau |\dot{\iota}(t)| \, dt$ measures the time-averaged $\iota$ flexibility---the capacity to modulate the inhibition coefficient in response to context. The weights $\{\alpha_i\}$ encode normative commitments about what constitutes flourishing. The $\iota$ flexibility term deserves special emphasis: a system with positive valence, high integration, and high rank but \emph{rigid} $\iota$ is fragile. The $\iota$ rigidity hypothesis (Psychopathology section) predicts that flexibility in perceptual configuration is itself a core component of wellbeing, independent of where on the $\iota$ spectrum one happens to be.
-\end{definition}
 
-\begin{proposition}[Comparative Analysis]
+\textbf{Comparative Analysis.}
 Using standardized affect measurement, we can compare:
 \begin{itemize}
 \item Meditation retreat vs.\ social media usage (expected: opposite affect signatures)
@@ -1191,7 +1136,6 @@ Using standardized affect measurement, we can compare:
 \item Educational approaches (lecture vs.\ discussion: counterfactual weight differences)
 \item Urban vs.\ rural environments (arousal and integration differences)
 \end{itemize}
-\end{proposition}
 
 %==============================================================================
 \section{The Synthetic Verification}
