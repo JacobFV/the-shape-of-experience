@@ -6,7 +6,6 @@ import {
   integer,
   primaryKey,
   uuid,
-  real,
 } from 'drizzle-orm/pg-core';
 
 // ── Auth tables (Auth.js / Drizzle adapter format) ──────────────────────────
@@ -71,25 +70,14 @@ export const annotations = pgTable('annotations', {
     .references(() => users.id, { onDelete: 'cascade' }),
   slug: text('slug').notNull(),
   nearestHeadingId: text('nearest_heading_id').default(''),
+  nearestHeadingText: text('nearest_heading_text').default(''),
   prefix: text('prefix').default(''),
-  exact: text('exact').notNull(),
+  exact: text('exact').default(''),
   suffix: text('suffix').default(''),
   note: text('note').default(''),
   isPublished: boolean('is_published').default(false),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
   updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow(),
-});
-
-export const bookmarks = pgTable('bookmarks', {
-  id: uuid('id').defaultRandom().primaryKey(),
-  userId: uuid('user_id')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  slug: text('slug').notNull(),
-  scrollY: real('scroll_y').default(0),
-  nearestHeadingId: text('nearest_heading_id').default(''),
-  nearestHeadingText: text('nearest_heading_text').default(''),
-  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
 });
 
 export const userSettings = pgTable('user_settings', {

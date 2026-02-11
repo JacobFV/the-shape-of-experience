@@ -7,6 +7,7 @@ export interface Annotation {
   id: string;
   slug: string;
   nearestHeadingId: string;
+  nearestHeadingText: string;
   prefix: string;
   exact: string;
   suffix: string;
@@ -20,6 +21,7 @@ function getLocalHighlights(slug: string): Annotation[] {
     const raw = JSON.parse(localStorage.getItem(`soe-highlights-${slug}`) || '[]');
     return raw.map((h: Record<string, unknown>) => ({
       ...h,
+      nearestHeadingText: (h.nearestHeadingText as string) || '',
       note: (h.note as string) || '',
       isPublished: false,
     }));
@@ -32,11 +34,54 @@ function saveLocalHighlights(slug: string, items: Annotation[]) {
   localStorage.setItem(`soe-highlights-${slug}`, JSON.stringify(items));
 }
 
+/** Migrate soe-bookmarks into per-slug soe-highlights-* keys (one-time) */
+function migrateLocalBookmarks() {
+  try {
+    const raw = localStorage.getItem('soe-bookmarks');
+    if (!raw) return;
+    const bookmarks: Array<Record<string, unknown>> = JSON.parse(raw);
+    if (!Array.isArray(bookmarks) || bookmarks.length === 0) {
+      localStorage.removeItem('soe-bookmarks');
+      return;
+    }
+    // Group by slug and merge into existing highlights
+    const bySlug: Record<string, Annotation[]> = {};
+    for (const bm of bookmarks) {
+      const slug = (bm.slug as string) || '';
+      if (!slug) continue;
+      (bySlug[slug] ||= []).push({
+        id: (bm.id as string) || `bm-${Date.now()}-${Math.random()}`,
+        slug,
+        nearestHeadingId: (bm.nearestHeadingId as string) || '',
+        nearestHeadingText: (bm.nearestHeadingText as string) || '',
+        prefix: '',
+        exact: '',
+        suffix: '',
+        note: '',
+        isPublished: false,
+        createdAt: (bm.createdAt as number) || Date.now(),
+      });
+    }
+    for (const [slug, items] of Object.entries(bySlug)) {
+      const existing = getLocalHighlights(slug);
+      saveLocalHighlights(slug, [...existing, ...items]);
+    }
+    localStorage.removeItem('soe-bookmarks');
+  } catch {
+    // Best-effort migration
+  }
+}
+
 export function useAnnotations(slug?: string) {
   const { data: session, status } = useSession();
   const isAuth = status === 'authenticated' && !!session?.user;
   const [items, setItems] = useState<Annotation[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // One-time localStorage migration
+  useEffect(() => {
+    migrateLocalBookmarks();
+  }, []);
 
   // Fetch annotations
   useEffect(() => {
@@ -56,6 +101,21 @@ export function useAnnotations(slug?: string) {
       setItems(getLocalHighlights(slug));
       setLoading(false);
     } else {
+      // Unauthenticated, no slug — gather all local highlights across slugs
+      const all: Annotation[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key?.startsWith('soe-highlights-')) {
+          const s = key.replace('soe-highlights-', '');
+          try {
+            const raw = JSON.parse(localStorage.getItem(key) || '[]');
+            for (const h of raw) {
+              all.push({ ...h, slug: s, nearestHeadingText: h.nearestHeadingText || '', note: h.note || '', isPublished: false });
+            }
+          } catch { /* ignore */ }
+        }
+      }
+      setItems(all);
       setLoading(false);
     }
   }, [slug, isAuth, status]);
@@ -80,11 +140,11 @@ export function useAnnotations(slug?: string) {
         };
         const updated = [...items, annotation];
         setItems(updated);
-        if (slug) saveLocalHighlights(slug, updated);
+        if (data.slug) saveLocalHighlights(data.slug, updated.filter((a) => a.slug === data.slug));
         return annotation;
       }
     },
-    [isAuth, items, slug]
+    [isAuth, items]
   );
 
   const update = useCallback(

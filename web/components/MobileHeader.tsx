@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useMobileUI } from '../lib/MobileUIContext';
-import { useBookmarks, type Bookmark } from '../lib/hooks/useBookmarks';
+import { useAnnotations, type Annotation } from '../lib/hooks/useAnnotations';
 import { useProfileImage } from '../lib/hooks/useProfileImage';
 import SearchOverlay from './SearchOverlay';
 
@@ -62,12 +62,15 @@ export default function MobileHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
-  const { items: bookmarks, add: addBookmarkApi, remove: removeBookmark } = useBookmarks();
+  const { items: allAnnotations, add: addAnnotation, remove: removeAnnotation } = useAnnotations();
   const profileImage = useProfileImage();
 
   const slug = pathname.replace(/^\//, '');
   const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
   const isReadingPage = READING_SLUGS.includes(slug);
+
+  // Bookmarks are annotations with empty exact
+  const bookmarks = allAnnotations.filter((a) => !a.exact);
 
   useEffect(() => {
     setTheme(getTheme());
@@ -112,17 +115,20 @@ export default function MobileHeader() {
   const addBookmark = useCallback(async () => {
     if (!isReadingPage) return;
     const heading = findNearestHeading();
-    await addBookmarkApi({
+    await addAnnotation({
       slug,
-      scrollY: window.scrollY,
       nearestHeadingId: heading.id,
       nearestHeadingText: heading.text,
+      prefix: '',
+      exact: '',
+      suffix: '',
+      note: '',
     });
     setJustBookmarked(true);
     setTimeout(() => setJustBookmarked(false), 1500);
-  }, [isReadingPage, slug, addBookmarkApi]);
+  }, [isReadingPage, slug, addAnnotation]);
 
-  const navigateToBookmark = useCallback((bm: Bookmark) => {
+  const navigateToBookmark = useCallback((bm: Annotation) => {
     setMenuOpen(false);
     setShowBookmarks(false);
     if (bm.slug === slug) {
@@ -130,18 +136,16 @@ export default function MobileHeader() {
         const el = document.getElementById(bm.nearestHeadingId);
         if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
       }
-      window.scrollTo({ top: bm.scrollY, behavior: 'smooth' });
     } else {
       if (bm.nearestHeadingId) {
         router.push(`/${bm.slug}#${bm.nearestHeadingId}`);
       } else {
         router.push(`/${bm.slug}`);
-        setTimeout(() => window.scrollTo(0, bm.scrollY), 500);
       }
     }
   }, [slug, router]);
 
-  const grouped: Record<string, Bookmark[]> = {};
+  const grouped: Record<string, Annotation[]> = {};
   for (const bm of bookmarks) (grouped[bm.slug] ||= []).push(bm);
 
   return (
@@ -289,7 +293,7 @@ export default function MobileHeader() {
                               </button>
                               <button
                                 className="mobile-menu-bm-remove"
-                                onClick={() => removeBookmark(bm.id)}
+                                onClick={() => removeAnnotation(bm.id)}
                                 aria-label="Remove bookmark"
                               >&times;</button>
                             </div>

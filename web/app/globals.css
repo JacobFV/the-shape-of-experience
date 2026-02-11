@@ -407,6 +407,7 @@ body {
   overflow-wrap: break-word;
   word-wrap: break-word;
   max-width: 100%;
+  -webkit-touch-callout: none;
 }
 
 .chapter-content h1 {

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useAnnotations, Annotation } from '@/lib/hooks/useAnnotations';
-import { useBookmarks } from '@/lib/hooks/useBookmarks';
 
 function findNearestHeadingId(node: Node): string {
   let el: Element | null = node.nodeType === Node.TEXT_NODE ? node.parentElement : node as Element;
@@ -63,7 +62,6 @@ function findTextInContent(root: HTMLElement, highlight: { prefix: string; exact
 
 export default function HighlightManager({ slug }: { slug: string }) {
   const { items: annotations, add, update, remove, isAuth } = useAnnotations(slug);
-  const { add: addBookmark } = useBookmarks();
   const [popover, setPopover] = useState<{ x: number; y: number; range: Range } | null>(null);
   const [editPopover, setEditPopover] = useState<{ x: number; y: number; annotation: Annotation } | null>(null);
   const [noteEditor, setNoteEditor] = useState<{ id: string; note: string } | null>(null);
@@ -105,8 +103,9 @@ export default function HighlightManager({ slug }: { slug: string }) {
       parent?.normalize();
     });
 
-    // Re-apply all annotations
+    // Re-apply all annotations (skip bookmarks — they have no text to highlight)
     for (const a of annotations) {
+      if (!a.exact) continue;
       const range = findTextInContent(content as HTMLElement, a);
       if (range) {
         const mark = document.createElement('mark');
@@ -197,27 +196,8 @@ export default function HighlightManager({ slug }: { slug: string }) {
     setParaPlayBtn(null);
   }, [paraPlayBtn]);
 
-  // Handle text selection
-  const onMouseUp = useCallback((e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    if (target.closest('.highlight-popover') || target.closest('.reader-toolbar') || target.closest('.highlight-note-inline')) return;
-
-    // Click on existing highlight
-    if (target.closest('mark.user-highlight')) {
-      const mark = target.closest('mark.user-highlight') as HTMLElement;
-      const id = mark.dataset.highlightId;
-      if (id) {
-        const annotation = annotations.find((a) => a.id === id);
-        if (annotation) {
-          setEditPopover({ x: e.clientX, y: e.clientY - 40, annotation });
-          setPopover(null);
-          return;
-        }
-      }
-    }
-
-    setEditPopover(null);
-
+  // Show popover for current selection
+  const showSelectionPopover = useCallback(() => {
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed || !sel.rangeCount) {
       setPopover(null);
@@ -240,19 +220,64 @@ export default function HighlightManager({ slug }: { slug: string }) {
       y: rect.top - 44,
       range: range.cloneRange(),
     });
-  }, [annotations]);
+  }, []);
+
+  // Handle text selection (desktop)
+  const onMouseUp = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('.highlight-popover') || target.closest('.reader-toolbar') || target.closest('.highlight-note-inline')) return;
+
+    // Click on existing highlight
+    if (target.closest('mark.user-highlight')) {
+      const mark = target.closest('mark.user-highlight') as HTMLElement;
+      const id = mark.dataset.highlightId;
+      if (id) {
+        const annotation = annotations.find((a) => a.id === id);
+        if (annotation) {
+          setEditPopover({ x: e.clientX, y: e.clientY - 40, annotation });
+          setPopover(null);
+          return;
+        }
+      }
+    }
+
+    setEditPopover(null);
+    showSelectionPopover();
+  }, [annotations, showSelectionPopover]);
+
+  // Handle text selection (mobile) — selectionchange fires when iOS selection handles move
+  const selectionChangeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    const onSelectionChange = () => {
+      if (selectionChangeTimer.current) clearTimeout(selectionChangeTimer.current);
+      selectionChangeTimer.current = setTimeout(() => {
+        // Only act on touch devices — mouseup handles desktop
+        if (!('ontouchstart' in window)) return;
+        const sel = window.getSelection();
+        if (!sel || sel.isCollapsed) {
+          setPopover(null);
+          return;
+        }
+        showSelectionPopover();
+      }, 300);
+    };
+
+    document.addEventListener('selectionchange', onSelectionChange);
     document.addEventListener('mouseup', onMouseUp);
-    return () => document.removeEventListener('mouseup', onMouseUp);
-  }, [onMouseUp]);
+    return () => {
+      document.removeEventListener('selectionchange', onSelectionChange);
+      document.removeEventListener('mouseup', onMouseUp);
+      if (selectionChangeTimer.current) clearTimeout(selectionChangeTimer.current);
+    };
+  }, [onMouseUp, showSelectionPopover]);
 
   // Actions
   const doHighlight = useCallback(async () => {
     if (!popover) return;
     const ctx = getContext(popover.range);
     const headingId = findNearestHeadingId(popover.range.startContainer);
-    await add({ slug, nearestHeadingId: headingId, ...ctx, note: '' });
+    await add({ slug, nearestHeadingId: headingId, nearestHeadingText: '', ...ctx, note: '' });
     window.getSelection()?.removeAllRanges();
     setPopover(null);
   }, [popover, slug, add]);
@@ -261,7 +286,7 @@ export default function HighlightManager({ slug }: { slug: string }) {
     if (!popover) return;
     const ctx = getContext(popover.range);
     const headingId = findNearestHeadingId(popover.range.startContainer);
-    const annotation = await add({ slug, nearestHeadingId: headingId, ...ctx, note: '' });
+    const annotation = await add({ slug, nearestHeadingId: headingId, nearestHeadingText: '', ...ctx, note: '' });
     window.getSelection()?.removeAllRanges();
     setPopover(null);
     setNoteEditor({ id: annotation.id, note: '' });
@@ -270,26 +295,48 @@ export default function HighlightManager({ slug }: { slug: string }) {
   const doBookmark = useCallback(async () => {
     if (!popover) return;
     const heading = findNearestHeading();
-    await addBookmark({
+    await add({
       slug,
-      scrollY: window.scrollY,
       nearestHeadingId: heading.id,
       nearestHeadingText: heading.text,
+      prefix: '',
+      exact: '',
+      suffix: '',
+      note: '',
     });
     window.getSelection()?.removeAllRanges();
     setPopover(null);
     showToast('Bookmarked');
-  }, [popover, slug, addBookmark, showToast]);
+  }, [popover, slug, add, showToast]);
 
-  const doShare = useCallback(() => {
+  const doShare = useCallback(async () => {
     if (!popover) return;
     const ctx = getContext(popover.range);
-    const params = [ctx.prefix, ctx.exact, ctx.suffix].map(encodeURIComponent).join('~');
-    const url = `${window.location.origin}/${slug}?hl=${params}`;
-    navigator.clipboard.writeText(url).catch(() => {});
+    const hlParams = [ctx.prefix, ctx.exact, ctx.suffix].map(encodeURIComponent).join('~');
+    // Build text fragment: #:~:text=[prefix-,]exact[,-suffix]
+    const fragParts: string[] = [];
+    if (ctx.prefix) fragParts.push(encodeURIComponent(ctx.prefix.slice(-20)) + '-,');
+    fragParts.push(encodeURIComponent(ctx.exact));
+    if (ctx.suffix) fragParts.push(',-' + encodeURIComponent(ctx.suffix.slice(0, 20)));
+    const url = `${window.location.origin}/${slug}?hl=${hlParams}#:~:text=${fragParts.join('')}`;
+
     window.getSelection()?.removeAllRanges();
     setPopover(null);
-    showToast('Link copied');
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ url, title: document.title });
+      } catch (e: unknown) {
+        // User cancelled or share failed — copy as fallback
+        if (e instanceof Error && e.name !== 'AbortError') {
+          navigator.clipboard.writeText(url).catch(() => {});
+          showToast('Link copied');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(url).catch(() => {});
+      showToast('Link copied');
+    }
   }, [popover, slug, showToast]);
 
   const doPlay = useCallback(() => {

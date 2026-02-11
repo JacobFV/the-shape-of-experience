@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { annotations, bookmarks } from '@/lib/db/schema';
+import { annotations } from '@/lib/db/schema';
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -11,41 +11,45 @@ export async function POST(req: Request) {
 
   const db = getDb();
   const body = await req.json();
-  let annotationsCount = 0;
-  let bookmarksCount = 0;
+  let count = 0;
 
-  // Import highlights (annotations without notes)
+  // Import highlights/annotations
   if (body.highlights && Array.isArray(body.highlights)) {
     for (const h of body.highlights) {
       await db.insert(annotations).values({
         userId: session.user.id,
         slug: h.slug,
         nearestHeadingId: h.nearestHeadingId || '',
+        nearestHeadingText: h.nearestHeadingText || '',
         prefix: h.prefix || '',
-        exact: h.exact,
+        exact: h.exact || '',
         suffix: h.suffix || '',
-        note: '',
+        note: h.note || '',
         isPublished: false,
       });
-      annotationsCount++;
+      count++;
     }
   }
 
-  // Import bookmarks
+  // Backward compat: old clients may still send bookmarks separately
   if (body.bookmarks && Array.isArray(body.bookmarks)) {
     for (const bm of body.bookmarks) {
-      await db.insert(bookmarks).values({
+      await db.insert(annotations).values({
         userId: session.user.id,
         slug: bm.slug,
-        scrollY: bm.scrollY || 0,
         nearestHeadingId: bm.nearestHeadingId || '',
         nearestHeadingText: bm.nearestHeadingText || '',
+        prefix: '',
+        exact: '',
+        suffix: '',
+        note: '',
+        isPublished: false,
       });
-      bookmarksCount++;
+      count++;
     }
   }
 
   return NextResponse.json({
-    imported: { annotations: annotationsCount, bookmarks: bookmarksCount },
+    imported: { annotations: count },
   });
 }

@@ -14,9 +14,24 @@ export default function SyncOnLogin() {
     const syncKey = `soe-synced-${session.user.id}`;
     if (localStorage.getItem(syncKey)) return;
 
-    // Collect all localStorage highlights
+    // Collect all localStorage highlights (includes migrated bookmarks)
     const highlights: Array<Record<string, unknown>> = [];
-    const bookmarks: Array<Record<string, unknown>> = [];
+
+    // Migrate any remaining soe-bookmarks into highlights format
+    try {
+      const bms = JSON.parse(localStorage.getItem('soe-bookmarks') || '[]');
+      for (const bm of bms) {
+        highlights.push({
+          slug: bm.slug,
+          nearestHeadingId: bm.nearestHeadingId || '',
+          nearestHeadingText: bm.nearestHeadingText || '',
+          prefix: '',
+          exact: '',
+          suffix: '',
+          note: '',
+        });
+      }
+    } catch { /* ignore */ }
 
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -33,12 +48,7 @@ export default function SyncOnLogin() {
       }
     }
 
-    try {
-      const bms = JSON.parse(localStorage.getItem('soe-bookmarks') || '[]');
-      bookmarks.push(...bms);
-    } catch { /* ignore */ }
-
-    if (highlights.length === 0 && bookmarks.length === 0) {
+    if (highlights.length === 0) {
       localStorage.setItem(syncKey, '1');
       return;
     }
@@ -47,7 +57,7 @@ export default function SyncOnLogin() {
     fetch('/api/sync', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ highlights, bookmarks }),
+      body: JSON.stringify({ highlights }),
     })
       .then((r) => r.json())
       .then((data) => {
@@ -62,7 +72,7 @@ export default function SyncOnLogin() {
         }
         localStorage.removeItem('soe-bookmarks');
 
-        const total = (data.imported?.annotations || 0) + (data.imported?.bookmarks || 0);
+        const total = data.imported?.annotations || 0;
         if (total > 0) {
           setToast(`Synced ${total} items to your account`);
           setTimeout(() => setToast(null), 3000);

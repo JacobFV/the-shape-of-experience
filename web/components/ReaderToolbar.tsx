@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import UserButton from './UserButton';
 import SearchOverlay from './SearchOverlay';
+import { useAnnotations, type Annotation } from '@/lib/hooks/useAnnotations';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -17,15 +18,6 @@ const FONT_SIZES: Record<FontSize, number> = {
 
 const FONT_ORDER: FontSize[] = ['small', 'medium', 'large', 'xlarge'];
 
-interface Bookmark {
-  id: string;
-  slug: string;
-  scrollY: number;
-  nearestHeadingId: string;
-  nearestHeadingText: string;
-  createdAt: number;
-}
-
 function getTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'system';
   return (localStorage.getItem('soe-theme') as ThemeMode) || 'system';
@@ -34,13 +26,6 @@ function getTheme(): ThemeMode {
 function getFontSize(): FontSize {
   if (typeof window === 'undefined') return 'medium';
   return (localStorage.getItem('soe-font-size') as FontSize) || 'medium';
-}
-
-function getBookmarks(): Bookmark[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    return JSON.parse(localStorage.getItem('soe-bookmarks') || '[]');
-  } catch { return []; }
 }
 
 function applyTheme(mode: ThemeMode) {
@@ -74,7 +59,6 @@ export default function ReaderToolbar() {
   const router = useRouter();
   const [theme, setTheme] = useState<ThemeMode>('system');
   const [fontSize, setFontSize] = useState<FontSize>('medium');
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [justBookmarked, setJustBookmarked] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -84,6 +68,11 @@ export default function ReaderToolbar() {
   const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
   const isReadingPage = READING_SLUGS.includes(slug);
 
+  const { items: allAnnotations, add: addAnnotation, remove: removeAnnotation } = useAnnotations();
+
+  // Bookmarks are annotations with empty exact
+  const bookmarks = allAnnotations.filter((a) => !a.exact);
+
   useEffect(() => {
     const t = getTheme();
     const f = getFontSize();
@@ -91,7 +80,6 @@ export default function ReaderToolbar() {
     setFontSize(f);
     applyTheme(t);
     applyFontSize(f);
-    setBookmarks(getBookmarks());
 
     // Listen for system theme changes
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -131,31 +119,23 @@ export default function ReaderToolbar() {
     applyFontSize(next);
   }, [fontSize]);
 
-  const addBookmark = useCallback(() => {
+  const addBookmark = useCallback(async () => {
     if (!isReadingPage) return;
     const heading = findNearestHeading();
-    const bm: Bookmark = {
-      id: `bm-${Date.now()}`,
+    await addAnnotation({
       slug,
-      scrollY: window.scrollY,
       nearestHeadingId: heading.id,
       nearestHeadingText: heading.text,
-      createdAt: Date.now(),
-    };
-    const updated = [...getBookmarks(), bm];
-    localStorage.setItem('soe-bookmarks', JSON.stringify(updated));
-    setBookmarks(updated);
+      prefix: '',
+      exact: '',
+      suffix: '',
+      note: '',
+    });
     setJustBookmarked(true);
     setTimeout(() => setJustBookmarked(false), 1500);
-  }, [isReadingPage, slug]);
+  }, [isReadingPage, slug, addAnnotation]);
 
-  const removeBookmark = useCallback((id: string) => {
-    const updated = getBookmarks().filter(b => b.id !== id);
-    localStorage.setItem('soe-bookmarks', JSON.stringify(updated));
-    setBookmarks(updated);
-  }, []);
-
-  const navigateToBookmark = useCallback((bm: Bookmark) => {
+  const navigateToBookmark = useCallback((bm: Annotation) => {
     setShowBookmarks(false);
     if (bm.slug === slug) {
       // Same page — just scroll
@@ -163,21 +143,18 @@ export default function ReaderToolbar() {
         const el = document.getElementById(bm.nearestHeadingId);
         if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
       }
-      window.scrollTo({ top: bm.scrollY, behavior: 'smooth' });
     } else {
-      // Navigate then scroll (via hash or scrollY)
+      // Navigate then scroll (via hash)
       if (bm.nearestHeadingId) {
         router.push(`/${bm.slug}#${bm.nearestHeadingId}`);
       } else {
         router.push(`/${bm.slug}`);
-        // Scroll after navigation
-        setTimeout(() => window.scrollTo(0, bm.scrollY), 500);
       }
     }
   }, [slug, router]);
 
   // Group bookmarks by slug
-  const grouped: Record<string, Bookmark[]> = {};
+  const grouped: Record<string, Annotation[]> = {};
   for (const bm of bookmarks) {
     (grouped[bm.slug] ||= []).push(bm);
   }
@@ -282,7 +259,7 @@ export default function ReaderToolbar() {
                       </button>
                       <button
                         className="reader-toolbar-menu-remove"
-                        onClick={() => removeBookmark(bm.id)}
+                        onClick={() => removeAnnotation(bm.id)}
                         title="Remove bookmark"
                         aria-label="Remove bookmark"
                       >
