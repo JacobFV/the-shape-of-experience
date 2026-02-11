@@ -16,18 +16,6 @@ function findNearestHeadingId(node: Node): string {
   return '';
 }
 
-function findNearestHeading(): { id: string; text: string } {
-  const headings = document.querySelectorAll<HTMLElement>('.chapter-content h1[id], .chapter-content h2[id], .chapter-content h3[id]');
-  const scrollY = window.scrollY + 100;
-  let nearest = { id: '', text: 'Start of chapter' };
-  for (const h of headings) {
-    if (h.offsetTop <= scrollY) {
-      nearest = { id: h.id, text: h.textContent?.trim() || '' };
-    }
-  }
-  return nearest;
-}
-
 function getContext(range: Range): { prefix: string; exact: string; suffix: string } {
   const exact = range.toString();
   const container = range.startContainer;
@@ -292,23 +280,6 @@ export default function HighlightManager({ slug }: { slug: string }) {
     setNoteEditor({ id: annotation.id, note: '' });
   }, [popover, slug, add]);
 
-  const doBookmark = useCallback(async () => {
-    if (!popover) return;
-    const heading = findNearestHeading();
-    await add({
-      slug,
-      nearestHeadingId: heading.id,
-      nearestHeadingText: heading.text,
-      prefix: '',
-      exact: '',
-      suffix: '',
-      note: '',
-    });
-    window.getSelection()?.removeAllRanges();
-    setPopover(null);
-    showToast('Bookmarked');
-  }, [popover, slug, add, showToast]);
-
   const doShare = useCallback(async () => {
     if (!popover) return;
     const ctx = getContext(popover.range);
@@ -384,7 +355,6 @@ export default function HighlightManager({ slug }: { slug: string }) {
         >
           <button onClick={doHighlight}>Highlight</button>
           <button onClick={doNote}>Note</button>
-          <button onClick={doBookmark}>Bookmark</button>
           <button onClick={doShare}>Share</button>
           {audioAvailable && <button onClick={doPlay}>Play</button>}
         </div>
