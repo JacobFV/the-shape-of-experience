@@ -5,6 +5,7 @@ import './globals.css';
 import Sidebar from './Sidebar';
 import ReadingProgress from '../components/ReadingProgress';
 import ReaderToolbar from '../components/ReaderToolbar';
+import MobileHeader from '../components/MobileHeader';
 import Providers from '../components/Providers';
 import SyncOnLogin from '../components/SyncOnLogin';
 
@@ -92,6 +93,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <ReadingProgress />
+          <MobileHeader />
           <Sidebar sectionData={sectionData} />
           <ReaderToolbar />
           <SyncOnLogin />

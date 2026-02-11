@@ -1,19 +1,24 @@
-name: Deploy (Full Media)
+name: Generate Audio
 
 on:
   workflow_dispatch:
     inputs:
       tts_provider:
-        description: 'TTS provider (deepgram or openai)'
+        description: 'TTS provider'
         required: false
         default: 'deepgram'
         type: choice
         options:
           - deepgram
           - openai
+      deploy:
+        description: 'Deploy after generating audio'
+        required: false
+        default: true
+        type: boolean
 
 jobs:
-  deploy:
+  generate:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
@@ -44,7 +49,6 @@ jobs:
       - name: Convert LaTeX to HTML
         run: cd web && npm run convert
 
-      # Cache audio files keyed on generated HTML content hash
       - name: Hash generated HTML for cache key
         id: html-hash
         run: |
@@ -52,12 +56,11 @@ jobs:
           echo "hash=$HASH" >> "$GITHUB_OUTPUT"
 
       - name: Restore audio cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: web/public/audio
           key: audio-${{ steps.html-hash.outputs.hash }}
-          restore-keys: |
-            audio-
+          restore-keys: audio-
 
       - name: Generate audio
         run: cd web && npm run generate-audio
@@ -66,10 +69,16 @@ jobs:
           DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      # Future: add video generation, image rendering, etc. here
+      - name: Save audio cache
+        uses: actions/cache/save@v4
+        with:
+          path: web/public/audio
+          key: audio-${{ steps.html-hash.outputs.hash }}
 
-      - name: Build project
+      - name: Build
+        if: ${{ inputs.deploy }}
         run: cd web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy to Vercel
+      - name: Deploy
+        if: ${{ inputs.deploy }}
         run: cd web && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

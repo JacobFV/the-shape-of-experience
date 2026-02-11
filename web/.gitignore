@@ -9,3 +9,5 @@ next-env.d.ts
 .env.local
 public/audio/
 .tikz-tmp/
+drizzle/
+.env*.local

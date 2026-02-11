@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      run_migrations:
+        description: 'Run drizzle-kit push to sync DB schema'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   deploy:
@@ -37,8 +43,29 @@ jobs:
       - name: Convert LaTeX to HTML
         run: cd web && npm run convert
 
-      - name: Build project
+      # Restore cached audio if a previous generate-audio run produced it
+      - name: Hash generated HTML for cache key
+        id: html-hash
+        run: |
+          HASH=$(find web/generated/chapters -name '*.html' -exec sha256sum {} \; | sort | sha256sum | cut -d' ' -f1)
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+
+      - name: Restore audio cache
+        uses: actions/cache/restore@v4
+        with:
+          path: web/public/audio
+          key: audio-${{ steps.html-hash.outputs.hash }}
+          restore-keys: audio-
+
+      - name: Build
         run: cd web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy to Vercel
+      - name: Deploy
         run: cd web && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Run migrations
+        if: ${{ inputs.run_migrations == true }}
+        run: |
+          cd web
+          set -a && source .vercel/.env.production.local && set +a
+          npx drizzle-kit push --force

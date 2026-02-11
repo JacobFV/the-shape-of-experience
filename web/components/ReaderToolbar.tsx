@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import UserButton from './UserButton';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -208,6 +209,9 @@ export default function ReaderToolbar() {
       >
         A<span className="font-size-plus">+</span>
       </button>
+
+      {/* User */}
+      <UserButton />
 
       {/* Bookmark */}
       <div className="reader-toolbar-dropdown" ref={dropdownRef}>

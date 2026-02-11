@@ -1,30 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useCallback, useState } from 'react';
-
-interface HighlightData {
-  id: string;
-  nearestHeadingId: string;
-  prefix: string;
-  exact: string;
-  suffix: string;
-  createdAt: number;
-}
-
-function getHighlights(slug: string): HighlightData[] {
-  try {
-    return JSON.parse(localStorage.getItem(`soe-highlights-${slug}`) || '[]');
-  } catch { return []; }
-}
-
-function saveHighlights(slug: string, highlights: HighlightData[]) {
-  localStorage.setItem(`soe-highlights-${slug}`, JSON.stringify(highlights));
-}
+import { useAnnotations, Annotation } from '@/lib/hooks/useAnnotations';
+import { useBookmarks } from '@/lib/hooks/useBookmarks';
 
 function findNearestHeadingId(node: Node): string {
   let el: Element | null = node.nodeType === Node.TEXT_NODE ? node.parentElement : node as Element;
   while (el) {
-    // Walk backward through siblings to find a heading
     let prev: Element | null = el.previousElementSibling;
     while (prev) {
       if (/^H[1-3]$/i.test(prev.tagName) && prev.id) return prev.id;
@@ -33,6 +15,18 @@ function findNearestHeadingId(node: Node): string {
     el = el.parentElement;
   }
   return '';
+}
+
+function findNearestHeading(): { id: string; text: string } {
+  const headings = document.querySelectorAll<HTMLElement>('.chapter-content h1[id], .chapter-content h2[id], .chapter-content h3[id]');
+  const scrollY = window.scrollY + 100;
+  let nearest = { id: '', text: 'Start of chapter' };
+  for (const h of headings) {
+    if (h.offsetTop <= scrollY) {
+      nearest = { id: h.id, text: h.textContent?.trim() || '' };
+    }
+  }
+  return nearest;
 }
 
 function getContext(range: Range): { prefix: string; exact: string; suffix: string } {
@@ -46,10 +40,7 @@ function getContext(range: Range): { prefix: string; exact: string; suffix: stri
   return { prefix, exact, suffix };
 }
 
-function findTextInContent(
-  root: HTMLElement,
-  highlight: HighlightData
-): Range | null {
+function findTextInContent(root: HTMLElement, highlight: { prefix: string; exact: string }): Range | null {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   let node: Text | null;
   while ((node = walker.nextNode() as Text | null)) {
@@ -57,7 +48,6 @@ function findTextInContent(
     const idx = text.indexOf(highlight.exact);
     if (idx === -1) continue;
 
-    // Verify context if available
     if (highlight.prefix) {
       const before = text.slice(Math.max(0, idx - 30), idx);
       if (!before.includes(highlight.prefix.slice(-10))) continue;
@@ -72,52 +62,110 @@ function findTextInContent(
 }
 
 export default function HighlightManager({ slug }: { slug: string }) {
+  const { items: annotations, add, update, remove, isAuth } = useAnnotations(slug);
+  const { add: addBookmark } = useBookmarks();
   const [popover, setPopover] = useState<{ x: number; y: number; range: Range } | null>(null);
-  const [removePopover, setRemovePopover] = useState<{ x: number; y: number; id: string } | null>(null);
+  const [editPopover, setEditPopover] = useState<{ x: number; y: number; annotation: Annotation } | null>(null);
+  const [noteEditor, setNoteEditor] = useState<{ id: string; note: string } | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
   const restoredRef = useRef(false);
+  const prevAnnotationsRef = useRef<string>('');
 
-  // Restore highlights on mount
+  // Show toast briefly
+  const showToast = useCallback((msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2000);
+  }, []);
+
+  // Restore highlights when annotations change
+  useEffect(() => {
+    const content = document.querySelector('.chapter-content');
+    if (!content) return;
+
+    const key = JSON.stringify(annotations.map((a) => a.id).sort());
+    if (key === prevAnnotationsRef.current) return;
+    prevAnnotationsRef.current = key;
+
+    // Clear existing marks
+    content.querySelectorAll('mark.user-highlight').forEach((mark) => {
+      const parent = mark.parentNode;
+      while (mark.firstChild) parent?.insertBefore(mark.firstChild, mark);
+      parent?.removeChild(mark);
+      parent?.normalize();
+    });
+
+    // Re-apply all annotations
+    for (const a of annotations) {
+      const range = findTextInContent(content as HTMLElement, a);
+      if (range) {
+        const mark = document.createElement('mark');
+        mark.className = `user-highlight${a.note ? ' has-note' : ''}`;
+        mark.dataset.highlightId = a.id;
+        if (a.isPublished) {
+          mark.dataset.published = 'true';
+        }
+        try {
+          range.surroundContents(mark);
+        } catch { /* partial overlap */ }
+      }
+    }
+  }, [annotations]);
+
+  // Restore from URL ?hl= param on mount
   useEffect(() => {
     if (restoredRef.current) return;
     restoredRef.current = true;
 
-    // Small delay so DOM is ready
-    const timer = setTimeout(() => {
+    const params = new URLSearchParams(window.location.search);
+    const hlParam = params.get('hl');
+    if (!hlParam) return;
+
+    const [prefix, exact, suffix] = hlParam.split('~').map(decodeURIComponent);
+    if (!exact) return;
+
+    setTimeout(() => {
       const content = document.querySelector('.chapter-content');
       if (!content) return;
-      const highlights = getHighlights(slug);
-      for (const h of highlights) {
-        const range = findTextInContent(content as HTMLElement, h);
-        if (range) {
-          const mark = document.createElement('mark');
-          mark.className = 'user-highlight';
-          mark.dataset.highlightId = h.id;
-          try { range.surroundContents(mark); } catch { /* partial overlap */ }
-        }
+      const range = findTextInContent(content as HTMLElement, { prefix: prefix || '', exact });
+      if (range) {
+        const mark = document.createElement('mark');
+        mark.className = 'user-highlight';
+        mark.style.animation = 'flash-highlight 2s ease';
+        try {
+          range.surroundContents(mark);
+          mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => {
+            const parent = mark.parentNode;
+            while (mark.firstChild) parent?.insertBefore(mark.firstChild, mark);
+            parent?.removeChild(mark);
+            parent?.normalize();
+          }, 3000);
+        } catch { /* partial overlap */ }
       }
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [slug]);
+    }, 800);
+  }, []);
 
   // Handle text selection
   const onMouseUp = useCallback((e: MouseEvent) => {
-    // Ignore clicks on existing marks/popover
     const target = e.target as HTMLElement;
-    if (target.closest('.highlight-popover') || target.closest('.reader-toolbar')) return;
+    if (target.closest('.highlight-popover') || target.closest('.reader-toolbar') || target.closest('.highlight-note-inline')) return;
 
-    // Check for click on existing highlight
+    // Click on existing highlight
     if (target.closest('mark.user-highlight')) {
       const mark = target.closest('mark.user-highlight') as HTMLElement;
       const id = mark.dataset.highlightId;
       if (id) {
-        setRemovePopover({ x: e.clientX, y: e.clientY - 40, id });
-        setPopover(null);
-        return;
+        const annotation = annotations.find((a) => a.id === id);
+        if (annotation) {
+          setEditPopover({ x: e.clientX, y: e.clientY - 40, annotation });
+          setPopover(null);
+          return;
+        }
       }
     }
 
-    setRemovePopover(null);
+    setEditPopover(null);
 
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed || !sel.rangeCount) {
@@ -129,7 +177,6 @@ export default function HighlightManager({ slug }: { slug: string }) {
     const text = range.toString().trim();
     if (text.length < 3) { setPopover(null); return; }
 
-    // Only for chapter content
     const content = document.querySelector('.chapter-content');
     if (!content || !content.contains(range.commonAncestorContainer)) {
       setPopover(null);
@@ -142,72 +189,87 @@ export default function HighlightManager({ slug }: { slug: string }) {
       y: rect.top - 44,
       range: range.cloneRange(),
     });
-  }, []);
+  }, [annotations]);
 
   useEffect(() => {
     document.addEventListener('mouseup', onMouseUp);
     return () => document.removeEventListener('mouseup', onMouseUp);
   }, [onMouseUp]);
 
-  const doHighlight = useCallback(() => {
+  // Actions
+  const doHighlight = useCallback(async () => {
     if (!popover) return;
-    const range = popover.range;
-    const ctx = getContext(range);
-    const headingId = findNearestHeadingId(range.startContainer);
-
-    const h: HighlightData = {
-      id: `hl-${Date.now()}`,
-      nearestHeadingId: headingId,
-      prefix: ctx.prefix,
-      exact: ctx.exact,
-      suffix: ctx.suffix,
-      createdAt: Date.now(),
-    };
-
-    // Apply mark
-    const mark = document.createElement('mark');
-    mark.className = 'user-highlight';
-    mark.dataset.highlightId = h.id;
-    try { range.surroundContents(mark); } catch { /* partial overlap */ }
-
-    // Save
-    const highlights = [...getHighlights(slug), h];
-    saveHighlights(slug, highlights);
-
+    const ctx = getContext(popover.range);
+    const headingId = findNearestHeadingId(popover.range.startContainer);
+    await add({ slug, nearestHeadingId: headingId, ...ctx, note: '' });
     window.getSelection()?.removeAllRanges();
     setPopover(null);
-  }, [popover, slug]);
+  }, [popover, slug, add]);
+
+  const doNote = useCallback(async () => {
+    if (!popover) return;
+    const ctx = getContext(popover.range);
+    const headingId = findNearestHeadingId(popover.range.startContainer);
+    const annotation = await add({ slug, nearestHeadingId: headingId, ...ctx, note: '' });
+    window.getSelection()?.removeAllRanges();
+    setPopover(null);
+    setNoteEditor({ id: annotation.id, note: '' });
+  }, [popover, slug, add]);
+
+  const doBookmark = useCallback(async () => {
+    if (!popover) return;
+    const heading = findNearestHeading();
+    await addBookmark({
+      slug,
+      scrollY: window.scrollY,
+      nearestHeadingId: heading.id,
+      nearestHeadingText: heading.text,
+    });
+    window.getSelection()?.removeAllRanges();
+    setPopover(null);
+    showToast('Bookmarked');
+  }, [popover, slug, addBookmark, showToast]);
 
   const doShare = useCallback(() => {
     if (!popover) return;
-    const text = popover.range.toString().trim();
-    // Text Fragments API
-    const encoded = encodeURIComponent(text.slice(0, 100));
-    const url = `${window.location.origin}/${slug}#:~:text=${encoded}`;
+    const ctx = getContext(popover.range);
+    const params = [ctx.prefix, ctx.exact, ctx.suffix].map(encodeURIComponent).join('~');
+    const url = `${window.location.origin}/${slug}?hl=${params}`;
     navigator.clipboard.writeText(url).catch(() => {});
     window.getSelection()?.removeAllRanges();
     setPopover(null);
-  }, [popover, slug]);
+    showToast('Link copied');
+  }, [popover, slug, showToast]);
 
-  const doRemoveHighlight = useCallback(() => {
-    if (!removePopover) return;
-    const { id } = removePopover;
-    // Remove mark from DOM
-    const mark = document.querySelector(`mark[data-highlight-id="${id}"]`);
-    if (mark) {
-      const parent = mark.parentNode;
-      while (mark.firstChild) parent?.insertBefore(mark.firstChild, mark);
-      parent?.removeChild(mark);
-      parent?.normalize();
-    }
-    // Remove from storage
-    const highlights = getHighlights(slug).filter(h => h.id !== id);
-    saveHighlights(slug, highlights);
-    setRemovePopover(null);
-  }, [removePopover, slug]);
+  const doEditNote = useCallback(() => {
+    if (!editPopover) return;
+    setNoteEditor({ id: editPopover.annotation.id, note: editPopover.annotation.note });
+    setEditPopover(null);
+  }, [editPopover]);
+
+  const doTogglePublish = useCallback(async () => {
+    if (!editPopover || !isAuth) return;
+    const a = editPopover.annotation;
+    await update(a.id, { isPublished: !a.isPublished });
+    setEditPopover(null);
+    showToast(a.isPublished ? 'Unpublished' : 'Published');
+  }, [editPopover, isAuth, update, showToast]);
+
+  const doRemove = useCallback(async () => {
+    if (!editPopover) return;
+    await remove(editPopover.annotation.id);
+    setEditPopover(null);
+  }, [editPopover, remove]);
+
+  const saveNote = useCallback(async () => {
+    if (!noteEditor) return;
+    await update(noteEditor.id, { note: noteEditor.note });
+    setNoteEditor(null);
+  }, [noteEditor, update]);
 
   return (
     <>
+      {/* Selection popover */}
       {popover && (
         <div
           ref={popoverRef}
@@ -215,17 +277,49 @@ export default function HighlightManager({ slug }: { slug: string }) {
           style={{ left: popover.x, top: popover.y }}
         >
           <button onClick={doHighlight}>Highlight</button>
+          <button onClick={doNote}>Note</button>
+          <button onClick={doBookmark}>Bookmark</button>
           <button onClick={doShare}>Share</button>
         </div>
       )}
-      {removePopover && (
+
+      {/* Existing highlight popover */}
+      {editPopover && (
         <div
           className="highlight-popover"
-          style={{ left: removePopover.x, top: removePopover.y }}
+          style={{ left: editPopover.x, top: editPopover.y }}
         >
-          <button onClick={doRemoveHighlight}>Remove</button>
+          <button onClick={doEditNote}>
+            {editPopover.annotation.note ? 'Edit Note' : 'Add Note'}
+          </button>
+          {isAuth && (
+            <button onClick={doTogglePublish}>
+              {editPopover.annotation.isPublished ? 'Unpublish' : 'Publish'}
+            </button>
+          )}
+          <button onClick={doRemove}>Remove</button>
         </div>
       )}
+
+      {/* Inline note editor */}
+      {noteEditor && (
+        <div className="highlight-note-inline" style={{ maxWidth: 'var(--content-width)' }}>
+          <textarea
+            className="highlight-note-textarea"
+            value={noteEditor.note}
+            onChange={(e) => setNoteEditor({ ...noteEditor, note: e.target.value })}
+            placeholder="Write your note..."
+            autoFocus
+          />
+          <div className="highlight-note-actions">
+            <button onClick={saveNote}>Save</button>
+            <button onClick={() => setNoteEditor(null)}>Cancel</button>
+          </div>
+        </div>
+      )}
+
+      {/* Toast */}
+      {toast && <div className="toast">{toast}</div>}
     </>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useMobileUI } from '../lib/MobileUIContext';
 
 export interface AudioSection {
   id: string;
@@ -29,8 +30,31 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
   const [duration, setDuration] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [everPlayed, setEverPlayed] = useState(false);
+  const { setAudioAvailable, setAudioStarted, audioToggleRef } = useMobileUI();
 
   const current = sections[currentIndex];
+
+  // Register with mobile UI context
+  useEffect(() => {
+    setAudioAvailable(true);
+    document.body.dataset.hasAudio = 'true';
+    return () => {
+      setAudioAvailable(false);
+      setAudioStarted(false);
+      delete document.body.dataset.hasAudio;
+      delete document.body.dataset.audioStarted;
+      audioToggleRef.current = null;
+    };
+  }, [setAudioAvailable, setAudioStarted, audioToggleRef]);
+
+  // Sync everPlayed to body data attribute
+  useEffect(() => {
+    if (everPlayed) {
+      document.body.dataset.audioStarted = 'true';
+      setAudioStarted(true);
+    }
+  }, [everPlayed, setAudioStarted]);
 
   // Restore saved position on mount
   useEffect(() => {
@@ -169,9 +193,18 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+      audio.play().then(() => {
+        setIsPlaying(true);
+        if (!everPlayed) setEverPlayed(true);
+      }).catch(() => {});
     }
-  }, [isPlaying, loaded, current?.audioUrl]);
+  }, [isPlaying, loaded, current?.audioUrl, everPlayed]);
+
+  // Register toggle function for mobile header
+  useEffect(() => {
+    audioToggleRef.current = togglePlay;
+    return () => { audioToggleRef.current = null; };
+  }, [togglePlay, audioToggleRef]);
 
   const handleTimeUpdate = useCallback(() => {
     const audio = audioRef.current;
@@ -200,7 +233,7 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="audio-player">
+    <div className={`audio-player${everPlayed ? ' audio-started' : ''}${isPlaying ? ' audio-active' : ''}`}>
       <audio
         ref={audioRef}
         preload="none"

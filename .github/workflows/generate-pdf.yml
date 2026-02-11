@@ -1,0 +1,54 @@
+name: Generate PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'Commit updated PDF to repo'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-extra \
+            texlive-fonts-extra \
+            texlive-science \
+            texlive-pictures \
+            latexmk \
+            ghostscript
+
+      - name: Compile book PDF
+        run: |
+          cd book
+          latexmk -pdf -interaction=nonstopmode book.tex || true
+          # Retry once (common with LaTeX cross-references)
+          latexmk -pdf -interaction=nonstopmode book.tex
+
+      - name: Copy PDF to web
+        run: cp book/book.pdf web/public/book.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pdf
+          path: book/book.pdf
+
+      - name: Commit PDF
+        if: ${{ inputs.commit }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add web/public/book.pdf
+          git diff --cached --quiet || git commit -m "Update book.pdf [skip ci]"
+          git push
