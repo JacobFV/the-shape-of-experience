@@ -1611,6 +1611,8 @@ mark.user-highlight {
 
 .user-menu {
   min-width: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-menu-header {
@@ -1630,6 +1632,12 @@ mark.user-highlight {
   font-size: 0.7rem;
   color: var(--text-secondary);
   font-family: var(--font-sans);
+}
+
+.user-menu .reader-toolbar-menu-link {
+  flex: none;
+  display: block;
+  width: 100%;
 }
 
 .user-menu-signout {
@@ -2733,12 +2741,12 @@ mark.user-highlight .published-icon {
     align-items: center;
     gap: 12px;
     width: 100%;
-    padding: 11px 16px;
+    padding: 10px 16px;
     background: none;
     border: none;
     cursor: pointer;
     font-family: var(--font-sans);
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: var(--text);
     text-align: left;
     -webkit-tap-highlight-color: transparent;
@@ -2750,13 +2758,14 @@ mark.user-highlight .published-icon {
   }
 
   .mobile-menu-icon {
-    width: 20px;
+    width: 18px;
     text-align: center;
     flex-shrink: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--text-secondary);
   }
 
   /* --- Theme toggle in mobile menu --- */
@@ -2846,7 +2855,7 @@ mark.user-highlight .published-icon {
   .mobile-menu-divider {
     height: 0.5px;
     background: var(--border);
-    margin: 6px 16px;
+    margin: 4px 16px;
   }
 
   .mobile-menu-chevron {
@@ -2906,16 +2915,16 @@ mark.user-highlight .published-icon {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 16px 4px;
+    padding: 10px 16px 6px;
   }
 
   .mobile-menu-user-initial {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    font-size: 0.75rem;
+    background: var(--border);
+    color: var(--text-secondary);
+    font-size: 0.7rem;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -2927,7 +2936,7 @@ mark.user-highlight .published-icon {
   .mobile-menu-user-name {
     font-family: var(--font-sans);
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text);
   }
 
@@ -2938,7 +2947,8 @@ mark.user-highlight .published-icon {
   }
 
   .mobile-menu-signout {
-    color: #cc4444;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
   }
 
   /* --- Sidebar padding for header --- */
