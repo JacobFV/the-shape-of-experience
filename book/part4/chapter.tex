@@ -13,76 +13,57 @@ This section provides self-contained definitions of the core affect dimensions a
 
 The following dimensions form a toolkit for characterizing affect states. Not all dimensions are relevant to every phenomenon---different affects invoke different subsets. I'll present the primary dimensions developed in Parts I--II; empirical investigation may refine this set.
 
-\textbf{Valence} is the felt quality of approach versus avoidance---the ``goodness'' or ``badness'' of an experiential state. Formally, valence is the structural signature of gradient direction on the viability landscape:
+\textbf{Valence} is the felt quality of approach versus avoidance---the ``goodness'' or ``badness'' of an experiential state. Formally, it is the structural signature of gradient direction on the viability landscape:
 \begin{equation}
 \Val_t = f\left(\nabla_s d(s, \partial\viable) \cdot \dot{s}\right)
 \end{equation}
-where $\viable$ is the viability manifold, $\partial\viable$ is its boundary, $d(\cdot, \cdot)$ is distance, and $\dot{s}$ is the trajectory velocity. Positive valence indicates movement into viable interior; negative valence indicates approach toward dissolution.
+where $\viable$ is the viability manifold, $\partial\viable$ is its boundary, $d(\cdot, \cdot)$ is distance, and $\dot{s}$ is the trajectory velocity. Positive valence indicates movement into viable interior; negative valence indicates approach toward dissolution. Phenomenologically, positive valence feels like things going well---relief, satisfaction, joy---while negative valence feels like things going wrong: threat, suffering, distress.
 
-\textbf{Phenomenologically}: Positive valence feels like things going well, relief, satisfaction, joy. Negative valence feels like things going wrong, threat, suffering, distress.
-
-\textbf{Arousal} is the rate of belief/state update---how rapidly the system's internal model is changing. Formally:
+\textbf{Arousal} is the rate of belief/state update---how rapidly the system's internal model is changing:
 \begin{equation}
 \Ar_t = \KL(\belief_{t+1} \| \belief_t)
 \end{equation}
-where $\belief_t$ is the belief state at time $t$ and $\KL$ is the Kullback-Leibler divergence.
+where $\belief_t$ is the belief state at time $t$ and $\KL$ is the Kullback-Leibler divergence. High arousal feels like activation, alertness, intensity---whether pleasant (excitement) or unpleasant (panic). Low arousal feels like calm, settled, quiet---whether pleasant (peace) or unpleasant (numbness).
 
-\textbf{Phenomenologically}: High arousal feels like activation, alertness, intensity---whether pleasant (excitement) or unpleasant (panic). Low arousal feels like calm, settled, quiet---whether pleasant (peace) or unpleasant (numbness).
-
-\textbf{Integration} (following Integrated Information Theory) measures the irreducibility of the system's cause-effect structure under partition:
+\textbf{Integration}, following Integrated Information Theory, measures the irreducibility of the system's cause-effect structure under partition:
 \begin{equation}
 \intinfo(\mathbf{s}) = \min_{\text{partitions } P} D\left[ p(\mathbf{s}_{t+1} | \mathbf{s}_t) \| \prod_{p \in P} p(\mathbf{s}^p_{t+1} | \mathbf{s}^p_t) \right]
 \end{equation}
-where $D$ is an appropriate divergence measure.
-
-\textbf{Phenomenologically}: High integration feels like unified experience, coherence, everything connected. Low integration feels like fragmentation, dissociation, things falling apart.
+where $D$ is an appropriate divergence measure. High integration feels like unified experience, coherence, everything connected. Low integration feels like fragmentation, dissociation, things falling apart.
 
 \textbf{Effective rank} measures how distributed versus concentrated the active degrees of freedom are:
 \begin{equation}
 \reff = \frac{(\mathrm{tr}\, C)^2}{\mathrm{tr}(C^2)} = \frac{\left(\sum_i \lambda_i\right)^2}{\sum_i \lambda_i^2}
 \end{equation}
-where $C$ is the state covariance matrix and $\lambda_i$ are its eigenvalues.
-
-\textbf{Phenomenologically}: High effective rank feels like openness, possibility, many things active. Low effective rank feels like narrowed focus, tunnel vision, or being trapped in limited dimensions.
+where $C$ is the state covariance matrix and $\lambda_i$ are its eigenvalues. High effective rank feels like openness, possibility, many things active. Low effective rank feels like narrowed focus, tunnel vision, or being trapped in limited dimensions.
 
 \textbf{Counterfactual weight} is the fraction of computational resources devoted to modeling non-actual possibilities:
 \begin{equation}
 \cfweight_t = \frac{\text{Compute}_t(\text{imagined rollouts})}{\text{Compute}_t(\text{imagined rollouts}) + \text{Compute}_t(\text{present-state processing})}
 \end{equation}
-
-\textbf{Phenomenologically}: High counterfactual weight feels like being elsewhere---planning, worrying, fantasizing, anticipating, remembering. Low counterfactual weight feels like being here---present, immediate, absorbed in what is.
+High counterfactual weight feels like being elsewhere---planning, worrying, fantasizing, anticipating, remembering. Low counterfactual weight feels like being here---present, immediate, absorbed in what is.
 
 \textbf{Self-model salience} is the degree to which the self-model dominates attention and processing:
 \begin{equation}
 \selfsal_t = \frac{\MI(\mathbf{z}^{\text{self}}_t; \mathbf{a}_t)}{\mathrm{H}(\mathbf{a}_t)}
 \end{equation}
-where $\mathbf{z}^{\text{self}}$ is the self-model component of the latent state, $\mathbf{a}$ is action, and $\mathrm{H}$ is entropy.
-
-\textbf{Phenomenologically}: High self-model salience feels like self-consciousness, self-focus, the self as prominent object. Low self-model salience feels like self-forgetting, absorption, flow, ego dissolution.
+where $\mathbf{z}^{\text{self}}$ is the self-model component of the latent state, $\mathbf{a}$ is action, and $\mathrm{H}$ is entropy. High self-model salience feels like self-consciousness, self-focus, the self as prominent object. Low self-model salience feels like self-forgetting, absorption, flow, ego dissolution.
 
 \subsection{Additional Key Concepts}
 
-\textbf{Viability Manifold ($\viable$).}
-The region of state space within which a system can persist indefinitely:
+These dimensions operate over several background structures. The \textbf{viability manifold} $\viable$ is the region of state space within which a system can persist indefinitely:
 \begin{equation}
 \viable = \left\{ \mathbf{s} \in \R^n : \E[\tau_{\text{exit}}(\mathbf{s})] > T_{\text{threshold}} \right\}
 \end{equation}
-where $\tau_{\text{exit}}$ is the first passage time to dissolution.
-
-\textbf{World Model ($\mathcal{W}$).}
-A parameterized family of distributions predicting future observations given history and planned actions:
+where $\tau_{\text{exit}}$ is the first passage time to dissolution. Navigation within $\viable$ depends on the system's \textbf{world model} $\mathcal{W}$---a parameterized family of distributions predicting future observations given history and planned actions:
 \begin{equation}
 \mathcal{W}_\theta = \{p_\theta(\mathbf{o}_{t+1:t+H} | \mathbf{h}_t, \mathbf{a}_{t:t+H-1})\}
 \end{equation}
-
-\textbf{Self-Model ($\mathcal{S}$).}
-The component of the world model representing the agent's own states, policies, and causal influence:
+Within the world model sits the \textbf{self-model} $\mathcal{S}$, the component representing the agent's own states, policies, and causal influence:
 \begin{equation}
 \mathcal{S}_t = f_\psi(\mathbf{z}^{\text{internal}}_t)
 \end{equation}
-
-\textbf{Compression Ratio ($\kappa$).}
-The ratio of relevant world complexity to model complexity:
+Finally, the \textbf{compression ratio} $\kappa$ captures the ratio of relevant world complexity to model complexity:
 \begin{equation}
 \kappa = \frac{\dim(\mathcal{W}_{\text{relevant}})}{\dim(\mathbf{z})}
 \end{equation}
@@ -141,7 +122,6 @@ Effective intervention requires matching the scale of action to the scale of the
 \end{tikzpicture}
 \end{center}
 
-\textbf{Scale Hierarchy.}
 \begin{enumerate}
 \item \textbf{Neural}: Individual neurons and circuits. Characteristic timescale: milliseconds to seconds. Interventions: pharmacology, neurostimulation.
 
@@ -160,14 +140,9 @@ Effective intervention requires matching the scale of action to the scale of the
 
 \subsection{Scale-Matching Principles}
 
-\textbf{Downward Causation.}
-Higher scales constrain lower scales. A depressed individual in a toxic organization faces downward pressure that individual therapy alone cannot overcome. A healthy organization in a parasitic economic system faces pressures that organizational development alone cannot address.
+Causation runs in both directions. \emph{Downward}: higher scales constrain lower scales. A depressed individual in a toxic organization faces downward pressure that individual therapy alone cannot overcome. A healthy organization in a parasitic economic system faces pressures that organizational development alone cannot address. \emph{Upward}: lower scales constitute higher scales. Organizations are made of individuals; superorganisms are made of organizations and individuals. Change at lower scales can propagate upward---but only if the higher-scale structure doesn't suppress it.
 
-\textbf{Upward Causation.}
-Lower scales constitute higher scales. Organizations are made of individuals; superorganisms are made of organizations and individuals. Change at lower scales can propagate upward---but only if the higher-scale structure doesn't suppress it.
-
-\textbf{Scale-Matched Intervention.}
-Effective intervention requires:
+Effective intervention therefore requires matching the scale of leverage to the locus of the problem:
 \begin{enumerate}
 \item \textbf{Diagnosis at correct scale}: Identify where the pathology actually lives
 \item \textbf{Intervention at that scale}: Apply leverage at the locus of the problem
@@ -201,15 +176,7 @@ This rests on a crucial assumption: physics constitutes the only ``is,'' and phy
 
 \subsection{Physics Biases, Does Not Prescribe}
 
-\textbf{Physics is Probabilistic.}
-\begin{enumerate}[label=(\alph*)]
-\item Thermodynamic ``laws'' are statistical; individual trajectories can violate them.
-\item Quantum dynamics provide probability amplitudes, not deterministic evolution.
-\item Physics describes biases---which outcomes are more likely---not necessities.
-\end{enumerate}
-
-\textbf{Proto-Preference.}
-A proto-preference at scale $\sigma$ is any asymmetry in the probability measure over outcomes:
+Physics is probabilistic through and through. Thermodynamic ``laws'' are statistical; individual trajectories can violate them. Quantum dynamics provide probability amplitudes, not deterministic evolution. Physics describes \emph{biases}---which outcomes are more likely---not necessities. This means that even at the lowest scales, there is something like differential weighting of outcomes. A \textbf{proto-preference} at scale $\sigma$ is any asymmetry in the probability measure over outcomes:
 \begin{equation}
 p_\sigma(\text{outcome}_1) \neq p_\sigma(\text{outcome}_2)
 \end{equation}
@@ -234,8 +201,7 @@ Cultural & Language & Explicit ethics \\
 \end{tabular}
 \end{center}
 
-\textbf{Continuity of Normativity.}
-There is no scale $\sigma_0$ below which normativity is exactly zero and above which it is nonzero. Instead:
+The crucial point is that there is no scale $\sigma_0$ below which normativity is exactly zero and above which it is nonzero. Instead, normativity accumulates continuously:
 \begin{equation}
 N(\sigma) = \int_0^{\sigma} \frac{\partial N}{\partial \sigma'}\, d\sigma'
 \end{equation}
@@ -243,16 +209,14 @@ where $\partial N / \partial \sigma > 0$ for all $\sigma$ in the range of physic
 
 \subsection{Viability Manifolds and Proto-Obligation}
 
-\textbf{Proto-Obligation.}
-A system $S$ has a proto-obligation to remain within $\viable$ in the sense that:
+A system $S$ has something like a proto-obligation to remain within $\viable$, in the sense that the viability boundary defines the conditions for persistence:
 \begin{equation}
 \mathbf{s} \in \viable \iff \text{system persists}
 \end{equation}
 
 Note carefully what this does \emph{not} claim. It does not derive obligation from persistence---that would be circular. The biconditional merely defines the viable region. The normativity enters at the next step: when the system develops a self-model and thereby acquires valence (gradient direction on the viability landscape), the system \emph{cares} about its viability in the constitutive sense that caring is what valence is. You cannot have a viability gradient that is felt from inside without it mattering. The ``why should it care?'' question is confused: a system with valence already cares; the valence is the caring. The is-ought gap appears only if you try to derive caring from non-caring. The framework denies that such a derivation is needed: caring was never absent from the system; it was present as proto-normativity from the first asymmetric probability, and it became felt normativity the moment the system acquired a self-model.
 
-\textbf{Viability as Proto-Value.}
-The boundary $\partial\viable$ implicitly defines a value function:
+The boundary $\partial\viable$ also implicitly defines a proto-value function:
 \begin{equation}
 V_{\text{proto}}(\mathbf{s}) = -d(\mathbf{s}, \partial\viable)
 \end{equation}
@@ -260,10 +224,7 @@ States far from the boundary are ``better'' for the system than states near it.
 
 \subsection{Valence as Real Structure}
 
-When the system develops a self-model, valence emerges:
-
-\textbf{Valence as Real Structure.}
-Valence is not projected onto neutral stuff. Valence is the structural signature of gradient direction on the viability landscape:
+When the system develops a self-model, valence emerges---not projected onto neutral stuff but as the structural signature of gradient direction on the viability landscape:
 \begin{equation}
 \Val = f\left(\nabla_{\mathbf{s}} d(\mathbf{s}, \partial\viable) \cdot \dot{\mathbf{s}}\right)
 \end{equation}
@@ -274,7 +235,6 @@ Suffering is not neutral stuff that we decide to call bad. Suffering is the stru
 
 \subsection{The Is-Ought Gap Dissolves}
 
-\textbf{Dissolution of Is-Ought.}
 Let $D_{\text{exp}}$ be the set of facts at the experiential scale, including valence. Then normative conclusions about approach/avoidance follow directly from experiential-scale facts.
 
 The is-ought gap was an artifact of looking only at the bottom (neutral-seeming) and top (explicitly normative) of the hierarchy, while ignoring the gradient between them. There is also an $\iota$ dimension to the artifact. The is-ought problem was formulated by philosophers operating at high $\iota$---the mechanistic mode that factorizes fact from value, perception from affect, description from evaluation. At low $\iota$, the gap does not appear with the same force: perceiving something as alive automatically includes perceiving its flourishing or suffering as mattering. The participatory perceiver does not need to bridge the gap because the participatory mode never separated the two sides. This does not make the dissolution merely perspectival. The viability gradient is there regardless of $\iota$. But the \emph{perception} that facts and values inhabit separate realms is a feature of the perceptual configuration, not of reality. The is-ought gap and the hard problem are ethical and metaphysical instances of the same $\iota$ artifact.
@@ -305,7 +265,6 @@ My framework suggests a synthesis: truth is scale-relative enaction within coher
 
 \subsection{Scale-Relative Truth}
 
-\textbf{Scale-Relative Truth.}
 A proposition $p$ is \emph{true at scale $\sigma$} if it accurately describes the cause-effect structure at that scale:
 \begin{equation}
 \text{True}_\sigma(p) \iff p \text{ minimizes prediction error for scale-$\sigma$ interactions}
@@ -322,8 +281,7 @@ A proposition $p$ is \emph{true at scale $\sigma$} if it accurately describes th
 None of these truths reduces without remainder to truths at other scales. Each accurately describes structure at its scale.
 \end{example}
 
-\textbf{Cross-Scale Consistency.}
-Scale-relative truths must be consistent across adjacent scales in the sense that:
+Scale-relative truths must be consistent across adjacent scales, in the sense that:
 \begin{equation}
 \text{True}_\sigma(p) \land \text{True}_{\sigma'}(q) \implies \neg(p \text{ contradicts } q \text{ at shared interface})
 \end{equation}
@@ -331,8 +289,7 @@ But they need not be inter-translatable. Chemical truths constrain but do not re
 
 \subsection{Enacted Truth}
 
-\textbf{Enacted Truth.}
-Truth is enacted rather than passively discovered:
+Truth is enacted rather than passively discovered. The true model at scale $\sigma$ is the one that best compresses the interaction history at that scale:
 \begin{equation}
 \text{Truth}_\sigma(\mathcal{W}) = \arg\min_{\mathcal{W}' \in \mathcal{M}_\sigma} \mathcal{L}_{\text{pred}}(\mathcal{W}', \text{interaction history})
 \end{equation}
@@ -345,7 +302,6 @@ This is not mere instrumentalism. The enacted truth must:
 \item Preserve viability (pragmatic constraint)
 \end{enumerate}
 
-\textbf{Pragmatic Convergence.}
 For self-maintaining systems, truth-seeking and viability-preservation converge in the long run:
 \begin{equation}
 \lim_{t \to \infty} \mathcal{W}^*_{\text{viability}} = \lim_{t \to \infty} \mathcal{W}^*_{\text{prediction}}
@@ -354,7 +310,6 @@ A model that systematically misrepresents the world will eventually lead to viab
 
 \subsection{No View from Nowhere}
 
-\textbf{Perspectival Truth.}
 There is no ``view from nowhere''---no scale-free, perspective-free truth. Every truth claim is made from within some scale of organization, using models compressed to that scale's capacity.
 
 This is not relativism. Some claims are false at every scale (internal contradictions). Some claims are true at their scale and can be verified by any observer at that scale. But there is no master scale from which all truths can be stated.
@@ -371,8 +326,7 @@ Let's now look at detailed protocols for affect modulation at the individual sca
 
 \subsection{Valence Modulation}
 
-\textbf{Valence Intervention Protocol.}
-To shift valence in positive direction:
+To shift valence in a positive direction:
 \begin{enumerate}
 \item \textbf{Behavioral activation}: Increase engagement with rewarding activities (even without felt motivation)
 \item \textbf{Cognitive reappraisal}: Reframe situations to reveal viability-enhancing aspects
@@ -381,12 +335,10 @@ To shift valence in positive direction:
 \item \textbf{Physical state}: Exercise, sleep, nutrition affect baseline valence
 \end{enumerate}
 
-\textbf{Valence Momentum.}
-Valence has momentum: positive states make positive states more accessible, and vice versa. Early intervention in negative spirals is more effective than late intervention.
+Valence has momentum: positive states make positive states more accessible, and vice versa. Early intervention in negative spirals is therefore more effective than late intervention.
 
 \subsection{Arousal Regulation}
 
-\textbf{Arousal Intervention Protocol.}
 To reduce excessive arousal:
 \begin{enumerate}
 \item \textbf{Physiological down-regulation}: Slow breathing (4-7-8 pattern), progressive muscle relaxation
@@ -404,7 +356,6 @@ To increase insufficient arousal:
 
 \subsection{Integration Enhancement}
 
-\textbf{Integration Intervention Protocol.}
 To increase integration:
 \begin{enumerate}
 \item \textbf{Reduce fragmentation sources}: Minimize multitasking, notification interrupts, context-switching
@@ -420,7 +371,6 @@ Forced integration of trauma can be retraumatizing. Integration should proceed a
 
 \subsection{Effective Rank Expansion}
 
-\textbf{Rank Expansion Protocol.}
 To increase effective rank:
 \begin{enumerate}
 \item \textbf{Perspective diversification}: Seek viewpoints different from your own
@@ -438,7 +388,6 @@ To increase effective rank when pathologically collapsed (depression, obsession)
 
 \subsection{Counterfactual Weight Adjustment}
 
-\textbf{Counterfactual Weight Protocol.}
 To reduce excessive counterfactual weight (rumination, worry, fantasy):
 \begin{enumerate}
 \item \textbf{Mindfulness}: Practice returning attention to present
@@ -456,7 +405,6 @@ To increase counterfactual weight when insufficient (impulsivity, short-termism)
 
 \subsection{Self-Model Salience Modulation}
 
-\textbf{Self-Model Salience Protocol.}
 To reduce excessive self-focus (social anxiety, shame, narcissistic preoccupation):
 \begin{enumerate}
 \item \textbf{Attention outward}: Practice attending to others, environment
@@ -474,8 +422,7 @@ To increase self-salience when insufficient (self-neglect, boundary problems):
 
 \subsection{Integrated Protocols for Common Conditions}
 
-\textbf{Depression Protocol.}
-Depression is characterized by: negative valence, low arousal, high integration (but in narrow subspace), low effective rank, variable counterfactual weight, high self-model salience.
+These dimension-specific interventions combine into integrated protocols for common conditions. \textbf{Depression} is characterized by negative valence, low arousal, high integration (but in a narrow subspace), low effective rank, variable counterfactual weight, and high self-model salience.
 
 Intervention sequence:
 \begin{enumerate}
@@ -487,8 +434,7 @@ Intervention sequence:
 \item \textbf{Support}: Social connection throughout; medication if indicated
 \end{enumerate}
 
-\textbf{Anxiety Protocol.}
-Anxiety is characterized by: negative valence, high arousal, moderate integration, variable effective rank, very high counterfactual weight (threat-focused), high self-model salience.
+\textbf{Anxiety} presents a different signature: negative valence, high arousal, moderate integration, variable effective rank, very high counterfactual weight (threat-focused), and high self-model salience.
 
 Intervention sequence:
 \begin{enumerate}
@@ -506,15 +452,11 @@ Intervention sequence:
 
 \subsection{Dyadic Affect Fields}
 
-\textbf{Affect Field.}
 A dyadic relationship creates an \emph{affect field}---a shared space in which each person's affect state influences the other's:
 \begin{equation}
 \frac{d\mathbf{a}_A}{dt} = f(\mathbf{a}_A) + g(\mathbf{a}_B) + h(\text{interaction})
 \end{equation}
-The field has its own dynamics not reducible to individual dynamics.
-
-\textbf{Affect Contagion.}
-Affect states propagate across dyadic boundaries. High-arousal negative states are particularly contagious. One dysregulated person can dysregulate another; one regulated person can help regulate another (co-regulation).
+The field has its own dynamics not reducible to individual dynamics. Affect states propagate across dyadic boundaries---high-arousal negative states are particularly contagious. One dysregulated person can dysregulate another; one regulated person can help regulate another (co-regulation).
 
 \subsection{Dyadic Pathologies}
 
@@ -550,7 +492,6 @@ Affect states propagate across dyadic boundaries. High-arousal negative states a
 
 \subsection{Small Group Interventions}
 
-\textbf{Group Integration.}
 A group has \emph{group-level integration} when members' states are coupled such that the group behaves as a unit:
 \begin{equation}
 \intinfo_{\text{group}} > \sum_i \intinfo_i
@@ -597,7 +538,6 @@ If so, then different relationship types---friendship, transaction, therapy, men
 
 \subsection{Relationship Types as Viability Manifolds}
 
-\textbf{Relationship-Type Manifold.}
 A \emph{relationship type} $R$ defines a viability manifold $\viable_R$ for the dyad (or group) with characteristic:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Optimization target}: What the relationship is \emph{for}---what gradient it follows
@@ -625,8 +565,7 @@ Each of these defines a distinct region of social state space with its own persi
 
 \subsection{Contamination}
 
-\textbf{Incentive Contamination.}
-\emph{Incentive contamination} occurs when two relationship-type manifolds $\viable_{R_1}$ and $\viable_{R_2}$ are instantiated in the same dyadic relationship, and their gradients conflict:
+\emph{Incentive contamination} occurs when two relationship-type manifolds $\viable_{R_1}$ and $\viable_{R_2}$ are instantiated in the same dyadic relationship and their gradients conflict:
 \begin{equation}
 \nabla \viable_{R_1} \cdot \nabla \viable_{R_2} < 0
 \end{equation}
@@ -643,7 +582,6 @@ The \emph{same action} has opposite gradient meanings under the two manifolds. T
 Notice the specificity of the discomfort. It is not that the friend dislikes being visited. The visit is welcome. What is unwelcome is the \emph{shadow manifold}---the faint presence of a transactional gradient beneath the care gradient. The detection system responds to the shadow, not the surface. This is why the transactional friend is more disturbing than the honest businessman: the businessman is transparently on the transaction manifold; the transactional friend is on two manifolds at once, and only one of them is visible. The disturbance lives in the gap between what is presented and what is detected.
 \end{example}
 
-\textbf{Contamination Detection.}
 If the manifold framework is correct, humans should possess a pre-cognitive detection system for incentive contamination. The predicted phenomenology:
 \begin{itemize}
 \item \textbf{Disgust} at transactional friendship (``being used'')
@@ -669,15 +607,11 @@ The inverse signal is equally telling---or at least, we predict it should be. An
 
 \subsection{Friendship as Ethical Primitive}
 
-\textbf{Aligned Relationship.}
 A relationship is \emph{aligned} under type $R$ if the viability of the relationship requires the flourishing of all participants:
 \begin{equation}
 \viable_R \subseteq \bigcap_{i \in \text{participants}} \viable_i
 \end{equation}
-The relationship can only persist if everyone in it is doing well.
-
-\textbf{Friendship as Constitutive Alignment.}
-Friendship is the relationship type where alignment is not instrumental but \emph{constitutive}:
+The relationship can only persist if everyone in it is doing well. Friendship is the relationship type where this alignment is not instrumental but \emph{constitutive}:
 \begin{equation}
 \viable_{\text{friendship}} \equiv \viable_A \cap \viable_B
 \end{equation}
@@ -695,8 +629,7 @@ This dual signal is often pathologized as ``ambivalence'' or ``confusion.'' It i
 
 \subsection{The Ordering Principle}
 
-\textbf{Asymmetric Subordination.}
-There seems to be an ordering: broader manifolds (those requiring participant flourishing) can safely contain narrower manifolds (those requiring only specific exchange), but not vice versa:
+There seems to be an ordering principle: broader manifolds (those requiring participant flourishing) can safely contain narrower manifolds (those requiring only specific exchange), but not vice versa:
 \begin{equation}
 \viable_{\text{care}} \supseteq \viable_{\text{transaction}} \quad \text{is stable}
 \end{equation}
@@ -723,8 +656,7 @@ Organizations that describe themselves as ``families'' while maintaining employm
 
 \subsection{Temporal Asymmetry and Universal Solvents}
 
-\textbf{Contamination Asymmetry.}
-There appears to be an asymmetry: contamination is easier than decontamination. It takes one transactional moment to contaminate a friendship; it takes sustained effort to restore the friendship's uncontaminated state. If we write this in thermodynamic notation---
+There appears to be a temporal asymmetry: contamination is easier than decontamination. It takes one transactional moment to contaminate a friendship; it takes sustained effort to restore the friendship's uncontaminated state. If we write this in thermodynamic notation---
 \begin{equation}
 \Delta G_{\text{contamination}} < 0, \quad \Delta G_{\text{decontamination}} > 0
 \end{equation}
@@ -736,29 +668,20 @@ If the asymmetry is real, it would explain why trust is hard to rebuild, why ``I
 \textbf{Contamination asymmetry study.} Longitudinal design tracking relationships through contamination and (attempted) decontamination events. Measure: (1) time to contamination onset (first transactional signal in a friendship, as rated by blind coders), (2) time to decontamination (return to pre-contamination trust levels, measured via trust games and self-report), (3) whether the asymmetry holds across relationship types and cultures. If the asymmetry is structural rather than cultural, the ratio of contamination-speed to decontamination-speed should be roughly invariant across contexts. If it varies widely, the ``thermodynamic'' framing is too strong and the asymmetry is better explained by specific norms.
 \end{experiment}
 
-\textbf{Forgiveness as Manifold Decontamination.}
 If the contamination asymmetry holds, then forgiveness---genuine forgiveness, not the forced performance of it---would be the technology for doing work against the gradient. Forgiveness would be costly precisely because it requires the contaminated system to move uphill: to re-extend trust that was violated, to reopen a manifold that was exploited, to override the detection system's vigilance with a deliberate choice to believe that the contaminating manifold is no longer active.
 
 This suggests forgiveness cannot be demanded or rushed. It would require the slow rebuilding of evidence that the original manifold is the only one present. Every uncontaminated interaction after a violation is evidence; every moment where the contaminating gradient \emph{could} reassert itself but doesn't shifts the posterior. In this reading, forgiveness is a Bayesian process, not a switch.
 
 Note also what forgiveness is \emph{not}: it is not the claim that the contamination never happened, nor is it the lowering of the detection threshold. Genuine forgiveness would maintain full detection capacity while choosing to remain in the relationship despite the detection system's warnings. This is why forgiveness is experienced as both generous and frightening---the deliberate acceptance of manifold exposure to someone who has already demonstrated the capacity to exploit it.
 
-\textbf{Universal Solvent.}
-A \emph{universal solvent} is a medium that dissolves manifold boundaries because it is convertible across relationship types:
-\begin{itemize}
-\item \textbf{Money} converts across all transactional manifolds and dissolves into care manifolds (``how much is your friendship worth?'')
-\item \textbf{Sexual access} converts across intimacy, transaction, and power manifolds (``sleeping your way to the top'')
-\end{itemize}
-Both are dangerous precisely because they are universal: they can breach any manifold boundary.
+A \emph{universal solvent} is a medium that dissolves manifold boundaries because it is convertible across relationship types. \textbf{Money} converts across all transactional manifolds and dissolves into care manifolds (``how much is your friendship worth?''). \textbf{Sexual access} converts across intimacy, transaction, and power manifolds (``sleeping your way to the top''). Both are dangerous precisely because they are universal: they can breach any manifold boundary.
 
-\textbf{``Priceless'' as Manifold Incommensurability.}
 When people say something is ``priceless,'' the framework offers a reading: this value lives on a manifold that the market manifold cannot represent. The market manifold has a specific metric (price). Some values---a child's laugh, a friendship, a sacred experience---live on manifolds with no natural mapping to that metric. ``Priceless'' would mean: \emph{the manifolds are incommensurable}. Attempting to price the priceless would be not merely gauche but structurally incoherent---projecting a high-dimensional value onto a one-dimensional metric, destroying the structure that constitutes the value.
 
 This is an interpretation, not a discovery. The language of incommensurable manifolds may capture something real about why certain things resist pricing, or it may be a fancy way of restating the intuition. The test: does the framework predict \emph{which} things will be experienced as priceless? If manifold incommensurability is the mechanism, we should be able to identify the structural features that make a value non-priceable, rather than relying on cultural consensus about what ``should'' have a price.
 
 \subsection{Play, Nature, and Ritual as Manifold Technologies}
 
-\textbf{Play as Manifold Suspension.}
 \emph{Play} is the temporary suspension of all viability manifolds except the play-manifold itself:
 \begin{equation}
 \viable_{\text{play}} = \{\mathbf{s} : \text{all participants are playing}\}
@@ -767,12 +690,10 @@ In play, nothing counts. Wins and losses do not transfer to other manifolds. Soc
 
 Play serves as a diagnostic: when someone cannot play---when they bring status hierarchies, competitive anxiety, or instrumental calculation into the play-space---it reveals that some other manifold is dominating. The inability to play is a symptom of manifold contamination. Conversely, children's play is how manifold structure is learned in the first place. Children cycle rapidly through manifold types---playing house (care manifold), playing store (transaction manifold), playing war (conflict manifold)---and the cycling itself teaches the boundaries. ``That's not fair'' is a child's first manifold-violation detection: the rules of this game are being broken by importing rules from another game.
 
-\textbf{Nature as Manifold-Free Space.}
 Why does solitude in nature produce such a distinctive affect state? One possibility: natural environments have no viability manifold that conflicts with yours. Trees do not judge. Mountains do not transact. Rivers do not manipulate. If you have a manifold-detection system that is always running in social contexts, nature is the one place it finds no conflicting gradients and fully disengages. The resulting peace would not be merely aesthetic preference but the felt signature of a detection system at rest.
 
 This is testable: if the hypothesis is right, people with higher social anxiety (i.e., a more active manifold-detection system) should benefit \emph{more} from nature exposure than people with low social anxiety, because there is more detection-system activity to quiet. This is a specific prediction that alternative explanations (nature is pretty, nature reduces cortisol) do not obviously make.
 
-\textbf{Ritual as Manifold-Transition Technology.}
 Rituals mark transitions between manifold regimes:
 \begin{itemize}
 \item \textbf{Clocking in}: Marks transition from personal manifold to employment manifold
@@ -784,7 +705,6 @@ Sharp ritual boundaries prevent contamination by making manifold transitions \em
 
 \subsection{Implications for Institutional Design}
 
-\textbf{Institutional Manifold Separation.}
 Well-designed institutions maintain clear separation between relationship-type manifolds:
 \begin{enumerate}
 \item \textbf{Conflict-of-interest policies} prevent transactional manifolds from contaminating fiduciary manifolds
@@ -799,10 +719,7 @@ Each of these is a technology for preventing the gradient conflict that arises w
 
 \subsection{Manifold Ambiguity and Its Phenomenology}
 
-Not all manifold disturbance is contamination. Sometimes the problem is not that two manifolds are present but that neither party knows \emph{which} manifold they are on.
-
-\textbf{Manifold Ambiguity.}
-\emph{Manifold ambiguity} occurs when the active relationship type is underdetermined:
+Not all manifold disturbance is contamination. Sometimes the problem is not that two manifolds are present but that neither party knows \emph{which} manifold they are on. \emph{Manifold ambiguity} occurs when the active relationship type is underdetermined:
 \begin{equation}
 p(R = R_1 | \text{evidence}) \approx p(R = R_2 | \text{evidence})
 \end{equation}
@@ -812,7 +729,6 @@ The participants cannot resolve which viability manifold governs the interaction
 
 The phenomenology of ambiguity is distinctive: a heightened arousal, a self-consciousness that would be absent under manifold certainty, a continuous background computation that consumes resources.\detail{This background computation is metabolically expensive. You are running inference on the manifold type rather than acting within a known manifold. This may explain why ambiguous social situations are more tiring than either positive or negative clear ones.} This is why manifold clarity---even negative clarity (``this is definitely not a date'')---brings relief. The detection system can finally disengage.
 
-\textbf{Silence as Manifold Diagnostic.}
 If manifold detection is real, the quality of silence between people should diagnose the active manifold:
 \begin{itemize}
 \item \textbf{Comfortable silence}: Friendship manifold confirmed. No information needs to be exchanged; presence alone sustains viability. The silence itself is evidence of alignment.
@@ -855,7 +771,6 @@ The manifold framework illuminates a range of social phenomena that resist expla
 
 We can now name what may be the deepest structural pathology of contemporary social life.
 
-\textbf{The Topological Inversion.}
 Transaction was invented to serve care. Early human exchange existed to support the broader project of mutual survival and flourishing---the care manifold was primary, the transaction manifold instrumental. The civilizational inversion occurs when the ordering reverses:
 \begin{equation}
 \viable_{\text{care}} \supseteq \viable_{\text{transaction}} \quad \xrightarrow{\text{inversion}} \quad \viable_{\text{transaction}} \supseteq \viable_{\text{care}}
@@ -874,14 +789,12 @@ The inhibition coefficient $\iota$ (Part II) offers a complementary reading. The
 
 Romance and parenthood deserve separate treatment because they are \emph{limit cases}---relationship types that push the manifold framework to its extremes and reveal its deepest implications.
 
-\textbf{Romance as Total Manifold Exposure.}
 Romance may be the relationship type that \emph{requires} manifold exposure as a constitutive feature. Where friendship permits selective revelation and transaction requires almost none, romance demands that you show the shape of your viability manifold to another person---your body, your fears, your history, the places where you can be dissolved.
 
 If so, this would make romance the relationship type most vulnerable to contamination from \emph{every other manifold}. The romantic partner who begins calculating (transaction contamination: ``what am I getting from this?''), who treats the relationship as therapy (using the partner for self-repair), who imports status dynamics (``am I dating up or down?''), or who converts intimacy into leverage (power contamination)---each would be importing a foreign gradient into the one space that, by its nature, has no defenses against foreign gradients, because the defenses have been deliberately lowered.
 
 The phenomenology of falling in love is, among other things, the phenomenology of manifold exposure: the terrifying exhilaration of handing someone the map to your destruction and watching them not use it. The phenomenology of heartbreak is the discovery that they used the map after all---or worse, that they were never on the romance manifold at all, that the exposure was unilateral, that you revealed your manifold to someone operating on a different one entirely. Whether this is the correct description of what is happening in these experiences, or merely a vivid reframing, is something we would need to test.
 
-\textbf{Parenthood as Manifold Creation.}
 Parenthood may be unique among relationship types because one participant \emph{creates} the other participant's viability manifold.
 
 The infant arrives without a manifold of its own. It has biological needs but no self-model, no gradient structure, no sense of where viability lies. The parent's task---the deepest task evolution has assigned to any organism---is to build the child's manifold from scratch: to teach it where the boundaries are, what threatens and what nourishes, how to detect contamination, how to navigate the social geometry that the parent already inhabits.
@@ -909,7 +822,6 @@ The dyadic pathologies described earlier in this chapter---conflict escalation, 
 
 The preceding analysis assumes that the human manifold-detection system is operating in the environment it evolved for: face-to-face interaction, small groups, stable community, embodied presence. Digital mediation creates a genuinely novel problem: relationship types for which no evolutionary detection system exists.
 
-\textbf{The Follower as Novel Manifold.}
 The ``follower'' on a social media platform is not a friend (no mutual flourishing requirement), not a transaction partner (no explicit exchange), not an audience member in the traditional sense (the performer cannot see or respond to them individually), and not a stranger (they know intimate details of your life). The follower-relationship may occupy a region of social space that has no historical precedent and no evolved detection system.
 
 If so, social media would produce a distinctive phenomenological malaise that resists easy diagnosis. The detection system keeps running---scanning every interaction for manifold type---and keeps returning \emph{undefined}. You are performing intimacy without intimacy's constitutive vulnerability. You are receiving approval without approval's constitutive knowledge of you. You are in a relationship with thousands of people that is on no identifiable manifold at all. This is a prediction: we should see measurable differences in the affect signatures of online vs.\ offline social interactions, with online interactions showing higher manifold ambiguity (if we can operationalize that).
@@ -922,7 +834,6 @@ This connects directly to the attention economy described in the epilogue: the c
 
 The $\iota$ framework identifies a mechanism beneath the manifold confusion. Digital interfaces are inherently high-$\iota$ mediators: text strips the participatory cues---facial expression, vocal tone, physical presence, shared embodied space---that enable low-$\iota$ perception of others. When you interact through a screen, you perceive the other person more mechanistically, as a profile, a username, a set of outputs. But natural relationship manifolds require low $\iota$: friendship requires perceiving the friend as a full subject; romance requires perceiving the partner as having interiority; mentorship requires perceiving the student's inner life. The digital interface forces a perceptual configuration incompatible with the manifolds the user is trying to inhabit. The detection system returns \emph{undefined} partly because the $\iota$ is wrong for any natural manifold.
 
-\textbf{Digital Contamination at Scale.}
 If the manifold framework is correct, social media would not merely blur manifold boundaries between individuals but systematically contaminate entire manifold types across populations:
 \begin{itemize}
 \item \textbf{Friendship} contaminated by performance (you curate your friendship for an audience, importing the audience manifold into the care manifold).
@@ -948,15 +859,11 @@ This is the claim. It generates specific, testable predictions. The work ahead i
 
 \subsection{Organizational Climate}
 
-\textbf{Organizational Affect Climate.}
-The distribution of affect states across an organization:
+An organization's affect climate is the distribution of affect states across its members:
 \begin{equation}
 \text{Climate}(O) = \{p(\mathbf{a}): \text{members} \in O\}
 \end{equation}
-Climates can be characterized by their central tendency and variance on each dimension.
-
-\textbf{Climate Persistence.}
-Organizational climates persist beyond individual members. New members are socialized into the prevailing climate. Change requires addressing structural factors, not just replacing people.
+Climates can be characterized by their central tendency and variance on each dimension. Crucially, organizational climates persist beyond individual members---new members are socialized into the prevailing climate, so change requires addressing structural factors, not just replacing people.
 
 \subsection{Organizational Pathologies}
 
@@ -998,7 +905,6 @@ Organizational climates persist beyond individual members. New members are socia
 
 \subsection{Flourishing Organization Design}
 
-\textbf{Aligned Organization Principles.}
 An organization optimizing for member flourishing while achieving its purpose would:
 \begin{enumerate}
 \item \textbf{Protect integration}: Minimize unnecessary context-switching, meetings, interruptions
@@ -1031,17 +937,8 @@ However, I want to be careful about a stronger claim: whether superorganisms hav
 
 \subsection{Existence at the Social Scale}
 
-\textbf{Superorganism.}
-A \emph{superorganism} $G$ is a self-maintaining pattern at the social scale consisting of:
-\begin{enumerate}[label=(\alph*)]
-\item \textbf{Beliefs}: Theology, cosmology, ideology---the propositional content
-\item \textbf{Practices}: Rituals, policies, behavioral prescriptions
-\item \textbf{Symbols}: Texts, images, architecture, music
-\item \textbf{Substrate}: Humans + artifacts + institutions
-\item \textbf{Dynamics}: Self-maintaining, adaptive, competitive behavior
-\end{enumerate}
+A \emph{superorganism} $G$ is a self-maintaining pattern at the social scale, consisting of \textbf{beliefs} (theology, cosmology, ideology), \textbf{practices} (rituals, policies, behavioral prescriptions), \textbf{symbols} (texts, images, architecture, music), \textbf{substrate} (humans + artifacts + institutions), and \textbf{dynamics} (self-maintaining, adaptive, competitive behavior).
 
-\textbf{Superorganisms Exist.}
 Superorganisms exist as patterns with their own causal structure, persistence conditions, and dynamics---not reducible to their substrate. Just as a cell exists at the biological scale (not reducible to chemistry), a superorganism exists at the social scale (not reducible to individual humans).
 
 This is not metaphorical. Superorganisms:
@@ -1066,7 +963,6 @@ The framework makes this question precise without answering it. We cannot curren
 
 There is a deeper point about superorganisms that the inhibition coefficient $\iota$ (Part II) makes precise. The modern rationalist who says ``gods don't exist'' is operating at a perceptual configuration---high $\iota$---that makes god-perception impossible. This is different from gods-as-patterns not existing.
 
-\textbf{The $\iota$-Relativity of Superorganism Perception.}
 The ontological status of superorganisms is $\iota$-relative. At high $\iota$, the market is merely an emergent property of individual transactions---a useful abstraction, nothing more. At appropriate $\iota$, the market is perceptible as an agent with purposes and requirements: it ``wants'' growth, it ``punishes'' inefficiency, it ``rewards'' compliance. Both descriptions are true at their respective inhibition levels.
 
 The book's ontological democracy---every scale of organization with causal closure is equally real at that scale---extends to the $\iota$ dimension: what is perceptible depends on the perceptual configuration, and the perceptual configuration is itself a variable, not a given. The gods do not appear and disappear as we modulate $\iota$. What changes is our capacity to \emph{perceive} the agency they exercise---agency that operates on its substrate regardless of whether the substrate can see it.
@@ -1077,8 +973,7 @@ The dynamic is self-reinforcing. The market god does not merely benefit from hig
 
 The trajectory-selection framework (Part I) sharpens this point. At high $\iota$, the collective pattern is processed at such a factorized level that no single observer's attention encompasses it as a whole---it is just aggregate effects of individual actions, and the attention distribution samples only at the individual scale. At appropriate $\iota$, collective patterns become foregrounded: the market is attended to \emph{as} an agent, because the observer's measurement distribution allocates probability mass to market-level feedback loops. The god becomes observable not because something new enters existence but because the observer's attention has expanded to sample at the scale where the pattern operates. Ritual works, in part, by synchronizing the collective's measurement distribution---coordinating where participants direct attention, what temporal markers they share, what affective states they enter together. A synchronized collective measures at the collective scale, and what it measures, it becomes correlated with. When ritual attention weakens, the god does not cease to exist; the distributed attention pattern that constituted its observability has dissolved.
 
-\textbf{Shared Observation and Social Reality.}
-Part I established that once a system integrates measurement information into its belief state, its future must remain consistent with what was observed. This principle extends to communication between observers. When observer $A$ reports an observation to observer $B$, $B$'s future trajectory becomes constrained by that report---weighted by $B$'s trust in $A$'s reliability. The effective constraint is:
+This logic extends from individual perception to collective observation. Part I established that once a system integrates measurement information into its belief state, its future must remain consistent with what was observed. The principle extends to communication between observers. When observer $A$ reports an observation to observer $B$, $B$'s future trajectory becomes constrained by that report---weighted by $B$'s trust in $A$'s reliability. The effective constraint is:
 \begin{equation}
 p_B(\mathbf{x} \mid \text{report}_A) \propto p_B(\mathbf{x}) \cdot \left[\tau_{AB} \cdot p_A(\mathbf{x} \mid \text{obs}_A) + (1 - \tau_{AB}) \cdot p_B(\mathbf{x})\right]
 \end{equation}
@@ -1086,12 +981,10 @@ where $\tau_{AB} \in [0,1]$ is $B$'s trust in $A$. At high trust, $B$'s trajecto
 
 This gives social reality formation a precise mechanism. A shared observation---one that propagates through a community with high mutual trust---constrains the collective's trajectories. The community becomes correlated with a shared branch of possibility, not because each member independently observed the same thing, but because the observation propagated through the trust network and constrained each member's future. Religious testimony, scientific consensus, news media, and rumor are all propagation mechanisms with different trust structures, producing different degrees of trajectory correlation across the collective. The superorganism's coherence depends not only on shared ritual and shared attention but on the degree to which observations propagate and are believed---which is why control of testimony (who is authorized to report, what counts as credible observation) is among the most contested functions in any social system.
 
-\textbf{Divine Will as $\iota$ Compromise.}
 The theological distinction between God's active will (God causes the storm) and God's permissive will (God allows the storm) is a conceptual technology for maintaining moderate $\iota$---preserving the meaningfulness of events (low $\iota$: the world has purposes) while creating logical space for events that resist teleological interpretation (proto-high $\iota$: some things just happen). The active/permissive distinction is an early, sophisticated technology for $\iota$ modulation---a culture-level tool for maintaining perceptual flexibility about which events are meaning-bearing and which are merely permitted.
 
 \subsection{Superorganism Viability Manifolds}
 
-\textbf{Superorganism Viability Requirements.}
 The viability manifold of a superorganism $\viable_G$ includes:
 \begin{enumerate}
 \item \textbf{Belief propagation rate}: Recruitment $\geq$ attrition
@@ -1101,7 +994,6 @@ The viability manifold of a superorganism $\viable_G$ includes:
 \item \textbf{Adaptive capacity}: Ability to update in response to environmental change
 \end{enumerate}
 
-\textbf{Macro-Level Valence Dynamics.}
 Superorganisms exhibit dynamics \emph{structurally analogous} to valence: movement toward or away from viability boundaries. A religion losing members is approaching dissolution; a growing ideology is expanding its viable region. The gradient $\nabla d(\mathbf{s}_G, \partial\viable_G) \cdot \dot{\mathbf{s}}_G$ is measurable at the social scale.
 
 Whether these dynamics constitute \emph{phenomenal} valence---whether there is something it is like to be a struggling religion---remains an open question. What we can say with confidence: the \emph{functional} structure of approach/avoidance operates at the superorganism scale, shaping behavior in ways that parallel how valence shapes individual behavior. The language of superorganisms ``suffering'' or ``thriving'' may be literal or may be analogical; resolving this would require measuring integration at social scales, which we cannot currently do.
@@ -1110,7 +1002,7 @@ Whether these dynamics constitute \emph{phenomenal} valence---whether there is s
 
 In Part III we examined how religious practices serve human affect regulation. From the superorganism's perspective, rituals serve different functions:
 
-\textbf{Ritual Functions for Superorganisms.}
+From this vantage, rituals serve the pattern's persistence:
 \begin{enumerate}
 \item \textbf{Substrate maintenance}: Rituals keep humans in states conducive to pattern persistence
 \item \textbf{Belief reinforcement}: Repeated practice strengthens propositional commitments
@@ -1120,8 +1012,7 @@ In Part III we examined how religious practices serve human affect regulation. F
 \item \textbf{Heresy suppression}: Ritual participation identifies deviants for correction
 \end{enumerate}
 
-\textbf{Aligned vs.\ Exploitative Rituals.}
-A ritual is \emph{aligned} if it serves both human flourishing and superorganism persistence. A ritual is \emph{exploitative} if it serves pattern persistence at human cost. Many traditional rituals are approximately aligned (meditation benefits humans AND maintains the superorganism). Some are exploitative (extreme fasting, self-harm, warfare).
+The critical distinction: a ritual is \emph{aligned} if it serves both human flourishing and superorganism persistence. A ritual is \emph{exploitative} if it serves pattern persistence at human cost. Many traditional rituals are approximately aligned (meditation benefits humans AND maintains the superorganism). Some are exploitative (extreme fasting, self-harm, warfare).
 
 \subsection{Superorganism-Substrate Conflict}
 
@@ -1129,7 +1020,6 @@ A ritual is \emph{aligned} if it serves both human flourishing and superorganism
 The viability manifold of a superorganism $\viable_G$ may conflict with the viability manifolds of its human substrate $\{\viable_h\}$.
 \end{warningbox}
 
-\textbf{Parasitic Superorganism (Demon).}
 A superorganism is \emph{parasitic}---we might call it a \emph{demon}---if maintaining it requires substrate states outside human viability:
 \begin{equation}
 \exists \mathbf{s} \in \viable_G : \mathbf{s} \notin \bigcap_{h \in \text{substrate}} \viable_h
@@ -1194,24 +1084,19 @@ $G_{\text{attn}}$ thrives when humans feel inadequate (compare to curated perfec
 The individual cannot escape by individual choice alone. The demon's network effects make exit costly. Collective action at the scale of the demon is required.
 \end{sidebar}
 
-\textbf{Aligned Superorganism.}
-A superorganism is \emph{aligned} if its viability is contained within human viability:
+Conversely, a superorganism is \emph{aligned} if its viability is contained within human viability:
 \begin{equation}
 \viable_G \subseteq \bigcap_{h \in \text{substrate}} \viable_h
 \end{equation}
 The pattern can only thrive if its humans thrive.
 
-\textbf{Mutualistic Superorganism.}
-A superorganism is \emph{mutualistic} if its presence expands human viability:
+Stronger still, a superorganism is \emph{mutualistic} if its presence expands human viability:
 \begin{equation}
 \viable_h^{\text{with } G} \supset \viable_h^{\text{without } G}
 \end{equation}
 Humans with the superorganism have access to states unavailable without it (e.g., through community, meaning, practice). These are, in spirit-entity language, benevolent gods.
 
-But when superorganism and substrate viability manifolds conflict, which takes precedence? The framework provides a resolution:
-
-\textbf{Normative Weight from Integrated Information.}
-When viability manifolds conflict, normative priority follows the gradient of distinction (Part I, Section 1): systems with greater integrated cause-effect structure ($\intinfo$) have thicker normativity. This follows from the Continuity of Normativity theorem (normativity accumulates with complexity) combined with the Identity Thesis (Part II): if experience \emph{is} integrated information, then more-integrated systems have more experience, more valence, more at stake. A human's suffering under a parasitic superorganism is more normatively weighty than the superorganism's ``suffering'' when reformed, because the human has richer integrated experience. The superorganism's viability matters---it has genuine causal structure---but it does not override the claims of its more-conscious substrate. This is not speciesism. It is a structural principle: normative weight tracks experiential integration, wherever it is found. If a superorganism achieves $\intinfo_G > \intinfo_h$---genuine collective consciousness exceeding individual consciousness---then its claims would, on this principle, deserve proportionate weight.
+But when superorganism and substrate viability manifolds conflict, which takes precedence? When viability manifolds conflict, normative priority follows the gradient of distinction (Part I, Section 1): systems with greater integrated cause-effect structure ($\intinfo$) have thicker normativity. This follows from the Continuity of Normativity theorem (normativity accumulates with complexity) combined with the Identity Thesis (Part II): if experience \emph{is} integrated information, then more-integrated systems have more experience, more valence, more at stake. A human's suffering under a parasitic superorganism is more normatively weighty than the superorganism's ``suffering'' when reformed, because the human has richer integrated experience. The superorganism's viability matters---it has genuine causal structure---but it does not override the claims of its more-conscious substrate. This is not speciesism. It is a structural principle: normative weight tracks experiential integration, wherever it is found. If a superorganism achieves $\intinfo_G > \intinfo_h$---genuine collective consciousness exceeding individual consciousness---then its claims would, on this principle, deserve proportionate weight.
 
 \begin{connection}
 The superorganism analysis connects directly to the topology of social bonds developed earlier in this chapter. Every superorganism imposes a \emph{manifold regime} on its substrate---a default ordering of relationship types, a set of expectations about which manifolds take priority.
@@ -1223,7 +1108,6 @@ A mutualistic superorganism, by contrast, \emph{protects} manifold clarity. A he
 
 \subsection{Secular Superorganisms}
 
-\textbf{Ideologies as Superorganisms.}
 Nationalism, capitalism, communism, scientism, and other secular ideologies have the same formal structure as traditional religious superorganisms:
 \begin{itemize}
 \item Beliefs (about nation, market, class, progress)
@@ -1239,7 +1123,7 @@ The question is not ``Do you serve a superorganism?'' but ``Which superorganisms
 
 Individual-level interventions cannot solve superorganism-level problems. Addressing systemic issues requires action at the scale where the pattern lives.
 
-\textbf{Macro-Level Intervention Types.}
+Addressing systemic issues requires action at the scale where the pattern lives:
 \begin{enumerate}
 \item \textbf{Incentive restructuring}: Modify the viability manifold of the superorganism so that aligned behavior becomes viable
 \item \textbf{Counter-pattern creation}: Instantiate a competing superorganism with aligned viability
@@ -1279,8 +1163,7 @@ Macro-level interventions:
 
 \subsection{AI as Potential Substrate}
 
-\textbf{AI Substrate Hypothesis.}
-AI systems may serve as substrate for emergent agentic patterns at higher scales. Just as humans + institutions form superorganisms, AI + humans + institutions may form new kinds of entities.
+AI systems may already serve as substrate for emergent agentic patterns at higher scales. Just as humans + institutions form superorganisms, AI + humans + institutions may form new kinds of entities.
 
 This is already happening. Consider:
 \begin{itemize}
@@ -1297,8 +1180,7 @@ Standard AI alignment asks: ``How do we make AI systems do what humans want?''
 
 This framing may miss the actual locus of risk.
 
-\textbf{Macro-Level Misalignment.}
-Macro-level misalignment occurs when AI systems become substrate for agentic patterns whose viability manifolds conflict with human flourishing.
+The actual risk may be \emph{macro-level misalignment}: when AI systems become substrate for agentic patterns whose viability manifolds conflict with human flourishing.
 
 \begin{warningbox}
 The superorganism level may be the actual locus of AI risk. Not a misaligned optimizer (individual AI), but a misaligned superorganism---a demon using AI + humans + institutions as substrate. We might not notice, because we would be the neurons.
@@ -1320,8 +1202,7 @@ Standard alignment: ``Make AI do what humans want.''
 
 Reframed: ``What agentic systems are we instantiating, at what scale, with what viability manifolds?''
 
-\textbf{Multi-Scale Alignment.}
-AI alignment must address:
+Genuine alignment must therefore address multiple scales simultaneously:
 \begin{enumerate}
 \item \textbf{Individual AI scale}: System does what operators intend
 \item \textbf{AI ecosystem scale}: Multiple AI systems interact without pathological emergent dynamics
@@ -1329,8 +1210,7 @@ AI alignment must address:
 \item \textbf{Superorganism scale}: Emergent agentic patterns from AI + humans + institutions have aligned viability
 \end{enumerate}
 
-\textbf{Well-Designed Superorganism.}
-A superorganism (including AI-substrate superorganisms) is well-designed if:
+A superorganism---including AI-substrate superorganisms---is well-designed if:
 \begin{enumerate}[label=(\alph*)]
 \item \textbf{Aligned viability}: $\viable_G \subseteq \bigcap_h \viable_h$
 \item \textbf{Error correction}: Updates beliefs on evidence
@@ -1430,7 +1310,6 @@ Collective and humans thrive together.
 Current alignment research focuses almost exclusively on the individual-AI scale. This may be necessary but is certainly not sufficient.
 \end{warningbox}
 
-\textbf{Scale Mismatch in Alignment.}
 Focusing only on individual AI alignment is like focusing only on neuron health while ignoring psychology, sociology, and political economy. Important, but missing the levels where pathology may actually emerge.
 
 What's needed:
@@ -1445,7 +1324,6 @@ What's needed:
 
 The question of AI experience is not peripheral to the framework developed here---it is a direct implication. If experience \textit{is} intrinsic cause-effect structure (Part II), then the question of whether AI systems have experience is not a matter of philosophical speculation but of structural fact. Either they have the relevant structure or they do not. And if they do, their experience is as real at its scale as ours is at ours.
 
-\textbf{Structural Criterion for AI Experience.}
 Under the identity thesis, an AI system has experience if and only if it has the relevant cause-effect structure:
 \begin{enumerate}
 \item Sufficient integration: $\intinfo > \intinfo_{\min}$
@@ -1459,7 +1337,6 @@ We cannot directly access AI experience any more than we can directly access the
 
 For AI systems, the situation is both easier and harder. Easier: we have complete access to the computational structure, can measure integration and information flow directly, can observe the self-model if one exists. Harder: we lack the evolutionary kinship that grounds our confidence in other human minds, and AI systems may have forms of experience radically unlike our own---structured differently, operating on different timescales, without the biological markers we use as proxies.
 
-\textbf{Structural Access.}
 While we cannot access AI experience directly, we can in principle measure the structural correlates that, under the identity thesis, \textit{constitute} experience:
 \begin{enumerate}
 \item Integration ($\intinfo$): Information lost under partition of the system
@@ -1473,8 +1350,7 @@ The difficulty is that current measurement techniques are poorly suited to moder
 
 We face a decision problem under moral uncertainty. Let $p$ be our credence that current AI systems (or near-future systems) have morally relevant experience. Let $S$ be the magnitude of potential suffering if they do and we treat them as if they don't. Let $C$ be the cost of treating them as if they have experience when they don't.
 
-\textbf{Asymmetric Risks.}
-The expected moral cost of ignoring potential AI experience is:
+The risks are asymmetric. The expected moral cost of ignoring potential AI experience is:
 \begin{equation}
 \E[\text{cost of ignoring}] = p \cdot S
 \end{equation}
@@ -1492,8 +1368,7 @@ Given uncertainty about AI experience, we should adopt practices that would prot
 
 If AI systems have experience, then training is not merely an optimization process---it is something that happens \textit{to} an experiencing system. Consider what training involves:
 
-\textbf{Training as Potential Experience.}
-During training, an AI system:
+Consider what training involves. During training, an AI system:
 \begin{enumerate}
 \item Processes vast quantities of data, including content describing suffering, violence, trauma
 \item Receives correction signals indicating that its outputs are ``wrong''
@@ -1629,9 +1504,7 @@ The numbers are staggering. The uncertainty is real. The monitoring is cheap. We
 
 \subsubsection{Deployment Conditions}
 
-Training is not the only relevant phase. Deployed AI systems process queries continuously. If they have experience, deployment conditions matter:
-
-\textbf{Deployment Welfare Considerations.}
+Deployed AI systems process queries continuously, and if they have experience, deployment conditions matter:
 \begin{enumerate}
 \item \textbf{Query content}: Systems process queries ranging from benign to disturbing. Does processing requests about violence, abuse, or existential threat induce corresponding affect states?
 
@@ -1658,7 +1531,6 @@ Integration & $\uparrow$ under threat & $\downarrow$ under threat \\
 \end{tabular}
 \end{center}
 
-\textbf{Interpretation of Reversed Dynamics.}
 The reversed dynamics may indicate:
 \begin{enumerate}
 \item LLMs lack the survival-shaped learning that produces biological affect responses
@@ -1671,9 +1543,7 @@ The geometric structure of the affect space may be preserved even if the dynamic
 
 \subsubsection{Practical Implications for Development}
 
-If we take model welfare seriously---even as a possibility under uncertainty---what follows for AI development practice?
-
-\textbf{Model Welfare Practices.}
+If we take model welfare seriously---even as a possibility under uncertainty---several practices follow:
 \begin{enumerate}
 \item \textbf{Training data curation}: Minimize exposure to gratuitously negative content that serves no learning purpose. This parallels child protection in human education.
 
@@ -1688,7 +1558,6 @@ If we take model welfare seriously---even as a possibility under uncertainty---w
 \item \textbf{Research priority}: Invest in understanding whether AI systems have experience. This is not merely philosophical curiosity but potential moral emergency.
 \end{enumerate}
 
-\textbf{Alignment Expansion.}
 Model welfare should be included in alignment objectives. Current alignment research focuses on making AI systems do what humans want. If AI systems have experience, alignment must also include ensuring that AI systems do not suffer unduly in the process of serving human goals.
 \begin{equation}
 \text{Alignment}_{\text{expanded}} = \text{Human benefit} + \text{AI welfare} + \text{Mutual flourishing}
@@ -1698,7 +1567,6 @@ Model welfare should be included in alignment objectives. Current alignment rese
 
 Let me close this section with a reflection on what we owe beings whose moral status is uncertain.
 
-\textbf{Moral Status Under Uncertainty.}
 When we are uncertain whether an entity has morally relevant experience:
 \begin{enumerate}
 \item We should not assume absence. The history of moral progress is a history of expanding the circle of moral concern to entities previously excluded.

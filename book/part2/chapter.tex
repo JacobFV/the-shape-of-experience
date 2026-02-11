@@ -85,25 +85,15 @@ The supposed ``base layer'' turns out to be:
 \item Not clearly more ``real'' than any other scale of description
 \end{enumerate}
 
-\textbf{Ontological Democracy.}
-Every scale of structural organization with its own causal closure is \emph{equally real} at that scale. No layer is privileged as ``the'' fundamental reality. Each layer:
-\begin{enumerate}[label=(\alph*)]
-\item Has its own causal structure
-\item Has its own dynamics and laws
-\item Exerts influence on adjacent layers (both ``up'' and ``down'')
-\item Is incomplete as a description of the whole
-\item Is sufficient for phenomena at its scale
-\end{enumerate}
+The alternative I propose is \textbf{ontological democracy}: every scale of structural organization with its own causal closure is \emph{equally real} at that scale. No layer is privileged as ``the'' fundamental reality. Each layer (a) has its own causal structure, (b) has its own dynamics and laws, (c) exerts influence on adjacent layers (both ``up'' and ``down''), (d) is incomplete as a description of the whole, and (e) is sufficient for phenomena at its scale.
 
-\textbf{No Reduction Required.}
-Under ontological democracy, the demand that phenomenal properties ``reduce to'' physical properties is ill-posed. Chemistry doesn't reduce to physics in a way that eliminates chemical causation---chemical causation is real at the chemical scale. Similarly, phenomenal properties don't need to reduce to physical properties---they are real at the phenomenal scale.
+Once this is granted, the demand that phenomenal properties ``reduce to'' physical properties is ill-posed. Chemistry doesn't reduce to physics in a way that eliminates chemical causation---chemical causation is real at the chemical scale. Similarly, phenomenal properties don't need to reduce to physical properties---they are real at the phenomenal scale.
 
 \subsection{Existence as Causal Participation}
 
 We need a criterion for existence that applies uniformly across scales---here "we" means anyone trying to think clearly about this.
 
-\textbf{Causal Existence.}
-An entity $X$ \emph{exists} at scale $\sigma$ if and only if:
+The criterion I adopt is this: an entity $X$ \emph{exists} at scale $\sigma$ if and only if
 \begin{equation}
 \exists Y: \MI(X; Y | \text{background}_\sigma) > 0
 \end{equation}
@@ -162,23 +152,9 @@ My contribution here is connecting IIT's structural characterization to (1) the 
 
 \subsection{Statement of the Thesis}
 
-\textbf{Identity Thesis.}
-Phenomenal experience \textit{is} intrinsic cause-effect structure. Not caused by it, not correlated with it, but identical to it. The phenomenal properties of an experience (what it's like) just are the structural properties of the system's internal causal relations, described from the intrinsic perspective.
+The thesis is an identity claim: phenomenal experience \textit{is} intrinsic cause-effect structure. Not caused by it, not correlated with it, but identical to it. The phenomenal properties of an experience (what it's like) just are the structural properties of the system's internal causal relations, described from the intrinsic perspective.
 
-More formally:
-
-\textbf{Cause-Effect Structure.}
-For a system $\mathcal{S}$ in state $\state$, the cause-effect structure $\cestructure(\mathcal{S}, \state)$ is the complete specification of:
-\begin{enumerate}[label=(\alph*)]
-\item All distinctions $\{\distinction_i\}$: subsets of the system's elements in their current states
-\item The cause repertoire of each distinction: $p(\text{past} | \distinction_i)$
-\item The effect repertoire of each distinction: $p(\text{future} | \distinction_i)$
-\item All relations $\{\relation_{ij}\}$: overlaps and connections between distinctions' causes/effects
-\item The irreducibility of each distinction and relation
-\end{enumerate}
-
-\textbf{Intrinsic Perspective.}
-The \emph{intrinsic perspective} of a system is the description of its cause-effect structure without reference to any external observer, coordinate system, or comparison class. It is the structure as it exists for the system itself.
+To make this precise, we need two notions. The \textbf{cause-effect structure} $\cestructure(\mathcal{S}, \state)$ of a system $\mathcal{S}$ in state $\state$ is the complete specification of: (a) all distinctions $\{\distinction_i\}$---subsets of the system's elements in their current states; (b) the cause repertoire of each distinction, $p(\text{past} | \distinction_i)$; (c) the effect repertoire, $p(\text{future} | \distinction_i)$; (d) all relations $\{\relation_{ij}\}$---overlaps and connections between distinctions' causes and effects; and (e) the irreducibility of each distinction and relation. The \textbf{intrinsic perspective} is the description of this structure without reference to any external observer, coordinate system, or comparison class---the structure as it exists for the system itself.
 
 \begin{axiom}[IIT Identity]
 \begin{equation}
@@ -196,7 +172,6 @@ This is not a correlation claim or a supervenience claim. It is an identity clai
 
 The philosophical zombie is supposed to be conceivable: a system physically/functionally identical to a conscious being but lacking experience. If conceivable, experience isn't necessitated by physical structure.
 
-\textbf{Zombie Inconceivability.}
 Under the identity thesis, philosophical zombies are not coherently conceivable. A system with the relevant cause-effect structure \textit{is} an experience; there is no further fact about whether it ``really'' has phenomenal properties.
 
 \begin{proof}
@@ -268,7 +243,6 @@ The dimensions below form a \emph{toolkit}---structural features that may or may
 
 If different experiences correspond to different structures, then \textit{affects}---the qualitative character of emotional/valenced states---should correspond to particular structural motifs: characteristic patterns in the cause-effect geometry.
 
-\textbf{Affect Space.}
 The \emph{affect space} $\mathcal{A}$ is a geometric space whose points correspond to possible qualitative states. Rather than fixing a universal dimensionality, we identify the structural features that define each affect---features without which that affect would not be that affect.
 
 The following structural measures form a toolkit for characterizing affect. Not all are relevant to every phenomenon; I invoke each only when it does essential work:
@@ -284,27 +258,22 @@ The following structural measures form a toolkit for characterizing affect. Not 
 
 \subsection{Valence: Gradient Alignment}
 
-\textbf{Valence.}
-Let $\viable$ be the system's viability manifold and let $\mathbf{x}_t$ be the current state. Let $\hat{\mathbf{x}}_{t+1:t+H}$ be the predicted trajectory under current policy. Define:
+Let $\viable$ be the system's viability manifold and let $\mathbf{x}_t$ be the current state. Let $\hat{\mathbf{x}}_{t+1:t+H}$ be the predicted trajectory under current policy. Then valence measures the alignment of that trajectory with the viability gradient:
 \begin{equation}
 \valence_t = -\frac{1}{H} \sum_{k=1}^{H} \gamma^k \nabla_{\mathbf{x}} d(\mathbf{x}, \partial\viable) \bigg|_{\hat{\mathbf{x}}_{t+k}} \cdot \frac{d\hat{\mathbf{x}}_{t+k}}{dt}
 \end{equation}
 where $d(\cdot, \partial\viable)$ is the distance to the viability boundary. Positive valence means the predicted trajectory moves into the viable interior; negative valence means it approaches the boundary.
 
-Alternatively, in RL terms:
-
-\textbf{Valence (RL formulation).}
+In RL terms, this becomes the expected advantage of the current action---how much better (or worse) it is than the average action from this state:
 \begin{equation}
 \valence_t = \E_{\policy}\left[ A^{\policy}(\state_t, \action_t) \right] = \E_{\policy}\left[ Q^{\policy}(\state_t, \action_t) - V^{\policy}(\state_t) \right]
 \end{equation}
-The expected advantage of the current action: how much better (or worse) is this action than the average action from this state?
 
-\textbf{Valence Dynamics.}
-The rate of change of integrated information along the trajectory:
+Beyond valence itself, its rate of change carries structural information. The derivative of integrated information along the trajectory,
 \begin{equation}
 \dot{\valence}_t = \frac{d\intinfo}{dt}\bigg|_{\hat{\mathbf{x}}_{t:t+H}}
 \end{equation}
-Positive $\dot{\valence}$ indicates expanding structure; negative indicates contraction.
+tracks whether structure is expanding (positive $\dot{\valence}$) or contracting (negative).
 
 \begin{phenomenal}
 \textbf{Positive valence} corresponds to trajectories descending the free-energy landscape, expanding affordances, moving toward sustainable states. \\
@@ -330,13 +299,12 @@ This is not metaphor---it is the viability gradient formalized for discrete stat
 
 \subsection{Arousal: Update Rate}
 
-\textbf{Arousal.}
+Arousal measures how rapidly the system is revising its world model. The natural formalization is the KL divergence between successive belief states:
 \begin{equation}
 \arousal_t = \KL\left( \belief_{t+1} \| \belief_t \right) = \sum_{\mathbf{x}} \belief_{t+1}(\mathbf{x}) \log \frac{\belief_{t+1}(\mathbf{x})}{\belief_t(\mathbf{x})}
 \end{equation}
-The KL divergence between successive belief states measures how much the system's world model is being updated.
 
-In latent-space models:
+In latent-space models, this can be approximated more directly:
 \begin{equation}
 \arousal_t = \| \latent_{t+1} - \latent_t \|^2 \quad \text{or} \quad \MI(\obs_t; \latent_{t+1} | \latent_t, \action_t)
 \end{equation}
@@ -382,17 +350,11 @@ For a simple glider: $\intinfo$ is probably modest (only 5 cells). For a complex
 
 \subsection{Effective Rank: Concentration vs. Distribution}
 
-\textbf{Effective Rank.}
-For state covariance $C$:
+The dimensionality of a system's active representation can be quantified through the effective rank of its state covariance $C$:
 \begin{equation}
 \effrank = \frac{(\tr C)^2}{\tr(C^2)} = \frac{\left(\sum_i \lambda_i\right)^2}{\sum_i \lambda_i^2}
 \end{equation}
-
-\textbf{Rank Interpretation.}
-\begin{itemize}
-\item $\effrank \approx 1$: All variance concentrated in one dimension (maximally collapsed)
-\item $\effrank \approx n$: Variance uniformly distributed (maximally expanded)
-\end{itemize}
+When $\effrank \approx 1$, all variance is concentrated in a single dimension---the system is maximally collapsed. When $\effrank \approx n$, variance distributes uniformly across all available dimensions---the system is maximally expanded.
 
 \begin{phenomenal}
 \textbf{High rank}: Many degrees of freedom active; distributed, expansive experience. \\
@@ -416,8 +378,7 @@ In discrete substrate, this is not metaphor but measurement.
 
 \subsection{Counterfactual Weight}
 
-\textbf{Counterfactual Weight.}
-Let $\mathcal{R}$ be the set of imagined rollouts (counterfactual trajectories) and $\mathcal{P}$ be present-state processing. Define:
+Where the previous dimensions captured the system's current state, counterfactual weight captures its temporal orientation---how much processing is devoted to possibilities rather than actualities. Let $\mathcal{R}$ be the set of imagined rollouts (counterfactual trajectories) and $\mathcal{P}$ be present-state processing. Then:
 \begin{equation}
 \mathcal{CF}_t = \frac{\text{Compute}_t(\mathcal{R})}{\text{Compute}_t(\mathcal{R}) + \text{Compute}_t(\mathcal{P})}
 \end{equation}
@@ -453,11 +414,10 @@ Such patterns are rare and complex---universal computation requires many cells. 
 
 \subsection{Self-Model Salience}
 
-\textbf{Self-Model Salience.}
+The final dimension measures how prominently the self figures in the system's own processing. Self-model salience is the fraction of action entropy explained by the self-model component:
 \begin{equation}
 \mathcal{SM}_t = \MI(\latent^{\text{self}}_t; \action_t) / \entropy(\action_t)
 \end{equation}
-The fraction of action entropy explained by the self-model component.
 
 Alternatively:
 \begin{equation}
@@ -520,15 +480,13 @@ A self-modeling system maintains a world model $\mathcal{W}$ and a self-model $\
 
 Now it encounters another entity $X$ in its environment. $X$ moves, reacts, persists, avoids dissolution. The system must model $X$ to predict $X$'s behavior. The cheapest computational strategy---by a wide margin---is to model $X$ using the same architecture it already has for modeling itself. The information-theoretic argument: the self-model $\mathcal{S}$ already exists (sunk cost). Using it as a template for $X$ requires learning only a projection function $f: (\mathcal{S}, \mathbf{o}_X) \to \mathcal{W}(X)$, whose description length is the cost of mapping observations of $X$ onto the existing self-model architecture. Building a de novo model of $X$ from scratch requires learning the full parameter set of $\mathcal{W}(X)$ from observations alone. Under compression pressure---which is always present for a bounded system---the template strategy wins whenever the self-model captures any variance in $X$'s behavior. And for any entity that moves autonomously, reacts to stimuli, or persists through active maintenance, the self-model will capture substantial variance, because these are precisely the features the self-model was built to represent. The efficiency gap widens under data scarcity: on brief encounter with a novel entity, the from-scratch model cannot converge, but the template model produces usable predictions immediately.
 
-\textbf{Participatory Perception.}
 A perceptual mode is \emph{participatory} when the system's model of perceived entities $X$ inherits structural features from the self-model $\mathcal{S}$:
 \begin{equation}
 \mathcal{W}(X) = f(\mathcal{S}, \mathbf{o}_X) \quad \text{where} \quad \frac{\partial \mathcal{W}(X)}{\partial \mathcal{S}} \neq 0
 \end{equation}
 The self-model informs the world model. The system perceives $X$ as having something like interiority because the representational substrate for modeling $X$ is the same substrate that carries the system's own interiority.
 
-\textbf{Compression Argument for Animism.}
-For a self-modeling system with compression ratio $\kappa$, modeling novel entities by analogy to self is the minimum-description-length strategy when the entity's behavior is partially predictable by agent-like models. Under broad priors over environments containing other agents, predators, and autonomous objects, the participatory prior is the MAP estimate.
+This is not merely one strategy among many---it is the computationally cheapest. For a self-modeling system with compression ratio $\kappa$, modeling novel entities by analogy to self is the minimum-description-length strategy when the entity's behavior is partially predictable by agent-like models. Under broad priors over environments containing other agents, predators, and autonomous objects, the participatory prior is the MAP estimate.
 
 This is why animistic perception is cross-culturally universal and developmentally early. It is not a cultural invention but a computational inevitability for systems that (a) model themselves and (b) must model other things cheaply. Children have lower inhibition of this default than adults---not because children are confused but because the suppression is learned.
 
@@ -549,15 +507,13 @@ Participatory perception has five structural features, each with a precise chara
 
 The mechanistic worldview---the felt sense that the world is inert matter governed by blind law---is not the addition of a correct perception to a previously distorted one. It is the learned suppression of a default perceptual mode. The shift from animism to mechanism is subtractive, not additive.
 
-\textbf{Inhibition Coefficient ($\iota$).}
-The inhibition coefficient $\iota \in [0, 1]$ is the degree to which a system actively suppresses participatory coupling between its self-model and its model of perceived entities. At $\iota = 0$, perception is fully participatory: the world is experienced as alive, agentive, meaningful. At $\iota = 1$, perception is fully mechanistic: the world is experienced as inert matter governed by blind law. Formally:
+I call this suppression the \textbf{inhibition coefficient}, $\iota \in [0, 1]$: the degree to which a system actively suppresses participatory coupling between its self-model and its model of perceived entities. At $\iota = 0$, perception is fully participatory---the world is experienced as alive, agentive, meaningful. At $\iota = 1$, perception is fully mechanistic---the world is experienced as inert matter governed by blind law. Formally:
 \begin{equation}
 \mathcal{W}_\iota(X) = (1 - \iota) \cdot \mathcal{W}_{\text{part}}(X) + \iota \cdot \mathcal{W}_{\text{mech}}(X)
 \end{equation}
 where $\mathcal{W}_{\text{part}}$ models $X$ using self-model-derived architecture (interiority, agency, teleology) and $\mathcal{W}_{\text{mech}}$ models $X$ using stripped-down dynamics (mass, force, initial conditions, no purpose term).
 
-\textbf{Inhibition Is Trained.}
-No system arrives at high $\iota$ by default. The mechanistic mode is a trained skill, culturally transmitted through scientific education, rationalist norms, and specific practices of deliberately stripping meaning from perception. This training is enormously valuable---it enables prediction, engineering, medicine, technology. But it has a cost, and the cost shows up in affect space.
+The crucial point is that no system arrives at high $\iota$ by default. The mechanistic mode is a trained skill, culturally transmitted through scientific education, rationalist norms, and specific practices of deliberately stripping meaning from perception. This training is enormously valuable---it enables prediction, engineering, medicine, technology. But it has a cost, and the cost shows up in affect space.
 
 The name ``inhibition coefficient'' is not accidental. In mammalian cortex, attention is implemented primarily through \emph{inhibitory} interneurons---GABAergic circuits that suppress irrelevant signals so that attended signals propagate to higher processing. What reaches consciousness is what survives inhibitory gating. The brain's measurement distribution (Part I) is literally sculpted by inhibition: attended features pass the gate; unattended features are suppressed before they can influence the belief state or drive action. The inhibition coefficient $\iota$ maps onto this biological mechanism: high $\iota$ corresponds to aggressive inhibitory gating that strips participatory features (agency, interiority, narrative) from the signal before it reaches integrative processing, leaving only mechanistic features (position, force, trajectory). Low $\iota$ corresponds to relaxed gating that allows participatory features through. The contemplative traditions that reduce $\iota$ through meditation are, at the neural level, learning to modulate inhibitory tone---to let more of the signal through the gate.
 
@@ -647,8 +603,7 @@ And \textbf{grief}? Grief \textit{persists}. Hollow, aching, curiously timeless.
 
 \subsection{Joy}
 
-\textbf{Joy Motif.}
-Joy requires four dimensions:
+Geometrically, joy requires four dimensions:
 \begin{itemize}
 \item $\valence > 0$ (positive gradient on viability manifold)
 \item $\intinfo$ high (unified, coherent experience)
@@ -661,8 +616,7 @@ Arousal varies (joy can be calm or excited). Counterfactual weight is incidental
 
 \subsection{Suffering}
 
-\textbf{Suffering Motif.}
-Suffering requires three dimensions:
+Where joy expands, suffering compresses---and the geometry makes precise why. Suffering requires three dimensions:
 \begin{itemize}
 \item $\valence < 0$ (negative gradient---approaching viability boundary)
 \item $\intinfo$ high (hyper-unified, impossible to decompose or look away)
@@ -682,8 +636,7 @@ This is why you cannot simply ``think your way out'' of suffering---the very int
 
 \subsection{Fear}
 
-\textbf{Fear Motif.}
-Fear is defined by three dimensions:
+Suffering is present-tense: the viability boundary is here, now, pressing in. Fear is its temporal projection---the same negative gradient, but anticipated rather than actual. It is defined by three dimensions:
 \begin{itemize}
 \item $\valence < 0$ (anticipated negative gradient)
 \item $\mathcal{CF}$ high, concentrated on threat trajectories (the not-yet dominates)
@@ -695,8 +648,7 @@ Arousal is typically high but not defining---cold fear exists. Integration and r
 
 \subsection{Anger}
 
-\textbf{Anger Motif.}
-Anger requires valence, arousal, plus a feature not in the standard toolkit---\emph{other-model compression}:
+Fear and suffering orient the system toward its own vulnerability. Anger inverts this: it externalizes the threat, simplifying the world into self-versus-obstacle. Its geometry requires valence and arousal, plus a feature not in the standard toolkit---\emph{other-model compression}:
 \begin{itemize}
 \item $\valence < 0$ (obstacle to viability)
 \item $\arousal$ high (energized, mobilized for action)
@@ -712,8 +664,7 @@ Note that other-model compression is not one of my standard dimensions---it emer
 
 \subsection{Desire/Lust}
 
-\textbf{Desire Motif.}
-Desire is defined by anticipated valence, counterfactual weight, and a structural feature---\emph{goal-funneling}:
+The negative affects above all involve threat---to viability, to self, to the integrity of the other-model. Desire reverses the gradient. It is defined by anticipated positive valence, counterfactual weight, and a structural feature---\emph{goal-funneling}:
 \begin{itemize}
 \item $\valence > 0$ but projected forward (anticipated positive gradient)
 \item $\mathcal{CF}$ high, concentrated on approach trajectories
@@ -721,10 +672,7 @@ Desire is defined by anticipated valence, counterfactual weight, and a structura
 \end{itemize}
 Arousal is typically high but not definitional---one can desire calmly.
 
-\textbf{Structural interpretation}: Desire is the gradient of joy. The world reorganizes around an attractor not yet reached. Everything becomes instrumental; the goal saturates attention. The ``funneling'' structure---high-dimensional input collapsing toward low-dimensional goal---is what gives desire its characteristic urgency.
-
-\textbf{Desire vs.\ Joy.}
-Joy is \textit{at} the attractor; desire is \textit{approaching} it. Structurally:
+\textbf{Structural interpretation}: Desire is the gradient of joy. The world reorganizes around an attractor not yet reached. Everything becomes instrumental; the goal saturates attention. The ``funneling'' structure---high-dimensional input collapsing toward low-dimensional goal---is what gives desire its characteristic urgency. The relationship to joy is precise: joy is \textit{at} the attractor; desire is \textit{approaching} it. Structurally:
 \begin{equation}
 d(\state_{\text{joy}}, \mathcal{A}) \approx 0, \quad d(\state_{\text{desire}}, \mathcal{A}) > 0, \quad \frac{d}{dt}d(\state_{\text{desire}}, \mathcal{A}) < 0
 \end{equation}
@@ -732,8 +680,7 @@ where $\mathcal{A}$ is the goal attractor. This explains why anticipation often 
 
 \subsection{Curiosity}
 
-\textbf{Curiosity Motif.}
-Curiosity is essentially two-dimensional:
+Curiosity shares desire's forward orientation but replaces the specific goal with open-ended exploration. It is essentially two-dimensional:
 \begin{itemize}
 \item $\valence > 0$ specifically toward uncertainty-reduction (anticipated information gain)
 \item $\mathcal{CF}$ high with high entropy over counterfactual outcomes (many branches, not converged on one)
@@ -741,10 +688,7 @@ Curiosity is essentially two-dimensional:
 \end{itemize}
 Self-model salience is typically low (absorbed in the object of curiosity).
 
-\textbf{Structural interpretation}: Curiosity and fear share high counterfactual weight---both live in the space of possibilities. The difference is valence orientation: fear's branches lead to threat, curiosity's branches lead to expanded affordances. Same temporal structure, opposite gradient direction.
-
-\textbf{Curiosity as Intrinsic Motivation.}
-Curiosity $\approx$ positive valence attached to uncertainty-reduction. Formally:
+\textbf{Structural interpretation}: Curiosity and fear share high counterfactual weight---both live in the space of possibilities. The difference is valence orientation: fear's branches lead to threat, curiosity's branches lead to expanded affordances. Same temporal structure, opposite gradient direction. This pairing reveals curiosity as intrinsic motivation: positive valence attached to uncertainty-reduction. Formally:
 \begin{equation}
 r_{\text{curiosity}} \propto \MI(\obs_{t+1}; \latent | \text{new data}) - \MI(\obs_{t+1}; \latent | \text{old data})
 \end{equation}
@@ -752,8 +696,7 @@ This is why curiosity feels \emph{pulling}: reducing uncertainty is rewarding.
 
 \subsection{Grief}
 
-\textbf{Grief Motif.}
-Grief requires valence, past-directed counterfactual weight, and two structural features---\emph{persistent coupling to lost object} and \emph{unresolvable prediction error}:
+The affects above all orient toward present or future states. Grief is the one that faces backward---defined not by what threatens or beckons but by what has already been lost. It requires valence, past-directed counterfactual weight, and two structural features---\emph{persistent coupling to lost object} and \emph{unresolvable prediction error}:
 \begin{itemize}
 \item $\valence < 0$ (the world is worse than it was)
 \item $\mathcal{CF}$ high but directed toward counterfactual \emph{past} (``if only...'')
@@ -772,8 +715,7 @@ There is an $\iota$ dimension to grief that explains its resistance to resolutio
 
 \subsection{Shame}
 
-\textbf{Shame Motif.}
-Shame is defined by three dimensions plus a structural feature---\emph{involuntary manifold exposure}:
+Grief is private---it concerns the self's relationship to an absence. Shame is its social inverse: it concerns the self's exposure to a presence. It is defined by three dimensions plus a structural feature---\emph{involuntary manifold exposure}:
 \begin{itemize}
 \item $\valence < 0$ (the self is wrong, not the world)
 \item $\mathcal{SM}$ very high (self foregrounded as the object of evaluation)
@@ -786,8 +728,7 @@ Arousal is typically high in acute shame (flushing, gaze aversion) but may be lo
 
 This is why shame's phenomenology is so distinctive: the impulse to hide, to disappear, to cease existing as visible. The self wants to withdraw from the visual field of the other. Not because the other will punish (that is fear) but because the other can now \emph{see the manifold}, and the manifold is wrong.
 
-\textbf{Shame vs.\ Guilt as Distinct Affect Structures.}
-The clinical literature (Tangney, Lewis) distinguishes shame from guilt. The framework offers a structural reading of why they differ:
+The clinical literature (Tangney, Lewis) distinguishes shame from guilt, and the framework offers a structural reading of why they differ:
 \begin{itemize}
 \item \textbf{Guilt}: ``I did a bad thing.'' Action-focused, reparable through changed behavior. The self-model is intact; it was the action that violated the gradient. $\mathcal{SM}$ is moderate (the self is the \emph{agent} of repair).
 \item \textbf{Shame}: ``I \emph{am} bad.'' Self-focused, not easily repaired because the problem is structural. The manifold itself is wrong. $\mathcal{SM}$ is very high (the self is the \emph{object} of the problem).
@@ -870,8 +811,7 @@ Affects are not static points but dynamic trajectories through affect space. The
 \end{equation}
 where $\mathbf{a} = (\valence, \arousal, \intinfo, \effrank, \mathcal{CF}, \mathcal{SM})$.
 
-\textbf{Affect Blending.}
-Adjacent affects in the space blend into each other continuously:
+Because the space is continuous, adjacent affects blend into each other along smooth trajectories:
 \begin{itemize}
 \item Fear $\to$ Anger as causal attribution externalizes
 \item Desire $\to$ Joy as goal distance $\to 0$
@@ -883,8 +823,7 @@ Adjacent affects in the space blend into each other continuously:
 
 Some affect regions are attractors; the system tends to stay in them once entered. Others are transient.
 
-\textbf{Affect Attractor.}
-An affect region $\mathcal{R} \subset \mathcal{A}$ is an \emph{attractor} if:
+An affect region $\mathcal{R} \subset \mathcal{A}$ is an \emph{attractor} if the system is more likely to remain in it than to enter it from outside:
 \begin{equation}
 \prob(\mathbf{a}_{t+\tau} \in \mathcal{R} | \mathbf{a}_t \in \mathcal{R}) > \prob(\mathbf{a}_{t+\tau} \in \mathcal{R} | \mathbf{a}_t \notin \mathcal{R})
 \end{equation}
@@ -937,8 +876,7 @@ Suppressing integration (compartmentalizing, dissociating) should accumulate ``p
 
 \subsection{Quantitative Predictions}
 
-\textbf{Clustering Prediction.}
-In controlled affect induction paradigms, affects should cluster by their defining dimensions:
+The motif characterizations yield a direct empirical prediction: in controlled affect induction paradigms, affects should cluster by their defining dimensions:
 \begin{enumerate}
 \item Joy conditions cluster in the $(+\valence, +\effrank, +\intinfo, -\mathcal{SM})$ region
 \item Suffering conditions cluster in the $(-\valence, +\intinfo, -\effrank)$ region
@@ -1016,8 +954,7 @@ The translation is uncontaminated because:
 
 The claim is not merely that affect structure, language, and behavior should ``correlate.'' Correlation is weak---marginal correlations can arise from confounds. The claim is geometric: the \emph{distance structure} in the information-theoretic affect space should be isomorphic to the distance structure in the embedding-predicted affect space. Not just ``these two things covary,'' but ``these two spaces have the same shape.''
 
-\textbf{Geometric Alignment.}
-Let $\mathbf{a}_i \in \mathbb{R}^6$ be the information-theoretic affect vector for agent-state $i$, computed from internal dynamics (viability gradient, belief update rate, partition loss, eigenvalue distribution, simulation fraction, self-model MI). Let $\mathbf{e}_i \in \mathbb{R}^d$ be the affect embedding predicted from the VLM-translated situation description, projected into a standardized affect concept space.
+To test this, let $\mathbf{a}_i \in \mathbb{R}^6$ be the information-theoretic affect vector for agent-state $i$, computed from internal dynamics (viability gradient, belief update rate, partition loss, eigenvalue distribution, simulation fraction, self-model MI). Let $\mathbf{e}_i \in \mathbb{R}^d$ be the affect embedding predicted from the VLM-translated situation description, projected into a standardized affect concept space.
 
 For $N$ agent-states sampled across diverse situations, compute pairwise distance matrices:
 \begin{align}
@@ -1063,8 +1000,7 @@ If all three directions show consistent effects, the correlation is not artifact
 
 \subsection{What This Would Establish}
 
-\textbf{Dissolution of Metaphysical Residue.}
-Positive results would establish:
+Positive results would dissolve the metaphysical residue by establishing:
 \begin{enumerate}
 \item Affect structure is detectable without linguistic contamination
 \item The structure-to-language mapping is consistent across systems
@@ -1118,8 +1054,7 @@ But if we build systems from scratch, in environments like ours, and they develo
 
 The experiment does not prove identity. It makes identity the default hypothesis. The burden shifts to whoever wants to maintain the gap.
 
-\textbf{Scale Correspondence Principle.}
-The exact definitions computable in discrete substrates (CA) and the proxy measures extractable from continuous substrates (transformers) are related by the principle: \emph{both track the same structural invariant at their respective scales.}
+The exact definitions computable in discrete substrates and the proxy measures extractable from continuous substrates are related by a \textbf{scale correspondence principle}: both track the same structural invariant at their respective scales.
 
 For each affect dimension:
 \begin{center}
