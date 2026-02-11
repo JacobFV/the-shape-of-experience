@@ -1,28 +1,39 @@
-name: Build Audio & Deploy
+name: Deploy (Full Media)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'book/**'
-      - 'web/**'
   workflow_dispatch:
+    inputs:
+      tts_provider:
+        description: 'TTS provider (deepgram or openai)'
+        required: false
+        default: 'deepgram'
+        type: choice
+        options:
+          - deepgram
+          - openai
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
           cache-dependency-path: web/package-lock.json
+
+      - name: Install Vercel CLI
+        run: npm i -g vercel@latest
+
+      - name: Pull Vercel environment
+        run: cd web && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Install pandoc
         run: cd web && bash scripts/install-pandoc.sh
@@ -48,16 +59,17 @@ jobs:
           restore-keys: |
             audio-
 
-      - name: Generate audio (Deepgram TTS)
+      - name: Generate audio
         run: cd web && npm run generate-audio
         env:
+          TTS_PROVIDER: ${{ inputs.tts_provider }}
           DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: Build Next.js static export
-        run: cd web && npx next build
+      # Future: add video generation, image rendering, etc. here
+
+      - name: Build project
+        run: cd web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: cd web/out && npx vercel deploy --yes --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: cd web && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

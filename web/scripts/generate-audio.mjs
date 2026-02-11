@@ -19,9 +19,14 @@ const ROOT = resolve(__dirname, '..');
 const GEN = resolve(ROOT, 'generated', 'chapters');
 const AUDIO_OUT = resolve(ROOT, 'public', 'audio');
 
-const API_KEY = process.env.DEEPGRAM_API_KEY;
-const MODEL = 'aura-2-thalia-en';
-const CHUNK_LIMIT = 1900; // chars per API call (leave margin under 2000)
+const DEEPGRAM_API_KEY = process.env.DEEPGRAM_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const TTS_PROVIDER = process.env.TTS_PROVIDER || (DEEPGRAM_API_KEY ? 'deepgram' : 'openai');
+
+const DEEPGRAM_MODEL = 'aura-2-thalia-en';
+const OPENAI_MODEL = process.env.OPENAI_TTS_MODEL || 'tts-1';
+const OPENAI_VOICE = process.env.OPENAI_TTS_VOICE || 'nova';
+const CHUNK_LIMIT = TTS_PROVIDER === 'openai' ? 4000 : 1900;
 
 const CHAPTERS = [
   'introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue',
@@ -152,14 +157,14 @@ function chunkText(text, limit = CHUNK_LIMIT) {
   return chunks;
 }
 
-// --- Deepgram API ---
+// --- TTS API ---
 
-async function synthesizeChunk(text) {
-  const url = `https://api.deepgram.com/v1/speak?model=${MODEL}&encoding=mp3`;
+async function synthesizeChunkDeepgram(text) {
+  const url = `https://api.deepgram.com/v1/speak?model=${DEEPGRAM_MODEL}&encoding=mp3`;
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      'Authorization': `Token ${API_KEY}`,
+      'Authorization': `Token ${DEEPGRAM_API_KEY}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ text }),
@@ -171,6 +176,35 @@ async function synthesizeChunk(text) {
   }
 
   return Buffer.from(await res.arrayBuffer());
+}
+
+async function synthesizeChunkOpenAI(text) {
+  const res = await fetch('https://api.openai.com/v1/audio/speech', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENAI_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: OPENAI_MODEL,
+      voice: OPENAI_VOICE,
+      input: text,
+      response_format: 'mp3',
+    }),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`OpenAI TTS API error ${res.status}: ${errText}`);
+  }
+
+  return Buffer.from(await res.arrayBuffer());
+}
+
+async function synthesizeChunk(text) {
+  return TTS_PROVIDER === 'openai'
+    ? synthesizeChunkOpenAI(text)
+    : synthesizeChunkDeepgram(text);
 }
 
 async function synthesizeSection(text, sectionId, slugDir) {
@@ -250,9 +284,14 @@ async function processChapter(slug) {
 }
 
 async function main() {
-  if (!API_KEY) {
-    console.error('DEEPGRAM_API_KEY environment variable is required.');
-    console.error('Set it in web/.env.local or export it.');
+  if (TTS_PROVIDER === 'deepgram' && !DEEPGRAM_API_KEY) {
+    console.error('DEEPGRAM_API_KEY environment variable is required for Deepgram TTS.');
+    console.error('Set it in web/.env.local or export it, or set TTS_PROVIDER=openai.');
+    process.exit(1);
+  }
+  if (TTS_PROVIDER === 'openai' && !OPENAI_API_KEY) {
+    console.error('OPENAI_API_KEY environment variable is required for OpenAI TTS.');
+    console.error('Set it in web/.env.local or export it, or set TTS_PROVIDER=deepgram.');
     process.exit(1);
   }
 
@@ -265,7 +304,10 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('=== Audio Generation (Deepgram Aura-2) ===\n');
+  const providerLabel = TTS_PROVIDER === 'openai'
+    ? `OpenAI ${OPENAI_MODEL} / ${OPENAI_VOICE}`
+    : `Deepgram ${DEEPGRAM_MODEL}`;
+  console.log(`=== Audio Generation (${providerLabel}) ===\n`);
   mkdirSync(AUDIO_OUT, { recursive: true });
 
   // Load existing manifest if we're doing partial generation
