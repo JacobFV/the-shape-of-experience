@@ -1,8 +1,10 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+import GitHub from 'next-auth/providers/github';
+import Google from 'next-auth/providers/google';
 import { getDb } from './db';
-import { users } from './db/schema';
-import { eq } from 'drizzle-orm';
+import { users, accounts } from './db/schema';
+import { eq, and } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -11,6 +13,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: '/login',
   },
   providers: [
+    GitHub({
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
+    }),
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+    }),
     Credentials({
       name: 'credentials',
       credentials: {
@@ -40,6 +50,70 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user, account }) {
+      if (!account || account.provider === 'credentials') return true;
+
+      const db = getDb();
+      const provider = account.provider;
+      const providerAccountId = account.providerAccountId;
+
+      // Check if this OAuth account is already linked
+      const [existing] = await db
+        .select()
+        .from(accounts)
+        .where(
+          and(
+            eq(accounts.provider, provider),
+            eq(accounts.providerAccountId, providerAccountId),
+          )
+        )
+        .limit(1);
+
+      if (existing) {
+        // Already linked — set the user id so JWT callback picks it up
+        user.id = existing.userId;
+        return true;
+      }
+
+      // New OAuth sign-in: find or create user by email
+      const email = user.email;
+      if (!email) return false;
+
+      let [dbUser] = await db
+        .select()
+        .from(users)
+        .where(eq(users.email, email))
+        .limit(1);
+
+      if (!dbUser) {
+        [dbUser] = await db
+          .insert(users)
+          .values({
+            name: user.name || email.split('@')[0],
+            email,
+            image: user.image,
+          })
+          .returning();
+      }
+
+      // Link the OAuth account
+      await db.insert(accounts).values({
+        userId: dbUser.id,
+        type: account.type,
+        provider,
+        providerAccountId,
+        refresh_token: account.refresh_token ?? null,
+        access_token: account.access_token ?? null,
+        expires_at: account.expires_at ?? null,
+        token_type: account.token_type ?? null,
+        scope: account.scope ?? null,
+        id_token: account.id_token ?? null,
+        session_state: (account.session_state as string) ?? null,
+      });
+
+      user.id = dbUser.id;
+      return true;
+    },
     jwt({ token, user }) {
       if (user) token.id = user.id;
       return token;

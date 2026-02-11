@@ -261,6 +261,27 @@ body {
   opacity: 1;
 }
 
+.toc-legal {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.toc-legal a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.toc-legal a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
 /* --- Main Content --- */
 .main-content {
   margin-left: var(--sidebar-width);
@@ -1726,6 +1747,52 @@ mark.user-highlight {
 
 .auth-switch button:hover {
   text-decoration: underline;
+}
+
+.auth-oauth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-oauth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.auth-oauth-btn:hover {
+  border-color: var(--text-secondary);
+  background: var(--bg-secondary, var(--bg));
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--border);
 }
 
 /* ==========================================================================
