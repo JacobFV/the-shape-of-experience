@@ -17,6 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install web dependencies
+        run: cd web && npm ci
+
+      - name: Generate LaTeX from TSX
+        run: cd web && npm run generate-latex
+
       - name: Install TeX Live
         run: |
           sudo apt-get update
@@ -32,8 +44,8 @@ jobs:
         run: |
           cd book
           latexmk -pdf -interaction=nonstopmode book.tex || true
-          # Retry once (common with LaTeX cross-references)
-          latexmk -pdf -interaction=nonstopmode book.tex
+          # Retry with -f (force past non-fatal tcolorbox warnings)
+          latexmk -pdf -interaction=nonstopmode -f book.tex
 
       - name: Copy PDF to web
         run: cp book/book.pdf web/public/book.pdf

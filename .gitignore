@@ -38,6 +38,10 @@
 missfont.log
 texput.log
 
+# Generated LaTeX (regenerated from TSX source)
+book/generated/
+book/book.pdf
+
 # Environment variables
 .env
 .env.local

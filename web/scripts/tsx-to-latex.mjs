@@ -120,12 +120,30 @@ function convertToLatex(slug) {
   });
 
   // Environment boxes with title prop
+  const ENV_DEFAULT_TITLES = {
+    'sidebar': null, // sidebar uses tcolorbox [title=...] option
+    'connection': 'Existing Theory',
+    'experiment': 'Proposed Experiment',
+    'openquestion': 'Open Question',
+    'keyresult': 'Key Result',
+    'warning': 'Warning',
+    'todo_empirical': 'Future Empirical Work',
+    'historical': 'Historical Context',
+    'empirical': 'Empirical Grounding',
+    'software': 'Proposed Software Implementation',
+    'phenomenal': 'Phenomenal Correspondence',
+    'normimp': null,
+  };
   for (const [comp, env] of Object.entries(ENV_MAP)) {
     // With title: <Sidebar title="...">
     const titleRegex = new RegExp(`<${comp}\\s+title="([^"]*)"[^>]*>`, 'g');
     latex = latex.replace(titleRegex, (_, title) => {
       if (env === 'sidebar') {
         return `\\begin{${env}}[title=${escapeLatex(title)}]`;
+      }
+      const defaultTitle = ENV_DEFAULT_TITLES[env];
+      if (defaultTitle && title !== defaultTitle) {
+        return `\\begin{${env}}\n\\textbf{${escapeLatex(title)}}\\par`;
       }
       return `\\begin{${env}}`;
     });
@@ -159,8 +177,9 @@ function convertToLatex(slug) {
   // Figure
   latex = latex.replace(/<Figure\s+src="([^"]*)"\s+alt="([^"]*)"(?:\s+caption=\{<>([^]*?)<\/>\})?(?:\s+multi)?\s*\/>/g,
     (_, src, alt, caption) => {
+      const cleanSrc = src.replace(/^\//, '');
       const lines = ['\\begin{figure}[htbp]', '\\centering'];
-      lines.push(`\\includegraphics[width=0.8\\textwidth]{${src}}`);
+      lines.push(`\\includegraphics[width=0.8\\textwidth]{${cleanSrc}}`);
       if (caption) {
         lines.push(`\\caption{${stripAndConvertInline(caption)}}`);
       }
@@ -170,7 +189,8 @@ function convertToLatex(slug) {
   );
   // Simpler figure patterns
   latex = latex.replace(/<Figure\s+src="([^"]*)"[^>]*\/>/g, (_, src) => {
-    return `\\begin{figure}[htbp]\n\\centering\n\\includegraphics[width=0.8\\textwidth]{${src}}\n\\end{figure}`;
+    const cleanSrc = src.replace(/^\//, '');
+    return `\\begin{figure}[htbp]\n\\centering\n\\includegraphics[width=0.8\\textwidth]{${cleanSrc}}\n\\end{figure}`;
   });
 
   // Diagram — map web SVG paths to TikZ source files
@@ -207,6 +227,10 @@ function convertToLatex(slug) {
 
   // --- Pass 2: Convert HTML elements ---
 
+  // Subscript / superscript
+  latex = latex.replace(/<sub>([\s\S]*?)<\/sub>/g, (_, text) => `$_{\\text{${text.trim()}}}$`);
+  latex = latex.replace(/<sup>([\s\S]*?)<\/sup>/g, (_, text) => `$^{\\text{${text.trim()}}}$`);
+
   // Paragraphs: <p>...</p> → content with blank lines
   latex = latex.replace(/<p>/g, '\n');
   latex = latex.replace(/<\/p>/g, '\n');
@@ -214,7 +238,7 @@ function convertToLatex(slug) {
   // Emphasis
   latex = latex.replace(/<em>([\s\S]*?)<\/em>/g, (_, text) => `\\emph{${text}}`);
   latex = latex.replace(/<strong>([\s\S]*?)<\/strong>/g, (_, text) => `\\textbf{${text}}`);
-  latex = latex.replace(/<code>([\s\S]*?)<\/code>/g, (_, text) => `\\texttt{${text}}`);
+  latex = latex.replace(/<code>([\s\S]*?)<\/code>/g, (_, text) => `\\texttt{${escapeCode(text)}}`);
 
   // Links
   latex = latex.replace(/<a\s+href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g, (_, url, text) => {
@@ -257,11 +281,45 @@ function convertToLatex(slug) {
   // Strip any remaining JSX/HTML tags
   latex = latex.replace(/<\/?[a-zA-Z][^>]*>/g, '');
 
+  // Replace Unicode Greek letters with LaTeX commands
+  const UNICODE_GREEK = {
+    'α': '$\\alpha$', 'β': '$\\beta$', 'γ': '$\\gamma$', 'δ': '$\\delta$',
+    'ε': '$\\epsilon$', 'ζ': '$\\zeta$', 'η': '$\\eta$', 'θ': '$\\theta$',
+    'ι': '$\\iota$', 'κ': '$\\kappa$', 'λ': '$\\lambda$', 'μ': '$\\mu$',
+    'ν': '$\\nu$', 'ξ': '$\\xi$', 'π': '$\\pi$', 'ρ': '$\\rho$',
+    'σ': '$\\sigma$', 'τ': '$\\tau$', 'φ': '$\\phi$', 'χ': '$\\chi$',
+    'ψ': '$\\psi$', 'ω': '$\\omega$',
+    'Φ': '$\\Phi$', 'Δ': '$\\Delta$', 'Σ': '$\\Sigma$', 'Ω': '$\\Omega$',
+  };
+  for (const [char, cmd] of Object.entries(UNICODE_GREEK)) {
+    latex = latex.replaceAll(char, cmd);
+  }
+
+  // Replace other Unicode that pdflatex can't handle
+  latex = latex.replaceAll('\u2019', "'");   // right single quote
+  latex = latex.replaceAll('\u2018', '`');    // left single quote
+  latex = latex.replaceAll('\u201C', '``');   // left double quote
+  latex = latex.replaceAll('\u201D', "''");   // right double quote
+  latex = latex.replaceAll('\u2014', '---');  // em dash
+  latex = latex.replaceAll('\u2013', '--');   // en dash
+  latex = latex.replaceAll('\u2026', '\\ldots{}'); // ellipsis
+  latex = latex.replaceAll('\u00D7', '$\\times$'); // multiplication sign
+
+  // Strip TSX indentation artifacts
+  latex = latex.replace(/^[ \t]+/gm, '');
+
   // Clean up excessive blank lines
   latex = latex.replace(/\n{4,}/g, '\n\n\n');
 
   // Trim
   latex = latex.trim() + '\n';
+
+  // Validation: warn on residual HTML-like tags
+  const residualTags = latex.match(/<[a-zA-Z][^>]*>/g);
+  if (residualTags) {
+    const unique = [...new Set(residualTags)];
+    console.warn(`  ⚠ ${slug}: residual HTML tags: ${unique.join(', ')}`);
+  }
 
   return latex;
 }
@@ -271,7 +329,9 @@ function convertToLatex(slug) {
  */
 function convertTables(latex) {
   const tableRegex = /<table>([\s\S]*?)<\/table>/g;
-  return latex.replace(tableRegex, (_, tableContent) => {
+  return latex.replace(tableRegex, (_, rawContent) => {
+    // Strip thead/tbody wrappers before processing rows
+    const tableContent = rawContent.replace(/<\/?thead>/g, '').replace(/<\/?tbody>/g, '');
     const rows = [];
     const rowRegex = /<tr>([\s\S]*?)<\/tr>/g;
     let match;
@@ -314,7 +374,9 @@ function stripAndConvertInline(html) {
   let text = html;
   text = text.replace(/<em>([\s\S]*?)<\/em>/g, (_, t) => `\\emph{${t}}`);
   text = text.replace(/<strong>([\s\S]*?)<\/strong>/g, (_, t) => `\\textbf{${t}}`);
-  text = text.replace(/<code>([\s\S]*?)<\/code>/g, (_, t) => `\\texttt{${t}}`);
+  text = text.replace(/<code>([\s\S]*?)<\/code>/g, (_, t) => `\\texttt{${escapeCode(t)}}`);
+  text = text.replace(/<sub>([\s\S]*?)<\/sub>/g, (_, t) => `$_{\\text{${t.trim()}}}$`);
+  text = text.replace(/<sup>([\s\S]*?)<\/sup>/g, (_, t) => `$^{\\text{${t.trim()}}}$`);
   text = text.replace(/<M>\{"([^"]*)"\}<\/M>/g, (_, math) => `$${unescapeJsString(math)}$`);
   text = text.replace(/<[^>]*>/g, '');
   return text;
@@ -329,6 +391,18 @@ function escapeLatex(text) {
     .replace(/&/g, '\\&')
     .replace(/%/g, '\\%')
     .replace(/#/g, '\\#');
+}
+
+/**
+ * Escape special LaTeX characters inside code/texttt blocks.
+ */
+function escapeCode(text) {
+  return text
+    .replace(/_/g, '\\_')
+    .replace(/&/g, '\\&')
+    .replace(/%/g, '\\%')
+    .replace(/#/g, '\\#')
+    .replace(/\$/g, '\\$');
 }
 
 /**
