@@ -362,7 +362,7 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
             aria-label="Next section"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 18h2V6h-2zm-8.5-6l8.5 6V6z" transform="scale(-1,1) translate(-24,0)" />
+              <path d="M16 6h2v12h-2zM6 6l8.5 6-8.5 6z" />
             </svg>
           </button>
 
