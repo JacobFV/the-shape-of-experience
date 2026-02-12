@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { useMobileUI } from '../lib/MobileUIContext';
 
 export interface AudioSection {
@@ -13,6 +14,7 @@ interface AudioPlayerProps {
   sections: AudioSection[];
   chapterTitle: string;
   slug: string;
+  nextChapterHref?: string;
 }
 
 function formatTime(seconds: number): string {
@@ -22,7 +24,8 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlayerProps) {
+export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterHref }: AudioPlayerProps) {
+  const router = useRouter();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -56,9 +59,10 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
     }
   }, [everPlayed, setAudioStarted]);
 
-  // Restore saved position on mount
+  // Restore saved position on mount (skip if auto-continuing from previous chapter)
   useEffect(() => {
     try {
+      if (localStorage.getItem('audio-continue')) return;
       const saved = localStorage.getItem(`audio-pos-${slug}`);
       if (saved) {
         const { index, time } = JSON.parse(saved);
@@ -170,14 +174,20 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
   // Auto-advance to next section when current one ends
   const handleEnded = useCallback(() => {
     if (currentIndex < sections.length - 1) {
-      // Auto-advance
+      // Auto-advance to next section within chapter
       selectSection(currentIndex + 1);
       // Keep playing flag true so next section auto-plays
+    } else if (nextChapterHref) {
+      // Last section finished — advance to next chapter
+      try {
+        localStorage.setItem('audio-continue', 'true');
+      } catch { /* ignore */ }
+      router.push(nextChapterHref);
     } else {
-      // Last section finished
+      // Last section of last chapter
       setIsPlaying(false);
     }
-  }, [currentIndex, sections.length, selectSection]);
+  }, [currentIndex, sections.length, selectSection, nextChapterHref, router]);
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
@@ -267,8 +277,20 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
     if (audio) {
       setDuration(audio.duration);
       setLoaded(true);
+
+      // Auto-start if continuing from previous chapter
+      try {
+        const shouldContinue = localStorage.getItem('audio-continue');
+        if (shouldContinue) {
+          localStorage.removeItem('audio-continue');
+          audio.play().then(() => {
+            setIsPlaying(true);
+            if (!everPlayed) setEverPlayed(true);
+          }).catch(() => {});
+        }
+      } catch { /* ignore */ }
     }
-  }, []);
+  }, [everPlayed]);
 
   const handleSeek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;

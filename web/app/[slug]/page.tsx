@@ -1,5 +1,13 @@
 import { chapters, getChapterComponent, getChapterBySlug, getChapterAudio } from '../../lib/chapters';
 import { getFirstSectionId, getChapterNav } from '../../lib/sections';
+
+function getNextChapterHref(slug: string): string | undefined {
+  const idx = chapters.findIndex(c => c.slug === slug);
+  const next = idx >= 0 && idx < chapters.length - 1 ? chapters[idx + 1] : undefined;
+  if (!next) return undefined;
+  const firstSection = getFirstSectionId(next.slug);
+  return firstSection ? `/${next.slug}/${firstSection}` : `/${next.slug}`;
+}
 import ChapterNav from '../../components/ChapterNav';
 import AudioPlayer from '../../components/AudioPlayer';
 import HighlightManager from '../../components/HighlightManager';
@@ -43,6 +51,7 @@ export default async function ChapterPage({ params }: Props) {
 
   const { prev, next } = getChapterNav(slug);
   const audioSections = getChapterAudio(slug);
+  const nextChapterHref = getNextChapterHref(slug);
 
   return (
     <article className="chapter">
@@ -55,6 +64,7 @@ export default async function ChapterPage({ params }: Props) {
           sections={audioSections}
           chapterTitle={chapter.shortTitle}
           slug={slug}
+          nextChapterHref={nextChapterHref}
         />
       )}
 
