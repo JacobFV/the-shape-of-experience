@@ -38,7 +38,7 @@ jobs:
         run: npm i -g vercel@latest
 
       - name: Pull Vercel environment
-        run: cd web && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Install dependencies
         run: cd web && npm ci
@@ -65,8 +65,8 @@ jobs:
 
       - name: Build
         if: ${{ inputs.deploy }}
-        run: cd web && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy
         if: ${{ inputs.deploy }}
-        run: cd web && vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
