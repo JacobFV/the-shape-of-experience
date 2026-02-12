@@ -1,0 +1,5 @@
+# Override root .gitattributes — Vercel doesn't support Git LFS,
+# so all files served by the web app must be regular git objects.
+*.png filter= diff= merge= binary
+*.pdf filter= diff= merge= binary
+*.gif filter= diff= merge= binary
