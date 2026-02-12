@@ -100,23 +100,23 @@ function convertToLatex(slug) {
   latex = latex.replace(/<\/Section>/g, '');
 
   // Inline math: <M>{"..."}</M>
-  latex = latex.replace(/<M>\{"([^"]*)"\}<\/M>/g, (_, math) => `$${unescapeJsString(math)}$`);
-  latex = latex.replace(/<M>\{`([^`]*)`\}<\/M>/g, (_, math) => `$${unescapeJsString(math)}$`);
+  latex = latex.replace(/<M>\{"([^"]*)"\}<\/M>/g, (_, math) => `$${escapeMath(unescapeJsString(math))}$`);
+  latex = latex.replace(/<M>\{`([^`]*)`\}<\/M>/g, (_, math) => `$${escapeMath(unescapeJsString(math))}$`);
 
   // Display math: <Eq>{"..."}</Eq>
   latex = latex.replace(/<Eq>\{"([\s\S]*?)"\}\s*<\/Eq>/g, (_, math) => {
-    return `\\begin{equation*}\n${unescapeJsString(math)}\n\\end{equation*}`;
+    return `\\begin{equation*}\n${escapeMath(unescapeJsString(math))}\n\\end{equation*}`;
   });
   latex = latex.replace(/<Eq>\{`([\s\S]*?)`\}\s*<\/Eq>/g, (_, math) => {
-    return `\\begin{equation*}\n${unescapeJsString(math)}\n\\end{equation*}`;
+    return `\\begin{equation*}\n${escapeMath(unescapeJsString(math))}\n\\end{equation*}`;
   });
 
   // Align: <Align>{"..."}</Align>
   latex = latex.replace(/<Align>\{"([\s\S]*?)"\}\s*<\/Align>/g, (_, math) => {
-    return `\\begin{equation*}\\begin{aligned}\n${unescapeJsString(math)}\n\\end{aligned}\\end{equation*}`;
+    return `\\begin{equation*}\\begin{aligned}\n${escapeMath(unescapeJsString(math))}\n\\end{aligned}\\end{equation*}`;
   });
   latex = latex.replace(/<Align>\{`([\s\S]*?)`\}\s*<\/Align>/g, (_, math) => {
-    return `\\begin{equation*}\\begin{aligned}\n${unescapeJsString(math)}\n\\end{aligned}\\end{equation*}`;
+    return `\\begin{equation*}\\begin{aligned}\n${escapeMath(unescapeJsString(math))}\n\\end{aligned}\\end{equation*}`;
   });
 
   // Environment boxes with title prop
@@ -139,7 +139,7 @@ function convertToLatex(slug) {
     const titleRegex = new RegExp(`<${comp}\\s+title="([^"]*)"[^>]*>`, 'g');
     latex = latex.replace(titleRegex, (_, title) => {
       if (env === 'sidebar') {
-        return `\\begin{${env}}[title=${escapeLatex(title)}]`;
+        return `\\begin{${env}}[title={${escapeLatex(title)}}]`;
       }
       const defaultTitle = ENV_DEFAULT_TITLES[env];
       if (defaultTitle && title !== defaultTitle) {
@@ -403,6 +403,14 @@ function escapeCode(text) {
     .replace(/%/g, '\\%')
     .replace(/#/g, '\\#')
     .replace(/\$/g, '\\$');
+}
+
+/**
+ * Escape literal % in math content (% is a comment in LaTeX, even in math mode).
+ */
+function escapeMath(math) {
+  // Only escape % not already preceded by \ (avoid double-escaping \%)
+  return math.replace(/(?<!\\)%/g, '\\%');
 }
 
 /**

@@ -37,7 +37,7 @@ export default function Part4() {
       </Section>
       <Section title="Additional Key Concepts" level={2}>
       <p>These dimensions operate over several background structures. The <strong>viability manifold</strong> <M>{"\\viable"}</M> is the region of state space within which a system can persist indefinitely:</p>
-      <Eq>{"\\viable = \\left{ \\mathbf{s} \\in \\R^n : \\E[\\tau_{\\text{exit}}(\\mathbf{s})] > T_{\\text{threshold}} \\right}"}</Eq>
+      <Eq>{"\\viable = \\left\\{ \\mathbf{s} \\in \\R^n : \\E[\\tau_{\\text{exit}}(\\mathbf{s})] > T_{\\text{threshold}} \\right\\}"}</Eq>
       <p>where <M>{"\\tau_{\\text{exit}}"}</M> is the first passage time to dissolution. Navigation within <M>{"\\viable"}</M> depends on the system’s <strong>world model</strong> <M>{"\\mathcal{W}"}</M>—a parameterized family of distributions predicting future observations given history and planned actions:</p>
       <Eq>{"\\mathcal{W}_\\theta = {p_\\theta(\\mathbf{o}_{t+1:t+H} | \\mathbf{h}_t, \\mathbf{a}_{t:t+H-1})}"}</Eq>
       <p>Within the world model sits the <strong>self-model</strong> <M>{"\\mathcal{S}"}</M>, the component representing the agent’s own states, policies, and causal influence:</p>

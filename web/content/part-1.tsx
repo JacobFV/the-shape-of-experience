@@ -136,7 +136,7 @@ export default function Part1() {
       <li>The depth of minima relative to barriers determines persistence times</li>
       </ul>
       <p>One structure within this landscape will recur throughout the book. For a self-maintaining system, the <strong>viability manifold</strong> <M>{"\\viable \\subset \\R^n"}</M> is the region of state space within which the system can persist indefinitely (or for times long relative to observation scales):</p>
-      <Eq>{"\\viable = \\left{ \\mathbf{x} \\in \\R^n : \\E\\left[\\tau_{\\text{exit}}(\\mathbf{x})\\right] > T_{\\text{threshold}} \\right}"}</Eq>
+      <Eq>{"\\viable = \\left\\{ \\mathbf{x} \\in \\R^n : \\E\\left[\\tau_{\\text{exit}}(\\mathbf{x})\\right] > T_{\\text{threshold}} \\right\\}"}</Eq>
       <p>where <M>{"\\tau_{\\text{exit}}(\\mathbf{x})"}</M> is the first passage time to a dissolution state starting from <M>{"\\mathbf{x}"}</M>.</p>
       <Diagram src="/diagrams/part-1-2.svg" />
       <p>The viability manifold will play a central role in understanding normativity: trajectories that remain within <M>{"\\viable"}</M> are, in a precise sense, “good” for the system, while trajectories that approach the boundary <M>{"\\partial\\viable"}</M> are “bad.”</p>
