@@ -27,6 +27,7 @@ function formatTime(seconds: number): string {
 export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterHref }: AudioPlayerProps) {
   const router = useRouter();
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playOnLoadRef = useRef(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -59,10 +60,20 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
     }
   }, [everPlayed, setAudioStarted]);
 
-  // Restore saved position on mount (skip if auto-continuing from previous chapter)
+  // Check for auto-continue flag from previous chapter (must run before currentIndex effect)
   useEffect(() => {
     try {
-      if (localStorage.getItem('audio-continue')) return;
+      if (localStorage.getItem('audio-continue')) {
+        localStorage.removeItem('audio-continue');
+        playOnLoadRef.current = true;
+      }
+    } catch { /* ignore */ }
+  }, []);
+
+  // Restore saved position on mount (skip if auto-continuing from previous chapter)
+  useEffect(() => {
+    if (playOnLoadRef.current) return;
+    try {
       const saved = localStorage.getItem(`audio-pos-${slug}`);
       if (saved) {
         const { index, time } = JSON.parse(saved);
@@ -137,7 +148,8 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
     } catch { /* some browsers don't support this */ }
   }, [currentTime, duration, isPlaying]);
 
-  const selectSection = useCallback((index: number) => {
+  const selectSection = useCallback((index: number, play = false) => {
+    if (play) playOnLoadRef.current = true;
     setCurrentIndex(index);
     setCurrentTime(0);
     setDuration(0);
@@ -151,6 +163,9 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !current) return;
+
+    const shouldPlay = isPlaying || playOnLoadRef.current;
+    playOnLoadRef.current = false;
 
     audio.src = current.audioUrl;
     audio.load();
@@ -166,8 +181,11 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
       }
     } catch { /* ignore */ }
 
-    if (isPlaying) {
-      audio.play().catch(() => setIsPlaying(false));
+    if (shouldPlay) {
+      audio.play().then(() => {
+        setIsPlaying(true);
+        setEverPlayed(true);
+      }).catch(() => setIsPlaying(false));
     }
   }, [currentIndex, current?.audioUrl]);
 
@@ -277,20 +295,8 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
     if (audio) {
       setDuration(audio.duration);
       setLoaded(true);
-
-      // Auto-start if continuing from previous chapter
-      try {
-        const shouldContinue = localStorage.getItem('audio-continue');
-        if (shouldContinue) {
-          localStorage.removeItem('audio-continue');
-          audio.play().then(() => {
-            setIsPlaying(true);
-            if (!everPlayed) setEverPlayed(true);
-          }).catch(() => {});
-        }
-      } catch { /* ignore */ }
     }
-  }, [everPlayed]);
+  }, []);
 
   const handleSeek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;
@@ -341,7 +347,7 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
         <div className="audio-controls-right">
           <button
             className="audio-prev-btn"
-            onClick={() => currentIndex > 0 && selectSection(currentIndex - 1)}
+            onClick={() => currentIndex > 0 && selectSection(currentIndex - 1, true)}
             disabled={currentIndex === 0}
             aria-label="Previous section"
           >
@@ -351,7 +357,7 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
           </button>
           <button
             className="audio-next-btn"
-            onClick={() => currentIndex < sections.length - 1 && selectSection(currentIndex + 1)}
+            onClick={() => currentIndex < sections.length - 1 && selectSection(currentIndex + 1, true)}
             disabled={currentIndex === sections.length - 1}
             aria-label="Next section"
           >
@@ -378,7 +384,7 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
                     <button
                       key={s.id}
                       className={`audio-dropdown-item ${i === currentIndex ? 'active' : ''}`}
-                      onClick={() => selectSection(i)}
+                      onClick={() => selectSection(i, true)}
                     >
                       <span className="audio-dropdown-num">{i + 1}.</span>
                       {s.title}
