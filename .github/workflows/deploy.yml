@@ -29,30 +29,18 @@ jobs:
       - name: Pull Vercel environment
         run: cd web && vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Install pandoc
-        run: cd web && bash scripts/install-pandoc.sh
-
       - name: Install dependencies
         run: cd web && npm ci
 
       - name: Run migrations
         run: cd web && npm run db:migrate
 
-      - name: Convert LaTeX to HTML
-        run: cd web && npm run convert
-
       # Restore cached audio if a previous generate-audio run produced it
-      - name: Hash generated HTML for cache key
-        id: html-hash
-        run: |
-          HASH=$(find web/generated/chapters -name '*.html' -exec sha256sum {} \; | sort | sha256sum | cut -d' ' -f1)
-          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
-
       - name: Restore audio cache
         uses: actions/cache/restore@v4
         with:
           path: web/public/audio
-          key: audio-${{ steps.html-hash.outputs.hash }}
+          key: audio-v1
           restore-keys: audio-
 
       - name: Build
