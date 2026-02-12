@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useAnnotations, Annotation } from '@/lib/hooks/useAnnotations';
+import EmojiReactions from './EmojiReactions';
 
 function findNearestHeadingId(node: Node): string {
   let el: Element | null = node.nodeType === Node.TEXT_NODE ? node.parentElement : node as Element;
@@ -51,7 +52,7 @@ function findTextInContent(root: HTMLElement, highlight: { prefix: string; exact
 export default function HighlightManager({ slug }: { slug: string }) {
   const { items: annotations, add, update, remove, isAuth } = useAnnotations(slug);
   const [popover, setPopover] = useState<{ x: number; y: number; range: Range } | null>(null);
-  const [editPopover, setEditPopover] = useState<{ x: number; y: number; annotation: Annotation } | null>(null);
+  const [editPopover, setEditPopover] = useState<{ x: number; y: number; annotation: Annotation; reactions: { emoji: string; count: number; userReacted: boolean }[] } | null>(null);
   const [noteEditor, setNoteEditor] = useState<{ id: string; note: string } | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [audioAvailable, setAudioAvailable] = useState(false);
@@ -91,7 +92,7 @@ export default function HighlightManager({ slug }: { slug: string }) {
       parent?.normalize();
     });
 
-    // Re-apply all annotations (skip bookmarks — they have no text to highlight)
+    // Re-apply all annotations
     for (const a of annotations) {
       if (!a.exact) continue;
       const range = findTextInContent(content as HTMLElement, a);
@@ -222,7 +223,12 @@ export default function HighlightManager({ slug }: { slug: string }) {
       if (id) {
         const annotation = annotations.find((a) => a.id === id);
         if (annotation) {
-          setEditPopover({ x: e.clientX, y: e.clientY - 40, annotation });
+          // Fetch reactions for this annotation if published
+          if (annotation.isPublished) {
+            fetch('/api/reactions?targetType=annotation&targetId=' + annotation.id)
+              .catch(() => {});
+          }
+          setEditPopover({ x: e.clientX, y: e.clientY - 40, annotation, reactions: [] });
           setPopover(null);
           return;
         }
@@ -397,6 +403,15 @@ export default function HighlightManager({ slug }: { slug: string }) {
           )}
           <button onClick={doAskAIFromEdit}>Ask AI</button>
           <button onClick={doRemove}>Remove</button>
+          {editPopover.annotation.isPublished && (
+            <div className="highlight-popover-reactions" onClick={(e) => e.stopPropagation()}>
+              <EmojiReactions
+                targetType="annotation"
+                targetId={editPopover.annotation.id}
+                initialReactions={editPopover.reactions}
+              />
+            </div>
+          )}
         </div>
       )}
 

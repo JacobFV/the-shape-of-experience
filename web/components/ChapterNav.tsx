@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 interface ChapterNavProps {
-  prev?: { slug: string; shortTitle: string };
-  next?: { slug: string; shortTitle: string };
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
 }
 
 export default function ChapterNav({ prev, next }: ChapterNavProps) {
@@ -10,16 +10,16 @@ export default function ChapterNav({ prev, next }: ChapterNavProps) {
     <nav className="chapter-nav">
       <div className="chapter-nav-prev">
         {prev && (
-          <Link href={`/${prev.slug}`}>
+          <Link href={prev.href}>
             <span className="chapter-nav-arrow">&larr;</span>
-            <span className="chapter-nav-label">{prev.shortTitle}</span>
+            <span className="chapter-nav-label">{prev.label}</span>
           </Link>
         )}
       </div>
       <div className="chapter-nav-next">
         {next && (
-          <Link href={`/${next.slug}`}>
-            <span className="chapter-nav-label">{next.shortTitle}</span>
+          <Link href={next.href}>
+            <span className="chapter-nav-label">{next.label}</span>
             <span className="chapter-nav-arrow">&rarr;</span>
           </Link>
         )}

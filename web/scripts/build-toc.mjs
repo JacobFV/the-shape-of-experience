@@ -32,6 +32,7 @@ function slugify(text) {
 
 function extractSections(tsx) {
   const sections = [];
+  let currentParent = null;
   // Match <Section title="..." level={N}> or <Section title="..." level={N} id="...">
   const re = /<Section\s+title="([^"]+)"\s+level=\{(\d)\}(?:\s+id="([^"]+)")?/g;
   let match;
@@ -39,7 +40,13 @@ function extractSections(tsx) {
     const title = match[1];
     const level = parseInt(match[2]);
     const id = match[3] || slugify(title);
-    sections.push({ level, id, text: title });
+    const entry = { level, id, text: title };
+    if (level === 1) {
+      currentParent = id;
+    } else if (currentParent) {
+      entry.parentSection = currentParent;
+    }
+    sections.push(entry);
   }
   return sections;
 }

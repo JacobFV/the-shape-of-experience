@@ -1,10 +1,11 @@
-import { chapters, getChapterComponent, getChapterBySlug, getAdjacentChapters, getChapterAudio } from '../../lib/chapters';
+import { chapters, getChapterComponent, getChapterBySlug, getChapterAudio } from '../../lib/chapters';
+import { getFirstSectionId, getChapterNav } from '../../lib/sections';
 import ChapterNav from '../../components/ChapterNav';
 import AudioPlayer from '../../components/AudioPlayer';
 import HighlightManager from '../../components/HighlightManager';
 import CommunityHighlights from '../../components/CommunityHighlights';
 import CommunityConversations from '../../components/CommunityConversations';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
@@ -30,10 +31,17 @@ export default async function ChapterPage({ params }: Props) {
   const chapter = getChapterBySlug(slug);
   if (!chapter) notFound();
 
+  // Chapters with sections redirect to first section
+  const firstSection = getFirstSectionId(slug);
+  if (firstSection) {
+    redirect(`/${slug}/${firstSection}`);
+  }
+
+  // Chapters without sections (e.g. introduction) render full content
   const ChapterContent = await getChapterComponent(slug);
   if (!ChapterContent) notFound();
 
-  const { prev, next } = getAdjacentChapters(slug);
+  const { prev, next } = getChapterNav(slug);
   const audioSections = getChapterAudio(slug);
 
   return (
@@ -57,10 +65,7 @@ export default async function ChapterPage({ params }: Props) {
       <CommunityHighlights slug={slug} />
       <CommunityConversations slug={slug} />
 
-      <ChapterNav
-        prev={prev ? { slug: prev.slug, shortTitle: prev.shortTitle } : undefined}
-        next={next ? { slug: next.slug, shortTitle: next.shortTitle } : undefined}
-      />
+      <ChapterNav prev={prev} next={next} />
     </article>
   );
 }

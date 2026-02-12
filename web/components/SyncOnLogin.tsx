@@ -14,24 +14,8 @@ export default function SyncOnLogin() {
     const syncKey = `soe-synced-${session.user.id}`;
     if (localStorage.getItem(syncKey)) return;
 
-    // Collect all localStorage highlights (includes migrated bookmarks)
+    // Collect all localStorage highlights
     const highlights: Array<Record<string, unknown>> = [];
-
-    // Migrate any remaining soe-bookmarks into highlights format
-    try {
-      const bms = JSON.parse(localStorage.getItem('soe-bookmarks') || '[]');
-      for (const bm of bms) {
-        highlights.push({
-          slug: bm.slug,
-          nearestHeadingId: bm.nearestHeadingId || '',
-          nearestHeadingText: bm.nearestHeadingText || '',
-          prefix: '',
-          exact: '',
-          suffix: '',
-          note: '',
-        });
-      }
-    } catch { /* ignore */ }
 
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -70,7 +54,6 @@ export default function SyncOnLogin() {
             localStorage.removeItem(key);
           }
         }
-        localStorage.removeItem('soe-bookmarks');
 
         const total = data.imported?.annotations || 0;
         if (total > 0) {

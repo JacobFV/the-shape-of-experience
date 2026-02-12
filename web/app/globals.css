@@ -418,6 +418,15 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+.chapter-subtitle {
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
 .chapter-title {
   font-size: 1.8rem;
   font-weight: 400;
@@ -1304,20 +1313,6 @@ body {
   border-radius: 50%;
 }
 
-.bookmark-flash {
-  color: #d4a017;
-}
-
-.bookmark-count {
-  font-size: 0.65rem;
-  background: var(--accent);
-  color: white;
-  border-radius: 8px;
-  padding: 0 4px;
-  min-width: 14px;
-  text-align: center;
-  line-height: 1.4;
-}
 
 .reader-toolbar-dropdown {
   position: relative;
@@ -2259,6 +2254,282 @@ mark.user-highlight {
   line-height: 1.55;
 }
 
+.community-note-avatar-img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Emoji Reactions
+   ========================================================================== */
+.emoji-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 0.35rem;
+  align-items: center;
+}
+
+.emoji-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.emoji-badge:hover {
+  border-color: var(--accent);
+}
+
+.emoji-badge.reacted {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--text);
+}
+
+.emoji-badge:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.emoji-badge-emoji {
+  font-size: 0.8rem;
+}
+
+.emoji-badge-count {
+  font-size: 0.65rem;
+  min-width: 8px;
+  text-align: center;
+}
+
+.emoji-add-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px dashed var(--border);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+}
+
+.emoji-add-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.emoji-picker-wrapper {
+  position: relative;
+}
+
+.emoji-picker {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 10;
+}
+
+.emoji-picker-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background 0.1s;
+}
+
+.emoji-picker-item:hover {
+  background: var(--accent-light);
+}
+
+/* ==========================================================================
+   Comment Thread
+   ========================================================================== */
+.comment-thread {
+  margin-top: 0.3rem;
+}
+
+.comment-thread-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  padding: 2px 0;
+}
+
+.comment-thread-toggle:hover {
+  color: var(--accent);
+}
+
+.comment-chevron {
+  margin-left: 4px;
+  font-size: 0.55rem;
+}
+
+.comment-thread-body {
+  margin-top: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--border);
+}
+
+.comment-item {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.comment-item + .comment-item {
+  border-top: 1px solid var(--border);
+  padding-top: 0.4rem;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+}
+
+.comment-avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.comment-avatar-img {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.comment-author {
+  font-weight: 600;
+}
+
+.comment-time {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.comment-delete {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0 4px;
+  opacity: 0.5;
+}
+
+.comment-delete:hover {
+  opacity: 1;
+  color: #cc4444;
+}
+
+.comment-content {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.comment-loading {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0;
+}
+
+.comment-input-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 0.4rem;
+  align-items: flex-end;
+}
+
+.comment-input {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 32px;
+  max-height: 80px;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.comment-submit {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.comment-submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.comment-submit:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.highlight-popover-reactions {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 4px;
+  margin-top: 4px;
+  width: 100%;
+}
+
 /* ==========================================================================
    Highlight Note Inline
    ========================================================================== */
@@ -2746,6 +3017,16 @@ mark.user-highlight .published-icon {
   background: rgba(107, 158, 221, 0.1);
 }
 
+[data-theme="dark"] .emoji-picker {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+[data-theme="dark"] .comment-input {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
 [data-theme="dark"] .highlight-note-inline {
   background: rgba(255, 213, 79, 0.08);
   border-left-color: rgba(255, 213, 79, 0.25);
@@ -3005,52 +3286,6 @@ mark.user-highlight .published-icon {
     color: var(--text-secondary);
   }
 
-  .mobile-menu-bookmarks {
-    padding: 2px 16px 6px;
-  }
-
-  .mobile-menu-bm-group {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-secondary);
-    padding: 8px 0 4px;
-    font-family: var(--font-sans);
-  }
-
-  .mobile-menu-bm-item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .mobile-menu-bm-item > button:first-child {
-    flex: 1;
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 6px 0;
-    font-size: 0.82rem;
-    color: var(--text);
-    cursor: pointer;
-    font-family: var(--font-sans);
-  }
-
-  .mobile-menu-bm-remove {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    padding: 4px 8px;
-    opacity: 0.5;
-  }
-
-  .mobile-menu-bm-remove:active {
-    opacity: 1;
-    color: #cc4444;
-  }
 
   .mobile-menu-user-header {
     display: flex;

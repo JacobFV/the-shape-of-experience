@@ -6,6 +6,8 @@ import {
   integer,
   primaryKey,
   uuid,
+  uniqueIndex,
+  index,
 } from 'drizzle-orm/pg-core';
 
 // ── Auth tables (Auth.js / Drizzle adapter format) ──────────────────────────
@@ -104,6 +106,48 @@ export const messages = pgTable('messages', {
   content: text('content').notNull(),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
 });
+
+export const comments = pgTable(
+  'comments',
+  {
+    id: uuid('id').defaultRandom().primaryKey(),
+    annotationId: uuid('annotation_id')
+      .notNull()
+      .references(() => annotations.id, { onDelete: 'cascade' }),
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    content: text('content').notNull(),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
+  },
+  (table) => [
+    index('comments_annotation_id_idx').on(table.annotationId),
+    index('comments_user_id_idx').on(table.userId),
+  ]
+);
+
+export const reactions = pgTable(
+  'reactions',
+  {
+    id: uuid('id').defaultRandom().primaryKey(),
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    targetType: text('target_type').notNull(), // 'annotation' | 'comment'
+    targetId: uuid('target_id').notNull(),
+    emoji: text('emoji').notNull(),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
+  },
+  (table) => [
+    uniqueIndex('reactions_unique_idx').on(
+      table.userId,
+      table.targetType,
+      table.targetId,
+      table.emoji
+    ),
+    index('reactions_target_idx').on(table.targetType, table.targetId),
+  ]
+);
 
 export const userSettings = pgTable('user_settings', {
   userId: uuid('user_id')

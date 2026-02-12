@@ -2,6 +2,12 @@
 
 import { useState, useEffect } from 'react';
 
+export interface ReactionData {
+  emoji: string;
+  count: number;
+  userReacted: boolean;
+}
+
 export interface CommunityNote {
   id: string;
   nearestHeadingId: string;
@@ -12,6 +18,8 @@ export interface CommunityNote {
   createdAt: string;
   userName: string;
   userImage: string | null;
+  commentCount: number;
+  reactions: ReactionData[];
 }
 
 export function useCommunityNotes(slug: string, enabled: boolean = true) {
@@ -34,5 +42,19 @@ export function useCommunityNotes(slug: string, enabled: boolean = true) {
       .catch(() => setLoading(false));
   }, [slug, enabled]);
 
-  return { notes, loading };
+  const updateNoteReactions = (noteId: string, reactions: ReactionData[]) => {
+    setNotes((prev) =>
+      prev.map((n) => (n.id === noteId ? { ...n, reactions } : n))
+    );
+  };
+
+  const incrementCommentCount = (noteId: string, delta: number) => {
+    setNotes((prev) =>
+      prev.map((n) =>
+        n.id === noteId ? { ...n, commentCount: n.commentCount + delta } : n
+      )
+    );
+  };
+
+  return { notes, loading, updateNoteReactions, incrementCommentCount };
 }

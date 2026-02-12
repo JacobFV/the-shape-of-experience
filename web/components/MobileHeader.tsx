@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useMobileUI } from '../lib/MobileUIContext';
-import { useAnnotations, type Annotation } from '../lib/hooks/useAnnotations';
 import { useProfileImage } from '../lib/hooks/useProfileImage';
 import SearchOverlay from './SearchOverlay';
 
@@ -38,39 +37,17 @@ function applyFontSize(size: FontSize) {
   document.documentElement.style.fontSize = `${FONT_SIZES[size]}px`;
 }
 
-function findNearestHeading(): { id: string; text: string } {
-  const headings = document.querySelectorAll<HTMLElement>(
-    '.chapter-content h1[id], .chapter-content h2[id], .chapter-content h3[id]'
-  );
-  const scrollY = window.scrollY + 100;
-  let nearest = { id: '', text: 'Start of chapter' };
-  for (const h of headings) {
-    if (h.offsetTop <= scrollY) nearest = { id: h.id, text: h.textContent?.trim() || '' };
-  }
-  return nearest;
-}
-
 export default function MobileHeader() {
   const { sidebarOpen, setSidebarOpen, audioAvailable, audioStarted, audioToggleRef } = useMobileUI();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>('system');
   const [fontSize, setFontSize] = useState<FontSize>('medium');
-  const [showBookmarks, setShowBookmarks] = useState(false);
-  const [justBookmarked, setJustBookmarked] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
-  const { items: allAnnotations, add: addAnnotation, remove: removeAnnotation } = useAnnotations();
   const profileImage = useProfileImage();
-
-  const slug = pathname.replace(/^\//, '');
-  const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
-  const isReadingPage = READING_SLUGS.includes(slug);
-
-  // Bookmarks are annotations with empty exact
-  const bookmarks = allAnnotations.filter((a) => !a.exact);
 
   useEffect(() => {
     setTheme(getTheme());
@@ -83,7 +60,6 @@ export default function MobileHeader() {
 
   useEffect(() => {
     setMenuOpen(false);
-    setShowBookmarks(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -91,7 +67,6 @@ export default function MobileHeader() {
     function onMouseDown(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setMenuOpen(false);
-        setShowBookmarks(false);
       }
     }
     document.addEventListener('mousedown', onMouseDown);
@@ -111,42 +86,6 @@ export default function MobileHeader() {
     localStorage.setItem('soe-font-size', next);
     applyFontSize(next);
   }, [fontSize]);
-
-  const addBookmark = useCallback(async () => {
-    if (!isReadingPage) return;
-    const heading = findNearestHeading();
-    await addAnnotation({
-      slug,
-      nearestHeadingId: heading.id,
-      nearestHeadingText: heading.text,
-      prefix: '',
-      exact: '',
-      suffix: '',
-      note: '',
-    });
-    setJustBookmarked(true);
-    setTimeout(() => setJustBookmarked(false), 1500);
-  }, [isReadingPage, slug, addAnnotation]);
-
-  const navigateToBookmark = useCallback((bm: Annotation) => {
-    setMenuOpen(false);
-    setShowBookmarks(false);
-    if (bm.slug === slug) {
-      if (bm.nearestHeadingId) {
-        const el = document.getElementById(bm.nearestHeadingId);
-        if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
-      }
-    } else {
-      if (bm.nearestHeadingId) {
-        router.push(`/${bm.slug}#${bm.nearestHeadingId}`);
-      } else {
-        router.push(`/${bm.slug}`);
-      }
-    }
-  }, [slug, router]);
-
-  const grouped: Record<string, Annotation[]> = {};
-  for (const bm of bookmarks) (grouped[bm.slug] ||= []).push(bm);
 
   return (
     <header className="mobile-header">
@@ -195,7 +134,7 @@ export default function MobileHeader() {
 
           <button
             className="mobile-header-btn"
-            onClick={() => { setMenuOpen(!menuOpen); if (menuOpen) setShowBookmarks(false); }}
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Settings"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -259,44 +198,6 @@ export default function MobileHeader() {
                   >A</button>
                 </div>
               </div>
-
-              {isReadingPage && (
-                <button className="mobile-menu-item" onClick={addBookmark}>
-                  <span className="mobile-menu-icon">{justBookmarked ? '\u2605' : '\u2606'}</span>
-                  <span>{justBookmarked ? 'Bookmarked!' : 'Add bookmark'}</span>
-                </button>
-              )}
-
-              {bookmarks.length > 0 && (
-                <>
-                  <button className="mobile-menu-item" onClick={() => setShowBookmarks(!showBookmarks)}>
-                    <span className="mobile-menu-icon">{'\u2630'}</span>
-                    <span>Bookmarks ({bookmarks.length})</span>
-                    <span className="mobile-menu-chevron">{showBookmarks ? '\u25B2' : '\u25BC'}</span>
-                  </button>
-                  {showBookmarks && (
-                    <div className="mobile-menu-bookmarks">
-                      {Object.entries(grouped).map(([bmSlug, bms]) => (
-                        <div key={bmSlug}>
-                          <div className="mobile-menu-bm-group">{bmSlug}</div>
-                          {bms.map(bm => (
-                            <div key={bm.id} className="mobile-menu-bm-item">
-                              <button onClick={() => navigateToBookmark(bm)}>
-                                {bm.nearestHeadingText || 'Start'}
-                              </button>
-                              <button
-                                className="mobile-menu-bm-remove"
-                                onClick={() => removeAnnotation(bm.id)}
-                                aria-label="Remove bookmark"
-                              >&times;</button>
-                            </div>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
 
               <div className="mobile-menu-divider" />
 

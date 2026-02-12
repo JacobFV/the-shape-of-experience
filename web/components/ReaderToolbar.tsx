@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import UserButton from './UserButton';
 import SearchOverlay from './SearchOverlay';
-import { useAnnotations, type Annotation } from '@/lib/hooks/useAnnotations';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -81,40 +80,20 @@ function applyAccent(preset: AccentPreset) {
   document.documentElement.style.setProperty('--accent-light', isDark ? p.darkAccentLight : p.accentLight);
 }
 
-function findNearestHeading(): { id: string; text: string } {
-  const headings = document.querySelectorAll<HTMLElement>('.chapter-content h1[id], .chapter-content h2[id], .chapter-content h3[id]');
-  const scrollY = window.scrollY + 100;
-  let nearest = { id: '', text: 'Start of chapter' };
-  for (const h of headings) {
-    if (h.offsetTop <= scrollY) {
-      nearest = { id: h.id, text: h.textContent?.trim() || '' };
-    }
-  }
-  return nearest;
-}
-
 export default function ReaderToolbar() {
   const pathname = usePathname();
-  const router = useRouter();
   const [theme, setTheme] = useState<ThemeMode>('system');
   const [fontSize, setFontSize] = useState<FontSize>('medium');
   const [fontFamily, setFontFamily] = useState<FontFamily>('georgia');
   const [accent, setAccent] = useState<AccentPreset>('blue');
-  const [showBookmarks, setShowBookmarks] = useState(false);
   const [showFontPicker, setShowFontPicker] = useState(false);
-  const [justBookmarked, setJustBookmarked] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const fontPickerRef = useRef<HTMLDivElement>(null);
 
-  const slug = pathname.replace(/^\//, '');
+  const pathBase = pathname.replace(/^\//, '').split('/')[0];
   const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
-  const isReadingPage = READING_SLUGS.includes(slug);
-
-  const { items: allAnnotations, add: addAnnotation, remove: removeAnnotation } = useAnnotations();
-
-  // Bookmarks are annotations with empty exact
-  const bookmarks = allAnnotations.filter((a) => !a.exact);
+  const isReadingPage = READING_SLUGS.includes(pathBase);
+  const slug = pathBase;
 
   useEffect(() => {
     const t = getTheme();
@@ -143,16 +122,13 @@ export default function ReaderToolbar() {
   // Close dropdowns on outside click
   useEffect(() => {
     function onClick(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setShowBookmarks(false);
-      }
       if (fontPickerRef.current && !fontPickerRef.current.contains(e.target as Node)) {
         setShowFontPicker(false);
       }
     }
-    if (showBookmarks || showFontPicker) document.addEventListener('mousedown', onClick);
+    if (showFontPicker) document.addEventListener('mousedown', onClick);
     return () => document.removeEventListener('mousedown', onClick);
-  }, [showBookmarks, showFontPicker]);
+  }, [showFontPicker]);
 
   const selectTheme = useCallback((mode: ThemeMode) => {
     setTheme(mode);
@@ -188,46 +164,6 @@ export default function ReaderToolbar() {
     localStorage.setItem('soe-accent', preset);
     applyAccent(preset);
   }, []);
-
-  const addBookmark = useCallback(async () => {
-    if (!isReadingPage) return;
-    const heading = findNearestHeading();
-    await addAnnotation({
-      slug,
-      nearestHeadingId: heading.id,
-      nearestHeadingText: heading.text,
-      prefix: '',
-      exact: '',
-      suffix: '',
-      note: '',
-    });
-    setJustBookmarked(true);
-    setTimeout(() => setJustBookmarked(false), 1500);
-  }, [isReadingPage, slug, addAnnotation]);
-
-  const navigateToBookmark = useCallback((bm: Annotation) => {
-    setShowBookmarks(false);
-    if (bm.slug === slug) {
-      // Same page — just scroll
-      if (bm.nearestHeadingId) {
-        const el = document.getElementById(bm.nearestHeadingId);
-        if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
-      }
-    } else {
-      // Navigate then scroll (via hash)
-      if (bm.nearestHeadingId) {
-        router.push(`/${bm.slug}#${bm.nearestHeadingId}`);
-      } else {
-        router.push(`/${bm.slug}`);
-      }
-    }
-  }, [slug, router]);
-
-  // Group bookmarks by slug
-  const grouped: Record<string, Annotation[]> = {};
-  for (const bm of bookmarks) {
-    (grouped[bm.slug] ||= []).push(bm);
-  }
 
   return (
     <div className="reader-toolbar">
@@ -349,59 +285,6 @@ export default function ReaderToolbar() {
 
       {/* User */}
       <UserButton />
-
-      {/* Bookmark */}
-      <div className="reader-toolbar-dropdown" ref={dropdownRef}>
-        <button
-          className={`reader-toolbar-btn ${justBookmarked ? 'bookmark-flash' : ''}`}
-          onClick={isReadingPage ? addBookmark : () => setShowBookmarks(!showBookmarks)}
-          title={isReadingPage ? 'Add bookmark' : 'View bookmarks'}
-          aria-label={isReadingPage ? 'Add bookmark' : 'View bookmarks'}
-        >
-          {justBookmarked ? '\u2605' : '\u2606'}
-        </button>
-        {bookmarks.length > 0 && (
-          <button
-            className="reader-toolbar-btn reader-toolbar-btn-small"
-            onClick={() => setShowBookmarks(!showBookmarks)}
-            title="View bookmarks"
-            aria-label="View bookmarks"
-          >
-            <span className="bookmark-count">{bookmarks.length}</span>
-          </button>
-        )}
-        {showBookmarks && (
-          <div className="reader-toolbar-menu">
-            {bookmarks.length === 0 ? (
-              <div className="reader-toolbar-menu-empty">No bookmarks yet</div>
-            ) : (
-              Object.entries(grouped).map(([bmSlug, bms]) => (
-                <div key={bmSlug}>
-                  <div className="reader-toolbar-menu-group">{bmSlug}</div>
-                  {bms.map(bm => (
-                    <div key={bm.id} className="reader-toolbar-menu-item">
-                      <button
-                        className="reader-toolbar-menu-link"
-                        onClick={() => navigateToBookmark(bm)}
-                      >
-                        {bm.nearestHeadingText || 'Start'}
-                      </button>
-                      <button
-                        className="reader-toolbar-menu-remove"
-                        onClick={() => removeAnnotation(bm.id)}
-                        title="Remove bookmark"
-                        aria-label="Remove bookmark"
-                      >
-                        &times;
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ))
-            )}
-          </div>
-        )}
-      </div>
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>

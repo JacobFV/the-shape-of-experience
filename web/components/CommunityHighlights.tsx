@@ -1,14 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useSession } from 'next-auth/react';
 import { useCommunityNotes, CommunityNote } from '@/lib/hooks/useCommunityNotes';
+import EmojiReactions from './EmojiReactions';
+import CommentThread from './CommentThread';
 
 export default function CommunityHighlights({ slug }: { slug: string }) {
   const { status } = useSession();
   const [enabled, setEnabled] = useState(true);
 
-  // Check user setting for community notes
   useEffect(() => {
     if (status !== 'authenticated') return;
     fetch('/api/settings')
@@ -19,65 +21,119 @@ export default function CommunityHighlights({ slug }: { slug: string }) {
       .catch(() => {});
   }, [status]);
 
-  const { notes } = useCommunityNotes(slug, enabled);
-
-  if (!notes.length) return null;
+  const { notes, updateNoteReactions, incrementCommentCount } = useCommunityNotes(slug, enabled);
 
   // Group notes by nearest heading
-  const grouped: Record<string, CommunityNote[]> = {};
-  for (const note of notes) {
-    const key = note.nearestHeadingId || '_top';
-    (grouped[key] ||= []).push(note);
-  }
+  const grouped = useMemo(() => {
+    const map: Record<string, CommunityNote[]> = {};
+    for (const note of notes) {
+      const key = note.nearestHeadingId || '_top';
+      (map[key] ||= []).push(note);
+    }
+    return map;
+  }, [notes]);
 
-  // Render notes inline after their nearest heading
+  // Create/maintain portal anchor elements
+  const [anchors, setAnchors] = useState<Record<string, HTMLElement>>({});
+
   useEffect(() => {
-    // Clean up previously injected community notes
-    document.querySelectorAll('.community-note-injected').forEach((el) => el.remove());
+    // Clean up previously injected containers
+    document.querySelectorAll('.community-note-portal').forEach((el) => el.remove());
 
-    for (const [headingId, headingNotes] of Object.entries(grouped)) {
-      const anchor = headingId === '_top'
-        ? document.querySelector('.chapter-content')
-        : document.getElementById(headingId);
+    const newAnchors: Record<string, HTMLElement> = {};
+
+    for (const headingId of Object.keys(grouped)) {
+      const anchor =
+        headingId === '_top'
+          ? document.querySelector('.chapter-content')
+          : document.getElementById(headingId);
       if (!anchor) continue;
 
       const container = document.createElement('div');
-      container.className = 'community-note-injected';
+      container.className = 'community-note-portal';
 
-      for (const note of headingNotes) {
-        const div = document.createElement('div');
-        div.className = 'community-note';
-
-        const initial = (note.userName?.[0] || '?').toUpperCase();
-        div.innerHTML = `
-          <div class="community-note-header">
-            <span class="community-note-avatar">${initial}</span>
-            <span>${note.userName || 'Anonymous'}</span>
-          </div>
-          ${note.exact ? `<div class="community-note-quote">"${note.exact.slice(0, 80)}${note.exact.length > 80 ? '...' : ''}"</div>` : ''}
-          <div class="community-note-body">${escapeHtml(note.note || '')}</div>
-        `;
-        container.appendChild(div);
-      }
-
-      // Insert after the heading
       if (headingId === '_top') {
         anchor.prepend(container);
       } else {
         anchor.after(container);
       }
+
+      newAnchors[headingId] = container;
     }
 
-    return () => {
-      document.querySelectorAll('.community-note-injected').forEach((el) => el.remove());
-    };
-  }, [notes]); // eslint-disable-line react-hooks/exhaustive-deps
+    setAnchors(newAnchors);
 
-  return null;
+    return () => {
+      document.querySelectorAll('.community-note-portal').forEach((el) => el.remove());
+    };
+  }, [grouped]);
+
+  if (!notes.length) return null;
+
+  // Render into portal containers
+  return (
+    <>
+      {Object.entries(grouped).map(([headingId, headingNotes]) => {
+        const container = anchors[headingId];
+        if (!container) return null;
+
+        return createPortal(
+          <div key={headingId}>
+            {headingNotes.map((note) => (
+              <CommunityNoteCard
+                key={note.id}
+                note={note}
+                onReactionsUpdate={(reactions) => updateNoteReactions(note.id, reactions)}
+                onCommentCountChange={(delta) => incrementCommentCount(note.id, delta)}
+              />
+            ))}
+          </div>,
+          container
+        );
+      })}
+    </>
+  );
 }
 
-function escapeHtml(text: string): string {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
+function CommunityNoteCard({
+  note,
+  onReactionsUpdate,
+  onCommentCountChange,
+}: {
+  note: CommunityNote;
+  onReactionsUpdate: (reactions: CommunityNote['reactions']) => void;
+  onCommentCountChange: (delta: number) => void;
+}) {
+  const initial = (note.userName?.[0] || '?').toUpperCase();
+
+  return (
+    <div className="community-note">
+      <div className="community-note-header">
+        {note.userImage ? (
+          <img src={note.userImage} alt="" className="community-note-avatar-img" />
+        ) : (
+          <span className="community-note-avatar">{initial}</span>
+        )}
+        <span>{note.userName || 'Anonymous'}</span>
+      </div>
+      {note.exact && (
+        <div className="community-note-quote">
+          &ldquo;{note.exact.slice(0, 80)}
+          {note.exact.length > 80 ? '...' : ''}&rdquo;
+        </div>
+      )}
+      <div className="community-note-body">{note.note || ''}</div>
+      <EmojiReactions
+        targetType="annotation"
+        targetId={note.id}
+        initialReactions={note.reactions}
+        onUpdate={onReactionsUpdate}
+      />
+      <CommentThread
+        annotationId={note.id}
+        commentCount={note.commentCount}
+        onCommentCountChange={onCommentCountChange}
+      />
+    </div>
+  );
 }

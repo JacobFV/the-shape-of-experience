@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useAnnotations, Annotation } from '@/lib/hooks/useAnnotations';
+import { useAnnotations } from '@/lib/hooks/useAnnotations';
 
 export default function LibraryPage() {
   const { status } = useSession();
@@ -15,13 +15,16 @@ export default function LibraryPage() {
     return null;
   }
 
+  // Only show highlights (annotations with text)
+  const highlights = annotations.filter((a) => a.exact);
+
   // Group by slug
-  const bySlug: Record<string, Annotation[]> = {};
-  for (const a of annotations) {
+  const bySlug: Record<string, typeof highlights> = {};
+  for (const a of highlights) {
     (bySlug[a.slug] ||= []).push(a);
   }
 
-  const isEmpty = annotations.length === 0;
+  const isEmpty = highlights.length === 0;
 
   return (
     <div className="app-page">
@@ -29,7 +32,7 @@ export default function LibraryPage() {
 
       {isEmpty ? (
         <div className="library-empty">
-          No highlights or bookmarks yet. Select text in any chapter to annotate, or click the star to bookmark.
+          No highlights yet. Select text in any chapter to highlight and annotate.
         </div>
       ) : (
         Object.entries(bySlug).map(([slug, items]) => (
@@ -39,56 +42,30 @@ export default function LibraryPage() {
                 {slug.replace(/-/g, ' ')}
               </a>
             </div>
-            {items.map((a) => {
-              const isBookmark = !a.exact;
-              return (
-                <div key={a.id} className="library-item">
-                  <div className="library-item-text">
-                    {isBookmark ? (
-                      <div className="library-item-exact">
-                        {'\u2606'} {a.nearestHeadingText || 'Start of chapter'}
-                      </div>
-                    ) : (
-                      <>
-                        <div className="library-item-exact">
-                          &ldquo;{a.exact.slice(0, 120)}{a.exact.length > 120 ? '...' : ''}&rdquo;
-                        </div>
-                        {a.note && <div className="library-item-note">{a.note}</div>}
-                      </>
-                    )}
+            {items.map((a) => (
+              <div key={a.id} className="library-item">
+                <div className="library-item-text">
+                  <div className="library-item-exact">
+                    &ldquo;{a.exact.slice(0, 120)}{a.exact.length > 120 ? '...' : ''}&rdquo;
                   </div>
-                  <div className="library-item-actions">
-                    {isBookmark ? (
-                      <button
-                        onClick={() => {
-                          if (a.nearestHeadingId) {
-                            router.push(`/${slug}#${a.nearestHeadingId}`);
-                          } else {
-                            router.push(`/${slug}`);
-                          }
-                        }}
-                        title="Go to bookmark"
-                      >
-                        Go
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => update(a.id, { isPublished: !a.isPublished })}
-                        title={a.isPublished ? 'Unpublish' : 'Publish'}
-                      >
-                        {a.isPublished ? 'Public' : 'Private'}
-                      </button>
-                    )}
-                    <button
-                      onClick={() => remove(a.id)}
-                      title="Delete"
-                    >
-                      Delete
-                    </button>
-                  </div>
+                  {a.note && <div className="library-item-note">{a.note}</div>}
                 </div>
-              );
-            })}
+                <div className="library-item-actions">
+                  <button
+                    onClick={() => update(a.id, { isPublished: !a.isPublished })}
+                    title={a.isPublished ? 'Unpublish' : 'Publish'}
+                  >
+                    {a.isPublished ? 'Public' : 'Private'}
+                  </button>
+                  <button
+                    onClick={() => remove(a.id)}
+                    title="Delete"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         ))
       )}

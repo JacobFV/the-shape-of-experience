@@ -8,6 +8,7 @@ interface Section {
   level: number;
   id: string;
   text: string;
+  parentSection?: string;
 }
 
 interface ChapterToc {
@@ -34,52 +35,55 @@ export default function TableOfContents({
   sectionData?: Record<string, Section[]>;
 }) {
   const pathname = usePathname();
-  const currentSlug = pathname === '/' ? '' : pathname.slice(1);
+
+  // Parse pathname: /part-1/section-id → slug=part-1, currentSection=section-id
+  const pathParts = pathname.slice(1).split('/');
+  const currentSlug = pathParts[0] || '';
+  const currentSection = pathParts[1] || '';
+
   const [expandedSlug, setExpandedSlug] = useState<string | null>(currentSlug || null);
-  const [activeIds, setActiveIds] = useState<Set<string>>(new Set());
+  const [activeSubsectionId, setActiveSubsectionId] = useState<string | null>(null);
   const rafRef = useRef(0);
 
-  // Track which section/subsection/subsubsection the user is scrolled to
+  // Expand chapter when navigating to it
   useEffect(() => {
+    if (currentSlug) setExpandedSlug(currentSlug);
+  }, [currentSlug]);
+
+  // Track which subsection the user is scrolled to (within a section page)
+  useEffect(() => {
+    if (!currentSection) {
+      setActiveSubsectionId(null);
+      return;
+    }
+
     const sections = sectionData?.[currentSlug];
     if (!sections?.length) {
-      setActiveIds(new Set());
+      setActiveSubsectionId(null);
+      return;
+    }
+
+    // Get level-2 sections that belong to the current section page
+    const subsections = sections.filter(
+      (s) => s.level === 2 && s.parentSection === currentSection
+    );
+    if (subsections.length === 0) {
+      setActiveSubsectionId(null);
       return;
     }
 
     function updateActive() {
       const scrollY = window.scrollY + 120;
-      const ids = new Set<string>();
-
-      // Walk sections in order. For each level-1 heading we pass, record it.
-      // For each level-2 heading we pass, record it (and its parent level-1).
-      let lastL1: string | null = null;
       let lastL2: string | null = null;
-      let matchedAny = false;
 
-      for (const s of sections!) {
+      for (const s of subsections) {
         const el = document.getElementById(s.id);
         if (!el) continue;
         if (el.offsetTop > scrollY) break;
-        matchedAny = true;
-        if (s.level === 1) {
-          lastL1 = s.id;
-          lastL2 = null;
-        } else if (s.level === 2) {
-          lastL2 = s.id;
-        }
+        lastL2 = s.id;
       }
 
-      if (matchedAny) {
-        if (lastL1) ids.add(lastL1);
-        if (lastL2) ids.add(lastL2);
-      }
-
-      setActiveIds(prev => {
-        // Avoid re-render if same
-        if (prev.size === ids.size && [...ids].every(id => prev.has(id))) return prev;
-        return ids;
-      });
+      setActiveSubsectionId((prev) => (prev === lastL2 ? prev : lastL2));
     }
 
     function onScroll() {
@@ -87,14 +91,13 @@ export default function TableOfContents({
       rafRef.current = requestAnimationFrame(updateActive);
     }
 
-    // Initial check
     updateActive();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [currentSlug, sectionData]);
+  }, [currentSlug, currentSection, sectionData]);
 
   const handleChapterClick = (slug: string) => {
     setExpandedSlug(expandedSlug === slug ? null : slug);
@@ -105,13 +108,14 @@ export default function TableOfContents({
       <Link href="/" className="toc-home" onClick={onNavigate}>The Shape of Experience</Link>
       <ul>
         {chapters.map(ch => {
-          const isActive = currentSlug === ch.slug;
+          const isChapterActive = currentSlug === ch.slug;
           const isExpanded = expandedSlug === ch.slug;
           const sections = sectionData?.[ch.slug] || [];
-          const hasSections = sections.length > 0;
+          const level1Sections = sections.filter(s => s.level === 1);
+          const hasSections = level1Sections.length > 0;
 
           return (
-            <li key={ch.slug} className={isActive ? 'active' : ''}>
+            <li key={ch.slug} className={isChapterActive ? 'active' : ''}>
               <div className="toc-chapter-row">
                 <Link href={`/${ch.slug}`} onClick={onNavigate}>
                   {ch.shortTitle}
@@ -131,22 +135,47 @@ export default function TableOfContents({
               </div>
               {hasSections && isExpanded && (
                 <ul className="toc-sections">
-                  {sections.map((s) => (
-                    <li
-                      key={s.id}
-                      className={
-                        (s.level === 2 ? 'toc-subsection' : '') +
-                        (isActive && activeIds.has(s.id) ? ' toc-active' : '')
-                      }
-                    >
-                      <Link
-                        href={`/${ch.slug}#${s.id}`}
-                        onClick={onNavigate}
-                      >
-                        {s.text}
-                      </Link>
-                    </li>
-                  ))}
+                  {sections.map((s) => {
+                    if (s.level === 1) {
+                      // Level-1 sections link to their own page
+                      const isActive = isChapterActive && currentSection === s.id;
+                      return (
+                        <li
+                          key={s.id}
+                          className={isActive ? 'toc-active' : ''}
+                        >
+                          <Link
+                            href={`/${ch.slug}/${s.id}`}
+                            onClick={onNavigate}
+                          >
+                            {s.text}
+                          </Link>
+                        </li>
+                      );
+                    } else if (s.level === 2) {
+                      // Level-2 sections link to parent section page with hash
+                      const parentId = s.parentSection;
+                      const isOnParentPage = isChapterActive && currentSection === parentId;
+                      const isActive = isOnParentPage && activeSubsectionId === s.id;
+                      return (
+                        <li
+                          key={s.id}
+                          className={
+                            'toc-subsection' + (isActive ? ' toc-active' : '')
+                          }
+                        >
+                          <Link
+                            href={`/${ch.slug}/${parentId}#${s.id}`}
+                            onClick={onNavigate}
+                          >
+                            {s.text}
+                          </Link>
+                        </li>
+                      );
+                    }
+                    // Level 3+ not shown in TOC
+                    return null;
+                  })}
                 </ul>
               )}
             </li>
