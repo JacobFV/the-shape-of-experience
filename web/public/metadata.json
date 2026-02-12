@@ -572,6 +572,11 @@
       },
       {
         "level": 1,
+        "id": "the-governance-problem-thought-as-discretization",
+        "text": "The Governance Problem: Thought as Discretization"
+      },
+      {
+        "level": 1,
         "id": "affect-engineering-technologies-of-experience",
         "text": "Affect Engineering: Technologies of Experience"
       },
@@ -1185,6 +1190,18 @@
         "level": 2,
         "id": "surfing-vs-submerging",
         "text": "Surfing vs.\\ Submerging",
+        "parentSection": "transcendence-the-opportunity"
+      },
+      {
+        "level": 2,
+        "id": "the-substrate-question",
+        "text": "The Substrate Question",
+        "parentSection": "transcendence-the-opportunity"
+      },
+      {
+        "level": 2,
+        "id": "the-shadow-of-transcendence",
+        "text": "The Shadow of Transcendence",
         "parentSection": "transcendence-the-opportunity"
       },
       {

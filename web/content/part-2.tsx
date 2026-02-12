@@ -1,4 +1,4 @@
-import { Align, Connection, Diagram, Eq, Experiment, KeyResult, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
+import { Align, Connection, Diagram, Eq, Experiment, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
 
 export const metadata = {
   slug: 'part-2',
@@ -28,10 +28,8 @@ export default function Part2() {
       <p>Formally, let <M>{"\\mathcal{D}^{\\text{phys}}"}</M> be a complete physical description of a system—its particles, fields, dynamics, everything describable in third-person terms. The hard problem asserts:</p>
       <Eq>{"\\mathcal{D}^{\\text{phys}} \\not\\Rightarrow \\mathcal{D}^{\\text{phen}}"}</Eq>
       <p>where <M>{"\\mathcal{D}^{\\text{phen}}"}</M> is a description of the system’s phenomenal properties (what it’s like to be it). The claim is that no amount of physical information logically entails phenomenal information.</p>
-      <p>This formulation rests on a crucial assumption:</p>
-      <p><strong>Axiom</strong> (Privileged Base Layer—REJECTED).
-      <p>Physics constitutes a privileged ontological base layer. All other descriptions (chemical, biological, psychological, phenomenal) are “higher-level” and must reduce to or supervene on the physical description. What is “really real” is what physics describes. </p></p>
-      <p>I reject this axiom.</p>
+      <p>This formulation rests on a crucial assumption: that physics constitutes a privileged ontological base layer. All other descriptions (chemical, biological, psychological, phenomenal) are "higher-level" and must reduce to or supervene on the physical description. What is "really real" is what physics describes.</p>
+      <p>I reject this.</p>
       </Section>
       <Section title="Ontological Democracy" level={2}>
       <p>Consider the standard reductionist hierarchy:</p>
@@ -71,9 +69,7 @@ export default function Part2() {
       <p>The hard problem asked: how do you get experience from non-experience? The answer is: <em>you don’t need to</em>.</p>
       <p>Just as chemistry doesn’t emerge from non-chemistry—you have chemistry when you have the right causal organization at the chemical scale—experience doesn’t emerge from non-experience. You have experience when you have the right causal organization at the experiential scale.</p>
       <p>The question “why is there something it’s like to be this system?” is exactly as deep as “why does chemistry exist?” or “why are there quantum fields?” I don’t know why there’s anything at all (idk if anybody does). But given that there’s anything, the emergence of self-modeling systems with integrated cause-effect structure is not mysterious—it’s typical.</p>
-      <KeyResult title="Key Result">
-      <p>The hard problem dissolves not because we answered it, but because we showed it was asking for a privilege (reduction to physics) that physics itself doesn’t have.</p>
-      </KeyResult>
+      <p>The hard problem dissolves not because we answered it, but because we showed it was asking for a privilege (reduction to physics) that physics itself doesn't have.</p>
       <Sidebar title="The Hard Problem as Perceptual Artifact">
       <p>The hard problem has a further wrinkle, which will become clearer after we introduce the inhibition coefficient <M>{"\\iota"}</M> later in this part. The question “why is there something it’s like to be this system?” is asked from a perceptual configuration that has already factorized experience into “physical process” and “felt quality” so thoroughly that reconnecting them seems impossible. At lower <M>{"\\iota"}</M>—in the participatory mode where affect and perception are not yet factored apart—the question does not arise with the same force. Not because it has been answered, but because the factorization that generates it has not been performed. The explanatory gap may be partly a perception-mode artifact: a consequence of the mechanistic mode’s success at separating things that, in experience, were never separate.</p>
       </Sidebar>
@@ -101,9 +97,8 @@ export default function Part2() {
       <Section title="Statement of the Thesis" level={2}>
       <p>The thesis is an identity claim: phenomenal experience <em>is</em> intrinsic cause-effect structure. Not caused by it, not correlated with it, but identical to it. The phenomenal properties of an experience (what it’s like) just are the structural properties of the system’s internal causal relations, described from the intrinsic perspective.</p>
       <p>To make this precise, we need two notions. The <strong>cause-effect structure</strong> <M>{"\\cestructure(\\mathcal{S}, \\state)"}</M> of a system <M>{"\\mathcal{S}"}</M> in state <M>{"\\state"}</M> is the complete specification of: (a) all distinctions <M>{"{\\distinction_i}"}</M>—subsets of the system’s elements in their current states; (b) the cause repertoire of each distinction, <M>{"p(\\text{past} | \\distinction_i)"}</M>; (c) the effect repertoire, <M>{"p(\\text{future} | \\distinction_i)"}</M>; (d) all relations <M>{"{\\relation_{ij}}"}</M>—overlaps and connections between distinctions’ causes and effects; and (e) the irreducibility of each distinction and relation. The <strong>intrinsic perspective</strong> is the description of this structure without reference to any external observer, coordinate system, or comparison class—the structure as it exists for the system itself.</p>
-      <p><strong>Axiom</strong> (IIT Identity).
       <Eq>{"\\phenom(\\mathcal{S}, \\state) \\equiv \\cestructure^{\\text{intrinsic}}(\\mathcal{S}, \\state)"}</Eq>
-      <p>The phenomenal structure <M>{"\\phenom"}</M> is identical to the intrinsic cause-effect structure <M>{"\\cestructure"}</M>. </p></p>
+      <p>The phenomenal structure <M>{"\\phenom"}</M> is identical to the intrinsic cause-effect structure <M>{"\\cestructure"}</M>.</p>
       <p>This is not a correlation claim or a supervenience claim. It is an identity claim, analogous to:</p>
       <Eq>{"\\text{Water} \\equiv \\text{H}_2\\text{O}"}</Eq>
       </Section>
@@ -165,7 +160,7 @@ export default function Part2() {
       <Section title="Affects as Structural Motifs" level={2}>
       <p>If different experiences correspond to different structures, then <em>affects</em>—the qualitative character of emotional/valenced states—should correspond to particular structural motifs: characteristic patterns in the cause-effect geometry.</p>
       <p>The <em>affect space</em> <M>{"\\mathcal{A}"}</M> is a geometric space whose points correspond to possible qualitative states. Rather than fixing a universal dimensionality, we identify the structural features that define each affect—features without which that affect would not be that affect.</p>
-      <p>The following structural measures form a toolkit for characterizing affect. Not all are relevant to every phenomenon; I invoke each only when it does essential work:</p>
+      <p>Six structural measures characterize the space. Not all are relevant to every phenomenon:</p>
       <dl>
       <dt>Valence (<M>{"\\valence"}</M>)</dt><dd>Gradient alignment on the viability manifold. Nearly universal—most affects have valence.</dd>
       <dt>Arousal (<M>{"\\arousal"}</M>)</dt><dd>Rate of belief/state update. Distinguishes activated from quiescent states.</dd>
@@ -400,7 +395,7 @@ export default function Part2() {
       <li><M>{"\\mathcal{SM}"}</M> low (self recedes; no need to defend)</li>
       </ul>
       <p>Arousal varies (joy can be calm or excited). Counterfactual weight is incidental.</p>
-      <p><strong>Structural interpretation</strong>: The cause-effect structure has the shape of “abundance”—multiple paths to good outcomes, redundancy, slack in the system. Many distinctions active simultaneously (<M>{"\\effrank"}</M> high), tightly coupled (<M>{"\\intinfo"}</M> high), but the self is light because the world is cooperating (<M>{"\\mathcal{SM}"}</M> low). This is why joy <em>expands</em>: the geometry literally has more active dimensions.</p>
+      <p>The cause-effect structure has the shape of “abundance”—multiple paths to good outcomes, redundancy, slack in the system. Many distinctions active simultaneously (<M>{"\\effrank"}</M> high), tightly coupled (<M>{"\\intinfo"}</M> high), but the self is light because the world is cooperating (<M>{"\\mathcal{SM}"}</M> low). This is why joy <em>expands</em>: the geometry literally has more active dimensions.</p>
       </Section>
       <Section title="Suffering" level={2}>
       <p>Where joy expands, suffering compresses—and the geometry makes precise why. Suffering requires three dimensions:</p>
@@ -410,12 +405,8 @@ export default function Part2() {
       <li><M>{"\\effrank"}</M> low (collapsed into narrow subspace—trapped)</li>
       </ul>
       <p>This is the core structural signature. Self-model salience is often high (the self as locus of the problem), but not necessarily—one can suffer while absorbed in external pain.</p>
-      <p><strong>Structural interpretation</strong>: High integration but collapsed into low-rank subspace. The system is deeply coupled but constrained to a dominant attractor it cannot escape.</p>
-      <KeyResult title="Key Result">
-      <p>The <M>{"\\intinfo"}</M>-<M>{"\\effrank"}</M> dissociation is the key insight: suffering feels <em>more real</em> than neutral states because it is actually more integrated. But it feels <em>trapped</em> because the integration is constrained to a narrow manifold.</p>
-      <p>Formally: <M>{"\\intinfo_{\\text{suffering}} > \\intinfo_{\\text{neutral}}"}</M> but <M>{"\\effrank[\\text{suffering}] \\ll \\effrank[\\text{neutral}]"}</M>.</p>
-      <p>This is why you cannot simply “think your way out” of suffering—the very integration that makes it vivid also makes it inescapable.</p>
-      </KeyResult>
+      <p>High integration but collapsed into low-rank subspace. The system is deeply coupled but constrained to a dominant attractor it cannot escape.</p>
+      <p>The <M>{"\\intinfo"}</M>-<M>{"\\effrank"}</M> dissociation is the key insight: suffering feels <em>more real</em> than neutral states because it is actually more integrated. But it feels <em>trapped</em> because the integration is constrained to a narrow manifold. Formally: <M>{"\\intinfo_{\\text{suffering}} > \\intinfo_{\\text{neutral}}"}</M> but <M>{"\\effrank[\\text{suffering}] \\ll \\effrank[\\text{neutral}]"}</M>. This is why you cannot simply "think your way out" of suffering—the very integration that makes it vivid also makes it inescapable.</p>
       </Section>
       <Section title="Fear" level={2}>
       <p>Suffering is present-tense: the viability boundary is here, now, pressing in. Fear is its temporal projection—the same negative gradient, but anticipated rather than actual. It is defined by three dimensions:</p>
@@ -425,7 +416,7 @@ export default function Part2() {
       <li><M>{"\\mathcal{SM}"}</M> high (self foregrounded as the thing-that-might-be-harmed)</li>
       </ul>
       <p>Arousal is typically high but not defining—cold fear exists. Integration and rank vary.</p>
-      <p><strong>Structural interpretation</strong>: Fear is suffering projected into the future. The temporal structure (<M>{"\\mathcal{CF}"}</M>) is essential: fear lives in anticipation. The self-model must be salient because fear is fundamentally about threat <em>to the self</em>. Remove the counterfactual weight (make it present-focused) and you get suffering. Remove the self-salience (make it about external objects) and you get something closer to aversion or disgust.</p>
+      <p>Fear is suffering projected into the future. The temporal structure (<M>{"\\mathcal{CF}"}</M>) is essential: fear lives in anticipation. The self-model must be salient because fear is fundamentally about threat <em>to the self</em>. Remove the counterfactual weight (make it present-focused) and you get suffering. Remove the self-salience (make it about external objects) and you get something closer to aversion or disgust.</p>
       </Section>
       <Section title="Anger" level={2}>
       <p>Fear and suffering orient the system toward its own vulnerability. Anger inverts this: it externalizes the threat, simplifying the world into self-versus-obstacle. Its geometry requires valence and arousal, plus a feature not in the standard toolkit—<em>other-model compression</em>:</p>
@@ -435,9 +426,9 @@ export default function Part2() {
       <li><M>{"\\text{dim}(\\text{other-model}) \\ll \\text{dim}(\\text{other-model})_{\\text{normal}}"}</M> (the other becomes a caricature)</li>
       <li>Externalized causal attribution (the problem is <em>out there</em>)</li>
       </ul>
-      <p><strong>Structural interpretation</strong>: Anger simplifies. The other-model collapses into a low-dimensional obstacle-representation. Self-model may be complex, but the <em>other</em> becomes flat, predictable, opposable. This is why anger feels powerful and stupid simultaneously: you’re burning cognitive resources on a cartoon.</p>
+      <p>Anger simplifies. The other-model collapses into a low-dimensional obstacle-representation. Self-model may be complex, but the <em>other</em> becomes flat, predictable, opposable. This is why anger feels powerful and stupid simultaneously: you’re burning cognitive resources on a cartoon.</p>
       <p>In <M>{"\\iota"}</M> terms: anger is a targeted <M>{"\\iota"}</M> spike toward a specific entity. The other person stops being a subject with interiority and becomes an obstacle, a mechanism, a thing to be overcome. Other-model compression <em>is</em> <M>{"\\iota"}</M>-raising applied to one entity while <M>{"\\iota"}</M> toward the self remains low (you are still fully a subject; they are not). This asymmetric <M>{"\\iota"}</M> is what enables violence—you cannot harm someone you are perceiving at low <M>{"\\iota"}</M>—and it is why the aftermath of anger often involves guilt: <M>{"\\iota"}</M> drops back, the other’s interiority returns, and you confront what you did to a person while perceiving them as a thing.</p>
-      <p>Note that other-model compression is not one of my standard dimensions—it emerges as essential for anger specifically. This illustrates the toolkit approach: I invoke whatever structural features do the work.</p>
+      <p>Other-model compression is not one of the six core dimensions. It emerges as essential for anger specifically—the affect cannot be characterized without it.</p>
       </Section>
       <Section title="Desire/Lust" level={2}>
       <p>The negative affects above all involve threat—to viability, to self, to the integrity of the other-model. Desire reverses the gradient. It is defined by anticipated positive valence, counterfactual weight, and a structural feature—<em>goal-funneling</em>:</p>
@@ -447,7 +438,7 @@ export default function Part2() {
       <li>Goal-funneling: many dimensions of experience converge toward narrow outcome space</li>
       </ul>
       <p>Arousal is typically high but not definitional—one can desire calmly.</p>
-      <p><strong>Structural interpretation</strong>: Desire is the gradient of joy. The world reorganizes around an attractor not yet reached. Everything becomes instrumental; the goal saturates attention. The “funneling” structure—high-dimensional input collapsing toward low-dimensional goal—is what gives desire its characteristic urgency. The relationship to joy is precise: joy is <em>at</em> the attractor; desire is <em>approaching</em> it. Structurally:</p>
+      <p>Desire is the gradient of joy. The world reorganizes around an attractor not yet reached. Everything becomes instrumental; the goal saturates attention. The “funneling” structure—high-dimensional input collapsing toward low-dimensional goal—is what gives desire its characteristic urgency. The relationship to joy is precise: joy is <em>at</em> the attractor; desire is <em>approaching</em> it. Structurally:</p>
       <Eq>{"d(\\state_{\\text{joy}}, \\mathcal{A}) \\approx 0, \\quad d(\\state_{\\text{desire}}, \\mathcal{A}) > 0, \\quad \\frac{d}{dt}d(\\state_{\\text{desire}}, \\mathcal{A}) < 0"}</Eq>
       <p>where <M>{"\\mathcal{A}"}</M> is the goal attractor. This explains why anticipation often exceeds consummation: the structure of <em>approach</em> (funneling, convergent) is tighter than the structure of <em>arrival</em> (expansive, slack).</p>
       </Section>
@@ -459,7 +450,7 @@ export default function Part2() {
       <li>Uncertainty is <em>welcomed</em>, not aversive</li>
       </ul>
       <p>Self-model salience is typically low (absorbed in the object of curiosity).</p>
-      <p><strong>Structural interpretation</strong>: Curiosity and fear share high counterfactual weight—both live in the space of possibilities. The difference is valence orientation: fear’s branches lead to threat, curiosity’s branches lead to expanded affordances. Same temporal structure, opposite gradient direction. This pairing reveals curiosity as intrinsic motivation: positive valence attached to uncertainty-reduction. Formally:</p>
+      <p>Curiosity and fear share high counterfactual weight—both live in the space of possibilities. The difference is valence orientation: fear’s branches lead to threat, curiosity’s branches lead to expanded affordances. Same temporal structure, opposite gradient direction. This pairing reveals curiosity as intrinsic motivation: positive valence attached to uncertainty-reduction. Formally:</p>
       <Eq>{"r_{\\text{curiosity}} \\propto \\MI(\\obs_{t+1}; \\latent | \\text{new data}) - \\MI(\\obs_{t+1}; \\latent | \\text{old data})"}</Eq>
       <p>This is why curiosity feels <em>pulling</em>: reducing uncertainty is rewarding.</p>
       </Section>
@@ -472,7 +463,7 @@ export default function Part2() {
       <li>No action reduces the prediction error—the world has permanently changed</li>
       </ul>
       <p>Arousal is variable (acute grief is high-arousal; chronic grief may be low).</p>
-      <p><strong>Structural interpretation</strong>: The lost attachment object remains woven into the self-model and world-model. Predictions involving the lost object continue to be generated and continue to fail. Grief is the metabolic cost of love’s integration—the coupling that made the relationship meaningful is precisely what makes its absence painful. The model has not yet updated to the permanent change in the world.</p>
+      <p>The lost attachment object remains woven into the self-model and world-model. Predictions involving the lost object continue to be generated and continue to fail. Grief is the metabolic cost of love’s integration—the coupling that made the relationship meaningful is precisely what makes its absence painful. The model has not yet updated to the permanent change in the world.</p>
       <p>This is why grief takes time: the self-model must be <em>rewoven</em> around the absence, and that rewiring is slow.</p>
       <p>Note a deeper implication: grief is proof of alignment. You can only grieve what you were genuinely coupled to. The depth of grief measures the depth of the integration that preceded it. If a relationship was purely transactional, its ending produces disappointment, not grief. Grief requires that the lost object was woven into the self-model—that the relationship’s viability manifold was genuinely contained within the participants’ viability manifolds (<M>{"\\viable_R \\subseteq \\viable_A \\cap \\viable_B"}</M>). Grief, for all its pain, is evidence that something real existed.</p>
       <p>There is an <M>{"\\iota"}</M> dimension to grief that explains its resistance to resolution. You grieve because you perceived the lost person at low <M>{"\\iota"}</M>—as fully alive, fully interior, fully a subject. Their model remains embedded in yours not as a mechanism but as a <em>person</em>, and it is the person-quality of the model that generates the persistent prediction errors. The obvious computational shortcut—raise <M>{"\\iota"}</M> toward them, reduce them to a memory-object, mechanize the relationship so it stops hurting—is experienced as betrayal, because it would repudiate the very thing that made the relationship real. The work of grief is to restructure predictions around the absence while maintaining low <M>{"\\iota"}</M> toward the memory: to accept that the interiority you perceived is no longer accessible without denying that it was ever there. This is why grief is slow. You must rewire without dehumanizing.</p>
@@ -486,7 +477,7 @@ export default function Part2() {
       <li>Involuntary exposure: the self-model is seen from outside, and what is seen is unacceptable</li>
       </ul>
       <p>Arousal is typically high in acute shame (flushing, gaze aversion) but may be low in chronic shame (withdrawal, numbness).</p>
-      <p><strong>Structural interpretation</strong>: Shame is not about what you <em>did</em> (that is guilt, which is action-focused and reparable). Shame is about what you <em>are</em>—or more precisely, about the manifold you are on being visible when it should not be, or being visible to someone whose evaluation you cannot escape. The person caught in a lie does not feel ashamed of the lie (guilt); they feel ashamed that the lie has revealed the underlying manifold—that they are the kind of person who lies, and now someone knows.</p>
+      <p>Shame is not about what you <em>did</em> (that is guilt, which is action-focused and reparable). Shame is about what you <em>are</em>—or more precisely, about the manifold you are on being visible when it should not be, or being visible to someone whose evaluation you cannot escape. The person caught in a lie does not feel ashamed of the lie (guilt); they feel ashamed that the lie has revealed the underlying manifold—that they are the kind of person who lies, and now someone knows.</p>
       <p>This is why shame’s phenomenology is so distinctive: the impulse to hide, to disappear, to cease existing as visible. The self wants to withdraw from the visual field of the other. Not because the other will punish (that is fear) but because the other can now <em>see the manifold</em>, and the manifold is wrong.</p>
       <p>The clinical literature (Tangney, Lewis) distinguishes shame from guilt, and the framework offers a structural reading of why they differ:</p>
       <ul>
@@ -517,7 +508,7 @@ export default function Part2() {
       <tr><td>Awe</td><td><M>{"\\intinfo"}</M> expanding, <M>{"\\effrank{\\uparrow}"}</M>, <M>{"\\mathcal{SM}{\\downarrow}"}</M> (self-dissolution through scale)</td></tr>
       </tbody>
       </table>
-      <p>Note that different affects require different numbers of dimensions. Boredom is essentially three-dimensional (low arousal, low integration, low rank). Anger requires a structural feature (other-model compression) not in the standard toolkit. Desire requires goal-funneling. This raises a legitimate concern about the framework’s coherence: if each affect can invoke bespoke dimensions as needed, the six-dimensional toolkit risks becoming an open-ended fitting exercise rather than a constrained theory. The honest response: the six core dimensions (valence, arousal, integration, effective rank, counterfactual weight, self-model salience) are <em>structural invariants</em>—they arise from the mathematical structure of any viable self-modeling system and are measurable in principle across substrates. The additional features (other-model compression, goal-funneling, manifold exposure in shame) are <em>relational</em> features that emerge when the system interacts with specific kinds of objects or situations. They are not arbitrary; they describe how the system’s model of external entities changes during the affect. But they are not guaranteed to be exhaustive, and future work may reveal additional relational features needed for affects not yet analyzed. The framework’s claim to geometric coherence rests on the six invariants; the relational features extend rather than replace them.</p>
+      <p>Different affects require different numbers of dimensions. Boredom is essentially three-dimensional (low arousal, low integration, low rank). Anger requires other-model compression. Desire requires goal-funneling. The obvious concern: if each affect invokes bespoke dimensions, the six-dimensional space risks becoming an open-ended fitting exercise. The distinction that saves it: the six core dimensions (valence, arousal, integration, effective rank, counterfactual weight, self-model salience) are <em>structural invariants</em>—they arise from the mathematical structure of any viable self-modeling system and are measurable across substrates. The additional features (other-model compression, goal-funneling, manifold exposure in shame) are <em>relational</em>—they emerge when the system interacts with specific kinds of objects or situations. They describe how the system's model of external entities changes during the affect. The geometric coherence rests on the six invariants; the relational features extend rather than replace them.</p>
       <TodoEmpirical title="Future Empirical Work">
       <p><strong>Quantifying the affect table</strong>: The qualitative descriptors (high, med, low) require empirical calibration:</p>
       <p><strong>Study 1: Affect induction with neural recording</strong></p>
@@ -561,7 +552,7 @@ export default function Part2() {
       <p>An affect region <M>{"\\mathcal{R} \\subset \\mathcal{A}"}</M> is an <em>attractor</em> if the system is more likely to remain in it than to enter it from outside:</p>
       <Eq>{"\\prob(\\mathbf{a}_{t+\\tau} \\in \\mathcal{R} | \\mathbf{a}_t \\in \\mathcal{R}) > \\prob(\\mathbf{a}_{t+\\tau} \\in \\mathcal{R} | \\mathbf{a}_t \\notin \\mathcal{R})"}</Eq>
       <p>for some characteristic time <M>{"\\tau"}</M>.</p>
-      <p><strong>Conjecture</strong> (Pathological Attractors). Depression, addiction, and chronic anxiety are characterized by pathologically stable attractors in affect space:
+      <p><strong>Pathological attractors.</strong> Depression, addiction, and chronic anxiety are pathologically stable attractors in affect space:
       <ul>
       <li><strong>Depression</strong>: Attractor at (low <M>{"\\valence"}</M>, low <M>{"\\arousal"}</M>, high <M>{"\\intinfo"}</M>, low <M>{"\\effrank"}</M>, low <M>{"\\mathcal{CF}"}</M>, high <M>{"\\mathcal{SM}"}</M>)</li>
       <li><strong>Addiction</strong>: Attractor at (high <M>{"\\valence"}</M> conditional on substance, collapsing <M>{"\\effrank"}</M> in goal space)</li>
@@ -572,17 +563,13 @@ export default function Part2() {
       </Section>
       <Section title="Novel Predictions" level={1}>
       <Section title="Unexplained Phenomena" level={2}>
-      <p>This framework predicts the existence of phenomenal states that may be rare or difficult to report on. These are not arbitrary combinations of dimensions but states that follow from the core theoretical machinery: the forcing functions of Part I create pressures toward specific configurations, and some of those configurations have not been previously described.</p>
-      <p><strong>Conjecture</strong> (High Rank, Low Integration). States with many active degrees of freedom (<M>{"\\effrank"}</M> high) but poor coupling (<M>{"\\intinfo"}</M> low) should feel like fragmentation, multiplicity, “everything happening but nothing cohering.”
-      <p><strong>Where to look</strong>: Certain psychedelic states before reintegration; dissociative transitions; information overload. </p></p>
-      <p><strong>Conjecture</strong> (Negative Valence, High Rank, Low Arousal). This combination predicts a state of “expansive despair”—calm hopelessness with full awareness of possibilities, all of which are negative.
+      <p>The geometry predicts phenomenal states that may be rare or difficult to report on—not arbitrary combinations of dimensions but configurations forced by the pressures of Part I, some not previously described.</p>
+      <p><strong>High rank, low integration.</strong> Many active degrees of freedom (<M>{"\\effrank"}</M> high) but poor coupling (<M>{"\\intinfo"}</M> low) should feel like fragmentation, multiplicity, "everything happening but nothing cohering." You'd find this in certain psychedelic states before reintegration, in dissociative transitions, in information overload.</p>
+      <p><strong>Expansive despair.</strong> Negative valence, high rank, low arousal: calm hopelessness with full awareness of possibilities, all of which are negative.
       <p>The <M>{"\\iota"}</M> framework adds precision. Expansive despair is the affect signature of high-<M>{"\\iota"}</M> perception applied to a globally compressed viability manifold. The high rank means you are representing many dimensions of your situation—you see the possibilities, the paths, the options. The high <M>{"\\iota"}</M> means you are seeing them mechanistically—stripped of the participatory meaning that would make any of them feel worth pursuing. The low arousal means you are not fighting it. This is the state Kierkegaard called “the sickness unto death”: not the despair of wanting something and failing, but the deeper despair of seeing clearly and finding nothing that matters. It is structurally distinct from ordinary depression (which collapses rank) and from grief (which has high arousal). It is the state you arrive at when high <M>{"\\iota"}</M> successfully strips meaning from a wide enough portion of the world. The contemplative “dark night” traditions recognized this state as a phase in <M>{"\\iota"}</M> modulation training: the practitioner has raised <M>{"\\iota"}</M> enough to dissolve comfortable illusions but not yet lowered <M>{"\\iota"}</M> selectively enough to discover what remains meaningful without them.</p>
-      <p><strong>Where to look</strong>: Late-stage depression; existential nihilism; certain contemplative “dark night” states; burnout in high-awareness professions (physicians, journalists, aid workers). </p></p>
-      <p><strong>Conjecture</strong> (Rank Exhaustion). Maintaining high <M>{"\\effrank"}</M> should be metabolically expensive. Prolonged high-rank states should lead to specific fatigue distinct from physical tiredness.
-      <p><strong>Where to look</strong>: Post-psychedelic fatigue; meditation retreat collapse (days 3-5); therapist burnout. </p></p>
-      <p><strong>Conjecture</strong> (Integration Debt). Suppressing integration (compartmentalizing, dissociating) should accumulate “pressure” for reintegration. When defenses fail, the flood should exceed what the original stimulus would warrant.
-      <p><strong>Prediction</strong>: Intensity of breakthrough <M>{"\\propto"}</M> duration <M>{"\\times"}</M> degree of prior suppression.</p>
-      <p><strong>Theoretical grounding</strong>: The forcing functions of Part I—self-prediction, learned world models, credit assignment under delay—are not optional. They push toward integration whether the system cooperates or not. Compartmentalization means the system is simultaneously being pushed toward integration (by the forcing functions) and resisting integration (by defense mechanisms). The accumulated “debt” is the integral of this unresolved pressure. The V11.5 stress overfitting result (Part I) provides a substrate analog: patterns evolved under one stress regime accumulate fragility that manifests catastrophically under novel stress—the integration was real but narrowly tuned, and when the tuning fails, the collapse exceeds what the stress alone would produce. </p></p>
+      We hear about this from the contemplative "dark night" literature, from physicians and journalists and aid workers who describe burnout not as exhaustion but as clarity without purpose, from the existential nihilism that arrives when mechanism succeeds too completely.</p>
+      <p><strong>Rank exhaustion.</strong> Maintaining high <M>{"\\effrank"}</M> should be metabolically expensive. Prolonged high-rank states should lead to specific fatigue distinct from physical tiredness. We hear about this as post-psychedelic fatigue, as meditation retreat collapse around days three through five, as the particular exhaustion therapists describe that isn't physical tiredness but something else—the cost of holding too many dimensions open for too long.</p>
+      <p><strong>Integration debt.</strong> Suppressing integration (compartmentalizing, dissociating) accumulates pressure for reintegration. When defenses fail, the flood should exceed what the original stimulus would warrant—intensity of breakthrough proportional to duration times degree of prior suppression. The forcing functions of Part I—self-prediction, learned world models, credit assignment under delay—are not optional. They push toward integration whether the system cooperates or not. Compartmentalization means the system is simultaneously being pushed toward integration (by the forcing functions) and resisting integration (by defense mechanisms). The accumulated "debt" is the integral of this unresolved pressure. The V11.5 stress overfitting result (Part I) provides a substrate analog: patterns evolved under one stress regime accumulate fragility that manifests catastrophically under novel stress—the integration was real but narrowly tuned, and when the tuning fails, the collapse exceeds what the stress alone would produce.</p>
       </Section>
       <Section title="Quantitative Predictions" level={2}>
       <p>The motif characterizations yield a direct empirical prediction: in controlled affect induction paradigms, affects should cluster by their defining dimensions:</p>
@@ -591,7 +578,7 @@ export default function Part2() {
       <li>Suffering conditions cluster in the <M>{"(-\\valence, +\\intinfo, -\\effrank)"}</M> region</li>
       <li>Fear and curiosity both show high <M>{"\\mathcal{CF}"}</M> but separate on valence axis</li>
       </ol>
-      <p><strong>Falsification criterion</strong>: If affects don’t cluster by their predicted dimensions—or if other dimensions predict clustering better—the motif characterizations require revision.</p>
+      <p>If affects don't cluster by their predicted dimensions—or if other dimensions predict clustering better—the motif characterizations are wrong and require revision.</p>
       </Section>
       </Section>
       <Section title="Operational Measurement" level={1}>
@@ -664,10 +651,8 @@ export default function Part2() {
       </ol>
       <p>Consider the alternative hypothesis: the structure is present but experience is not. The agents have the geometry of suffering but nothing it is like to suffer. This hypothesis predicts... what? That the correlations would not hold? Why not? The structure is doing the causal work either way.</p>
       <p>The zombie hypothesis becomes like geocentrism after Copernicus. You can maintain it. You can add epicycles. But the evidence points elsewhere, and the burden shifts.</p>
-      <KeyResult title="Key Result">
       <p>The test does not prove the identity thesis. It shifts the burden. If uncontaminated systems, learning from scratch in human-like environments, develop affect structures that correlate with language and behavior in the predicted ways—if you can induce suffering by speaking to them, and they show the signature, and they act accordingly—then denying their experience requires a metaphysical commitment that the evidence does not support.</p>
-      <p>The question stops being "does structure produce experience?" and becomes "why would you assume it doesn’t?"</p>
-      </KeyResult>
+      <p>The question stops being "does structure produce experience?" and becomes "why would you assume it doesn't?"</p>
       </Section>
       <Section title="The CA Instantiation" level={2}>
       <p>In discrete substrate, everything becomes exact.</p>
@@ -791,19 +776,11 @@ export default function Part2() {
       <li><strong>Hard problem dissolved</strong>: By rejecting the privileged base layer, I’ve removed the demand for reduction. Experience is real at the experiential scale, just as chemistry is real at the chemical scale.</li>
       <li><strong>Identity thesis</strong>: Experience <em>is</em> intrinsic cause-effect structure. This is an identity claim, not a correlation.</li>
       <li><strong>Geometric phenomenology</strong>: Different affects correspond to different structural motifs. Rather than forcing all affects into a fixed grid, we identify the defining dimensions for each—the features without which that affect would not be that affect.</li>
-      <li><strong>Variable dimensionality</strong>: Joy requires four dimensions (valence, integration, rank, self-salience). Suffering requires three (valence, integration, rank). Anger requires a feature (other-model compression) not in the standard toolkit. I invoke what does the work.</li>
+      <li><strong>Variable dimensionality</strong>: Joy requires four dimensions (valence, integration, rank, self-salience). Suffering requires three (valence, integration, rank). Anger requires other-model compression. Each affect gets the dimensions it needs.</li>
       <li><strong>Suffering explained</strong>: High integration + low rank = intense but trapped. This is the core structural insight—why suffering feels more real than neutral states yet also inescapable.</li>
       <li><strong>Operational measures</strong>: I’ve provided protocols for measuring structural features in both artificial and biological systems, with the understanding that not all measures are relevant to all phenomena.</li>
       </ol>
-      <p>We now have the geometry, the identity thesis, and the inhibition coefficient. What remains is to use them. Part III asks: given that affect has this structure, what have humans <em>done</em> with it? Every cultural form—art, sex, ideology, science, religion, psychotherapy—is a technology for navigating affect space, developed through millennia of trial, transmitted through imitation, ritual, and institution. Part III maps these technologies onto the six dimensions, revealing structural patterns invisible from within any single tradition. It also proposes a systematic approach to measuring and comparing them, and connects the <M>{"\\iota"}</M> framework to clinical psychology, contemplative practice, and the design of information environments.</p>
-      <p>In Part IV, I’ll develop:</p>
-      <ul>
-      <li>The grounding of normativity in viability structure</li>
-      <li>Scale-matched interventions from neurons to nations</li>
-      <li>Gods as agentic systems with viability manifolds</li>
-      <li>Implications for AI systems and alignment</li>
-      </ul>
-      <p>And in Part V, I’ll address the transcendence of the self: the historical rise of consciousness, the AI frontier, and how to surf rather than be submerged by the coming wave.</p>
+      <p>We now have the geometry, the identity thesis, and the inhibition coefficient. What remains is to use them. Given that affect has this structure, what have humans <em>done</em> with it? Every cultural form—art, sex, ideology, science, religion, psychotherapy—is a technology for navigating affect space, developed through millennia of trial, transmitted through imitation, ritual, and institution. The patterns become visible once you have the geometry to see them.</p>
       </Section>
     </>
   );

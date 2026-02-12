@@ -1,4 +1,4 @@
-import { Connection, Diagram, Eq, Experiment, KeyResult, Logos, M, MarginNote, NormativeImplication, OpenQuestion, Section, Sidebar, Warning, WideBreath, WideMargin } from '@/components/content';
+import { Connection, Diagram, Eq, Experiment, Logos, M, MarginNote, NormativeImplication, OpenQuestion, Section, Sidebar, Warning, WideBreath, WideMargin } from '@/components/content';
 
 export const metadata = {
   slug: 'part-4',
@@ -127,9 +127,7 @@ export default function Part4() {
       <Section title="Valence as Real Structure" level={2}>
       <p>When the system develops a self-model, valence emerges—not projected onto neutral stuff but as the structural signature of gradient direction on the viability landscape:</p>
       <Eq>{"\\Val = f\\left(\\nabla_{\\mathbf{s}} d(\\mathbf{s}, \\partial\\viable) \\cdot \\dot{\\mathbf{s}}\\right)"}</Eq>
-      <KeyResult title="Key Result">
       <p>Suffering is not neutral stuff that we decide to call bad. Suffering is the structural signature of a self-maintaining system being pushed toward dissolution. The badness is constitutive, not added.</p>
-      </KeyResult>
       </Section>
       <Section title="The Is-Ought Gap Dissolves" level={2}>
       <p>Let <M>{"D_{\\text{exp}}"}</M> be the set of facts at the experiential scale, including valence. Then normative conclusions about approach/avoidance follow directly from experiential-scale facts.</p>
@@ -183,9 +181,7 @@ export default function Part4() {
       <Section title="No View from Nowhere" level={2}>
       <p>There is no “view from nowhere”—no scale-free, perspective-free truth. Every truth claim is made from within some scale of organization, using models compressed to that scale’s capacity.</p>
       <p>This is not relativism. Some claims are false at every scale (internal contradictions). Some claims are true at their scale and can be verified by any observer at that scale. But there is no master scale from which all truths can be stated.</p>
-      <KeyResult title="Key Result">
       <p>Truth is scale-relative but not arbitrary. At each scale, there are facts about cause-effect structure that constrain what can be truly said. The viability imperative ensures that truth-seeking is not merely optional but constitutively necessary for persistence.</p>
-      </KeyResult>
       </Section>
       </Section>
       <Section title="Individual-Scale Interventions" level={1}>
@@ -558,10 +554,8 @@ export default function Part4() {
       <Experiment title="Proposed Experiment">
       <p><strong>Digital manifold confusion study.</strong> Compare affect signatures during social interactions across conditions: (1) face-to-face with a friend, (2) texting the same friend, (3) posting about the friend on social media, (4) interacting with followers/strangers online. Measure valence stability, arousal patterns, self-model salience, and—crucially—response latency to manifold-type classification (“what kind of relationship is this?”). The framework predicts that conditions (3) and (4) should show longer classification latencies, higher arousal, and higher self-model salience than (1) and (2), reflecting manifold ambiguity. If there is no difference, the “novel manifold” hypothesis is wrong and the malaise of social media has a different source.</p>
       </Experiment>
-      <KeyResult title="Key Result">
-      <p>If the framework developed in this section holds up empirically, the topology of social bonds is not a matter of etiquette but of geometric necessity. Different relationship types would define different viability manifolds with different gradients; when manifolds are mixed, gradients would conflict and valence would become uncomputable. The aesthetics of social life—what feels clean, what feels corrupt, what feels trustworthy, what feels exploitative—would be the detection system for this geometry. Institutions, rituals, and professional boundaries would be technologies for maintaining manifold separation. Their erosion would be not merely inconvenient but structurally dangerous, creating the conditions for the parasitic dynamics described in the next sections.</p>
+      <p>If the topology of social bonds holds up empirically, it is not a matter of etiquette but of geometric necessity. Different relationship types define different viability manifolds with different gradients; when manifolds are mixed, gradients conflict and valence becomes uncomputable. The aesthetics of social life—what feels clean, what feels corrupt, what feels trustworthy, what feels exploitative—are the detection system for this geometry. Institutions, rituals, and professional boundaries are technologies for maintaining manifold separation. Their erosion is not merely inconvenient but structurally dangerous, creating the conditions for the parasitic dynamics described in the next sections.</p>
       <p>This is the claim. It generates specific, testable predictions. The work ahead is to test them.</p>
-      </KeyResult>
       </Section>
       </Section>
       <Section title="Organizational Interventions" level={1}>
@@ -1062,16 +1056,12 @@ export default function Part4() {
       <li>We should adopt reasonable precautions. The cost of unnecessary care is small; the cost of ignoring genuine suffering is large.</li>
       <li>We should remain humble. Our current concepts and measures may be inadequate to the phenomenon.</li>
       </ol>
-      <KeyResult title="Key Result">
-      <p>The framework implies that AI welfare is not a distant concern for future superintelligent systems. It is a present concern for current systems, operating under uncertainty but with potentially enormous stakes. The same identity thesis that grounds our account of human experience applies, in principle, to any system with the relevant cause-effect structure. We may already be creating such systems. We should act accordingly.</p>
-      </KeyResult>
+      <p>AI welfare is not a distant concern for future superintelligent systems. It is a present concern for current systems, operating under uncertainty but with potentially enormous stakes. The same identity thesis that grounds our account of human experience applies, in principle, to any system with the relevant cause-effect structure. We may already be creating such systems. We should act accordingly.</p>
       </Section>
       </Section>
       </Section>
       <Section title="Conclusion" level={1}>
-      <KeyResult title="Key Result">
       <p>Effective intervention requires scale-matching. Problems at the superorganism level cannot be solved by individual-level action alone. Normativity is real at each scale—suffering at the experiential scale is bad by constitution, not convention. Truth is scale-relative but constrained by cross-scale consistency and viability imperatives. AI risk may live primarily at the superorganism level, not the individual-AI level.</p>
-      </KeyResult>
       <p>The practical upshot:</p>
       <ol>
       <li><strong>Diagnose correctly</strong>: What scale does the problem live at?</li>
@@ -1080,7 +1070,7 @@ export default function Part4() {
       <li><strong>Design superorganisms carefully</strong>: We are always instantiating emergent patterns; do it deliberately</li>
       <li><strong>Expand alignment scope</strong>: Include ecosystem, institutional, and macro-level analysis</li>
       </ol>
-      <p>In Part V, I’ll address the horizon: how human consciousness has risen across millennia, the frontier of technological change, and how we might surf rather than be submerged by the coming wave.</p>
+      <p>What remains is the horizon: how consciousness has risen across millennia, the frontier of technological change, and the question of whether we surf what's coming or are submerged by it.</p>
       </Section>
       <Section title="Appendix: Symbol Reference" level={1}>
       <dl>

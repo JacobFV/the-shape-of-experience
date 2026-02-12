@@ -1,4 +1,4 @@
-import { Align, Connection, Diagram, Empirical, Eq, Experiment, Figure, Historical, KeyResult, Logos, M, OpenQuestion, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
+import { Align, Connection, Diagram, Empirical, Eq, Experiment, Figure, Historical, Logos, M, OpenQuestion, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
 
 export const metadata = {
   slug: 'part-1',
@@ -101,14 +101,14 @@ export default function Part1() {
       <p>The specific bifurcation type determines the character of the emerging structure.</p>
       </Sidebar>
       <Empirical title="Empirical Grounding">
-      <p><strong>Bénard Convection Cells</strong>: The canonical laboratory demonstration of Theorem 2.1.</p>
+      <p><strong>Bénard Convection Cells</strong>: The canonical laboratory demonstration of dissipative structure formation.</p>
       <Diagram src="/diagrams/part-1-1.svg" />
       <p>When a thin layer of fluid is heated from below:</p>
       <ul>
       <li>For <M>{"\\Delta T < \\Delta T_c"}</M> (Rayleigh number <M>{"\\text{Ra} < \\text{Ra}_c \\approx 1708"}</M>): Heat transfers by conduction only. Uniform, unstructured state.</li>
       <li>For <M>{"\\Delta T > \\Delta T_c"}</M>: Spontaneous symmetry breaking produces hexagonal convection cells. The fluid self-organizes into a pattern that transports heat more efficiently than conduction alone.</li>
       </ul>
-      <p>This is precisely the structure predicted by Theorem 2.1: a bifurcation at critical driving (<M>{"J_c"}</M>), multiple equivalent attractors (cells can rotate clockwise or counterclockwise), and path-dependent selection.</p>
+      <p>This is precisely the predicted structure: a bifurcation at critical driving (<M>{"J_c"}</M>), multiple equivalent attractors (cells can rotate clockwise or counterclockwise), and path-dependent selection.</p>
       </Empirical>
       <TodoEmpirical title="Future Empirical Work">
       <p><strong>Quantitative validation</strong>: Measure entropy production rates <M>{"\\sigma"}</M> in Bénard cells at various <M>{"\\text{Ra}"}</M> values. Verify that <M>{"\\sigma_{\\text{structured}} > \\sigma_{\\text{uniform}}"}</M> for <M>{"\\text{Ra} > \\text{Ra}_c"}</M>, confirming dissipative selection.</p>
@@ -185,7 +185,7 @@ export default function Part1() {
       <li>Once formed, bilayers spontaneously close into vesicles (no free edges)</li>
       <li>Membrane maintains <M>{"\\sim"}</M>70 mV potential difference across 5 nm <M>{"\\Rightarrow"}</M> field strength <M>{"\\sim 10^7"}</M> V/m</li>
       </ul>
-      <p>This exemplifies “emergent boundary” (Definition 2.7): arising spontaneously, creating inside/outside distinction, actively maintained, enabling gradients.</p>
+      <p>This exemplifies emergent boundary formation: arising spontaneously, creating inside/outside distinction, actively maintained, enabling gradients.</p>
       </Empirical>
       <Historical title="Historical Context">
       <p>The recognition that membranes self-assemble was a key insight linking physics to biology:</p>
@@ -197,9 +197,7 @@ export default function Part1() {
       </ul>
       <p>The membrane is the minimal instance of “self” in biology: a dissipative structure that creates the inside/outside distinction necessary for all subsequent organization.</p>
       </Historical>
-      <KeyResult title="Key Result">
       <p>Boundaries appear because they stabilize coarse-grained state variables. The emergence of bounded systems—entities with an inside and an outside—is a generic feature of driven nonlinear systems, not a special case requiring explanation.</p>
-      </KeyResult>
       </Section>
       </Section>
       <Section title="From Boundaries to Models" level={1}>
@@ -229,7 +227,7 @@ export default function Part1() {
       <ul>
       <li><strong>Active Inference</strong> (Friston et al., 2017): Organisms as inference machines that minimize expected free energy through action. The “belief state sufficiency” result here is their “Bayesian brain” hypothesis formalized.</li>
       <li><strong>Predictive Processing</strong> (Clark, 2013; Hohwy, 2013): The brain as a prediction engine, with perception as hypothesis-testing. The world model <M>{"\\worldmodel"}</M> is their “generative model.”</li>
-      <li><strong>Good Regulator Theorem</strong> (Conant \& Ashby, 1970): Every good regulator of a system must be a model of that system. Theorem 3.1 here is a POMDP-specific instantiation.</li>
+      <li><strong>Good Regulator Theorem</strong> (Conant \& Ashby, 1970): Every good regulator of a system must be a model of that system. The belief state sufficiency result above is a POMDP-specific instantiation.</li>
       <li><strong>Embodied Cognition</strong> (Varela, Thompson \& Rosch, 1991): Cognition as enacted through sensorimotor coupling. My emphasis on the boundary as the locus of modeling aligns with enactivist insights.</li>
       </ul>
       </Connection>
@@ -257,9 +255,7 @@ export default function Part1() {
       <Align>{"\\text{Latent dynamics:} \\quad & p_\\theta(\\latent_{t+1} | \\latent_t, \\mathbf{a}_t)  \\text{Observation model:} \\quad & p_\\theta(\\mathbf{o}_t | \\latent_t)  \\text{Inference:} \\quad & q_\\phi(\\latent_t | \\latent_{t-1}, \\mathbf{a}_{t-1}, \\mathbf{o}_t)"}</Align>
       <p>The latent state <M>{"\\latent_t"}</M> serves as a compressed belief state, and the model is trained to minimize prediction error:</p>
       <Eq>{"\\mathcal{L}_{\\text{world}} = \\E\\left[ -\\log p_\\theta(\\mathbf{o}_t | \\latent_t) + \\beta \\cdot \\KL\\left[ q_\\phi(\\latent_t | \\cdot) | p_\\theta(\\latent_t | \\latent_{t-1}, \\mathbf{a}_{t-1}) \\right] \\right]"}</Eq>
-      <KeyResult title="Key Result">
       <p>The world model is not an optional add-on. It is the minimal object that makes coherent control possible under uncertainty. Any system that regulates effectively under partial observability has a world model, whether explicit or implicit.</p>
-      </KeyResult>
       <Sidebar title="World Models in AI">
       <p>The theoretical necessity of world models is now being realized in artificial systems:</p>
       <ul>
@@ -285,9 +281,7 @@ export default function Part1() {
       <p>The information bottleneck principle formalizes this: the optimal representation <M>{"\\latent"}</M> maximizes information about viability-relevant outcomes while minimizing complexity:</p>
       <Eq>{"\\max_{\\latent} \\left[ \\MI(\\latent; \\text{viability outcomes}) - \\beta \\cdot \\MI(\\latent; \\obs) \\right]"}</Eq>
       <p>The Lagrange multiplier <M>{"\\beta"}</M> controls the compression-fidelity tradeoff. Different <M>{"\\beta"}</M> values yield different creatures: high <M>{"\\beta"}</M> produces simple organisms with coarse world models; low <M>{"\\beta"}</M> produces complex organisms with rich representations.</p>
-      <KeyResult title="Key Result">
       <p>The world model is not a luxury or optimization strategy. It is what it means to be a bounded system in an unbounded world. The compression ratio is not a parameter to be minimized but a constitutive feature of finite existence. What survives compression determines what the system is.</p>
-      </KeyResult>
       </Section>
       <Section title="Attention as Measurement Selection" level={2}>
       <p>Compression determines what <em>can</em> be perceived. But a second operation determines what <em>is</em> perceived: attention. Even within the compressed representation, the system must allocate processing resources selectively—it cannot respond to all viability-relevant features simultaneously. Attention is this allocation.</p>
@@ -342,9 +336,7 @@ export default function Part1() {
       <li>The causal influence of these factors on action and observation</li>
       </ol>
       <p>Formally, <M>{"\\selfmodel_t = f_\\psi(\\latent^{\\text{internal}}_t)"}</M> where <M>{"\\latent^{\\text{internal}}_t"}</M> captures the relevant internal degrees of freedom.</p>
-      <KeyResult title="Key Result">
-      <p>Self-modeling becomes the cheapest way to improve control once the agent’s actions dominate its observations. The “self” is not mystical; it is the minimal latent variable that makes the agent’s own behavior predictable.</p>
-      </KeyResult>
+      <p>Self-modeling becomes the cheapest way to improve control once the agent's actions dominate its observations. The "self" is not mystical; it is the minimal latent variable that makes the agent's own behavior predictable.</p>
       <p>Note a consequence that will become important in Part II: the self-model has <em>interiority</em>. It does not merely describe the agent’s body from outside; it captures the intrinsic perspective—goals, beliefs, anticipations, the agent’s own experience of what it is to be an agent. Once this self-model exists, the cheapest strategy for modeling <em>other</em> entities whose behavior resembles the agent’s is to reuse the same architecture. The self-model becomes the template for modeling the world. This has a name in Part II—participatory perception—and a parameter that governs how much of the self-model template leaks into the world model. That parameter, the inhibition coefficient <M>{"\\iota"}</M>, will turn out to shape much of what follows.</p>
       </Section>
       <Section title="The Cellular Automaton Perspective" level={2}>
@@ -397,7 +389,7 @@ export default function Part1() {
       <li>Memory regions (cells whose state encodes environmental history)</li>
       <li>Predictive structure (configuration that correlates with future states)</li>
       </ul>
-      <p>The compression ratio <M>{"\\kappa"}</M> from Theorem [ref] applies: the pattern necessarily compresses the world because it is smaller than the world.</p>
+      <p>The compression ratio <M>{"\\kappa"}</M> applies: the pattern necessarily compresses the world because it is smaller than the world.</p>
       </Section>
       <Section title="Self-Model as Constitutive" level={3}>
       <p>Here is the recursive twist that CAs reveal with particular clarity. When the self-effect ratio <M>{"\\rho"}</M> is high, the world model must include the pattern itself. But the world model <em>is</em> part of the pattern. So the model must include itself.</p>
@@ -501,9 +493,7 @@ export default function Part1() {
       </ol>
       <p>The only obstruction is substrates lacking the computational capacity to support recursive modeling, which is measure-zero under sufficiently rich priors.</p>
       </Proof>
-      <KeyResult title="Key Result">
-      <p>Inevitability means typicality in the ensemble. The null hypothesis is not “nothing interesting happens” but “something finds a basin and stays there,” because that’s what driven nonlinear systems do. Self-modeling attractors are among the accessible basins wherever environments are complex enough that self-effects matter.</p>
-      </KeyResult>
+      <p>Inevitability means typicality in the ensemble. The null hypothesis is not "nothing interesting happens" but "something finds a basin and stays there," because that's what driven nonlinear systems do. Self-modeling attractors are among the accessible basins wherever environments are complex enough that self-effects matter.</p>
       <Sidebar title="Optical Proof of Concept">
       <p><strong>Claim</strong>: A properly configured optical resonance chamber (PHASER-like system) could demonstrate the ladder of inevitability in miniature, with state space structure induced by physics rather than imposed by design.</p>
       <p><strong>Setup</strong>: Consider an optical chamber with:</p>
@@ -766,22 +756,7 @@ export default function Part1() {
       <li><strong>Forcing functions</strong>: Task demands (partial observability, long horizons, learned dynamics, self-prediction, intrinsic motivation, credit assignment) push systems toward dense integration.</li>
       <li><strong>Measure-theoretic inevitability</strong>: Under broad priors, self-modeling systems are typical, not exceptional.</li>
       </ol>
-      <p>In Part II, I’ll develop:</p>
-      <ul>
-      <li>The identity thesis: why integrated cause-effect structure <em>is</em> experience</li>
-      <li>The geometry of affect: structural motifs for different qualitative states</li>
-      <li>Operational measures: how to detect and quantify phenomenal properties</li>
-      <li>The dissolution of the hard problem</li>
-      </ul>
-      <p>Part III will examine how human cultural forms—aesthetics, sexuality, ideology, science, religion, and technology—serve as responses to the inescapability of self-modeling consciousness. I’ll use this framework to analyze these phenomena as affect engineering technologies: systematic interventions in experiential structure developed across millennia.</p>
-      <p>Part IV will develop:</p>
-      <ul>
-      <li>The grounding of normativity in viability structure</li>
-      <li>Scale-matched interventions from neurons to nations</li>
-      <li>Gods as agentic systems with viability manifolds</li>
-      <li>Implications for AI systems and alignment</li>
-      </ul>
-      <p>Part V will address the transcendence of the self: the historical rise of consciousness, the AI frontier, and how to surf rather than be submerged by the coming wave.</p>
+      <p>The structure is inevitable. The question is what it means—whether these self-modeling systems, these attractors that model themselves, have experience. Whether there is something it is like to be them. That is not a further metaphysical question layered on top of the physics. It is a question about what integrated cause-effect structure <em>is</em>, intrinsically, when you stop describing it from outside and ask what it is from within.</p>
       </Section>
     </>
   );
