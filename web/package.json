@@ -12,7 +12,8 @@
     "generate-pdf": "node scripts/tsx-to-latex.mjs && cd ../book && latexmk -pdf book.tex",
     "extract-text": "node scripts/extract-text.mjs",
     "generate-icons": "node scripts/generate-icons.mjs",
-    "deploy": "vercel deploy --yes --prod"
+    "deploy": "vercel deploy --yes --prod",
+    "db:migrate": "npx tsx scripts/migrate.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.26",

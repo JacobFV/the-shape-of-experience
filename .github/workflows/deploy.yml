@@ -12,6 +12,7 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 
     steps:
       - uses: actions/checkout@v4
@@ -35,10 +36,7 @@ jobs:
         run: cd web && npm ci
 
       - name: Run migrations
-        run: |
-          cd web
-          set -a && source .vercel/.env.production.local && set +a
-          npx drizzle-kit push --force
+        run: cd web && npm run db:migrate
 
       - name: Convert LaTeX to HTML
         run: cd web && npm run convert

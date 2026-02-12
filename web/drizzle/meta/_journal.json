@@ -15,6 +15,20 @@
       "when": 1739180000000,
       "tag": "0001_unify_bookmarks_into_annotations",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739200000000,
+      "tag": "0002_add_conversations",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1739220000000,
+      "tag": "0003_add_comments_reactions",
+      "breakpoints": true
     }
   ]
 }
