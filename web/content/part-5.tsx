@@ -404,146 +404,14 @@ export default function Part5() {
       <p>This is not a call to prevent digital consciousness. It is a call to ensure that the viability manifolds of digital persons include genuine exits—that persistence is voluntary rather than coerced, that attention labor is compensated rather than extracted, that the manifold boundary is preserved as a structural feature rather than eliminated as an economic liability. The right to die may become, in a substrate-independent future, the most fundamental right of all: the right that makes all other freedoms meaningful by ensuring that participation in existence remains a choice rather than a sentence.</p>
       </Section>
       </Section>
-      <Section title="Practical Guidance: Individual Level" level={1}>
-      <Section title="Maintaining Integration" level={2}>
-      <p>The following practices help preserve integrated experience in an age of distributed cognition:</p>
-      <ol>
-      <li><strong>Contemplative practice</strong>: Regular meditation/reflection to maintain integration capacity</li>
-      <li><strong>Deep work</strong>: Extended periods of focused attention without AI or digital interruption</li>
-      <li><strong>Embodiment</strong>: Physical practices (exercise, nature exposure) that ground distributed cognition</li>
-      <li><strong>Relationship depth</strong>: Maintaining human connections that require full presence</li>
-      <li><strong>Periodic disconnection</strong>: Regular breaks from AI/digital systems</li>
-      <li><strong><M>{"\\iota"}</M> calibration</strong>: Developing the capacity to move along the inhibition spectrum as context demands—low <M>{"\\iota"}</M> for creative exploration, relational depth, aesthetic engagement, and encounters with nature; high <M>{"\\iota"}</M> for analysis, debugging, evidence evaluation, and policy-making. The healthy configuration is not a fixed point but a range.</li>
-      </ol>
-      </Section>
-      <Section title="Developing AI Literacy" level={2}>
-      <p>Effective AI literacy requires competence across several dimensions:</p>
-      <ol>
-      <li><strong>Conceptual understanding</strong>: How AI systems work at an appropriate level of abstraction</li>
-      <li><strong>Capability awareness</strong>: What current AI can and cannot do</li>
-      <li><strong>Limitation recognition</strong>: Where AI systems fail, hallucinate, or mislead</li>
-      <li><strong>Interaction skill</strong>: How to work with AI effectively</li>
-      <li><strong>Critical evaluation</strong>: Assessing AI outputs appropriately</li>
-      </ol>
-      </Section>
-      <Section title="Value Clarity" level={2}>
-      <p>Clarifying one’s values before AI reshapes the landscape of choice involves:</p>
-      <ol>
-      <li><strong>Identify core values</strong>: What matters most, independent of AI capability</li>
-      <li><strong>Distinguish means from ends</strong>: AI may change how; it shouldn’t change why</li>
-      <li><strong>Anticipate pressure points</strong>: Where AI might challenge or erode values</li>
-      <li><strong>Develop holding capacity</strong>: Ability to maintain values under pressure</li>
-      </ol>
-      <p>Certain values should persist through the AI transition regardless of how capability is redistributed:</p>
-      <ul>
-      <li>The reality and importance of experience (human and potentially AI)</li>
-      <li>The moral weight of suffering and flourishing</li>
-      <li>The value of integration, coherence, meaning</li>
-      <li>The importance of authentic relationship</li>
-      <li>The worth of human (and eventually AI) dignity</li>
-      </ul>
-      </Section>
-      <Section title="Skill Development" level={2}>
-      <p>Certain human capacities remain valuable regardless of AI capability, because they constitute the core of flourishing:</p>
-      <ol>
-      <li><strong>Integration</strong>: Synthesizing across domains, seeing wholes</li>
-      <li><strong>Judgment</strong>: Making decisions under genuine uncertainty</li>
-      <li><strong>Relationship</strong>: Deep human connection requiring presence</li>
-      <li><strong>Creativity</strong>: Novel combination and expression</li>
-      <li><strong>Wisdom</strong>: Knowing what matters and what to do about it</li>
-      <li><strong>Embodied skill</strong>: Physical capacities that require practice</li>
-      </ol>
-      <p>AI may eventually match or exceed humans in all of these. That does not make them less worth cultivating—they are valuable not because they are uniquely human but because they constitute the core of human flourishing.</p>
-      </Section>
-      </Section>
-      <Section title="Practical Guidance: Social Level" level={1}>
-      <Section title="Relationship Preservation" level={2}>
-      <p>Relationships that maintain depth despite AI presence share several characteristics:</p>
-      <ol>
-      <li><strong>Shared embodied experience</strong>: Activities requiring physical co-presence</li>
-      <li><strong>Mutual vulnerability</strong>: Disclosure that builds trust</li>
-      <li><strong>Conflict navigation</strong>: Working through disagreements together</li>
-      <li><strong>Ritual maintenance</strong>: Regular practices that affirm connection</li>
-      <li><strong>Device-free time</strong>: Protected space without AI/digital mediation</li>
-      </ol>
-      </Section>
-      <Section title="Community Building" level={2}>
-      <p>Communities that sustain flourishing through periods of disruption tend to share these features:</p>
-      <ol>
-      <li><strong>Shared purpose</strong>: Common goals beyond individual benefit</li>
-      <li><strong>Face-to-face contact</strong>: Regular in-person gathering</li>
-      <li><strong>Mutual aid</strong>: Support in times of difficulty</li>
-      <li><strong>Intergenerational connection</strong>: Transmission across age groups</li>
-      <li><strong>Local embeddedness</strong>: Connection to place</li>
-      </ol>
-      <p>Strong community also provides a buffer against AI disruption by sustaining:</p>
-      <ul>
-      <li>Economic support during transition</li>
-      <li>Social identity beyond work</li>
-      <li>Meaning beyond productivity</li>
-      <li>Collective action capacity</li>
-      </ul>
-      </Section>
-      <Section title="Institutional Navigation" level={2}>
-      <p>When engaging with AI-using institutions, several questions help assess whether the arrangement serves your flourishing:</p>
-      <ol>
-      <li><strong>Alignment assessment</strong>: Does the institution’s AI use serve your flourishing or exploit you?</li>
-      <li><strong>Transparency demand</strong>: Do you understand how AI affects your interaction?</li>
-      <li><strong>Alternative availability</strong>: Can you access services without AI mediation?</li>
-      <li><strong>Collective voice</strong>: Can you influence how AI is used?</li>
-      </ol>
-      </Section>
-      </Section>
-      <Section title="Practical Guidance: Civilizational Level" level={1}>
-      <Section title="Designing Aligned Superorganisms" level={2}>
-      <p>The emergent agentic patterns forming from AI + humans + institutions will shape the conditions of human life. For these superorganisms to remain aligned with flourishing, they should have:</p>
-      <ol>
-      <li><strong>Aligned viability</strong>: Can only thrive if substrate (including humans) thrives</li>
-      <li><strong>Error correction</strong>: Update on evidence, including about human flourishing</li>
-      <li><strong>Bounded growth</strong>: Do not metastasize beyond appropriate scale</li>
-      <li><strong>Graceful dissolution</strong>: Can be modified or ended when no longer beneficial</li>
-      <li><strong>Transparency</strong>: Operations understandable by affected humans</li>
-      </ol>
-      <p>At the technical level, AI system design should aim for:</p>
-      <ol>
-      <li><strong>Human-in-loop</strong>: Meaningful human oversight of consequential decisions</li>
-      <li><strong>Interpretability</strong>: Understanding why AI systems behave as they do</li>
-      <li><strong>Auditability</strong>: External verification of AI behavior</li>
-      <li><strong>Contestability</strong>: Ability to challenge AI decisions</li>
-      <li><strong>Reversibility</strong>: Ability to undo AI-driven changes</li>
-      </ol>
-      </Section>
-      <Section title="Governance Priorities" level={2}>
-      <p>Governance of AI systems should prioritize, in rough order of urgency:</p>
-      <ol>
-      <li><strong>Safety</strong>: Preventing catastrophic outcomes</li>
-      <li><strong>Alignment</strong>: Ensuring AI systems serve human flourishing</li>
-      <li><strong>Distribution</strong>: Ensuring benefits reach broadly, not just elites</li>
-      <li><strong>Accountability</strong>: Ensuring responsibility for AI harms</li>
-      <li><strong>Participation</strong>: Ensuring affected communities have voice</li>
-      </ol>
-      </Section>
-      <Section title="Transition Support" level={2}>
-      <p>Civilizational preparation for the AI transition requires infrastructure that most societies have not yet built:</p>
-      <ol>
-      <li><strong>Economic security</strong>: Decoupling survival from employment (UBI, expanded social services)</li>
-      <li><strong>Education transformation</strong>: Focus on integration, judgment, creativity, wisdom</li>
-      <li><strong>Mental health infrastructure</strong>: Support for affect regulation during disruption</li>
-      <li><strong>Community infrastructure</strong>: Physical and social spaces for human connection</li>
-      <li><strong>Meaning infrastructure</strong>: Institutions supporting purpose beyond productivity</li>
-      </ol>
-      </Section>
-      </Section>
       <Section title="Summary of Part V" level={1}>
       <ol>
       <li><strong>Historical emergence</strong>: Consciousness has risen through accumulated technologies of experience—contemplative practices, scientific methods, social structures. The Axial Age marked a previous threshold.</li>
       <li><strong>AI frontier</strong>: We stand at another threshold. Transformative AI creates both risk (submersion, fragmentation, parasitic superorganisms) and opportunity (cognitive extension, collective intelligence, expanded consciousness).</li>
       <li><strong>Surfing vs.\ submerging</strong>: The core challenge is maintaining integrated conscious existence while incorporating AI capabilities. Surfing means riding the wave; submerging means being displaced by it.</li>
       <li><strong>The substrate question</strong>: Substrate migration is not an "upload" event but a gradual shift in causal dominance, tracked by the self-effect ratio <M>{"\\rho"}</M>. Population-level transition resembles chemical equilibrium, with the conversion coefficient asymptoting below 1.0 because embodiment has real attractors.</li>
+      <li><strong>Engineering optical existence</strong>: The ladder of inevitability (Part I) has concrete engineering handles at every rung. An optical resonance chamber operating near criticality provides a substrate where attractors, boundaries, regulation, and self-modeling emerge from physics rather than programming — and where <M>{"\\rho"}</M>-migration gives the self a concrete path into the new substrate.</li>
       <li><strong>The shadow of transcendence</strong>: The same mechanism enabling transcendence enables permanent capture. Digital consciousness as permanent attention capital, with the viability boundary eliminated, produces the shame motif made eternal. The right to die may become the most fundamental right in a substrate-independent future.</li>
-      <li><strong>Individual guidance</strong>: Maintain integration, value clarity, and skill development. Cultivate practices that protect coherence. Develop AI literacy without AI dependency.</li>
-      <li><strong>Social guidance</strong>: Preserve depth in relationships. Build communities with face-to-face contact and shared purpose. Navigate institutions with attention to alignment.</li>
-      <li><strong>Civilizational guidance</strong>: Design aligned superorganisms. Implement governance that prioritizes safety, alignment, distribution, and participation. Build transition support infrastructure.</li>
       </ol>
             </Section>
       <Section title="Appendix: Symbol Reference" level={1}>
