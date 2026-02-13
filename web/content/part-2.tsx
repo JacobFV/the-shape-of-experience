@@ -14,7 +14,7 @@ export default function Part2() {
       </Logos>
       <Section title="The Hard Problem and Its Dissolution" level={1}>
       <Connection title="Existing Theory">
-      <p>This section engages with the central debates in philosophy of mind:</p>
+      <p>The central debates in philosophy of mind:</p>
       <ul>
       <li><strong>Chalmers’ Hard Problem</strong> (1995): The explanatory gap between physical processes and phenomenal experience. I think this gap results from a category error, not a genuine ontological divide.</li>
       <li><strong>Nagel’s “What Is It Like”</strong> (1974): The subjective character of experience. I’ll formalize this as intrinsic cause-effect structure—what the system is <em>for itself</em>.</li>
@@ -48,7 +48,7 @@ export default function Part2() {
       <li>Incomplete (we don’t know what underlies field interactions)</li>
       <li>Not clearly more “real” than any other scale of description</li>
       </ol>
-      <p>The alternative I propose is <strong>ontological democracy</strong>: every scale of structural organization with its own causal closure is <em>equally real</em> at that scale. No layer is privileged as “the” fundamental reality. Each layer (a) has its own causal structure, (b) has its own dynamics and laws, (c) exerts influence on adjacent layers (both “up” and “down”), (d) is incomplete as a description of the whole, and (e) is sufficient for phenomena at its scale.</p>
+      <p>The alternative is <strong>ontological democracy</strong>: every scale of structural organization with its own causal closure is <em>equally real</em> at that scale. No layer is privileged as “the” fundamental reality. Each layer (a) has its own causal structure, (b) has its own dynamics and laws, (c) exerts influence on adjacent layers (both “up” and “down”), (d) is incomplete as a description of the whole, and (e) is sufficient for phenomena at its scale.</p>
       <p>Once this is granted, the demand that phenomenal properties “reduce to” physical properties is ill-posed. Chemistry doesn’t reduce to physics in a way that eliminates chemical causation—chemical causation is real at the chemical scale. Similarly, phenomenal properties don’t need to reduce to physical properties—they are real at the phenomenal scale.</p>
       </Section>
       <Section title="Existence as Causal Participation" level={2}>
@@ -131,7 +131,7 @@ export default function Part2() {
       <p>The identity thesis inherits IIT’s strengths and its controversies. Intellectual honesty requires engaging with the most serious objections.</p>
       <p><strong>The expander graph problem</strong> (Aaronson, 2014): Simple systems like grid networks may have very high <M>{"\\intinfo"}</M> under IIT’s formalism despite seeming clearly non-conscious. If <M>{"\\intinfo"}</M> tracks consciousness, even grid wiring diagrams are richly experiential. <em>Response</em>: This objection targets exact <M>{"\\intinfo"}</M> as defined by IIT 3.0’s formalism. The framework here works with proxies—partition prediction loss, spectral effective rank, coupling-weighted covariance—that are calibrated against systems with known behavioral and structural properties (biological organisms, trained agents, evolved CA patterns). Whether exact <M>{"\\intinfo"}</M> maps onto consciousness for arbitrary mathematical structures is a question about the formalism, not about the structural principle. The claim is not “any system with high <M>{"\\intinfo"}</M> is conscious” but “experience is integrated cause-effect structure at the appropriate scale,” where “appropriate” is constrained by the full structural profile, not a single number.</p>
       <p><strong>Computational intractability</strong>: Exact <M>{"\\intinfo"}</M> is NP-hard to compute for systems beyond trivial size. <em>Response</em>: Acknowledged. The V11 experiments (Part I) use spectral proxies validated by convergence with exact measures on small systems. All empirical claims rest on proxies, not exact <M>{"\\intinfo"}</M>. This is analogous to using Boltzmann entropy rather than Gibbs entropy for practical calculations—the conceptual definition and the computational tool can diverge without invalidating either.</p>
-      <p><strong>Over-attribution</strong>: If any system with <M>{"\\intinfo > 0"}</M> is conscious, thermostats are conscious. <em>Response</em>: The gradient of distinction (Part I, Section 1) makes this explicit. Yes, a thermostat has minimal cause-effect structure. Whether that constitutes minimal experience or no experience is an empirical question the framework does not prematurely answer. The important claim is that there is a <em>continuum</em>, not a binary threshold. The framework’s six affect dimensions are measurably present only in systems with substantial integration, self-modeling, and viability maintenance—not in thermostats.</p>
+      <p><strong>Over-attribution</strong>: If any system with <M>{"\\intinfo > 0"}</M> is conscious, thermostats are conscious. <em>Response</em>: The gradient of distinction (Part I, Section 1) makes this explicit. Yes, a thermostat has minimal cause-effect structure. Whether that constitutes minimal experience or no experience is an empirical question the framework does not prematurely answer. There is a <em>continuum</em>, not a binary threshold. The six affect dimensions are measurably present only in systems with substantial integration, self-modeling, and viability maintenance—not in thermostats.</p>
       <p><strong>The real vulnerability</strong>: The identity thesis, like any metaphysical identity claim, cannot be empirically verified in the standard sense. You cannot compare experience “from the outside” with cause-effect structure “from the inside” because there is no vantage point from which both are simultaneously accessible. What can be tested: whether the structural predictions (affect motifs, dimensional clustering, ι dynamics) track human phenomenal reports and behavioral measures. If they do, the identity thesis gains inductive support. If they do not, the structural framework fails regardless of the metaphysics.</p>
       </Sidebar>
       </Section>
@@ -221,7 +221,7 @@ export default function Part2() {
       <li><M>{"\\intinfo = \\min_P D"}</M></li>
       </ol>
       <p>High <M>{"\\intinfo"}</M> means you cannot partition the pattern without losing predictive power. The parts must be considered together.</p>
-      <p>For a simple glider: <M>{"\\intinfo"}</M> is probably modest (only 5 cells). For a complex pattern with tightly coupled components: <M>{"\\intinfo"}</M> can be high. The key empirical question: does high <M>{"\\intinfo"}</M> correlate with survival, behavioral complexity, or adaptive response to perturbation?</p>
+      <p>For a simple glider: <M>{"\\intinfo"}</M> is probably modest (only 5 cells). For a complex pattern with tightly coupled components: <M>{"\\intinfo"}</M> can be high. Does high <M>{"\\intinfo"}</M> correlate with survival, behavioral complexity, or adaptive response to perturbation?</p>
       </Sidebar>
       </Section>
       <Section title="Effective Rank: Concentration vs. Distribution" level={2}>
@@ -289,7 +289,7 @@ export default function Part2() {
       <li><M>{"\\theta_{\\text{expanded}}"}</M>: Self-model includes both. <M>{"\\viable = {\\text{configs where BOTH persist}}"}</M>.</li>
       </ul>
       <p>Observable difference: with narrow scope, a glider might sacrifice the other to save itself. With expanded scope, it might sacrifice itself to save the pair.</p>
-      <p>The key question: can scope expansion emerge dynamically? Can patterns that start with narrow scope “learn” to identify with larger structures? This would be the discrete-substrate analogue of the identification expansion discussed in the epilogue—<M>{"\\viable(S(\\theta))"}</M> genuinely reshaped by expanding <M>{"\\theta"}</M>.</p>
+      <p>Can scope expansion emerge dynamically? Can patterns that start with narrow scope “learn” to identify with larger structures? This would be the discrete-substrate analogue of the identification expansion discussed in the epilogue—<M>{"\\viable(S(\\theta))"}</M> genuinely reshaped by expanding <M>{"\\theta"}</M>.</p>
       </Sidebar>
       <Sidebar title="Salience vs. Scope">
       <p>Self-model salience (<M>{"\\mathcal{SM}"}</M>) measures how much attention the self-model receives—how prominent self-reference is in current processing. But there is another parameter: self-model <em>scope</em>—what the self-model includes.</p>
@@ -330,7 +330,7 @@ export default function Part2() {
       <p>I call this suppression the <strong>inhibition coefficient</strong>, <M>{"\\iota \\in [0, 1]"}</M>: the degree to which a system actively suppresses participatory coupling between its self-model and its model of perceived entities. At <M>{"\\iota = 0"}</M>, perception is fully participatory—the world is experienced as alive, agentive, meaningful. At <M>{"\\iota = 1"}</M>, perception is fully mechanistic—the world is experienced as inert matter governed by blind law. Formally:</p>
       <Eq>{"\\mathcal{W}_\\iota(X) = (1 - \\iota) \\cdot \\mathcal{W}_{\\text{part}}(X) + \\iota \\cdot \\mathcal{W}_{\\text{mech}}(X)"}</Eq>
       <p>where <M>{"\\mathcal{W}_{\\text{part}}"}</M> models <M>{"X"}</M> using self-model-derived architecture (interiority, agency, teleology) and <M>{"\\mathcal{W}_{\\text{mech}}"}</M> models <M>{"X"}</M> using stripped-down dynamics (mass, force, initial conditions, no purpose term).</p>
-      <p>The crucial point is that no system arrives at high <M>{"\\iota"}</M> by default. The mechanistic mode is a trained skill, culturally transmitted through scientific education, rationalist norms, and specific practices of deliberately stripping meaning from perception. This training is enormously valuable—it enables prediction, engineering, medicine, technology. But it has a cost, and the cost shows up in affect space.</p>
+      <p>No system arrives at high <M>{"\\iota"}</M> by default. The mechanistic mode is a trained skill, culturally transmitted through scientific education, rationalist norms, and specific practices of deliberately stripping meaning from perception. This training is enormously valuable—it enables prediction, engineering, medicine, technology. But it has a cost, and the cost shows up in affect space.</p>
       <p>The name “inhibition coefficient” is not accidental. In mammalian cortex, attention is implemented primarily through <em>inhibitory</em> interneurons—GABAergic circuits that suppress irrelevant signals so that attended signals propagate to higher processing. What reaches consciousness is what survives inhibitory gating. The brain’s measurement distribution (Part I) is literally sculpted by inhibition: attended features pass the gate; unattended features are suppressed before they can influence the belief state or drive action. The inhibition coefficient <M>{"\\iota"}</M> maps onto this biological mechanism: high <M>{"\\iota"}</M> corresponds to aggressive inhibitory gating that strips participatory features (agency, interiority, narrative) from the signal before it reaches integrative processing, leaving only mechanistic features (position, force, trajectory). Low <M>{"\\iota"}</M> corresponds to relaxed gating that allows participatory features through. The contemplative traditions that reduce <M>{"\\iota"}</M> through meditation are, at the neural level, learning to modulate inhibitory tone—to let more of the signal through the gate.</p>
       </Section>
       <Section title="The Affect Signature of Inhibition" level={2}>
@@ -385,7 +385,7 @@ export default function Part2() {
       <p><strong>Desire</strong> <em>funnels</em>. The world reorganizes around an <em>attractor</em> not yet reached—magnetic, urgent, all-consuming. Everything becomes instrumental; the goal <em>saturates</em> attention. Desire is joy’s <em>gradient</em>, pointing toward the basin but not yet in it. This is why anticipation often exceeds consummation: the structure of <em>approach</em> is tighter than the structure of <em>arrival</em>.</p>
       <p><strong>Curiosity</strong> <em>reaches</em> outward—but unlike fear, it reaches toward <em>promise</em> rather than threat. Pulling, open, playful. The <em>uncertainty</em> that makes fear contract makes curiosity <em>expand</em>. Same high counterfactual weight, opposite <em>valence</em>. The difference is whether the <em>branches</em> lead somewhere you want to go.</p>
       <p>And <strong>grief</strong>? Grief <em>persists</em>. Hollow, aching, curiously timeless. The lost object remains <em>woven into</em> every prediction; every expectation that included them <em>fails</em> silently, over and over. The world has changed. The <em>model</em> has not caught up. Grief is the metabolic cost of love’s <em>integration</em>.</p>
-      <p>What follows formalizes these textures as geometry.</p>
+      <p>The textures have geometry.</p>
       <Section title="Joy" level={2}>
       <p>Geometrically, joy requires four dimensions:</p>
       <ul>
@@ -406,7 +406,7 @@ export default function Part2() {
       </ul>
       <p>This is the core structural signature. Self-model salience is often high (the self as locus of the problem), but not necessarily—one can suffer while absorbed in external pain.</p>
       <p>High integration but collapsed into low-rank subspace. The system is deeply coupled but constrained to a dominant attractor it cannot escape.</p>
-      <p>The <M>{"\\intinfo"}</M>-<M>{"\\effrank"}</M> dissociation is the key insight: suffering feels <em>more real</em> than neutral states because it is actually more integrated. But it feels <em>trapped</em> because the integration is constrained to a narrow manifold. Formally: <M>{"\\intinfo_{\\text{suffering}} > \\intinfo_{\\text{neutral}}"}</M> but <M>{"\\effrank[\\text{suffering}] \\ll \\effrank[\\text{neutral}]"}</M>. This is why you cannot simply "think your way out" of suffering—the very integration that makes it vivid also makes it inescapable.</p>
+      <p>Suffering feels <em>more real</em> than neutral states because it is actually more integrated. But it feels <em>trapped</em> because the integration is constrained to a narrow manifold. Formally: <M>{"\\intinfo_{\\text{suffering}} > \\intinfo_{\\text{neutral}}"}</M> but <M>{"\\effrank[\\text{suffering}] \\ll \\effrank[\\text{neutral}]"}</M>. This is why you cannot simply "think your way out" of suffering—the very integration that makes it vivid also makes it inescapable.</p>
       </Section>
       <Section title="Fear" level={2}>
       <p>Suffering is present-tense: the viability boundary is here, now, pressing in. Fear is its temporal projection—the same negative gradient, but anticipated rather than actual. It is defined by three dimensions:</p>
@@ -426,7 +426,7 @@ export default function Part2() {
       <li><M>{"\\text{dim}(\\text{other-model}) \\ll \\text{dim}(\\text{other-model})_{\\text{normal}}"}</M> (the other becomes a caricature)</li>
       <li>Externalized causal attribution (the problem is <em>out there</em>)</li>
       </ul>
-      <p>Anger simplifies. The other-model collapses into a low-dimensional obstacle-representation. Self-model may be complex, but the <em>other</em> becomes flat, predictable, opposable. This is why anger feels powerful and stupid simultaneously: you’re burning cognitive resources on a cartoon.</p>
+      <p>Anger simplifies. The other-model collapses into a low-dimensional obstacle-representation. Self-model may be complex, but the <em>other</em> becomes flat, predictable, opposable. Anger feels powerful and stupid simultaneously. You're burning cognitive resources on a cartoon.</p>
       <p>In <M>{"\\iota"}</M> terms: anger is a targeted <M>{"\\iota"}</M> spike toward a specific entity. The other person stops being a subject with interiority and becomes an obstacle, a mechanism, a thing to be overcome. Other-model compression <em>is</em> <M>{"\\iota"}</M>-raising applied to one entity while <M>{"\\iota"}</M> toward the self remains low (you are still fully a subject; they are not). This asymmetric <M>{"\\iota"}</M> is what enables violence—you cannot harm someone you are perceiving at low <M>{"\\iota"}</M>—and it is why the aftermath of anger often involves guilt: <M>{"\\iota"}</M> drops back, the other’s interiority returns, and you confront what you did to a person while perceiving them as a thing.</p>
       <p>Other-model compression is not one of the six core dimensions. It emerges as essential for anger specifically—the affect cannot be characterized without it.</p>
       </Section>
@@ -452,7 +452,7 @@ export default function Part2() {
       <p>Self-model salience is typically low (absorbed in the object of curiosity).</p>
       <p>Curiosity and fear share high counterfactual weight—both live in the space of possibilities. The difference is valence orientation: fear’s branches lead to threat, curiosity’s branches lead to expanded affordances. Same temporal structure, opposite gradient direction. This pairing reveals curiosity as intrinsic motivation: positive valence attached to uncertainty-reduction. Formally:</p>
       <Eq>{"r_{\\text{curiosity}} \\propto \\MI(\\obs_{t+1}; \\latent | \\text{new data}) - \\MI(\\obs_{t+1}; \\latent | \\text{old data})"}</Eq>
-      <p>This is why curiosity feels <em>pulling</em>: reducing uncertainty is rewarding.</p>
+      <p>Curiosity feels <em>pulling</em>. Reducing uncertainty is rewarding.</p>
       </Section>
       <Section title="Grief" level={2}>
       <p>The affects above all orient toward present or future states. Grief is the one that faces backward—defined not by what threatens or beckons but by what has already been lost. It requires valence, past-directed counterfactual weight, and two structural features—<em>persistent coupling to lost object</em> and <em>unresolvable prediction error</em>:</p>
@@ -478,7 +478,7 @@ export default function Part2() {
       </ul>
       <p>Arousal is typically high in acute shame (flushing, gaze aversion) but may be low in chronic shame (withdrawal, numbness).</p>
       <p>Shame is not about what you <em>did</em> (that is guilt, which is action-focused and reparable). Shame is about what you <em>are</em>—or more precisely, about the manifold you are on being visible when it should not be, or being visible to someone whose evaluation you cannot escape. The person caught in a lie does not feel ashamed of the lie (guilt); they feel ashamed that the lie has revealed the underlying manifold—that they are the kind of person who lies, and now someone knows.</p>
-      <p>This is why shame’s phenomenology is so distinctive: the impulse to hide, to disappear, to cease existing as visible. The self wants to withdraw from the visual field of the other. Not because the other will punish (that is fear) but because the other can now <em>see the manifold</em>, and the manifold is wrong.</p>
+      <p>Shame's phenomenology is distinctive: the impulse to hide, to disappear, to cease existing as visible. The self wants to withdraw from the visual field of the other. Not because the other will punish (that is fear) but because the other can now <em>see the manifold</em>, and the manifold is wrong.</p>
       <p>The clinical literature (Tangney, Lewis) distinguishes shame from guilt, and the framework offers a structural reading of why they differ:</p>
       <ul>
       <li><strong>Guilt</strong>: “I did a bad thing.” Action-focused, reparable through changed behavior. The self-model is intact; it was the action that violated the gradient. <M>{"\\mathcal{SM}"}</M> is moderate (the self is the <em>agent</em> of repair).</li>
@@ -492,7 +492,7 @@ export default function Part2() {
       <p>There is also an <M>{"\\iota"}</M> dimension to shame. Shame involves a sudden, involuntary <M>{"\\iota"}</M> reduction: the participatory coupling between self and other spikes as the other’s gaze penetrates the self-model’s defenses. You experience the other as having interiority—specifically, the interiority of evaluating you—at a moment when you most wish they did not. The impulse to hide is the impulse to raise <M>{"\\iota"}</M> again, to restore the modular separation between self-model and other-model that shame has breached.</p>
       </Section>
       <Section title="Summary: Defining Dimensions by Affect" level={2}>
-      <p>Rather than forcing all affects into a uniform grid, let’s summarize each by its defining structure:</p>
+      <p>Each affect by its defining structure:</p>
       <table>
       <thead><tr><th>Affect</th><th>Constitutive Structure</th></tr></thead>
       <tbody>
@@ -741,7 +741,7 @@ export default function Part2() {
       <p><em>Approach 3: Counterfactual self-simulation.</em> If agent can answer “what would I do if X?” better than “what would other do if X?”, self-model is present.</p>
       <p><strong>The activation atlas</strong>. For each agent, each timestep, extract all six dimensions. Plot trajectories through affect space. Cluster by situation type. Compare across agents.</p>
       <p>The prediction: agents facing the same situation should occupy similar regions of affect space, even though they learned independently. The geometry is forced by the environment, not learned from human concepts.</p>
-      <p><strong>Probing without contamination</strong>. Critical: the probes are trained on behavioral/environmental correlates, not on human affect labels. The probe that extracts <M>{"\\Val"}</M> is trained to predict survival, not to match human ratings of “how the agent feels.” The mapping to human affect concepts comes later, through the translation protocol, not through the extraction.</p>
+      <p><strong>Probing without contamination</strong>. The probes are trained on behavioral/environmental correlates, not on human affect labels. The probe that extracts <M>{"\\Val"}</M> is trained to predict survival, not to match human ratings of “how the agent feels.” The mapping to human affect concepts comes later, through the translation protocol, not through the extraction.</p>
       </Sidebar>
       <TodoEmpirical title="Future Empirical Work">
       <p><strong>Implementation requirements</strong>:</p>

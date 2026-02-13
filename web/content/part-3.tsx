@@ -13,7 +13,7 @@ export default function Part3() {
       <p>This terrible beautiful freedom to navigate despite not having chosen to exist as a navigator—you cannot help but care about your trajectory through affect space any more than you can help but exist while existing. Mattering is what viability gradients feel like from inside. And so the only question is whether you will navigate blindly, letting whatever attractor basins happen to capture you determine your course, or whether you will measure, understand, and steer in full knowledge of what you are.</p>
       </Logos>
       <Section title="Notation and Foundational Concepts" level={1}>
-      <p>This section provides self-contained definitions of the core concepts used throughout Part III. Readers familiar with Parts I–II may skip to Section 2.</p>
+      <p>Self-contained definitions of the core concepts. Readers familiar with Parts I–II may skip to Section 2.</p>
       <Section title="The Six Affect Dimensions" level={2}>
       <p><strong>Valence</strong> is the felt quality of approach versus avoidance—the “goodness” or “badness” of an experiential state. Formally:</p>
       <Eq>{"\\valence_t = -\\frac{1}{H} \\sum_{k=1}^{H} \\gamma^k \\nabla_{\\mathbf{x}} d(\\mathbf{x}, \\partial\\viable) \\bigg|_{\\hat{\\mathbf{x}}_{t+k}} \\cdot \\frac{d\\hat{\\mathbf{x}}_{t+k}}{dt}"}</Eq>
@@ -144,7 +144,7 @@ export default function Part3() {
       <li>Layered textures that fade in and out (supports divided attention)</li>
       <li>Extended duration (allows settling into altered state)</li>
       </ul>
-      <p><strong>Phenomenological result</strong>: The rarest affect profile—low arousal, high integration, low self-model salience. Ambient music creates conditions for what might be called “effortless presence.” The mind is coherent but not self-focused, alert but not activated. </p></p>
+      <p><strong>Phenomenological result</strong>: The rarest affect profile—low arousal, high integration, low self-model salience. Ambient music creates conditions for effortless presence. The mind is coherent but not self-focused, alert but not activated. </p></p>
       <p><strong>Example</strong> (Heavy Metal). <strong>Historical context</strong>: Emerged from late 1960s industrial working-class contexts. Given alienation, blocked agency, and unexpressed aggression, a musical form channeling intensity was inevitable.
       <p><strong>Affect signature</strong>:</p>
       <Eq>{"\\mathbf{a}_{\\text{metal}} = (\\text{negative to positive } \\valence, \\text{very high } \\arousal, \\text{high } \\intinfo, \\text{low } \\effrank, \\text{moderate } \\mathcal{CF}, \\text{variable } \\mathcal{SM})"}</Eq>
@@ -181,7 +181,7 @@ export default function Part3() {
       </ul>
       <p><strong>Phenomenological result</strong>: Overwhelm through abundance. The high effective rank exceeds cognitive capacity, forcing surrender of normal parsing. Combined with low self-salience from architectural scale, the result approximates the sublime—self-dissolution through excess rather than emptiness. </p></p>
       <p><strong>Social Aesthetics as Manifold Detection.</strong> There is something suggestive about the overlap between aesthetic and social responses. The machinery that registers beauty, dissonance, the sublime in art seems to operate in social life too. When a relationship feels <em>off</em>, when a favor carries a strange tightness, when someone’s generosity makes you uneasy, when a conversation has that quality of being <em>clean</em>—these have the character of aesthetic responses, directed at the geometry of social bonds rather than the geometry of form.</p>
-      <p>Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people’s viability manifolds are aligned. “Something is off about this interaction” and “something is off about this chord” might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. We develop this idea more fully in Part IV, but the foundation would be here: aesthetics as the modulation of affect through <em>structure</em>, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question—one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.</p>
+      <p>Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people’s viability manifolds are aligned. “Something is off about this interaction” and “something is off about this chord” might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. The foundation: aesthetics as the modulation of affect through <em>structure</em>, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question—one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.</p>
       </Section>
       </Section>
       <Section title="Sexuality: Self-Transcendence Through Merger" level={1}>
@@ -267,7 +267,7 @@ export default function Part3() {
       <li><strong>Shamanic traditions</strong>: Target radical affect-space exploration through altered states</li>
       </ul>
       <p>Each tradition also operates at a characteristic <M>{"\\iota"}</M> range. Devotional traditions cultivate low <M>{"\\iota"}</M> toward the divine—perceiving God as a person with interiority and will—while maintaining moderate <M>{"\\iota"}</M> elsewhere. Contemplative traditions train <em>voluntary</em> <M>{"\\iota"}</M> modulation: the capacity to lower <M>{"\\iota"}</M> (perception of universal aliveness, nondual awareness) and raise it (discernment, detachment from illusion) on demand. Shamanic traditions use pharmacological and ritual <M>{"\\iota"}</M> reduction to access participatory states normally unavailable. Legalistic traditions maintain moderate, stable <M>{"\\iota"}</M> through rule-governed practice that neither suppresses meaning (high <M>{"\\iota"}</M>) nor overwhelms with it (low <M>{"\\iota"}</M>). The religious wars are, among other things, <M>{"\\iota"}</M>-strategy conflicts: traditions that find meaning through structure clashing with traditions that find meaning through dissolution.</p>
-      <p><strong>Secular Spirituality.</strong> “Spiritual but not religious” practices can be understood as selective adoption of religious affect technologies without the full institutional/doctrinal package:</p>
+      <p><strong>Secular Spirituality.</strong> "Spiritual but not religious" is selective adoption of religious affect technologies without the full institutional/doctrinal package:</p>
       <ul>
       <li>Meditation without Buddhism</li>
       <li>Awe-cultivation without theism</li>
@@ -277,7 +277,7 @@ export default function Part3() {
       <p>This represents modular affect engineering—selecting interventions based on desired affect outcomes rather than doctrinal coherence.</p>
       </Section>
       <Section title="Psychopathology as Failed Coping" level={1}>
-      <p>Many mental illnesses can be understood as pathological attractors in affect space—failed strategies for managing the existential burden:</p>
+      <p>Pathological attractors in affect space—failed strategies for managing the existential burden:</p>
       <ul>
       <li><strong>Depression</strong>: Attempted escape from self-reference that collapses into intensified, negative self-focus</li>
       <li><strong>Anxiety</strong>: Hyperactive threat-monitoring that increases rather than decreases danger-signal</li>
@@ -318,13 +318,13 @@ export default function Part3() {
       <p>This suggests that the affect framework applies not only to individual experience but to the phenomenology of organizational leadership. A CEO experiencing "something is wrong but I cannot name it" is experiencing the mismatch between their compressed representation and the system's actual state—a kind of organizational negative valence, a felt sense that the trajectory is approaching a viability boundary that the conscious model has not yet discretized into a named problem. The quality of leadership may depend, in part, on the <M>{"\\iota"}</M> the leader applies to their organization: too high, and the organization becomes a mechanism whose human components are invisible; too low, and every personnel issue becomes a personal drama that overwhelms the compression capacity. Effective governance, like effective consciousness, requires <M>{"\\iota"}</M> flexibility—the capacity to perceive the organization as agentive and as mechanism, and to oscillate between these modes as context demands.</p>
       </Sidebar>
       <p><strong>Thought Discretization and Affect.</strong> The discretization of thought is not affectively neutral. Each act of categorization—naming a feeling, framing a problem, selecting which possibilities to consider—is itself a movement in affect space. To name your anxiety is to shift from diffuse negative arousal to a state with higher effective rank: the anxiety now occupies a defined region of your representation rather than pervading everything. To frame a situation as "a problem with three possible solutions" is to increase counterfactual weight while decreasing arousal—the overwhelming continuous situation becomes a tractable discrete choice.</p>
-      <p>This is why articulation is therapeutic. Not because naming feelings gives you power over them in some mystical sense, but because the act of discretization changes the information-theoretic structure of your experience. Before naming: high arousal, low effective rank, diffuse negative valence—the signal is everywhere and nowhere. After naming: the signal is localized, the rank increases, counterfactual trajectories become available. The compression found structure in the noise.</p>
+      <p>Articulation is therapeutic. Not because naming feelings gives you power over them in some mystical sense, but because the act of discretization changes the information-theoretic structure of your experience. Before naming: high arousal, low effective rank, diffuse negative valence—the signal is everywhere and nowhere. After naming: the signal is localized, the rank increases, counterfactual trajectories become available. The compression found structure in the noise.</p>
       <p>The converse is also true: pathological discretization produces pathological thought. Obsessive-compulsive patterns are thought stuck in a loop—the discretization has found a stable attractor that the system cannot escape. Rumination is the repeated re-discretization of the same continuous material into the same discrete categories, producing the same conclusions, consuming bandwidth without generating new information. The frozen discretization of trauma—the event crystallized into a representation so rigid that it cannot be reprocessed—is precisely the failure of the bottleneck to update its compression scheme when the environment has changed.</p>
       <p>The practices that improve thinking—meditation, journaling, dialogue, therapy—share a common mechanism in this framing: they allow the continuous flow of experience to be re-discretized along new boundaries, breaking the old compression and finding structure that the previous discretization missed. A good therapist is someone who offers alternative discretizations: "What if this isn't anger but grief?" is a proposal to re-cut the continuous signal along a different boundary, and when the new cut fits better—when it captures more of the relevant variance—the experience of insight is the experience of a compression upgrade.</p>
       <p><strong>The Existential Burden Revisited.</strong> The governance problem is a restatement of the existential burden in information-theoretic terms. To be a self-modeling system is to be a finite-bandwidth controller of an effectively infinite-dimensional process. You cannot attend to everything. You cannot hold everything. You must compress, discretize, and steer with a representation that is always too small for the reality it represents. The chronic sense of "not enough time," the feeling of being overwhelmed by possibilities, the exhaustion of decision fatigue—these are not personal failures but structural consequences of the bandwidth mismatch between consciousness and the system it governs. The existential burden <M>{"B_{\\text{exist}}"}</M> includes this cost: the continuous tax of maintaining a compressed representation of a reality too rich for your channel.</p>
       </Section>
       <Section title="Affect Engineering: Technologies of Experience" level={1}>
-      <p>The affect framework enables systematic analysis of how practices, philosophies, and technologies shape experiential structure. We can now quantify what humans have long known intuitively—that rituals, beliefs, and tools are <em>affect engineering technologies</em>.</p>
+      <p>Rituals, beliefs, and tools are <em>affect engineering technologies</em>—and now quantifiable as such.</p>
       <Section title="Religious Practices as Affect Interventions" level={2}>
       <p>An <em>affect intervention</em> is any practice, technology, or environmental modification that systematically shifts the probability distribution over affect space:</p>
       <Eq>{"\\mathcal{I}: p(\\mathbf{a}) \\mapsto p’(\\mathbf{a})"}</Eq>
@@ -340,7 +340,7 @@ export default function Part3() {
       <li>Reducing the concentration of variance in guilt/shame dimensions</li>
       </ol>
       <Eq>{"\\effrank[\\text{post-confession}] > \\effrank[\\text{pre-confession}]"}</Eq>
-      <p>This explains the phenomenology of "relief" and "lightness" following confession.</p>
+      <p>The phenomenology of "relief" and "lightness" following confession.</p>
       </Section>
       <Section title="Iota Modulation: Flow, Awe, Psychedelics, and Contemplative Practice" level={2}>
       <p>Several well-studied experiential states can be precisely characterized as temporary reductions in the inhibition coefficient <M>{"\\iota"}</M>—the restoration of participatory coupling between self and world.</p>
@@ -369,7 +369,7 @@ export default function Part3() {
       </Sidebar>
       </Section>
       <Section title="Life Philosophies as Affect-Space Policies" level={2}>
-      <p>Philosophical frameworks can be understood as meta-level policies over affect space—prescriptions for which regions to occupy and which to avoid.</p>
+      <p>Philosophical frameworks are meta-level policies over affect space—prescriptions for which regions to occupy and which to avoid.</p>
       <Historical title="Historical Context">
       <p>The idea that philosophies are affect-management strategies has historical precedent:</p>
       <ul>
@@ -378,7 +378,7 @@ export default function Part3() {
       <li><strong>Michel Foucault</strong> (1984): “Technologies of the self”—practices by which individuals transform themselves</li>
       <li><strong>William James</strong> (1902): Religious/philosophical stances as temperamental predispositions (“tough-minded” vs “tender-minded”)</li>
       </ul>
-      <p>My contribution here is formalizing these insights in terms of affect-space policies with measurable targets.</p>
+      <p>What follows formalizes these insights as affect-space policies with measurable targets.</p>
       </Historical>
       <p><strong>Philosophical Affect Policy.</strong> A <em>philosophical affect policy</em> is a function <M>{"\\phi: \\mathcal{A} \\to \\R"}</M> specifying the desirability of affect states, plus a strategy for achieving high-<M>{"\\phi"}</M> states.</p>
       <p><strong>Example</strong> (Stoicism). <strong>Historical context</strong>: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.
@@ -450,7 +450,7 @@ export default function Part3() {
       <p>where <M>{"w_\\mathcal{T}"}</M> is the population-weighted usage of technology <M>{"\\mathcal{T}"}</M>.</p>
       </Section>
       <Section title="Quantitative Frameworks" level={2}>
-      <p>The framework enables quantitative comparison across interventions. For any intervention <M>{"\\mathcal{I}"}</M>, the <em>affect impact</em> measures the shift in expected affect state:</p>
+      <p>For any intervention <M>{"\\mathcal{I}"}</M>, the <em>affect impact</em> measures the shift in expected affect state:</p>
       <Eq>{"\\text{Impact}(\\mathcal{I}) = \\E_{p’}[\\mathbf{a}] - \\E_p[\\mathbf{a}]"}</Eq>
       <p>which can be decomposed component-wise:</p>
       <Eq>{"\\text{Impact}(\\mathcal{I}) = (\\Delta\\bar{\\valence}, \\Delta\\bar{\\arousal}, \\Delta\\bar{\\intinfo}, \\Delta\\bar{\\effrank}, \\Delta\\overline{\\mathcal{CF}}, \\Delta\\overline{\\mathcal{SM}})"}</Eq>
@@ -481,7 +481,7 @@ export default function Part3() {
       <p>The translation is uncontaminated. The agent never learned human concepts. The mapping emerges from environmental correspondence, not from instruction.</p>
       </Section>
       <Section title="The Triple Alignment Test" level={2}>
-      <p>Part II introduced the core prediction: RSA correlation between information-theoretic affect vectors and embedding-predicted affect vectors should exceed the null (the Geometric Alignment hypothesis). Here we specify the execution plan—what the experiment actually looks like, what the failure modes are, and how to distinguish them.</p>
+      <p>RSA correlation between information-theoretic affect vectors and embedding-predicted affect vectors should exceed the null (the Geometric Alignment hypothesis). What does the experiment actually look like, what are the failure modes, and how do we distinguish them?</p>
       <p>Three measurement streams:</p>
       <ol>
       <li><strong>Structure</strong>: 6D affect vector <M>{"\\mathbf{a}_i"}</M> from internal dynamics (Part II, Transformer Affect Extraction protocol)</li>
@@ -502,7 +502,7 @@ export default function Part3() {
       <p>We train multi-agent RL systems (4 agents, Transformer encoder + GRU latent state, PPO) in a survival grid world with all six forcing functions active: partial observability (egocentric 7<M>{"\\times"}</M>7 view, reduced at night), long horizons (2000-step episodes, seasonal resource scarcity), learned world model (auxiliary next-observation prediction), self-prediction (auxiliary next-latent prediction), intrinsic motivation (curiosity bonus from prediction error), and delayed rewards (credit assignment across episodes). The agents develop spontaneous communication using discrete signal tokens.</p>
       <p>After training, we extract 6D affect vectors from the GRU latent state <M>{"\\mathbf{z}_t \\in \\mathbb{R}^{64}"}</M> using post-hoc probes: valence from survival-time probe gradients and advantage estimates; arousal from <M>{"|\\mathbf{z}_{t+1} - \\mathbf{z}_t|"}</M>; integration from partition prediction loss (full vs.\ split predictor); effective rank from rolling covariance eigenvalues; counterfactual weight from latent variance proxy; self-model salience from action prediction accuracy of self-related dimensions.</p>
       <Sidebar title="Deep Technical: The VLM Translation Protocol">
-      <p>The translation is the bridge. Get it wrong and the experiment proves nothing. Here is the protocol in detail.</p>
+      <p>The translation is the bridge. Get it wrong and the experiment proves nothing.</p>
       <p><strong>The contamination problem</strong>. If we train the agents on human language, their “thoughts” are contaminated. If we label their signals with human concepts during training, the mapping is circular. The translation must be constructed post-hoc from environmental correspondence alone.</p>
       <p><strong>The VLM as impartial observer</strong>. A vision-language model sees the scene. It has never seen this agent before. It describes what it sees in natural language. This description is the ground truth for the situation—not for what the agent experiences, but for what the situation objectively is.</p>
       <p><strong>Protocol step 1: Scene corpus construction.</strong> For each agent <M>{"i"}</M>, each timestep <M>{"t"}</M>: capture egocentric observation, third-person render, all emitted signals <M>{"\\sigma_t^{(i)}"}</M>, environmental state, agent state. Target: <M>{"10^6"}</M>+ scene-signal pairs.</p>
@@ -517,7 +517,7 @@ export default function Part3() {
       <p><strong>Protocol step 4: Context-signal alignment.</strong> For each cluster, aggregate VLM annotations. Identify dominant themes. Cluster <M>{"\\Sigma_{47}"}</M>: 89\% threat\_present, 76\% escape\_available. Dominant: threat + escape. Human analog: “alarm,” “warning.”</p>
       <p><strong>Protocol step 5: Compositional translation.</strong> Check if meaning composes: <M>{"M(\\sigma_1 \\sigma_2) \\approx M(\\sigma_1) \\oplus M(\\sigma_2)"}</M>. If the emergent language has compositional structure, the translation should preserve it.</p>
       <p><strong>Protocol step 6: Validation.</strong> Hold out 20\%. Predict VLM annotation from signal alone. Measure accuracy against actual annotation. Must beat random substantially.</p>
-      <p><strong>The key insight</strong>. Agent emits <M>{"\\sigma_{47}"}</M> when threatened. VLM says “threat situation; human would feel fear.” Conclusion: <M>{"\\sigma_{47}"}</M> is the agent’s fear-signal. Not because we taught it, but because environmental correspondence reveals it.</p>
+      <p><strong>Example</strong>. Agent emits <M>{"\\sigma_{47}"}</M> when threatened. VLM says “threat situation; human would feel fear.” Conclusion: <M>{"\\sigma_{47}"}</M> is the agent’s fear-signal. Not because we taught it, but because environmental correspondence reveals it.</p>
       <p><strong>Confound controls</strong>:</p>
       <ul>
       <li><strong>Motor</strong>: Check if signal predicts situation better than action history</li>

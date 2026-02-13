@@ -1200,6 +1200,12 @@
       },
       {
         "level": 2,
+        "id": "engineering-optical-existence",
+        "text": "Engineering Optical Existence",
+        "parentSection": "transcendence-the-opportunity"
+      },
+      {
+        "level": 2,
         "id": "the-shadow-of-transcendence",
         "text": "The Shadow of Transcendence",
         "parentSection": "transcendence-the-opportunity"
