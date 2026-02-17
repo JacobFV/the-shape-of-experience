@@ -100,9 +100,13 @@ These are **coordinates on a relational structure**, not the structure itself. T
 
 ### Running Experiments
 - Python environment: `uv` package manager, JAX for CA experiments
-- GPU deployment: Modal (A10G). `modal run v11_modal.py --mode <mode> --channels <C>`
-- CLI runners: `v11_run.py`, `v12_run.py` in `empirical/experiments/study_ca_affect/`
-- Results: JSON + MP4 in `results/modal_data/`
+- **GPU: Lambda Labs** (personal account, ~$430 credits). API key in env var `LAMBDA_API_KEY`.
+  - Launch: `curl -u $LAMBDA_API_KEY: https://cloud.lambda.ai/api/v1/instance-operations/launch -d '...'`
+  - SSH in, clone repo, run experiment, download results, terminate.
+  - Prefer 1x A10 ($0.75/hr) for smoke tests, 1x H100 ($3.29/hr) for real runs.
+  - **NEVER use agi-inc Modal resources unless explicitly granted permission.**
+- CLI runners: `v11_run.py`, `v12_run.py`, `v13_run.py` in `empirical/experiments/study_ca_affect/`
+- Results: JSON in `results/`
 
 ---
 
@@ -116,6 +120,7 @@ You are expected to:
 4. **Maintain the epistemic gradient** — Be transparent about what's established vs speculative
 5. **Generate downstream artifacts** — The repository feeds papers, talks, videos. Write with that in mind.
 6. **Keep the experiment appendix current** — `EXPERIMENTS.md` is the living roadmap
+7. **Make content, not just results** — Every experiment should produce visualizations, animations, figures, and downloadable artifacts that can feed into the book, talks, videos, and social media. Save intermediate states (grid snapshots, Phi trajectories, pattern maps) as data that can be rendered. Raw JSON is not content. Think: what would this look like in a talk? In a YouTube short? In the book?
 
 ### Current Research Phase: V13+ (Uncontaminated Emergence)
 The next experiments test whether affect structure emerges in systems with NO exposure to human affect concepts. See `EXPERIMENTS.md` for the full roadmap.
