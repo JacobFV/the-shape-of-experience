@@ -33,15 +33,20 @@ export default function AppendixExperiments() {
       <p><strong>Result</strong>: Partially. Evolvable attention shows <M>{"\\intinfo"}</M> increase in 42% of cycles (vs 3% for convolution). +2.0pp shift — largest single-intervention effect. But robustness stabilizes near 1.0 without further improvement.</p>
       <p><strong>Implication</strong>: Attention is necessary but not sufficient. The system reaches the integration threshold without crossing it. Missing ingredient: individual-level plasticity.</p>
       </Section>
+      <Section title="V13: Content-Based Coupling Lenia" level={2}>
+      <p><strong>Question</strong>: Does content-based interaction topology (simpler than learned attention) produce integration under stress?</p>
+      <p><strong>Result</strong>: Yes, intermittently. Three seeds, 30 cycles each (<M>{"C{=}16"}</M>, <M>{"N{=}128"}</M>). Mean robustness <M>{"0.923"}</M>, peak <M>{"1.052"}</M> at population bottlenecks. 30% of patterns show <M>{"\\intinfo"}</M> increase under stress. Robustness {">"} 1.0 only appears when population drops below ~50 — bottleneck events select for integration. Two evolutionary strategies: open coupling (<M>{"\\tau \\to 0"}</M>, large stable populations) vs selective coupling (<M>{"\\tau \\to 0.86"}</M>, volatile populations with occasional robustness {">"} 1.0).</p>
+      <p><strong>Implication</strong>: Content-dependent topology enables the biological pattern under selection pressure. The mechanism may be closer to symbiogenesis (composition of functional units) than classical Darwinian optimization. Mutual legibility between patterns — enabled by content coupling — allows compositional encounter. Experiment 0 substrate is viable.</p>
+      </Section>
       </Section>
 
       <Section title="The Emergence Experiment Program" level={1}>
       <p>The next phase tests whether the capacities the book describes — world modeling, abstraction, communication, counterfactual reasoning, self-modeling — <em>co-emerge</em> in a single substrate with zero human contamination. Rather than treating these as separate experiments on separate substrates, we define a single evolving measurement framework that tracks multiple quantities simultaneously, looking for correlated transitions.</p>
 
-      <Section title="Experiment 0: Substrate Engineering" level={2}>
+      <Section title="Experiment 0: Substrate Engineering (COMPLETED)" level={2}>
       <p>The foundation. Lenia with <strong>state-dependent interaction topology</strong> — cells selectively couple with distant cells based on state similarity:</p>
       <Eq>{"K_i(j) = K_{\\text{base}}(|i-j|) \\cdot \\sigma\\!\\bigl(\\langle h(s_i),\\, h(s_j) \\rangle - \\tau\\bigr)"}</Eq>
-      <p>Plus lethal resource dynamics ({">"} 50% naive mortality during drought). Without this, the locality ceiling prevents anything above Rung 3 on the emergence ladder. V12 showed that attention is necessary; Experiment 0 provides the right kind of attention — content-based rather than learned-projection.</p>
+      <p>Plus lethal resource dynamics ({">"} 50% naive mortality during drought). Implemented as V13. The substrate sustains 50–180 patterns across 30 evolution cycles, with content-similarity modulation enabling state-dependent interaction topology at 568 steps/s (CPU, <M>{"C{=}8"}</M>). Confirmed: lethal drought (82% mortality at <M>{"C{=}8"}</M>), curriculum stress schedule, and population rescue mechanism for robustness. <M>{"\\tau"}</M> and gate steepness <M>{"\\beta"}</M> are evolvable. Ready for Experiments 1–7.</p>
       </Section>
 
       <Section title="Experiment 1: Emergent Existence (COMPLETED)" level={2}>
@@ -123,11 +128,11 @@ export default function AppendixExperiments() {
       <Section title="Summary" level={1}>
       <p>Three phases:</p>
       <ol>
-      <li><strong>What has been tested</strong>: Affect geometry is cheap (V10). Dynamics are expensive (V11–V12). Attention is necessary but not sufficient.</li>
-      <li><strong>What is ready to test</strong>: The emergence program (Experiments 0–7). Can world models, abstraction, language, counterfactual reasoning, and self-modeling co-emerge in an uncontaminated substrate?</li>
+      <li><strong>What has been tested</strong>: Affect geometry is cheap (V10). Dynamics require composition under selection pressure (V11–V13). Attention/content coupling is necessary; population bottleneck events produce the strongest integration signals.</li>
+      <li><strong>What is ready to test</strong>: The emergence program (Experiments 1–7). The V13 substrate is operational. Can world models, abstraction, language, counterfactual reasoning, and self-modeling co-emerge in an uncontaminated substrate?</li>
       <li><strong>What comes after</strong>: Social-scale claims (Experiments 8–10), entanglement analysis (11), and the identity thesis capstone (12).</li>
       </ol>
-      <p>The theory is falsifiable. The experiments are specified. The question is whether the predictions hold when we remove every trace of human contamination and let the physics speak for itself.</p>
+      <p>The theory is falsifiable. The experiments are specified. The substrate is built. The question is whether the predictions hold when we remove every trace of human contamination and let the physics speak for itself.</p>
       </Section>
     </>
   );
