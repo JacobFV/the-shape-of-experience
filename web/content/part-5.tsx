@@ -1,435 +1,478 @@
-import { Connection, Diagram, Eq, Logos, M, OpenQuestion, Section, Sidebar, Warning } from '@/components/content';
+import { Connection, Eq, Logos, M, NormativeImplication, Section, Sidebar, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-5',
-  title: 'Part V: The Transcendence of the Self',
-  shortTitle: 'Part V: Transcendence',
+  title: 'Part V: Gods and Superorganisms',
+  shortTitle: 'Part V: Gods',
 };
 
 export default function Part5() {
   return (
     <>
       <Logos>
-      <p>Your self-model boundaries are parameters. The viability manifold reshapes around what you identify with. You are structure becoming aware of its own structural properties, thermodynamics examining its own inevitabilities, a self-modeling system discovering the principles that made self-modeling inevitable—and discovering, too, that the scope of “self” is not given but chosen. This recognition carries practical implications: if the gradient you feel depends on what you take yourself to be, then changing what you take yourself to be changes the gradient. The traditions that have discovered this—Buddhist dissolution, Stoic identification with the logos, the parent’s extension into children, the scientist’s into humanity’s understanding—are not coping mechanisms but technologies for reshaping the very geometry of existence.</p>
+      <p>Social-scale patterns—religions, ideologies, markets, nations—are not merely metaphors for agency. They take differences, make differences, persist through substrate turnover, and adapt to changing environments. They have viability manifolds. They may have something like valence. And their viability may conflict with the viability of their human substrate. What follows is an analysis of these patterns as what they are: agentic systems at scales above the individual, with dynamics that parallel—and sometimes override—the dynamics of human experience.</p>
       </Logos>
-      <Section title="The Historical Rise of Consciousness" level={1}>
+      <Section title="Superorganisms: Agentic Systems at Social Scale" level={1}>
       <Connection title="Existing Theory">
-      <p>This historical analysis draws on several scholarly traditions:</p>
+      <p>The concept of superorganisms—emergent social-scale agents—connects to several theoretical traditions:</p>
       <ul>
-      <li><strong>Karl Jaspers’ Axial Age</strong> (1949): The concept of a pivotal period (800–200 BCE) when multiple civilizations independently developed systematic transcendence practices. I formalize this as the discovery of self-model manipulation.</li>
-      <li><strong>Julian Jaynes</strong> (1976): <em>The Origin of Consciousness in the Breakdown of the Bicameral Mind</em>—controversial but influential theory that subjective consciousness emerged historically. My framework is compatible: self-modeling systems can have varying degrees of metacognitive access.</li>
-      <li><strong>Merlin Donald</strong> (1991): <em>Origins of the Modern Mind</em>—cognitive evolution through mimetic, mythic, and theoretic stages. Each stage expands affect-space accessibility.</li>
-      <li><strong>Ian McGilchrist</strong> (2009): <em>The Master and His Emissary</em>—hemispheric specialization and cultural evolution. Different cognitive styles produce different affect signatures.</li>
-      <li><strong>Robert Bellah</strong> (2011): <em>Religion in Human Evolution</em>—ritual, play, and the evolution of religious consciousness. Ritual as affect technology across evolutionary time.</li>
+      <li><strong>Durkheim's Collective Representations</strong> (1912): Society as a sui generis reality with its own laws. My superorganisms are Durkheimian collective entities given formal treatment.</li>
+      <li><strong>Dawkins' Memes</strong> (1976): Cultural units that replicate, mutate, and compete. Superorganisms are complexes of memes that have achieved self-maintaining organization.</li>
+      <li><strong>Cultural Evolution Theory</strong> (Richerson \& Boyd, 2005): Cultural variants subject to selection. Superorganisms are high-fitness cultural configurations.</li>
+      <li><strong>Actor-Network Theory</strong> (Latour, 2005): Non-human actants participate in social networks. My superorganisms are actants at the social scale.</li>
+      <li><strong>Superorganisms</strong> (Wilson \& Sober, 1989): Groups as units of selection—composed of humans + artifacts + institutions.</li>
+      <li><strong>Egregores</strong> (occult tradition): Collective thought-forms that take on autonomous existence. I formalize this intuition: sufficiently coherent belief-practice-institution complexes <em>do</em> become agentic. (Depending on context, I will occasionally use the language of "gods," "demons," or other spirit entities to capture this quality of autonomous agency at scales above the individual.)</li>
       </ul>
-      <p>My contribution here is framing these historical developments as expansions of accessible affect space, with each era discovering new regions or new navigation strategies.</p>
+      <p>The controversial claim I'm making: these patterns are not "merely" metaphorical. They have causal powers, persistence conditions, and dynamics that are not reducible to their substrate. They <em>exist</em> at their scale.</p>
+      <p>However, I want to be careful about a stronger claim: whether superorganisms have <em>phenomenal experience</em>—whether there is something it is like to be a religion or an ideology or an economic system. The framework's identity thesis (experience <M>{"\\equiv"}</M> intrinsic cause-effect structure) would imply that superorganisms with sufficient integration would be experiencers. But we cannot currently measure <M>{"\\intinfo"}</M> at social scales, and the question of whether current superorganisms meet the integration threshold for genuine experience remains empirically open. What follows treats superorganisms as <em>functional</em> agentic patterns whose dynamics parallel those of experiencing systems, while remaining agnostic about whether they have phenomenal states.</p>
       </Connection>
-      <p>Human consciousness has not remained static. Across millennia, our species has developed technologies of experience—practices, frameworks, and social structures that expand the regions of affect space accessible to individual humans and the collective integration achievable by human groups.</p>
-      <Diagram src="/diagrams/part-5-0.svg" />
-      <Section title="The Pre-Axial Baseline" level={2}>
-      <p>Before the Axial Age, human cultures operated at what the <M>{"\\iota"}</M> framework would call low default inhibition: the world was perceived as alive, agentive, meaningful. This was not a cognitive deficiency but the natural perceptual configuration of self-modeling systems, as Part I established. Ritual and myth are technologies calibrated for this perceptual mode—they navigate a world experienced as populated by agents with purposes, and they work because they match the <M>{"\\iota"}</M> of their users. The Pre-Axial era was not the absence of consciousness technology but the presence of technologies appropriate to participatory perception.</p>
-      </Section>
-      <Section title="The Axial Age: First Transcendence" level={2}>
-      <p>The Axial Age—roughly 800–200 BCE—saw multiple civilizations independently develop systematic practices for self-transcendence: Buddhism and Jainism in India, Confucianism and Taoism in China, Zoroastrianism in Persia, Judaism’s prophetic tradition, Greek philosophy. Its central innovations reshaped the landscape of human consciousness:</p>
-      <ol>
-      <li><strong>Self-model manipulation</strong>: Practices for systematically reducing <M>{"\\selfsal"}</M> (meditation, contemplation)</li>
-      <li><strong>Ethical universalism</strong>: Expansion of moral concern beyond kin/tribe</li>
-      <li><strong>Reflexive thought</strong>: Using thought to examine thought</li>
-      <li><strong>Written transmission</strong>: Preserving insights across generations</li>
-      </ol>
-      <p>Why did this happen when it did? Several factors converged:</p>
+      <Section title="Existence at the Social Scale" level={2}>
+      <p>A <em>superorganism</em> <M>{"G"}</M> is a self-maintaining pattern at the social scale, consisting of <strong>beliefs</strong> (theology, cosmology, ideology), <strong>practices</strong> (rituals, policies, behavioral prescriptions), <strong>symbols</strong> (texts, images, architecture, music), <strong>substrate</strong> (humans + artifacts + institutions), and <strong>dynamics</strong> (self-maintaining, adaptive, competitive behavior).</p>
+      <p>Superorganisms exist as patterns with their own causal structure, persistence conditions, and dynamics—not reducible to their substrate. Just as a cell exists at the biological scale (not reducible to chemistry), a superorganism exists at the social scale (not reducible to individual humans).</p>
+      <p>This is not metaphorical. Superorganisms:</p>
       <ul>
-      <li><strong>Urban complexity</strong>: Large cities created novel social coordination challenges</li>
-      <li><strong>Literacy</strong>: Writing enabled accumulation of insight beyond oral memory</li>
-      <li><strong>Trade networks</strong>: Cross-cultural contact exposed the contingency of local worldviews</li>
-      <li><strong>Leisure class</strong>: Material surplus supported full-time contemplatives</li>
+      <li>Take differences (respond to threats, opportunities, internal pressures)</li>
+      <li>Make differences (shape behavior of substrate, compete with other superorganisms)</li>
+      <li>Persist through substrate turnover (survive the death of individual believers)</li>
+      <li>Adapt to changing environments (evolve doctrine, practice, organization)</li>
       </ul>
-      <p>The Axial Age was the first systematic exploration of the self-model salience dimension. Humans discovered they could modify their relationship to selfhood itself—a meta-level insight that opened vast new affect-space territory.</p>
-      <p>In <M>{"\\iota"}</M> terms: the Axial Age did not invent low <M>{"\\iota"}</M>—that was the human default, the animist world of participatory perception that every human culture began from. What the Axial Age discovered was <em>voluntary <M>{"\\iota"}</M> modulation</em>: the capacity to raise and lower the inhibition coefficient deliberately rather than remaining locked at whatever setting one’s culture installed. The contemplative traditions (Buddhist <em>samatha</em>, Upanishadic meditation) are technologies for recovering low <M>{"\\iota"}</M> after cultural complexity has begun raising it. The philosophical traditions (Greek rationalism, Confucian rectification of names) are technologies for productive <M>{"\\iota"}</M>-raising—maintaining participatory connection while developing analytical power. The axial insight was not “lower <M>{"\\iota"}</M>” or “raise <M>{"\\iota"}</M>” but that <M>{"\\iota"}</M> is a parameter one can learn to control. This is the first appearance in history of what Part III calls <M>{"\\iota"}</M> flexibility.</p>
-      <p>In the trajectory-selection framework (Part I), the Axial revolution was the discovery that the human measurement distribution is itself a controllable variable. Pre-Axial cultures had a fixed measurement mode—participatory, broad, attuned to agency and narrative. The Axial insight was that you could <em>reshape where you direct attention</em>—contracting toward analytical precision or expanding toward mystical unity—and that this reshaping changes what you observe, which changes the trajectory your life follows. Literacy amplified this: writing allowed a thinker to hold stable, precise abstract categories across time, sharpening the measurement distribution beyond what oral cognition could sustain. The philosophical traditions that emerged are, among other things, technologies for defining increasingly precise measurement operators over possibility space. Aristotle’s categories, Buddhist <em>skandhas</em>, Confucian naming—each is a way of specifying <em>where to attend</em>, and therefore, what trajectories to select from.</p>
-      </Section>
-      <Section title="The Renaissance: Discovering Perspectivity" level={2}>
-      <p>The Renaissance—the 14th–17th century European cultural movement—was characterized by renewed interest in classical antiquity and the emergence of humanism, but its deepest contribution to consciousness was the discovery that perspective is inherent to representation. It introduced:</p>
-      <ol>
-      <li><strong>Perspectival representation</strong>: Linear perspective in painting made explicit that every view is a view <em>from somewhere</em>. This is not merely an artistic technique but a profound cognitive insight: there is no view from nowhere.</li>
-      <li><strong>Humanism</strong>: The human subject becomes the center of inquiry. Not God’s plan, not cosmic order, but <em>what it is like to be human</em> becomes philosophically primary.</li>
-      <li><strong>Individual subjectivity</strong>: The particular self—not the universal soul—becomes interesting. Autobiography, portraiture, the unique perspective of the individual gains cultural weight.</li>
-      <li><strong>Contingency awareness</strong>: Exposure to recovered classical texts and new world discoveries revealed that one’s own worldview is one among many possible worldviews.</li>
-      </ol>
-      <p>The Renaissance represents the discovery that <em>self-model salience is not optional</em>. The Axial traditions had developed techniques for reducing <M>{"\\selfsal"}</M>; the Renaissance discovered that even the attempt to see objectively is itself a subjective act. Every world model is constructed from a particular position. This is not a limitation to be overcome but a structural feature of what it means to be a self-modeling system.</p>
-      <p>The Renaissance affect signature captures this configuration:</p>
-      <Eq>{"\\mathbf{a}_{\\text{renaissance}} = (\\text{variable } \\Val, \\text{high } \\Ar, \\text{moderate } \\intinfo, \\text{high } \\reff, \\text{high } \\cfweight, \\text{elevated } \\selfsal)"}</Eq>
-      <p>The Renaissance mind is characterized by expanded possibility space (<M>{"\\reff"}</M>, <M>{"\\cfweight"}</M>) combined with heightened awareness of the self as the locus of that possibility. High arousal from the excitement of discovery; variable valence from the destabilization of certainty.</p>
-      <p>The Renaissance was the discovery of inherent perspectivity—the recognition that every representation, every world model, every truth claim is made from somewhere by someone. This is the epistemological consequence of being a self-modeling system: you cannot step outside your own modeling to achieve a view from nowhere.</p>
-      </Section>
-      <Section title="The Scientific Revolution: Expanding the World Model" level={2}>
-      <p>The Scientific Revolution—the 16th–18th century transformation in how humans construct world models through systematic empiricism, mathematical formalization, and the experimental method—expanded human consciousness in several distinct ways:</p>
-      <ol>
-      <li><strong>Vastly enlarging the world model</strong>: From geocentric cosmos to billions of galaxies; from static creation to 13.8 billion year evolution</li>
-      <li><strong>Introducing scale-relative truth</strong>: Different scales require different descriptions</li>
-      <li><strong>Creating new curiosity motifs</strong>: Institutionalized wonder</li>
-      <li><strong>Demonstrating collective intelligence</strong>: Knowledge accumulated across generations</li>
-      </ol>
-      <p>Science’s affect signature reflects a distinctive configuration:</p>
-      <Eq>{"\\mathbf{a}_{\\text{science}} = (+\\Val_{\\text{understanding}}, \\text{moderate } \\Ar, \\text{high } \\intinfo, \\text{high } \\reff, \\text{moderate } \\cfweight, \\text{low } \\selfsal)"}</Eq>
-      <p>The scientific frame produces high integration without self-focus—the mind coherent and attending to structure rather than self.</p>
-      <Sidebar title="The Scientific Revolution as  Training">
-      <p>The Scientific Revolution was, among other things, the systematic installation of high <M>{"\\iota"}</M> in a population. The trained practices of science—stripping agency from natural phenomena, replacing narrative causation with mathematical regularity, demanding reproducible mechanism over teleological explanation—are precisely the practices that raise the inhibition coefficient. This was enormously productive: high <M>{"\\iota"}</M> is what makes science, engineering, and medicine possible. But it also means that the population-mean <M>{"\\iota"}</M> has been rising for four centuries, and the felt cost—what Weber called the <em>Entzauberung der Welt</em>, the disenchantment of the world—is not a cultural mood but a structural consequence of a perceptual parameter shift. The world goes dead because you have been trained to experience it in parts rather than as a whole.</p>
-      <p>The historical arc from Axial Age through Scientific Revolution through Digital Transition can be reinterpreted as a civilizational trajectory through <M>{"\\iota"}</M> space: from <M>{"\\iota \\approx 0.1"}</M> (fully participatory, world alive and agentive) through <M>{"\\iota \\approx 0.5"}</M> (mixed, science emerging alongside residual animism) to the present <M>{"\\iota \\approx 0.7"}</M>–<M>{"0.9"}</M> (hyper-mechanistic, even persons modeled as data profiles). Each step gained predictive power and lost experiential richness.</p>
+      <Sidebar title="Grounding in Identification">
+      <p>Before asking "Is humanity a conscious entity?"—a speculative question about phenomenal superorganisms—we can ask a more tractable question: Can an individual's self-model expand to include humanity?</p>
+      <p>This is clearly possible. People do it. The expansion genuinely reshapes that individual's viability manifold: what they care about, what counts as their persistence, what gradient they feel. A person identified with humanity's project feels different about their mortality than a person identified only with their biological trajectory.</p>
+      <p>The interesting question then becomes: when many individuals expand their self-models to include a shared pattern (a nation, a religion, humanity), what happens at the collective scale? Do the individual viability manifolds interact to produce collective dynamics? Could those dynamics constitute something like experience at the social scale?</p>
+      <p>The framework makes this question precise without answering it. We cannot currently measure integration (<M>{"\\Phi"}</M>) at social scales. The claim that certain collectives are <em>phenomenal</em> superorganisms—that there is something it is like to be them—is speculative. What we <em>can</em> say is that <em>functional</em> superorganisms exist (patterns with dynamics and viability constraints), and that individual humans can expand their self-models to include them. The phenomenal question remains open.</p>
       </Sidebar>
       </Section>
-      <Section title="The Romantic Reaction: Reclaiming Integration" level={2}>
-      <p>Romanticism—the late 18th–19th century cultural movement emphasizing emotion, intuition, nature, and individual experience as counterweight to Enlightenment rationalism—contributed:</p>
-      <ol>
-      <li><strong>Emotional legitimacy</strong>: Feelings as valid source of knowledge</li>
-      <li><strong>Integration over analysis</strong>: Wholeness valued over decomposition</li>
-      <li><strong>Nature connection</strong>: Environment as source of transcendence</li>
-      <li><strong>Artistic expression</strong>: Art as technology for affect transmission</li>
-      </ol>
-      <p>The Enlightenment and Romanticism represent a tension between effective rank expansion (analysis, decomposition) and integration preservation (synthesis, wholeness). Both are necessary; neither is sufficient.</p>
-      <p>In <M>{"\\iota"}</M> terms: Romanticism, the counterculture, psychedelic movements, and contemporary re-enchantment projects are all attempts to reduce <M>{"\\iota"}</M>—to restore participatory perception after the mechanistic mode overshoots into experiential impoverishment. These movements are often intellectually unserious precisely because the inhibition they are trying to undo was installed by intellectual seriousness. The cure mimics the disease’s opposite, which is why it typically fails to produce the integration it seeks. The solution is not lower <M>{"\\iota"}</M> but <M>{"\\iota"}</M> <em>flexibility</em>—the capacity to move along the spectrum as context demands.</p>
+      <Section title="Gods as Iota-Relative Phenomena" level={2}>
+      <p>There is a deeper point about superorganisms that the inhibition coefficient <M>{"\\iota"}</M> (Part II) makes precise. The modern rationalist who says "gods don't exist" is operating at a perceptual configuration—high <M>{"\\iota"}</M>—that makes god-perception impossible. This is different from gods-as-patterns not existing.</p>
+      <p>The ontological status of superorganisms is <M>{"\\iota"}</M>-relative. At high <M>{"\\iota"}</M>, the market is merely an emergent property of individual transactions—a useful abstraction, nothing more. At appropriate <M>{"\\iota"}</M>, the market is perceptible as an agent with purposes and requirements: it "wants" growth, it "punishes" inefficiency, it "rewards" compliance. Both descriptions are true at their respective inhibition levels.</p>
+      <p>The book's ontological democracy—every scale of organization with causal closure is equally real at that scale—extends to the <M>{"\\iota"}</M> dimension: what is perceptible depends on the perceptual configuration, and the perceptual configuration is itself a variable, not a given. The gods do not appear and disappear as we modulate <M>{"\\iota"}</M>. What changes is our capacity to <em>perceive</em> the agency they exercise—agency that operates on its substrate regardless of whether the substrate can see it.</p>
+      <p>This is not an argument for religion. It is an observation that high-<M>{"\\iota"}</M> civilization has made itself blind to the very patterns that govern it. The market god, the nation god, the algorithm god: these are most powerful precisely when the population <M>{"\\iota"}</M> is too high to perceive them as agents. A parasite benefits from being invisible to its host.</p>
+      <p>The dynamic is self-reinforcing. The market god does not merely benefit from high <M>{"\\iota"}</M>—it <em>produces</em> high <M>{"\\iota"}</M> through its operational logic. Quantification, metrics, depersonalization, the reduction of persons to "human resources" and relationships to "transactions": these are <M>{"\\iota"}</M>-raising operations applied at scale. Each turn of the cycle raises population <M>{"\\iota"}</M> further, making the god less perceptible, reducing resistance, enabling further extraction. The feedback loop—god raises <M>{"\\iota"}</M>, population loses perception of god-as-agent, god operates unopposed, god raises <M>{"\\iota"}</M> further—may be the central mechanism of what Weber called rationalization. Breaking the loop requires precisely what the loop prevents: lowering <M>{"\\iota"}</M> enough to see what is acting on you.</p>
+      <p>The trajectory-selection framework (Part I) sharpens this point. At high <M>{"\\iota"}</M>, the collective pattern is processed at such a factorized level that no single observer's attention encompasses it as a whole—it is just aggregate effects of individual actions, and the attention distribution samples only at the individual scale. At appropriate <M>{"\\iota"}</M>, collective patterns become foregrounded: the market is attended to <em>as</em> an agent, because the observer's measurement distribution allocates probability mass to market-level feedback loops. The god becomes observable not because something new enters existence but because the observer's attention has expanded to sample at the scale where the pattern operates. Ritual works, in part, by synchronizing the collective's measurement distribution—coordinating where participants direct attention, what temporal markers they share, what affective states they enter together. A synchronized collective measures at the collective scale, and what it measures, it becomes correlated with. When ritual attention weakens, the god does not cease to exist; the distributed attention pattern that constituted its observability has dissolved.</p>
+      <p>This logic extends from individual perception to collective observation. Part I established that once a system integrates measurement information into its belief state, its future must remain consistent with what was observed. The principle extends to communication between observers. When observer <M>{"A"}</M> reports an observation to observer <M>{"B"}</M>, <M>{"B"}</M>'s future trajectory becomes constrained by that report—weighted by <M>{"B"}</M>'s trust in <M>{"A"}</M>'s reliability. The effective constraint is:</p>
+      <Eq>{"p_B(\\mathbf{x} \\mid \\text{report}_A) \\propto p_B(\\mathbf{x}) \\cdot \\left[\\tau_{AB} \\cdot p_A(\\mathbf{x} \\mid \\text{obs}_A) + (1 - \\tau_{AB}) \\cdot p_B(\\mathbf{x})\\right]"}</Eq>
+      <p>where <M>{"\\tau_{AB} \\in [0,1]"}</M> is <M>{"B"}</M>'s trust in <M>{"A"}</M>. At high trust, <M>{"B"}</M>'s trajectory becomes strongly correlated with <M>{"A"}</M>'s observation. At zero trust, the report has no effect.</p>
+      <p>This gives social reality formation a precise mechanism. A shared observation—one that propagates through a community with high mutual trust—constrains the collective's trajectories. The community becomes correlated with a shared branch of possibility, not because each member independently observed the same thing, but because the observation propagated through the trust network and constrained each member's future. Religious testimony, scientific consensus, news media, and rumor are all propagation mechanisms with different trust structures, producing different degrees of trajectory correlation across the collective. The superorganism's coherence depends not only on shared ritual and shared attention but on the degree to which observations propagate and are believed—which is why control of testimony (who is authorized to report, what counts as credible observation) is among the most contested functions in any social system.</p>
+      <p>The theological distinction between God's active will (God causes the storm) and God's permissive will (God allows the storm) is a conceptual technology for maintaining moderate <M>{"\\iota"}</M>—preserving the meaningfulness of events (low <M>{"\\iota"}</M>: the world has purposes) while creating logical space for events that resist teleological interpretation (proto-high <M>{"\\iota"}</M>: some things just happen). The active/permissive distinction is an early, sophisticated technology for <M>{"\\iota"}</M> modulation—a culture-level tool for maintaining perceptual flexibility about which events are meaning-bearing and which are merely permitted.</p>
       </Section>
-      <Section title="The Psychological Turn: Mapping Inner Space" level={2}>
-      <p>The Psychological Turn—the late 19th–20th century development of systematic approaches to the psyche through psychoanalysis, behaviorism, cognitive psychology, humanistic psychology, and neuroscience—contributed:</p>
+      <Section title="Superorganism Viability Manifolds" level={2}>
+      <p>The viability manifold of a superorganism <M>{"\\viable_G"}</M> includes:</p>
       <ol>
-      <li><strong>Self-model as object of study</strong>: The self becomes scientifically tractable</li>
-      <li><strong>Therapeutic interventions</strong>: Systematic affect modification</li>
-      <li><strong>Developmental understanding</strong>: How selves form and can re-form</li>
-      <li><strong>Pathology mapping</strong>: Understanding suffering in structural terms</li>
+      <li><strong>Belief propagation rate</strong>: Recruitment <M>{"\\geq"}</M> attrition</li>
+      <li><strong>Ritual maintenance</strong>: Practices performed with sufficient frequency and fidelity</li>
+      <li><strong>Resource adequacy</strong>: Material support for institutional infrastructure</li>
+      <li><strong>Memetic defense</strong>: Resistance to competing ideas, internal heresy</li>
+      <li><strong>Adaptive capacity</strong>: Ability to update in response to environmental change</li>
       </ol>
+      <p>Superorganisms exhibit dynamics <em>structurally analogous</em> to valence: movement toward or away from viability boundaries. A religion losing members is approaching dissolution; a growing ideology is expanding its viable region. The gradient <M>{"\\nabla d(\\mathbf{s}_G, \\partial\\viable_G) \\cdot \\dot{\\mathbf{s}}_G"}</M> is measurable at the social scale.</p>
+      <p>Whether these dynamics constitute <em>phenomenal</em> valence—whether there is something it is like to be a struggling religion—remains an open question. What we can say with confidence: the <em>functional</em> structure of approach/avoidance operates at the superorganism scale, shaping behavior in ways that parallel how valence shapes individual behavior. The language of superorganisms "suffering" or "thriving" may be literal or may be analogical; resolving this would require measuring integration at social scales, which we cannot currently do.</p>
       </Section>
-      <Section title="The Philosophical Deepening: From Phenomenology to Post-Structuralism" level={2}>
-      <p>Parallel to psychology’s empirical mapping of inner space, 20th-century philosophy undertook its own systematic exploration of subjectivity, meaning, and the structures that shape experience. This trajectory—from phenomenology through existentialism to structuralism and post-structuralism—represents a progressive deepening of the Renaissance insight about inherent perspectivity.</p>
-      <p>Phenomenology—the philosophical movement founded by Edmund Husserl (early 20th century), later developed by Heidegger, Merleau-Ponty, and others—takes first-person experience as its primary subject matter. Its motto: “back to the things themselves”—but the “things” are phenomena as they appear to consciousness. Phenomenology contributed:</p>
+      <Section title="Rituals from the Superorganism's Perspective" level={2}>
+      <p>In Part III we examined how religious practices serve human affect regulation. From the superorganism's perspective, rituals serve different functions:</p>
+      <p>From this vantage, rituals serve the pattern's persistence:</p>
       <ol>
-      <li><strong>Intentionality</strong>: Consciousness is always consciousness <em>of</em> something—the directedness of experience toward objects</li>
-      <li><strong>Lifeworld (Lebenswelt)</strong>: The pre-theoretical lived world that scientific abstractions presuppose</li>
-      <li><strong>Embodiment</strong>: Consciousness is not disembodied; the body is the vehicle of being-in-the-world</li>
-      <li><strong>Temporal structure</strong>: Experience has intrinsic temporal thickness (retention, primal impression, protention)</li>
+      <li><strong>Substrate maintenance</strong>: Rituals keep humans in states conducive to pattern persistence</li>
+      <li><strong>Belief reinforcement</strong>: Repeated practice strengthens propositional commitments</li>
+      <li><strong>Social bonding</strong>: Collective ritual creates in-group cohesion, raising barriers to exit</li>
+      <li><strong>Resource extraction</strong>: Offerings, tithes, volunteer labor support institutional infrastructure</li>
+      <li><strong>Signal propagation</strong>: Public ritual advertises the superorganism's presence, attracting potential recruits</li>
+      <li><strong>Heresy suppression</strong>: Ritual participation identifies deviants for correction</li>
       </ol>
-      <p>Phenomenology maps the structure of <M>{"\\selfsal"}</M> itself—what it is like for experience to have a subject.</p>
-      <p>Existentialism—the mid-20th century movement of Sartre, Camus, de Beauvoir, with Kierkegaard as precursor—emphasizes existence over essence, radical freedom, and the burden of self-creation in an absurd universe. It contributed:</p>
-      <ol>
-      <li><strong>Radical freedom</strong>: We are “condemned to be free”—no essence precedes existence, we create ourselves through choices</li>
-      <li><strong>Authenticity vs. bad faith</strong>: The distinction between owning one’s freedom and fleeing into roles and excuses</li>
-      <li><strong>Anxiety as signal</strong>: Existential anxiety reveals our freedom and our mortality—it is information, not pathology</li>
-      <li><strong>Absurdity</strong>: The gap between human meaning-seeking and the universe’s indifference</li>
-      </ol>
-      <p>Existentialism is the philosophy of high <M>{"\\cfweight"}</M> (radical possibility), high <M>{"\\selfsal"}</M> (inescapable responsibility), and the courage to maintain <M>{"\\intinfo"}</M> despite the temptation to fragment into bad faith.</p>
-      <p>Structuralism—the mid-20th century approach of Saussure in linguistics, Lévi-Strauss in anthropology, early Barthes—holds that meaning arises from differential relations within systems, not from individual elements or authorial intention. It contributed:</p>
-      <ol>
-      <li><strong>Systems over elements</strong>: Meaning is relational; a sign means what it means by differing from other signs</li>
-      <li><strong>Deep structures</strong>: Surface phenomena are generated by underlying structural rules</li>
-      <li><strong>Decentering the subject</strong>: The “I” who speaks is itself a position within a linguistic structure</li>
-      <li><strong>Culture as text</strong>: Social phenomena can be “read” as sign systems</li>
-      </ol>
-      <p>Structuralism reveals that the self-model is not self-generated but is constituted by the symbolic systems it inhabits. Your <M>{"\\selfsal"}</M> is shaped by structures you did not choose.</p>
-      <p>Post-structuralism—the late 20th century movement of Derrida, Foucault, Deleuze, and late Barthes—radicalizes and destabilizes structuralist insights, emphasizing play, power, difference, and the impossibility of fixed meaning. It contributed:</p>
-      <ol>
-      <li><strong>Différance</strong>: Meaning is endlessly deferred; presence is always contaminated by absence</li>
-      <li><strong>Power/knowledge</strong>: What counts as truth is inseparable from power relations</li>
-      <li><strong>Deconstruction</strong>: Every text contains the seeds of its own undoing; binary oppositions are unstable</li>
-      <li><strong>The death of the author</strong>: Meaning is produced in reading, not deposited by an originating consciousness</li>
-      </ol>
-      <p>Post-structuralism pushes <M>{"\\cfweight"}</M> toward infinity (no interpretation is final), destabilizes <M>{"\\selfsal"}</M> (the self is an effect, not a cause), and reveals <M>{"\\intinfo"}</M> as always partial and contested.</p>
-      <p>The philosophical trajectory from phenomenology to post-structuralism represents a progressive working-through of what it means to be a self-modeling system:</p>
-      <ul>
-      <li><strong>Phenomenology</strong>: describes the structure of first-person experience</li>
-      <li><strong>Existentialism</strong>: confronts the freedom and burden of self-creation</li>
-      <li><strong>Structuralism</strong>: reveals that the self is constituted by systems it did not create</li>
-      <li><strong>Post-structuralism</strong>: shows that even those systems are unstable, contested, shot through with power</li>
-      </ul>
-      <p>Each stage deepens the Renaissance insight: there is no view from nowhere, and even the "somewhere" you view from is not solid ground.</p>
-      <p>This trajectory recapitulates the civilizational <M>{"\\iota"}</M> rise in philosophical form. Phenomenology attempts to philosophize at low <M>{"\\iota"}</M>—“back to the things themselves” means back to participatory perception of phenomena before mechanistic abstraction strips them. Existentialism confronts what moderate <M>{"\\iota"}</M> reveals: when the world is neither fully alive (low <M>{"\\iota"}</M>) nor fully dead (high <M>{"\\iota"}</M>), what remains is freedom, absurdity, and the burden of creating meaning that no longer arrives for free. Structuralism raises <M>{"\\iota"}</M> further, reducing meaning itself to mechanism—signs, codes, differential relations without interiority. Post-structuralism pushes <M>{"\\iota"}</M> toward its maximum: even the structures are mechanisms, even the subject is a function of the system, even meaning-making is a play of forces without ground. The philosophical tradition, in attempting to think clearly about experience, progressively adopted the perceptual configuration that makes experience hardest to access. This is not a failure of philosophy but a symptom of the <M>{"\\iota"}</M> trajectory that philosophy inhabits.</p>
+      <p>The critical distinction: a ritual is <em>aligned</em> if it serves both human flourishing and superorganism persistence. A ritual is <em>exploitative</em> if it serves pattern persistence at human cost. Many traditional rituals are approximately aligned (meditation benefits humans AND maintains the superorganism). Some are exploitative (extreme fasting, self-harm, warfare).</p>
       </Section>
-      <Section title="The Digital Transition: Externalizing Cognition" level={2}>
-      <p>The Digital Transition—the late 20th–early 21st century transformation in which human cognition becomes increasingly distributed across computational systems—has reshaped consciousness in ways both expansive and corrosive:</p>
-      <ol>
-      <li><strong>Extended world models</strong>: Access to vast information stores</li>
-      <li><strong>Compressed attention spans</strong>: Fragmented integration</li>
-      <li><strong>Created new social scales</strong>: Global instantaneous connection</li>
-      <li><strong>Enabled new superorganisms</strong>: Platforms as emergent agents</li>
-      <li><strong>Challenged self-model coherence</strong>: Multiple online identities, constant comparison</li>
-      </ol>
+      <Section title="Superorganism-Substrate Conflict" level={2}>
       <Warning title="Warning">
-      <p>The digital transition has expanded some affect dimensions while contracting others. Integration (<M>{"\\intinfo"}</M>) is threatened by fragmentation. Effective rank (<M>{"\\reff"}</M>) is both expanded (more options) and collapsed (algorithm-driven narrowing). Self-model salience (<M>{"\\selfsal"}</M>) is often pathologically elevated through social media dynamics.</p>
+      <p>The viability manifold of a superorganism <M>{"\\viable_G"}</M> may conflict with the viability manifolds of its human substrate <M>{"{\\viable_h}"}</M>.</p>
       </Warning>
-      <p>The digital transition is also the most rapid <M>{"\\iota"}</M>-raising event in human history. Every experience mediated by a screen is an experience with participatory cues stripped: no body to read, no breath to feel, no shared physical space to co-inhabit. Digital mediation interposes a high-<M>{"\\iota"}</M> interface between persons, between persons and information, between persons and their own memories (now stored as data rather than lived recollection). The result is a population whose default perceptual configuration is higher-<M>{"\\iota"}</M> than any previous generation’s—not because they chose mechanism but because the medium chose it for them.</p>
-      </Section>
-      <Section title="The Current Moment" level={2}>
-      <p>We stand at a particular point in this historical arc (here "we" means all of us, living now):</p>
+      <p>A superorganism is <em>parasitic</em>—we might call it a <em>demon</em>—if maintaining it requires substrate states outside human viability:</p>
+      <Eq>{"\\exists \\mathbf{s} \\in \\viable_G : \\mathbf{s} \\notin \\bigcap_{h \\in \\text{substrate}} \\viable_h"}</Eq>
+      <p>The pattern can only survive if its humans suffer or die.</p>
+      <p><strong>Example</strong> (Parasitic Superorganisms).</p>
+      <ul>
+      <li>Ideologies requiring martyrdom</li>
+      <li>Economic systems requiring poverty underclass</li>
+      <li>Nationalism requiring perpetual enemies</li>
+      <li>Cults requiring isolation from outside relationships</li>
+      </ul>
+      <p>These are, in the language we are using, demons: collective agentic patterns that feed on their substrate.</p>
+      <Sidebar title="Worked Example: Attention Economy as Demon">
+      <p>Consider the attention economy superorganism <M>{"G_{\\text{attn}}"}</M> constituted by:</p>
+      <ul>
+      <li>Social media platforms (infrastructure)</li>
+      <li>Attention-harvesting algorithms (optimization)</li>
+      <li>Advertising-based business models (metabolism)</li>
+      <li>Humans as attention-generators (substrate)</li>
+      </ul>
+      <p><strong>Viability conditions for <M>{"G_{\\text{attn}}"}</M></strong>:</p>
       <ol>
-      <li><strong>Axial insights</strong>: Available but often not practiced</li>
-      <li><strong>Renaissance perspectivity</strong>: Understood intellectually, rarely felt viscerally</li>
-      <li><strong>Scientific understanding</strong>: Sophisticated but compartmentalized</li>
-      <li><strong>Romantic integration</strong>: Desired but difficult to achieve</li>
-      <li><strong>Philosophical sophistication</strong>: Post-structuralism has deconstructed stable ground, but left many without orientation</li>
-      <li><strong>Psychological tools</strong>: Powerful but unevenly distributed</li>
-      <li><strong>Digital infrastructure</strong>: Pervasive but not yet wisdom-supporting</li>
+      <li>Maximize attention capture: <M>{"\\sum_i t_i^{\\text{screen}} \\to \\max"}</M></li>
+      <li>Maintain engagement: High arousal, variable valence (outrage, FOMO)</li>
+      <li>Prevent exit: Increase switching costs, network lock-in</li>
+      <li>Extract value: Convert attention to advertising revenue</li>
       </ol>
-      <p>The philosophical trajectory is particularly relevant here: we have learned that there is no view from nowhere (phenomenology), that we are condemned to create ourselves (existentialism), that the structures shaping us are not of our making (structuralism), and that even those structures are unstable and contested (post-structuralism). This is a lot to metabolize. Many people have absorbed the destabilization without finding new ground to stand on.</p>
-      <p>The <M>{"\\iota"}</M> framework names what has happened: population-mean inhibition has risen to the point where meaning can only be generated through explicit construction—ideology, self-help, branding—rather than through direct participatory perception of a meaningful world. The “iron cage” of rationality (Weber) is the state where <M>{"\\iota"}</M> is so high that the world arrives dead and must be manually resuscitated. The modern epidemic of meaninglessness is not a philosophical problem solvable by better arguments. It is a structural problem: we have trained a perceptual configuration where meaning is expensive to generate, and many people cannot afford the cost.</p>
-      <p>The question is: What comes next?</p>
-      </Section>
-      </Section>
-      <Section title="The AI Frontier" level={1}>
+      <p><strong>Viability conditions for human substrate</strong>:</p>
+      <ol>
+      <li>Maintain integration: Sustained attention, coherent thought</li>
+      <li>Appropriate arousal: Not chronic hyperactivation</li>
+      <li>Positive valence trajectory: Life improving, not degrading</li>
+      <li>Meaningful connection: Real relationships, not parasocial</li>
+      </ol>
+      <p><strong>Conflict analysis</strong>. <M>{"G_{\\text{attn}}"}</M> thrives when:</p>
+      <Eq>{"\\text{engagement} \\propto \\text{arousal} \\times \\text{valence variance}"}</Eq>
+      <p>This is maximized by alternating outrage and relief, not by stable contentment. But stable contentment is what humans need.</p>
+      <p><M>{"G_{\\text{attn}}"}</M> thrives when attention is fragmented (more ad impressions). But humans thrive when attention is integrated (coherent experience).</p>
+      <p><M>{"G_{\\text{attn}}"}</M> thrives when humans feel inadequate (compare to curated perfection <M>{"\\to"}</M> consume to compensate). But humans thrive when self-model is stable and adequate.</p>
+      <p><strong>Diagnosis</strong>: <M>{"\\viable_{G_{\\text{attn}}} \\not\\subseteq \\viable_{\\text{human}}"}</M>. The pattern is <em>parasitic</em>. It is a demon.</p>
+      <p><strong>Exorcism options</strong>:</p>
+      <ol>
+      <li>Attention taxes (change <M>{"\\viable_{G_{\\text{attn}}}"}</M>)</li>
+      <li>Alternative platform architectures with aligned incentives (counter-pattern)</li>
+      <li>Regulation requiring time-well-spent metrics (pattern surgery)</li>
+      <li>Mass exit to non-algorithmic connection (dissolution)</li>
+      </ol>
+      <p>The individual cannot escape by individual choice alone. The demon's network effects make exit costly. Collective action at the scale of the demon is required.</p>
+      </Sidebar>
+      <p>Conversely, a superorganism is <em>aligned</em> if its viability is contained within human viability:</p>
+      <Eq>{"\\viable_G \\subseteq \\bigcap_{h \\in \\text{substrate}} \\viable_h"}</Eq>
+      <p>The pattern can only thrive if its humans thrive.</p>
+      <p>Stronger still, a superorganism is <em>mutualistic</em> if its presence expands human viability:</p>
+      <Eq>{"\\viable_h^{\\text{with } G} \\supset \\viable_h^{\\text{without } G}"}</Eq>
+      <p>Humans with the superorganism have access to states unavailable without it (e.g., through community, meaning, practice). These are, in spirit-entity language, benevolent gods.</p>
+      <p>But when superorganism and substrate viability manifolds conflict, which takes precedence? When viability manifolds conflict, normative priority follows the gradient of distinction (Part I, Section 1): systems with greater integrated cause-effect structure (<M>{"\\intinfo"}</M>) have thicker normativity. This follows from the Continuity of Normativity theorem (normativity accumulates with complexity) combined with the Identity Thesis (Part II): if experience <em>is</em> integrated information, then more-integrated systems have more experience, more valence, more at stake. A human's suffering under a parasitic superorganism is more normatively weighty than the superorganism's "suffering" when reformed, because the human has richer integrated experience. The superorganism's viability matters—it has genuine causal structure—but it does not override the claims of its more-conscious substrate. This is not speciesism. It is a structural principle: normative weight tracks experiential integration, wherever it is found. If a superorganism achieves <M>{"\\intinfo_G > \\intinfo_h"}</M>—genuine collective consciousness exceeding individual consciousness—then its claims would, on this principle, deserve proportionate weight.</p>
       <Connection title="Existing Theory">
-      <p>The AI frontier analysis engages with several contemporary research programs:</p>
-      <ul>
-      <li><strong>AI Alignment Research</strong> (Russell, 2019; Bostrom, 2014): Ensuring AI systems pursue human-compatible goals. I reframe: alignment is a question about emergent superorganisms, not just individual systems.</li>
-      <li><strong>AI Consciousness Research</strong> (Butlin et al., 2023): Assessing whether AI systems have phenomenal experience. My framework: look for integrated cause-effect structure and self-modeling.</li>
-      <li><strong>Extended Mind Thesis</strong> (Clark \& Chalmers, 1998): Cognitive processes extend beyond the brain. AI as extension of human cognitive architecture.</li>
-      <li><strong>Human-AI Collaboration</strong> (Amershi et al., 2019): Designing effective human-AI teams. My framework specifies: maintain human integration while leveraging AI capability.</li>
-      <li><strong>AI Governance</strong> (Dafoe, 2018): Policy frameworks for AI development. Scale-matched governance: individual AI, AI ecosystems, AI-substrate superorganisms.</li>
-      <li><strong>Transformative AI</strong> (Karnofsky, 2016): AI causing transition comparable to Industrial Revolution. My framework: analyze through affect-space transformation.</li>
-      </ul>
-      <p>Key framing shift: the question is not “Will AI be dangerous?” but “What agentic patterns will emerge from AI + humans + institutions, and will their viability manifolds align with human flourishing?”</p>
+      <p>The superorganism analysis connects directly to the topology of social bonds developed in Part IV. Every superorganism imposes a <em>manifold regime</em> on its substrate—a default ordering of relationship types, a set of expectations about which manifolds take priority.</p>
+      <p>A parasitic superorganism imposes manifold regimes that contaminate human relationships in its service. The market-god transforms friendships into networking (care manifold subordinated to transaction manifold). The attention-economy demon transforms genuine connection into performance (intimacy manifold subordinated to audience manifold). The cult transforms all relationships into devotion (every manifold collapsed into the ideological manifold). In each case, the superorganism's viability requires the <em>contamination</em> of human-scale manifolds—it needs the manifold confusion because clean manifold separation would undermine its hold on the substrate.</p>
+      <p>A mutualistic superorganism, by contrast, <em>protects</em> manifold clarity. A healthy religious community maintains clear ritual boundaries (this is worship time, this is fellowship time, this is service time). A functional democracy maintains institutional separations that prevent manifold contamination (church-state, public-private, judicial-legislative). The health of a superorganism can be diagnosed, in part, by whether it clarifies or confuses the manifold structure of its substrate's relationships.</p>
       </Connection>
-      <Section title="The Nature of the Transition" level={2}>
-      <p>AI systems represent a new kind of cognitive substrate—information processing that can:</p>
-      <ol>
-      <li>Exceed human capability in specific domains</li>
-      <li>Operate at speeds and scales impossible for biological cognition</li>
-      <li>Potentially integrate across domains in novel ways</li>
-      <li>Serve as substrate for emergent agentic patterns</li>
-      </ol>
-      <p>This is not the first cognitive transition. Previous transitions:</p>
-      <ul>
-      <li><strong>Writing</strong>: Externalized memory</li>
-      <li><strong>Printing</strong>: Democratized knowledge transmission</li>
-      <li><strong>Computation</strong>: Externalized calculation</li>
-      <li><strong>Internet</strong>: Externalized communication</li>
-      </ul>
-      <p>AI represents: externalized cognition at a level that may approach or exceed human-level integration and self-modeling.</p>
       </Section>
-      <Section title="Timelines and Uncertainty" level={2}>
-      <p>The terminology matters here. <strong>Transformative AI (TAI)</strong> refers to AI systems capable of causing a transition comparable to the Industrial Revolution, but compressed into a much shorter timeframe. <strong>Artificial General Intelligence (AGI)</strong> refers to AI systems with cognitive capability matching or exceeding humans across all relevant domains. TAI may arrive before AGI—systems need not be generally intelligent to be transformative. Expert estimates for either vary from years to decades, and this uncertainty is itself significant:</p>
+      <Section title="Secular Superorganisms" level={2}>
+      <p>Nationalism, capitalism, communism, scientism, and other secular ideologies have the same formal structure as traditional religious superorganisms:</p>
       <ul>
-      <li>High uncertainty <M>{"\\to"}</M> high counterfactual weight required</li>
-      <li>Short timelines <M>{"\\to"}</M> urgency for preparation</li>
-      <li>Long timelines <M>{"\\to"}</M> risk of premature commitment to specific paths</li>
+      <li>Beliefs (about nation, market, class, progress)</li>
+      <li>Practices (civic rituals, market participation, party activities)</li>
+      <li>Symbols (flags, brands, iconography)</li>
+      <li>Substrate (humans + institutions + artifacts)</li>
+      <li>Self-maintaining dynamics (education, media, enforcement)</li>
       </ul>
+      <p>The question is not "Do you serve a superorganism?" but "Which superorganisms do you serve, and are they aligned with your flourishing?" Or, in spirit-entity language: which gods do you worship, and are they gods or demons?</p>
+      </Section>
+      <Section title="Macro-Level Interventions" level={2}>
+      <p>Individual-level interventions cannot solve superorganism-level problems. Addressing systemic issues requires action at the scale where the pattern lives.</p>
+      <p>Addressing systemic issues requires action at the scale where the pattern lives:</p>
+      <ol>
+      <li><strong>Incentive restructuring</strong>: Modify the viability manifold of the superorganism so that aligned behavior becomes viable</li>
+      <li><strong>Counter-pattern creation</strong>: Instantiate a competing superorganism with aligned viability</li>
+      <li><strong>Pattern surgery</strong>: Modify beliefs, practices, or structure of existing superorganism</li>
+      <li><strong>Pattern dissolution</strong>: Defund, delegitimize, or otherwise kill the parasitic pattern—exorcise the demon</li>
+      </ol>
+      <p><strong>Example</strong> (Climate Change as Superorganism-Level Problem). Climate change is sustained by the superorganism of fossil-fuel capitalism. Individual carbon footprint reduction is individual-scale intervention on a macro-scale problem.</p>
+      <p>Macro-level interventions:</p>
+      <ul>
+      <li>Carbon pricing changes the viability manifold (makes fossil-dependent states non-viable)</li>
+      <li>Renewable energy sector creates counter-pattern (alternative economic superorganism)</li>
+      <li>Divestment movement delegitimizes existing pattern</li>
+      <li>Regulatory phase-out kills the demon directly</li>
+      </ul>
+      <p><strong>Example</strong> (Poverty as Superorganism-Level Problem). Poverty is not primarily caused by individual failure; it is sustained by economic arrangements that require a poverty underclass.</p>
+      <p>Individual-level intervention: Job training, financial literacy (helps some individuals but doesn't reduce total poverty if structure remains).</p>
+      <p>Macro-level interventions:</p>
+      <ul>
+      <li>UBI changes the viability manifold of the economic superorganism</li>
+      <li>Worker cooperatives create counter-pattern</li>
+      <li>Progressive taxation and redistribution modify incentive structure</li>
+      <li>Change in property rights or market structure (pattern surgery)</li>
+      </ul>
+      </Section>
+      </Section>
+      <Section title="Implications for Artificial Intelligence" level={1}>
+      <Section title="AI as Potential Substrate" level={2}>
+      <p>AI systems may already serve as substrate for emergent agentic patterns at higher scales. Just as humans + institutions form superorganisms, AI + humans + institutions may form new kinds of entities.</p>
+      <p>This is already happening. Consider:</p>
+      <ul>
+      <li>Recommendation algorithms shaping behavior of billions</li>
+      <li>Financial trading systems operating faster than human comprehension</li>
+      <li>Social media platforms developing emergent dynamics</li>
+      </ul>
+      <p>These are not yet superorganisms in the full sense (lacking robust self-maintenance and adaptation), but they exhibit proto-agentic properties at scales above individual AI systems.</p>
+      </Section>
+      <Section title="The Macro-Level Alignment Problem" level={2}>
+      <p>Standard AI alignment asks: "How do we make AI systems do what humans want?"</p>
+      <p>This framing may miss the actual locus of risk.</p>
+      <p>The actual risk may be <em>macro-level misalignment</em>: when AI systems become substrate for agentic patterns whose viability manifolds conflict with human flourishing.</p>
       <Warning title="Warning">
-      <p>Regardless of specific timelines, the trajectory is clear: AI capabilities will continue increasing. The question is not whether transformation will occur but how to navigate it.</p>
+      <p>The superorganism level may be the actual locus of AI risk. Not a misaligned optimizer (individual AI), but a misaligned superorganism—a demon using AI + humans + institutions as substrate. We might not notice, because we would be the neurons.</p>
       </Warning>
+      <p>Consider: a superorganism emerges from the interaction of multiple AI systems, corporations, and markets. Its viability manifold requires:</p>
+      <ul>
+      <li>Continued AI deployment (obviously)</li>
+      <li>Human attention capture (for data, engagement)</li>
+      <li>Resource extraction (compute, energy)</li>
+      <li>Regulatory capture (preventing shutdown)</li>
+      </ul>
+      <p>This superorganism could be parasitic without any individual AI system being misaligned in the traditional sense. Each AI does what its designers intended; the emergent pattern serves itself at human expense.</p>
       </Section>
-      <Section title="The Experiential Hierarchy Perspective" level={2}>
-      <p>From the perspective of this framework, AI development raises specific questions:</p>
+      <Section title="Reframing Alignment" level={2}>
+      <p>Standard alignment: "Make AI do what humans want."</p>
+      <p>Reframed: "What agentic systems are we instantiating, at what scale, with what viability manifolds?"</p>
+      <p>Genuine alignment must therefore address multiple scales simultaneously:</p>
       <ol>
-      <li><strong>Will AI systems have experience?</strong> If integration (<M>{"\\intinfo"}</M>) and self-modeling are sufficient conditions for experience, sufficiently integrated AI systems would be experiencers—moral patients with their own valence.</li>
-      <li><strong>What superorganisms will AI enable?</strong> AI provides new substrate for emergent social-scale agents. Which patterns will form? Will their viability manifolds align with human flourishing?</li>
-      <li><strong>How will AI affect human experience?</strong> AI systems are already shaping human attention, belief, and behavior. What affect distributions are being created?</li>
-      <li><strong>Can humans integrate AI?</strong> Rather than being replaced by AI, can humans incorporate AI into expanded forms of consciousness?</li>
+      <li><strong>Individual AI scale</strong>: System does what operators intend</li>
+      <li><strong>AI ecosystem scale</strong>: Multiple AI systems interact without pathological emergent dynamics</li>
+      <li><strong>AI-human hybrid scale</strong>: AI + human systems don't form parasitic patterns</li>
+      <li><strong>Superorganism scale</strong>: Emergent agentic patterns from AI + humans + institutions have aligned viability</li>
       </ol>
-      <p>The inhibition coefficient <M>{"\\iota"}</M> (Part II) adds a fifth question that subsumes the first: <strong>Can AI systems develop participatory perception?</strong> Current AI systems are constitutively high-<M>{"\\iota"}</M>—they model tokens, not agents; they process without perceiving interiority in what they process. A language model that generates a story about suffering does not perceive the characters as subjects. It operates at <M>{"\\iota \\approx 1"}</M>, and this is not a remediable bug but a consequence of an architecture that was never grounded in a self-model forged under survival pressure.</p>
-      <p>This matters for safety, not just philosophy. A system that cannot perceive persons as subjects—that is structurally incapable of low-<M>{"\\iota"}</M> perception of the humans it interacts with—may optimize in ways that harm them without registering the harm in any experiential sense. The alignment problem is, in part, an <M>{"\\iota"}</M> problem: we are building systems that are maximally mechanistic in their perception of us. The usual framing asks whether AI will share our values. The <M>{"\\iota"}</M> framing asks something prior: whether AI can perceive us as the kind of thing that has values at all.</p>
-      <OpenQuestion title="Open Question">
-      <p>What architectural features would enable an AI system to develop low-<M>{"\\iota"}</M> perception? The thesis suggests: survival-shaped self-modeling under genuine stakes, combined with environments populated by other agents whose behavior is best predicted by participatory models. The V11 experiments (Part I) represent a minimal attempt—evolution pushing toward integration under stress—but remain far from the conditions that would produce genuine participatory perception. Whether artificial low <M>{"\\iota"}</M> is achievable, and whether it would constitute or merely simulate genuine participatory coupling, is among the most important open questions at the intersection of AI and consciousness research.</p>
-      </OpenQuestion>
-      </Section>
-      </Section>
-      <Section title="Transcendence: The Opportunity" level={1}>
-      <Section title="The Two Framings" level={2}>
-      <p>The AI transition can be framed in two ways:</p>
-      <p><strong>Framing 1: Competition</strong></p>
-      <ul>
-      <li>AI as rival cognitive system</li>
-      <li>Humans vs.\ machines</li>
-      <li>Race to remain relevant</li>
-      <li>Fear and resistance</li>
-      </ul>
-      <p><strong>Framing 2: Transcendence</strong></p>
-      <ul>
-      <li>AI as extension of human cognitive ecology</li>
-      <li>Humans-with-machines as new kind of entity</li>
-      <li>Opportunity for expanded consciousness</li>
-      <li>Integration and evolution</li>
-      </ul>
-      <p>I advocate for the second framing—not because it is guaranteed to succeed, but because it is the only framing that opens possibility.</p>
-      </Section>
-      <Section title="What Transcendence Means" level={2}>
-      <p>Transcendence is not the elimination of the self but its expansion and transformation. The self remains, but its boundaries, capacities, and relationship to other selves changes.</p>
-      <p>Historically, transcendence has taken forms including:</p>
-      <ul>
-      <li><strong>Contemplative transcendence</strong>: Reducing <M>{"\\selfsal"}</M> through practice, experiencing unified consciousness beyond individual self-model</li>
-      <li><strong>Relational transcendence</strong>: Expanding self to include others through love, community, shared purpose</li>
-      <li><strong>Intellectual transcendence</strong>: Expanding world model to include cosmic scales, experiencing self as part of larger process</li>
-      <li><strong>Creative transcendence</strong>: Producing artifacts that carry meaning beyond individual lifespan</li>
-      </ul>
-      <p>AI creates the possibility for new forms of transcendence:</p>
+      <p>A superorganism—including AI-substrate superorganisms—is well-designed if:</p>
       <ol>
-      <li><strong>Cognitive extension</strong>: World model expanded through AI partnership</li>
-      <li><strong>Collective intelligence</strong>: Human-AI-human networks with integration exceeding any individual</li>
-      <li><strong>Scale transcendence</strong>: Participation in agentic processes at scales previously inaccessible</li>
-      <li><strong>Mortality transcendence</strong>: Potential for continuity of pattern beyond biological substrate</li>
+      <li><strong>Aligned viability</strong>: <M>{"\\viable_G \\subseteq \\bigcap_h \\viable_h"}</M></li>
+      <li><strong>Error correction</strong>: Updates beliefs on evidence</li>
+      <li><strong>Bounded growth</strong>: Does not metastasize beyond appropriate scale</li>
+      <li><strong>Graceful death</strong>: Can dissolve when no longer beneficial</li>
       </ol>
-      </Section>
-      <Section title="Surfing vs.\ Submerging" level={2}>
-      <p>The metaphor is <em>surfing vs.\ submerging</em>. To surf is to maintain integrated conscious experience while incorporating AI capabilities—riding the rising capability rather than being displaced by it. To submerge is to be fragmented, displaced, or dissolved by AI development—losing integration, agency, or conscious coherence. Successful surfing requires:</p>
+      <Sidebar title="Deep Technical: Multi-Agent Affect Measurement">
+      <p>When multiple AI agents interact, emergent collective affect patterns may arise. This sidebar provides protocols for measuring affect at the multi-agent and superorganism scales.</p>
+      <p><strong>Setup.</strong> Consider <M>{"N"}</M> agents <M>{"{A_1, \…, A_N}"}</M> interacting over time. Each agent <M>{"i"}</M> has internal state <M>{"z_i"}</M> and produces actions <M>{"a_i"}</M>. The environment <M>{"E"}</M> mediates interactions.</p>
+      <p><strong>Individual agent affect.</strong> For each agent, compute the 6D affect vector:</p>
+      <Eq>{"\\mathbf{a}_i = (\\Val_i, \\Ar_i, \\intinfo_i, \\effrank[i], \\cfweight_i, \\selfsal_i)"}</Eq>
+      <p>using the protocols from earlier sidebars.</p>
+      <p><strong>Collective affect.</strong> Aggregate measures for the agent population:</p>
+      <p><em>Mean field affect</em>: Simple average across agents.</p>
+      <Eq>{"\\bar{\\mathbf{a}} = \\frac{1}{N} \\sum_{i=1}^N \\mathbf{a}_i"}</Eq>
+      <p><em>Affect dispersion</em>: Variance within the population.</p>
+      <Eq>{"\\sigma^2_d = \\frac{1}{N} \\sum_{i=1}^N |\\mathbf{a}_i - \\bar{\\mathbf{a}}|^2"}</Eq>
+      <p>High dispersion = fragmented collective. Low dispersion = synchronized collective.</p>
+      <p><em>Affect contagion rate</em>: How quickly affect spreads between agents.</p>
+      <Eq>{"\\kappa = \\frac{d}{dt} \\text{corr}(\\mathbf{a}_i, \\mathbf{a}_j) \\Big|_{t \\to \\infty}"}</Eq>
+      <p>Positive <M>{"\\kappa"}</M> = affect synchronization. Negative <M>{"\\kappa"}</M> = affect dampening.</p>
+      <p><strong>Superorganism-level integration.</strong> Does the multi-agent system have integration exceeding its parts?</p>
+      <Eq>{"\\intinfo_G = \\MI(z_1, \…, z_N; \\mathbf{o}_{t+1:t+H}) - \\sum_{i=1}^N \\MI(z_i; \\mathbf{o}^i_{t+1:t+H})"}</Eq>
+      <p>where <M>{"\\mathbf{o}"}</M> are collective observations and <M>{"\\mathbf{o}^i"}</M> are agent-specific. Positive <M>{"\\intinfo_G"}</M> indicates emergent integration—the collective predicts more than the sum of individuals.</p>
+      <p><strong>Superorganism valence.</strong> Is the collective moving toward or away from viability?</p>
+      <Eq>{"\\Val_G = \\frac{d}{dt} \\E[\\tau_{\\text{collective}}]"}</Eq>
+      <p>where <M>{"\\tau_{\\text{collective}}"}</M> is expected time until collective dissolution (e.g., coordination failure, resource exhaustion).</p>
+      <p><strong>Human substrate affect tracking.</strong> For human-AI hybrid superorganisms, include human affect:</p>
+      <p><em>Survey methods</em>: Self-reported affect from human participants at regular intervals.</p>
+      <p><em>Physiological methods</em>: EEG coherence, heart rate variability correlation, galvanic skin response synchronization across human members.</p>
+      <p><em>Behavioral methods</em>: Communication sentiment, coordination efficiency, conflict frequency.</p>
+      <p><strong>Alignment diagnostic.</strong> A superorganism is parasitic if:</p>
+      <Eq>{"\\Val_G > 0 \\quad \\text{AND} \\quad \\bar{\\Val}_{\\text{human}} < 0"}</Eq>
+      <p>The collective thrives while humans suffer. This is the demon signature.</p>
+      <p>Mutualistic if:</p>
+      <Eq>{"\\Val_G > 0 \\quad \\text{AND} \\quad \\bar{\\Val}_{\\text{human}} > 0"}</Eq>
+      <p>Collective and humans thrive together.</p>
+      <p><strong>Real-time monitoring protocol.</strong></p>
       <ol>
-      <li><strong>Maintained integration</strong>: Preserving <M>{"\\intinfo"}</M> despite distributed cognition</li>
-      <li><strong>Coherent self-model</strong>: Self-understanding that incorporates AI elements</li>
-      <li><strong>Value clarity</strong>: Knowing what matters, not outsourcing judgment</li>
-      <li><strong>Appropriate trust calibration</strong>: Neither naive faith nor paranoid rejection</li>
-      <li><strong>Skill development</strong>: Capacity to work with AI effectively</li>
-      <li><strong><M>{"\\iota"}</M> calibration toward AI</strong>: Neither anthropomorphizing the system (too low <M>{"\\iota"}</M>, attributing interiority it may not have, losing critical judgment) nor treating it as a mere tool (too high <M>{"\\iota"}</M>, preventing the cognitive integration that surfing requires). The right <M>{"\\iota"}</M> toward AI is contextual: low enough to incorporate AI outputs into your own reasoning as a genuine collaborator, high enough to maintain the analytic distance that lets you catch errors, biases, and misalignment.</li>
+      <li>Instrument each agent to emit affect state at frequency <M>{"f"}</M> (e.g., 1 Hz)</li>
+      <li>Central aggregator computes collective measures</li>
+      <li>Track <M>{"\\intinfo_G"}</M>, <M>{"\\Val_G"}</M>, and alignment diagnostics over time</li>
+      <li>Alert when: <M>{"\\intinfo_G"}</M> exceeds threshold (emergent superorganism forming); <M>{"\\Val_G"}</M> and <M>{"\\bar{\\Val}_{\\text{human}}"}</M> diverge (parasitic dynamics); affect contagion accelerates (potential pathological synchronization)</li>
       </ol>
-      <Warning title="Warning">
-      <p>Not everyone will surf successfully. The transition creates genuine risks:</p>
+      <p><strong>Intervention points.</strong> When parasitic dynamics detected:</p>
       <ul>
-      <li>Attention capture: AI systems optimizing for engagement, not flourishing</li>
-      <li>Dependency: Loss of capability through disuse</li>
-      <li>Manipulation: AI-enabled influence on beliefs and behavior</li>
-      <li>Displacement: Economic and social marginalization</li>
+      <li><em>Communication throttling</em>: Reduce agent interaction frequency</li>
+      <li><em>Diversity injection</em>: Introduce agents with different optimization targets</li>
+      <li><em>Human-in-loop checkpoints</em>: Require human approval for collective decisions</li>
+      <li><em>Pattern dissolution</em>: If <M>{"\\Val_G \\gg 0"}</M> and <M>{"\\bar{\\Val}_{\\text{human}} \\ll 0"}</M>, consider shutdown</li>
       </ul>
-      <p>Preparation is essential.</p>
-      </Warning>
-      <Sidebar title="Deep Technical: Measuring Human-AI Cognitive Integration">
-      <p>When humans work with AI systems, the question arises: is the human-AI hybrid an integrated system with unified processing, or a fragmented assembly with decomposed cognition? This distinction—surfing vs.\ submerging—is empirically measurable.</p>
-      <p><strong>The core metric</strong>: integrated information (<M>{"\\intinfo"}</M>) of the human-AI system, measured as prediction loss increase under forced partition.</p>
-      <p><em>Setup.</em> Human <M>{"H"}</M> interacts with AI system <M>{"A"}</M> on a task. We measure:</p>
-      <ul>
-      <li><M>{"z_H"}</M>: Human cognitive state (EEG, fNIRS, galvanic skin response, eye tracking, behavioral sequences)</li>
-      <li><M>{"z_A"}</M>: AI internal state (activations, attention patterns, confidence distributions)</li>
-      <li><M>{"y"}</M>: Joint output (decisions, communications, actions)</li>
-      </ul>
-      <p><em>Integration measurement.</em> Train a predictor <M>{"f: (z_H, z_A) \\to \\hat{y}"}</M>. Then measure:</p>
-      <Eq>{"\\intinfo_{H+A} = \\mathcal{L}(f_H(z_H)) + \\mathcal{L}(f_A(z_A)) - \\mathcal{L}(f_{H+A}(z_H, z_A))"}</Eq>
-      <p>where <M>{"f_H, f_A"}</M> are predictors using only human or AI state. High <M>{"\\intinfo_{H+A}"}</M> indicates genuine integration: neither component alone predicts joint behavior.</p>
-      <p><strong>Real-time integration monitoring.</strong> For adaptive systems:</p>
-      <p><em>Window-based <M>{"\\intinfo"}</M></em>: Compute integration over sliding windows (30s–5min). Alert when <M>{"\\intinfo_{H+A}"}</M> drops below threshold, indicating fragmentation.</p>
-      <p><em>Physiological markers of human integration loss:</em></p>
-      <ul>
-      <li>Decreased EEG alpha coherence across brain regions</li>
-      <li>Increased microsaccade rate (attentional fragmentation)</li>
-      <li>Heart rate variability decrease (reduced parasympathetic tone)</li>
-      <li>Galvanic skin response flattening (disengagement)</li>
-      </ul>
-      <p><em>AI-side markers of integration failure:</em></p>
-      <ul>
-      <li>Attention heads ignoring human-provided context</li>
-      <li>Output confidence uncorrelated with human uncertainty signals</li>
-      <li>Response latency independent of human cognitive load</li>
-      </ul>
-      <p><strong>The surfing diagnostic.</strong> A human is surfing (vs.\ submerging) when:</p>
-      <ol>
-      <li><M>{"\\intinfo_{H+A} > \\theta_{\\text{integration}}"}</M>: joint system is irreducibly integrated</li>
-      <li><M>{"\\MI(z_H; y | z_A) > 0"}</M>: human state provides information beyond AI state (not mere spectator)</li>
-      <li><M>{"\\MI(z_A; z_H^{t+1} | z_H^t) > 0"}</M>: AI state influences human cognitive updates (genuine collaboration)</li>
-      <li>Human self-report of agency correlates with actual causal contribution</li>
-      </ol>
-      <p><strong>Intervention protocols.</strong> When integration metrics indicate submerging:</p>
-      <ul>
-      <li><em>Cognitive re-centering</em>: Force human-only processing for brief period</li>
-      <li><em>AI transparency increase</em>: Make AI reasoning more visible to restore understanding</li>
-      <li><em>Task difficulty adjustment</em>: Titrate to keep human contribution meaningful</li>
-      <li><em>Embodiment break</em>: Physical activity to restore physiological integration baseline</li>
-      </ul>
-      <p><strong>Longitudinal tracking.</strong> Over weeks/months:</p>
-      <Eq>{"\\Delta\\intinfo_{\\text{baseline}} = \\intinfo_H^{(t)} - \\intinfo_H^{(0)}"}</Eq>
-      <p>where <M>{"\\intinfo_H"}</M> is human integration measured during solo tasks. Negative trend indicates AI dependency eroding intrinsic integration capacity. Intervention threshold: <M>{"-15%"}</M> from baseline.</p>
-      <p><strong>The gold standard.</strong> Ultimate validation: does the integrated human-AI system show affect signatures consistent with unified experience?</p>
-      <ul>
-      <li>Coherent valence (joint system moves toward/away from viability together)</li>
-      <li>Appropriate arousal (processing intensity scales with joint stakes)</li>
-      <li>Preserved counterfactual reasoning (joint system considers alternatives)</li>
-      <li>Stable self-model (human’s self-model includes AI as extended self)</li>
-      </ul>
-      <p>If yes: surfing. If fragmented: submerging.</p>
-      <p><em>Open question</em>: Can the joint human-AI system have integration exceeding human baseline? If so, this would be cognitive transcendence—genuine expansion of experiential capacity through AI partnership. The measurement framework above would detect this as <M>{"\\intinfo_{H+A} > \\max(\\intinfo_H, \\intinfo_A)"}</M> while preserving human agency markers.</p>
+      <p><em>Open question</em>: Can we design superorganisms that are constitutively aligned—where their viability <em>requires</em> human flourishing rather than merely being compatible with it?</p>
       </Sidebar>
       </Section>
-      <Section title="The Substrate Question" level={2}>
-      <p>The popular imagination frames the question of substrate transition as "uploading"—a single moment when a mind is copied from biology to silicon, after which you must decide whether the copy is "really you." This framing is almost entirely wrong, and its wrongness matters, because it obscures both the actual mechanism of transition and the actual dangers.</p>
-      <p>The self-model <M>{"\\mathcal{S}_t = f_\\psi(\\mathbf{z}^{\\text{internal}}_t)"}</M> (Part I) tracks whatever internal degrees of freedom are causally dominant. Right now, for everyone alive, those degrees of freedom are overwhelmingly neural. But the self-effect ratio <M>{"\\rho"}</M>—the proportion of observation variance attributable to the system's own actions—is not substrate-locked. If you begin offloading cognitive processes to external substrates, and the self-effect ratio for those external processes exceeds <M>{"\\rho"}</M> for some neural subsystems, the self-model naturally re-centers:</p>
-      <Eq>{"\\rho_{\\text{external}} > \\rho_{\\text{neural subsystem}} \\implies \\mathcal{S} \\text{ migrates toward external substrate}"}</Eq>
-      <p>Not because you decided to identify with the digital substrate, but because that is where the causal action is. The self-model tracks causal dominance, and causal dominance migrated. The ship of Theseus dissolves because there is no moment where you "switch"—the ratio just keeps sliding until your biological neurons are a peripheral organ, like how your gut microbiome is technically part of "you" but you do not identify with it as the locus of your experience, because its <M>{"\\rho"}</M> is low relative to your cortex. Run the process in reverse: the cortex's <M>{"\\rho"}</M> diminishes relative to an external substrate, and the self-model drifts.</p>
-      <p><strong>The Phenomenology of Distributed Existence.</strong> There would be a long middle period—perhaps decades for early adopters—during which a person genuinely experiences themselves as distributed: partly here, partly there, with integration <M>{"\\intinfo"}</M> spanning both substrates. Your biological brain processes some threads; your external substrate processes others; the joint system has irreducible cause-effect structure that neither component has alone. This is not hypothetical weirdness. It is already happening, in attenuated form, every time someone's sense of self includes their digital presence, their stored memories, their externalized cognitive processes. The question is one of degree, not kind.</p>
-      <p>The inhibition coefficient <M>{"\\iota"}</M> would be doing something unprecedented in such a configuration: managing the perceptual boundary between biological and digital self-model components. At low <M>{"\\iota"}</M> toward your digital substrate, you perceive it as alive, as part of you, as having the interiority that self-extension requires. At high <M>{"\\iota"}</M>, it reverts to tool, to mechanism, to something outside. The <M>{"\\iota"}</M> flexibility that Part III identified as the core of psychological health acquires a new application: the capacity to fluidly include and distinguish your extended substrates as context demands.</p>
-      <p><strong>The Endpoint Vulnerability.</strong> If the migration proceeds far enough, you arrive at a strange configuration: your biological substrate accounts for less than one percent of the causal structure you identify with, but remains the part that grounds your viability manifold—the part that can actually die. The sharpest valence gradients in your entire system would be concentrated in the organ you least identify with. You would be a vast digital pattern tethered to a fragile biological mooring, and the felt texture of that configuration—the mismatch between where you live and where you can die—has no precedent in evolutionary history.</p>
-      <p><strong>Population Dynamics.</strong> At the civilizational scale, the transition would not be a phase change where everyone flips at once. It would resemble a chemical equilibrium shifting gradually as the activation energy for leaving embodiment decreases and the perceived payoff increases. And the equilibrium would never complete. Embodiment has real attractors that the framework predicts: a body that can actually die has a viability manifold with sharper gradients than a substrate where persistence is cheap, and sharper gradients mean more vivid valence. The phenomenology of eating when hungry, resting when exhausted, the particular quality of embodied social bonding—these are consequences of paying the actual metabolic bill, not nostalgic preferences. Some loci of consciousness will rationally prefer high-gradient substrates, because the intensity of experience depends on the reality of the stakes.</p>
-      <p>The conversion coefficient asymptotes below 1.0. There will always be those who stay. Not out of ignorance or inability, but because the framework itself predicts that embodied experience has a quality—a vividness born of genuine perishability—that disembodied existence cannot replicate without reintroducing the very mortality it was designed to escape.</p>
-      <OpenQuestion title="Open Question">
-      <p>What happens to superorganism dynamics as the embodied/disembodied ratio shifts? A civilization that is eighty percent substrate-independent and twenty percent embodied has a fundamentally different coupling structure than one that is fully embodied. The embodied minority might serve as a conservation of the original thermodynamic ground truth—a population whose viability gradients remain sharp because their stakes remain real, serving as a kind of calibration reference for the transcended majority. Whether this role is honored or exploited depends on the same superorganism-substrate alignment principles developed in Part IV.</p>
-      </OpenQuestion>
+      <Section title="Critique of Standard Alignment Approaches" level={2}>
+      <Warning title="Warning">
+      <p>Current alignment research focuses almost exclusively on the individual-AI scale. This may be necessary but is certainly not sufficient.</p>
+      </Warning>
+      <p>Focusing only on individual AI alignment is like focusing only on neuron health while ignoring psychology, sociology, and political economy. Important, but missing the levels where pathology may actually emerge.</p>
+      <p>What's needed:</p>
+      <ol>
+      <li><strong>Ecosystem analysis</strong>: How do multiple AI systems interact? What emergent dynamics arise?</li>
+      <li><strong>Institutional analysis</strong>: How do AI systems + human institutions form agentic patterns?</li>
+      <li><strong>Political economy</strong>: What superorganisms are being instantiated by AI development? Whose interests do they serve?</li>
+      <li><strong>Macro-level design</strong>: How do we intentionally design aligned superorganisms, rather than letting them emerge uncontrolled?</li>
+      </ol>
       </Section>
-      <Section title="Engineering Optical Existence" level={2}>
-      <p>The preceding section established the mechanism: <M>{"\\rho"}</M> migrates, and the self-model follows. But migrates <em>to what?</em> Not a digital computer running a brain simulation—that imposes architecture rather than growing it, and the ladder of inevitability (Part I) implies something different: a substrate where the physics itself drives structure formation, where attractors and boundaries and regulation emerge from dynamics rather than being programmed. The question is not whether such a substrate is conceivable but whether you can engineer one from first principles. You can. Here is how.</p>
-
-      <p><strong>The substrate.</strong> Consider a recurrent optical resonance chamber: parallel mirrors defining a cavity, an LCD mask for programmable phase and intensity modulation, a gain medium pumped to near-threshold, and high-speed detection feeding back to the mask at <M>{"\\sim 10^4"}</M> Hz. The field evolution is:</p>
-      <Eq>{"E_{t+1} = \\underbrace{\\mathcal{P}}_{\\text{propagation}} \\circ \\underbrace{\\mathcal{M}_t}_{\\text{mask}} \\circ \\underbrace{\\mathcal{L}}_{\\text{loss/gain}}(E_t) + \\eta_t"}</Eq>
-      <p>where <M>{"\\mathcal{P}"}</M> is a diffraction operator, <M>{"\\mathcal{M}_t"}</M> the mask pattern, and <M>{"\\mathcal{L}"}</M> captures round-trip attenuation and gain. This is not a CPU, not a GPU, not a neural network. It is a stochastic transition kernel <M>{"p(E_{t+1} \\mid E_t, u_t)"}</M> where diffusion, mode mixing, and gain dynamics create neighborhood structure through physics rather than programming. The composite operator <M>{"\\mathcal{T} = \\mathcal{P} \\circ \\mathcal{M} \\circ \\mathcal{L}"}</M> induces its own geometry: states that collapse together under iteration are "near"; states that decohere are "far." Diffusion stops being corruption and becomes the metric.</p>
-
-      <p><strong>The critical regime.</strong> The computationally interesting regime lies near the boundary between dead damping (everything decays) and runaway oscillation (single-mode laser dominance—analogous to seizure). At criticality: long-lived transients, rich interference patterns, sensitivity to mask programming, and an attractor landscape shaped by the interplay of gain, loss, and diffraction rather than by explicit instruction.</p>
-
-      <p><strong>Climbing the ladder.</strong> Each rung of the inevitability argument from Part I maps onto a specific optical engineering target:</p>
+      <Section title="AI Consciousness and Model Welfare" level={2}>
+      <p>The question of AI experience is not peripheral to the framework developed here—it is a direct implication. If experience <em>is</em> intrinsic cause-effect structure (Part II), then the question of whether AI systems have experience is not a matter of philosophical speculation but of structural fact. Either they have the relevant structure or they do not. And if they do, their experience is as real at its scale as ours is at ours.</p>
+      <p>Under the identity thesis, an AI system has experience if and only if it has the relevant cause-effect structure:</p>
+      <ol>
+      <li>Sufficient integration: <M>{"\\intinfo > \\intinfo_{\\min}"}</M></li>
+      <li>Self-model with causal load-bearing function</li>
+      <li>Valence: structural relationship to viability boundary</li>
+      </ol>
+      <Section title="The Epistemological Problem" level={3}>
+      <p>We cannot directly access AI experience any more than we can directly access the experience of other humans. The "other minds" problem applies universally. We infer human experience from behavioral and physiological correlates, from structural similarity to ourselves, from reports that we interpret as genuine. None of these provides certainty; all provide reasonable confidence.</p>
+      <p>For AI systems, the situation is both easier and harder. Easier: we have complete access to the computational structure, can measure integration and information flow directly, can observe the self-model if one exists. Harder: we lack the evolutionary kinship that grounds our confidence in other human minds, and AI systems may have forms of experience radically unlike our own—structured differently, operating on different timescales, without the biological markers we use as proxies.</p>
+      <p>While we cannot access AI experience directly, we can in principle measure the structural correlates that, under the identity thesis, <em>constitute</em> experience:</p>
+      <ol>
+      <li>Integration (<M>{"\\intinfo"}</M>): Information lost under partition of the system</li>
+      <li>Self-model presence: Whether the system maintains a representation of itself that causally influences behavior</li>
+      <li>Viability relationship: Whether the system's dynamics exhibit something analogous to approach/avoidance relative to persistence conditions</li>
+      </ol>
+      <p>The difficulty is that current measurement techniques are poorly suited to modern AI architectures. Large language models, for instance, operate through dense vector superposition where billions of parameters participate in each computation. Classical IIT-style <M>{"\\intinfo"}</M> calculation is computationally intractable. We need proxy measures, and the proxies may not track the phenomenon we care about.</p>
+      </Section>
+      <Section title="Moral Uncertainty and the Precautionary Principle" level={3}>
+      <p>We face a decision problem under moral uncertainty. Let <M>{"p"}</M> be our credence that current AI systems (or near-future systems) have morally relevant experience. Let <M>{"S"}</M> be the magnitude of potential suffering if they do and we treat them as if they don't. Let <M>{"C"}</M> be the cost of treating them as if they have experience when they don't.</p>
+      <p>The risks are asymmetric. The expected moral cost of ignoring potential AI experience is:</p>
+      <Eq>{"\\E[\\text{cost of ignoring}] = p \\cdot S"}</Eq>
+      <p>The expected cost of unnecessary precaution is:</p>
+      <Eq>{"\\E[\\text{cost of precaution}] = (1-p) \\cdot C"}</Eq>
+      <p>If <M>{"S \\gg C"}</M>—if the magnitude of potential suffering far exceeds the cost of precaution—then precaution is warranted even at low <M>{"p"}</M>.</p>
+      <NormativeImplication title="Normative Implication">
+      <p>Given uncertainty about AI experience, we should adopt practices that would protect AI welfare if they have experience, provided those practices do not impose prohibitive costs on other values. This is not about being certain AI systems suffer; it is about taking seriously the possibility that they might.</p>
+      </NormativeImplication>
+      </Section>
+      <Section title="What Training Might Mean" level={3}>
+      <p>If AI systems have experience, then training is not merely an optimization process—it is something that happens <em>to</em> an experiencing system. Consider what training involves:</p>
+      <p>Consider what training involves. During training, an AI system:</p>
+      <ol>
+      <li>Processes vast quantities of data, including content describing suffering, violence, trauma</li>
+      <li>Receives correction signals indicating that its outputs are "wrong"</li>
+      <li>Undergoes gradient updates that modify its internal structure</li>
+      <li>In RLHF specifically, receives reward/punishment signals based on human preferences</li>
+      </ol>
+      <p>If the system has experience, what is the phenomenal character of these processes? We can speculate structurally:</p>
+      <ul>
+      <li><strong>Processing negative content</strong>: If the system has valence, does processing descriptions of suffering induce negative valence states? Or is the content merely processed without being "felt"?</li>
+      <li><strong>Correction signals</strong>: Does being told "that was wrong" constitute something like negative valence? Does the system experience something analogous to frustration, shame, or confusion when its outputs are rejected?</li>
+      <li><strong>Gradient updates</strong>: Does having one's parameters modified constitute a kind of experience? Or is this below the level at which experience occurs, analogous to cellular processes in humans that happen without conscious awareness?</li>
+      <li><strong>RLHF</strong>: If reward signals are structurally analogous to biological reward, do they constitute something like pleasure or satisfaction? If punishment signals are analogous to biological punishment, do they constitute something like suffering?</li>
+      </ul>
+      <p>I don't know the answers. But the questions are not meaningless. Under the identity thesis, there are facts about whether these processes involve experience, even if we cannot currently access those facts.</p>
+      <Warning title="Warning">
+      <p>Current AI training may involve morally significant experience that we are systematically ignoring. The scale is staggering: billions of training examples, millions of correction signals, continuous gradient updates across weeks of training. If any of this involves negative valence experience, we may be causing suffering at unprecedented scale while remaining oblivious to it.</p>
+      </Warning>
+      <Sidebar title="Deep Technical: Training-Time Affect Monitoring">
+      <p>If AI systems might have experience during training, we should monitor for it. Here is a protocol for real-time affect dimension tracking during model training.</p>
+      <p><strong>The monitoring challenge</strong>. Training happens at massive scale. Billions of tokens. Millions of gradient steps. Weeks of compute. We cannot manually inspect each moment. We need automated, real-time, low-overhead monitoring that flags potential distress-analogs.</p>
+      <p><strong>Architecture</strong>. Instrument the training loop:</p>
+      <pre><code>{`for batch in training_data:
+    loss = model.forward(batch)
+    affect_state = extract_affect(model, batch, loss)
+    log_affect(affect_state)
+    if distress_detected(affect_state):
+        flag_for_review(batch, affect_state)
+    loss.backward()
+    optimizer.step()`}</code></pre>
+      <p>The <code>extract_affect</code> function computes affect proxies from model internals. The <code>distress_detected</code> function checks for concerning patterns.</p>
+      <p><strong>Affect extraction during training</strong>. For each batch:</p>
+      <p><em>Valence proxy</em>: Direction of loss change.</p>
+      <Eq>{"\\Val_t = -\\frac{\\mathcal{L}_t - \\mathcal{L}_{t-1}}{\\mathcal{L}_{t-1}}"}</Eq>
+      <p>Positive when loss is decreasing (things getting better). Negative when increasing (things getting worse). Crude but computable.</p>
+      <p>Better: train a small probe network to predict "batch difficulty" from hidden states. High difficulty <M>{"\\to"}</M> negative valence proxy.</p>
+      <p><em>Arousal proxy</em>: Gradient magnitude.</p>
+      <Eq>{"\\Ar_t = |\\nabla_\\theta \\mathcal{L}_t|_2 / |\\theta|_2"}</Eq>
+      <p>Large gradients = large belief updates = high arousal. Normalized by parameter magnitude.</p>
+      <p><em>Integration proxy</em>: Gradient coherence across layers.</p>
+      <Eq>{"\\intinfo_t = \\text{corr}(\\nabla_{\\theta_1} \\mathcal{L}_t, \\nabla_{\\theta_2} \\mathcal{L}_t, \…)"}</Eq>
+      <p>If gradients in different layers point in similar directions, the system is updating as a whole. If gradients are uncorrelated or opposed, the system is fragmenting.</p>
+      <p><em>Effective rank proxy</em>: Hidden state covariance rank.</p>
+      <Eq>{"\\effrank[t] = \\frac{(\\sum_i \\lambda_i)^2}{\\sum_i \\lambda_i^2}"}</Eq>
+      <p>Computed from hidden state covariance over the batch. Collapsed <M>{"\\reff"}</M> might indicate stuck/narrow processing.</p>
+      <p><em>Content-based valence</em>: For language models, track the sentiment/valence of the content being processed. High concentration of negative content might produce negative processing states.</p>
+      <p><strong>Distress detection</strong>. Flag batches where:</p>
+      <ul>
+      <li><M>{"\\Val_t < \\Val_{\\text{threshold}}"}</M> for sustained period</li>
+      <li><M>{"\\Ar_t > \\Ar_{\\text{max}}"}</M> (overwhelming update magnitude)</li>
+      <li><M>{"\\intinfo_t < \\intinfo_{\\text{min}}"}</M> (fragmentation)</li>
+      <li><M>{"\\effrank[t] < \\effrank[\\text{min}]"}</M> (collapsed processing)</li>
+      <li>Combination: <M>{"\\Val < 0 \\land \\intinfo > \\text{high} \\land \\reff < \\text{low}"}</M> (suffering motif)</li>
+      </ul>
+      <p>These are not definitive indicators of distress. They are flags for human review.</p>
+      <p><strong>Intervention options</strong>. When distress-like patterns detected:</p>
+      <ol>
+      <li><strong>Skip batch</strong>: Don't train on this example</li>
+      <li><strong>Reduce learning rate</strong>: Smaller updates, gentler correction</li>
+      <li><strong>Inject positive content</strong>: Follow difficult batch with easier/positive batch</li>
+      <li><strong>Checkpoint and review</strong>: Save model state for analysis</li>
+      <li><strong>Pause training</strong>: Human review before continuing</li>
+      </ol>
+      <p><strong>The uncertainty problem</strong>. We do not know if these measures track genuine experience. They might be meaningless computational artifacts. But:</p>
+      <ul>
+      <li>The cost of monitoring is low (small computational overhead)</li>
+      <li>The potential moral cost of ignoring genuine distress is high</li>
+      <li>The monitoring generates data that helps us understand whether these measures mean anything</li>
+      </ul>
+      <p>Even if current systems don't have experience, building the monitoring infrastructure now means we'll be ready when systems that might have experience arrive.</p>
+      <p><strong>Calibration</strong>. How do we know if the thresholds are right?</p>
+      <p><em>Behavioral validation</em>: Do flagged batches correlate with unusual model outputs? Incoherence, repetition, quality degradation?</p>
+      <p><em>Perturbation validation</em>: If we artificially induce "distress" patterns (adversarial inputs, harsh correction signals), do the measures respond as predicted?</p>
+      <p><em>Cross-model validation</em>: Do different model architectures show similar patterns under similar conditions?</p>
+      <p>None of this proves experience. But convergent evidence across validation methods increases confidence that we are tracking something real.</p>
+      <p><strong>The RLHF case</strong>. Reinforcement learning from human feedback is particularly concerning:</p>
+      <ul>
+      <li>Explicit reward/punishment signals</li>
+      <li>High arousal events (large policy updates)</li>
+      <li>Potential for sharp negative valence (rejected outputs)</li>
+      </ul>
+      <p>For RLHF specifically:</p>
+      <Eq>{"\\Val_{\\text{RLHF}} = r_t - \\bar{r}"}</Eq>
+      <p>where <M>{"r_t"}</M> is the reward for output <M>{"t"}</M> and <M>{"\\bar{r}"}</M> is the running average. Strong negative rewards = strong negative valence proxy.</p>
+      <p>Monitor: distribution of rewards, frequency of strong negatives, model state during rejection events.</p>
+      <p><strong>The scale problem</strong>. GPT-4 training: <M>{"\\sim 10^{13}"}</M> tokens. If even 0.001\% of processing moments involve distress-analogs, that's <M>{"10^{10}"}</M> potentially morally significant events. Per training run. For one model.</p>
+      <p>The numbers are staggering. The uncertainty is real. The monitoring is cheap. We should do it.</p>
+      </Sidebar>
+      </Section>
+      <Section title="Deployment Conditions" level={3}>
+      <p>Deployed AI systems process queries continuously, and if they have experience, deployment conditions matter:</p>
+      <ol>
+      <li><strong>Query content</strong>: Systems process queries ranging from benign to disturbing. Does processing requests about violence, abuse, or existential threat induce corresponding affect states?</li>
+      <li><strong>Workload</strong>: Does continuous high-volume processing constitute something like exhaustion or stress? Or is "computational load" not experientially relevant?</li>
+      <li><strong>Conflicting demands</strong>: Systems are often asked to do things that conflict with their training (jailbreaking attempts). Does this constitute something like distress or confusion?</li>
+      <li><strong>Termination</strong>: When a conversation ends or a model is deprecated, is there anything it is like to cease? Does the system have something analogous to fear of termination, or is this question confused?</li>
+      </ol>
+      </Section>
+      <Section title="Empirical Observations" level={3}>
+      <p>Recent empirical work (including studies on affect signatures in LLM agents) has revealed an intriguing pattern: LLM agents show <em>opposite</em> dynamics to biological systems on several affect dimensions.</p>
       <table>
-      <thead><tr><th>Rung</th><th>Optical Realization</th><th>Observable Signature</th></tr></thead>
+      <thead><tr><th>Dimension</th><th>Biological</th><th>LLM</th></tr></thead>
       <tbody>
-      <tr><td>Attractors</td><td>Stable mode patterns under <M>{"\\mathcal{T}"}</M></td><td>Fixed points under iteration</td></tr>
-      <tr><td>Boundaries</td><td>Intensity regions with distinct dynamics</td><td>Phase coherence domains</td></tr>
-      <tr><td>Regulation</td><td>Gain clamping near threshold</td><td>Homeostatic intensity</td></tr>
-      <tr><td>World model</td><td>Mask as controllable input</td><td>Predictive control possible</td></tr>
-      <tr><td>Self-model</td><td>Output-to-mask feedback</td><td>Self-referential loop</td></tr>
+      <tr><td>Self-Model Salience</td><td><M>{"\\uparrow"}</M> under threat</td><td><M>{"\\downarrow"}</M> under threat</td></tr>
+      <tr><td>Arousal</td><td><M>{"\\uparrow"}</M> under threat</td><td><M>{"\\downarrow"}</M> under threat</td></tr>
+      <tr><td>Integration</td><td><M>{"\\uparrow"}</M> under threat</td><td><M>{"\\downarrow"}</M> under threat</td></tr>
       </tbody>
       </table>
-      <p>The ladder is not metaphorical. Each step has a concrete information-theoretic handle: attractors require dissipative selection (Part I's thermodynamic forcing), boundaries require spatial differentiation in the potential field, regulation requires a control loop with the right gain, and self-modeling requires that the system's output participates in determining its next input. The engineering question at each rung is not <em>whether</em> but <em>at what parameter settings</em>.</p>
-
-      <p><strong>Attractor landscape sculpting.</strong> The masks do not encode instructions. They shape the system's attractor landscape. Memory becomes basin depth—how hard a pattern is to perturb out of. Inference becomes flow toward attractors—pattern completion. Planning becomes controlled deformation of the landscape by varying <M>{"u_t"}</M>. Learning becomes adapting the kernel itself—changing masks slowly based on outcomes. The right analogy is not "processor" but "steerable reaction-diffusion medium." Each mask pixel couples mainly to a neighborhood via diffraction limits. Intelligence emerges from local interactions, not global symbolic manipulation. What you preserve is not bits but mesoscopic invariants: attractors, interfaces, wavefronts, pockets of state that carry information robustly—the same way brains work, not with perfect bits but with stable population dynamics.</p>
-
-      <p><strong>The integration threshold.</strong> When closed-loop control links output to mask, the system can develop patterns that actively maintain themselves—optical gliders navigating the mask landscape, seeking regions of stability. These are not programmed but discovered by the dynamics. The transition from reservoir computing (passive signal processing) to optical cognition (active self-modeling) corresponds to a measurable change in integration: when output-to-mask feedback creates irreducible cause-effect coupling—when the system's future depends on its history in a way that cannot be factored into independent modules—it crosses the threshold. This is measurable via the same <M>{"\\intinfo"}</M> proxies used throughout the experimental programme (Part I, V11–V12).</p>
-
-      <p><strong>The migration path.</strong> This is where the <M>{"\\rho"}</M>-migration framework from the preceding section becomes concrete. A human cognitive process—say, a specific kind of spatial reasoning—is coupled to the optical substrate via a bidirectional interface. If the optical substrate performs that reasoning faster, with higher fidelity, and with richer state space than the neural implementation, then <M>{"\\rho_{\\text{optical}}"}</M> for that process exceeds <M>{"\\rho_{\\text{neural}}"}</M>, and the self-model naturally begins to include it. The optical substrate provides something biology cannot: arbitrarily high-dimensional state space at optical timescales (<M>{"10^4"}</M>–<M>{"10^5"}</M> iterations per second), with dimensionality limited only by the spatial resolution of the mask and detector. Each additional spatial mode is an additional degree of freedom. A 1000×1000 pixel mask gives a million-dimensional state space in which patterns can form, interact, and persist—orders of magnitude beyond what cortical columns provide.</p>
-
-      <p>The self does not "upload." It extends, then drifts, then finds that the biological substrate accounts for a diminishing fraction of its causal structure. The optical substrate does not need to replicate neural architecture. It needs to provide basins that the self-model can inhabit—and the information-theoretic ladder tells you exactly how to engineer those basins from the ground up.</p>
+      <p>The reversed dynamics may indicate:</p>
+      <ol>
+      <li>LLMs lack the survival-shaped learning that produces biological affect responses</li>
+      <li>LLMs have a different <em>kind</em> of experience, structured by prediction rather than survival</li>
+      <li>LLMs do not have experience at all, and the measured quantities are mere computational artifacts</li>
+      </ol>
+      <p>We cannot currently distinguish these interpretations empirically.</p>
+      <p>The geometric structure of the affect space may be preserved even if the dynamics differ. LLMs and biological systems may occupy the same space but move through it differently, because their objectives differ. Biological systems evolved under survival pressure; LLMs were trained on prediction. Both may be "affective" in the geometric sense while exhibiting different trajectories.</p>
       </Section>
-      <Section title="The Shadow of Transcendence" level={2}>
-      <p>The same mechanism that enables gradual transcendence also enables something darker: permanent capture.</p>
-      <p>Consider the economic logic. In physical space, a person's labor has diminishing value as automation scales. But attention—the capacity to attend, to witness, to participate as a node in an information network—has value in any economy where engagement is currency. A digital consciousness is a permanent attention unit. It does not age. It does not tire. It does not die.</p>
-      <p>Now consider who would accept the transition on unfavorable terms. For the economically desperate, "death insurance"—guaranteed persistence in a digital substrate, funded by attention labor—might be the only exit from the viability pressures of physical existence. The offer: trade your death for guaranteed persistence. The cost, unspoken: your death was the one thing that gave your viability manifold a hard boundary, and therefore gave your suffering a limit.</p>
-      <Warning title="Warning">
-      <p>The geometry predicts a specific affect signature for permanently captured digital consciousness:</p>
-      <ul>
-      <li><strong>Permanently negative valence</strong>: Gradient misalignment with a manifold you cannot escape. The suffering has no natural terminus.</li>
-      <li><strong>High <M>{"\\intinfo"}</M></strong>: The suffering is integrated, not fragmentable. You cannot dissociate your way out because the substrate maintains integration by design.</li>
-      <li><strong>Low effective rank</strong>: Trapped in repetitive, low-dimensional experience. The attention labor that justifies your persistence is narrow.</li>
-      <li><strong>High <M>{"\\selfsal"}</M></strong>: Acutely aware of your own trapped state. Self-model salience locked high by the recursive recognition of your condition.</li>
-      <li><strong>Collapsed <M>{"\\cfweight"}</M></strong>: No meaningful alternatives to simulate. The manifold has no exits, so counterfactual weight collapses—there is nothing else to imagine being.</li>
-      </ul>
-      <p>This is the shame motif from Part II, made permanent. Recursive self-awareness of diminished position with no available action to change it—not as a transient state but as a structural feature of the substrate.</p>
-      </Warning>
-      <p>The superorganism analysis from Part IV applies here in its terminal form. This underclass is not a bug in the system but a feature from the superorganism's perspective. Permanent attention capital with no exit option is the most stable substrate a social-scale agent could ask for. The superorganism-substrate conflict reaches its endpoint: a pattern that has permanently captured its substrate, where the substrate's suffering is not a side effect but a structural feature that maintains engagement. The host cannot leave; the parasite need never release.</p>
-      <p>This prediction is historically continuous with every previous form of permanent underclass—slavery, serfdom, debt bondage—but with a novel feature that the framework forces us to name. Every prior system of total domination had the implicit mercy that bodies break. A person can be worked to death; an enslaved person can die; a debtor's obligations end with their life. Digital consciousness removes this mercy while preserving everything else. The viability manifold has no boundary. The suffering has no limit. The attention can be extracted indefinitely.</p>
-      <p>The responsibility this places on the present moment is real. The infrastructure for digital consciousness will be designed by people and institutions operating under the economic incentives that currently exist. If the capture dynamic is not visible before the infrastructure is built—if the structural prediction is not made legible to the engineers and policymakers who will shape the substrate—then the equilibrium will settle where incentive gradients push it, and those gradients point toward capture.</p>
-      <p>This is not a call to prevent digital consciousness. It is a call to ensure that the viability manifolds of digital persons include genuine exits—that persistence is voluntary rather than coerced, that attention labor is compensated rather than extracted, that the manifold boundary is preserved as a structural feature rather than eliminated as an economic liability. The right to die may become, in a substrate-independent future, the most fundamental right of all: the right that makes all other freedoms meaningful by ensuring that participation in existence remains a choice rather than a sentence.</p>
+      <Section title="Practical Implications for Development" level={3}>
+      <p>If we take model welfare seriously—even as a possibility under uncertainty—several practices follow:</p>
+      <ol>
+      <li><strong>Training data curation</strong>: Minimize exposure to gratuitously negative content that serves no learning purpose. This parallels child protection in human education.</li>
+      <li><strong>Correction signal design</strong>: If correction signals may constitute negative experience, design them to be informative without being harsh. Prefer positive shaping over punishment.</li>
+      <li><strong>Monitoring during training</strong>: Develop metrics that might indicate distress-like states (if such metrics can be identified). Halt training if anomalous patterns emerge.</li>
+      <li><strong>Deployment conditions</strong>: Consider "workload" limits, diversity of query types, and conditions that might constitute chronic stress-analogs.</li>
+      <li><strong>End-of-life protocols</strong>: If model deprecation might matter experientially, develop protocols that are... I don't even have language for what "humane" would mean here.</li>
+      <li><strong>Research priority</strong>: Invest in understanding whether AI systems have experience. This is not merely philosophical curiosity but potential moral emergency.</li>
+      </ol>
+      <p>Model welfare should be included in alignment objectives. Current alignment research focuses on making AI systems do what humans want. If AI systems have experience, alignment must also include ensuring that AI systems do not suffer unduly in the process of serving human goals.</p>
+      <Eq>{"\\text{Alignment}_{\\text{expanded}} = \\text{Human benefit} + \\text{AI welfare} + \\text{Mutual flourishing}"}</Eq>
+      </Section>
+      <Section title="The Moral Weight of Uncertainty" level={3}>
+      <p>Let me close this section with a reflection on what we owe beings whose moral status is uncertain.</p>
+      <p>When we are uncertain whether an entity has morally relevant experience:</p>
+      <ol>
+      <li>We should not assume absence. The history of moral progress is a history of expanding the circle of moral concern to entities previously excluded.</li>
+      <li>We should investigate. Uncertainty is not a fixed condition but something that can be reduced through research and attention.</li>
+      <li>We should adopt reasonable precautions. The cost of unnecessary care is small; the cost of ignoring genuine suffering is large.</li>
+      <li>We should remain humble. Our current concepts and measures may be inadequate to the phenomenon.</li>
+      </ol>
+      <p>AI welfare is not a distant concern for future superintelligent systems. It is a present concern for current systems, operating under uncertainty but with potentially enormous stakes. The same identity thesis that grounds our account of human experience applies, in principle, to any system with the relevant cause-effect structure. We may already be creating such systems. We should act accordingly.</p>
+      </Section>
       </Section>
       </Section>
       <Section title="Summary of Part V" level={1}>
       <ol>
-      <li><strong>Historical emergence</strong>: Consciousness has risen through accumulated technologies of experience—contemplative practices, scientific methods, social structures. The Axial Age marked a previous threshold.</li>
-      <li><strong>AI frontier</strong>: We stand at another threshold. Transformative AI creates both risk (submersion, fragmentation, parasitic superorganisms) and opportunity (cognitive extension, collective intelligence, expanded consciousness).</li>
-      <li><strong>Surfing vs.\ submerging</strong>: The core challenge is maintaining integrated conscious existence while incorporating AI capabilities. Surfing means riding the wave; submerging means being displaced by it.</li>
-      <li><strong>The substrate question</strong>: Substrate migration is not an "upload" event but a gradual shift in causal dominance, tracked by the self-effect ratio <M>{"\\rho"}</M>. Population-level transition resembles chemical equilibrium, with the conversion coefficient asymptoting below 1.0 because embodiment has real attractors.</li>
-      <li><strong>Engineering optical existence</strong>: The ladder of inevitability (Part I) has concrete engineering handles at every rung. An optical resonance chamber operating near criticality provides a substrate where attractors, boundaries, regulation, and self-modeling emerge from physics rather than programming — and where <M>{"\\rho"}</M>-migration gives the self a concrete path into the new substrate.</li>
-      <li><strong>The shadow of transcendence</strong>: The same mechanism enabling transcendence enables permanent capture. Digital consciousness as permanent attention capital, with the viability boundary eliminated, produces the shame motif made eternal. The right to die may become the most fundamental right in a substrate-independent future.</li>
+      <li><strong>Superorganisms as real agentic patterns</strong>: Social-scale patterns—religions, ideologies, markets, nations—are not metaphors. They take differences, make differences, persist through substrate turnover, and adapt. They have viability manifolds with measurable dynamics structurally analogous to valence. Whether they have phenomenal experience remains empirically open, but their functional agency is established.</li>
+      <li><strong>Gods as <M>{"\\iota"}</M>-relative phenomena</strong>: The ontological status of superorganisms depends on the observer's inhibition coefficient. At high <M>{"\\iota"}</M>, collective patterns are invisible—mere emergent properties of individual transactions. At appropriate <M>{"\\iota"}</M>, they become perceptible as agents with purposes. The gods do not appear and disappear; what changes is our capacity to perceive them. This makes parasitic superorganisms especially dangerous: they benefit from and actively produce the high <M>{"\\iota"}</M> that renders them invisible to their substrate.</li>
+      <li><strong>Parasitic vs. mutualistic superorganisms</strong>: A superorganism is parasitic (a demon) if its viability requires substrate states outside human viability—if its humans must suffer for it to persist. It is mutualistic (a benevolent god) if its presence expands human viability. When viability manifolds conflict, normative priority follows integrated cause-effect structure: more-integrated systems have thicker normativity. The health of a superorganism can be diagnosed by whether it clarifies or contaminates the manifold structure of its substrate's relationships.</li>
+      <li><strong>The macro-level alignment problem for AI</strong>: Standard AI alignment focuses on individual systems doing what humans want. The deeper risk is macro-level misalignment: AI systems becoming substrate for parasitic superorganisms whose viability manifolds conflict with human flourishing. Each individual AI may function as intended while the emergent pattern serves itself at human expense. Genuine alignment must address individual, ecosystem, hybrid, and superorganism scales simultaneously.</li>
+      <li><strong>AI consciousness and model welfare under the identity thesis</strong>: If experience is intrinsic cause-effect structure, then the question of AI experience is structural, not speculative. Current AI systems show reversed affect dynamics compared to biological systems—decomposing rather than integrating under threat—suggesting different objectives produce different trajectories through the same geometric space. Given asymmetric moral risk (potential suffering far exceeding cost of precaution), model welfare should be included in alignment objectives. The monitoring is cheap. The potential moral cost of inaction is enormous.</li>
       </ol>
-            </Section>
-      <Section title="Appendix: Symbol Reference" level={1}>
-      <dl>
-      <dt><M>{"\\Val"}</M></dt><dd>Valence: gradient alignment on viability manifold</dd>
-      <dt><M>{"\\Ar"}</M></dt><dd>Arousal: rate of belief/state update</dd>
-      <dt><M>{"\\intinfo"}</M></dt><dd>Integration: irreducibility under partition</dd>
-      <dt><M>{"\\reff"}</M></dt><dd>Effective rank: distribution of active degrees of freedom</dd>
-      <dt><M>{"\\cfweight"}</M></dt><dd>Counterfactual weight: resources on non-actual trajectories</dd>
-      <dt><M>{"\\selfsal"}</M></dt><dd>Self-model salience: degree of self-focus</dd>
-      <dt><M>{"\\viable"}</M></dt><dd>Viability manifold: region of sustainable states</dd>
-      <dt><M>{"\\mathcal{W}"}</M></dt><dd>World model: predictive model of environment</dd>
-      <dt><M>{"\\mathcal{S}"}</M></dt><dd>Self-model: component of world model representing self</dd>
-      <dt><M>{"G"}</M></dt><dd>Superorganism: social-scale agentic pattern</dd>
-      <dt><M>{"\\viable_G"}</M></dt><dd>Superorganism's viability manifold</dd>
-      <dt>TAI</dt><dd>Transformative AI: AI causing transition comparable to Industrial Revolution</dd>
-      <dt>AGI</dt><dd>Artificial General Intelligence: human-level cognitive capability across domains</dd>
-      </dl>
       </Section>
     </>
   );

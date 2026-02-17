@@ -42,8 +42,10 @@ export default function Home() {
           <li><Link href="/part-1">Part I: Thermodynamic Foundations and the Ladder of Emergence</Link></li>
           <li><Link href="/part-2">Part II: The Identity Thesis and the Geometry of Feeling</Link></li>
           <li><Link href="/part-3">Part III: Signatures of Affect Under the Existential Burden</Link></li>
-          <li><Link href="/part-4">Part IV: Interventions Across Scale&mdash;From Neurons to Nations</Link></li>
-          <li><Link href="/part-5">Part V: The Transcendence of the Self</Link></li>
+          <li><Link href="/part-4">Part IV: The Topology of Social Bonds</Link></li>
+          <li><Link href="/part-5">Part V: Gods and Superorganisms</Link></li>
+          <li><Link href="/part-6">Part VI: Historical Consciousness and Transcendence</Link></li>
+          <li><Link href="/part-7">Part VII: The Empirical Program</Link></li>
           <li><Link href="/epilogue">Epilogue</Link></li>
         </ol>
       </section>

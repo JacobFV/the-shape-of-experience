@@ -19,8 +19,10 @@ export const chapters: Chapter[] = [
   { slug: 'part-1', title: 'Part I: Thermodynamic Foundations and the Ladder of Emergence', shortTitle: 'Part I: Foundations' },
   { slug: 'part-2', title: 'Part II: The Identity Thesis and the Geometry of Feeling', shortTitle: 'Part II: Identity Thesis' },
   { slug: 'part-3', title: 'Part III: Signatures of Affect Under the Existential Burden', shortTitle: 'Part III: Affect Signatures' },
-  { slug: 'part-4', title: 'Part IV: Interventions Across Scale', shortTitle: 'Part IV: Interventions' },
-  { slug: 'part-5', title: 'Part V: The Transcendence of the Self', shortTitle: 'Part V: Transcendence' },
+  { slug: 'part-4', title: 'Part IV: The Topology of Social Bonds', shortTitle: 'Part IV: Social Bonds' },
+  { slug: 'part-5', title: 'Part V: Gods and Superorganisms', shortTitle: 'Part V: Gods' },
+  { slug: 'part-6', title: 'Part VI: Historical Consciousness and Transcendence', shortTitle: 'Part VI: Transcendence' },
+  { slug: 'part-7', title: 'Part VII: The Empirical Program', shortTitle: 'Part VII: Empirical Program' },
   { slug: 'epilogue', title: 'Epilogue', shortTitle: 'Epilogue' },
 ];
 
@@ -31,6 +33,8 @@ const chapterModules: Record<string, () => Promise<{ default: ComponentType }>> 
   'part-3': () => import('../content/part-3'),
   'part-4': () => import('../content/part-4'),
   'part-5': () => import('../content/part-5'),
+  'part-6': () => import('../content/part-6'),
+  'part-7': () => import('../content/part-7'),
   'epilogue': () => import('../content/epilogue'),
 };
 

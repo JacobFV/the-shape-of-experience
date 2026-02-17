@@ -195,6 +195,76 @@
       },
       {
         "level": 1,
+        "id": "the-grounding-of-normativity",
+        "text": "The Grounding of Normativity"
+      },
+      {
+        "level": 2,
+        "id": "the-is-ought-problem",
+        "text": "The Is-Ought Problem",
+        "parentSection": "the-grounding-of-normativity"
+      },
+      {
+        "level": 2,
+        "id": "physics-biases-does-not-prescribe",
+        "text": "Physics Biases, Does Not Prescribe",
+        "parentSection": "the-grounding-of-normativity"
+      },
+      {
+        "level": 2,
+        "id": "normativity-thickens-across-scales",
+        "text": "Normativity Thickens Across Scales",
+        "parentSection": "the-grounding-of-normativity"
+      },
+      {
+        "level": 2,
+        "id": "viability-manifolds-and-proto-obligation",
+        "text": "Viability Manifolds and Proto-Obligation",
+        "parentSection": "the-grounding-of-normativity"
+      },
+      {
+        "level": 2,
+        "id": "valence-as-real-structure",
+        "text": "Valence as Real Structure",
+        "parentSection": "the-grounding-of-normativity"
+      },
+      {
+        "level": 2,
+        "id": "the-is-ought-gap-dissolves",
+        "text": "The Is-Ought Gap Dissolves",
+        "parentSection": "the-grounding-of-normativity"
+      },
+      {
+        "level": 1,
+        "id": "truth-as-scale-relative-enaction",
+        "text": "Truth as Scale-Relative Enaction"
+      },
+      {
+        "level": 2,
+        "id": "the-problem-of-truth",
+        "text": "The Problem of Truth",
+        "parentSection": "truth-as-scale-relative-enaction"
+      },
+      {
+        "level": 2,
+        "id": "scale-relative-truth",
+        "text": "Scale-Relative Truth",
+        "parentSection": "truth-as-scale-relative-enaction"
+      },
+      {
+        "level": 2,
+        "id": "enacted-truth",
+        "text": "Enacted Truth",
+        "parentSection": "truth-as-scale-relative-enaction"
+      },
+      {
+        "level": 2,
+        "id": "no-view-from-nowhere",
+        "text": "No View from Nowhere",
+        "parentSection": "truth-as-scale-relative-enaction"
+      },
+      {
+        "level": 1,
         "id": "summary-of-part-i",
         "text": "Summary of Part I"
       }
@@ -305,32 +375,32 @@
       },
       {
         "level": 1,
-        "id": "the-perceptual-configuration-participatory-and-mechanistic-modes",
-        "text": "The Perceptual Configuration: Participatory and Mechanistic Modes"
+        "id": "the-inhibition-coefficient",
+        "text": "The Inhibition Coefficient"
       },
       {
         "level": 2,
         "id": "animism-as-computational-default",
         "text": "Animism as Computational Default",
-        "parentSection": "the-perceptual-configuration-participatory-and-mechanistic-modes"
+        "parentSection": "the-inhibition-coefficient"
       },
       {
         "level": 2,
         "id": "the-inhibition-coefficient",
         "text": "The Inhibition Coefficient",
-        "parentSection": "the-perceptual-configuration-participatory-and-mechanistic-modes"
+        "parentSection": "the-inhibition-coefficient"
       },
       {
         "level": 2,
         "id": "the-affect-signature-of-inhibition",
         "text": "The Affect Signature of Inhibition",
-        "parentSection": "the-perceptual-configuration-participatory-and-mechanistic-modes"
+        "parentSection": "the-inhibition-coefficient"
       },
       {
         "level": 2,
         "id": "connection-to-the-llm-discrepancy",
         "text": "Connection to the LLM Discrepancy",
-        "parentSection": "the-perceptual-configuration-participatory-and-mechanistic-modes"
+        "parentSection": "the-inhibition-coefficient"
       },
       {
         "level": 1,
@@ -496,20 +566,8 @@
     "sections": [
       {
         "level": 1,
-        "id": "notation-and-foundational-concepts",
-        "text": "Notation and Foundational Concepts"
-      },
-      {
-        "level": 2,
-        "id": "the-six-affect-dimensions",
-        "text": "The Six Affect Dimensions",
-        "parentSection": "notation-and-foundational-concepts"
-      },
-      {
-        "level": 2,
-        "id": "the-affect-state",
-        "text": "The Affect State",
-        "parentSection": "notation-and-foundational-concepts"
+        "id": "notation",
+        "text": "Notation"
       },
       {
         "level": 1,
@@ -535,14 +593,8 @@
       },
       {
         "level": 2,
-        "id": "musical-genres-as-affect-technologies",
-        "text": "Musical Genres as Affect Technologies",
-        "parentSection": "aesthetics-the-modulation-of-affect-through-form"
-      },
-      {
-        "level": 2,
-        "id": "visual-design-movements",
-        "text": "Visual Design Movements",
+        "id": "genre-and-design-as-affect-technologies",
+        "text": "Genre and Design as Affect Technologies",
         "parentSection": "aesthetics-the-modulation-of-affect-through-form"
       },
       {
@@ -677,182 +729,8 @@
   },
   {
     "slug": "part-4",
-    "title": "Part IV: Interventions Across Scale",
+    "title": "Part IV: The Topology of Social Bonds",
     "sections": [
-      {
-        "level": 1,
-        "id": "notation-and-foundational-concepts",
-        "text": "Notation and Foundational Concepts"
-      },
-      {
-        "level": 2,
-        "id": "the-core-affect-dimensions",
-        "text": "The Core Affect Dimensions",
-        "parentSection": "notation-and-foundational-concepts"
-      },
-      {
-        "level": 2,
-        "id": "additional-key-concepts",
-        "text": "Additional Key Concepts",
-        "parentSection": "notation-and-foundational-concepts"
-      },
-      {
-        "level": 1,
-        "id": "the-seven-scale-hierarchy",
-        "text": "The Seven-Scale Hierarchy"
-      },
-      {
-        "level": 2,
-        "id": "the-scales",
-        "text": "The Scales",
-        "parentSection": "the-seven-scale-hierarchy"
-      },
-      {
-        "level": 2,
-        "id": "scale-matching-principles",
-        "text": "Scale-Matching Principles",
-        "parentSection": "the-seven-scale-hierarchy"
-      },
-      {
-        "level": 1,
-        "id": "the-grounding-of-normativity",
-        "text": "The Grounding of Normativity"
-      },
-      {
-        "level": 2,
-        "id": "the-is-ought-problem",
-        "text": "The Is-Ought Problem",
-        "parentSection": "the-grounding-of-normativity"
-      },
-      {
-        "level": 2,
-        "id": "physics-biases-does-not-prescribe",
-        "text": "Physics Biases, Does Not Prescribe",
-        "parentSection": "the-grounding-of-normativity"
-      },
-      {
-        "level": 2,
-        "id": "normativity-thickens-across-scales",
-        "text": "Normativity Thickens Across Scales",
-        "parentSection": "the-grounding-of-normativity"
-      },
-      {
-        "level": 2,
-        "id": "viability-manifolds-and-proto-obligation",
-        "text": "Viability Manifolds and Proto-Obligation",
-        "parentSection": "the-grounding-of-normativity"
-      },
-      {
-        "level": 2,
-        "id": "valence-as-real-structure",
-        "text": "Valence as Real Structure",
-        "parentSection": "the-grounding-of-normativity"
-      },
-      {
-        "level": 2,
-        "id": "the-is-ought-gap-dissolves",
-        "text": "The Is-Ought Gap Dissolves",
-        "parentSection": "the-grounding-of-normativity"
-      },
-      {
-        "level": 1,
-        "id": "truth-as-scale-relative-enaction",
-        "text": "Truth as Scale-Relative Enaction"
-      },
-      {
-        "level": 2,
-        "id": "the-problem-of-truth",
-        "text": "The Problem of Truth",
-        "parentSection": "truth-as-scale-relative-enaction"
-      },
-      {
-        "level": 2,
-        "id": "scale-relative-truth",
-        "text": "Scale-Relative Truth",
-        "parentSection": "truth-as-scale-relative-enaction"
-      },
-      {
-        "level": 2,
-        "id": "enacted-truth",
-        "text": "Enacted Truth",
-        "parentSection": "truth-as-scale-relative-enaction"
-      },
-      {
-        "level": 2,
-        "id": "no-view-from-nowhere",
-        "text": "No View from Nowhere",
-        "parentSection": "truth-as-scale-relative-enaction"
-      },
-      {
-        "level": 1,
-        "id": "individual-scale-interventions",
-        "text": "Individual-Scale Interventions"
-      },
-      {
-        "level": 2,
-        "id": "valence-modulation",
-        "text": "Valence Modulation",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 2,
-        "id": "arousal-regulation",
-        "text": "Arousal Regulation",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 2,
-        "id": "integration-enhancement",
-        "text": "Integration Enhancement",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 2,
-        "id": "effective-rank-expansion",
-        "text": "Effective Rank Expansion",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 2,
-        "id": "counterfactual-weight-adjustment",
-        "text": "Counterfactual Weight Adjustment",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 2,
-        "id": "self-model-salience-modulation",
-        "text": "Self-Model Salience Modulation",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 2,
-        "id": "integrated-protocols-for-common-conditions",
-        "text": "Integrated Protocols for Common Conditions",
-        "parentSection": "individual-scale-interventions"
-      },
-      {
-        "level": 1,
-        "id": "dyadic-and-group-interventions",
-        "text": "Dyadic and Group Interventions"
-      },
-      {
-        "level": 2,
-        "id": "dyadic-affect-fields",
-        "text": "Dyadic Affect Fields",
-        "parentSection": "dyadic-and-group-interventions"
-      },
-      {
-        "level": 2,
-        "id": "dyadic-pathologies",
-        "text": "Dyadic Pathologies",
-        "parentSection": "dyadic-and-group-interventions"
-      },
-      {
-        "level": 2,
-        "id": "small-group-interventions",
-        "text": "Small Group Interventions",
-        "parentSection": "dyadic-and-group-interventions"
-      },
       {
         "level": 1,
         "id": "the-topology-of-social-bonds",
@@ -926,27 +804,15 @@
       },
       {
         "level": 1,
-        "id": "organizational-interventions",
-        "text": "Organizational Interventions"
-      },
-      {
-        "level": 2,
-        "id": "organizational-climate",
-        "text": "Organizational Climate",
-        "parentSection": "organizational-interventions"
-      },
-      {
-        "level": 2,
-        "id": "organizational-pathologies",
-        "text": "Organizational Pathologies",
-        "parentSection": "organizational-interventions"
-      },
-      {
-        "level": 2,
-        "id": "flourishing-organization-design",
-        "text": "Flourishing Organization Design",
-        "parentSection": "organizational-interventions"
-      },
+        "id": "summary-of-part-iv",
+        "text": "Summary of Part IV"
+      }
+    ]
+  },
+  {
+    "slug": "part-5",
+    "title": "Part V: Gods and Superorganisms",
+    "sections": [
       {
         "level": 1,
         "id": "superorganisms-agentic-systems-at-social-scale",
@@ -973,7 +839,7 @@
       {
         "level": 2,
         "id": "rituals-from-the-superorganism-s-perspective",
-        "text": "Rituals from the Superorganism’s Perspective",
+        "text": "Rituals from the Superorganism's Perspective",
         "parentSection": "superorganisms-agentic-systems-at-social-scale"
       },
       {
@@ -1073,19 +939,14 @@
       },
       {
         "level": 1,
-        "id": "conclusion",
-        "text": "Conclusion"
-      },
-      {
-        "level": 1,
-        "id": "appendix-symbol-reference",
-        "text": "Appendix: Symbol Reference"
+        "id": "summary-of-part-v",
+        "text": "Summary of Part V"
       }
     ]
   },
   {
-    "slug": "part-5",
-    "title": "Part V: The Transcendence of the Self",
+    "slug": "part-6",
+    "title": "Part VI: Historical Consciousness and Transcendence",
     "sections": [
       {
         "level": 1,
@@ -1212,88 +1073,57 @@
       },
       {
         "level": 1,
-        "id": "practical-guidance-individual-level",
-        "text": "Practical Guidance: Individual Level"
-      },
-      {
-        "level": 2,
-        "id": "maintaining-integration",
-        "text": "Maintaining Integration",
-        "parentSection": "practical-guidance-individual-level"
-      },
-      {
-        "level": 2,
-        "id": "developing-ai-literacy",
-        "text": "Developing AI Literacy",
-        "parentSection": "practical-guidance-individual-level"
-      },
-      {
-        "level": 2,
-        "id": "value-clarity",
-        "text": "Value Clarity",
-        "parentSection": "practical-guidance-individual-level"
-      },
-      {
-        "level": 2,
-        "id": "skill-development",
-        "text": "Skill Development",
-        "parentSection": "practical-guidance-individual-level"
-      },
-      {
-        "level": 1,
-        "id": "practical-guidance-social-level",
-        "text": "Practical Guidance: Social Level"
-      },
-      {
-        "level": 2,
-        "id": "relationship-preservation",
-        "text": "Relationship Preservation",
-        "parentSection": "practical-guidance-social-level"
-      },
-      {
-        "level": 2,
-        "id": "community-building",
-        "text": "Community Building",
-        "parentSection": "practical-guidance-social-level"
-      },
-      {
-        "level": 2,
-        "id": "institutional-navigation",
-        "text": "Institutional Navigation",
-        "parentSection": "practical-guidance-social-level"
-      },
-      {
-        "level": 1,
-        "id": "practical-guidance-civilizational-level",
-        "text": "Practical Guidance: Civilizational Level"
-      },
-      {
-        "level": 2,
-        "id": "designing-aligned-superorganisms",
-        "text": "Designing Aligned Superorganisms",
-        "parentSection": "practical-guidance-civilizational-level"
-      },
-      {
-        "level": 2,
-        "id": "governance-priorities",
-        "text": "Governance Priorities",
-        "parentSection": "practical-guidance-civilizational-level"
-      },
-      {
-        "level": 2,
-        "id": "transition-support",
-        "text": "Transition Support",
-        "parentSection": "practical-guidance-civilizational-level"
-      },
-      {
-        "level": 1,
-        "id": "summary-of-part-v",
-        "text": "Summary of Part V"
+        "id": "summary-of-part-vi",
+        "text": "Summary of Part VI"
       },
       {
         "level": 1,
         "id": "appendix-symbol-reference",
         "text": "Appendix: Symbol Reference"
+      }
+    ]
+  },
+  {
+    "slug": "part-7",
+    "title": "Part VII: The Empirical Program",
+    "sections": [
+      {
+        "level": 1,
+        "id": "what-has-been-tested",
+        "text": "What Has Been Tested"
+      },
+      {
+        "level": 2,
+        "id": "the-marl-ablation-v10",
+        "text": "The MARL Ablation (V10)",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-lenia-evolution-series-v11-v12",
+        "text": "The Lenia Evolution Series (V11–V12)",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-llm-discrepancy",
+        "text": "The LLM Discrepancy",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 1,
+        "id": "what-remains-the-research-roadmap",
+        "text": "What Remains: The Research Roadmap"
+      },
+      {
+        "level": 1,
+        "id": "experiments-distributed-throughout-the-book",
+        "text": "Experiments Distributed Throughout the Book"
+      },
+      {
+        "level": 1,
+        "id": "summary-of-part-vii",
+        "text": "Summary of Part VII"
       }
     ]
   },
@@ -1479,11 +1309,6 @@
         "id": "on-the-recovery-of-pattern",
         "text": "On the Recovery of Pattern",
         "parentSection": "the-invitation"
-      },
-      {
-        "level": 1,
-        "id": "research-roadmap",
-        "text": "Research Roadmap"
       },
       {
         "level": 1,

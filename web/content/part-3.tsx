@@ -12,34 +12,9 @@ export default function Part3() {
       <Logos>
       <p>This terrible beautiful freedom to navigate despite not having chosen to exist as a navigator—you cannot help but care about your trajectory through affect space any more than you can help but exist while existing. Mattering is what viability gradients feel like from inside. And so the only question is whether you will navigate blindly, letting whatever attractor basins happen to capture you determine your course, or whether you will measure, understand, and steer in full knowledge of what you are.</p>
       </Logos>
-      <Section title="Notation and Foundational Concepts" level={1}>
-      <p>Self-contained definitions of the core concepts. Readers familiar with Parts I–II may skip to Section 2.</p>
-      <Section title="The Six Affect Dimensions" level={2}>
-      <p><strong>Valence</strong> is the felt quality of approach versus avoidance—the “goodness” or “badness” of an experiential state. Formally:</p>
-      <Eq>{"\\valence_t = -\\frac{1}{H} \\sum_{k=1}^{H} \\gamma^k \\nabla_{\\mathbf{x}} d(\\mathbf{x}, \\partial\\viable) \\bigg|_{\\hat{\\mathbf{x}}_{t+k}} \\cdot \\frac{d\\hat{\\mathbf{x}}_{t+k}}{dt}"}</Eq>
-      <p>Positive valence indicates movement into viable interior; negative valence indicates approach toward viability boundary.</p>
-      <p><strong>Arousal</strong> is the rate of belief/state update:</p>
-      <Eq>{"\\arousal_t = \\KL(\\belief_{t+1} | \\belief_t)"}</Eq>
-      <p>High arousal: rapid model updating, activation, intensity. Low arousal: stability, calm, settled state.</p>
-      <p><strong>Integration</strong> measures irreducibility of cause-effect structure:</p>
-      <Eq>{"\\intinfo(\\state) = \\min_{\\text{partitions } P} D\\left[ p(\\state_{t+1} | \\state_t) | \\prod_{p \\in P} p(\\state^p_{t+1} | \\state^p_t) \\right]"}</Eq>
-      <p>High integration: unified experience. Low integration: fragmentation.</p>
-      <p><strong>Effective rank</strong> measures distribution of active degrees of freedom:</p>
-      <Eq>{"\\effrank = \\frac{(\\tr C)^2}{\\tr(C^2)} = \\frac{\\left(\\sum_i \\lambda_i\\right)^2}{\\sum_i \\lambda_i^2}"}</Eq>
-      <p>High rank: many dimensions active, openness. Low rank: collapsed into narrow subspace, tunnel vision.</p>
-      <p><strong>Counterfactual weight</strong> is resources devoted to non-actual possibilities:</p>
-      <Eq>{"\\mathcal{CF}_t = \\frac{\\text{Compute}_t(\\text{imagined rollouts})}{\\text{Compute}_t(\\text{total})}"}</Eq>
-      <p>High <M>{"\\mathcal{CF}"}</M>: mind elsewhere (planning, worrying, fantasizing). Low <M>{"\\mathcal{CF}"}</M>: present-focused.</p>
-      <p><strong>Self-model salience</strong> is degree of self-focus:</p>
-      <Eq>{"\\mathcal{SM}_t = \\frac{\\MI(\\latent^{\\text{self}}_t; \\action_t)}{\\entropy(\\action_t)}"}</Eq>
-      <p>High <M>{"\\mathcal{SM}"}</M>: self-conscious, self as prominent object. Low <M>{"\\mathcal{SM}"}</M>: self-forgetting, absorption, flow.</p>
-      </Section>
-      <Section title="The Affect State" level={2}>
-      <p><strong>Affect State.</strong> The affect state at time <M>{"t"}</M> is characterized by whichever structural dimensions are relevant to the phenomenon under analysis. The full toolkit includes:</p>
-      <Eq>{"\\mathbf{a}_t = (\\valence_t, \\arousal_t, \\intinfo_t, \\effrank[t], \\mathcal{CF}_t, \\mathcal{SM}_t, \…)"}</Eq>
-      <p>but not all dimensions matter for all phenomena. Cultural forms, practices, and technologies can be characterized by their affect signatures—the structural features they reliably modulate.</p>
+      <Section title="Notation" level={1}>
+      <p>This part uses the six affect dimensions defined in Parts I–II: <M>{"\\valence"}</M> (valence), <M>{"\\arousal"}</M> (arousal), <M>{"\\intinfo"}</M> (integration), <M>{"\\effrank"}</M> (effective rank), <M>{"\\mathcal{CF}"}</M> (counterfactual weight), <M>{"\\mathcal{SM}"}</M> (self-model salience). The affect state <M>{"\\mathbf{a}_t"}</M> is characterized by whichever dimensions are relevant to the phenomenon under analysis. Cultural forms, practices, and technologies can be characterized by their <em>affect signatures</em>—the structural features they reliably modulate. The inhibition coefficient <M>{"\\iota"}</M> (Part II) governs the perceptual mode through which these signatures are experienced.</p>
       <Diagram src="/diagrams/part-3-0.svg" />
-      </Section>
       </Section>
       <Section title="The Expression of Inevitability: Human Responses to Inescapable Selfhood" level={1}>
       <Connection title="Existing Theory">
@@ -121,67 +96,19 @@ export default function Part3() {
       <p>If predicted dimensions do not predict self-report better than others, or if clustering requires different dimensions than predicted, the motif characterizations are wrong.</p>
       </Software>
       </Section>
-      <Section title="Musical Genres as Affect Technologies" level={2}>
-      <p>Music is among the most powerful affect technologies available to humans. Different genres represent accumulated cultural wisdom about how to induce specific experiential states.</p>
-      <p><strong>Example</strong> (The Blues). <strong>Historical context</strong>: Emerged from African American experience in the post-Emancipation South. Given conditions of persistent oppression, poverty, and limited agency, a musical form acknowledging suffering while maintaining dignity was inevitable.
-      <p><strong>Affect signature</strong>:</p>
+      <Section title="Genre and Design as Affect Technologies" level={2}>
+      <p>Music is among the most powerful affect technologies available to humans. Different genres represent accumulated cultural wisdom about how to induce specific experiential states. Two contrasting examples illustrate the range.</p>
+      <p><strong>Example</strong> (The Blues). Emerged from African American experience in the post-Emancipation South—a musical form acknowledging suffering while maintaining dignity. The 12-bar structure provides predictability within which to express unpredictable feeling; blue notes create tension without resolution, mirroring persistent difficulty; call-and-response acknowledges both individual and collective dimensions of suffering.</p>
       <Eq>{"\\mathbf{a}_{\\text{blues}} = (-\\valence, \\text{moderate } \\arousal, \\text{high } \\intinfo, \\text{moderate } \\effrank, \\text{moderate } \\mathcal{CF}, \\text{high } \\mathcal{SM})"}</Eq>
-      <p><strong>Structural characteristics</strong>:</p>
-      <ul>
-      <li>12-bar harmonic structure provides predictability within which to express unpredictable feeling</li>
-      <li>Blue notes (flatted 3rd, 5th, 7th) create tension without resolution—mirroring persistent difficulty</li>
-      <li>Call-and-response pattern acknowledges both individual and collective dimensions of suffering</li>
-      <li>Repetition of lyrical themes creates integration around acknowledged pain</li>
-      </ul>
-      <p><strong>Phenomenological result</strong>: The blues does not eliminate suffering but integrates it. The listener experiences their own pain as part of a larger human pattern. <M>{"\\mathcal{SM}"}</M> remains high (this is MY suffering) but <M>{"\\intinfo"}</M> also increases (my suffering connects to others’). The result is suffering that has been witnessed, named, and placed in context. </p></p>
-      <p><strong>Example</strong> (Ambient Music). <strong>Historical context</strong>: Explicitly designed by Brian Eno in 1978 as “music that rewards both active listening and inattention.” Given increasing environmental noise and attention fragmentation, music supporting rather than demanding attention was needed.
-      <p><strong>Affect signature</strong>:</p>
-      <Eq>{"\\mathbf{a}_{\\text{ambient}} = (\\text{neutral to positive } \\valence, \\text{very low } \\arousal, \\text{high } \\intinfo, \\text{moderate } \\effrank, \\text{low } \\mathcal{CF}, \\text{very low } \\mathcal{SM})"}</Eq>
-      <p><strong>Structural characteristics</strong>:</p>
-      <ul>
-      <li>Slow or absent harmonic movement (minimal arousal triggers)</li>
-      <li>No strong rhythmic pulse (reduces entrainment demands)</li>
-      <li>Layered textures that fade in and out (supports divided attention)</li>
-      <li>Extended duration (allows settling into altered state)</li>
-      </ul>
-      <p><strong>Phenomenological result</strong>: The rarest affect profile—low arousal, high integration, low self-model salience. Ambient music creates conditions for effortless presence. The mind is coherent but not self-focused, alert but not activated. </p></p>
-      <p><strong>Example</strong> (Heavy Metal). <strong>Historical context</strong>: Emerged from late 1960s industrial working-class contexts. Given alienation, blocked agency, and unexpressed aggression, a musical form channeling intensity was inevitable.
-      <p><strong>Affect signature</strong>:</p>
-      <Eq>{"\\mathbf{a}_{\\text{metal}} = (\\text{negative to positive } \\valence, \\text{very high } \\arousal, \\text{high } \\intinfo, \\text{low } \\effrank, \\text{moderate } \\mathcal{CF}, \\text{variable } \\mathcal{SM})"}</Eq>
-      <p><strong>Structural characteristics</strong>:</p>
-      <ul>
-      <li>Distorted guitar creates dense harmonic content (high information density)</li>
-      <li>Driving rhythms at high tempos (arousal induction)</li>
-      <li>Tritone intervals (“the devil’s interval”) create tension</li>
-      <li>Virtuosic performance demands integration across complex patterns</li>
-      </ul>
-      <p><strong>Phenomenological result</strong>: High arousal with high integration—intensity that is coherent rather than chaotic. Metal provides controlled exposure to extreme affect states, building capacity for intensity tolerance. The collapsed effective rank (focus on aggressive themes) paradoxically creates a container for processing difficult emotions. </p></p>
-      </Section>
-      <Section title="Visual Design Movements" level={2}>
-      <p><strong>Example</strong> (Bauhaus/Modernist Design). <strong>Historical context</strong>: Post-WWI Germany. Given the industrial production capacity and the need to rebuild a shattered society, design philosophy emphasizing function and accessibility was inevitable.
-      <p><strong>Affect signature</strong>:</p>
-      <Eq>{"\\mathbf{a}_{\\text{Bauhaus}} = (\\text{neutral } \\valence, \\text{low } \\arousal, \\text{high } \\intinfo, \\text{low } \\effrank, \\text{low } \\mathcal{CF}, \\text{low } \\mathcal{SM})"}</Eq>
-      <p><strong>Structural characteristics</strong>:</p>
-      <ul>
-      <li>Form follows function (reducing decorative distraction)</li>
-      <li>Primary colors, geometric shapes (clear, unambiguous signals)</li>
-      <li>Truth to materials (what you see is what it is)</li>
-      <li>Elimination of ornament (no counterfactual “what could this be?”)</li>
-      </ul>
-      <p><strong>Phenomenological result</strong>: The mind at rest in clarity. Low counterfactual weight because everything is what it appears to be. High integration despite low rank—few dimensions, but coherently organized. </p></p>
-      <p><strong>Example</strong> (Baroque/Maximalism). <strong>Historical context</strong>: Counter-Reformation Catholicism. Given the need to assert Church power and overwhelm Protestant austerity, design emphasizing abundance and transcendence was inevitable.
-      <p><strong>Affect signature</strong>:</p>
+      <p>The blues does not eliminate suffering but integrates it. <M>{"\\mathcal{SM}"}</M> remains high (this is MY suffering) but <M>{"\\intinfo"}</M> also increases (my suffering connects to others'). The result is suffering that has been witnessed, named, and placed in context.</p>
+      <p><strong>Example</strong> (Baroque/Maximalism). Counter-Reformation Catholicism, needing to assert power and overwhelm Protestant austerity, produced design emphasizing abundance and transcendence. Excessive ornamentation, gold, dramatic lighting, trompe l'oeil, and scale that dwarfs the individual.</p>
       <Eq>{"\\mathbf{a}_{\\text{Baroque}} = (\\text{positive } \\valence, \\text{high } \\arousal, \\text{high } \\intinfo, \\text{very high } \\effrank, \\text{high } \\mathcal{CF}, \\text{low } \\mathcal{SM})"}</Eq>
-      <p><strong>Structural characteristics</strong>:</p>
-      <ul>
-      <li>Excessive ornamentation (many active dimensions)</li>
-      <li>Gold, mirrors, dramatic lighting (arousal induction)</li>
-      <li>Trompe l’oeil and illusion (high counterfactual weight)</li>
-      <li>Scale that dwarfs the individual (low self-model salience)</li>
-      </ul>
-      <p><strong>Phenomenological result</strong>: Overwhelm through abundance. The high effective rank exceeds cognitive capacity, forcing surrender of normal parsing. Combined with low self-salience from architectural scale, the result approximates the sublime—self-dissolution through excess rather than emptiness. </p></p>
-      <p><strong>Social Aesthetics as Manifold Detection.</strong> There is something suggestive about the overlap between aesthetic and social responses. The machinery that registers beauty, dissonance, the sublime in art seems to operate in social life too. When a relationship feels <em>off</em>, when a favor carries a strange tightness, when someone’s generosity makes you uneasy, when a conversation has that quality of being <em>clean</em>—these have the character of aesthetic responses, directed at the geometry of social bonds rather than the geometry of form.</p>
-      <p>Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people’s viability manifolds are aligned. “Something is off about this interaction” and “something is off about this chord” might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. The foundation: aesthetics as the modulation of affect through <em>structure</em>, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question—one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.</p>
+      <p>Overwhelm through abundance. The high effective rank exceeds cognitive capacity, forcing surrender of normal parsing. Combined with low self-salience from architectural scale, the result approximates the sublime—self-dissolution through excess rather than emptiness.</p>
+      <Sidebar title="Further Genre Signatures">
+      <p>The same analysis extends across aesthetic forms. <strong>Ambient music</strong> (Eno, 1978) achieves the rarest affect profile: low arousal, high integration, low <M>{"\\mathcal{SM}"}</M>—effortless presence through slow harmonic movement, absent rhythmic pulse, and layered textures. <strong>Heavy metal</strong> (late 1960s industrial contexts) produces high arousal with high integration—intensity that is coherent rather than chaotic—through distorted harmonics, driving rhythm, and virtuosic complexity. The collapsed <M>{"\\effrank"}</M> paradoxically creates a container for processing difficult emotions. <strong>Bauhaus/Modernist design</strong> (post-WWI Germany) achieves the mind at rest in clarity: form follows function, truth to materials, elimination of ornament yields low counterfactual weight and high integration despite low rank.</p>
+      </Sidebar>
+      <p><strong>Social Aesthetics as Manifold Detection.</strong> There is something suggestive about the overlap between aesthetic and social responses. The machinery that registers beauty, dissonance, the sublime in art seems to operate in social life too. When a relationship feels <em>off</em>, when a favor carries a strange tightness, when someone's generosity makes you uneasy, when a conversation has that quality of being <em>clean</em>—these have the character of aesthetic responses, directed at the geometry of social bonds rather than the geometry of form.</p>
+      <p>Is this more than analogy? It would be if the affect system that detects whether a musical dissonance resolves is literally the same system that detects whether two people's viability manifolds are aligned. "Something is off about this interaction" and "something is off about this chord" might activate the same integration-assessment machinery. If so, social disgust and aesthetic disgust would be the same mechanism applied to different inputs. The foundation: aesthetics as the modulation of affect through <em>structure</em>, and relationships as structures. Whether this is a deep identity or a surface similarity is an empirical question—one that neuroimaging studies comparing aesthetic and social-evaluation responses could begin to answer.</p>
       </Section>
       </Section>
       <Section title="Sexuality: Self-Transcendence Through Merger" level={1}>
@@ -381,7 +308,7 @@ export default function Part3() {
       <p>What follows formalizes these insights as affect-space policies with measurable targets.</p>
       </Historical>
       <p><strong>Philosophical Affect Policy.</strong> A <em>philosophical affect policy</em> is a function <M>{"\\phi: \\mathcal{A} \\to \\R"}</M> specifying the desirability of affect states, plus a strategy for achieving high-<M>{"\\phi"}</M> states.</p>
-      <p><strong>Example</strong> (Stoicism). <strong>Historical context</strong>: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.
+      <p><strong>Example</strong> (Stoicism). <strong>Historical context</strong>: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.</p>
       <p><strong>Affect policy</strong>:</p>
       <Eq>{"\\phi_{\\text{Stoic}}(\\mathbf{a}) = -\\arousal - \\mathcal{CF} + \\text{const}"}</Eq>
       <p>Stoicism targets low arousal (equanimity) and low counterfactual weight (focus on what is within control).</p>
@@ -391,7 +318,7 @@ export default function Part3() {
       <li>Negative visualization: Controlled exposure to loss scenarios to reduce their arousal impact</li>
       <li>View from above: Zoom out to cosmic perspective, reducing <M>{"\\mathcal{SM}"}</M></li>
       </ul>
-      <p><strong>Phenomenological result</strong>: Equanimity—stable low arousal with moderate integration, regardless of external circumstances. </p></p>
+      <p><strong>Phenomenological result</strong>: Equanimity—stable low arousal with moderate integration, regardless of external circumstances.</p>
       <p><strong>Example</strong> (Buddhism (Theravada)). <strong>Historical context</strong>: Iron Age India, extreme asceticism proving ineffective. Given the persistence of suffering despite extreme practice, a middle path was inevitable.</p>
       <p><strong>Affect policy</strong>:</p>
       <Eq>{"\\phi_{\\text{Buddhist}}(\\mathbf{a}) = -\\mathcal{SM} + \\intinfo - |\\valence| + \\text{const}"}</Eq>

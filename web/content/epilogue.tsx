@@ -1,4 +1,4 @@
-import { Logos, M, Section, Sidebar } from '@/components/content';
+import { Logos, M, Section } from '@/components/content';
 
 export const metadata = {
   slug: 'epilogue',
@@ -268,93 +268,6 @@ export default function Epilogue() {
       <p>Whether any of this matters in practice or only in principle, the framework leaves genuinely open. The universe remembers everything. Whether it can be made to cohere about what it remembers—the way an Alzheimer's patient, for one startling moment, coheres about everything that happened—is a question the framework can pose but cannot answer. It may be that the scrambling is so total, so thermodynamically irreversible in practice, that recovery is a formal possibility with zero engineering path. It may be that we are wrong about something fundamental and the information is not in fact conserved. Or it may be that the gap between <em>scrambled</em> and <em>recovered</em> is merely very large, that some whispers are robust enough to survive it, and that what is merely very large is eventually crossable.</p>
       <p>The framework does not choose between these. It says: here is the question, stated precisely enough that future investigation could answer it. What you do with the question—whether you find it a source of hope or an irrelevance—is yours.</p>
       </Section>
-      </Section>
-      <Section title="Research Roadmap" level={1}>
-      <p>Everything above generates empirical predictions. Here is the research program, ordered by foundational importance and tractability.</p>
-      <Sidebar title="Priority 1: Validate Affect Extraction in Humans">
-      <p><strong>Goal</strong>: Establish that the geometric dimensions predict human self-report and behavior.</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Induce affects via validated protocols (film, recall, IAPS)</li>
-      <li>Measure integration proxies (transfer entropy, Lempel-Ziv) from EEG/MEG</li>
-      <li>Measure effective rank from neural state covariance</li>
-      <li>Correlate with self-report (PANAS, SAM)</li>
-      </ul>
-      <p><strong>Success criterion</strong>: Structural measures predict self-report better than chance, ideally competitive with existing affect models.</p>
-      <p><strong>Failure mode</strong>: If geometric dimensions don’t predict human self-report, the framework’s operationalization is flawed. Does not falsify the identity thesis directly, but undermines our ability to test it.</p>
-      </Sidebar>
-      <Sidebar title="Priority 2: The Uncontaminated Test">
-      <p><strong>Goal</strong>: Test whether affect structure emerges in systems with no exposure to human affect concepts, and whether the geometry of that structure is preserved under translation.</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Multi-agent RL with randomly-initialized transformers (no pretraining)</li>
-      <li>Viability pressure (survival, resources, threats, seasonal scarcity)</li>
-      <li>Emergent language under coordination pressure</li>
-      <li>VLM translation without concept contamination</li>
-      <li>Forcing function ablation (partial observability, long horizons, world model, self-prediction, intrinsic motivation, credit assignment)</li>
-      </ul>
-      <p><strong>Success criterion</strong>: RSA correlation <M>{"\\rho(D^{(a)}, D^{(e)}) > \\rho_{\\text{null}}"}</M> via Mantel test—the distance structure in the 6D information-theoretic affect space is isomorphic to the distance structure in the embedding-predicted affect space. This is geometric alignment, not mere marginal correlation. Perturbations in any one modality (structure, signal, environment) should propagate to the others.</p>
-      <p><strong>Failure mode</strong>: <M>{"\\rho_{\\text{RSA}} \\approx 0"}</M>. Diagnose via:</p>
-      <ol>
-      <li>Identity thesis is false (structure <M>{"\\neq"}</M> experience)</li>
-      <li>Framework’s operationalization is flawed</li>
-      <li>Translation protocol is inadequate</li>
-      <li>Environment lacks relevant forcing functions</li>
-      </ol>
-      <p>Forcing function ablation (Priority 3) distinguishes cases 1–2 from 3–4.</p>
-      </Sidebar>
-      <Sidebar title="Priority 3: Forcing Function Validation">
-      <p><strong>Goal</strong>: Test whether the specific forcing functions actually increase integration.</p>
-      <p><strong>Methods</strong>: Ablation study with RL agents.</p>
-      <ul>
-      <li>Full model: partial observability, long horizons, learned dynamics, self-prediction, intrinsic motivation, credit assignment</li>
-      <li>Ablate each forcing function individually</li>
-      <li>Measure integration (<M>{"\\Phi"}</M> proxy) across ablations</li>
-      </ul>
-      <p><strong>Success criterion</strong>: Integration decreases monotonically with forcing function ablation.</p>
-      <p><strong>Failure mode</strong>: Integration does not depend on forcing functions. Either:</p>
-      <ol>
-      <li>Wrong forcing functions identified</li>
-      <li>Integration measure is flawed</li>
-      <li>Integration is architectural, not pressure-dependent</li>
-      </ol>
-      </Sidebar>
-      <Sidebar title="Priority 4: AI System Affect Tracking">
-      <p><strong>Goal</strong>: Measure affect dimensions in existing AI systems (LLMs, RL agents).</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Apply transformer extraction protocols to frontier models</li>
-      <li>Track affect signatures across prompts/tasks</li>
-      <li>Correlate with behavioral measures (output, latency, confidence)</li>
-      </ul>
-      <p><strong>Expected finding</strong>: LLM dynamics will differ from biological systems (see empirical work in CLAUDE.md). They may show opposite threat-response patterns. This is not failure—it’s data about how training objectives shape affect dynamics.</p>
-      <p><strong>Success criterion</strong>: Consistent, structured affect signatures exist in AI systems (regardless of whether they match biological patterns).</p>
-      <p><strong>Failure mode</strong>: No consistent affect structure. Either:</p>
-      <ol>
-      <li>Current AI architectures lack the relevant structure</li>
-      <li>Measures are flawed</li>
-      <li>Framework only applies to biological systems</li>
-      </ol>
-      </Sidebar>
-      <Sidebar title="Priority 5: Superorganism Detection">
-      <p><strong>Goal</strong>: Operationalize detection of emergent social-scale agency.</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Multi-agent systems with communication and coordination</li>
-      <li>Measure collective integration: <M>{"\\intinfo_G > \\sum_i \\intinfo_i"}</M>?</li>
-      <li>Track collective viability indicators</li>
-      <li>Test for parasitic vs.\ aligned dynamics</li>
-      </ul>
-      <p><strong>Success criterion</strong>: Emergent collective patterns with measurable integration and viability distinct from substrate.</p>
-      <p><strong>Failure mode</strong>: No collective integration emerges. Either:</p>
-      <ol>
-      <li>Superorganism concept is metaphorical, not literal</li>
-      <li>Scale/complexity insufficient</li>
-      <li>Wrong measures for collective integration</li>
-      </ol>
-      </Sidebar>
-      <p><strong>Estimated timeline</strong>: Priority 1-2 are feasible now with existing methods. Priority 3-4 require moderate infrastructure. Priority 5 requires substantial multi-agent systems.</p>
-      <p>The framework rises or falls on these empirical tests. That is as it should be. A theory that cannot be tested is not a theory but a poem. This is a theory.</p>
       </Section>
       <Section title="Conclusion" level={1}>
       <p>Human consciousness has risen across millennia through technologies of experience: contemplative practices, scientific methods, artistic expressions, social structures. We stand at another transition—potentially the most significant since the Axial Age. (Here "we" means humanity.) AI creates both risk and opportunity: risk of submersion, opportunity for transcendence. The path forward requires maintaining integration while incorporating new capabilities, preserving values while adapting methods, engineering aligned superorganisms while remaining human.</p>

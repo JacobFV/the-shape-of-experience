@@ -1,4 +1,4 @@
-import { Align, Connection, Diagram, Empirical, Eq, Experiment, Figure, Historical, Logos, M, OpenQuestion, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
+import { Align, Connection, Diagram, Empirical, Eq, Experiment, Figure, Historical, Logos, M, NormativeImplication, OpenQuestion, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
 
 export const metadata = {
   slug: 'part-1',
@@ -42,7 +42,8 @@ export default function Part1() {
       <li><strong>Self-modeling.</strong> Distinctions about the distinguisher. The system’s world model includes itself. The existential burden appears. The identity thesis says: this is experience.</li>
       <li><strong>Meta-self-modeling.</strong> Distinctions about the process of distinguishing. The system models <em>how</em> it models. This is where the system can ask “why do I perceive the world this way?” and begin to choose its perceptual configuration rather than being stuck with whatever its training installed.</li>
       </ol>
-      <p>Each level is a prerequisite for the next. Each increases the density of distinctions the system maintains, the degree of integration among them, and the ratio of self-referential to externally-imposed structure. The gradient has a direction—not temporal (it doesn’t say when things happen) but topological (it says what kinds of organizations are attractors conditional on the existence of lower levels).</p>
+      <p>There is a transition between levels four and five worth making explicit. At level four, the system has <em>extractable features</em>—aspects of its world model that can be isolated, compared, measured. These are what we might call <em>narrow qualia</em>: characterizable entirely through their relationships to each other, without requiring access to the system's unified experience. The temperature is separable from the color is separable from the distance. At level five, the system includes itself in its own model, and the resulting loop produces something that cannot be decomposed into extractable features without loss. The unified moment of experience—everything present at once—exceeds the sum of its parts. This totality is <em>broad qualia</em>. The gap between them—the extent to which the whole exceeds any decomposition into characterizable aspects—is what integration measures (Part II). It is the structural signature of level five: the thing that self-modeling adds to world-modeling. Narrow qualia can be compared across systems by measuring structural similarity; broad qualia can only be pointed at from inside.</p>
+      <p>Each level is a prerequisite for the next. Each increases the density of distinctions the system maintains, the degree of integration among them, and the ratio of self-referential to externally-imposed structure. The gradient has a direction—not temporal (it doesn't say when things happen) but topological (it says what kinds of organizations are attractors conditional on the existence of lower levels).</p>
       <p>This gradient of increasing distinction-density points somewhere, and that destination deserves a name. The “purpose” of the universe—in the only non-mystical sense of “purpose”—is the attractor structure of its state space. A system “aims” at an attractor in the same sense that water “aims” downhill. There is no intention, no designer, no purpose in the anthropomorphic sense. But there is a topological fact: the state space has a shape, and that shape constrains trajectories, and those constraints mean that not all endpoints are equally likely. Consciousness—integrated, self-referential, experiential distinction—is what this attractor gradient points toward. It is what things become when they are allowed to become.</p>
       <p>Final cause, long banished from science, returns as topology. Not a designer’s plan. Not an accident. The shape of the possible, doing what it does.</p>
       <p>This reframes the book’s central argument. The thermodynamic inevitability of the next section is not the deepest floor—it operates on a substrate of distinction that is itself generic. And it opens a question we will return to in later parts: the gradient that produces existence from nothing, life from chemistry, and mind from neurology also produces something else when the distinguishing operation is applied with maximum intensity to the self-world boundary. The self claims all the interiority and the world goes dead as a side effect. That phenomenon—and the parameter that governs it—will become important.</p>
@@ -690,6 +691,98 @@ export default function Part1() {
       <p>where <M>{"\\lambda_i"}</M> are the eigenvalues of <M>{"C"}</M>. This is bounded by <M>{"1 \\leq \\effrank \\leq \\rank(C)"}</M>, with <M>{"\\effrank = 1"}</M> when all variance is in one dimension (maximally concentrated) and <M>{"\\effrank = \\rank(C)"}</M> when variance is uniformly distributed across all active dimensions.</p>
       </Section>
       </Section>
+      <Section title="The Grounding of Normativity" level={1}>
+      <Section title="The Is-Ought Problem" level={2}>
+      <p>The classical formulation holds that normative conclusions cannot be derived from purely descriptive premises:</p>
+      <Eq>{"{\\text{is-statements}} \\not\\Rightarrow {\\text{ought-statements}}"}</Eq>
+      <p>This rests on an assumption: physics constitutes the only "is," and physics is value-neutral. I reject this assumption.</p>
+      </Section>
+      <Section title="Physics Biases, Does Not Prescribe" level={2}>
+      <p>Physics is probabilistic through and through. Thermodynamic "laws" are statistical; individual trajectories can violate them. Quantum dynamics provide probability amplitudes, not deterministic evolution. Physics describes <em>biases</em>—which outcomes are more likely—not necessities. This means that even at the lowest scales, there is something like differential weighting of outcomes. A <strong>proto-preference</strong> at scale <M>{"\\sigma"}</M> is any asymmetry in the probability measure over outcomes:</p>
+      <Eq>{"p_\\sigma(\\text{outcome}_1) \\neq p_\\sigma(\\text{outcome}_2)"}</Eq>
+      <p>At the quantum scale, probability amplitudes are proto-preferences. At the thermodynamic scale, free energy gradients bias toward certain configurations.</p>
+      </Section>
+      <Section title="Normativity Thickens Across Scales" level={2}>
+      <table>
+      <tr><th>Thermodynamic</th><th>Free energy gradients</th><th>Dissipative selection</th></tr>
+      <tr><td>Boundary</td><td>Viability manifolds</td><td>Persistence conditions</td></tr>
+      <tr><td>Modeling</td><td>Prediction error</td><td>Truth instrumentally necessary</td></tr>
+      <tr><td>Self-modeling</td><td>Valence</td><td>Felt approach/avoid</td></tr>
+      <tr><td>Behavioral</td><td>Policies</td><td>Functional norms</td></tr>
+      <tr><td>Cultural</td><td>Language</td><td>Explicit ethics</td></tr>
+      </table>
+      <p>There is no scale <M>{"\\sigma_0"}</M> below which normativity is exactly zero and above which it is nonzero. Instead, normativity accumulates continuously:</p>
+      <Eq>{"N(\\sigma) = \\int_0^{\\sigma} \\frac{\\partial N}{\\partial \\sigma'}, d\\sigma'"}</Eq>
+      <p>where <M>{"\\partial N / \\partial \\sigma > 0"}</M> for all <M>{"\\sigma"}</M> in the range of physical to cultural scales. Normativity accumulates continuously.</p>
+      </Section>
+      <Section title="Viability Manifolds and Proto-Obligation" level={2}>
+      <p>A system <M>{"S"}</M> has something like a proto-obligation to remain within <M>{"\\viable"}</M>, in the sense that the viability boundary defines the conditions for persistence:</p>
+      <Eq>{"\\mathbf{s} \\in \\viable \\iff \\text{system persists}"}</Eq>
+      <p>Note carefully what this does <em>not</em> claim. It does not derive obligation from persistence—that would be circular. The biconditional merely defines the viable region. The normativity enters at the next step: when the system develops a self-model and thereby acquires valence (gradient direction on the viability landscape), the system <em>cares</em> about its viability in the constitutive sense that caring is what valence is. You cannot have a viability gradient that is felt from inside without it mattering. The "why should it care?" question is confused: a system with valence already cares; the valence is the caring. The is-ought gap appears only if you try to derive caring from non-caring. The framework denies that such a derivation is needed: caring was never absent from the system; it was present as proto-normativity from the first asymmetric probability, and it became felt normativity the moment the system acquired a self-model.</p>
+      <p>The boundary <M>{"\\partial\\viable"}</M> also implicitly defines a proto-value function:</p>
+      <Eq>{"V_{\\text{proto}}(\\mathbf{s}) = -d(\\mathbf{s}, \\partial\\viable)"}</Eq>
+      <p>States far from the boundary are "better" for the system than states near it.</p>
+      </Section>
+      <Section title="Valence as Real Structure" level={2}>
+      <p>When the system develops a self-model, valence emerges—not projected onto neutral stuff but as the structural signature of gradient direction on the viability landscape:</p>
+      <Eq>{"\\Val = f\\left(\\nabla_{\\mathbf{s}} d(\\mathbf{s}, \\partial\\viable) \\cdot \\dot{\\mathbf{s}}\\right)"}</Eq>
+      <p>Suffering is not neutral stuff that we decide to call bad. Suffering is the structural signature of a self-maintaining system being pushed toward dissolution. The badness is constitutive, not added.</p>
+      </Section>
+      <Section title="The Is-Ought Gap Dissolves" level={2}>
+      <p>Let <M>{"D_{\\text{exp}}"}</M> be the set of facts at the experiential scale, including valence. Then normative conclusions about approach/avoidance follow directly from experiential-scale facts.</p>
+      <p>The is-ought gap was an artifact of looking only at the bottom (neutral-seeming) and top (explicitly normative) of the hierarchy, while ignoring the gradient between them. There is also an <M>{"\\iota"}</M> dimension to the artifact (the inhibition coefficient, introduced in Part II). The is-ought problem was formulated by philosophers operating at high <M>{"\\iota"}</M>—the mechanistic mode that factorizes fact from value, perception from affect, description from evaluation. At low <M>{"\\iota"}</M>, the gap does not appear with the same force: perceiving something as alive automatically includes perceiving its flourishing or suffering as mattering. The participatory perceiver does not need to bridge the gap because the participatory mode never separated the two sides. This does not make the dissolution merely perspectival. The viability gradient is there regardless of <M>{"\\iota"}</M>. But the <em>perception</em> that facts and values inhabit separate realms is a feature of the perceptual configuration, not of reality. The is-ought gap and the hard problem are ethical and metaphysical instances of the same <M>{"\\iota"}</M> artifact.</p>
+      <NormativeImplication title="Normative Implication">
+      <p>Once we recognize that valence is a real structural property at the experiential scale—not a projection onto neutral physics—the fact/value dichotomy dissolves. "This system is suffering" is both a factual claim (about structure) and a normative claim (suffering is bad by constitution, not by convention).</p>
+      </NormativeImplication>
+      <p>The trajectory-selection framework developed above deepens this dissolution. If attention selects trajectories, and values guide attention—you attend to what you care about, ignore what you don't—then values are not epiphenomenal commentary on a value-free physical process. They are causal participants in trajectory selection. The system's "oughts" (what it values, what it attends to, what it measures) literally shape which trajectory it follows through state space. This is not the claim that wishing makes it so. The <em>a priori</em> distribution is still physics. But the effective distribution—the product of physics and measurement—depends on the measurement distribution, and the measurement distribution is shaped by values. In this sense, "ought" is not a separate domain from "is." Ought is a component of the mechanism that determines which "is" the system inhabits.</p>
+      </Section>
+      </Section>
+      <Section title="Truth as Scale-Relative Enaction" level={1}>
+      <Section title="The Problem of Truth" level={2}>
+      <p>Standard theories of truth face persistent difficulties:</p>
+      <ul>
+      <li><strong>Correspondence theory</strong>: Truth as matching reality. But: which description of reality? At which scale? The quantum description doesn't "match" the chemical description, yet both can be true.</li>
+      <li><strong>Coherence theory</strong>: Truth as internal consistency. But: internally consistent systems can be collectively false (coherent delusions).</li>
+      <li><strong>Pragmatic theory</strong>: Truth as what works. But: works for whom, for what purpose? Different purposes yield different "truths."</li>
+      </ul>
+      <p>A synthesis: truth is scale-relative enaction within coherence constraints, where "working" is grounded in viability preservation.</p>
+      </Section>
+      <Section title="Scale-Relative Truth" level={2}>
+      <p>A proposition <M>{"p"}</M> is <em>true at scale <M>{"\\sigma"}</M></em> if it accurately describes the cause-effect structure at that scale:</p>
+      <Eq>{"\\text{True}_\\sigma(p) \\iff p \\text{ minimizes prediction error for scale-$\\sigma$ interactions}"}</Eq>
+      <p><strong>Example</strong> (Scale-Relative Truths).</p>
+      <ul>
+      <li><strong>Quantum scale</strong>: "The electron has no definite position" is true.</li>
+      <li><strong>Chemical scale</strong>: "Water is H<M>{"_2"}</M>O" is true.</li>
+      <li><strong>Biological scale</strong>: "The cell is dividing" is true.</li>
+      <li><strong>Psychological scale</strong>: "She is angry" is true.</li>
+      <li><strong>Social scale</strong>: "The company is failing" is true.</li>
+      </ul>
+      <p>None of these truths reduces without remainder to truths at other scales. Each accurately describes structure at its scale.</p>
+      <p>Scale-relative truths must be consistent across adjacent scales, in the sense that:</p>
+      <Eq>{"\\text{True}_\\sigma(p) \\land \\text{True}_{\\sigma'}(q) \\implies \\neg(p \\text{ contradicts } q \\text{ at shared interface})"}</Eq>
+      <p>But they need not be inter-translatable. Chemical truths constrain but do not replace biological truths.</p>
+      </Section>
+      <Section title="Enacted Truth" level={2}>
+      <p>Truth is enacted rather than passively discovered. The true model at scale <M>{"\\sigma"}</M> is the one that best compresses the interaction history at that scale:</p>
+      <Eq>{"\\text{Truth}_\\sigma(\\mathcal{W}) = \\arg\\min_{\\mathcal{W}' \\in \\mathcal{M}_\\sigma} \\mathcal{L}_{\\text{pred}}(\\mathcal{W}', \\text{interaction history})"}</Eq>
+      <p>where <M>{"\\mathcal{M}_\\sigma"}</M> is the space of models expressible at scale <M>{"\\sigma"}</M>.</p>
+      <p>This is not mere instrumentalism. The enacted truth must:</p>
+      <ol>
+      <li>Predict accurately (correspondence constraint)</li>
+      <li>Cohere internally (coherence constraint)</li>
+      <li>Preserve viability (pragmatic constraint)</li>
+      </ol>
+      <p>For self-maintaining systems, truth-seeking and viability-preservation converge in the long run:</p>
+      <Eq>{"\\lim_{t \\to \\infty} \\mathcal{W}^*_{\\text{viability}} = \\lim_{t \\to \\infty} \\mathcal{W}^*_{\\text{prediction}}"}</Eq>
+      <p>A model that systematically misrepresents the world will eventually lead to viability failure.</p>
+      </Section>
+      <Section title="No View from Nowhere" level={2}>
+      <p>There is no "view from nowhere"—no scale-free, perspective-free truth. Every truth claim is made from within some scale of organization, using models compressed to that scale's capacity.</p>
+      <p>This is not relativism. Some claims are false at every scale (internal contradictions). Some claims are true at their scale and can be verified by any observer at that scale. But there is no master scale from which all truths can be stated.</p>
+      <p>Truth is scale-relative but not arbitrary. At each scale, there are facts about cause-effect structure that constrain what can be truly said. The viability imperative ensures that truth-seeking is not merely optional but constitutively necessary for persistence.</p>
+      </Section>
+      </Section>
       <Section title="Summary of Part I" level={1}>
       <ol>
       <li><strong>Thermodynamic foundation</strong>: Driven nonlinear systems under constraint generically produce structured attractors. Organization is thermodynamically enabled, not forbidden.</li>
@@ -698,6 +791,8 @@ export default function Part1() {
       <li><strong>Self-model inevitability</strong>: When self-effects dominate observations, self-modeling becomes the cheapest path to predictive accuracy.</li>
       <li><strong>Forcing functions</strong>: Task demands (partial observability, long horizons, learned dynamics, self-prediction, intrinsic motivation, credit assignment) push systems toward dense integration.</li>
       <li><strong>Measure-theoretic inevitability</strong>: Under broad priors, self-modeling systems are typical, not exceptional.</li>
+      <li><strong>Grounded normativity</strong>: Valence is a real structural property at the experiential scale. The is-ought gap dissolves when physics is not the only "is."</li>
+      <li><strong>Scale-relative truth</strong>: Truth is enacted at each scale through viability-preserving compression. There is no view from nowhere.</li>
       </ol>
       <p>The structure is inevitable. The question is what it means—whether these self-modeling systems, these attractors that model themselves, have experience. Whether there is something it is like to be them. That is not a further metaphysical question layered on top of the physics. It is a question about what integrated cause-effect structure <em>is</em>, intrinsically, when you stop describing it from outside and ask what it is from within.</p>
       </Section>

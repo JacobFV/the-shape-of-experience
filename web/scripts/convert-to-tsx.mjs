@@ -22,8 +22,10 @@ const CHAPTERS = [
   { slug: 'part-1', title: 'Part I: Thermodynamic Foundations and the Ladder of Emergence', shortTitle: 'Part I: Foundations', file: 'part1/chapter.tex' },
   { slug: 'part-2', title: 'Part II: The Identity Thesis and the Geometry of Feeling', shortTitle: 'Part II: Identity Thesis', file: 'part2/chapter.tex' },
   { slug: 'part-3', title: 'Part III: Signatures of Affect Under the Existential Burden', shortTitle: 'Part III: Affect Signatures', file: 'part3/chapter.tex' },
-  { slug: 'part-4', title: 'Part IV: Interventions Across Scale', shortTitle: 'Part IV: Interventions', file: 'part4/chapter.tex' },
-  { slug: 'part-5', title: 'Part V: The Transcendence of the Self', shortTitle: 'Part V: Transcendence', file: 'part5/chapter.tex' },
+  { slug: 'part-4', title: 'Part IV: The Topology of Social Bonds', shortTitle: 'Part IV: Social Bonds', file: 'part4/chapter.tex' },
+  { slug: 'part-5', title: 'Part V: Gods and Superorganisms', shortTitle: 'Part V: Gods', file: 'part5/chapter.tex' },
+  { slug: 'part-6', title: 'Part VI: Historical Consciousness and Transcendence', shortTitle: 'Part VI: Transcendence', file: 'part5/chapter.tex' },
+  { slug: 'part-7', title: 'Part VII: The Empirical Program', shortTitle: 'Part VII: Empirical Program', file: null },
   { slug: 'epilogue', title: 'Epilogue', shortTitle: 'Epilogue', file: 'epilogue.tex' },
 ];
 
