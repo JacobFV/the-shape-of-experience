@@ -60,11 +60,12 @@ def run_v13_gpu(n_cycles=30, C=16, N=128, sim_radius=5, seed=42,
     tau = float(config['tau'])
     gate_beta = float(config['gate_beta'])
 
-    # Stress schedule
-    base_schedule = np.linspace(0.50, 0.30, n_cycles)  # calibrated: 0.50=easy, 0.30=lethal
-    noise = 1.0 + 0.3 * rng_np.randn(n_cycles)
-    stress_schedule = np.clip(base_schedule * noise, 0.01, 0.8)
-    duration_schedule = rng_np.randint(500, 2001, size=n_cycles)
+    # Stress schedule — gentler ramp to avoid extinction
+    # 0.60 = very mild stress, 0.40 = moderate (mortality cliff at ~0.35)
+    base_schedule = np.linspace(0.60, 0.40, n_cycles)
+    noise = 1.0 + 0.1 * rng_np.randn(n_cycles)  # low noise
+    stress_schedule = np.clip(base_schedule * noise, 0.25, 0.8)
+    duration_schedule = rng_np.randint(500, 1501, size=n_cycles)  # shorter max drought
 
     # JIT warmup
     print("JIT compiling...", end=" ", flush=True)
@@ -276,6 +277,21 @@ def run_v13_gpu(n_cycles=30, C=16, N=128, sim_radius=5, seed=42,
         cx = int(random.randint(k_bloom, (), 10, N_grid - 10))
         cy = int(random.randint(k_bloom2, (), 10, N_grid - 10))
         resource = perturb_resource_bloom(resource, (cy, cx), radius=N_grid // 3, intensity=0.8)
+
+        # Population rescue: re-seed if near extinction
+        if len(final_patterns) < 10:
+            print(f"  [RESCUE] {len(final_patterns)} patterns — re-seeding grid")
+            rng, k_reseed = random.split(rng)
+            channel_mus = jnp.array(config['channel_mus'])
+            fresh_grid, fresh_resource = init_soup_hd(N_grid, C, k_reseed, channel_mus)
+            # Blend: keep 30% existing state (preserves survivors), add 70% fresh
+            grid = 0.3 * grid + 0.7 * fresh_grid
+            resource = jnp.maximum(resource, 0.5 * fresh_resource)
+            # Run 500 steps to let fresh patterns stabilize
+            grid, resource, rng = run_v13_chunk(
+                grid, resource, h_embed, kernel_ffts, config,
+                coupling, coupling_row_sums, rng, n_steps=500, box_fft=box_fft)
+            grid.block_until_ready()
 
         elapsed = time.time() - t0
 
