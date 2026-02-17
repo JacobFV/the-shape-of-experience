@@ -31,14 +31,24 @@ where h: R^C → R^d is a learned or fixed embedding and σ is a sigmoid gate. T
 Resource dynamics: Michaelis-Menten as in V11, but with **lethal depletion** (maintenance rate high enough that >50% of naive patterns die within drought duration).
 
 ### Implementation checklist
-- [ ] State-dependent coupling kernel (content-based attention gate)
-- [ ] Lethal resource dynamics (>50% naive mortality)
-- [ ] Perceptual range >> R_kernel via the coupling mechanism
+- [x] State-dependent coupling kernel (content-based similarity gate)
+- [x] Lethal resource dynamics (82% mortality in 500-step drought at C=8, N=64)
+- [ ] Perceptual range >> R_kernel via the coupling mechanism (needs GPU validation)
 - [ ] Validate that patterns can forage (directed motion toward distant resources)
-- [ ] Curriculum training protocol from V11.7
+- [x] Curriculum training protocol from V11.7
 
 ### Status
-V12 implemented windowed self-attention (Q-K mechanism). Experiment 0 needs the **content-based** variant: coupling based on state similarity rather than learned projections. This is simpler and more biologically grounded — cells attend to cells that are like them.
+**IMPLEMENTED** as V13 (`v13_substrate.py`, `v13_evolution.py`, `v13_run.py`).
+
+Architecture: FFT convolution for spatial potentials (standard Lenia) + content-similarity modulation. The similarity field S_local(i) = sigmoid(β · (mean_j⟨h(s_i), h(s_j)⟩ - τ)) amplifies potentials where nearby cells have similar states. This keeps spatial localization from the FFT kernel while making the interaction graph state-dependent.
+
+- **568 steps/s** at C=8, N=64 on CPU
+- 28 distinct patterns after 100 steps
+- 82% mortality under drought (lethality confirmed)
+- Evolution pipeline runs end-to-end with curriculum stress
+- Modal deployment ready: `MODAL_PROFILE=agi-inc modal run --env research --detach v11_modal.py --mode v13 --channels 16`
+
+**Next**: GPU run at C=16, N=128 to validate dynamics at scale. Then parameter sweep for foraging behavior.
 
 ---
 
