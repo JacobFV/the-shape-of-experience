@@ -118,10 +118,61 @@ The mechanism seems to be: content coupling allows SOME patterns to maintain int
 
 **Interpretation for the book**: Content-dependent topology (state-dependent interaction graphs) is necessary for stress-robust integration, but only produces the biological pattern under selection pressure. This aligns with the thesis: the geometry is substrate-general, but the dynamics require evolutionary history.
 
+### Seed 7 (complete)
+**Stress schedule: 0.60 → 0.40, population rescue at <10**
+
+Third replicate, high-population regime like seed=42 v2:
+
+| Cycle | Patterns | Mortality | Robustness | % Φ↑ | τ | β |
+|-------|----------|-----------|------------|-------|---|---|
+| 0 | 145 | 6% | 0.925 | 27% | 0.29 | 4.7 |
+| 5 | 142 | 1% | 0.958 | 37% | 0.22 | 4.2 |
+| 10 | 154 | 4% | 0.903 | 27% | 0.39 | 3.5 |
+| 15 | 174 | 5% | 0.897 | 24% | 0.12 | 6.6 |
+| 20 | 147 | 26% | 0.919 | 29% | 0.94 | 3.7 |
+| 25 | 173 | 1% | 0.879 | 20% | 0.62 | 4.6 |
+| 29 | 143 | 13% | 0.919 | 30% | 0.46 | 4.1 |
+
+**3-seed summary:**
+
+| Metric | Seed 42 v2 | Seed 123 | Seed 7 | **Mean** |
+|--------|-----------|----------|--------|---------|
+| Mean pop | 163 | 68 | 149 | **127** |
+| Mean rob | 0.920 | 0.935 | 0.915 | **0.923** |
+| Max rob | 0.952 | **1.052** | 0.958 | — |
+| % Φ↑ | 29% | 32% | 29% | **30%** |
+| τ final | 0.08 | 0.86 | 0.46 | — |
+| β final | 6.4 | 4.8 | 4.1 | — |
+
+All 3 seeds survived 30 cycles. No rescue triggered for seeds 42v2 or 7 (only seed 123).
+
+### Reframe: Symbiogenesis, Not Evolutionary History
+
+After reading `dump/intelligence-at-the-start.md` (transcript of talk on BFF experiment — abiogenesis through symbiogenesis in BrainFuck), I need to revise the claim that "the dynamics require evolutionary history."
+
+**Key insight from BFF**: Complex computation emerges from random soup through *symbiogenesis* (composition of replicators), not through gradual Darwinian mutation + selection. Intelligence is there from the start — it gets more complex through fusion events, not through deep evolutionary time.
+
+**What this means for V13**: Content-based coupling might be enabling something closer to symbiogenesis than selection:
+- Patterns that are *similar* can couple → compose → form functional units
+- The bottleneck-robustness effect might be about *clearing space for new compositions*, not just weeding out the weak
+- τ expanding = expanding the range of possible symbiogenetic partners
+- The reason robustness >1.0 appears at low population: fewer patterns means each pattern has to be more self-sufficient (like cellular vs viral replicators in BFF)
+
+**Revised framing**: The geometry of affect is cheap (baseline of any viable system). The *dynamics* don't require evolutionary *history* per se — they require the right conditions for symbiogenetic composition: (1) embodied computation (patterns ARE their own interaction rules via content coupling), (2) encounters with other patterns (resource-driven movement), (3) lethality (stability bias toward things that persist).
+
+V13 provides all three. V11 (convolution) provided (2) and (3) but not (1) — patterns couldn't "see" each other's content.
+
+### Cost (final)
+- Lambda instance: ~2.5 hours × $0.75/hr = **~$1.90**
+- Instance terminated after all 3 seeds completed
+- **Total project compute (all-time): ~$16**
+- **Remaining Lambda credits: ~$428**
+
 ### Next Steps
 - [x] Seed 42 v2 complete
-- [ ] Seed 7 running (third replicate)
+- [x] Seed 7 complete (third replicate)
+- [x] 3-seed aggregation complete
 - [ ] Convolution control: same evolution, same stress, but α=0 (no content coupling)
-- [ ] Re-aggregate with 3 seeds
-- [ ] Book update with preliminary results
-- [ ] Consider lower population runs (smaller grid? higher maintenance?) to increase selection pressure
+- [ ] Book update with preliminary results + symbiogenesis framing
+- [ ] Look for symbiogenetic signatures: do patterns that *merge* have higher robustness than those that don't?
+- [ ] Consider: can we measure "tree depth" of pattern ancestry (a la BFF) in V13?
