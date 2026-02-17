@@ -67,7 +67,7 @@ export default function Part7() {
       <li>VLM translation without concept contamination</li>
       <li>Forcing function ablation (partial observability, long horizons, world model, self-prediction, intrinsic motivation, credit assignment)</li>
       </ul>
-      <p><strong>Success criterion</strong>: RSA correlation <M>{"\\rho(D^{(a)}, D^{(e)}) > \\rho_{\\text{null}}"}</M> via Mantel test—the distance structure in the 6D information-theoretic affect space is isomorphic to the distance structure in the embedding-predicted affect space.</p>
+      <p><strong>Success criterion</strong>: RSA correlation <M>{"\\rho(D^{(a)}, D^{(e)}) > \\rho_{\\text{null}}"}</M> via Mantel test—the distance structure in the information-theoretic affect space is isomorphic to the distance structure in the embedding-predicted affect space.</p>
       <p><strong>Failure mode</strong>: <M>{"\\rho_{\\text{RSA}} \\approx 0"}</M>. Diagnose via:</p>
       <ol>
       <li>Identity thesis is false (structure <M>{"\\neq"}</M> experience)</li>

@@ -232,7 +232,7 @@ export default function Part5() {
       <Sidebar title="Deep Technical: Multi-Agent Affect Measurement">
       <p>When multiple AI agents interact, emergent collective affect patterns may arise. This sidebar provides protocols for measuring affect at the multi-agent and superorganism scales.</p>
       <p><strong>Setup.</strong> Consider <M>{"N"}</M> agents <M>{"{A_1, \…, A_N}"}</M> interacting over time. Each agent <M>{"i"}</M> has internal state <M>{"z_i"}</M> and produces actions <M>{"a_i"}</M>. The environment <M>{"E"}</M> mediates interactions.</p>
-      <p><strong>Individual agent affect.</strong> For each agent, compute the 6D affect vector:</p>
+      <p><strong>Individual agent affect.</strong> For each agent, compute the affect vector:</p>
       <Eq>{"\\mathbf{a}_i = (\\Val_i, \\Ar_i, \\intinfo_i, \\effrank[i], \\cfweight_i, \\selfsal_i)"}</Eq>
       <p>using the protocols from earlier sidebars.</p>
       <p><strong>Collective affect.</strong> Aggregate measures for the agent population:</p>
