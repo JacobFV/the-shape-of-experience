@@ -23,6 +23,7 @@ const chapters = [
   { slug: 'part-6', title: 'Part VI: Transcendence' },
   { slug: 'part-7', title: 'Part VII: Empirical Program' },
   { slug: 'epilogue', title: 'Epilogue' },
+  { slug: 'appendix-experiments', title: 'Experiments' },
 ];
 
 function slugify(text) {

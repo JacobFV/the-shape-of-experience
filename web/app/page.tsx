@@ -21,7 +21,7 @@ export default function Home() {
         <p>
           From thermodynamic foundations through the identity thesis, from art and
           sexuality to gods and nations, from the Axial Age to the attention
-          economy&mdash;the same six-dimensional geometry recurs wherever
+          economy&mdash;the same geometric structure recurs wherever
           self-maintaining systems face the existential burden.
         </p>
 
@@ -47,6 +47,7 @@ export default function Home() {
           <li><Link href="/part-6">Part VI: Historical Consciousness and Transcendence</Link></li>
           <li><Link href="/part-7">Part VII: The Empirical Program</Link></li>
           <li><Link href="/epilogue">Epilogue</Link></li>
+          <li><Link href="/appendix-experiments">Appendix: Experiment Catalog</Link></li>
         </ol>
       </section>
     </article>

@@ -24,6 +24,7 @@ export const chapters: Chapter[] = [
   { slug: 'part-6', title: 'Part VI: Historical Consciousness and Transcendence', shortTitle: 'Part VI: Transcendence' },
   { slug: 'part-7', title: 'Part VII: The Empirical Program', shortTitle: 'Part VII: Empirical Program' },
   { slug: 'epilogue', title: 'Epilogue', shortTitle: 'Epilogue' },
+  { slug: 'appendix-experiments', title: 'Appendix: Experiment Catalog', shortTitle: 'Experiments' },
 ];
 
 const chapterModules: Record<string, () => Promise<{ default: ComponentType }>> = {
@@ -36,6 +37,7 @@ const chapterModules: Record<string, () => Promise<{ default: ComponentType }>> 
   'part-6': () => import('../content/part-6'),
   'part-7': () => import('../content/part-7'),
   'epilogue': () => import('../content/epilogue'),
+  'appendix-experiments': () => import('../content/appendix-experiments'),
 };
 
 export async function getChapterComponent(slug: string): Promise<ComponentType | null> {

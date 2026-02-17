@@ -22,6 +22,7 @@ const chapters = [
   { slug: 'part-6', title: 'Part VI: Historical Consciousness and Transcendence' },
   { slug: 'part-7', title: 'Part VII: The Empirical Program' },
   { slug: 'epilogue', title: 'Epilogue' },
+  { slug: 'appendix-experiments', title: 'Appendix: Experiment Catalog' },
 ];
 
 function slugify(text) {

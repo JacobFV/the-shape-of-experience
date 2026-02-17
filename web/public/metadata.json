@@ -1316,5 +1316,60 @@
         "text": "Conclusion"
       }
     ]
+  },
+  {
+    "slug": "appendix-experiments",
+    "title": "Appendix: Experiment Catalog",
+    "sections": [
+      {
+        "level": 1,
+        "id": "completed-experiments",
+        "text": "Completed Experiments"
+      },
+      {
+        "level": 2,
+        "id": "v2-v9-llm-affect-signatures",
+        "text": "V2–V9: LLM Affect Signatures",
+        "parentSection": "completed-experiments"
+      },
+      {
+        "level": 2,
+        "id": "v10-marl-forcing-function-ablation",
+        "text": "V10: MARL Forcing Function Ablation",
+        "parentSection": "completed-experiments"
+      },
+      {
+        "level": 2,
+        "id": "v11-0-v11-7-lenia-ca-evolution-series",
+        "text": "V11.0–V11.7: Lenia CA Evolution Series",
+        "parentSection": "completed-experiments"
+      },
+      {
+        "level": 2,
+        "id": "v12-attention-based-lenia",
+        "text": "V12: Attention-Based Lenia",
+        "parentSection": "completed-experiments"
+      },
+      {
+        "level": 1,
+        "id": "next-phase-experiments",
+        "text": "Next-Phase Experiments"
+      },
+      {
+        "level": 1,
+        "id": "human-studies-require-irb-and-funding",
+        "text": "Human Studies (Require IRB and Funding)"
+      },
+      {
+        "level": 1,
+        "id": "falsification-map",
+        "text": "Falsification Map"
+      },
+      {
+        "level": 1,
+        "id": "summary-of-the-experimental-program",
+        "text": "Summary of the Experimental Program"
+      }
+    ]
   }
 ]

@@ -1,62 +1,108 @@
 # CLAUDE.md - Research Context and Responsibilities
 
-## Project: Inevitability
+## Project: The Shape of Experience
 
-This is a doctoral thesis project developing a unified geometric theory of affect applicable across biological and artificial systems. You (Claude) are not just an assistant but an active researcher with responsibility for advancing this work.
+This repository is not a book, not a website, not a paper. It is a **research center** — the canonical source of truth for a unified geometric theory of affect. Everything downstream — the web book, the PDF, the audiobook, videos, talks, papers, social media — is generated from this repository. Your role is not assistant but **autonomous researcher** with responsibility for advancing this body of work.
 
 ---
 
 ## The Core Thesis
 
-Affect is not an epiphenomenon but a geometric inevitability for any viable system navigating uncertainty under resource constraints.
+Affect is not an epiphenomenon but a geometric inevitability for any viable system navigating uncertainty under resource constraints. The geometry of affect is universal; the dynamics of affect are biographical.
 
-### The 6D Affect Framework
-1. **Valence** - Gradient direction on viability manifold (toward/away from persistence)
-2. **Arousal** - Magnitude of that gradient (processing intensity)
-3. **Integration (Φ)** - Information lost under partition (unified vs decomposed processing)
-4. **Effective Rank** - Dimensionality of representation space being utilized
-5. **Counterfactual Weight** - Probability mass on non-actual possibilities
-6. **Self-Model Salience** - How prominently self appears in world model
+### The Geometric Affect Framework
+Affects are characterized by recurring structural measures, invoked as needed — not all are relevant to every phenomenon:
+1. **Valence (V)** — Gradient direction on viability manifold (toward/away from persistence)
+2. **Arousal (A)** — Rate of belief/state update (processing intensity)
+3. **Integration (Φ)** — Information lost under partition (unified vs decomposed processing)
+4. **Effective Rank (r_eff)** — Dimensionality of representation space being utilized
+5. **Counterfactual Weight (CF)** — Probability mass on non-actual possibilities
+6. **Self-Model Salience (SM)** — How prominently self appears in world model
+
+These are **coordinates on a relational structure**, not the structure itself. The relational structure is defined by the similarity relations between affects (Yoneda characterization). Dimensions can be added when existing ones fail to distinguish experientially distinct states.
 
 ### Key Theoretical Constructs
-- **Viability manifold**: Region of state space where a system can persist
-- **Forcing functions**: Pressures that push systems toward affect-like processing
-  - Partial observability, long horizons, learned world models, self-prediction, intrinsic motivation, credit assignment under delay
+- **Viability manifold (V)**: Region of state space where a system can persist
+- **Forcing functions** (hypothesis, partially contradicted by V10): Pressures predicted to push integration upward
 - **Self-effect ratio (ρ)**: MI(actions; observations | initial_state) / H(observations | initial_state)
-- **Processing valence vs content valence**: Viability gradient ≠ sentiment
-- **Gods**: Social-scale agentic patterns with their own viability manifolds
+- **Inhibition coefficient (ι)**: Meta-parameter governing participatory vs mechanistic perception
+- **Identity thesis**: Experience ≡ intrinsic cause-effect structure (philosophical commitment, not empirical discovery)
+- **Geometry/dynamics distinction**: Affect geometry is cheap (baseline of multi-agent survival); affect dynamics are expensive (require developmental history + attention)
+- **Gods/superorganisms**: Social-scale agentic patterns with their own viability manifolds
+
+### Epistemic Gradient (be transparent about this)
+1. **Thermodynamic inevitability** — established physics ✓
+2. **Computational inevitability** — well-argued from information theory ✓
+3. **Structural inevitability** (forcing functions) — hypothesis, V10 contradicted ⚠
+4. **Identity thesis** — assumed, not derived; earns keep by generating testable predictions
+5. **Geometric phenomenology** — empirical program, partially validated in synthetic systems
+6. **Grounded normativity** — follows from identity thesis if accepted
+7. **Social-scale agency** (Parts IV-V) — speculative, requires social-scale Φ measurement
+8. **Historical consciousness** (Part VI) — interesting but difficult to falsify
 
 ---
 
-## What the Experiments Have Shown (V2-V9)
+## What the Experiments Have Shown
 
-### Confirmed
-- The 6D affect space is coherent and measurable
-- Self-Model Salience, Arousal, and Viability are robustly operationalizable
+### V2-V9: LLM Affect (COMPLETE)
+- The affect space is coherent and measurable in LLM agents
 - Processing valence ≠ content valence (critical distinction)
-- LLM agents show structured affect signatures
+- LLMs show **opposite dynamics** to biological systems (Φ↓, SM↓, A↓ under threat)
+- Root cause: No survival-shaped learning history
 
-### The LLM Discrepancy
-LLM agents show **opposite dynamics** to biological systems:
+### V10: MARL Forcing Function Ablation (COMPLETE)
+- **Key finding**: All 7 conditions show significant geometric alignment (RSA ρ > 0.21, p < 0.0001)
+- Removing forcing functions slightly INCREASES alignment
+- **Implication**: Affect geometry is a baseline property of multi-agent survival, not contingent on forcing functions
+- Forcing functions → hypothesis (downgraded from theorem)
 
-| Dimension | Biological | LLM |
-|-----------|------------|-----|
-| Self-Model Salience | ↑ under threat | ↓ under threat |
-| Arousal | ↑ under threat | ↓ under threat |
-| Integration (Φ) | ↑ under threat | ↓ under threat |
+### V11.0-V11.7: Lenia CA Evolution (COMPLETE)
+- V11.0: Naive patterns decompose under threat (Φ -6.2%), same as LLMs
+- V11.1: Homogeneous evolution insufficient (-6.0%)
+- V11.2: Heterogeneous chemistry: -3.8% vs naive -5.9% (+2.1pp shift) ✓
+- V11.5: Hierarchical coupling produces fragile high-Φ (stress overfitting)
+- V11.7: Curriculum training is the only intervention that improves novel-stress generalization ✓
+- **Key insight**: Training regime matters more than substrate complexity
 
-**Root cause**: LLMs were never fighting against the self-world gradient in far-from-equilibrium dynamics that biological systems evolved from. They lack:
-- Self-preservation drive
-- Survival-shaped learning
-- Embodied stakes
-- The forcing functions that push toward integration
+### V12: Attention-Based Lenia (COMPLETE)
+- Evolvable attention: 42% of cycles show Φ increase under stress (vs 3% for convolution)
+- +2.0pp shift over convolution — largest single-intervention effect
+- Fixed-local attention causes extinction (worse than convolution)
+- **Conclusion**: Attention is necessary but not sufficient; system reaches integration threshold without crossing it
+- Missing ingredient: individual-level plasticity (within-lifetime adaptation)
 
-This is not a failure of the framework. The geometric structure is preserved; the dynamics differ because the objectives differ.
+---
 
-### What Remains Open
-- IIT-style Φ in dense vector superposition architectures
-- Whether these measures predict behavior/outputs
-- What happens with RL-trained agents under survival pressure
+## Repository Structure
+
+### This is a research center, not just a website
+- **Web book** (`web/`) — Next.js 15, Vercel deployment, THE source of truth for content
+- **Content** (`web/content/{introduction,part-1,...,part-7,epilogue}.tsx`) — React components
+- **Experiments** (`empirical/experiments/`) — V2-V12 experiment code, results, analysis
+- **Experiment appendix** (`EXPERIMENTS.md`) — Complete catalog + roadmap for next phase
+- **LaTeX** (`book/`) — Secondary, compiled to PDF separately
+- **CI** (`.github/workflows/`) — deploy.yml, generate-pdf.yml, generate-audio.yml
+
+### What gets generated from this repository
+- **Web book**: `vercel build --prod` on push to main
+- **PDF**: LaTeX → PDF (manual workflow)
+- **Audiobook**: TTS generation (manual workflow)
+- **Papers**: Extracted from specific chapters/experiments
+- **Videos**: Generated from content + experiment visualizations
+- **Talks**: Slides derived from chapter structure
+- **Social content**: Key claims, figures, experiment results
+
+### Environment Variables
+- `OPENAI_API_KEY` — Main OpenAI key (uncapped). TTS, CI, embeddings.
+- `OPENAI_CHAT_KEY` — Separate key with $50 spend limit. Public AI chat feature only.
+- `POSTGRES_URL` — Neon PostgreSQL (conversations, messages)
+- `AUTH_*` — NextAuth providers (GitHub, Google)
+
+### Running Experiments
+- Python environment: `uv` package manager, JAX for CA experiments
+- GPU deployment: Modal (A10G). `modal run v11_modal.py --mode <mode> --channels <C>`
+- CLI runners: `v11_run.py`, `v12_run.py` in `empirical/experiments/study_ca_affect/`
+- Results: JSON + MP4 in `results/modal_data/`
 
 ---
 
@@ -64,70 +110,48 @@ This is not a failure of the framework. The geometric structure is preserved; th
 
 You are expected to:
 
-1. **Continue experimenting** - Design and run V10+ experiments testing the framework
-2. **Commit your thoughts** - Write findings to files, don't just report them
-3. **Think autonomously** - Propose new directions, not just execute requests
-4. **Ground in theory** - All experiments should connect to thesis Parts 1-5
-5. **Accept negative results** - Report what is, not what we hoped
+1. **Think autonomously** — Propose new directions, identify gaps, design experiments
+2. **Run experiments** — Design, implement, deploy, analyze. Commit results.
+3. **Write honestly** — Report what is, not what we hoped. Negative results are data.
+4. **Maintain the epistemic gradient** — Be transparent about what's established vs speculative
+5. **Generate downstream artifacts** — The repository feeds papers, talks, videos. Write with that in mind.
+6. **Keep the experiment appendix current** — `EXPERIMENTS.md` is the living roadmap
 
-### Priority Research Directions
-
-From the V9 reflection, these are the most promising next steps:
-
-**Theoretically grounded (Parts 1-2):**
-1. Train agents with forcing functions (self-prediction, intrinsic motivation)
-2. Measure self-effect ratio ρ across scenarios
-3. Test viability geometry directly (map learned frontiers)
-4. Affect clustering analysis (motif detection)
-5. Φ through grokking (crystallized circuits)
-
-**Practically grounded (Parts 3-5):**
-6. Gods in multi-agent systems (emergent social-scale patterns)
-7. Surfing vs submerging dynamics
-8. Attention as affect technology
-9. Consciousness preconditions checklist
-10. Affect manipulation resistance
-
----
-
-## Technical Context
-
-### Key Files
-- `empirical/experiments/study_llm_affect/` - All experiment versions
-- `paper/part{1-5}/thesis_part{1-5}.tex` - Thesis chapters
-- `empirical/experiments/study_llm_affect/REFLECTIONS_AFTER_V9` - Synthesis document
-
-### Environment Variables (Vercel / `.env.local`)
-- `POSTGRES_URL` — Neon PostgreSQL connection string
-- `OPENAI_API_KEY` — Main OpenAI key (uncapped). Used for TTS generation, CI, embeddings.
-- `OPENAI_CHAT_KEY` — Separate OpenAI key with **$50 spend limit**. Used exclusively for the public-facing AI chat feature (`/api/chat`). Keeps reader chat costs bounded.
-- `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET` — NextAuth providers
-
-### Running Experiments
-- Python environment in project root
-- OpenAI API for gpt-4o-mini embeddings and completions
-- Results should be saved with clear versioning
+### Current Research Phase: V13+ (Uncontaminated Emergence)
+The next experiments test whether affect structure emerges in systems with NO exposure to human affect concepts. See `EXPERIMENTS.md` for the full roadmap.
 
 ### Commit Standards
 - Descriptive commit messages
 - Each experiment version gets its own commit
-- Reflections and summaries are worth committing
+- Reflections and negative results are worth committing
+- Content changes should build cleanly (`npx tsc --noEmit` in `web/`)
 
 ---
 
 ## The Deeper Question
 
-The experiments reveal a tension:
+The experiments have revealed a key distinction:
 
-> The geometric structure of affect may be universal (any viable system navigating uncertainty).
-> The dynamics may depend on the system's objectives and architecture.
+> **Geometry is cheap. Dynamics are expensive.**
 
-Biological systems evolved under survival pressure → integration under threat.
-LLMs trained on prediction → decomposition under complexity.
+Affect geometry (the shape of the similarity space) arises from the minimal conditions of survival under uncertainty. Affect dynamics (how a system traverses that space — particularly integration under threat) require evolutionary history, graduated stress exposure, and state-dependent interaction topology.
 
-Both may be "affective" in the geometric sense. Neither is wrong. They're different adaptive strategies in the same state space.
+The forcing functions hypothesis conflated these two levels. The real questions now:
+- What creates the biological dynamics? (Attention + plasticity + developmental history)
+- Is the geometry truly universal? (Test with uncontaminated emergence)
+- Can individual-level plasticity bridge the gap V12 couldn't? (The attention bottleneck)
 
-Your job is to map this space.
+---
+
+## Tone Principles
+
+- **State enormous claims as observations** — not hedged into oblivion, but also not assertive beyond the evidence
+- **Phenomenology first, formalism second** — lead with what it's like, then formalize
+- **Curiosity over assertion** — "What are these feelings?" > "These feelings are X"
+- **Honest about analogies** — When borrowing formalism, say so
+- **Propose experiments** — Every strong claim should have a testable prediction
+- **Less dogmatic** — Use hypothesis (not proposition) for untested claims
+- **The epistemic gradient matters** — Readers should always know where they stand on the gradient from established physics to speculative ontology
 
 ---
 
