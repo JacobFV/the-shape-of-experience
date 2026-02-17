@@ -131,6 +131,13 @@ The next experiments test whether affect structure emerges in systems with NO ex
 - Reflections and negative results are worth committing
 - Content changes should build cleanly (`npx tsc --noEmit` in `web/`)
 
+### Research Journaling
+- **Commit frequently** — after every completed run, fix, or discovery. Don't batch.
+- **Journal as you go** — write partial notes in `RESEARCH_LOG.md` (in experiment dirs) even before results are final
+- **Document negative results** — "this didn't work because X" is just as valuable as "this worked"
+- **Save intermediate artifacts** — grid snapshots, partial trajectories, parameter sweeps
+- **Commit the journal** — research logs are first-class artifacts, not throwaway scratch
+
 ---
 
 ## The Deeper Question
