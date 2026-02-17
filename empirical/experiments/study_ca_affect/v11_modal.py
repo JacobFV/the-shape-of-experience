@@ -1,4 +1,8 @@
-"""V11/V12 Modal Deployment: GPU-accelerated CA experiment on Modal.
+"""V11/V12/V13 Modal Deployment: GPU-accelerated CA experiment on Modal.
+
+V13 experiments (Experiment 0: content-based coupling):
+    MODAL_PROFILE=agi-inc modal run --env research --detach v11_modal.py --mode v13 --channels 16
+    MODAL_PROFILE=agi-inc modal run --env research --detach v11_modal.py --mode v13-pipeline --channels 16
 
 V12 experiments run on agi-inc/research environment:
     MODAL_PROFILE=agi-inc modal run --env research v11_modal.py --mode attention --channels 16
@@ -569,6 +573,122 @@ def run_convolution_baseline(n_cycles: int = 30, steps_per_cycle: int = 5000,
     return save_data
 
 
+# ============================================================================
+# V13: Content-Based Coupling (Experiment 0)
+# ============================================================================
+
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=4 * 3600,
+    volumes={"/results": vol},
+)
+def run_v13(n_cycles: int = 30, steps_per_cycle: int = 5000,
+            n_channels: int = 16, grid_size: int = 128,
+            similarity_radius: int = 5, seed: int = 42):
+    """V13: Content-based coupling Lenia evolution."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v13_evolution import evolve_v13
+
+    results_file = f'/results/v13_evolve_C{n_channels}_N{grid_size}_s{seed}.json'
+    all_cycle_stats = []
+
+    def save_callback(cycle, stats, grid, resource, config):
+        all_cycle_stats.append(stats)
+        save_data = {
+            'cycle_stats': all_cycle_stats,
+            'n_channels': n_channels,
+            'grid_size': grid_size,
+            'seed': seed,
+            'status': 'in_progress',
+            'last_cycle': cycle,
+        }
+        with open(results_file, 'w') as f:
+            json.dump(save_data, f, indent=2, default=str)
+        vol.commit()
+
+    result = evolve_v13(
+        n_cycles=n_cycles,
+        steps_per_cycle=steps_per_cycle,
+        C=n_channels,
+        N=grid_size,
+        similarity_radius=similarity_radius,
+        seed=seed,
+        post_cycle_callback=save_callback,
+    )
+
+    save_data = {
+        'cycle_stats': result['cycle_stats'],
+        'tau': result['tau'],
+        'gate_beta': result['gate_beta'],
+        'n_channels': n_channels,
+        'grid_size': grid_size,
+        'seed': seed,
+        'status': 'complete',
+    }
+    with open(results_file, 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=6 * 3600,
+    volumes={"/results": vol},
+)
+def run_v13_pipeline(n_cycles: int = 30, steps_per_cycle: int = 5000,
+                     n_channels: int = 16, grid_size: int = 128,
+                     similarity_radius: int = 5, seed: int = 42):
+    """V13: Full pipeline (evolution + stress test)."""
+    import sys
+    sys.path.insert(0, "/root/experiment")
+    import json
+    from v13_evolution import full_pipeline_v13
+
+    results_file = f'/results/v13_pipeline_C{n_channels}_N{grid_size}_s{seed}.json'
+
+    def save_callback(cycle, stats, grid, resource, config):
+        with open(results_file, 'w') as f:
+            json.dump({
+                'last_cycle': cycle,
+                'status': 'in_progress',
+                'n_channels': n_channels,
+                'grid_size': grid_size,
+                'seed': seed,
+            }, f, indent=2, default=str)
+        vol.commit()
+
+    result = full_pipeline_v13(
+        n_cycles=n_cycles,
+        C=n_channels,
+        N=grid_size,
+        similarity_radius=similarity_radius,
+        seed=seed,
+        post_cycle_callback=save_callback,
+    )
+
+    save_data = {
+        'cycle_stats': result['evolution']['cycle_stats'],
+        'stress_test': result['stress_test'],
+        'tau': result['evolution']['tau'],
+        'gate_beta': result['evolution']['gate_beta'],
+        'n_channels': n_channels,
+        'grid_size': grid_size,
+        'seed': seed,
+        'status': 'complete',
+    }
+    with open(results_file, 'w') as f:
+        json.dump(save_data, f, indent=2, default=str)
+    vol.commit()
+
+    return save_data
+
+
 @app.local_entrypoint()
 def main(mode: str = "sanity", hours: int = 0, channels: int = 64,
          grid_size: int = 128, seed: int = 42):
@@ -639,8 +759,20 @@ def main(mode: str = "sanity", hours: int = 0, channels: int = 64,
             n_channels=channels, grid_size=grid_size,
             fixed_window=False, seed=seed)
         print(f"\nAttention sanity result: {result}")
+    elif mode == "v13":
+        n_cyc = max(hours * 5, 30) if hours > 0 else 30
+        result = run_v13.remote(
+            n_cycles=n_cyc, n_channels=channels,
+            grid_size=grid_size, seed=seed)
+        print(f"\nV13 result (C={channels}, N={grid_size}): {result}")
+    elif mode == "v13-pipeline":
+        n_cyc = max(hours * 5, 30) if hours > 0 else 30
+        result = run_v13_pipeline.remote(
+            n_cycles=n_cyc, n_channels=channels,
+            grid_size=grid_size, seed=seed)
+        print(f"\nV13 pipeline result (C={channels}, N={grid_size}): {result}")
     else:
         print(f"Unknown mode: {mode}. "
               "Use: sanity, experiment, ablation, evolve, pipeline, "
               "hetero, multichannel, hd, hier, metabolic, curriculum, "
-              "attention, attention-fixed, attention-sanity")
+              "attention, attention-fixed, attention-sanity, v13, v13-pipeline")
