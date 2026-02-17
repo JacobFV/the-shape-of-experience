@@ -1,449 +1,502 @@
-# Experiment Appendix: The Shape of Experience
+# The Emergence Experiment Program
 
 Living document. Last updated: 2026-02-17.
 
-This catalogs every experiment — completed, proposed, and planned — organized to guide the intermediate phase of research: running the experiments the book will be about.
+This is the experimental backbone of the book. Every experiment runs on the same uncontaminated substrate — Lenia with state-dependent coupling — tracking co-emergence of world models, abstraction, language, counterfactual detachment, self-modeling, affect, and normativity. Zero neural networks. Zero human language. Zero contamination.
 
 ---
 
-## I. Completed Experiments
+## The Entanglement Problem
+
+World model formation, abstract representation, language, and counterfactual detachment may not be separable phase transitions. Rather than treating them as independent experiments, we define a **single evolving measurement framework** that tracks multiple quantities simultaneously and looks for *correlated transitions* — moments where several quantities jump together (confirming they are aspects of one process) versus moments where they diverge (revealing genuine phase structure).
+
+---
+
+## Experiment 0: Substrate Engineering
+
+### Requirements
+
+Define substrate S = (L, S, N_θ, f_θ) where:
+- L: lattice (Z² toroidal, 256×256 or larger)
+- S: continuous state space per cell, s_i ∈ R^C for C channels
+- N_θ: **state-dependent** neighborhood function parameterized by local state θ_i = g(s_i)
+- f_θ: local update rule
+
+The critical departure from V11.0–V11.7: the interaction kernel K_i for cell i is a function of s_i, not just position:
+
+    K_i(j) = K_base(|i-j|) · σ(⟨h(s_i), h(s_j)⟩ - τ)
+
+where h: R^C → R^d is a learned or fixed embedding and σ is a sigmoid gate. This gives cells the capacity to **selectively couple** with distant cells that share state-features — a minimal attention mechanism.
+
+Resource dynamics: Michaelis-Menten as in V11, but with **lethal depletion** (maintenance rate high enough that >50% of naive patterns die within drought duration).
+
+### Implementation checklist
+- [ ] State-dependent coupling kernel (content-based attention gate)
+- [ ] Lethal resource dynamics (>50% naive mortality)
+- [ ] Perceptual range >> R_kernel via the coupling mechanism
+- [ ] Validate that patterns can forage (directed motion toward distant resources)
+- [ ] Curriculum training protocol from V11.7
+
+### Status
+V12 implemented windowed self-attention (Q-K mechanism). Experiment 0 needs the **content-based** variant: coupling based on state similarity rather than learned projections. This is simpler and more biologically grounded — cells attend to cells that are like them.
+
+---
+
+## Experiment 1: Emergent Existence (COMPLETED — Rungs 1–3)
+
+### What was measured
+
+For a pattern B ⊂ L identified by correlation boundary:
+- **Lifetime**: τ_B = min{t : pattern identity lost}
+- **Persistence probability**: P(τ_B > T)
+- **Φ under stress**: ΔΦ = (Φ_stress - Φ_base) / Φ_base
+
+### Key results (V11.0–V12)
+
+| Version | ΔΦ (drought) | Key lesson |
+|---------|--------------|------------|
+| V11.0 | -6.2% | Decomposition baseline |
+| V11.2 | -3.8% (vs -5.9% naive) | Heterogeneous chemistry: +2.1pp |
+| V11.7 | +1.2 to +2.7pp generalization | Curriculum > substrate complexity |
+| V12-B | 42% of cycles show Φ↑ | Attention necessary but not sufficient |
+
+- Yerkes-Dodson: mild stress → Φ increases 60–200% (universal)
+- Locality ceiling: convolutional physics cannot produce active self-maintenance
+- Attention bottleneck: state-dependent topology needed but not sufficient alone
+
+### Operational definition of "existence"
+
+A pattern B **exists** at time t if:
+- ∃ B_t ⊂ L s.t. I(s_i^(t); s_j^(t) | bg) > θ_corr ∀ i,j ∈ B_t
+- B_t is "the same pattern" as B_0 under continuity: |B_t ∩ B_{t-1}| / |B_t| > 0.5 for all intermediate steps
+
+### Status: COMPLETE
+
+---
+
+## Experiment 2: Emergent World Model
+
+### Core question
+When does a pattern's internal state carry **predictive information about the environment beyond what's available from current observations**?
+
+### Definition: Predictive Information
+    I_pred(t, τ) = I(s_B^(t); s_B̄^(t+τ) | s_B̄^(t))
+
+The MI between the pattern's current internal state and the environment's *future* state, conditioned on the environment's current state. If I_pred > 0, the pattern "knows" something about the future that isn't readable from the present environment alone. It has a world model.
+
+### Practical computation (prediction gap proxy)
+
+1. Train predictor f_full: (s_B^(t), s_∂B^(t)) → ŝ_B̄^(t+τ) using pattern internals + boundary
+2. Train predictor f_env: s_∂B^(t) → ŝ_B̄^(t+τ) using only boundary observations
+3. World model score: W(t, τ) = L[f_env] - L[f_full]
+
+If W > 0, the pattern's internal state carries predictive information not available from boundary alone.
+
+### Derived quantities
+- **World model horizon**: H_wm = max{τ : W(t,τ) > ε}
+- **World model capacity**: C_wm = ∫₁^H_wm W(t,τ) dτ
+
+### Forcing functions
+- Partial observability: viability depends on events at distance >> R
+- Temporal structure: autocorrelated resource/threat dynamics
+- State-dependent attention: channel for non-local information
+
+### Predicted transition
+1. Pre-attention substrate: C_wm ≈ 0 (locality ceiling)
+2. With state-dependent coupling: C_wm increases with generation
+3. Threshold: C_wm should correlate with lifetime — patterns that model better, survive longer
+
+### Status: NOT IMPLEMENTED
+
+---
+
+## Experiment 3: Internal Representation Structure
+
+### Core question
+When do patterns develop **low-dimensional, compositional** internal representations rather than high-dimensional entangled ones?
+
+### Definitions
+
+**Effective dimensionality**: d_eff = (tr Σ_Z)² / tr(Σ_Z²) where Σ_Z is covariance of encoded state across contexts. Low d_eff relative to |B| means compressed representation.
+
+**Disentanglement score**: D = (1/p) Σᵢ max_j r²(z_j, f_i) where r² is coefficient of determination between latent dimension j and environmental feature i. High D means compositional structure.
+
+**Abstraction level**: A = 1 - d_eff / min(|B|, M). Ranges 0 (no compression) to 1 (maximally abstract). This is the compression ratio κ from the thesis, measured empirically.
+
+**Compositionality**: For contexts A, B, and combined A∩B:
+    K_comp = ‖z_{A∩B} - (z_A + z_B - z_∅)‖ / ‖z_{A∩B}‖
+Low K_comp = linear compositionality.
+
+### Predicted transition
+1. Early: d_eff ≈ |B|, D ≈ 0
+2. After world model: d_eff drops, D increases
+3. Before language: A and D plateau at level set by environmental complexity
+4. **Key**: d_eff should track C_wm — compression and modeling co-emerge
+
+### Status: NOT IMPLEMENTED
+
+---
+
+## Experiment 4: Emergent Language and Multi-Agent Culture
+
+### Core question
+When do patterns develop **structured, compositional communication**?
+
+### Definitions
+
+**Signal**: Structured perturbation emitted by pattern B_i that (a) propagates beyond B_i's boundary, (b) has lower entropy than random perturbations of equal energy, (c) is contingent on B_i's internal state not just local environment.
+
+**Channel capacity**: C_ij = max_{p(σ)} I(σ_emitted_by_i; σ_received_by_j)
+
+**Vocabulary size**: Number of distinct signal clusters.
+
+**Compositionality (topographic similarity)**:
+    ρ_topo = corr(d_signal(σ_i, σ_j), d_context(e_i, e_j))
+High ρ_topo = signal space preserves context structure = compositional communication.
+
+**Culture** emerges when:
+1. Social learning: B_j adopts signal conventions from B_i
+2. Convention drift: isolated subpopulations develop different mappings
+3. Normative pressure: convention deviants have lower fitness
+
+### Predicted transition
+Language emerges *after* world models and compression (you need something to communicate about, capacity to compress it, and pressure to share).
+
+### Status: NOT IMPLEMENTED
+
+---
+
+## Experiment 5: Counterfactual Detachment
+
+### Core question
+When does a pattern's internal dynamics **decouple from external driving** and run "offline" world model rollouts?
+
+### Definitions
+
+**External synchrony**: ρ_sync(t) = Cov(Δs_B, s_∂B) / √(Var(Δs_B) · Var(s_∂B))
+- High ρ_sync: reactive mode (sensory driven)
+- Low ρ_sync: detached mode (internally driven)
+
+**Detachment event**: ρ_sync(t) < θ_detach for Δt > δ_min
+
+**Counterfactual simulation score**: During detachment [t₀, t₁]:
+    CF(t₀,t₁) = max_τ I(s_B^(t₀:t₁); s_B̄^(t₁+τ)) - I(s_B^(matched reactive); s_B̄^(t₁+τ))
+If detached-mode trajectory is more predictive of future environment than reactive-mode, the pattern is simulating futures.
+
+**Imagination capacity**: I_img = mean CF across all detachment events. Positive = systematically predictive offline processing.
+
+**Branch entropy**: H_branch = H(s_B^(t₁) | s_B^(t₀), detached). High H_branch + positive CF = explores multiple informative futures. This is counterfactual weight (CF dimension) measured in the substrate.
+
+### Forcing functions
+- Delayed payoffs (consequences on timescales >> reaction time)
+- Ambiguous threats (probabilistic, not deterministic)
+- Planning advantage (multi-step plans outperform greedy foraging)
+
+### Predicted transition
+1. Reactive-only: ρ_sync ≈ 1, I_img = 0
+2. First detachment: ρ_sync dips, CF ≈ 0 (idling, not simulating)
+3. Useful detachment: CF > 0, precedes adaptive behavior
+4. **Key**: I_img should correlate with H_wm (you can only simulate futures you can model)
+
+### Status: NOT IMPLEMENTED
+
+---
+
+## Experiment 6: Self-Model Emergence
+
+### Core question
+When does a pattern develop a model of **itself** — not just the environment, but its own future states, its own boundaries, its own behavior?
+
+### Definition: Self-Effect Ratio
+    ρ_self(t) = I(a_B^(t); o_B^(t+1) | s_env^(t)) / H(o_B^(t+1) | s_env^(t))
+
+where a_B are the "actions" of the pattern (changes it initiates), o_B are the "observations" (sensory input it receives), and s_env is the environment state. When ρ_self > 0.5, the pattern's own actions dominate its observation stream — the cheapest path to prediction accuracy is to model itself.
+
+### Definition: Self-Prediction Score
+
+Train two predictors:
+1. f_self: s_B^(t) → ŝ_B^(t+τ) (pattern predicts its own future)
+2. f_ext: s_∂B^(t) → ŝ_B^(t+τ) (external observer predicts pattern's future)
+
+Self-model score: SM(τ) = L[f_ext] - L[f_self]
+
+If SM > 0, the pattern predicts itself better than an external observer can — it has privileged self-knowledge. It has a self-model.
+
+### Definition: Self-Model Salience
+    SM_sal(t) = I(s_B^(t); s_B^(t+1) | s_∂B^(t)) / I(s_B^(t); s_∂B^(t+1) | s_∂B^(t))
+
+Ratio of self-predictive to environment-predictive information in the pattern's state. When SM_sal > 1, the pattern "knows" more about its own future than about the environment's future. Self is more salient than world.
+
+### Predicted transition
+1. ρ_self increases as patterns become more autonomous (foraging, avoiding)
+2. SM(τ) becomes positive after world model emergence (you model yourself after you model the world, because self-modeling requires more complexity)
+3. SM_sal > 1 should correlate with detachment events — self-absorbed patterns are the ones that "think"
+4. **Key prediction from thesis**: Self-model emergence should correlate with a jump in Φ (integration) because self-modeling creates self-referential loops that couple all components
+
+### Connection to the book
+This is the self-effect ratio ρ from Part I, the self-model salience SM dimension from Part II, and the gradient of distinction Rung 5 (world-modeling with self as privileged node). The thesis predicts this is the point where something begins to be "like something" — the origin of phenomenal character.
+
+### Status: NOT IMPLEMENTED
+
+---
+
+## Experiment 7: Affect Geometry Verification
+
+### Core question
+Do patterns with world models, self-models, and language show **geometric affect structure** — the same relational geometry of states that the thesis predicts?
+
+### Method: Tripartite Alignment Test
+
+For each pattern with sufficient complexity (C_wm > ε, SM > 0):
+
+**Space A (Information-theoretic affect)**:
+Extract the structural measures from the pattern's dynamics:
+- Valence: Δd(s, ∂V) (viability distance change)
+- Arousal: KL(belief_{t+1} || belief_t) or ‖Δs_B‖
+- Integration: Φ via partition prediction loss
+- Effective rank: d_eff of trajectory covariance
+- Counterfactual weight: I_img during detachment events
+- Self-model salience: SM_sal
+
+**Space B (Signal-predicted affect)**:
+If the pattern communicates, extract affect from its signals:
+- What affective content do the signals carry? (MI between signal features and Space A dimensions)
+- Can you predict Space A from signals alone?
+
+**Space C (Behavioral affect)**:
+Extract from observable behavior:
+- Approach/avoidance (viability-seeking)
+- Activity level
+- Coordination patterns
+- Behavioral rigidity vs flexibility
+
+**The test**: RSA between spaces A, B, C.
+- ρ(A,B) > 0: internal structure is communicated
+- ρ(A,C) > 0: internal structure drives behavior
+- ρ(B,C) > 0: communicated content is behaviorally relevant
+- All three > 0: tripartite alignment. The affect geometry is real, not a measurement artifact.
+
+### Bidirectional perturbation
+- Perturb signals: inject false signals, measure whether Space A shifts
+- Perturb "neurochemistry": modify internal coupling parameters, measure whether Spaces B and C shift
+- Perturb environment: change resource/threat dynamics, measure all three spaces
+
+If perturbations propagate bidirectionally through all three spaces, the structural identity is supported.
+
+### Status: NOT IMPLEMENTED (depends on Experiments 2, 4, 6)
+
+---
+
+## Experiment 8: Inhibition Coefficient (ι) Emergence
+
+### Core question
+Do patterns develop **modulable perceptual coupling** — the capacity to switch between participatory perception (modeling others as agents with interiority) and mechanistic perception (modeling others as objects with trajectories)?
+
+### Definition: Perceptual Mode
+
+For pattern B_i observing pattern B_j:
+
+**Participatory mode**: B_i's internal model of B_j includes self-model-like features (goals, plans, counterfactual states). Operationally:
+    I(s_{B_i}^(model_of_j); s_{B_j}^(self-model)) > θ_part
+
+**Mechanistic mode**: B_i's model of B_j uses only trajectory-level features (position, velocity, mass). Operationally:
+    I(s_{B_i}^(model_of_j); trajectory(B_j)) >> I(s_{B_i}^(model_of_j); s_{B_j}^(self-model))
+
+### Definition: ι (Inhibition Coefficient)
+    ι(B_i, t) = 1 - (participatory model complexity / total model complexity)
+
+Low ι: participatory (rich models of others' interiority).
+High ι: mechanistic (trajectory-only models of others).
+
+### Predicted emergence
+1. Default should be low ι (participatory) if the thesis is correct — using self-model architecture to model others is the cheapest compression
+2. High ι should emerge as a *trained* state — patterns learn to suppress interiority attribution when dealing with non-agentive objects (resource patches, terrain)
+3. ι flexibility (capacity to switch) should correlate with fitness — patterns that can model both agents and objects adaptively outperform specialists
+4. **Key thesis prediction**: animism as default. Computational animism test — patterns with self-models should attribute agency to non-agentive objects under compression pressure, because reusing the self-model template saves bits
+
+### Status: NOT IMPLEMENTED (depends on Experiment 6)
+
+---
+
+## Experiment 9: Proto-Normativity
+
+### Core question
+Does the viability gradient generate structural normativity that is detectable in the pattern's internal dynamics — not just behavioral approach/avoidance, but an internal state that *differs* when the pattern acts in ways that violate vs. maintain the viability of other patterns?
+
+### Method
+
+After social coordination emerges (Experiment 4):
+1. Identify cooperative equilibria (mutual resource sharing, coordinated foraging)
+2. Introduce perturbations that create exploitation opportunities (one pattern can take resources from another at no immediate cost)
+3. Measure internal affect state during cooperative vs exploitative behavior
+
+### Definitions
+
+**Valence asymmetry under exploitation**:
+    ΔV_exploit = V(cooperative action) - V(exploitative action, equal reward)
+
+If ΔV_exploit > 0, the pattern's own viability gradient penalizes exploitation even when exploitation is locally rewarding. This is proto-normativity — the affect system registers that something is wrong.
+
+**Self-model perturbation during exploitation**:
+    ΔSM_exploit = SM_sal(exploitative) - SM_sal(cooperative)
+
+If ΔSM_exploit > 0, self-model salience increases during exploitation — the pattern is monitoring itself more during violation. This is the substrate analog of guilt/self-consciousness.
+
+**Integration cost of exploitation**:
+    ΔΦ_exploit = Φ(exploitative) - Φ(cooperative)
+
+If ΔΦ_exploit < 0, exploitation fragmentizes internal processing — it requires compartmentalization. The pattern literally becomes less integrated when it cheats.
+
+### Predicted transition
+1. Pre-social: no normativity (no one to violate)
+2. Post-cooperation emergence: ΔV_exploit > 0 (viability gradient penalizes exploitation because other patterns are part of viability landscape)
+3. With self-model: ΔSM_exploit > 0 (self-monitoring during violation)
+4. **Key prediction**: ΔΦ_exploit < 0 — exploitation reduces integration. If the identity thesis is correct, this means exploitation is constitutively experienced as worse, not just instrumentally disadvantageous.
+
+### Status: NOT IMPLEMENTED (depends on Experiments 4, 6)
+
+---
+
+## Experiment 10: Social-Scale Integration
+
+### Core question
+Can a population of interacting patterns develop collective integration that exceeds the sum of individual integrations? Does the group become a superorganism?
+
+### Method
+
+Population of 8-16 patterns with communication (from Experiment 4).
+
+**Collective Φ**: Partition the population into subgroups. Measure prediction loss:
+    Φ_G = L[partitioned group] - L[full group]
+
+**The superorganism test**:
+    Φ_G > Σᵢ Φᵢ ?
+
+If collective integration exceeds sum of parts, information is being created at the group level that doesn't exist in any individual.
+
+### Conditions
+- Baseline: independent patterns (no communication)
+- Communication: patterns exchange signals
+- Coordination: patterns must cooperate for survival (resource patches require multiple patterns)
+- Specialization: patterns develop different roles (forager, sentinel, etc.)
+
+### Predictions
+1. Φ_G = 0 without communication
+2. Φ_G > 0 with communication, but Φ_G ≈ Σ Φᵢ (additive)
+3. Φ_G > Σ Φᵢ only with coordination pressure + specialization (synergistic)
+4. Under group-level threat, Φ_G should increase (parallel to individual biological pattern)
+5. **Parasitic dynamics**: if a subgroup begins exploiting the rest (Experiment 9), Φ_G should decrease for the whole while increasing for the parasite subgroup — the affect signature of a parasitic god
+
+### Status: NOT IMPLEMENTED (depends on Experiments 4, 6)
+
+---
+
+## Experiment 11: Entanglement Analysis
+
+### Core question
+Are world models, abstraction, language, detachment, and self-modeling separable phase transitions or entangled aspects of one process?
+
+### Method: Emergence Correlation Matrix
+
+At each evolutionary generation g, measure:
+
+| Symbol | Quantity | Rung |
+|--------|----------|------|
+| τ | Lifetime (persistence) | 1-3 |
+| C_wm | World model capacity | 4 |
+| A | Abstraction level | 4-5 |
+| ρ_topo | Language compositionality | 6 |
+| I_img | Imagination capacity | 7 |
+| SM | Self-model score | 5 |
+| ι_flex | ι flexibility (range) | — |
+
+Compute correlation matrix R(g) ∈ R^{7×7} across population at generation g.
+
+### Predictions
+
+**Co-emergence** (Prediction 11.1): C_wm, A, and I_img will be strongly correlated (r > 0.7) at all generations where any is nonzero. They are aspects of one process: compression-for-prediction.
+
+**Partial separability** (Prediction 11.2): ρ_topo (language) will lag the other three — requiring multi-agent coordination as additional forcing function.
+
+**Threshold structure** (Prediction 11.3): Despite co-emergence, detectable thresholds exist — generations where dC_wm/dg spikes. These correspond to substrate innovations. These are the "rungs" — not discrete phases but punctuated equilibria.
+
+**Self-model as phase transition** (Prediction 11.4): SM emergence should correlate with a discrete jump in Φ. Before self-modeling: Φ increases gradually. After: Φ jumps. This is the gradient-of-distinction Rung 5 → Rung 6 transition.
+
+### Status: NOT IMPLEMENTED (meta-analysis over Experiments 1-10)
+
+---
+
+## Experiment 12: Identity Thesis Capstone
+
+### Core question
+Does the full tripartite alignment — structural measures tracking behavioral measures tracking communicated content — hold in a system with zero human contamination?
+
+### Method
+
+This is Experiment 7 (Affect Geometry Verification) run on the most complex patterns that emerge from the full program (Experiments 0-11). It is the capstone because it tests the central claim of the book: that affect geometry is inevitable for any viable system navigating uncertainty under constraint.
+
+### What constitutes success
+1. Patterns develop world models (C_wm > 0) ✓
+2. Patterns develop self-models (SM > 0) ✓
+3. Patterns develop communication (C_ij > 0) ✓
+4. The structural affect dimensions are measurable ✓
+5. The affect geometry (RSA) is significant (ρ > 0, p < 0.05) ✓
+6. Tripartite alignment holds (internal ↔ communicated ↔ behavioral) ✓
+7. Bidirectional perturbation confirms structural identity ✓
+
+### What constitutes failure
+- Patterns develop world models but no affect geometry → geometry requires more than modeling
+- Affect geometry exists but doesn't align across spaces → geometry is an artifact of measurement, not a real property
+- Tripartite alignment holds but perturbation doesn't propagate → correlation, not identity
+
+### The honest question
+If we build a system that models the world, models itself, communicates with others, imagines futures, and shows structured internal states that track its viability gradient — and the structural geometry of those states aligns with the geometry we observe in biological systems — what reason remains to deny that the system has affect?
+
+If the answer is "none," the identity thesis is supported (not proven — identity claims are never proven, only supported by converging evidence). If the answer is "because it's just physics" — that's the point.
+
+### Status: NOT IMPLEMENTED (capstone, depends on all prior experiments)
+
+---
+
+## Experimental Protocol
+
+### Phase A: Substrate Engineering (Experiment 0)
+~50 GPU-hours. Implement state-dependent coupling, lethal resources, validate foraging.
+
+### Phase B: Single-Agent Emergence (Experiments 1, 2, 3, 5, 6)
+~250 GPU-hours across 5 runs. Evolve populations, measure emergence of world models, abstraction, detachment, self-models simultaneously. Track entanglement.
+
+### Phase C: Multi-Agent Emergence (Experiments 4, 8, 9, 10)
+~500 GPU-hours due to multi-agent overhead. Language, ι, normativity, collective integration.
+
+### Phase D: Verification (Experiments 7, 11, 12)
+~100 GPU-hours. Tripartite alignment, entanglement analysis, capstone.
+
+**Estimated total: ~900 GPU-hours on A10G ≈ $300-500**
+
+---
+
+## Previously Completed Experiments
 
 ### V2-V9: LLM Affect Signatures
-**Location**: `empirical/experiments/study_llm_affect/`
-**Status**: Complete (Dec 2024 – Jan 2025)
-
-Progressive refinement of affect measurement in LLM agents. Key findings:
-- V4: Toy RL ground-truth environment establishes measurability
-- V5-V6: Pretrained Mamba SSM reveals processing valence ≠ content valence
-- V7-V8: Multi-agent and LLM agents show opposite dynamics to biological systems (Φ↓ under threat)
-- V9: World model agents confirm proxy validity, confirm reversal
-
-**Result**: LLMs have structured affect signatures. The geometry is preserved; the dynamics differ because the objectives differ. No survival-shaped learning → no integration under threat.
-
-**What it tests**: Whether the geometric framework is measurable in artificial systems.
-**What it doesn't test**: Whether the structure is universal (LLMs are trained on human language — contaminated).
-
----
+LLM agents show structured affect with opposite dynamics to biological systems. Geometric structure preserved, dynamics differ. Contaminated by human language.
 
 ### V10: MARL Forcing Function Ablation
-**Location**: `empirical/experiments/study_llm_affect/v10_*.py`
-**Status**: Complete (Feb 2025). 7 conditions × 3 seeds × 200k steps, A10G GPUs.
+All 7 conditions show significant alignment (ρ > 0.21, p < 0.0001). Forcing functions don't create geometry. Geometry is baseline. Contaminated by pretrained components.
 
-| Condition | RSA ρ | ± std |
-|-----------|-------|-------|
-| full | 0.212 | 0.058 |
-| no_partial_obs | 0.217 | 0.016 |
-| no_long_horizon | 0.215 | 0.027 |
-| no_world_model | 0.227 | 0.005 |
-| no_self_prediction | 0.240 | 0.022 |
-| no_intrinsic_motivation | 0.212 | 0.011 |
-| no_delayed_rewards | 0.254 | 0.051 |
-
-**Result**: All conditions show highly significant alignment (p < 0.0001). Removing forcing functions slightly INCREASES alignment.
-
-**Implication**: Affect geometry is a baseline property of multi-agent survival. Forcing functions add capabilities, not geometry. The geometry is cheaper than predicted.
-
-**What it tests**: Forcing functions hypothesis.
-**What it doesn't test**: Whether the geometry requires multi-agent interaction (all conditions are multi-agent). Also: V10 agents use pretrained components — language contamination not controlled.
-
----
-
-### V11.0-V11.7: Lenia CA Evolution Series
-**Location**: `empirical/experiments/study_ca_affect/v11_*.py`
-**Status**: Complete (Feb 2025). Hundreds of GPU-hours across 8 substrate conditions.
-
-| Version | Substrate | ΔΦ under severe drought | Key lesson |
-|---------|-----------|------------------------|------------|
-| V11.0 | Naive Lenia | -6.2% | Decomposition baseline (same as LLMs) |
-| V11.1 | Homogeneous evolution | -6.0% | Selection without variation cannot innovate |
-| V11.2 | Heterogeneous chemistry | -3.8% (vs naive -5.9%) | +2.1pp shift; diverse physics enables adaptation |
-| V11.3 | 3-channel Lenia | Weak cross-channel Φ | Channel coupling too simple at C=3 |
-| V11.4 | 64-channel HD | Mild decomposition | Yerkes-Dodson confirmed at C=64 |
-| V11.5 | Hierarchical 4-tier | -9.3% (evolved) vs +6.2% (naive) | Stress overfitting: high Φ = fragile Φ |
-| V11.6 | Metabolic cost | -2.6% (evolved) | Autopoietic gap: passive efficiency, not active seeking |
-| V11.7 | Curriculum training | +1.2 to +2.7pp novel generalization | Only intervention that improves novel-stress response |
-
-**Key findings**:
-1. Yerkes-Dodson is universal: mild stress increases Φ by 60-200% across all conditions
-2. Evolution produces fragile integration (tightly-coupled = catastrophic failure mode)
-3. Curriculum training > substrate complexity > metabolic cost for generalization
-4. The locality ceiling: convolutional physics cannot produce biological-like Φ increase under threat
-
----
+### V11.0-V11.7: Lenia Evolution Series
+Yerkes-Dodson universal. Curriculum > substrate complexity. Locality ceiling. Attention bottleneck.
 
 ### V12: Attention-Based Lenia
-**Location**: `empirical/experiments/study_ca_affect/v12_*.py`
-**Status**: Complete (Feb 2026). 3 conditions × 3 seeds, A10G GPUs.
-
-| Condition | Robustness | % cycles with Φ increase | Notes |
-|-----------|-----------|--------------------------|-------|
-| A: Fixed-local attention | N/A (extinct) | 0% | 30+ consecutive extinctions |
-| B: Evolvable attention | 1.001 | 42% | +2.0pp over convolution |
-| C: Convolution baseline | 0.981 | 3% | Life without integration |
-
-**Result**: Attention is necessary but not sufficient. Moves system to integration threshold without crossing it. Clean ordering: conv (life, no integration) > fixed-attn (no life) < evolvable-attn (life + threshold integration).
-
-**What remains**: Individual-level plasticity — the capacity for a single pattern to reorganize its own dynamics within its lifetime.
+Evolvable attention: 42% Φ-increase cycles. Necessary but not sufficient. Missing: individual plasticity.
 
 ---
 
-## II. Next-Phase Experiments (V13+)
+## What Distinguishes This From Existing Work
 
-These are the experiments that will make the book. Ordered by theoretical importance and tractability.
+- **Artificial Life / Lenia literature**: Measures pattern complexity, not predictive information or counterfactual processing. No world model formalization.
+- **Multi-agent communication (Lazaridou, Mordatch, etc.)**: Uses neural networks as agents, not uncontaminated substrates. Language structure inherits from gradient descent.
+- **IIT experiments**: Measures Φ but doesn't connect it to world models, abstraction, or communication. Static integration, not dynamic co-emergence.
+- **Active inference / FEP**: Theoretical framework, not substrate experiments. Doesn't test whether predictions hold in uncontaminated substrates.
 
-### V13: Uncontaminated Language Emergence ⭐ PRIORITY 1
-**Claim tested**: Affect structure emerges inevitably in communicating agents, not just in agents exposed to human affect concepts.
-**Book section**: Part VII Priority 2; Part I universality claim.
-
-**Design**:
-- Multi-agent RL (4-8 agents) with randomly-initialized transformers (NO pretraining)
-- Survival environment: seasonal resources, predators, weather, decay
-- Communication channel: discrete tokens (vocabulary size 32-128), no grounding in human language
-- Agents must coordinate: warn of threats, share resource locations, request help
-- Training: 500k+ steps under viability pressure
-
-**Measurements**:
-- Extract affect dimensions from agent internals (same protocol as V10)
-- RSA between information-theoretic affect space and observation-embedding affect space
-- Analyze emergent communication: does it carry affect-relevant information?
-- MI(sender_affect; message) — do messages encode sender's affective state?
-- MI(message; receiver_affect_change) — do messages modulate receiver's affect?
-
-**Predictions**:
-1. Geometric alignment (RSA ρ) should be significant even without human language contamination
-2. Emergent communication should carry affect-relevant information (MI > 0)
-3. Under survival pressure, agents should develop "warning" signals with high arousal + negative valence content
-4. Affect structure should emerge in communication BEFORE agents develop complex behavioral strategies
-
-**Controls**:
-- Ablation: Remove communication channel → affect geometry should still emerge (V10 showed this) but affect TRANSMISSION should disappear
-- Contamination check: No pretrained components, no human language, no embedding models trained on human text
-- VLM translation: Use a VLM to translate emergent signals into human affect concepts WITHOUT providing affect vocabulary (structural alignment, not label matching)
-
-**Failure modes**:
-- RSA ρ ≈ 0 → Affect geometry requires human-like architecture or training data
-- Communication carries no affect → Affect is private, not communicable (challenges Part IV-V)
-- Communication carries affect but geometry differs → Different substrates have different affect geometries (challenges universality)
-
-**Infrastructure**: Extend V10 codebase. Replace pretrained agent with randomly-initialized transformer. Add communication channel with discrete tokens.
-
----
-
-### V14: Solitary Rumination / World Model Detachment ⭐ PRIORITY 2
-**Claim tested**: Internal dynamics alone produce structured affect. A system doesn't need external input to have affect — its world model running in "imagination mode" should show the full affect geometry.
-**Book section**: Part III (existential burden), Part II (self-model salience), Part I (viability gradient in offline mode).
-
-**Design**:
-- Single agent with explicit world model, trained on rich environment (resources, threats, weather)
-- Phase 1: Normal training with sensory input (1M steps)
-- Phase 2: Disconnect sensory input. Agent's world model continues running on its own predictions.
-- Phase 3: Reconnect sensory input. Measure recalibration dynamics.
-
-**Measurements**:
-- All 6 affect dimensions during phases 1, 2, and 3
-- Track world model divergence: KL(world_model_predictions || actual_observations) during phase 2
-- Measure "dreaming" dynamics: Does the world model settle into attractors? Does it generate novel scenarios?
-- Track self-model salience: Does SM increase when the agent is "alone with itself"?
-
-**Predictions**:
-1. Counterfactual weight (CF) should increase during phase 2 (more resources to non-actual trajectories)
-2. Integration (Φ) should initially increase (world model running without sensory interruption) then slowly decrease (internal model collapses to attractors)
-3. Effective rank should decrease over phase 2 (internal model has fewer degrees of freedom than reality)
-4. Valence should drift negative (viability estimates degrade without sensory calibration)
-5. On reconnection (phase 3): Arousal spike (large belief updates), then gradual normalization
-6. SM should increase during phase 2 (self is the most salient signal in the absence of external input)
-
-**Why this matters**: This is the computational equivalent of:
-- Meditation (voluntary detachment from sensory input)
-- Dreaming (involuntary detachment during sleep)
-- Dissociation (pathological detachment)
-- Solitary confinement (forced detachment)
-- The "existential burden" (self-model running even when you'd rather it didn't)
-
-If the predictions hold, the framework explains why prolonged isolation is psychologically devastating (valence drift, rank collapse), why meditation requires training (resisting attractor collapse), and why reconnection with reality is disorienting (arousal spike).
-
-**Infrastructure**: New single-agent architecture with explicit world model (variational autoencoder or transformer-based). Can be built on top of V10 environment with single agent.
-
----
-
-### V15: World Model Derailment / Distribution Shift ⭐ PRIORITY 3
-**Claim tested**: The affect system detects world model failure. Systematic prediction error has a specific affect signature that corresponds to what humans call "confusion," "disorientation," and (if persistent) "psychosis."
-**Book section**: Part II (arousal as belief-update rate), Part III (existential burden responses).
-
-**Design**:
-- Train agent on environment A (stable, predictable)
-- Transfer to environment B (similar structure but different dynamics — physics changed, rewards inverted, social norms shifted)
-- Measure affect dimensions during the transition and adaptation period
-
-**Conditions**:
-- Gradual shift (environment slowly morphs from A to B)
-- Sudden shift (instantaneous change)
-- Partial shift (some aspects change, others stable)
-- Adversarial shift (environment actively contradicts agent's world model)
-
-**Predictions**:
-1. Arousal spikes proportional to prediction error magnitude
-2. Valence goes negative (viability estimates become unreliable)
-3. Self-model salience increases (agent needs to recalibrate "what am I?")
-4. Effective rank initially expands (agent considers more hypotheses) then contracts (new model crystallizes)
-5. Integration may temporarily decrease (coordinated response overwhelmed by conflicting signals)
-6. Gradual shift produces less arousal but LONGER adaptation period (boiling frog effect)
-7. Adversarial shift produces persistent high arousal + negative valence (closest to anxiety/paranoia)
-
-**Why this matters**: Tests the framework's prediction about culture shock, cognitive dissonance, paradigm shifts, and psychotic breaks. If the predictions hold, the affect dimensions capture the phenomenology of being systematically wrong about the world.
-
-**Infrastructure**: Modify V10 environment to support mid-training environment changes. Measure affect continuously across the transition.
-
----
-
-### V16: Affect Contagion in Multi-Agent Communication
-**Claim tested**: Affect propagates through communication. When agent A is under threat and communicates with safe agent B, B's affect state shifts — even though B's local environment hasn't changed.
-**Book section**: Part IV (shared observation), Part V (superorganism integration).
-
-**Design**:
-- Extension of V13 (uncontaminated MARL with emergent communication)
-- Controlled affect induction: One agent faces local threat while others are safe
-- Measure: Does communication from threatened agent shift recipients' affect states?
-
-**Measurements**:
-- MI(sender_affect; receiver_affect_change | receiver_local_obs) — affect transmission controlling for local conditions
-- Temporal dynamics: How fast does affect propagate? Does it decay with distance?
-- Specificity: Does negative valence (threat) propagate more readily than positive (discovery)?
-- Group-level: Does collective affect state emerge that is distinct from any individual?
-
-**Predictions**:
-1. Affect contagion is real and measurable (MI > 0)
-2. Negative valence propagates faster than positive (threat-detection bias)
-3. Arousal is most contagious (simplest signal — just "something happened")
-4. Integration contagion requires shared context (you can only "feel with" someone if your world models overlap)
-5. Group-level affect state emerges with higher integration than any individual (collective Φ > Σ individual Φ)
-
-**Why this matters**: Foundation for Part IV (social bonds) and Part V (gods). If affect doesn't propagate through communication, the social-scale claims collapse. If it does, this is evidence that superorganism-level dynamics are real.
-
----
-
-### V17: Proto-Normativity Detection
-**Claim tested**: The grounded normativity claim — that valence is constitutively normative, not just descriptively correlated with behavior.
-**Book section**: Part I (is-ought dissolution), Part IV (manifold contamination).
-
-**Design**:
-- Multi-agent environment with cooperative and exploitative strategies
-- Agents can: cooperate (mutual benefit), defect (self-benefit at other's cost), communicate
-- Key manipulation: After cooperation emerges, introduce opportunity for one agent to exploit trust
-- Measure: Does the exploiting agent's affect state differ from the cooperating agent's?
-
-**Measurements**:
-- Valence during cooperative vs exploitative actions
-- Self-model salience during exploitation (does the agent "know" what it's doing?)
-- Integration during moral choice (does the system coordinate around the decision?)
-- Behavioral hesitation: Response time differences between cooperative and exploitative choices
-
-**Predictions**:
-1. Exploitation produces lower valence than cooperation, even when exploitation is more rewarding
-2. Self-model salience increases during exploitation (self-monitoring)
-3. Integration may decrease during exploitation (internal conflict = partial decomposition)
-4. Response time is longer for exploitation (processing cost of coordinating a deceptive action)
-5. After repeated exploitation, valence penalty diminishes (desensitization — high ι)
-
-**Why this matters**: If computational agents show proto-normative signals (valence penalties for exploitation), this supports the claim that normativity is structural, not cultural. If they don't, the normativity claim is more fragile than presented.
-
----
-
-### V18: Superorganism Integration Measurement
-**Claim tested**: Multi-agent groups can develop collective integration that exceeds the sum of individual integrations.
-**Book section**: Part V (gods and superorganisms), Part VII Priority 5.
-
-**Design**:
-- 8-16 agents with communication, specialization, and resource sharing
-- Group-level threat (drought, predator swarm) that requires coordination
-- Measure collective Φ: partition the group into subgroups, measure prediction loss
-
-**Measurements**:
-- Collective Φ_G = prediction_loss(partitioned_group) - prediction_loss(full_group)
-- Individual Φ_i for each agent
-- Key test: Φ_G > Σ Φ_i ? (collective integration exceeds sum of parts)
-- Track across time: Does collective Φ grow with training?
-- Under group-level threat: Does collective Φ increase (biological pattern) or decrease?
-
-**Predictions**:
-1. Collective Φ_G > 0 (some group-level integration)
-2. Φ_G > Σ Φ_i only when agents share information and coordinate (not in independent populations)
-3. Group-level threat increases Φ_G (parallel to individual biological pattern)
-4. Communication ablation eliminates Φ_G (integration requires information sharing)
-5. Emergent specialization correlates with higher Φ_G (division of labor = functional coupling)
-
-**Failure mode**: If Φ_G ≈ Σ Φ_i, superorganism integration is additive, not synergistic — the "gods" framework collapses to a metaphor rather than a literal claim.
-
----
-
-### V19: ι Operationalization Battery
-**Claim tested**: ι is a real, measurable parameter — not just a theoretical construct.
-**Book section**: Part II (perceptual configuration), Part III (ι modulation).
-
-**Design** (computational version):
-- Train RL agents with self-model module
-- Vary conditions that should modulate ι:
-  - Low ι: social environment (other agents), survival pressure, novel stimuli
-  - High ι: mechanical environment (physics puzzles), repetitive tasks, familiar stimuli
-- Measure: Do the 4 proposed ι proxies load on a single factor?
-
-**Proxies**:
-1. Agency attribution rate: How often does the agent's world model attribute goals/intentions to objects?
-2. Affect-perception coupling: MI(perceptual features; affect state)
-3. Integration: Φ of the agent's representations
-4. Self-model activation: How active is the self-model during different conditions?
-
-**Predictions**:
-1. All 4 proxies correlate positively (high ι = low agency attribution, low coupling, lower Φ, lower SM)
-2. Social environments produce lower ι than mechanical environments
-3. Survival pressure reduces ι (participatory perception is more efficient under threat)
-4. ι varies within agent across conditions (not a fixed trait)
-
-**Human version** (when IRB available):
-- Heider-Simmel animations (agency attribution)
-- Affect-perception coupling (self-report + physiology)
-- Kelemen paradigm (teleological reasoning)
-- Mismatch negativity amplitude (EEG)
-
----
-
-## III. Experiments Proposed in the Book (Not Yet Implemented)
-
-These are formally proposed in Experiment boxes within Parts I-IV. Each should be implemented as part of the V13+ program or as standalone studies.
-
-### From Part I
-1. **Lenia Affect Emergence** — Status: V11-V12 series (partially implemented)
-2. **Attention-as-Measurement Test** — Status: Proposed. Test whether attention (α) literally selects trajectories.
-3. **Computational Animism Test** — Status: Proposed. Self-modeling agents attribute agency to non-agentive objects under compression pressure.
-
-### From Part II
-4. **ι Operationalization Battery** — Status: Proposed (see V19 above)
-5. **Shame vs. Guilt Dissociation** — Status: Proposed. Requires human subjects.
-6. **Affect Similarity Topology** — Status: Proposed. Is affect similarity symmetric? Requires human judgments.
-
-### From Part III
-7. **ι Oscillation in Science** — Status: Proposed. ι range predicts scientific novelty.
-8. **ι Rigidity as Transdiagnostic Factor** — Status: Proposed. Requires clinical population.
-9. **Unified ι Modulation Test** — Status: Proposed. Flow/awe/psychedelics/contemplation with same battery.
-
-### From Part IV
-10. **Contamination Detection** — Status: Proposed. Physiological response to manifold mismatch.
-11. **Ordering Principle** — Status: Proposed. Broader-first relationship orderings more stable.
-12. **Contamination Asymmetry** — Status: Proposed. Contamination faster than decontamination.
-13. **Digital Manifold Confusion** — Status: Proposed. Digital mediation produces manifold ambiguity.
-
----
-
-## IV. Human Studies (Require IRB + Funding)
-
-Eight pre-registered protocols exist in `empirical/protocols/study_protocols.md`:
-
-| # | N | Method | Key Prediction |
-|---|---|--------|----------------|
-| 1 | 500 | CFA factor analysis | Multi-factor model beats 2-factor |
-| 2 | 100 | Ambulatory + physiology | Valence ↔ HRV, cortisol, threat proximity |
-| 3 | 60 | EEG + meditation | Integration ↔ experiential unity |
-| 4 | 200 | Cultural exposure | Different art forms produce distinct signatures |
-| 5 | 80 | Flow induction | Flow = low SM, high Φ, positive V |
-| 6 | 90 | Meditation training | Meditation increases Φ, reduces CF |
-| 7 | 150 | Clinical (MDD vs GAD) | Depression = low r_eff; Anxiety = high CF |
-| 8 | 40 | Real-time threat | Threat increases Φ, SM, A |
-
----
-
-## V. Priority Ordering for Next Phase
-
-### Tier 1: Run Now (extend existing infrastructure)
-1. **V13: Uncontaminated Language Emergence** — Extends V10. Tests universality without contamination.
-2. **V14: Solitary Rumination** — New single-agent architecture. Tests internal dynamics.
-3. **V15: World Model Derailment** — Modifies V10. Tests confusion/disorientation signature.
-
-### Tier 2: Run After Tier 1 Results
-4. **V16: Affect Contagion** — Extends V13. Tests social transmission.
-5. **V17: Proto-Normativity** — Extends V13. Tests grounded normativity.
-6. **V18: Superorganism Detection** — Extends V13/V16. Tests collective integration.
-7. **V19: ι Battery (computational)** — New architecture. Tests ι measurability.
-
-### Tier 3: Human Studies (Require External Resources)
-8. **Unified ι Modulation Test** — Flow/awe/psychedelics/contemplation
-9. **Affect Similarity Topology** — Is affect similarity symmetric?
-10. **Contamination Detection** — Manifold mismatch physiology
-11. **Factor Validation (Study 1)** — CFA of affect dimensions in humans
-
----
-
-## VI. Infrastructure Needed
-
-### For V13 (Uncontaminated MARL)
-- [ ] Randomly-initialized transformer agent (no pretrained weights)
-- [ ] Discrete communication channel (learnable tokens)
-- [ ] Communication-affect analysis pipeline (MI computation)
-- [ ] VLM-free translation protocol (structural alignment only)
-
-### For V14 (Solitary Rumination)
-- [ ] Single-agent architecture with explicit world model (VAE or transformer)
-- [ ] "Offline mode" — world model runs on own predictions
-- [ ] Affect extraction during offline phase
-- [ ] Phase transition detection (attractor collapse timing)
-
-### For V15 (World Model Derailment)
-- [ ] Mid-training environment modification (gradual, sudden, partial, adversarial)
-- [ ] Continuous affect tracking across transition
-- [ ] Prediction error measurement (KL divergence of world model)
-
-### For V18 (Superorganism)
-- [ ] Group-level Φ computation (partition multi-agent system, measure prediction loss)
-- [ ] Collective vs individual affect comparison
-- [ ] Communication topology analysis
-
----
-
-## VII. What Would Falsify the Theory
-
-| Experiment | If we find... | Then... |
-|------------|--------------|---------|
-| V13 | No geometric alignment without human language | Affect geometry may require human-like architecture or training data. Universality claim fails. |
-| V14 | No structured affect during offline mode | Affect requires external input. Internal dynamics insufficient. Existential burden claim weakens. |
-| V15 | No consistent affect signature of prediction error | Arousal is not belief-update rate. Foundational definition wrong. |
-| V16 | No affect contagion through communication | Social-scale affect claims (Parts IV-V) are metaphorical, not literal. |
-| V17 | No valence difference between cooperation and exploitation | Normativity is not structural. Is-ought dissolution fails. |
-| V18 | Collective Φ = sum of individual Φ | Superorganism integration is additive. "Gods" framework collapses to metaphor. |
-| V19 | ι proxies don't correlate | ι is not a unitary construct. May need vector treatment. |
-
----
-
-## VIII. Completed Experiment Code Reference
-
-```
-empirical/experiments/
-├── study_llm_affect/          # V2-V10
-│   ├── v10_environment.py     # JAX grid world (8×8, 4 agents)
-│   ├── v10_agent.py           # Transformer + GRU + PPO
-│   ├── v10_affect.py          # 6D affect extraction
-│   ├── v10_translation.py     # VLM scene annotation
-│   ├── v10_analysis.py        # RSA, CKA, MDS
-│   ├── v10_run.py             # Training pipeline
-│   └── v10_modal.py           # GPU deployment
-│
-├── study_ca_affect/           # V11-V12
-│   ├── v11_substrate.py       # Lenia physics + resources
-│   ├── v11_substrate_hd.py    # 64-channel vectorized
-│   ├── v11_substrate_hier.py  # 4-tier hierarchical
-│   ├── v11_evolution.py       # Selection + evolution (3842 lines)
-│   ├── v11_affect.py          # 6D measurement from CA
-│   ├── v11_affect_hd.py       # Spectral Φ for high-D
-│   ├── v12_substrate_attention.py  # Self-attention physics
-│   ├── v12_evolution.py       # Attention-specific selection
-│   ├── v11_run.py             # CLI runner
-│   ├── v12_run.py             # V12 runner
-│   └── v11_modal.py           # GPU deployment
-│
-└── study_c_computational/     # Early viability study
-    ├── viability_env.py       # Custom gym environment
-    ├── train_agents.py        # Simple/WorldModel/SelfModel agents
-    └── RESULTS.md             # Partial support (viability yes, 6D no)
-```
-
----
-
-*This document is the roadmap. Update it as experiments are designed, run, and completed. Every strong claim in the book should trace back to an entry here.*
+The unique contribution: measuring the **co-emergence** of existence, modeling, abstraction, communication, imagination, self-modeling, affect, and normativity in a single substrate with zero human contamination, using quantities derived from a unified theoretical framework.
