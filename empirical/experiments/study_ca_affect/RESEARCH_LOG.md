@@ -340,3 +340,62 @@ Counterfactual detach.   N/A (always detached) N/A (always detached)
 ### Data
 - `results/cf_s{123,42,7}/` — per-cycle JSON files
 - `results/cf_analysis/cf_cross_seed.json` — cross-seed summary
+
+---
+
+## 2026-02-17: Experiment 6 — Self-Model Emergence (WEAK SIGNAL)
+
+### Method
+Three self-model metrics, all using Ridge regression + StandardScaler + 5-fold CV:
+
+1. **ρ_self**: Self-effect ratio. How much does adding the pattern's "action" (Δs_B) to environment state improve prediction of next boundary observation? ρ_self = (MSE[f_env] - MSE[f_full]) / MSE[f_env].
+2. **SM(τ)**: Self-prediction score. Gap between f_self (s_B → s_B(t+τ)) and f_ext (s_∂B → s_B(t+τ)). Positive = pattern predicts itself better than an external observer.
+3. **SM_sal**: Self-model salience. Ratio of (how much s_B helps predict self-future) to (how much s_B helps predict env-future). SM_sal > 1 = pattern knows more about itself than about the environment.
+
+Ran on all 3 seeds × 7 snapshots, 50 recording steps per snapshot.
+
+### Results
+
+| Seed | Cycle | ρ_self | SM_cap | SM_sal | Notable |
+|------|-------|--------|--------|--------|---------|
+| 123  | 0     | 0.021  | 58.6   | 0.000  | |
+| 123  | 5     | 0.002  | 21.6   | 0.001  | |
+| 123  | 10    | 0.000  | 18.0   | 0.000  | |
+| 123  | 15    | 0.044  | 12.2   | 0.000  | |
+| 123  | **20**| 0.000  | **132.1** | **1.138** | **Bottleneck (3 patterns)** |
+| 123  | 25    | 0.008  | 56.6   | 0.000  | |
+| 123  | 29    | 0.000  | 44.6   | 0.014  | |
+| 42   | all   | 0-0.05 | 36-56  | 0-0.30 | Flat, no SM_sal > 1 |
+| 7    | all   | 0-0.05 | 19-52  | 0-0.33 | Flat, no SM_sal > 1 |
+
+### Observations
+
+1. **ρ_self ≈ 0 everywhere.** Same root cause as Experiment 5: patterns don't have a tight action→observation loop. Internal state changes don't propagate to boundary observations at measured timescales. The FFT substrate spreads influence globally, so boundary changes are driven by grid-wide dynamics, not the focal pattern's actions.
+
+2. **SM_capacity is positive but trivially so.** A pattern's own state naturally predicts its own future better than its boundary does — this is spatial autocorrelation, not self-modeling. The values (12-132) don't trend with evolution. The spike at cycle 020 (132.1) is driven by n=3 patterns, one of which (P1) had SM_capacity = 364.
+
+3. **SM_sal > 1 at the bottleneck.** The one genuinely interesting result: seed 123, cycle 020, pattern 1 shows SM_sal = 2.28. This means adding internal state helps predict self-future 2.28× more than it helps predict environment-future. This pattern is "self-focused" — it knows more about what it will do than about what the environment will do. But n=1 at n=3 patterns is anecdotal, not a trend.
+
+4. **Why SM is often negative in the mean.** The mean SM across all patterns is typically hugely negative (MSE[f_ext] << MSE[f_self]). This is a methodological artifact: s_B is 68-dimensional while s_∂B is 36-dimensional. With Ridge regression, the higher-dimensional predictor overfits more in cross-validation. The SM_capacity metric (positive part only) partly corrects for this but introduces its own bias.
+
+### Updated cross-experiment table
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry          ✓ (cheap)             ✓ (cheap)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+Counterfactual detach.   N/A (always detached) N/A (always detached)
+Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1, anecdotal)
+```
+
+### What this means for the theory
+
+The thesis predicts self-model emergence should correlate with integration jumps (Φ increase). We can't test this because we don't have enough self-modeling events. The one occurrence (SM_sal > 1) is at the bottleneck where we also see robustness >1.0, C_wm spike, and representation improvement — consistent with the prediction but statistically meaningless at n=1.
+
+The deeper issue remains: V13's substrate doesn't support sensory-motor coupling. Experiments 5 and 6 both hit the same wall — patterns are internally driven from the start, so the reactive→autonomous transition the theory predicts can't occur. Testing these predictions requires a substrate with explicit boundary sensing and action channels.
+
+### Data
+- `results/sm_s{123,42,7}/` — per-cycle JSON files
+- `results/sm_analysis/sm_cross_seed.json` — cross-seed summary

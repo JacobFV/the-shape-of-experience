@@ -315,7 +315,24 @@ Ratio of self-predictive to environment-predictive information in the pattern's 
 ### Connection to the book
 This is the self-effect ratio ρ from Part I, the self-model salience SM dimension from Part II, and the gradient of distinction Rung 5 (world-modeling with self as privileged node). The thesis predicts this is the point where something begins to be "like something" — the origin of phenomenal character.
 
-### Status: NOT IMPLEMENTED
+### Status: COMPLETE (weak signal — bottleneck only)
+
+### Results (V13 content-based coupling, 3 seeds × 7 snapshots)
+
+| Seed | ρ_self range | SM_capacity range | SM_sal range | Notable |
+|------|-------------|-------------------|--------------|---------|
+| 123  | 0.00 – 0.04 | 12 – 132 | 0.0 – 1.14 | SM_sal > 1 at bottleneck (cycle 20, 3 patterns) |
+| 42   | 0.00 – 0.05 | 36 – 56  | 0.0 – 0.30 | No SM_sal > 1 |
+| 7    | 0.00 – 0.05 | 19 – 52  | 0.0 – 0.33 | No SM_sal > 1 |
+
+**Finding: Weak signal at bottleneck only.** ρ_self ≈ 0 everywhere — pattern actions don't dominate their observation stream. SM_capacity is positive across all seeds (patterns can self-predict) but shows no evolutionary trend. SM_sal > 1 appears exactly once: seed 123, cycle 020 (population bottleneck with 3 patterns), where one pattern achieves SM_sal = 2.28.
+
+**Interpretation:** Self-prediction is trivially present (your own state predicts your future better than your boundary does — expected for any spatially-coherent pattern). But self-model *salience* — privileged self-knowledge that exceeds environment-knowledge — only appears under extreme selection pressure. Consistent with the bottleneck furnace pattern but insufficient evidence to confirm Experiment 6's predicted transitions.
+
+**Why ρ_self ≈ 0:** Same root cause as Experiment 5. The FFT convolution substrate doesn't create a tight action→observation loop. Pattern "actions" (internal state changes) don't propagate to boundary observations on the timescale measured. Self-effect requires a substrate with explicit sensory-motor coupling.
+
+**Code:** `v13_self_model.py`, `v13_self_model_run.py`
+**Data:** `results/sm_s{123,42,7}/`, `results/sm_analysis/sm_cross_seed.json`
 
 ---
 
