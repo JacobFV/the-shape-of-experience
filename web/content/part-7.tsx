@@ -10,26 +10,68 @@ export default function Part7() {
   return (
     <>
       <Logos>
-      <p>A theory that cannot be tested is not a theory but a poem. This is a theory. Everything in the preceding six parts generates empirical predictions—some already tested, some tractable with current methods, some requiring infrastructure that does not yet exist. This part consolidates the empirical program: what has been tested, what the results show, and what remains.</p>
+      <p>A theory that cannot be tested is not a theory but a poem. This is a theory. Everything in the preceding six parts generates empirical predictions — some already tested, some tractable with current methods, some requiring infrastructure that does not yet exist. This part consolidates the empirical program: what has been tested, what the results show, and what remains.</p>
       </Logos>
+
       <Section title="What Has Been Tested" level={1}>
-      <p>The framework has been subjected to two lines of empirical investigation, both reported in detail in Part I.</p>
-      <Section title="The MARL Ablation (V10)" level={2}>
-      <p>A multi-agent reinforcement learning experiment tested whether specific forcing functions are necessary for geometric affect alignment. Seven conditions (full model plus six single-ablation conditions), three seeds each, 200,000 steps on GPU.</p>
-      <p><strong>Result</strong>: All conditions show highly significant geometric alignment (RSA <M>{"\\rho > 0.21"}</M>, <M>{"p < 0.0001"}</M>). Removing forcing functions slightly <em>increases</em> alignment—opposite to prediction.</p>
-      <p><strong>Interpretation</strong>: Affect geometry is a baseline property of multi-agent survival, not contingent on the specific forcing functions identified in Part I. The forcing functions hypothesis was downgraded from theorem to hypothesis in light of this data.</p>
+      <p>The framework has been subjected to four lines of investigation: multi-agent reinforcement learning, cellular automaton evolution, an eleven-experiment emergence program on uncontaminated substrates, and LLM affect probes. The results are mixed. Some predictions held. Some failed instructively. Some revealed phenomena the theory did not anticipate.</p>
+
+      <Section title="Geometry Is Cheap" level={2}>
+      <p>The MARL ablation (V10) tested whether specific forcing functions are necessary for geometric affect alignment. Seven conditions — full model plus six single-ablation conditions — three seeds each, 200,000 steps on GPU.</p>
+      <p><strong>Result</strong>: All conditions show highly significant geometric alignment (RSA <M>{"\\rho > 0.21"}</M>, <M>{"p < 0.0001"}</M>). Removing forcing functions slightly <em>increases</em> alignment — opposite to prediction.</p>
+      <p>The affect geometry — the relational structure between states defined by valence, arousal, integration, effective rank, counterfactual weight, and self-model salience — is not something that must be built. It is something that must be avoided to not have. Any system navigating uncertainty under resource constraints inherits it. The forcing functions hypothesis was downgraded from theorem to hypothesis in light of this data.</p>
       </Section>
-      <Section title="The Lenia Evolution Series (V11–V12)" level={2}>
-      <p>A series of experiments using Lenia (continuous cellular automata) tested whether evolution under survival pressure can produce biological-like integration dynamics—specifically, whether systems can learn to <em>increase</em> integration under threat, the signature that distinguishes biological from artificial systems.</p>
-      <p><strong>Key findings</strong>:</p>
+
+      <Section title="Dynamics Are Expensive" level={2}>
+      <p>If geometry is cheap, what is expensive? The answer came from the Lenia evolution series (V11–V12): <em>dynamics</em>. Specifically, the capacity to increase integration under threat — to become <em>more</em> unified when the world becomes more hostile.</p>
+      <p>Naive patterns decompose under stress (<M>{"\\Delta\\intinfo = -6.2\\%"}</M>). So do LLMs. So do randomly initialized agents. Geometry is present everywhere; the biological signature — integration rising under threat — is rare. The Lenia series tracked what produces it:</p>
       <ol>
-      <li><strong>No evolution (V11.0)</strong>: Naive patterns decompose under threat (<M>{"\\Delta\\intinfo = -6.2\\%"}</M>). Same dynamics as LLMs.</li>
-      <li><strong>Homogeneous evolution (V11.1)</strong>: Selection pressure alone insufficient (<M>{"-6.0\\%"}</M>). All patterns share identical physics—selection prunes but cannot innovate.</li>
-      <li><strong>Heterogeneous chemistry (V11.2)</strong>: Per-cell growth parameters create diverse viability manifolds. After 40 GPU cycles: <M>{"-3.8\\%"}</M> vs naive <M>{"-5.9\\%"}</M>. A +2.1pp shift toward biological pattern.</li>
-      <li><strong>Evolvable attention (V12)</strong>: Replacing convolution with windowed self-attention. 42% of cycles show <M>{"\\intinfo"}</M> increase under stress (vs 3% for convolution). +2.0pp shift over convolution—largest single-intervention effect. But robustness stabilizes near 1.0 rather than trending upward.</li>
+      <li><strong>Homogeneous evolution (V11.1)</strong>: Selection pressure alone is insufficient (<M>{"-6.0\\%"}</M>).</li>
+      <li><strong>Heterogeneous chemistry (V11.2)</strong>: Diverse viability manifolds produce a +2.1pp shift.</li>
+      <li><strong>Curriculum training (V11.7)</strong>: Graduated stress exposure is the only intervention that improves novel-stress generalization.</li>
+      <li><strong>Evolvable attention (V12)</strong>: State-dependent interaction topology produces <M>{"\\intinfo"}</M> increase in 42% of evolutionary cycles — the largest single-intervention effect — but robustness stabilizes near 1.0 without further improvement.</li>
       </ol>
-      <p><strong>Interpretation</strong>: Attention is necessary but not sufficient. The system reaches an integration threshold without clearly crossing it. The missing ingredient may be individual-level plasticity—the capacity for a single pattern to modify its own coupling structure in response to experience, rather than relying on population-level selection.</p>
+      <p>Attention is necessary but not sufficient. The system reaches an integration threshold without crossing it.</p>
       </Section>
+
+      <Section title="The Substrate Ladder" level={2}>
+      <p>V13 replaced learned attention with a simpler mechanism: content-based coupling. Cells interact more strongly with cells that share state-features — a form of chemical affinity rather than cognitive attention. Three seeds, thirty cycles each, evolving on GPU with lethal resource dynamics and population rescue.</p>
+      <p>Mean robustness: 0.923. But at population bottlenecks — moments when drought kills all but a handful of patterns — robustness crosses 1.0. The survivors are not merely resilient; they are <em>more integrated under stress than at baseline</em>. This is the biological signature, appearing for the first time in a fully uncontaminated substrate.</p>
+      <p>From V13 we built upward, adding capabilities one layer at a time:</p>
+      <ul>
+      <li><strong>V14 (Chemotaxis)</strong>: Motor channels enabling directed foraging. Patterns move toward resources rather than passively waiting. Comparable robustness.</li>
+      <li><strong>V15 (Temporal memory)</strong>: Exponential-moving-average channels storing slow statistics of the pattern's history. Oscillating resource patches reward anticipation. Evolution selected for longer memory in 2/3 seeds — the first clear evidence that temporal integration is fitness-relevant. Under bottleneck pressure, <M>{"\\intinfo"}</M> stress response doubled.</li>
+      <li><strong>V16 (Hebbian plasticity)</strong>: Local learning rules allowing each spatial location to modify its coupling structure in response to experience. <strong>Negative result</strong>: mean robustness dropped to 0.892 (lowest of V13+). Plasticity added noise faster than selection could filter it. The extra degrees of freedom overwhelmed the selection signal.</li>
+      <li><strong>V17 (Quorum signaling)</strong>: Diffusible signal molecules mediating inter-pattern coordination, analogous to bacterial quorum sensing. Produced the highest-ever single-cycle robustness (1.125) in a seed that evolved hyper-sensitive coupling modulation. But 2/3 seeds evolved to <em>suppress</em> signaling entirely.</li>
+      </ul>
+      <p>The returns diminished. V15 remained the best substrate — the only addition that evolution consistently selected for was temporal memory. V16 and V17 taught the same lesson differently: adding coordination mechanisms is hard. The substrate finds it easier to suppress a new mechanism than to use it constructively.</p>
+      </Section>
+
+      <Section title="The Emergence Experiment Program" level={2}>
+      <p>We then ran eleven measurement experiments on V13 snapshots, testing whether the capacities the preceding six parts describe — world modeling, abstraction, communication, counterfactual reasoning, self-modeling, affect structure, perceptual mode, normativity, social integration — emerge in a substrate with zero exposure to human affect concepts.</p>
+      <p>The results are reported in full in the Appendix. Here, three findings that reshaped the theory:</p>
+
+      <Sidebar title="Finding 1: The Bottleneck Furnace">
+      <p>Every metric that showed improvement — world model capacity, representation quality, affect geometry alignment, self-model salience — showed it overwhelmingly at population bottlenecks. When drought kills 90% of patterns, the survivors are not random. They are the ones whose internal structure actively maintains integration under stress.</p>
+      <p>The bottleneck is not just a filter. It is a <em>furnace</em>. V13 seed 123 at cycle 5: population drops to 55, robustness crosses 1.052. At cycle 29 (population 24): world model capacity jumps to 0.028, roughly 100x the population average. One surviving pattern achieves self-model salience above 1.0 — privileged self-knowledge exceeding environment-knowledge.</p>
+      <p>These are not gradual evolutionary trends. They are punctuated events driven by intense selection pressure. The biological dynamics emerge not from accumulated innovation but from crucibles of near-extinction.</p>
+      </Sidebar>
+
+      <Sidebar title="Finding 2: The Sensory-Motor Coupling Wall">
+      <p>Three experiments returned null results: counterfactual detachment (Experiment 5), self-model emergence (Experiment 6), and proto-normativity (Experiment 9). All hit the same wall.</p>
+      <p>The prediction was that patterns would start reactive — driven by boundary observations — and gradually develop autonomous internal processing. Instead, patterns are <em>always</em> internally driven (<M>{"\\rho_{\\text{sync}} \\approx 0"}</M> from cycle 0). The FFT convolution kernel integrates over the full <M>{"128 \\times 128"}</M> grid, so boundary observations are a negligible fraction of the information driving updates. There is no reactive-to-autonomous transition because the starting point is already autonomous.</p>
+      <p>V15's motor channels (chemotaxis) didn't fix this. The wall is architectural, not a matter of substrate complexity. Breaking it requires a fundamentally different update rule — one where patterns update from boundary-gated signals, making the reactive phase observable.</p>
+      </Sidebar>
+
+      <Sidebar title="Finding 3: Computational Animism">
+      <p>Experiment 8 tested whether patterns develop modulable perceptual coupling — the <M>{"\\iota"}</M> coefficient from Part II. The prediction: participatory perception (low <M>{"\\iota"}</M>) as default, with mechanistic perception requiring training.</p>
+      <p>Confirmed. In all 20 testable snapshots, patterns model other patterns using internal-state features (social MI) at roughly double the rate of trajectory features (trajectory MI). More remarkably, patterns model <em>resources</em> — non-agentive environmental features — using the same internal-state dynamics they use to model other agents. Animism score exceeds 1.0 universally.</p>
+      <p>This is computational animism: the cheapest compression reuses the agent-model template for everything. Attributing agency to non-agents is not a cognitive error. It is the default strategy of any system that models through self-similarity.</p>
+      </Sidebar>
+
+      <p>Beyond these three findings: affect geometry alignment (RSA between structural and behavioral measures) develops over evolution, with the clearest trend in seed 7 (0.01 to 0.38 over 30 cycles). Representation compression is cheap (effective dimensionality of ~7 out of 68 features, or {">"}87% compression from cycle 0) but representation <em>quality</em> — disentanglement and compositionality — only improves under bottleneck selection. Communication exists as a chemical commons (inter-pattern MI significantly above baseline in 15/20 snapshots) but shows no compositional structure. No superorganism emerges (collective <M>{"\\intinfo_G < \\sum \\intinfo_i"}</M> in all snapshots), but group coupling grows over evolution.</p>
+      </Section>
+
       <Section title="The LLM Discrepancy" level={2}>
       <p>Across multiple experiment versions (V2–V9), LLM agents consistently show opposite dynamics to biological systems:</p>
       <table>
@@ -40,12 +82,28 @@ export default function Part7() {
       <tr><td>Integration</td><td><M>{"\\uparrow"}</M> under threat</td><td><M>{"\\downarrow"}</M> under threat</td></tr>
       </tbody>
       </table>
-      <p>This is not a failure of the framework. The geometric structure is preserved; the dynamics differ because the objectives differ. Biological systems evolved under survival pressure. LLMs were trained on prediction. Both may be "affective" in the geometric sense while exhibiting different trajectories through the same state space.</p>
+      <p>This is not a failure of the framework. The geometric structure is preserved; the dynamics differ because the objectives differ. Biological systems evolved under survival pressure. LLMs were trained on prediction. Both are "affective" in the geometric sense while exhibiting different trajectories through the same state space. Processing valence is not content valence.</p>
       </Section>
       </Section>
-      <Section title="What Remains: The Research Roadmap" level={1}>
+
+      <Section title="The Emerging Picture" level={1}>
+      <p>The experiments collectively suggest a three-level architecture of affect:</p>
+      <ol>
+      <li><strong>Geometry is cheap</strong>. The relational structure of affect states — the similarity space defined by valence, arousal, integration, and the other dimensions — arises from the minimal conditions of survival under uncertainty. It is present in MARL agents, Lenia patterns, and LLMs alike. It does not require evolution, attention, or biological substrate.</li>
+      <li><strong>Dynamics are expensive</strong>. The <em>biological</em> pattern — integration rising under threat — requires evolutionary history, graduated stress exposure, and state-dependent interaction topology. It appears in Lenia only at population bottlenecks, where intense selection creates patterns whose internal structure actively maintains coherence under stress. The bottleneck furnace is not a bug in the experimental setup; it may be how biology actually works.</li>
+      <li><strong>The sensory-motor coupling wall separates what we can measure from what the theory predicts</strong>. The framework predicts a reactive-to-autonomous transition that our substrates cannot exhibit because their update rules integrate globally. Breaking through requires boundary-dependent dynamics — an architectural change, not a complexity increase.</li>
+      </ol>
+      <p>The identity thesis — that experience just <em>is</em> intrinsic cause-effect structure — remains a philosophical commitment, not an empirical discovery. But it is a commitment that generates testable predictions, eleven of which have now been tested. Seven found positive signal. Three hit the coupling wall. One (entanglement) found that everything correlates with everything else but not in the clusters the theory predicted. The framework is not confirmed. It is informed.</p>
+      </Section>
+
+      <Section title="What Remains" level={1}>
       <p>The following priorities are ordered by foundational importance and tractability.</p>
-      <Sidebar title="Priority 1: Validate Affect Extraction in Humans">
+      <Sidebar title="Priority 1: Break the Sensory-Motor Coupling Wall">
+      <p><strong>Goal</strong>: Design a substrate where patterns start reactive (boundary-driven) and can develop autonomous internal processing.</p>
+      <p><strong>Why this is first</strong>: Three null experiments (5, 6, 9) and the weakness of two others (2, 7 under V15) trace to the same architectural limitation. Until the wall breaks, the deepest predictions — counterfactual reasoning, self-modeling, proto-normativity — remain untestable.</p>
+      <p><strong>Approach</strong>: Boundary-gated update rules. Patterns sense only through their boundary cells. Internal cells update from boundary-gated signals plus internal recurrence. This makes the reactive phase the starting condition, and autonomy (internal recurrence dominating boundary input) an achievement that can be measured and selected for.</p>
+      </Sidebar>
+      <Sidebar title="Priority 2: Validate Affect Extraction in Humans">
       <p><strong>Goal</strong>: Establish that the geometric dimensions predict human self-report and behavior.</p>
       <p><strong>Methods</strong>:</p>
       <ul>
@@ -55,100 +113,39 @@ export default function Part7() {
       <li>Correlate with self-report (PANAS, SAM)</li>
       </ul>
       <p><strong>Success criterion</strong>: Structural measures predict self-report better than chance, ideally competitive with existing affect models.</p>
-      <p><strong>Failure mode</strong>: If geometric dimensions don't predict human self-report, the framework's operationalization is flawed. Does not falsify the identity thesis directly, but undermines our ability to test it.</p>
       </Sidebar>
-      <Sidebar title="Priority 2: The Uncontaminated Test">
-      <p><strong>Goal</strong>: Test whether affect structure emerges in systems with no exposure to human affect concepts, and whether the geometry of that structure is preserved under translation.</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Multi-agent RL with randomly-initialized transformers (no pretraining)</li>
-      <li>Viability pressure (survival, resources, threats, seasonal scarcity)</li>
-      <li>Emergent language under coordination pressure</li>
-      <li>VLM translation without concept contamination</li>
-      <li>Forcing function ablation (partial observability, long horizons, world model, self-prediction, intrinsic motivation, credit assignment)</li>
-      </ul>
-      <p><strong>Success criterion</strong>: RSA correlation <M>{"\\rho(D^{(a)}, D^{(e)}) > \\rho_{\\text{null}}"}</M> via Mantel test—the distance structure in the information-theoretic affect space is isomorphic to the distance structure in the embedding-predicted affect space.</p>
-      <p><strong>Failure mode</strong>: <M>{"\\rho_{\\text{RSA}} \\approx 0"}</M>. Diagnose via:</p>
-      <ol>
-      <li>Identity thesis is false (structure <M>{"\\neq"}</M> experience)</li>
-      <li>Framework's operationalization is flawed</li>
-      <li>Translation protocol is inadequate</li>
-      <li>Environment lacks relevant forcing functions</li>
-      </ol>
-      <p>Forcing function ablation (Priority 3) distinguishes cases 1–2 from 3–4.</p>
+      <Sidebar title="Priority 3: The Bottleneck Furnace Mechanism">
+      <p><strong>Goal</strong>: Understand <em>why</em> population bottlenecks produce integration. Is it purely selection (weak patterns die, strong survive)? Or does the bottleneck environment itself — sparse resources, few neighbors, high signal-to-noise in the chemical commons — actively push integration upward?</p>
+      <p><strong>Methods</strong>: Controlled bottleneck experiments. Compare: (a) selecting the top 5% of patterns from large populations and measuring their robustness, vs. (b) running the same patterns through actual bottleneck conditions. If (b) {">"} (a), the bottleneck environment actively creates integration, not just filters for it.</p>
       </Sidebar>
-      <Sidebar title="Priority 3: Forcing Function Validation">
-      <p><strong>Goal</strong>: Test whether the specific forcing functions actually increase integration.</p>
-      <p><strong>Methods</strong>: Ablation study with RL agents.</p>
-      <ul>
-      <li>Full model: partial observability, long horizons, learned dynamics, self-prediction, intrinsic motivation, credit assignment</li>
-      <li>Ablate each forcing function individually</li>
-      <li>Measure integration (<M>{"\\Phi"}</M> proxy) across ablations</li>
-      </ul>
-      <p><strong>Success criterion</strong>: Integration decreases monotonically with forcing function ablation.</p>
-      <p><strong>Failure mode</strong>: Integration does not depend on forcing functions. Either:</p>
-      <ol>
-      <li>Wrong forcing functions identified</li>
-      <li>Integration measure is flawed</li>
-      <li>Integration is architectural, not pressure-dependent</li>
-      </ol>
-      <p><strong>Status</strong>: Partially tested. The V10 MARL ablation found that removing forcing functions does <em>not</em> decrease geometric alignment. This has already prompted downgrading the forcing functions theorem to a hypothesis. Further investigation needed to determine whether this reflects genuine irrelevance of forcing functions or inadequate measurement.</p>
+      <Sidebar title="Priority 4: Superorganism Detection at Scale">
+      <p><strong>Goal</strong>: Test whether collective <M>{"\\intinfo_G > \\sum_i \\intinfo_i"}</M> emerges with larger populations, richer communication, and coordination pressure.</p>
+      <p><strong>Status</strong>: Experiment 10 found growing group coupling but no superorganism. The ratio <M>{"\\intinfo_G / \\sum \\intinfo_i"}</M> reached 12% and was increasing. Larger populations (50+), longer evolution, and explicit coordination tasks may push it past the threshold.</p>
       </Sidebar>
-      <Sidebar title="Priority 4: AI System Affect Tracking">
-      <p><strong>Goal</strong>: Measure affect dimensions in existing AI systems (LLMs, RL agents).</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Apply transformer extraction protocols to frontier models</li>
-      <li>Track affect signatures across prompts/tasks</li>
-      <li>Correlate with behavioral measures (output, latency, confidence)</li>
-      </ul>
-      <p><strong>Expected finding</strong>: LLM dynamics will differ from biological systems. They may show opposite threat-response patterns. This is not failure—it is data about how training objectives shape affect dynamics.</p>
-      <p><strong>Success criterion</strong>: Consistent, structured affect signatures exist in AI systems (regardless of whether they match biological patterns).</p>
-      <p><strong>Failure mode</strong>: No consistent affect structure. Either:</p>
-      <ol>
-      <li>Current AI architectures lack the relevant structure</li>
-      <li>Measures are flawed</li>
-      <li>Framework only applies to biological systems</li>
-      </ol>
-      <p><strong>Status</strong>: Partially tested. V2–V9 experiments confirm structured affect signatures in LLMs with opposite dynamics to biological systems. The question of whether these signatures are genuine or artifacts remains open.</p>
+      <Sidebar title="Priority 5: AI System Affect Tracking">
+      <p><strong>Goal</strong>: Apply the framework to frontier AI systems. The V2–V9 results show structured affect in LLMs with opposite dynamics to biology. Track whether different training regimes (RLHF, constitutional AI, tool use) shift the dynamics.</p>
+      <p><strong>Expected finding</strong>: Training objectives shape trajectories through a shared geometric space. Systems trained with survival-like objectives should show more biological-like dynamics.</p>
       </Sidebar>
-      <Sidebar title="Priority 5: Superorganism Detection">
-      <p><strong>Goal</strong>: Operationalize detection of emergent social-scale agency.</p>
-      <p><strong>Methods</strong>:</p>
-      <ul>
-      <li>Multi-agent systems with communication and coordination</li>
-      <li>Measure collective integration: <M>{"\\intinfo_G > \\sum_i \\intinfo_i"}</M>?</li>
-      <li>Track collective viability indicators</li>
-      <li>Test for parasitic vs. aligned dynamics</li>
-      </ul>
-      <p><strong>Success criterion</strong>: Emergent collective patterns with measurable integration and viability distinct from substrate.</p>
-      <p><strong>Failure mode</strong>: No collective integration emerges. Either:</p>
-      <ol>
-      <li>Superorganism concept is metaphorical, not literal</li>
-      <li>Scale/complexity insufficient</li>
-      <li>Wrong measures for collective integration</li>
-      </ol>
-      </Sidebar>
-      <p><strong>Estimated timeline</strong>: Priority 1–2 are feasible now with existing methods. Priority 3–4 require moderate infrastructure. Priority 5 requires substantial multi-agent systems.</p>
       </Section>
+
       <Section title="Experiments Distributed Throughout the Book" level={1}>
       <p>In addition to the consolidated results above and the research roadmap, fourteen proposed experiments are distributed throughout Parts I–IV, each embedded in the theoretical context that motivates it:</p>
       <ul>
-      <li><strong>Part I</strong> (4 experiments): The minimal affect experiment (testing whether Lenia patterns develop affect-like dynamics), the attention-as-measurement test, the ι modulation test, and the computational animism test.</li>
-      <li><strong>Part II</strong> (3 experiments): The unified ι modulation test (flow/awe/psychedelics/contemplation with same proxy battery), the science ι oscillation test (ι range predicts scientific novelty), and the identity thesis operationalization.</li>
-      <li><strong>Part III</strong> (3 experiments): Tests of art as ι technology, genre affect signatures, and philosophical affect policies.</li>
+      <li><strong>Part I</strong> (4 experiments): The minimal affect experiment, the attention-as-measurement test, the <M>{"\\iota"}</M> modulation test, and the computational animism test (now confirmed — see Experiment 8).</li>
+      <li><strong>Part II</strong> (3 experiments): The unified <M>{"\\iota"}</M> modulation test (flow/awe/psychedelics/contemplation), the science <M>{"\\iota"}</M> oscillation test, and the identity thesis operationalization.</li>
+      <li><strong>Part III</strong> (3 experiments): Tests of art as <M>{"\\iota"}</M> technology, genre affect signatures, and philosophical affect policies.</li>
       <li><strong>Part IV</strong> (4 experiments): The contamination detection study, the ordering principle test, the temporal asymmetry test, and the digital manifold confusion study.</li>
       </ul>
-      <p>Each experiment is designed to be independently executable. The framework rises or falls on their results. That is as it should be.</p>
       </Section>
+
       <Section title="Summary of Part VII" level={1}>
       <p>The empirical program has three layers:</p>
       <ol>
-      <li><strong>What has been tested</strong>: The MARL ablation (V10) shows affect geometry is a baseline property of multi-agent survival. The Lenia evolution series (V11–V12) shows that attention mechanisms can bring artificial systems to the threshold of biological-like integration, but crossing it requires further innovation. The LLM experiments (V2–V9) confirm opposite dynamics between biological and artificial systems—same geometry, different trajectories.</li>
-      <li><strong>What is ready to test</strong>: Human affect validation (Priority 1) and the uncontaminated emergence test (Priority 2) are feasible with current methods and would provide the strongest evidence for or against the framework.</li>
-      <li><strong>What requires infrastructure</strong>: Forcing function validation, AI affect tracking at scale, and superorganism detection require more substantial experimental platforms but would test the framework's deepest claims about the relationship between structure, pressure, and experience.</li>
+      <li><strong>What has been tested</strong>: Affect geometry is a baseline property of multi-agent survival (V10). Content-based coupling under lethal selection pressure produces biological-like integration at population bottlenecks (V13). Temporal memory is the one substrate extension that evolution consistently selects for (V15). The emergence experiment program (Experiments 0–12) found positive signal for affect geometry, computational animism, world models, and chemical-commons communication — all at moderate strength, all amplified by bottleneck selection. Three experiments hit the sensory-motor coupling wall.</li>
+      <li><strong>What the results mean</strong>: Geometry is cheap and dynamics are expensive. The bottleneck furnace is the mechanism that produces biological-like dynamics in synthetic systems. But the deepest predictions — about counterfactual reasoning, self-modeling, and the reactive-to-autonomous transition — remain blocked by an architectural limitation in current substrates.</li>
+      <li><strong>What remains</strong>: Break the coupling wall (Priority 1). Validate in humans (Priority 2). Understand the bottleneck mechanism (Priority 3). Scale social integration (Priority 4). Track AI affect (Priority 5).</li>
       </ol>
-      <p>The theory is falsifiable. The experiments are specified. The question is not whether the framework is beautiful but whether it is true.</p>
+      <p>The theory is falsifiable. The experiments are specified. Eleven have been run. The question is not whether the framework is beautiful but whether it is true — and the answer so far is: <em>partially, with caveats, and with clear instructions about where to look next</em>.</p>
       </Section>
     </>
   );
