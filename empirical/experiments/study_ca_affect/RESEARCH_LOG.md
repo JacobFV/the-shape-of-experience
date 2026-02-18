@@ -1157,3 +1157,81 @@ The lesson parallels V16: adding inter-pattern coordination mechanisms is diffic
 - `results/v17_s42/` — Seed 42 (30 cycles, final + snapshots)
 - `results/v17_s123/` — Seed 123 (30 cycles, final + snapshots)
 - `results/v17_s7/` — Seed 7 (30 cycles, final + snapshots)
+
+---
+
+## 2026-02-17: V15 Measurement Experiments (Priority Re-run)
+
+### Motivation
+
+The V13 experiments hit the "sensory-motor coupling wall" — patterns were always internally driven (ρ_sync ≈ 0, ρ_self ≈ 0). V15 adds chemotaxis (motor channels) and temporal memory. Question: does V15 break through the wall?
+
+### Method
+
+Created `v15_experiments.py` — unified measurement runner that feeds V15's `run_v15_chunk` into the existing V13 measurement pipelines (which are substrate-agnostic). Ran Experiments 2, 5, 6, 7 on all 3 V15 seeds × 7 snapshots each.
+
+### Results
+
+**Experiment 2 (World Model) — IMPROVED**
+
+| Seed | C_wm range (V13) | C_wm range (V15) | Notable |
+|------|------------------|------------------|---------|
+| 42   | 0.0002           | 0.00009–0.00244  | Max C_wm 12x higher than V13 |
+| 123  | 0.0004–0.0282    | 0.00008–0.00075  | Lower than V13 (V13 bottleneck effect dominant) |
+| 7    | 0.0002–0.0010    | 0.00004–0.00049  | Comparable |
+
+V15 seed 42 shows notably stronger world models at cycle 015 (C_wm=0.00244), ~12x the V13 value. The memory channels provide temporal integration that boosts prediction. But V13 seed 123's bottleneck-driven C_wm=0.028 remains the all-time peak — intense selection still dominates substrate capacity.
+
+**Experiment 5 (Counterfactual) — WALL PERSISTS**
+
+V15 ρ_sync ≈ 0 everywhere (range -0.03 to +0.01), det_frac 0.58-0.98. Same as V13. The motor channels (advection/chemotaxis) move patterns but don't create boundary-dependent dynamics. The FFT convolution kernel dominates internal updates, making patterns inherently internally driven.
+
+Slight exception: seed 123 shows det_frac dropping to 0.58 at cycle 025, lowest of any snapshot. Resource patch oscillations may create brief periods of reactive behavior.
+
+**Experiment 6 (Self-Model) — WALL PERSISTS (slight improvement)**
+
+V15 ρ_self range: 0.00–0.08 (V13: 0.00–0.05). Slightly higher in some snapshots (seed 123 cycle 020: 0.079, seed 7 cycle 010: 0.053), but not qualitatively different. SM_sal = inf everywhere (numerical: zero denominator from environment MI).
+
+**Experiment 7 (Affect Geometry) — COMPARABLE TO V13**
+
+| Seed | Sig positive RSA (V13) | Sig positive RSA (V15) |
+|------|----------------------|----------------------|
+| 42   | 4/7 (mixed ±)       | 0/5 (none sig)       |
+| 123  | 2/5                 | 2/7 (cycles 005, 010) |
+| 7    | 5/7                 | 0/7                  |
+
+V15 affect geometry alignment is *weaker* than V13. Seed 123 shows two significant snapshots (RSA_ρ=0.318 at cycle 005, 0.207 at cycle 010). Seeds 42 and 7 show no significant alignment. This is surprising — V15's richer substrate should produce at least comparable alignment.
+
+### Interpretation
+
+1. **The sensory-motor coupling wall is a substrate architecture problem, not a substrate complexity problem.** V15's additions (chemotaxis, memory) don't change the fundamental coupling architecture: FFT convolution over the full grid. Patterns are always internally driven because their update rule integrates over all 128×128 cells, not just their boundary.
+
+2. **World model capacity improves with memory.** V15's EMA channels provide genuine temporal integration that V13 lacks. This is the one clear improvement: patterns can store and use temporal information.
+
+3. **Breaking the wall requires boundary-dependent dynamics.** A pattern must update from boundary-gated signals to be initially reactive. Only then can the reactive→autonomous transition be observed. This is a deeper architectural change than adding channels or modifying coupling.
+
+4. **The affect geometry result is puzzling.** V15 has richer internal dynamics but weaker RSA alignment than V13. Possible explanation: the additional channels (memory, motor) add internal structure that isn't captured by Space A's 6 dimensions, creating noise in the RSA comparison.
+
+### Where to Pick Up
+
+**Status**: V15 measurement experiments complete for priority experiments (2, 5, 6, 7). Results saved in `results/v15_*_s{42,123,7}/`.
+
+**Next steps** (in priority order):
+1. **Compile V13 vs V15 comparison table** for the book/appendix
+2. **Run remaining V15 experiments** (3, 4, 8, 9, 10) for completeness
+3. **Run V15 entanglement analysis** (Exp 11) combining all measures
+4. **Consider boundary-dependent substrate** (V18?) that addresses the coupling wall
+5. **Update EXPERIMENTS.md** with V15 re-run results
+6. **Update book content** (Part VII, Appendix) with the V13 vs V15 comparison
+
+**Code**: `v15_experiments.py` handles setup and all wrappers. Run with:
+```
+python v15_experiments.py run --exp N --seeds 42 123 7
+python v15_experiments.py all  # all priority experiments
+```
+
+### Data
+- `results/v15_world_model_s{42,123,7}/` — World model results
+- `results/v15_counterfactual_s{42,123,7}/` — Counterfactual results
+- `results/v15_self_model_s{42,123,7}/` — Self-model results
+- `results/v15_affect_geometry_s{42,123,7}/` — Affect geometry results

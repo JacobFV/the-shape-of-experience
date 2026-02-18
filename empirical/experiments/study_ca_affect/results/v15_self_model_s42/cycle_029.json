@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "substrate": "v15",
+    "seed": 42,
+    "C": 16,
+    "N": 128,
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v15_s42/snapshots/cycle_029.npz",
+    "experiment": "self_model"
+  },
+  "n_results": 1,
+  "cycle": 29,
+  "results": [
+    {
+      "pattern_id": 0,
+      "n_timesteps": 50,
+      "rho_self": 0.0,
+      "SM": {
+        "1": -204.56131014058957,
+        "2": -12313.24920241455,
+        "5": -52.32638940904846,
+        "10": -9.963223783478341
+      },
+      "SM_capacity": 0.0,
+      "SM_sal": 0.0,
+      "f_self_mse": {
+        "1": 226.24384836587356,
+        "2": 12339.128948586596,
+        "5": 115.6506776370888,
+        "10": 57.55793694046573
+      },
+      "f_ext_mse": {
+        "1": 21.682538225283988,
+        "2": 25.87974617204611,
+        "5": 63.324288228040345,
+        "10": 47.59471315698739
+      }
+    }
+  ]
+}
