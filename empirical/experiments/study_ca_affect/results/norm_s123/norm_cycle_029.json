@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_029.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 1,
+    "n_patterns_analyzed": 1,
+    "cycle": 29
+  },
+  "n_patterns": 0,
+  "n_cooperative": null,
+  "n_competitive": null,
+  "delta_phi": null,
+  "delta_phi_p": null,
+  "delta_valence": null,
+  "delta_valence_p": null,
+  "delta_arousal": null,
+  "delta_arousal_p": null,
+  "cycle": 29
+}

@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_029.npz",
+    "seed": 42,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 44,
+    "n_patterns_analyzed": 20,
+    "cycle": 29
+  },
+  "n_patterns": 20,
+  "n_social_steps": 979,
+  "n_isolated_steps": 1,
+  "n_cooperative": 488,
+  "n_competitive": 491,
+  "phi_cooperative": 3.9814759922809286,
+  "phi_competitive": 4.446280530902373,
+  "phi_isolated": 4.486480712890625,
+  "delta_phi": -0.4648045386214448,
+  "delta_phi_p": 0.05428242277862168,
+  "valence_cooperative": -0.004627923496433946,
+  "valence_competitive": 0.000600445780394762,
+  "delta_valence": -0.005228369276828708,
+  "delta_valence_p": 0.21212358507318552,
+  "arousal_cooperative": 6.487957555067832,
+  "arousal_competitive": 5.302208749558435,
+  "delta_arousal": 1.1857488055093972,
+  "delta_arousal_p": 0.961866038747712,
+  "cycle": 29
+}
