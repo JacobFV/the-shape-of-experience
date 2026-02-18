@@ -80,22 +80,27 @@ def run_v14_gpu(n_cycles=30, C=16, N=128, sim_radius=5, seed=42,
     stress_schedule = np.clip(base_schedule * noise, 0.25, 0.8)
     duration_schedule = rng_np.randint(500, 1501, size=n_cycles)
 
-    # JIT warmup
+    chunk = 50  # Fixed chunk size — ALL calls use this to avoid recompilation
+
+    # JIT warmup (compile once with chunk size)
     print("JIT compiling...", end=" ", flush=True)
     t0 = time.time()
     grid, resource, rng = run_v14_chunk(
         grid, resource, h_embed, kernel_ffts, config,
-        coupling, coupling_row_sums, rng, n_steps=10, box_fft=box_fft)
+        coupling, coupling_row_sums, rng, n_steps=chunk, box_fft=box_fft)
     grid.block_until_ready()
     print(f"done ({time.time()-t0:.1f}s)")
 
-    # Warmup
+    # Warmup — use same chunk size, loop externally
     warmup_steps = min(4990, max(500, N * 10))
-    print(f"Warmup ({warmup_steps} steps)...", end=" ", flush=True)
+    warmup_chunks = warmup_steps // chunk
+    print(f"Warmup ({warmup_chunks * chunk} steps, {warmup_chunks} chunks)...",
+          end=" ", flush=True)
     t0 = time.time()
-    grid, resource, rng = run_v14_chunk(
-        grid, resource, h_embed, kernel_ffts, config,
-        coupling, coupling_row_sums, rng, n_steps=warmup_steps, box_fft=box_fft)
+    for _ in range(warmup_chunks):
+        grid, resource, rng = run_v14_chunk(
+            grid, resource, h_embed, kernel_ffts, config,
+            coupling, coupling_row_sums, rng, n_steps=chunk, box_fft=box_fft)
     grid.block_until_ready()
     print(f"done ({time.time()-t0:.1f}s)")
 
@@ -111,8 +116,6 @@ def run_v14_gpu(n_cycles=30, C=16, N=128, sim_radius=5, seed=42,
     prev_values = {}
     cycle_stats = []
     all_phi_trajectories = []
-
-    chunk = 50
 
     for cycle in range(n_cycles):
         t0 = time.time()
@@ -305,9 +308,10 @@ def run_v14_gpu(n_cycles=30, C=16, N=128, sim_radius=5, seed=42,
             fresh_grid, fresh_resource = init_soup_hd(N_grid, C, k_reseed, channel_mus)
             grid = 0.3 * grid + 0.7 * fresh_grid
             resource = jnp.maximum(resource, 0.5 * fresh_resource)
-            grid, resource, rng = run_v14_chunk(
-                grid, resource, h_embed, kernel_ffts, config,
-                coupling, coupling_row_sums, rng, n_steps=500, box_fft=box_fft)
+            for _ in range(500 // chunk):
+                grid, resource, rng = run_v14_chunk(
+                    grid, resource, h_embed, kernel_ffts, config,
+                    coupling, coupling_row_sums, rng, n_steps=chunk, box_fft=box_fft)
             grid.block_until_ready()
 
         elapsed = time.time() - t0
