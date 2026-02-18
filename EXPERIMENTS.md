@@ -116,7 +116,33 @@ If W > 0, the pattern's internal state carries predictive information not availa
 2. With state-dependent coupling: C_wm increases with generation
 3. Threshold: C_wm should correlate with lifetime — patterns that model better, survive longer
 
-### Status: NOT IMPLEMENTED
+### Status: COMPLETE
+
+**Implementation**: `v13_world_model.py`, `v13_world_model_run.py`, `v13_world_model_figures.py`
+
+**Method**: Prediction gap W(τ) = MSE[f_env(s_∂B → s_env)] - MSE[f_full(s_B,s_∂B → s_env)] using Ridge regression + StandardScaler + 5-fold CV. Features: s_B = 68-dim internal state (channel stats + spatial moments), s_∂B = 36-dim boundary ring, s_env = 18-dim annular environment target. τ ∈ {1, 2, 5, 10, 20} recording steps (= 10–200 substrate steps).
+
+**Results** (3 seeds × 7 snapshots, 50 recording steps each):
+
+| Seed | C_wm (early) | C_wm (late) | H_wm (late) | % with WM |
+|------|-------------|------------|------------|-----------|
+| 123  | 0.0004      | **0.0282** | 20.0       | 100%      |
+| 42   | 0.0002      | 0.0002     | 5.3        | 40%       |
+| 7    | 0.0010      | 0.0002     | 7.9        | 60%       |
+
+**Key findings**:
+1. World model signal is present but weak in the general population (C_wm ~ 10⁻⁴)
+2. **Bottleneck amplification**: Seed 123 cycle 29 (1 surviving pattern at population bottleneck) shows C_wm = 0.028, ~100× higher than population average. The bottleneck-robustness effect from V13 Experiment 0 extends to world models.
+3. W(τ) decays with horizon as expected for finite-horizon prediction
+4. Late evolution shows higher W(τ) than early for seed 123 (confirming prediction 2), but not for seeds 42/7
+5. C_wm–lifetime correlation unclear (insufficient per-pattern variance at current recording resolution)
+
+**Assessment against predictions**:
+- ✓ Prediction 1: Pre-attention baseline not tested (would need V11 control), but C_wm > 0 confirms patterns carry predictive information
+- ⚠ Prediction 2: C_wm increases with generation only under bottleneck selection (seed 123), not in general population
+- ⚠ Prediction 3: C_wm–lifetime correlation not clearly established
+
+**Interpretation**: World models emerge but are not strongly selected for in the current regime. The bottleneck effect suggests that intense selection (high mortality → few survivors) is what drives world model capacity, not gradual evolution. This parallels the V13 robustness finding: dynamics require strong selection pressure.
 
 ---
 

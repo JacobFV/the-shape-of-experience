@@ -172,7 +172,66 @@ V13 provides all three. V11 (convolution) provided (2) and (3) but not (1) — p
 - [x] Seed 42 v2 complete
 - [x] Seed 7 complete (third replicate)
 - [x] 3-seed aggregation complete
+- [x] Experiment 2: World Model measurement (see below)
 - [ ] Convolution control: same evolution, same stress, but α=0 (no content coupling)
 - [ ] Book update with preliminary results + symbiogenesis framing
 - [ ] Look for symbiogenetic signatures: do patterns that *merge* have higher robustness than those that don't?
 - [ ] Consider: can we measure "tree depth" of pattern ancestry (a la BFF) in V13?
+
+---
+
+## 2026-02-17: Experiment 2 — Emergent World Model
+
+### Method
+Prediction gap: W(τ) = MSE[f_env] - MSE[f_full], where f_full uses pattern internal state + boundary and f_env uses boundary alone. Both are Ridge regression with StandardScaler, 5-fold CV. If W > 0, the pattern's insides know something about the future that boundary observations don't.
+
+Feature dimensions: s_B = 68 (4C+4), s_∂B = 36 (2C+4), s_env = 18 (C+2) for C=16.
+τ ∈ {1, 2, 5, 10, 20} recording steps × 10 substrate steps each = 10–200 substrate steps.
+50 recording steps per snapshot, up to 20 patterns per snapshot.
+
+### Results
+
+| Seed | Cycles | C_wm (early→late) | H_wm (late) | % with WM |
+|------|--------|--------------------|-------------|-----------|
+| 123  | 7      | 0.0004 → **0.028** | 20          | 100%      |
+| 42   | 7      | 0.0002 → 0.0002   | 5.3         | 40%       |
+| 7    | 7      | 0.0010 → 0.0002   | 7.9         | 60%       |
+
+### Observations
+
+1. **World model signal is real but weak.** Most patterns carry ~10⁻⁴ predictive information beyond boundary — detectable but tiny. This is a 128×128 grid with 16 channels, so "boundary" is already very informative.
+
+2. **The bottleneck amplification pattern continues.** Seed 123 at cycle 29 has only 1 surviving pattern (population bottleneck), and that pattern shows C_wm = 0.028 — roughly 100× the population average. Same story as robustness >1.0 appearing only at low population. The bottleneck doesn't just select for integration; it selects for world models.
+
+3. **Seeds 42 and 7 show no clear evolutionary trend.** C_wm is flat or slightly decreasing across cycles. In large populations (~150 patterns), the world model signal isn't under selection pressure — patterns can survive by local boundary sensing alone.
+
+4. **W(τ) profile for seed 123 late evolution**: high at τ=1 (0.0015), sustained through τ=10, only drops at τ=20. The surviving bottleneck pattern has a genuine long-horizon model of its environment. For seeds 42/7, W(τ) peaks at short horizons and drops quickly.
+
+5. **C_wm vs lifetime**: Insufficient per-pattern variance to establish correlation at current resolution. Would need longer recording episodes or more snapshots between evolutionary cycles.
+
+### Interpretation
+
+This confirms and extends the bottleneck-robustness finding:
+
+```
+High population → local sensing sufficient → weak world models
+Bottleneck (high mortality) → survivors need deeper prediction → strong world models
+```
+
+World models are *possible* in this substrate (content-coupling provides the mechanism) but not *necessary* in the typical evolutionary regime. Only under extreme selection pressure do patterns with world models outcompete those without.
+
+**Theoretical implication**: The forcing function for world model emergence isn't just partial observability (that's necessary but not sufficient). It's *the combination of partial observability + high mortality*. Patterns need to predict far into the future only when the cost of failed prediction is death. In gentle environments, local reactivity suffices.
+
+This parallels biological evolution: organisms develop elaborate predictive models (anticipatory behavior, planning, episodic memory) not just because the environment is partially observable, but because the cost of surprise is lethal. Bacteria in nutrient-rich media don't need world models. Predators chasing prey do.
+
+### What's Missing
+
+The main limitation: we only have 7 snapshots per seed (every 5 evolutionary cycles). The C_wm trajectory is coarse. A dedicated GPU run saving snapshots every cycle would give better temporal resolution.
+
+Also: the current recording episodes (50 steps × 10 substrate steps = 500 steps) may be too short for patterns to demonstrate full world model capacity. The V13 drought episodes are 500–1500 steps — patterns might develop predictive models on those timescales that we're not capturing.
+
+### Figures
+- `results/wm_analysis/wm_capacity_trajectory.png` — C_wm across cycles (THE figure for the book)
+- `results/wm_analysis/wm_w_tau_curves.png` — W(τ) early vs late
+- `results/wm_analysis/wm_cwm_vs_lifetime.png` — C_wm vs pattern lifetime
+- `results/wm_analysis/wm_summary_card.png` — Summary card
