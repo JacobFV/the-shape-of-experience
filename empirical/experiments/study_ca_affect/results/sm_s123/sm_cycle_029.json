@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_029.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "tau_values": [
+      1,
+      2,
+      5,
+      10
+    ],
+    "n_patterns_detected": 1,
+    "n_patterns_analyzed": 1,
+    "cycle": 29
+  },
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "n_timesteps": 50,
+      "rho_self": 0.0,
+      "SM": {
+        "1": 5.473574752701332,
+        "2": 6.761698667751229,
+        "5": 3.0981007028686562,
+        "10": 6.368781456678669
+      },
+      "SM_capacity": 44.57454116502442,
+      "SM_sal": 0.013793413516503908,
+      "f_self_mse": {
+        "1": 3.5791451420500997,
+        "2": 3.0838136770668476,
+        "5": 7.119589573432016,
+        "10": 2.7464313100571376
+      },
+      "f_ext_mse": {
+        "1": 9.052719894751432,
+        "2": 9.845512344818077,
+        "5": 10.217690276300672,
+        "10": 9.115212766735807
+      }
+    }
+  ],
+  "summary": {
+    "mean_rho_self": 0.0,
+    "mean_SM_capacity": 44.57454116502442,
+    "mean_SM_sal": 0.013793413516503908,
+    "n_with_self_model": 1,
+    "n_with_high_rho": 0,
+    "n_with_salience": 0,
+    "mean_SM_by_tau": {
+      "1": 5.473574752701332,
+      "2": 6.761698667751229,
+      "5": 3.0981007028686562,
+      "10": 6.368781456678669
+    }
+  },
+  "cycle": 29
+}
