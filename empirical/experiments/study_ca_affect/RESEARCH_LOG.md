@@ -849,3 +849,57 @@ Capstone verdict         SUPPORTED (7/7 met, most moderate)
 ### Data
 - `results/entanglement_analysis/` — Experiment 11 data
 - `results/capstone_analysis/` — Experiment 12 data
+
+---
+
+## 2026-02-17: V14 Chemotactic Lenia
+
+### Motivation
+V13's 12-experiment program revealed a sensory-motor coupling wall: patterns can't direct their motion, so experiments requiring agency (counterfactual detachment, self-models, normativity, foraging) all returned null or weak results. V14 adds chemotactic advection — patterns can move toward resources via internal motor channels.
+
+### Substrate Design
+V14 extends V13 with:
+- **Velocity field**: Resource gradient × motor channel sigmoid gate
+- **Motor channels**: Last 2 of C=16 channels dedicated as motor activation
+- **Bilinear interpolation backward advection**: Periodic BCs
+- **3x3 box blur velocity smoothing + speed limiting** (max 1.5 cells/step)
+
+Key design choice: motor channels start random — evolution must discover locomotion. No hardcoded foraging behavior.
+
+### 3-Seed GPU Results (Lambda Labs A10, ~$1.13 total)
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | V13 baseline |
+|--------|---------|----------|--------|-------------|
+| Displacement (late) | 4.5 px | 4.6 px | 4.2 px | ~0 px |
+| Robustness (late) | 0.900 | 0.896 | 0.911 | 0.923 |
+| Phi base (late) | 0.246 | 0.236 | 0.221 | ~0.22 |
+| Phi inc frac (late) | 28% | 27% | — | 30% |
+| Eta (final) | 0.55 | 0.34 | 0.82 | N/A |
+
+### Key Findings
+1. **Directed motion IS present**: Patterns consistently move 4.2-4.6 pixels/cycle (vs ~0 in V13)
+2. **Chemotaxis evolves differently per seed**: η doesn't just maximize — it's modulated by selection pressure (0.34-0.82 range)
+3. **Robustness comparable to V13**: ~0.90 vs 0.92. Directed motion doesn't significantly improve integration under stress
+4. **Phi base slightly higher**: 0.22-0.25 vs V13's ~0.22
+5. **Phase A validation**: Directed foraging (point 3 from the formal program preamble) is now satisfied
+
+### Assessment
+V14 validates Phase A of the formal experiment program — patterns can forage. But the sensory-motor coupling is still shallow: patterns move toward resources via a simple gradient-following mechanism, not via internal world models or planning. The motor channels are basically a reflex, not cognition.
+
+**What's still needed for Phase B (single-agent emergence)**:
+- Patterns need richer sensory input (boundary sensing, distant threat detection)
+- Internal state must do more than gate a gradient — it must integrate over time
+- Individual-level plasticity (Hebbian-like within-lifetime learning)
+- Environmental complexity (predators, patchy resources, temporal patterns)
+
+### Next: V15 Design Direction
+The gap between V14 (gradient-following) and what Phase B requires (world models, imagination) is large. Possible approaches:
+1. **Neural Lenia**: Channels act as a small neural network within each pattern — synaptic weights evolve, activations change within lifetime
+2. **Memory channels**: Dedicated channels for temporal integration (exponential moving averages of past inputs)
+3. **Predator-prey dynamics**: Add lethal patterns that force defensive behavior and planning
+4. **Signal channels**: Channels dedicated to emitting/receiving signals between patterns
+
+### Data
+- `results/v14_s42/` — Seed 42 (30 cycles, final + snapshots)
+- `results/v14_s123/` — Seed 123 (30 cycles, final + snapshots)
+- `results/v14_s7/` — Seed 7 (30 cycles, final + snapshots)
