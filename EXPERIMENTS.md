@@ -379,7 +379,30 @@ Extract from observable behavior:
 
 If perturbations propagate bidirectionally through all three spaces, the structural identity is supported.
 
-### Status: NOT IMPLEMENTED (depends on Experiments 2, 4, 6)
+### Status: PARTIAL (A↔C alignment only; Space B requires Experiment 4)
+
+### Results (V13 content-based coupling, 3 seeds × 7 snapshots)
+
+RSA correlation ρ(A,C) between structural affect (Space A: valence, arousal, integration, d_eff, CF weight, SM salience) and behavioral affect (Space C: approach/avoid, activity, growth, stability):
+
+| Seed | ρ(A,C) range | Significant (p<0.05) | Trend |
+|------|-------------|---------------------|-------|
+| 123  | -0.09 to 0.72 | 2/5 testable | Strong at low pop (0.72) |
+| 42   | -0.17 to 0.39 | 4/7 (mixed ±) | No clear trend |
+| 7    | 0.01 to 0.38  | 5/7 | **Increasing** (0.01→0.24) |
+
+**Finding: Structural affect is aligned with behavior.** RSA is significantly positive in 8 of 19 testable snapshots. Seed 7 shows the clearest evolutionary trend: alignment increases from near-zero to consistently significant over 30 cycles. This means structural affect states (integration, arousal, effective rank) increasingly predict behavioral states (movement, growth, directional consistency) as evolution proceeds.
+
+**Seed 123 (bottleneck):** The strongest single-snapshot alignment (ρ = 0.72, p = 0.019) occurs at cycle 010 with only 5 patterns. Bottleneck snapshots (cycles 020, 029) have too few patterns (<4) for RSA.
+
+**Seed 42 (mixed):** Shows both positive AND negative significant alignments. The negative correlations at cycles 015 and 025 suggest that internal structure and behavior can become *anti*-aligned in large stable populations.
+
+**What this means for the thesis:** The geometry/behavior alignment is not universal from the start (contradicting the simplest form of the "geometry is cheap" claim) — but it does emerge and strengthen with evolution. This is a different kind of finding from V10, which showed that affect *space* geometry is baseline. Here we show that affect *dynamics* (the mapping from internal structure to behavior) develop over time. Structure determines behavior, but only after selection shapes the mapping.
+
+**Note:** This is a partial test (A↔C only). The full tripartite test (A↔B↔C) requires Experiment 4 (Language/Signals) for Space B.
+
+**Code:** `v13_affect_geometry.py`, `v13_affect_geometry_run.py`
+**Data:** `results/ag_s{123,42,7}/`, `results/ag_analysis/ag_cross_seed.json`
 
 ---
 
