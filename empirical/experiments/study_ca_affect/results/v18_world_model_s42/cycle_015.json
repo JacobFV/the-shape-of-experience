@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "substrate": "v18",
+    "seed": 42,
+    "C": 16,
+    "N": 128,
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v18_s42/snapshots/cycle_015.npz",
+    "experiment": "world_model",
+    "tau_values": [
+      1,
+      2,
+      5,
+      10,
+      20
+    ]
+  },
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "n_samples": 46,
+      "W": {
+        "1": 0.0,
+        "2": 0.0,
+        "5": 0.0,
+        "10": 0.0,
+        "20": 0.0
+      },
+      "mse_full": {
+        "1": 2.345002515838371,
+        "2": 2.3023156130553897,
+        "5": 0.7018552522198541,
+        "10": 9.691320756771477,
+        "20": 1.2917133712321887
+      },
+      "mse_env": {
+        "1": 0.002104406503098638,
+        "2": 0.0017443445404908635,
+        "5": 0.0010004531486602624,
+        "10": 0.0006429103637544593,
+        "20": 0.0017126870575575864
+      },
+      "H_wm": 0.0,
+      "C_wm": 0.0,
+      "lifetime": 46
+    }
+  ],
+  "summary": {
+    "mean_C_wm": 0.0,
+    "max_C_wm": 0.0,
+    "mean_H_wm": 0.0,
+    "n_with_world_model": 0,
+    "frac_with_world_model": 0.0,
+    "mean_W_by_tau": {
+      "1": 0.0,
+      "2": 0.0,
+      "5": 0.0,
+      "10": 0.0,
+      "20": 0.0
+    }
+  }
+}

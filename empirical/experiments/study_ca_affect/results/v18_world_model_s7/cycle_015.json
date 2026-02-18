@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "substrate": "v18",
+    "seed": 7,
+    "C": 16,
+    "N": 128,
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v18_s7/snapshots/cycle_015.npz",
+    "experiment": "world_model",
+    "tau_values": [
+      1,
+      2,
+      5,
+      10,
+      20
+    ]
+  },
+  "patterns": [],
+  "summary": {
+    "mean_C_wm": 0.0,
+    "max_C_wm": 0.0,
+    "mean_H_wm": 0.0,
+    "n_with_world_model": 0,
+    "frac_with_world_model": 0.0,
+    "mean_W_by_tau": {}
+  }
+}

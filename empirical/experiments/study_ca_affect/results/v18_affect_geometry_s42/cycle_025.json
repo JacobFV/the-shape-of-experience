@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "substrate": "v18",
+    "seed": 42,
+    "C": 16,
+    "N": 128,
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v18_s42/snapshots/cycle_025.npz",
+    "experiment": "affect_geometry"
+  },
+  "n_results": 0,
+  "cycle": 25
+}
