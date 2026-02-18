@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_010.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 20,
+    "n_patterns_detected": 5,
+    "n_patterns_analyzed": 5
+  },
+  "n_patterns": 5,
+  "n_pairs": 10,
+  "mean_MI_inter": 0.059357933128566395,
+  "max_MI_inter": 0.13759271989277383,
+  "MI_baseline": 0.0246360207803102,
+  "MI_significant": true,
+  "mean_C_channel": 0.06486910230000054,
+  "rho_topo": 0.06666666666666665,
+  "rho_topo_p": 0.8548130882487426,
+  "vocab_size": 2,
+  "per_pair": [
+    {
+      "pattern_i": 0,
+      "pattern_j": 1,
+      "MI_inter": 0.048289004580290326,
+      "C_channel": 0.08210103327371174
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 2,
+      "MI_inter": 0.029158223329920525,
+      "C_channel": 0.07135257854648126
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 3,
+      "MI_inter": 0.049340946131904366,
+      "C_channel": 0.03914576674400934
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 4,
+      "MI_inter": 0.03946640949240253,
+      "C_channel": 0.054789087427748476
+    },
+    {
+      "pattern_i": 1,
+      "pattern_j": 2,
+      "MI_inter": 0.05632594726709956,
+      "C_channel": 0.05869489767956805
+    },
+    {
+      "pattern_i": 1,
+      "pattern_j": 3,
+      "MI_inter": 0.047896865783573675,
+      "C_channel": 0.026767592548080043
+    },
+    {
+      "pattern_i": 1,
+      "pattern_j": 4,
+      "MI_inter": 0.13759271989277383,
+      "C_channel": 0.07484895074657034
+    },
+    {
+      "pattern_i": 2,
+      "pattern_j": 3,
+      "MI_inter": 0.05600771337872351,
+      "C_channel": 0.09682483043710478
+    },
+    {
+      "pattern_i": 2,
+      "pattern_j": 4,
+      "MI_inter": 0.06973508548791943,
+      "C_channel": 0.08732248807456144
+    },
+    {
+      "pattern_i": 3,
+      "pattern_j": 4,
+      "MI_inter": 0.059766415941056285,
+      "C_channel": 0.05684379752216988
+    }
+  ],
+  "cycle": 10
+}

@@ -1,0 +1,225 @@
+{
+  "seeds": [
+    123,
+    42,
+    7
+  ],
+  "trajectories": {
+    "123": [
+      {
+        "cycle": 0,
+        "mean_MI_inter": 0.019401370460305562,
+        "MI_significant": false,
+        "mean_C_channel": 0.032838078140516556,
+        "rho_topo": -0.35757575757575755,
+        "rho_topo_p": 0.3103760917056799,
+        "vocab_size": 10,
+        "n_patterns": 5
+      },
+      {
+        "cycle": 5,
+        "mean_MI_inter": 0.026170744347394644,
+        "MI_significant": true,
+        "mean_C_channel": 0.026018410789802653,
+        "rho_topo": -0.13322745366089017,
+        "rho_topo_p": 0.10064279142243092,
+        "vocab_size": 2,
+        "n_patterns": 18
+      },
+      {
+        "cycle": 10,
+        "mean_MI_inter": 0.03888187074628034,
+        "MI_significant": true,
+        "mean_C_channel": 0.02905474223346221,
+        "rho_topo": 0.2606060606060606,
+        "rho_topo_p": 0.4670890543863402,
+        "vocab_size": 3,
+        "n_patterns": 5
+      },
+      {
+        "cycle": 15,
+        "mean_MI_inter": 0.02656962508410354,
+        "MI_significant": true,
+        "mean_C_channel": 0.03683833210520655,
+        "rho_topo": -0.35,
+        "rho_topo_p": 0.2009453508162933,
+        "vocab_size": 3,
+        "n_patterns": 6
+      },
+      {
+        "cycle": 20,
+        "mean_MI_inter": 0.02198931506599838,
+        "MI_significant": false,
+        "mean_C_channel": 0.02845523114000209,
+        "rho_topo": 0.0,
+        "rho_topo_p": 1.0,
+        "vocab_size": 10,
+        "n_patterns": 3
+      },
+      {
+        "cycle": 25,
+        "mean_MI_inter": 0.028120969891635806,
+        "MI_significant": true,
+        "mean_C_channel": 0.029269112250327425,
+        "rho_topo": -0.08066676289327158,
+        "rho_topo_p": 0.2685615698923926,
+        "vocab_size": 2,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 29,
+        "mean_MI_inter": null,
+        "MI_significant": false,
+        "mean_C_channel": null,
+        "rho_topo": null,
+        "rho_topo_p": null,
+        "vocab_size": null,
+        "n_patterns": 0
+      }
+    ],
+    "42": [
+      {
+        "cycle": 0,
+        "mean_MI_inter": 0.02416670163384107,
+        "MI_significant": true,
+        "mean_C_channel": 0.02119951936385649,
+        "rho_topo": -0.004761904761904762,
+        "rho_topo_p": 0.9724750484936872,
+        "vocab_size": 2,
+        "n_patterns": 11
+      },
+      {
+        "cycle": 5,
+        "mean_MI_inter": 0.02905036637683856,
+        "MI_significant": true,
+        "mean_C_channel": 0.02772468512530305,
+        "rho_topo": -0.09261460807341217,
+        "rho_topo_p": 0.20375946879359838,
+        "vocab_size": 2,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 10,
+        "mean_MI_inter": 0.024513844597393978,
+        "MI_significant": true,
+        "mean_C_channel": 0.028923562415652835,
+        "rho_topo": 0.010900724761292412,
+        "rho_topo_p": 0.8813413575770508,
+        "vocab_size": 2,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 15,
+        "mean_MI_inter": 0.02556176629858341,
+        "MI_significant": true,
+        "mean_C_channel": 0.025699594937393336,
+        "rho_topo": -0.12069003223591265,
+        "rho_topo_p": 0.09717868462610808,
+        "vocab_size": 4,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 20,
+        "mean_MI_inter": 0.02810743930155832,
+        "MI_significant": true,
+        "mean_C_channel": 0.028232934134709512,
+        "rho_topo": -0.10706609455576115,
+        "rho_topo_p": 0.14148185021493645,
+        "vocab_size": 8,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 25,
+        "mean_MI_inter": 0.029543988320265863,
+        "MI_significant": true,
+        "mean_C_channel": 0.02986105713974464,
+        "rho_topo": -0.00793344618089727,
+        "rho_topo_p": 0.9134919283885077,
+        "vocab_size": 3,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 29,
+        "mean_MI_inter": 0.02982280763833701,
+        "MI_significant": true,
+        "mean_C_channel": 0.026978808003816086,
+        "rho_topo": -0.05032214042960805,
+        "rho_topo_p": 0.4905070764960644,
+        "vocab_size": 7,
+        "n_patterns": 20
+      }
+    ],
+    "7": [
+      {
+        "cycle": 0,
+        "mean_MI_inter": 0.02516993744149134,
+        "MI_significant": false,
+        "mean_C_channel": 0.023368759126292524,
+        "rho_topo": 0.06766392420842683,
+        "rho_topo_p": 0.35361940252601387,
+        "vocab_size": 10,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 5,
+        "mean_MI_inter": 0.025421501473677135,
+        "MI_significant": false,
+        "mean_C_channel": 0.025276807837975184,
+        "rho_topo": -0.10793563314919061,
+        "rho_topo_p": 0.1382588676440533,
+        "vocab_size": 6,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 10,
+        "mean_MI_inter": 0.022825914856175356,
+        "MI_significant": true,
+        "mean_C_channel": 0.023498101712123735,
+        "rho_topo": -0.1295008900960954,
+        "rho_topo_p": 0.074949474863782,
+        "vocab_size": 9,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 15,
+        "mean_MI_inter": 0.030342683972028373,
+        "MI_significant": true,
+        "mean_C_channel": 0.02437821594922204,
+        "rho_topo": 0.03520056686218164,
+        "rho_topo_p": 0.6296965893963021,
+        "vocab_size": 2,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 20,
+        "mean_MI_inter": 0.02994514875345083,
+        "MI_significant": false,
+        "mean_C_channel": 0.056265146693771244,
+        "rho_topo": 0.09152287350138,
+        "rho_topo_p": 0.20916370992150898,
+        "vocab_size": 2,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 25,
+        "mean_MI_inter": 0.05445840391018831,
+        "MI_significant": true,
+        "mean_C_channel": 0.031640964518241235,
+        "rho_topo": -0.12815021847813252,
+        "rho_topo_p": 0.07806174064167329,
+        "vocab_size": 3,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 29,
+        "mean_MI_inter": 0.03697711039308677,
+        "MI_significant": true,
+        "mean_C_channel": 0.024780495491324092,
+        "rho_topo": 0.0063990692262943585,
+        "rho_topo_p": 0.9301755920792047,
+        "vocab_size": 6,
+        "n_patterns": 20
+      }
+    ]
+  }
+}

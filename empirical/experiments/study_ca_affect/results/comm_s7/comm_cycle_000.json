@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_000.npz",
+    "seed": 7,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 29,
+    "n_patterns_analyzed": 20,
+    "cycle": 0
+  },
+  "n_patterns": 20,
+  "n_pairs": 190,
+  "mean_MI_inter": 0.02516993744149134,
+  "max_MI_inter": 0.13653038920993613,
+  "MI_baseline": 0.012093164885437923,
+  "MI_significant": false,
+  "mean_C_channel": 0.023368759126292524,
+  "rho_topo": 0.06766392420842683,
+  "rho_topo_p": 0.35361940252601387,
+  "vocab_size": 10,
+  "per_pair": [
+    {
+      "pattern_i": 0,
+      "pattern_j": 1,
+      "MI_inter": 0.011595523857673554,
+      "C_channel": 0.015561862726935927
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 2,
+      "MI_inter": 0.010686326096366947,
+      "C_channel": 0.012138080351595252
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 3,
+      "MI_inter": 0.002661535941042341,
+      "C_channel": 0.01358309243017638
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 4,
+      "MI_inter": 0.02104643421693116,
+      "C_channel": 0.01612905249153567
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 5,
+      "MI_inter": 0.011140376709652022,
+      "C_channel": 0.01606905840179018
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 6,
+      "MI_inter": 0.01298214927592555,
+      "C_channel": 0.01456189582096857
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 7,
+      "MI_inter": 0.011016446601111684,
+      "C_channel": 0.013249324884572478
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 8,
+      "MI_inter": 0.030310927103846277,
+      "C_channel": 0.03184392195994313
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 9,
+      "MI_inter": 0.02305020213602564,
+      "C_channel": 0.013139114030024629
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 10,
+      "MI_inter": 0.017064400898050506,
+      "C_channel": 0.02744114029168141
+    }
+  ],
+  "cycle": 0
+}

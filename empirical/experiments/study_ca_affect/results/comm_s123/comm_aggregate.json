@@ -1,0 +1,568 @@
+{
+  "seed": 123,
+  "trajectory": [
+    {
+      "cycle": 0,
+      "mean_MI_inter": 0.019401370460305562,
+      "MI_significant": false,
+      "mean_C_channel": 0.032838078140516556,
+      "rho_topo": -0.35757575757575755,
+      "rho_topo_p": 0.3103760917056799,
+      "vocab_size": 10,
+      "n_patterns": 5
+    },
+    {
+      "cycle": 5,
+      "mean_MI_inter": 0.026170744347394644,
+      "MI_significant": true,
+      "mean_C_channel": 0.026018410789802653,
+      "rho_topo": -0.13322745366089017,
+      "rho_topo_p": 0.10064279142243092,
+      "vocab_size": 2,
+      "n_patterns": 18
+    },
+    {
+      "cycle": 10,
+      "mean_MI_inter": 0.03888187074628034,
+      "MI_significant": true,
+      "mean_C_channel": 0.02905474223346221,
+      "rho_topo": 0.2606060606060606,
+      "rho_topo_p": 0.4670890543863402,
+      "vocab_size": 3,
+      "n_patterns": 5
+    },
+    {
+      "cycle": 15,
+      "mean_MI_inter": 0.02656962508410354,
+      "MI_significant": true,
+      "mean_C_channel": 0.03683833210520655,
+      "rho_topo": -0.35,
+      "rho_topo_p": 0.2009453508162933,
+      "vocab_size": 3,
+      "n_patterns": 6
+    },
+    {
+      "cycle": 20,
+      "mean_MI_inter": 0.02198931506599838,
+      "MI_significant": false,
+      "mean_C_channel": 0.02845523114000209,
+      "rho_topo": 0.0,
+      "rho_topo_p": 1.0,
+      "vocab_size": 10,
+      "n_patterns": 3
+    },
+    {
+      "cycle": 25,
+      "mean_MI_inter": 0.028120969891635806,
+      "MI_significant": true,
+      "mean_C_channel": 0.029269112250327425,
+      "rho_topo": -0.08066676289327158,
+      "rho_topo_p": 0.2685615698923926,
+      "vocab_size": 2,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 29,
+      "mean_MI_inter": null,
+      "MI_significant": false,
+      "mean_C_channel": null,
+      "rho_topo": null,
+      "rho_topo_p": null,
+      "vocab_size": null,
+      "n_patterns": 0
+    }
+  ],
+  "cycles": [
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_000.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 5,
+        "n_patterns_analyzed": 5,
+        "cycle": 0
+      },
+      "n_patterns": 5,
+      "n_pairs": 10,
+      "mean_MI_inter": 0.019401370460305562,
+      "max_MI_inter": 0.04857804377138729,
+      "MI_baseline": 0.011465504722815158,
+      "MI_significant": false,
+      "mean_C_channel": 0.032838078140516556,
+      "rho_topo": -0.35757575757575755,
+      "rho_topo_p": 0.3103760917056799,
+      "vocab_size": 10,
+      "per_pair": [
+        {
+          "pattern_i": 0,
+          "pattern_j": 1,
+          "MI_inter": 0.008364236611512558,
+          "C_channel": 0.019847001343913474
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 2,
+          "MI_inter": 0.022293110529564647,
+          "C_channel": 0.026073692143348915
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 3,
+          "MI_inter": 0.01590459687763918,
+          "C_channel": 0.05616160588293887
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 4,
+          "MI_inter": 0.020361081995720468,
+          "C_channel": 0.017028570860556168
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 2,
+          "MI_inter": 0.005672990971877024,
+          "C_channel": 0.01946670259045553
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 3,
+          "MI_inter": 0.007871596463054813,
+          "C_channel": 0.039417401152412344
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 4,
+          "MI_inter": 0.028278389014896366,
+          "C_channel": 0.03582179454387141
+        },
+        {
+          "pattern_i": 2,
+          "pattern_j": 3,
+          "MI_inter": 0.04857804377138729,
+          "C_channel": 0.0469036619130994
+        },
+        {
+          "pattern_i": 2,
+          "pattern_j": 4,
+          "MI_inter": 0.028902373263490155,
+          "C_channel": 0.024348180145174543
+        },
+        {
+          "pattern_i": 3,
+          "pattern_j": 4,
+          "MI_inter": 0.007787285103913123,
+          "C_channel": 0.043312170829394925
+        }
+      ],
+      "cycle": 0
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_005.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 18,
+        "n_patterns_analyzed": 18,
+        "cycle": 5
+      },
+      "n_patterns": 18,
+      "n_pairs": 153,
+      "mean_MI_inter": 0.026170744347394644,
+      "max_MI_inter": 0.12748597393486977,
+      "MI_baseline": 0.009402991846097185,
+      "MI_significant": true,
+      "mean_C_channel": 0.026018410789802653,
+      "rho_topo": -0.13322745366089017,
+      "rho_topo_p": 0.10064279142243092,
+      "vocab_size": 2,
+      "per_pair": [
+        {
+          "pattern_i": 0,
+          "pattern_j": 1,
+          "MI_inter": 0.023403125404954556,
+          "C_channel": 0.012798110284569918
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 2,
+          "MI_inter": 0.019383159011401863,
+          "C_channel": 0.00505062050519544
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 3,
+          "MI_inter": 0.010659442464335086,
+          "C_channel": 0.048472756735581886
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 4,
+          "MI_inter": 0.05319300937085442,
+          "C_channel": 0.004569127736863571
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 5,
+          "MI_inter": 0.015011104721307681,
+          "C_channel": 0.013215936701656647
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 6,
+          "MI_inter": 0.12748597393486977,
+          "C_channel": 0.034237978766756876
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 7,
+          "MI_inter": 0.03516971969891003,
+          "C_channel": 0.0219697829395882
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 8,
+          "MI_inter": 0.017224623709659426,
+          "C_channel": 0.02104394283662906
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 9,
+          "MI_inter": 0.03882814701944445,
+          "C_channel": 0.008553294952717765
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 10,
+          "MI_inter": 0.013228697257734744,
+          "C_channel": 0.013138451192146653
+        }
+      ],
+      "cycle": 5
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_010.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 5,
+        "n_patterns_analyzed": 5,
+        "cycle": 10
+      },
+      "n_patterns": 5,
+      "n_pairs": 10,
+      "mean_MI_inter": 0.03888187074628034,
+      "max_MI_inter": 0.0814534229062006,
+      "MI_baseline": 0.010950769002831639,
+      "MI_significant": true,
+      "mean_C_channel": 0.02905474223346221,
+      "rho_topo": 0.2606060606060606,
+      "rho_topo_p": 0.4670890543863402,
+      "vocab_size": 3,
+      "per_pair": [
+        {
+          "pattern_i": 0,
+          "pattern_j": 1,
+          "MI_inter": 0.020410984188671655,
+          "C_channel": 0.02056713607275562
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 2,
+          "MI_inter": 0.016453867758312576,
+          "C_channel": 0.04242916350295603
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 3,
+          "MI_inter": 0.0394033967098018,
+          "C_channel": 0.03318875709596108
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 4,
+          "MI_inter": 0.030972921332885775,
+          "C_channel": 0.01777772260806222
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 2,
+          "MI_inter": 0.034564159975035424,
+          "C_channel": 0.01244442213379372
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 3,
+          "MI_inter": 0.04204521288076576,
+          "C_channel": 0.032054450301527454
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 4,
+          "MI_inter": 0.0814534229062006,
+          "C_channel": 0.04235105373020281
+        },
+        {
+          "pattern_i": 2,
+          "pattern_j": 3,
+          "MI_inter": 0.020149416814794815,
+          "C_channel": 0.006743574817691753
+        },
+        {
+          "pattern_i": 2,
+          "pattern_j": 4,
+          "MI_inter": 0.03716982509106505,
+          "C_channel": 0.02500304820080125
+        },
+        {
+          "pattern_i": 3,
+          "pattern_j": 4,
+          "MI_inter": 0.06619549980527,
+          "C_channel": 0.057988093870870165
+        }
+      ],
+      "cycle": 10
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_015.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 6,
+        "n_patterns_analyzed": 6,
+        "cycle": 15
+      },
+      "n_patterns": 6,
+      "n_pairs": 15,
+      "mean_MI_inter": 0.02656962508410354,
+      "max_MI_inter": 0.06953255721548393,
+      "MI_baseline": 0.009226386045650566,
+      "MI_significant": true,
+      "mean_C_channel": 0.03683833210520655,
+      "rho_topo": -0.35,
+      "rho_topo_p": 0.2009453508162933,
+      "vocab_size": 3,
+      "per_pair": [
+        {
+          "pattern_i": 0,
+          "pattern_j": 1,
+          "MI_inter": 0.06953255721548393,
+          "C_channel": 0.08102113057696782
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 2,
+          "MI_inter": 0.05850197169910322,
+          "C_channel": 0.03101046216039227
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 3,
+          "MI_inter": 0.005889302082890874,
+          "C_channel": 0.0359838947722018
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 4,
+          "MI_inter": 0.03593652053994445,
+          "C_channel": 0.01453021280880085
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 5,
+          "MI_inter": 0.0132763290551365,
+          "C_channel": 0.05483150131589174
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 2,
+          "MI_inter": 0.053735472141184196,
+          "C_channel": 0.011094574467299756
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 3,
+          "MI_inter": 0.014098927496799085,
+          "C_channel": 0.03136848652926739
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 4,
+          "MI_inter": 0.024338468704023154,
+          "C_channel": 0.054731839056743135
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 5,
+          "MI_inter": 0.02307572558367296,
+          "C_channel": 0.05323719561032971
+        },
+        {
+          "pattern_i": 2,
+          "pattern_j": 3,
+          "MI_inter": 0.010745842937872941,
+          "C_channel": 0.034550596673661345
+        }
+      ],
+      "cycle": 15
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_020.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 3,
+        "n_patterns_analyzed": 3,
+        "cycle": 20
+      },
+      "n_patterns": 3,
+      "n_pairs": 3,
+      "mean_MI_inter": 0.02198931506599838,
+      "max_MI_inter": 0.024411645159780157,
+      "MI_baseline": 0.01064524389665677,
+      "MI_significant": false,
+      "mean_C_channel": 0.02845523114000209,
+      "rho_topo": 0.0,
+      "rho_topo_p": 1.0,
+      "vocab_size": 10,
+      "per_pair": [
+        {
+          "pattern_i": 0,
+          "pattern_j": 1,
+          "MI_inter": 0.021064064574310752,
+          "C_channel": 0.034406481436754954
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 2,
+          "MI_inter": 0.024411645159780157,
+          "C_channel": 0.02543857011467071
+        },
+        {
+          "pattern_i": 1,
+          "pattern_j": 2,
+          "MI_inter": 0.020492235463904225,
+          "C_channel": 0.02552064186858061
+        }
+      ],
+      "cycle": 20
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_025.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 26,
+        "n_patterns_analyzed": 20,
+        "cycle": 25
+      },
+      "n_patterns": 20,
+      "n_pairs": 190,
+      "mean_MI_inter": 0.028120969891635806,
+      "max_MI_inter": 0.06694579578461159,
+      "MI_baseline": 0.009404223323493659,
+      "MI_significant": true,
+      "mean_C_channel": 0.029269112250327425,
+      "rho_topo": -0.08066676289327158,
+      "rho_topo_p": 0.2685615698923926,
+      "vocab_size": 2,
+      "per_pair": [
+        {
+          "pattern_i": 0,
+          "pattern_j": 1,
+          "MI_inter": 0.02340726799359537,
+          "C_channel": 0.05496632962182591
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 2,
+          "MI_inter": 0.009143215715148315,
+          "C_channel": 0.024986411178047504
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 3,
+          "MI_inter": 0.041256644727822346,
+          "C_channel": 0.05952770107771435
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 4,
+          "MI_inter": 0.055276715075713106,
+          "C_channel": 0.023117136691378784
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 5,
+          "MI_inter": 0.006162957802121155,
+          "C_channel": 0.013995261142650907
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 6,
+          "MI_inter": 0.015194191831560875,
+          "C_channel": 0.04746024597361792
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 7,
+          "MI_inter": 0.017579948233956703,
+          "C_channel": 0.021598778429674018
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 8,
+          "MI_inter": 0.03631916027696307,
+          "C_channel": 0.021689693131560266
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 9,
+          "MI_inter": 0.020224786599976494,
+          "C_channel": 0.027109929489421224
+        },
+        {
+          "pattern_i": 0,
+          "pattern_j": 10,
+          "MI_inter": 0.05802561771102438,
+          "C_channel": 0.03943377969975294
+        }
+      ],
+      "cycle": 25
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_029.npz",
+        "seed": 123,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 1,
+        "n_patterns_analyzed": 1,
+        "cycle": 29
+      },
+      "mean_MI_inter": null,
+      "max_MI_inter": null,
+      "MI_baseline": null,
+      "MI_significant": false,
+      "mean_C_channel": null,
+      "rho_topo": null,
+      "rho_topo_p": null,
+      "vocab_size": null,
+      "n_patterns": 0,
+      "n_pairs": 0,
+      "cycle": 29
+    }
+  ]
+}

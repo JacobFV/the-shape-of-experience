@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_020.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 3,
+    "n_patterns_analyzed": 3,
+    "cycle": 20
+  },
+  "n_patterns": 3,
+  "n_pairs": 3,
+  "mean_MI_inter": 0.02198931506599838,
+  "max_MI_inter": 0.024411645159780157,
+  "MI_baseline": 0.01064524389665677,
+  "MI_significant": false,
+  "mean_C_channel": 0.02845523114000209,
+  "rho_topo": 0.0,
+  "rho_topo_p": 1.0,
+  "vocab_size": 10,
+  "per_pair": [
+    {
+      "pattern_i": 0,
+      "pattern_j": 1,
+      "MI_inter": 0.021064064574310752,
+      "C_channel": 0.034406481436754954
+    },
+    {
+      "pattern_i": 0,
+      "pattern_j": 2,
+      "MI_inter": 0.024411645159780157,
+      "C_channel": 0.02543857011467071
+    },
+    {
+      "pattern_i": 1,
+      "pattern_j": 2,
+      "MI_inter": 0.020492235463904225,
+      "C_channel": 0.02552064186858061
+    }
+  ],
+  "cycle": 20
+}
