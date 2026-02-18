@@ -976,3 +976,110 @@ This isn't yet a world model — patterns need to predict, not just remember. Bu
 - `results/v15_s42/` — Seed 42 (30 cycles, final + snapshots)
 - `results/v15_s123/` — Seed 123 (30 cycles, final + snapshots)
 - `results/v15_s7/` — Seed 7 (30 cycles, final + snapshots)
+
+---
+
+## 2026-02-18: V16 Plastic Lenia — 3-Seed Results
+
+### Substrate
+V15 + local Hebbian coupling plasticity. Each spatial location has its own C×C coupling matrix that updates each step via reward-modulated Hebbian rule:
+
+```
+ΔW_ij(x) = η · pre_i(x) · post_j(x) · reward(x) - λ · W_ij(x)
+```
+
+Learning rate (η) and decay rate (λ) are evolvable per organism. This creates genuine within-lifetime learning — the gap V12 identified as the missing ingredient.
+
+### Configuration
+- C=16, N=128, 30 cycles per seed
+- Seeds: 42, 123, 7
+- GPU: Lambda Labs A100 (us-west-2), ~90 min total
+- State: grid (C,N,N) + resource (N,N) + coupling_field (C,C,N,N)
+
+### 3-Seed Results
+
+| Metric | Seed 42 | | Seed 123 | | Seed 7 | |
+|--------|---------|--------|----------|--------|--------|--------|
+| | Early | Late | Early | Late | Early | Late |
+| Robustness | 0.897 | 0.906 | 0.873 | 0.863 | 0.913 | 0.891 |
+| Φ baseline | 0.252 | 0.259 | 0.227 | 0.233 | 0.232 | 0.239 |
+| Φ stress | 0.240 | 0.256 | 0.207 | 0.211 | 0.222 | 0.222 |
+| Φ incr frac | 0.279 | 0.282 | 0.234 | 0.245 | 0.321 | 0.259 |
+| Patterns | 15 | 34 | 46 | 35 | 39 | 13 |
+| Learning rate | 0.0009 | 0.0014 | 0.0007 | 0.0035 | 0.0019 | 0.0004 |
+| Coupling div | 0.588 | 0.470 | 1.006 | 1.407 | 0.769 | 0.666 |
+| Coupling var | 0.289 | 0.101 | 0.290 | 0.000 | 0.345 | 0.416 |
+| Max rob | 0.942 | | 0.909 | | 0.974 | |
+| >1.0 cycles | 0/30 | | 0/30 | | 0/30 | |
+| Mem λ early | [0.012, 0.115] | | [0.010, 0.100] | | [0.013, 0.133] | |
+| Mem λ late | [0.004, 0.035] | | [0.002, 0.017] | | [0.012, 0.121] | |
+
+### Aggregate
+- **Mean robustness: 0.892** (90 cycles across 3 seeds)
+- Max robustness: 0.974
+- **Cycles >1.0: 0/90**
+- Mean Φ baseline: 0.237
+- Mean Φ stress: 0.224
+- Mean Φ incr frac: 0.269
+
+### Cross-Version Comparison
+
+| Version | Substrate | Mean Rob | Max Rob | >1.0 cycles | Key finding |
+|---------|-----------|----------|---------|-------------|-------------|
+| V13 | Content coupling | 0.923 | 1.052 | 3/90 | Bottleneck-robustness |
+| V14 | + Chemotaxis | 0.91-0.95 | ~0.95 | 0/90 | Movement evolves |
+| V15 | + Temporal memory | 0.907 | 1.070 | 3/90 | Memory is selectable, Φ-stress doubles (s42) |
+| **V16** | **+ Hebbian plasticity** | **0.892** | **0.974** | **0/90** | **Plasticity doesn't help** |
+
+### Key Findings
+
+1. **Plasticity HURTS robustness**: Mean robustness 0.892 is the LOWEST of any V13+ version. Adding within-lifetime learning made patterns LESS resilient to stress, not more.
+
+2. **No cycles exceed robustness 1.0**: This is the only V13+ version where ZERO cycles achieve Φ-increase-under-stress at the population level. V13 had 3/90, V15 had 3/90.
+
+3. **Learning rate diverges across seeds**:
+   - Seed 42: LR increases modestly (0.0009→0.0014) — mild plasticity retained
+   - Seed 123: LR increases dramatically (0.0007→0.0035) — strong plasticity selected for
+   - Seed 7: LR decreases (0.0019→0.0004) — plasticity suppressed
+   No consistent direction. Evolution doesn't have a clear opinion on how much to learn.
+
+4. **Coupling spatial variance collapses**: In all seeds, the initially diverse coupling fields become more uniform (or collapse to near-zero variance in seed 123). The locally-learned coupling matrices converge rather than diversify. The system is NOT developing spatially differentiated internal structure.
+
+5. **Memory lambdas still decrease** (2/3 seeds, same as V15): The temporal memory channel continues to show consistent selection. This V15 finding is robust to the addition of plasticity.
+
+### Interpretation
+
+This is a **negative result** and it's informative. The hypothesis was: within-lifetime Hebbian learning would allow patterns to adapt their coupling structure to stress, maintaining integration. The reality: the extra degrees of freedom from a C×C×N×N coupling field create too much variability, overwhelming the selection signal.
+
+Several possible explanations:
+
+**A. Plasticity adds noise faster than selection can filter it.** Each step updates C×C=256 coupling weights at every spatial location. With reward modulation based only on local resource gradients, most updates are noise. The coupling field drifts randomly, making patterns fragile.
+
+**B. The Hebbian rule is too simple.** Biological plasticity is highly structured (STDP, neuromodulation, homeostatic regulation). A simple reward-modulated Hebbian rule with uniform learning rate is too blunt. Evolution can modulate the overall rate but not the structure of learning.
+
+**C. The 250-step chunk is too short.** With only 250 substrate steps per selection cycle, there isn't enough time for learning to meaningfully specialize the coupling field before the next selection event. The coupling field partially updates but never converges to a useful configuration.
+
+**D. Plasticity competes with memory.** Both the EMA memory channels (V15) and the Hebbian coupling (V16) are trying to store temporal information. They may interfere with each other, creating conflicting signals about what to remember.
+
+### What This Means for the Research Program
+
+V12 identified "individual-level plasticity" as the missing ingredient. V16 tested the most direct implementation: local Hebbian learning. It doesn't work — at least not in this form. This suggests:
+
+1. **Plasticity needs structure.** Not just a learning rate, but a learning rule architecture that constrains what can be learned. Biological synaptic plasticity is deeply structured (eligibility traces, consolidation, specificity).
+
+2. **V15 remains the best substrate** for downstream experiments. Temporal memory alone (without plasticity) produces better results. The memory-lambda evolution provides a simple, effective capacity indicator.
+
+3. **The "missing ingredient" may not be plasticity** in the neural-network sense. It might be something more like developmental canalization — predetermined structural programs that unfold in response to experience, rather than free-form learning.
+
+4. **Alternatively, plasticity may need longer evolutionary and developmental timescales.** 30 cycles of 250 steps each may simply not be enough for evolution to discover useful learning rules. Biological learning evolved over billions of years.
+
+### Next Steps
+1. V15 should be the substrate baseline for the formal experiment program (Experiments 2-12)
+2. Consider a V16b with structured plasticity (e.g., only adjust coupling between specific channel pairs, or use eligibility traces)
+3. Consider a V17 with a completely different approach: morphogenetic programs (pattern growth rules) rather than learning rules
+4. Run Experiment 2 (world model measurement) on V15 snapshots — the temporal memory provides the substrate capacity
+
+### Data
+- `results/v16_s42/` — Seed 42 (30 cycles, final + snapshots)
+- `results/v16_s123/` — Seed 123 (30 cycles, final + snapshots)
+- `results/v16_s7/` — Seed 7 (30 cycles, final + snapshots)

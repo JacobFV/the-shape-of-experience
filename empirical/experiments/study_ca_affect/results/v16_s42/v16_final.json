@@ -1,0 +1,1555 @@
+{
+  "cycle_stats": [
+    {
+      "cycle": 0,
+      "n_patterns": 7,
+      "n_baseline": 304,
+      "n_survived": 165,
+      "mortality": 0.45723684210526316,
+      "mean_phi_base": 0.26075005593407957,
+      "mean_phi_stress": 0.2522783116723235,
+      "mean_robustness": 0.9184212817264847,
+      "phi_increase_frac": 0.3924050632911392,
+      "tau": 0.2438030481338501,
+      "gate_beta": 4.914630091190338,
+      "chemotaxis_strength": 0.6030885219573975,
+      "motor_sensitivity": 4.89149734377861,
+      "motor_threshold": 0.23554271459579468,
+      "memory_lambdas": [
+        0.011535494485008565,
+        0.11534456394313983
+      ],
+      "memory_mean": 0.14027614891529083,
+      "learning_rate": 0.0009442258577087204,
+      "decay_rate_coupling": 7.097575826611231e-05,
+      "coupling_divergence": 0.3412034809589386,
+      "coupling_spatial_var": 0.37187594175338745,
+      "stress_regen": 0.5488411318254407,
+      "drought_steps": 1098,
+      "elapsed_s": 267.49557065963745,
+      "resource_mean": 0.6191858053207397,
+      "foraging": {
+        "mean_displacement": 5.43813556402457,
+        "resource_at_patterns": 0.6537946462631226,
+        "n_tracked": 106
+      }
+    },
+    {
+      "cycle": 1,
+      "n_patterns": 30,
+      "n_baseline": 345,
+      "n_survived": 233,
+      "mortality": 0.32463768115942027,
+      "mean_phi_base": 0.2457522989801543,
+      "mean_phi_stress": 0.23277757573745517,
+      "mean_robustness": 0.8841912124106401,
+      "phi_increase_frac": 0.22900763358778625,
+      "tau": 0.3632636308670044,
+      "gate_beta": 4.559654533863068,
+      "chemotaxis_strength": 0.533324682712555,
+      "motor_sensitivity": 5.018348544836044,
+      "motor_threshold": 0.15085195302963256,
+      "memory_lambdas": [
+        0.010383366338235006,
+        0.10381621969033022
+      ],
+      "memory_mean": 0.06075224280357361,
+      "learning_rate": 0.0010615704955379418,
+      "decay_rate_coupling": 9.586990416785891e-05,
+      "coupling_divergence": 0.6967893838882446,
+      "coupling_spatial_var": 0.40932875871658325,
+      "stress_regen": 0.5675112428565124,
+      "drought_steps": 905,
+      "elapsed_s": 73.89681196212769,
+      "resource_mean": 0.3739764392375946,
+      "foraging": {
+        "mean_displacement": 4.037529680940896,
+        "resource_at_patterns": 0.626277506351471,
+        "n_tracked": 165
+      }
+    },
+    {
+      "cycle": 2,
+      "n_patterns": 26,
+      "n_baseline": 361,
+      "n_survived": 234,
+      "mortality": 0.35180055401662047,
+      "mean_phi_base": 0.250425957533133,
+      "mean_phi_stress": 0.23976913371519223,
+      "mean_robustness": 0.8910508458946913,
+      "phi_increase_frac": 0.2740740740740741,
+      "tau": 0.3653168695047498,
+      "gate_beta": 4.677887451648712,
+      "chemotaxis_strength": 0.6024727940559388,
+      "motor_sensitivity": 4.334747105836868,
+      "motor_threshold": 0.2687165856361389,
+      "memory_lambdas": [
+        0.009115898075421023,
+        0.09113576720478998
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0007440912856325733,
+      "decay_rate_coupling": 0.00014192777507077145,
+      "coupling_divergence": 0.7202363610267639,
+      "coupling_spatial_var": 0.26708337664604187,
+      "stress_regen": 0.5636782972170252,
+      "drought_steps": 732,
+      "elapsed_s": 73.29818940162659,
+      "resource_mean": 0.30161118507385254,
+      "foraging": {
+        "mean_displacement": 4.198294064112109,
+        "resource_at_patterns": 0.7098185420036316,
+        "n_tracked": 168
+      }
+    },
+    {
+      "cycle": 3,
+      "n_patterns": 10,
+      "n_baseline": 351,
+      "n_survived": 230,
+      "mortality": 0.3447293447293447,
+      "mean_phi_base": 0.2504386415678046,
+      "mean_phi_stress": 0.23607258108149498,
+      "mean_robustness": 0.8898269998612377,
+      "phi_increase_frac": 0.2536231884057971,
+      "tau": 0.3622906610369682,
+      "gate_beta": 4.83453106880188,
+      "chemotaxis_strength": 0.5068337321281433,
+      "motor_sensitivity": 4.984853059053421,
+      "motor_threshold": 0.2401875287294388,
+      "memory_lambdas": [
+        0.0096783194354768,
+        0.0967489970851638
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0006373575631736109,
+      "decay_rate_coupling": 0.00015082220456875034,
+      "coupling_divergence": 0.6038079261779785,
+      "coupling_spatial_var": 0.1941688358783722,
+      "stress_regen": 0.6003932650309955,
+      "drought_steps": 875,
+      "elapsed_s": 52.575146198272705,
+      "resource_mean": 0.3202117085456848,
+      "foraging": {
+        "mean_displacement": 4.3186625448388325,
+        "resource_at_patterns": 0.6898500323295593,
+        "n_tracked": 161
+      }
+    },
+    {
+      "cycle": 4,
+      "n_patterns": 4,
+      "n_baseline": 346,
+      "n_survived": 221,
+      "mortality": 0.361271676300578,
+      "mean_phi_base": 0.25011846243603547,
+      "mean_phi_stress": 0.23974130095984097,
+      "mean_robustness": 0.9008372744059495,
+      "phi_increase_frac": 0.24475524475524477,
+      "tau": 0.28964912742376325,
+      "gate_beta": 4.513027667999268,
+      "chemotaxis_strength": 0.4901065394282341,
+      "motor_sensitivity": 5.45189306139946,
+      "motor_threshold": 0.1778690665960312,
+      "memory_lambdas": [
+        0.011498549882642291,
+        0.11493418261946756
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0008980452691423669,
+      "decay_rate_coupling": 0.0003706538044466669,
+      "coupling_divergence": 0.5798141360282898,
+      "coupling_spatial_var": 0.20102402567863464,
+      "stress_regen": 0.5642933851325317,
+      "drought_steps": 1101,
+      "elapsed_s": 49.489317417144775,
+      "resource_mean": 0.6957389712333679,
+      "foraging": {
+        "mean_displacement": 4.108993248728772,
+        "resource_at_patterns": 0.6396841406822205,
+        "n_tracked": 176
+      }
+    },
+    {
+      "cycle": 5,
+      "n_patterns": 4,
+      "n_baseline": 342,
+      "n_survived": 189,
+      "mortality": 0.4473684210526315,
+      "mean_phi_base": 0.24872751639890336,
+      "mean_phi_stress": 0.23787980415383933,
+      "mean_robustness": 0.874776575405445,
+      "phi_increase_frac": 0.2727272727272727,
+      "tau": 0.3481644198298454,
+      "gate_beta": 4.580708992481232,
+      "chemotaxis_strength": 0.5068442910909653,
+      "motor_sensitivity": 5.2646618485450745,
+      "motor_threshold": 0.15368558913469316,
+      "memory_lambdas": [
+        0.009395321577578917,
+        0.09390393644168753
+      ],
+      "memory_mean": 0.06261228024959564,
+      "learning_rate": 0.0012309310845916518,
+      "decay_rate_coupling": 0.0005104040914075207,
+      "coupling_divergence": 0.5034679770469666,
+      "coupling_spatial_var": 0.16712714731693268,
+      "stress_regen": 0.5875909435877013,
+      "drought_steps": 1491,
+      "elapsed_s": 48.04185724258423,
+      "resource_mean": 0.7122579216957092,
+      "foraging": {
+        "mean_displacement": 3.906489499034282,
+        "resource_at_patterns": 0.6819425225257874,
+        "n_tracked": 157
+      }
+    },
+    {
+      "cycle": 6,
+      "n_patterns": 4,
+      "n_baseline": 367,
+      "n_survived": 197,
+      "mortality": 0.4632152588555858,
+      "mean_phi_base": 0.25348411002349236,
+      "mean_phi_stress": 0.2471784961633041,
+      "mean_robustness": 0.9038493597941311,
+      "phi_increase_frac": 0.3387096774193548,
+      "tau": 0.4282682046294212,
+      "gate_beta": 4.423282361030579,
+      "chemotaxis_strength": 0.7326782077550889,
+      "motor_sensitivity": 5.070539683103561,
+      "motor_threshold": 0.21378318220376968,
+      "memory_lambdas": [
+        0.008101693480579035,
+        0.08096668521639042
+      ],
+      "memory_mean": 0.08100813627243042,
+      "learning_rate": 0.0009160736418011769,
+      "decay_rate_coupling": 0.000893496368029451,
+      "coupling_divergence": 0.4786742627620697,
+      "coupling_spatial_var": 0.10788555443286896,
+      "stress_regen": 0.5837987083914101,
+      "drought_steps": 1292,
+      "elapsed_s": 43.96780872344971,
+      "resource_mean": 0.7204744219779968,
+      "foraging": {
+        "mean_displacement": 4.316264915150956,
+        "resource_at_patterns": 0.6602616906166077,
+        "n_tracked": 159
+      }
+    },
+    {
+      "cycle": 7,
+      "n_patterns": 20,
+      "n_baseline": 359,
+      "n_survived": 236,
+      "mortality": 0.34261838440111425,
+      "mean_phi_base": 0.25074688746886786,
+      "mean_phi_stress": 0.2441790697989845,
+      "mean_robustness": 0.8953964728511269,
+      "phi_increase_frac": 0.28368794326241137,
+      "tau": 0.38725909441709516,
+      "gate_beta": 4.471599110960961,
+      "chemotaxis_strength": 0.8738593906164169,
+      "motor_sensitivity": 4.633442789316177,
+      "motor_threshold": 0.2331366643309593,
+      "memory_lambdas": [
+        0.007041891534362478,
+        0.07036742269084087
+      ],
+      "memory_mean": 0.08240019530057907,
+      "learning_rate": 0.000651358617119654,
+      "decay_rate_coupling": 0.000944586890885711,
+      "coupling_divergence": 0.49335360527038574,
+      "coupling_spatial_var": 0.042491208761930466,
+      "stress_regen": 0.5031887357973841,
+      "drought_steps": 910,
+      "elapsed_s": 50.170435428619385,
+      "resource_mean": 0.3172007203102112,
+      "foraging": {
+        "mean_displacement": 4.465493732442269,
+        "resource_at_patterns": 0.6928907036781311,
+        "n_tracked": 176
+      }
+    },
+    {
+      "cycle": 8,
+      "n_patterns": 13,
+      "n_baseline": 341,
+      "n_survived": 254,
+      "mortality": 0.25513196480938416,
+      "mean_phi_base": 0.2408793747773626,
+      "mean_phi_stress": 0.23260427480443102,
+      "mean_robustness": 0.9371285583454851,
+      "phi_increase_frac": 0.3708609271523179,
+      "tau": 0.45960083454847334,
+      "gate_beta": 4.749210605025292,
+      "chemotaxis_strength": 0.8971511796116829,
+      "motor_sensitivity": 4.830801963806152,
+      "motor_threshold": 0.2886041268706322,
+      "memory_lambdas": [
+        0.00544296773459303,
+        0.05438292672430333
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0006267822006178733,
+      "decay_rate_coupling": 0.0007870717377635384,
+      "coupling_divergence": 0.512270987033844,
+      "coupling_spatial_var": 0.055860672146081924,
+      "stress_regen": 0.5385738546867586,
+      "drought_steps": 999,
+      "elapsed_s": 49.50028681755066,
+      "resource_mean": 0.3132714629173279,
+      "foraging": {
+        "mean_displacement": 3.9555154798600958,
+        "resource_at_patterns": 0.7146297693252563,
+        "n_tracked": 181
+      }
+    },
+    {
+      "cycle": 9,
+      "n_patterns": 4,
+      "n_baseline": 307,
+      "n_survived": 263,
+      "mortality": 0.14332247557003253,
+      "mean_phi_base": 0.22576251394612762,
+      "mean_phi_stress": 0.20889824145650934,
+      "mean_robustness": 0.885391498911506,
+      "phi_increase_frac": 0.2361111111111111,
+      "tau": 0.5184751972556114,
+      "gate_beta": 5.004747161269188,
+      "chemotaxis_strength": 0.9377272978425026,
+      "motor_sensitivity": 4.452715814113617,
+      "motor_threshold": 0.3863630160689354,
+      "memory_lambdas": [
+        0.004999310417298967,
+        0.04994190720102759
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0005890432775446885,
+      "decay_rate_coupling": 0.0005956402995840351,
+      "coupling_divergence": 0.509925127029419,
+      "coupling_spatial_var": 0.08618868887424469,
+      "stress_regen": 0.5538413381428481,
+      "drought_steps": 1362,
+      "elapsed_s": 38.057825565338135,
+      "resource_mean": 0.6616647243499756,
+      "foraging": {
+        "mean_displacement": 4.586870306229322,
+        "resource_at_patterns": 0.689251184463501,
+        "n_tracked": 157
+      }
+    },
+    {
+      "cycle": 10,
+      "n_patterns": 2,
+      "n_baseline": 362,
+      "n_survived": 226,
+      "mortality": 0.37569060773480667,
+      "mean_phi_base": 0.2569162129624204,
+      "mean_phi_stress": 0.2508045706001145,
+      "mean_robustness": 0.9195039266682521,
+      "phi_increase_frac": 0.2986111111111111,
+      "tau": 0.34604071229696276,
+      "gate_beta": 5.10421299636364,
+      "chemotaxis_strength": 0.9149502605199814,
+      "motor_sensitivity": 4.437516909092665,
+      "motor_threshold": 0.5218512281775475,
+      "memory_lambdas": [
+        0.006635417056024245,
+        0.06627428911666321
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0008138998860248722,
+      "decay_rate_coupling": 0.000699299975463755,
+      "coupling_divergence": 0.480617493391037,
+      "coupling_spatial_var": 0.05766012519598007,
+      "stress_regen": 0.4918106044055279,
+      "drought_steps": 1228,
+      "elapsed_s": 39.151551485061646,
+      "resource_mean": 0.613310694694519,
+      "foraging": {
+        "mean_displacement": 4.137327194892217,
+        "resource_at_patterns": 0.6783093214035034,
+        "n_tracked": 162
+      }
+    },
+    {
+      "cycle": 11,
+      "n_patterns": 38,
+      "n_baseline": 375,
+      "n_survived": 270,
+      "mortality": 0.28,
+      "mean_phi_base": 0.24574318310883306,
+      "mean_phi_stress": 0.24491369476524136,
+      "mean_robustness": 0.9421577318121418,
+      "phi_increase_frac": 0.32666666666666666,
+      "tau": 0.36815123707056047,
+      "gate_beta": 4.939983436465264,
+      "chemotaxis_strength": 0.7218082278966904,
+      "motor_sensitivity": 4.400287184864283,
+      "motor_threshold": 0.5054135546088219,
+      "memory_lambdas": [
+        0.007578498640885425,
+        0.0756834876793924
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0005519532735244813,
+      "decay_rate_coupling": 0.0007904914581593725,
+      "coupling_divergence": 0.49883365631103516,
+      "coupling_spatial_var": 0.07458389550447464,
+      "stress_regen": 0.49231390103080985,
+      "drought_steps": 681,
+      "elapsed_s": 49.75673794746399,
+      "resource_mean": 0.35260677337646484,
+      "foraging": {
+        "mean_displacement": 4.0500330036073136,
+        "resource_at_patterns": 0.699902355670929,
+        "n_tracked": 185
+      }
+    },
+    {
+      "cycle": 12,
+      "n_patterns": 3,
+      "n_baseline": 348,
+      "n_survived": 218,
+      "mortality": 0.37356321839080464,
+      "mean_phi_base": 0.26274846556754994,
+      "mean_phi_stress": 0.25009864192584125,
+      "mean_robustness": 0.90482719246109,
+      "phi_increase_frac": 0.2847222222222222,
+      "tau": 0.4573309257626534,
+      "gate_beta": 4.801750168204308,
+      "chemotaxis_strength": 0.6751664698123933,
+      "motor_sensitivity": 4.661340896040201,
+      "motor_threshold": 0.4982364416122437,
+      "memory_lambdas": [
+        0.00795641400651731,
+        0.07944814642490117
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0006700831006391423,
+      "decay_rate_coupling": 0.0005507820544915678,
+      "coupling_divergence": 0.5091511607170105,
+      "coupling_spatial_var": 0.03308390825986862,
+      "stress_regen": 0.5387995917825057,
+      "drought_steps": 1315,
+      "elapsed_s": 47.277650117874146,
+      "resource_mean": 0.6587927341461182,
+      "foraging": {
+        "mean_displacement": 4.014513223360265,
+        "resource_at_patterns": 0.6806477308273315,
+        "n_tracked": 182
+      }
+    },
+    {
+      "cycle": 13,
+      "n_patterns": 2,
+      "n_baseline": 351,
+      "n_survived": 174,
+      "mortality": 0.5042735042735043,
+      "mean_phi_base": 0.26540858966300046,
+      "mean_phi_stress": 0.25759937818530426,
+      "mean_robustness": 0.9039280364117503,
+      "phi_increase_frac": 0.23478260869565218,
+      "tau": 0.5549943283200265,
+      "gate_beta": 4.897785040736198,
+      "chemotaxis_strength": 0.5933439433574677,
+      "motor_sensitivity": 4.903971616178751,
+      "motor_threshold": 0.5318785458803177,
+      "memory_lambdas": [
+        0.007621866210068532,
+        0.07609893918536607
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0006804479396754541,
+      "decay_rate_coupling": 0.00047990557167459236,
+      "coupling_divergence": 0.48270535469055176,
+      "coupling_spatial_var": 0.056124988943338394,
+      "stress_regen": 0.45505891805811544,
+      "drought_steps": 1043,
+      "elapsed_s": 46.937782287597656,
+      "resource_mean": 0.6788874864578247,
+      "foraging": {
+        "mean_displacement": 4.563139743045723,
+        "resource_at_patterns": 0.6327692866325378,
+        "n_tracked": 158
+      }
+    },
+    {
+      "cycle": 14,
+      "n_patterns": 1,
+      "n_baseline": 309,
+      "n_survived": 128,
+      "mortality": 0.5857605177993528,
+      "mean_phi_base": 0.2778125053571615,
+      "mean_phi_stress": 0.27865421257313644,
+      "mean_robustness": 0.9077957441552728,
+      "phi_increase_frac": 0.26436781609195403,
+      "tau": 0.713247199356556,
+      "gate_beta": 5.34782757461071,
+      "chemotaxis_strength": 0.6920091092586518,
+      "motor_sensitivity": 4.171530310064554,
+      "motor_threshold": 0.5337353840470314,
+      "memory_lambdas": [
+        0.004122237490969989,
+        0.041152765078849775
+      ],
+      "memory_mean": 0.08924636989831924,
+      "learning_rate": 0.0005053573281160741,
+      "decay_rate_coupling": 0.0003992402838468799,
+      "coupling_divergence": 0.4607464075088501,
+      "coupling_spatial_var": 0.03951114043593407,
+      "stress_regen": 0.47771795321494653,
+      "drought_steps": 1356,
+      "elapsed_s": 42.49192953109741,
+      "resource_mean": 0.7001644372940063,
+      "foraging": {
+        "mean_displacement": 6.030753485306635,
+        "resource_at_patterns": 0.6689014434814453,
+        "n_tracked": 123
+      }
+    },
+    {
+      "cycle": 15,
+      "n_patterns": 1,
+      "n_baseline": 359,
+      "n_survived": 122,
+      "mortality": 0.6601671309192201,
+      "mean_phi_base": 0.2702723310078864,
+      "mean_phi_stress": 0.269529682609977,
+      "mean_robustness": 0.8855696658479401,
+      "phi_increase_frac": 0.3125,
+      "tau": 0.8244944885373117,
+      "gate_beta": 5.30578484237194,
+      "chemotaxis_strength": 0.5948205411434174,
+      "motor_sensitivity": 3.98928477242589,
+      "motor_threshold": 0.44423348456621164,
+      "memory_lambdas": [
+        0.004145057101099533,
+        0.04137154518764772
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0005100117751566562,
+      "decay_rate_coupling": 0.0003392375774721885,
+      "coupling_divergence": 0.45750266313552856,
+      "coupling_spatial_var": 0.05705368518829346,
+      "stress_regen": 0.4793703902191471,
+      "drought_steps": 1402,
+      "elapsed_s": 36.68035888671875,
+      "resource_mean": 0.7151889801025391,
+      "foraging": {
+        "mean_displacement": 4.531020178163206,
+        "resource_at_patterns": 0.6995512247085571,
+        "n_tracked": 152
+      }
+    },
+    {
+      "cycle": 16,
+      "n_patterns": 35,
+      "n_baseline": 365,
+      "n_survived": 237,
+      "mortality": 0.3506849315068493,
+      "mean_phi_base": 0.2481321724859022,
+      "mean_phi_stress": 0.23972155458296088,
+      "mean_robustness": 0.8932288893694418,
+      "phi_increase_frac": 0.2733812949640288,
+      "tau": 0.9014835968613626,
+      "gate_beta": 5.557436224818229,
+      "chemotaxis_strength": 0.5975463626906277,
+      "motor_sensitivity": 3.6049495227634907,
+      "motor_threshold": 0.4044884338974952,
+      "memory_lambdas": [
+        0.004249557722664107,
+        0.042405353959503345
+      ],
+      "memory_mean": 0.11024750769138336,
+      "learning_rate": 0.0007367758954416685,
+      "decay_rate_coupling": 0.0003272444359995247,
+      "coupling_divergence": 0.5183220505714417,
+      "coupling_spatial_var": 0.16802552342414856,
+      "stress_regen": 0.5472639301727426,
+      "drought_steps": 620,
+      "elapsed_s": 44.64260005950928,
+      "resource_mean": 0.38463279604911804,
+      "foraging": {
+        "mean_displacement": 4.366457241885072,
+        "resource_at_patterns": 0.6464565992355347,
+        "n_tracked": 166
+      }
+    },
+    {
+      "cycle": 17,
+      "n_patterns": 1,
+      "n_baseline": 352,
+      "n_survived": 201,
+      "mortality": 0.4289772727272727,
+      "mean_phi_base": 0.22736160462823982,
+      "mean_phi_stress": 0.2219811503365996,
+      "mean_robustness": 0.8941514835917316,
+      "phi_increase_frac": 0.2971014492753623,
+      "tau": 0.8872198164463044,
+      "gate_beta": 5.250098010897636,
+      "chemotaxis_strength": 0.6129515109583736,
+      "motor_sensitivity": 3.4226883240044117,
+      "motor_threshold": 0.42566365152597424,
+      "memory_lambdas": [
+        0.004301538017176892,
+        0.0429149668416533
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.001413898661378822,
+      "decay_rate_coupling": 0.00033350665270183454,
+      "coupling_divergence": 0.6141595244407654,
+      "coupling_spatial_var": 0.32210004329681396,
+      "stress_regen": 0.524879918148488,
+      "drought_steps": 1369,
+      "elapsed_s": 42.35121154785156,
+      "resource_mean": 0.7184282541275024,
+      "foraging": {
+        "mean_displacement": 3.9850644603900487,
+        "resource_at_patterns": 0.6701897978782654,
+        "n_tracked": 180
+      }
+    },
+    {
+      "cycle": 18,
+      "n_patterns": 5,
+      "n_baseline": 360,
+      "n_survived": 240,
+      "mortality": 0.33333333333333337,
+      "mean_phi_base": 0.2209886228815263,
+      "mean_phi_stress": 0.2219606309416528,
+      "mean_robustness": 0.9077589179777318,
+      "phi_increase_frac": 0.30344827586206896,
+      "tau": 0.890989350527525,
+      "gate_beta": 5.255326361209153,
+      "chemotaxis_strength": 0.5280455050989986,
+      "motor_sensitivity": 4.174433309584856,
+      "motor_threshold": 0.38552033454179757,
+      "memory_lambdas": [
+        0.0037798759423907278,
+        0.03770263736464136
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0014608526701344131,
+      "decay_rate_coupling": 0.0003461021431166104,
+      "coupling_divergence": 0.6403070092201233,
+      "coupling_spatial_var": 0.26601964235305786,
+      "stress_regen": 0.4203688312685245,
+      "drought_steps": 751,
+      "elapsed_s": 46.053743839263916,
+      "resource_mean": 0.6926083564758301,
+      "foraging": {
+        "mean_displacement": 3.952352418904345,
+        "resource_at_patterns": 0.6530658006668091,
+        "n_tracked": 182
+      }
+    },
+    {
+      "cycle": 19,
+      "n_patterns": 4,
+      "n_baseline": 338,
+      "n_survived": 151,
+      "mortality": 0.5532544378698225,
+      "mean_phi_base": 0.275251958736424,
+      "mean_phi_stress": 0.2621018697112921,
+      "mean_robustness": 0.8844648834085862,
+      "phi_increase_frac": 0.2345679012345679,
+      "tau": 0.7100699298083784,
+      "gate_beta": 5.102436716109514,
+      "chemotaxis_strength": 0.5707117525860668,
+      "motor_sensitivity": 3.88375835493207,
+      "motor_threshold": 0.27482000142335883,
+      "memory_lambdas": [
+        0.0035089238311633163,
+        0.034991677507057846
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0020928012320666897,
+      "decay_rate_coupling": 0.00024559026667980753,
+      "coupling_divergence": 0.5430212616920471,
+      "coupling_spatial_var": 0.2030353546142578,
+      "stress_regen": 0.36037968407507087,
+      "drought_steps": 768,
+      "elapsed_s": 46.261372327804565,
+      "resource_mean": 0.6552412509918213,
+      "foraging": {
+        "mean_displacement": 4.67191819583905,
+        "resource_at_patterns": 0.6099334359169006,
+        "n_tracked": 121
+      }
+    },
+    {
+      "cycle": 20,
+      "n_patterns": 41,
+      "n_baseline": 370,
+      "n_survived": 275,
+      "mortality": 0.2567567567567568,
+      "mean_phi_base": 0.23413930990449133,
+      "mean_phi_stress": 0.2320527280234016,
+      "mean_robustness": 0.9350244903490371,
+      "phi_increase_frac": 0.30057803468208094,
+      "tau": 0.63813838288188,
+      "gate_beta": 5.3715086288750165,
+      "chemotaxis_strength": 0.6504942623898388,
+      "motor_sensitivity": 4.318266171962023,
+      "motor_threshold": 0.18826534897088995,
+      "memory_lambdas": [
+        0.004314263348238024,
+        0.04301165304073751
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0021561938555273493,
+      "decay_rate_coupling": 0.0001809981179583702,
+      "coupling_divergence": 0.5669023394584656,
+      "coupling_spatial_var": 0.17152613401412964,
+      "stress_regen": 0.45945470363324276,
+      "drought_steps": 573,
+      "elapsed_s": 43.45619201660156,
+      "resource_mean": 0.3706508278846741,
+      "foraging": {
+        "mean_displacement": 3.7095507738047826,
+        "resource_at_patterns": 0.7002208232879639,
+        "n_tracked": 195
+      }
+    },
+    {
+      "cycle": 21,
+      "n_patterns": 10,
+      "n_baseline": 336,
+      "n_survived": 282,
+      "mortality": 0.1607142857142857,
+      "mean_phi_base": 0.22084757048835185,
+      "mean_phi_stress": 0.2152074888468294,
+      "mean_robustness": 0.906258157004774,
+      "phi_increase_frac": 0.294478527607362,
+      "tau": 0.555791037529707,
+      "gate_beta": 5.1944700069725505,
+      "chemotaxis_strength": 0.4807947961613537,
+      "motor_sensitivity": 4.098539400845766,
+      "motor_threshold": 0.189911364391446,
+      "memory_lambdas": [
+        0.0050039814545073035,
+        0.049877493157605465
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.001878774259054489,
+      "decay_rate_coupling": 0.000172724136823235,
+      "coupling_divergence": 0.6118980646133423,
+      "coupling_spatial_var": 0.25296878814697266,
+      "stress_regen": 0.5161494003604893,
+      "drought_steps": 994,
+      "elapsed_s": 50.349149227142334,
+      "resource_mean": 0.3587157130241394,
+      "foraging": {
+        "mean_displacement": 3.8028271266365192,
+        "resource_at_patterns": 0.6622147560119629,
+        "n_tracked": 194
+      }
+    },
+    {
+      "cycle": 22,
+      "n_patterns": 10,
+      "n_baseline": 327,
+      "n_survived": 288,
+      "mortality": 0.11926605504587151,
+      "mean_phi_base": 0.2135327809084344,
+      "mean_phi_stress": 0.20576658088808494,
+      "mean_robustness": 0.9216108136876551,
+      "phi_increase_frac": 0.3,
+      "tau": 0.4644077472388745,
+      "gate_beta": 5.165130544453858,
+      "chemotaxis_strength": 0.4535659788176418,
+      "motor_sensitivity": 4.5384041257202625,
+      "motor_threshold": 0.16799166090786447,
+      "memory_lambdas": [
+        0.003969455971350906,
+        0.039558684543803735
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.00241621957049527,
+      "decay_rate_coupling": 0.0002993272608413078,
+      "coupling_divergence": 0.6792651414871216,
+      "coupling_spatial_var": 0.26650917530059814,
+      "stress_regen": 0.4063453891868581,
+      "drought_steps": 1112,
+      "elapsed_s": 40.243157625198364,
+      "resource_mean": 0.30460289120674133,
+      "foraging": {
+        "mean_displacement": 4.00189039193788,
+        "resource_at_patterns": 0.679719865322113,
+        "n_tracked": 174
+      }
+    },
+    {
+      "cycle": 23,
+      "n_patterns": 169,
+      "n_baseline": 266,
+      "n_survived": 252,
+      "mortality": 0.052631578947368474,
+      "mean_phi_base": 0.21045395104465303,
+      "mean_phi_stress": 0.20039016398731418,
+      "mean_robustness": 0.9244483925209558,
+      "phi_increase_frac": 0.27419354838709675,
+      "tau": 0.44343574568629274,
+      "gate_beta": 5.271038258820771,
+      "chemotaxis_strength": 0.4366250855848194,
+      "motor_sensitivity": 4.821737129241228,
+      "motor_threshold": 0.21833819039165964,
+      "memory_lambdas": [
+        0.0048257841462732145,
+        0.048081756826056345
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.002951296923827408,
+      "decay_rate_coupling": 0.0004137247261347528,
+      "coupling_divergence": 0.6520419716835022,
+      "coupling_spatial_var": 0.24810129404067993,
+      "stress_regen": 0.4366478854238808,
+      "drought_steps": 647,
+      "elapsed_s": 35.312631130218506,
+      "resource_mean": 0.4108806848526001,
+      "foraging": {
+        "mean_displacement": 4.545103613136112,
+        "resource_at_patterns": 0.6983710527420044,
+        "n_tracked": 134
+      }
+    },
+    {
+      "cycle": 24,
+      "n_patterns": 5,
+      "n_baseline": 305,
+      "n_survived": 243,
+      "mortality": 0.2032786885245902,
+      "mean_phi_base": 0.22637749432144824,
+      "mean_phi_stress": 0.21158004067092623,
+      "mean_robustness": 0.9064429714567708,
+      "phi_increase_frac": 0.26811594202898553,
+      "tau": 0.43324365988373764,
+      "gate_beta": 5.051886714249848,
+      "chemotaxis_strength": 0.41208332162350425,
+      "motor_sensitivity": 4.5680734403431416,
+      "motor_threshold": 0.2703939665108918,
+      "memory_lambdas": [
+        0.004119172871781321,
+        0.04103377766981223
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0016886047372771111,
+      "decay_rate_coupling": 0.000441125149603889,
+      "coupling_divergence": 0.6016696095466614,
+      "coupling_spatial_var": 0.24600687623023987,
+      "stress_regen": 0.4806249895310772,
+      "drought_steps": 1490,
+      "elapsed_s": 56.30501103401184,
+      "resource_mean": 0.6931277513504028,
+      "foraging": {
+        "mean_displacement": 4.3365122316038995,
+        "resource_at_patterns": 0.6867048740386963,
+        "n_tracked": 155
+      }
+    },
+    {
+      "cycle": 25,
+      "n_patterns": 42,
+      "n_baseline": 373,
+      "n_survived": 248,
+      "mortality": 0.3351206434316354,
+      "mean_phi_base": 0.25207050950334786,
+      "mean_phi_stress": 0.24746843322756745,
+      "mean_robustness": 0.87608112720525,
+      "phi_increase_frac": 0.23333333333333334,
+      "tau": 0.4415475420653821,
+      "gate_beta": 5.146392346173524,
+      "chemotaxis_strength": 0.4747871993109585,
+      "motor_sensitivity": 4.615028612315655,
+      "motor_threshold": 0.19602375514805306,
+      "memory_lambdas": [
+        0.0043698627688566445,
+        0.043521559106352845
+      ],
+      "memory_mean": 0.08373488485813141,
+      "learning_rate": 0.0016070404351899298,
+      "decay_rate_coupling": 0.0002691609686152273,
+      "coupling_divergence": 0.45550236105918884,
+      "coupling_spatial_var": 0.09375321865081787,
+      "stress_regen": 0.4040950845860725,
+      "drought_steps": 691,
+      "elapsed_s": 45.5394549369812,
+      "resource_mean": 0.2973182499408722,
+      "foraging": {
+        "mean_displacement": 4.440249083136182,
+        "resource_at_patterns": 0.6500310301780701,
+        "n_tracked": 169
+      }
+    },
+    {
+      "cycle": 26,
+      "n_patterns": 13,
+      "n_baseline": 385,
+      "n_survived": 294,
+      "mortality": 0.23636363636363633,
+      "mean_phi_base": 0.2408987484710843,
+      "mean_phi_stress": 0.23736452412781694,
+      "mean_robustness": 0.9211857544468226,
+      "phi_increase_frac": 0.32222222222222224,
+      "tau": 0.6009412340819837,
+      "gate_beta": 5.051930183917284,
+      "chemotaxis_strength": 0.46599895264953384,
+      "motor_sensitivity": 5.5021476075053215,
+      "motor_threshold": 0.19871217738836994,
+      "memory_lambdas": [
+        0.005088139874459616,
+        0.05066479551941807
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0015366849060045647,
+      "decay_rate_coupling": 0.0003466101890996479,
+      "coupling_divergence": 0.4928939938545227,
+      "coupling_spatial_var": 0.14564377069473267,
+      "stress_regen": 0.4280749496417443,
+      "drought_steps": 791,
+      "elapsed_s": 48.875513315200806,
+      "resource_mean": 0.20524901151657104,
+      "foraging": {
+        "mean_displacement": 3.4745631085047113,
+        "resource_at_patterns": 0.6611410975456238,
+        "n_tracked": 197
+      }
+    },
+    {
+      "cycle": 27,
+      "n_patterns": 1,
+      "n_baseline": 366,
+      "n_survived": 188,
+      "mortality": 0.48633879781420764,
+      "mean_phi_base": 0.28193339622542435,
+      "mean_phi_stress": 0.28379393814016235,
+      "mean_robustness": 0.9071139686956906,
+      "phi_increase_frac": 0.26548672566371684,
+      "tau": 0.4757390193641188,
+      "gate_beta": 5.056792311370373,
+      "chemotaxis_strength": 0.39697710182517776,
+      "motor_sensitivity": 5.975504122674465,
+      "motor_threshold": 0.28797200452536337,
+      "memory_lambdas": [
+        0.0030585825950086467,
+        0.030450237989266105
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.0012611930719980688,
+      "decay_rate_coupling": 0.0002791574565212517,
+      "coupling_divergence": 0.4596400558948517,
+      "coupling_spatial_var": 0.0678158849477768,
+      "stress_regen": 0.434383630577944,
+      "drought_steps": 737,
+      "elapsed_s": 35.06674814224243,
+      "resource_mean": 0.7058371901512146,
+      "foraging": {
+        "mean_displacement": 4.368951409253179,
+        "resource_at_patterns": 0.6338226795196533,
+        "n_tracked": 143
+      }
+    },
+    {
+      "cycle": 28,
+      "n_patterns": 68,
+      "n_baseline": 342,
+      "n_survived": 225,
+      "mortality": 0.3421052631578947,
+      "mean_phi_base": 0.2684213008016578,
+      "mean_phi_stress": 0.26249210189377503,
+      "mean_robustness": 0.8988297051881353,
+      "phi_increase_frac": 0.2777777777777778,
+      "tau": 0.481458652764559,
+      "gate_beta": 5.129771552979946,
+      "chemotaxis_strength": 0.3056290617212654,
+      "motor_sensitivity": 6.859673164784908,
+      "motor_threshold": 0.223846043460071,
+      "memory_lambdas": [
+        0.0031389949457728853,
+        0.0312416086745857
+      ],
+      "memory_mean": 0.0826549082994461,
+      "learning_rate": 0.0011569834247043003,
+      "decay_rate_coupling": 0.00035895354360209294,
+      "coupling_divergence": 0.4613640308380127,
+      "coupling_spatial_var": 0.11129353940486908,
+      "stress_regen": 0.49453764275477785,
+      "drought_steps": 588,
+      "elapsed_s": 42.535649061203,
+      "resource_mean": 0.284100204706192,
+      "foraging": {
+        "mean_displacement": 4.955947348637431,
+        "resource_at_patterns": 0.697919487953186,
+        "n_tracked": 151
+      }
+    },
+    {
+      "cycle": 29,
+      "n_patterns": 44,
+      "n_baseline": 405,
+      "n_survived": 272,
+      "mortality": 0.32839506172839505,
+      "mean_phi_base": 0.25237861713318965,
+      "mean_phi_stress": 0.24681319317627784,
+      "mean_robustness": 0.925964014808814,
+      "phi_increase_frac": 0.30939226519337015,
+      "tau": 0.37662156894803067,
+      "gate_beta": 5.098325891792774,
+      "chemotaxis_strength": 0.25493601467460403,
+      "motor_sensitivity": 6.831096924841404,
+      "motor_threshold": 0.335833610408008,
+      "memory_lambdas": [
+        0.0035109643893477967,
+        0.03493371434704623
+      ],
+      "memory_mean": 0.0,
+      "learning_rate": 0.001344111408559348,
+      "decay_rate_coupling": 0.0002838330694340207,
+      "coupling_divergence": 0.478308767080307,
+      "coupling_spatial_var": 0.08827231824398041,
+      "stress_regen": 0.4290017954623522,
+      "drought_steps": 514,
+      "elapsed_s": 48.384042263031006,
+      "resource_mean": 0.3858368992805481,
+      "foraging": {
+        "mean_displacement": 3.7600911161397303,
+        "resource_at_patterns": 0.6938554048538208,
+        "n_tracked": 208
+      }
+    }
+  ],
+  "phi_trajectory": [
+    {
+      "cycle": 0,
+      "phi_base": 0.26075005593407957,
+      "phi_stress": 0.2522783116723235,
+      "robustness": 0.9184212817264847,
+      "n_patterns": 7,
+      "mortality": 0.45723684210526316,
+      "displacement": 5.43813556402457,
+      "memory_lambdas": [
+        0.011535494485008565,
+        0.11534456394313983
+      ],
+      "learning_rate": 0.0009442258577087204,
+      "coupling_divergence": 0.3412034809589386,
+      "coupling_spatial_var": 0.37187594175338745
+    },
+    {
+      "cycle": 1,
+      "phi_base": 0.2457522989801543,
+      "phi_stress": 0.23277757573745517,
+      "robustness": 0.8841912124106401,
+      "n_patterns": 30,
+      "mortality": 0.32463768115942027,
+      "displacement": 4.037529680940896,
+      "memory_lambdas": [
+        0.010383366338235006,
+        0.10381621969033022
+      ],
+      "learning_rate": 0.0010615704955379418,
+      "coupling_divergence": 0.6967893838882446,
+      "coupling_spatial_var": 0.40932875871658325
+    },
+    {
+      "cycle": 2,
+      "phi_base": 0.250425957533133,
+      "phi_stress": 0.23976913371519223,
+      "robustness": 0.8910508458946913,
+      "n_patterns": 26,
+      "mortality": 0.35180055401662047,
+      "displacement": 4.198294064112109,
+      "memory_lambdas": [
+        0.009115898075421023,
+        0.09113576720478998
+      ],
+      "learning_rate": 0.0007440912856325733,
+      "coupling_divergence": 0.7202363610267639,
+      "coupling_spatial_var": 0.26708337664604187
+    },
+    {
+      "cycle": 3,
+      "phi_base": 0.2504386415678046,
+      "phi_stress": 0.23607258108149498,
+      "robustness": 0.8898269998612377,
+      "n_patterns": 10,
+      "mortality": 0.3447293447293447,
+      "displacement": 4.3186625448388325,
+      "memory_lambdas": [
+        0.0096783194354768,
+        0.0967489970851638
+      ],
+      "learning_rate": 0.0006373575631736109,
+      "coupling_divergence": 0.6038079261779785,
+      "coupling_spatial_var": 0.1941688358783722
+    },
+    {
+      "cycle": 4,
+      "phi_base": 0.25011846243603547,
+      "phi_stress": 0.23974130095984097,
+      "robustness": 0.9008372744059495,
+      "n_patterns": 4,
+      "mortality": 0.361271676300578,
+      "displacement": 4.108993248728772,
+      "memory_lambdas": [
+        0.011498549882642291,
+        0.11493418261946756
+      ],
+      "learning_rate": 0.0008980452691423669,
+      "coupling_divergence": 0.5798141360282898,
+      "coupling_spatial_var": 0.20102402567863464
+    },
+    {
+      "cycle": 5,
+      "phi_base": 0.24872751639890336,
+      "phi_stress": 0.23787980415383933,
+      "robustness": 0.874776575405445,
+      "n_patterns": 4,
+      "mortality": 0.4473684210526315,
+      "displacement": 3.906489499034282,
+      "memory_lambdas": [
+        0.009395321577578917,
+        0.09390393644168753
+      ],
+      "learning_rate": 0.0012309310845916518,
+      "coupling_divergence": 0.5034679770469666,
+      "coupling_spatial_var": 0.16712714731693268
+    },
+    {
+      "cycle": 6,
+      "phi_base": 0.25348411002349236,
+      "phi_stress": 0.2471784961633041,
+      "robustness": 0.9038493597941311,
+      "n_patterns": 4,
+      "mortality": 0.4632152588555858,
+      "displacement": 4.316264915150956,
+      "memory_lambdas": [
+        0.008101693480579035,
+        0.08096668521639042
+      ],
+      "learning_rate": 0.0009160736418011769,
+      "coupling_divergence": 0.4786742627620697,
+      "coupling_spatial_var": 0.10788555443286896
+    },
+    {
+      "cycle": 7,
+      "phi_base": 0.25074688746886786,
+      "phi_stress": 0.2441790697989845,
+      "robustness": 0.8953964728511269,
+      "n_patterns": 20,
+      "mortality": 0.34261838440111425,
+      "displacement": 4.465493732442269,
+      "memory_lambdas": [
+        0.007041891534362478,
+        0.07036742269084087
+      ],
+      "learning_rate": 0.000651358617119654,
+      "coupling_divergence": 0.49335360527038574,
+      "coupling_spatial_var": 0.042491208761930466
+    },
+    {
+      "cycle": 8,
+      "phi_base": 0.2408793747773626,
+      "phi_stress": 0.23260427480443102,
+      "robustness": 0.9371285583454851,
+      "n_patterns": 13,
+      "mortality": 0.25513196480938416,
+      "displacement": 3.9555154798600958,
+      "memory_lambdas": [
+        0.00544296773459303,
+        0.05438292672430333
+      ],
+      "learning_rate": 0.0006267822006178733,
+      "coupling_divergence": 0.512270987033844,
+      "coupling_spatial_var": 0.055860672146081924
+    },
+    {
+      "cycle": 9,
+      "phi_base": 0.22576251394612762,
+      "phi_stress": 0.20889824145650934,
+      "robustness": 0.885391498911506,
+      "n_patterns": 4,
+      "mortality": 0.14332247557003253,
+      "displacement": 4.586870306229322,
+      "memory_lambdas": [
+        0.004999310417298967,
+        0.04994190720102759
+      ],
+      "learning_rate": 0.0005890432775446885,
+      "coupling_divergence": 0.509925127029419,
+      "coupling_spatial_var": 0.08618868887424469
+    },
+    {
+      "cycle": 10,
+      "phi_base": 0.2569162129624204,
+      "phi_stress": 0.2508045706001145,
+      "robustness": 0.9195039266682521,
+      "n_patterns": 2,
+      "mortality": 0.37569060773480667,
+      "displacement": 4.137327194892217,
+      "memory_lambdas": [
+        0.006635417056024245,
+        0.06627428911666321
+      ],
+      "learning_rate": 0.0008138998860248722,
+      "coupling_divergence": 0.480617493391037,
+      "coupling_spatial_var": 0.05766012519598007
+    },
+    {
+      "cycle": 11,
+      "phi_base": 0.24574318310883306,
+      "phi_stress": 0.24491369476524136,
+      "robustness": 0.9421577318121418,
+      "n_patterns": 38,
+      "mortality": 0.28,
+      "displacement": 4.0500330036073136,
+      "memory_lambdas": [
+        0.007578498640885425,
+        0.0756834876793924
+      ],
+      "learning_rate": 0.0005519532735244813,
+      "coupling_divergence": 0.49883365631103516,
+      "coupling_spatial_var": 0.07458389550447464
+    },
+    {
+      "cycle": 12,
+      "phi_base": 0.26274846556754994,
+      "phi_stress": 0.25009864192584125,
+      "robustness": 0.90482719246109,
+      "n_patterns": 3,
+      "mortality": 0.37356321839080464,
+      "displacement": 4.014513223360265,
+      "memory_lambdas": [
+        0.00795641400651731,
+        0.07944814642490117
+      ],
+      "learning_rate": 0.0006700831006391423,
+      "coupling_divergence": 0.5091511607170105,
+      "coupling_spatial_var": 0.03308390825986862
+    },
+    {
+      "cycle": 13,
+      "phi_base": 0.26540858966300046,
+      "phi_stress": 0.25759937818530426,
+      "robustness": 0.9039280364117503,
+      "n_patterns": 2,
+      "mortality": 0.5042735042735043,
+      "displacement": 4.563139743045723,
+      "memory_lambdas": [
+        0.007621866210068532,
+        0.07609893918536607
+      ],
+      "learning_rate": 0.0006804479396754541,
+      "coupling_divergence": 0.48270535469055176,
+      "coupling_spatial_var": 0.056124988943338394
+    },
+    {
+      "cycle": 14,
+      "phi_base": 0.2778125053571615,
+      "phi_stress": 0.27865421257313644,
+      "robustness": 0.9077957441552728,
+      "n_patterns": 1,
+      "mortality": 0.5857605177993528,
+      "displacement": 6.030753485306635,
+      "memory_lambdas": [
+        0.004122237490969989,
+        0.041152765078849775
+      ],
+      "learning_rate": 0.0005053573281160741,
+      "coupling_divergence": 0.4607464075088501,
+      "coupling_spatial_var": 0.03951114043593407
+    },
+    {
+      "cycle": 15,
+      "phi_base": 0.2702723310078864,
+      "phi_stress": 0.269529682609977,
+      "robustness": 0.8855696658479401,
+      "n_patterns": 1,
+      "mortality": 0.6601671309192201,
+      "displacement": 4.531020178163206,
+      "memory_lambdas": [
+        0.004145057101099533,
+        0.04137154518764772
+      ],
+      "learning_rate": 0.0005100117751566562,
+      "coupling_divergence": 0.45750266313552856,
+      "coupling_spatial_var": 0.05705368518829346
+    },
+    {
+      "cycle": 16,
+      "phi_base": 0.2481321724859022,
+      "phi_stress": 0.23972155458296088,
+      "robustness": 0.8932288893694418,
+      "n_patterns": 35,
+      "mortality": 0.3506849315068493,
+      "displacement": 4.366457241885072,
+      "memory_lambdas": [
+        0.004249557722664107,
+        0.042405353959503345
+      ],
+      "learning_rate": 0.0007367758954416685,
+      "coupling_divergence": 0.5183220505714417,
+      "coupling_spatial_var": 0.16802552342414856
+    },
+    {
+      "cycle": 17,
+      "phi_base": 0.22736160462823982,
+      "phi_stress": 0.2219811503365996,
+      "robustness": 0.8941514835917316,
+      "n_patterns": 1,
+      "mortality": 0.4289772727272727,
+      "displacement": 3.9850644603900487,
+      "memory_lambdas": [
+        0.004301538017176892,
+        0.0429149668416533
+      ],
+      "learning_rate": 0.001413898661378822,
+      "coupling_divergence": 0.6141595244407654,
+      "coupling_spatial_var": 0.32210004329681396
+    },
+    {
+      "cycle": 18,
+      "phi_base": 0.2209886228815263,
+      "phi_stress": 0.2219606309416528,
+      "robustness": 0.9077589179777318,
+      "n_patterns": 5,
+      "mortality": 0.33333333333333337,
+      "displacement": 3.952352418904345,
+      "memory_lambdas": [
+        0.0037798759423907278,
+        0.03770263736464136
+      ],
+      "learning_rate": 0.0014608526701344131,
+      "coupling_divergence": 0.6403070092201233,
+      "coupling_spatial_var": 0.26601964235305786
+    },
+    {
+      "cycle": 19,
+      "phi_base": 0.275251958736424,
+      "phi_stress": 0.2621018697112921,
+      "robustness": 0.8844648834085862,
+      "n_patterns": 4,
+      "mortality": 0.5532544378698225,
+      "displacement": 4.67191819583905,
+      "memory_lambdas": [
+        0.0035089238311633163,
+        0.034991677507057846
+      ],
+      "learning_rate": 0.0020928012320666897,
+      "coupling_divergence": 0.5430212616920471,
+      "coupling_spatial_var": 0.2030353546142578
+    },
+    {
+      "cycle": 20,
+      "phi_base": 0.23413930990449133,
+      "phi_stress": 0.2320527280234016,
+      "robustness": 0.9350244903490371,
+      "n_patterns": 41,
+      "mortality": 0.2567567567567568,
+      "displacement": 3.7095507738047826,
+      "memory_lambdas": [
+        0.004314263348238024,
+        0.04301165304073751
+      ],
+      "learning_rate": 0.0021561938555273493,
+      "coupling_divergence": 0.5669023394584656,
+      "coupling_spatial_var": 0.17152613401412964
+    },
+    {
+      "cycle": 21,
+      "phi_base": 0.22084757048835185,
+      "phi_stress": 0.2152074888468294,
+      "robustness": 0.906258157004774,
+      "n_patterns": 10,
+      "mortality": 0.1607142857142857,
+      "displacement": 3.8028271266365192,
+      "memory_lambdas": [
+        0.0050039814545073035,
+        0.049877493157605465
+      ],
+      "learning_rate": 0.001878774259054489,
+      "coupling_divergence": 0.6118980646133423,
+      "coupling_spatial_var": 0.25296878814697266
+    },
+    {
+      "cycle": 22,
+      "phi_base": 0.2135327809084344,
+      "phi_stress": 0.20576658088808494,
+      "robustness": 0.9216108136876551,
+      "n_patterns": 10,
+      "mortality": 0.11926605504587151,
+      "displacement": 4.00189039193788,
+      "memory_lambdas": [
+        0.003969455971350906,
+        0.039558684543803735
+      ],
+      "learning_rate": 0.00241621957049527,
+      "coupling_divergence": 0.6792651414871216,
+      "coupling_spatial_var": 0.26650917530059814
+    },
+    {
+      "cycle": 23,
+      "phi_base": 0.21045395104465303,
+      "phi_stress": 0.20039016398731418,
+      "robustness": 0.9244483925209558,
+      "n_patterns": 169,
+      "mortality": 0.052631578947368474,
+      "displacement": 4.545103613136112,
+      "memory_lambdas": [
+        0.0048257841462732145,
+        0.048081756826056345
+      ],
+      "learning_rate": 0.002951296923827408,
+      "coupling_divergence": 0.6520419716835022,
+      "coupling_spatial_var": 0.24810129404067993
+    },
+    {
+      "cycle": 24,
+      "phi_base": 0.22637749432144824,
+      "phi_stress": 0.21158004067092623,
+      "robustness": 0.9064429714567708,
+      "n_patterns": 5,
+      "mortality": 0.2032786885245902,
+      "displacement": 4.3365122316038995,
+      "memory_lambdas": [
+        0.004119172871781321,
+        0.04103377766981223
+      ],
+      "learning_rate": 0.0016886047372771111,
+      "coupling_divergence": 0.6016696095466614,
+      "coupling_spatial_var": 0.24600687623023987
+    },
+    {
+      "cycle": 25,
+      "phi_base": 0.25207050950334786,
+      "phi_stress": 0.24746843322756745,
+      "robustness": 0.87608112720525,
+      "n_patterns": 42,
+      "mortality": 0.3351206434316354,
+      "displacement": 4.440249083136182,
+      "memory_lambdas": [
+        0.0043698627688566445,
+        0.043521559106352845
+      ],
+      "learning_rate": 0.0016070404351899298,
+      "coupling_divergence": 0.45550236105918884,
+      "coupling_spatial_var": 0.09375321865081787
+    },
+    {
+      "cycle": 26,
+      "phi_base": 0.2408987484710843,
+      "phi_stress": 0.23736452412781694,
+      "robustness": 0.9211857544468226,
+      "n_patterns": 13,
+      "mortality": 0.23636363636363633,
+      "displacement": 3.4745631085047113,
+      "memory_lambdas": [
+        0.005088139874459616,
+        0.05066479551941807
+      ],
+      "learning_rate": 0.0015366849060045647,
+      "coupling_divergence": 0.4928939938545227,
+      "coupling_spatial_var": 0.14564377069473267
+    },
+    {
+      "cycle": 27,
+      "phi_base": 0.28193339622542435,
+      "phi_stress": 0.28379393814016235,
+      "robustness": 0.9071139686956906,
+      "n_patterns": 1,
+      "mortality": 0.48633879781420764,
+      "displacement": 4.368951409253179,
+      "memory_lambdas": [
+        0.0030585825950086467,
+        0.030450237989266105
+      ],
+      "learning_rate": 0.0012611930719980688,
+      "coupling_divergence": 0.4596400558948517,
+      "coupling_spatial_var": 0.0678158849477768
+    },
+    {
+      "cycle": 28,
+      "phi_base": 0.2684213008016578,
+      "phi_stress": 0.26249210189377503,
+      "robustness": 0.8988297051881353,
+      "n_patterns": 68,
+      "mortality": 0.3421052631578947,
+      "displacement": 4.955947348637431,
+      "memory_lambdas": [
+        0.0031389949457728853,
+        0.0312416086745857
+      ],
+      "learning_rate": 0.0011569834247043003,
+      "coupling_divergence": 0.4613640308380127,
+      "coupling_spatial_var": 0.11129353940486908
+    },
+    {
+      "cycle": 29,
+      "phi_base": 0.25237861713318965,
+      "phi_stress": 0.24681319317627784,
+      "robustness": 0.925964014808814,
+      "n_patterns": 44,
+      "mortality": 0.32839506172839505,
+      "displacement": 3.7600911161397303,
+      "memory_lambdas": [
+        0.0035109643893477967,
+        0.03493371434704623
+      ],
+      "learning_rate": 0.001344111408559348,
+      "coupling_divergence": 0.478308767080307,
+      "coupling_spatial_var": 0.08827231824398041
+    }
+  ],
+  "tau": 0.37662156894803067,
+  "gate_beta": 5.098325891792774,
+  "chemotaxis_strength": 0.25493601467460403,
+  "motor_sensitivity": 6.831096924841404,
+  "motor_threshold": 0.335833610408008,
+  "memory_lambdas": [
+    0.0035109643893477967,
+    0.03493371434704623
+  ],
+  "learning_rate": 0.001344111408559348,
+  "decay_rate_coupling": 0.0002838330694340207,
+  "config": {
+    "grid_size": 128,
+    "n_channels": 16,
+    "dt": 0.1,
+    "resource_max": 1.0,
+    "resource_regen": 0.01,
+    "resource_consume": 0.003,
+    "resource_half_sat": 0.2,
+    "noise_amp": 0.003,
+    "decay_rate": 0.0,
+    "maintenance_rate": 0.003,
+    "similarity_radius": 5,
+    "tau": 0.3,
+    "gate_beta": 5.0,
+    "alpha": 1.0,
+    "d_embed": 16,
+    "chemotaxis_strength": 0.5,
+    "motor_channels": 2,
+    "motor_sensitivity": 5.0,
+    "motor_threshold": 0.3,
+    "max_speed": 1.5,
+    "velocity_blur": 3,
+    "memory_channels": 2,
+    "memory_lambdas": [
+      0.01,
+      0.1
+    ],
+    "n_resource_patches": 4,
+    "patch_shift_period": 500,
+    "n_regular": 12,
+    "memory_start": 12,
+    "motor_start": 14,
+    "learning_rate": 0.001,
+    "decay_rate_coupling": 0.0001,
+    "coupling_clamp": 2.0
+  },
+  "seed": 42,
+  "status": "complete"
+}
