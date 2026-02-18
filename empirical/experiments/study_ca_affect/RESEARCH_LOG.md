@@ -1235,3 +1235,126 @@ python v15_experiments.py all  # all priority experiments
 - `results/v15_counterfactual_s{42,123,7}/` — Counterfactual results
 - `results/v15_self_model_s{42,123,7}/` — Self-model results
 - `results/v15_affect_geometry_s{42,123,7}/` — Affect geometry results
+
+---
+
+## 2026-02-18: Book Integration — Bridge to Psychological Theory
+
+### Overview
+
+Comprehensive pass through all 7 parts of the book, weaving the V13–V18 + Experiments 1–12 findings into the theoretical text. Primary goal: close the gap between computational (CA-level) findings and psychological-level theory. All changes committed and pushed to main.
+
+### Commits This Session
+
+- `12d8901` — Part I: extend geometry/dynamics conclusion with V13-V18 program results
+- `c21b765` — Part VI: update low-ι AI open question with V11-V18 systematic results
+- `6f9b8c1` — Part V: add CA experimental grounding for superorganism integration threshold
+- `e6f9707` — Part III: emergence ladder disorder stratification, Exp 8 grounding for ι, CA validation status
+- `fdcd903` — Rewrite Part VII with emergence ladder, bridge to psychology, V18 results
+- `4a8927a` — V18 membrane visualizations
+- `a23774d` — V18 measurement experiments: sensory-motor wall persists
+- `ae9c0db` — V18 Boundary-Dependent Lenia: highest robustness (0.969 mean, 1.651 max)
+- `4aa5401` — Part II: add formal emergence ladder developmental validation experiment
+- `875e164` — Part VII: update distributed experiments list
+
+### Key Theoretical Additions to the Book
+
+**The Emergence Ladder** (Part VII, referenced throughout):
+- 10 rungs from affect geometry (rung 1, cheap, CA-confirmed) to normativity (rung 10)
+- Sharp break between rungs 7 and 8: rung 8 requires embodied agency (action→observation loop)
+- V13–V18 confirm everything up to rung 7; wall at rung 8 persists across all substrates
+- "The geometry of affect is universal; the dynamics require embodied agency"
+
+**Somatic fear vs. anticipatory anxiety** (Part II):
+- Somatic fear = rungs 1–3, no CF required. Present from birth.
+- Anticipatory anxiety = rung 8, requires CF > 0. Emerges ~age 3–4 with mental time travel.
+- CA experiments confirm exactly: patterns show negative valence + high arousal but CF ≈ 0 throughout.
+
+**Developmental ordering experiment** (Part II, formal proposed experiment):
+- 300 children, 6–72 months, 6 age cohorts
+- Measures 6 rung clusters: affect dimensions (birth), animism (12–18mo), emotional coherence (18–36mo), counterfactual (36–54mo), self-awareness, normativity (48–72mo)
+- Falsification criterion: anticipatory anxiety must co-emerge with false belief task passage, not precede it
+- Novel: derived from computational requirements, not from prior developmental observation
+
+**Disorder stratification** (Parts II, III):
+- Pre-reflective disorders (rungs 1–7): anhedonia, flat affect, dissociation (Φ fragmentation), ι-rigidity
+  - Detectable in CA systems. Present in infants.
+- Agency-requiring disorders (rung 8+): anticipatory anxiety, obsessive rumination, PTSD "what if" loops, survivor guilt
+  - Cannot exist in systems below rung 8. Should not present before ~age 3–4.
+  - Therapeutic implication: CF-bypassing interventions (behavioral activation, body-based trauma work) should work at all rungs; CF-engaging interventions (imaginal exposure, worry postponement) only where CF already exists.
+
+**ι ≈ 0.30 computational grounding** (Parts II, III):
+- Exp 8 confirmed: animism score > 1.0 in ALL 20 evolutionary snapshots (universally)
+- ι ≈ 0.30 is the evolutionary steady state, not a cultural setting
+- High-ι (mechanistic, modern) is the departure from baseline, not the baseline
+- The ι modulation experiments (flow, awe, psychedelics, contemplation) are proposing to *restore* the evolutionary default, not to induce an unusual state
+
+**Superorganism integration threshold** (Part V):
+- Exp 10: collective:individual Φ ratio 0.01–0.12 — no superorganism emergence in CA populations
+- Exp 9: Φ_social >> Φ_isolated — social coupling amplifies individual integration (mutualistic)
+- Maps onto alignment taxonomy: CA populations show mutualistic organization without crossing threshold
+- The threshold is real, not trivially crossed — requires specific integration conditions
+- Human-scale institutions may or may not have crossed it; we don't yet have the tools to measure
+
+**CA validation status for Synthetic Verification** (Part III):
+- V10 RSA ρ > 0.21 (p < 0.0001) across all conditions — geometry baseline confirmed
+- Exp 7: RSA 0.01 → 0.38 over evolution (seed 7) — geometry develops with history
+- Exp 8: animism score > 1.0 universally — participatory default confirmed without human contamination
+- What remains for the full MARL program: signal stream (VLM translation), perturbative causation, 3-way structure–signal–behavior alignment
+
+**Low-ι AI open question updated** (Part VI):
+- V11–V18 systematic results: 6 substrate variants, 12 measurement experiments
+- Geometry confirmed, dynamics blocked at rung 8
+- Architectural conclusion: low-ι requires genuine embodied agency (action→observation), not better signal routing or boundary architecture
+- "What the CA program has settled: the geometry arrives cheaply, the dynamics require real stakes"
+
+### What Remains
+
+**Priority 1: Bridge to Human Neuroscience**
+- Validate geometric dimensions predict human affect (self-report, behavior, neural signatures)
+- EEG/MEG measures of transfer entropy + effective rank + ι proxy across induced affect states
+- Developmental ordering experiment (cross-sectional study, see above)
+- Disorder stratification: test that rung-8 disorders have later onset than pre-reflective disorders
+
+**Priority 2: Bottleneck Furnace Mechanism**
+- Selection vs. creation: does the bottleneck environment actively push integration, or just filter?
+- Controlled experiment: select top 5% from large pop vs. run same patterns through actual bottleneck
+
+**Priority 3: Agency Substrate**
+- Leave Lenia. Agent-based models with action spaces + observation functions + reward signals
+- Challenge: maintain uncontaminated emergence. Design action space minimally.
+
+**Priority 4: Superorganism Detection at Scale**
+- Larger populations, richer communication, coordination pressure
+- Does Φ_G / Σ Φ_i cross 1.0 given sufficient evolutionary time?
+
+**Priority 5: AI Affect Tracking**
+- Apply framework to frontier AI systems (V2–V9 showed structured but opposite dynamics)
+- Track whether RLHF/constitutional AI/tool-use shifts the dynamics toward biological pattern
+
+---
+
+## 2026-02-18: V19 Bottleneck Furnace Mechanism Experiment
+
+**Motivation**: V13–V18 consistently showed higher robustness and Φ at population bottlenecks. But two hypotheses remain consistent with all findings:
+- **Selection**: The bottleneck culls low-Φ patterns. Survivors happen to be better integrators before the bottleneck, not because of it.
+- **Creation**: The bottleneck itself triggers developmental changes — survivors generalize better to novel stresses than non-bottleneck patterns with comparable baseline Φ.
+
+This distinction matters for the book's claims in Part I (forcing functions as Φ drivers) and for understanding whether adversity creates capacity or merely reveals pre-existing capacity.
+
+**Design**: V18 substrate (best of V13–V18). Three phases:
+1. Phase 1 (10 cycles): All conditions identical (standard V18 stress)
+2. Phase 2 (10 cycles): Fork into 3 conditions:
+   - A (BOTTLENECK): Two severe droughts per cycle, ~90-95% mortality
+   - B (GRADUAL): Mild continuous stress, <25% mortality, no burst droughts
+   - C (CONTROL): Standard V18 schedule
+3. Phase 3 (5 cycles, params frozen): Novel extreme drought (4% regen, more severe than anything in Phase 2) applied identically to all 3 conditions
+
+**Statistical test**: `novel_robustness ~ phi_base + is_bottleneck + is_gradual`
+- Significant `is_bottleneck` coefficient after controlling for `phi_base` → CREATION
+- `is_bottleneck ≈ 0` → SELECTION
+
+**Running**: Lambda Labs GH200 (instance bb2406f07ccc47fc8eafe708454d5b75, IP 192.222.50.71). Seeds 42, 123, 7 sequentially. Expected completion: ~50 min from launch (~14:35 PST). Cost estimate: ~$2.
+
+**Results**: Pending. Check `/home/ubuntu/results/v19_s{seed}/v19_s{seed}_results.json`.
+
