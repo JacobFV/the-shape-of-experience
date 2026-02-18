@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_015.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 6,
+    "n_patterns_analyzed": 6,
+    "cycle": 15
+  },
+  "n_patterns": 6,
+  "mean_iota": 0.36279460179150375,
+  "std_iota": 0.06368028019496419,
+  "mean_MI_social": 0.023254834550014147,
+  "mean_MI_trajectory": 0.013179439189356488,
+  "mean_MI_resource": 0.030293003152787656,
+  "iota_range": [
+    0.2521843007124822,
+    0.4367698394427456
+  ],
+  "animism_score": 1.2814860686536529,
+  "per_pattern": [
+    {
+      "pattern_id": 0,
+      "iota": 0.42853877998869716,
+      "MI_social": 0.024882010564303725,
+      "MI_trajectory": 0.01865902020557351,
+      "MI_resource": 0.03896520307980503,
+      "animism_score": 1.5659989766142677
+    },
+    {
+      "pattern_id": 1,
+      "iota": 0.3871388253968925,
+      "MI_social": 0.023424344433408746,
+      "MI_trajectory": 0.014796945157302375,
+      "MI_resource": 0.008015597356746102,
+      "animism_score": 0.3421908937316484
+    },
+    {
+      "pattern_id": 2,
+      "iota": 0.34791120374062434,
+      "MI_social": 0.025655633777428542,
+      "MI_trajectory": 0.01368813953166497,
+      "MI_resource": 0.04459343154824739,
+      "animism_score": 1.738153574186113
+    },
+    {
+      "pattern_id": 3,
+      "iota": 0.4367698394427456,
+      "MI_social": 0.015432245069386785,
+      "MI_trajectory": 0.011967290946437144,
+      "MI_resource": 0.01737732394797981,
+      "animism_score": 1.1260399164118713
+    },
+    {
+      "pattern_id": 4,
+      "iota": 0.2521843007124822,
+      "MI_social": 0.028680452874494815,
+      "MI_trajectory": 0.009671848236353952,
+      "MI_resource": 0.0406195568712814,
+      "animism_score": 1.4162801769216096
+    },
+    {
+      "pattern_id": 5,
+      "iota": 0.3242246614675808,
+      "MI_social": 0.021454320581062253,
+      "MI_trajectory": 0.010293391058806972,
+      "MI_resource": 0.032186906112666204,
+      "animism_score": 1.5002528740564087
+    }
+  ],
+  "cycle": 15
+}

@@ -1,0 +1,819 @@
+{
+  "seed": 7,
+  "trajectory": [
+    {
+      "cycle": 0,
+      "mean_iota": 0.3115082324577705,
+      "std_iota": 0.05295202131641076,
+      "mean_MI_social": 0.0272088604465181,
+      "mean_MI_trajectory": 0.012073335903997232,
+      "mean_MI_resource": 0.051374573011896005,
+      "animism_score": 1.8901815453198467,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 5,
+      "mean_iota": 0.32147599899989,
+      "std_iota": 0.07222593096120944,
+      "mean_MI_social": 0.024690990283966367,
+      "mean_MI_trajectory": 0.011404082776736796,
+      "mean_MI_resource": 0.04377227115971831,
+      "animism_score": 1.8055452798849838,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 10,
+      "mean_iota": 0.3277458735258213,
+      "std_iota": 0.03333883897055862,
+      "mean_MI_social": 0.024039273374492777,
+      "mean_MI_trajectory": 0.011676096458326726,
+      "mean_MI_resource": 0.04938702873071811,
+      "animism_score": 2.020179600696394,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 15,
+      "mean_iota": 0.3469810379610445,
+      "std_iota": 0.07574950891579828,
+      "mean_MI_social": 0.03026735333329717,
+      "mean_MI_trajectory": 0.014611861841108612,
+      "mean_MI_resource": 0.03032304456161447,
+      "animism_score": 1.1044458137923239,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 20,
+      "mean_iota": 0.34231667108756925,
+      "std_iota": 0.08011122674550371,
+      "mean_MI_social": 0.028642459265101956,
+      "mean_MI_trajectory": 0.013305795283114135,
+      "mean_MI_resource": 0.0317581378904311,
+      "animism_score": 1.202699910089701,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 25,
+      "mean_iota": 0.3216694451441933,
+      "std_iota": 0.12098572783974172,
+      "mean_MI_social": 0.05227561496060464,
+      "mean_MI_trajectory": 0.015475928283109558,
+      "mean_MI_resource": 0.04068710951922579,
+      "animism_score": 1.3886100603700249,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 29,
+      "mean_iota": 0.3219291240844424,
+      "std_iota": 0.10271561363142695,
+      "mean_MI_social": 0.03915271274940106,
+      "mean_MI_trajectory": 0.014561515111129086,
+      "mean_MI_resource": 0.040135574178978436,
+      "animism_score": 1.479213183647472,
+      "n_patterns": 20
+    }
+  ],
+  "cycles": [
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_000.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 29,
+        "n_patterns_analyzed": 20,
+        "cycle": 0
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.3115082324577705,
+      "std_iota": 0.05295202131641076,
+      "mean_MI_social": 0.0272088604465181,
+      "mean_MI_trajectory": 0.012073335903997232,
+      "mean_MI_resource": 0.051374573011896005,
+      "iota_range": [
+        0.22183838379284337,
+        0.4166710083697186
+      ],
+      "animism_score": 1.8901815453198467,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.32497004143065944,
+          "MI_social": 0.021543739026294192,
+          "MI_trajectory": 0.010371494887107256,
+          "MI_resource": 0.035519026444144265,
+          "animism_score": 1.6486936831528267
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.33174294021616346,
+          "MI_social": 0.02820660976197257,
+          "MI_trajectory": 0.014002610999715547,
+          "MI_resource": 0.07841588795349194,
+          "animism_score": 2.7800536333583143
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.3081752292727029,
+          "MI_social": 0.019658850148904016,
+          "MI_trajectory": 0.008757088367199113,
+          "MI_resource": 0.013654331372786746,
+          "animism_score": 0.6945640904408632
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.26679810528185244,
+          "MI_social": 0.02832793998945301,
+          "MI_trajectory": 0.010307993978424473,
+          "MI_resource": 0.05276169948297793,
+          "animism_score": 1.8625321679805182
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.37829748358134974,
+          "MI_social": 0.023536691925823014,
+          "MI_trajectory": 0.014321755328673165,
+          "MI_resource": 0.030953208688311074,
+          "animism_score": 1.3151044669260048
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.3904773310896166,
+          "MI_social": 0.017750360917741438,
+          "MI_trajectory": 0.01137137945899134,
+          "MI_resource": 0.1075963875995255,
+          "animism_score": 6.061645061649603
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.3202232318008148,
+          "MI_social": 0.02939349283853601,
+          "MI_trajectory": 0.01384642681391563,
+          "MI_resource": 0.024289884790908083,
+          "animism_score": 0.8263694595377621
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.22183838379284337,
+          "MI_social": 0.04204517922835243,
+          "MI_trajectory": 0.01198624348982937,
+          "MI_resource": 0.07678773529400386,
+          "animism_score": 1.8263148523392045
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.2789663443484509,
+          "MI_social": 0.03223586719561702,
+          "MI_trajectory": 0.01247198651266468,
+          "MI_resource": 0.039544498070669315,
+          "animism_score": 1.2267235694545244
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.2834934578396071,
+          "MI_social": 0.03571793107191105,
+          "MI_trajectory": 0.014132180504481853,
+          "MI_resource": 0.08187164453667027,
+          "animism_score": 2.292172084991087
+        }
+      ],
+      "cycle": 0
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_005.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 23,
+        "n_patterns_analyzed": 20,
+        "cycle": 5
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.32147599899989,
+      "std_iota": 0.07222593096120944,
+      "mean_MI_social": 0.024690990283966367,
+      "mean_MI_trajectory": 0.011404082776736796,
+      "mean_MI_resource": 0.04377227115971831,
+      "iota_range": [
+        0.2089820454824084,
+        0.5584469903302675
+      ],
+      "animism_score": 1.8055452798849838,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.36014623868436324,
+          "MI_social": 0.021735575698172666,
+          "MI_trajectory": 0.01223402331376564,
+          "MI_resource": 0.024548026900178193,
+          "animism_score": 1.1293939135112014
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.27099899237843617,
+          "MI_social": 0.031456146269533074,
+          "MI_trajectory": 0.011693514623476918,
+          "MI_resource": 0.04218007891592409,
+          "animism_score": 1.3409169246131625
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.3347762523295852,
+          "MI_social": 0.02137067817272903,
+          "MI_trajectory": 0.010754870933971136,
+          "MI_resource": 0.04211537687330206,
+          "animism_score": 1.9707084881866404
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.3667262642940865,
+          "MI_social": 0.019580442238933616,
+          "MI_trajectory": 0.011338955068941775,
+          "MI_resource": 0.05137884483110372,
+          "animism_score": 2.623987967388315
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.2713649116570648,
+          "MI_social": 0.027005069628674386,
+          "MI_trajectory": 0.010057473831989062,
+          "MI_resource": 0.016514651720960758,
+          "animism_score": 0.6115389424297301
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.3011901690295752,
+          "MI_social": 0.02585315334243048,
+          "MI_trajectory": 0.011142824957600972,
+          "MI_resource": 0.06103838798770375,
+          "animism_score": 2.3609649151589904
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.2089820454824084,
+          "MI_social": 0.03688529512904396,
+          "MI_trajectory": 0.009744866573845254,
+          "MI_resource": 0.04149580590277698,
+          "animism_score": 1.1249959030449141
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.5584469903302675,
+          "MI_social": 0.015004180225699005,
+          "MI_trajectory": 0.018976293006544732,
+          "MI_resource": 0.024306806608121095,
+          "animism_score": 1.6200023088558113
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.23141200569865616,
+          "MI_social": 0.0374663860701378,
+          "MI_trajectory": 0.01128064920484749,
+          "MI_resource": 0.03741200155296975,
+          "animism_score": 0.9985484450764414
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.2934621979419053,
+          "MI_social": 0.0223614584878022,
+          "MI_trajectory": 0.009287886278556869,
+          "MI_resource": 0.07177261166659864,
+          "animism_score": 3.209656995573406
+        }
+      ],
+      "cycle": 5
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_010.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 25,
+        "n_patterns_analyzed": 20,
+        "cycle": 10
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.3277458735258213,
+      "std_iota": 0.03333883897055862,
+      "mean_MI_social": 0.024039273374492777,
+      "mean_MI_trajectory": 0.011676096458326726,
+      "mean_MI_resource": 0.04938702873071811,
+      "iota_range": [
+        0.2526656550873341,
+        0.3853979411854104
+      ],
+      "animism_score": 2.020179600696394,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.2978083106992998,
+          "MI_social": 0.02939891901292611,
+          "MI_trajectory": 0.012468450625418587,
+          "MI_resource": 0.043385959926361316,
+          "animism_score": 1.4757671840684137
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.2946243531767493,
+          "MI_social": 0.02959282027727096,
+          "MI_trajectory": 0.01236045725725409,
+          "MI_resource": 0.0783775888166758,
+          "animism_score": 2.648533937702262
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.2985304657417963,
+          "MI_social": 0.024134763961054503,
+          "MI_trajectory": 0.010271240551424787,
+          "MI_resource": 0.05296621225885462,
+          "animism_score": 2.1946024557905144
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.2526656550873341,
+          "MI_social": 0.019940156972867454,
+          "MI_trajectory": 0.006741551299482423,
+          "MI_resource": 0.01644169453075542,
+          "animism_score": 0.8245519106558494
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.38038109248513385,
+          "MI_social": 0.019581468356734067,
+          "MI_trajectory": 0.0120209700441055,
+          "MI_resource": 0.026445743891964493,
+          "animism_score": 1.3505495813785486
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.2937735307097712,
+          "MI_social": 0.026484558893086423,
+          "MI_trajectory": 0.011016950955027754,
+          "MI_resource": 0.021414767750415054,
+          "animism_score": 0.808575586886788
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.31356330285900136,
+          "MI_social": 0.029969323389907074,
+          "MI_trajectory": 0.013689944121181682,
+          "MI_resource": 0.07987892306987489,
+          "animism_score": 2.6653562387990424
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.32250220723111145,
+          "MI_social": 0.02164199507116232,
+          "MI_trajectory": 0.010302013163481399,
+          "MI_resource": 0.08245794731781464,
+          "animism_score": 3.8100899222405236
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.34780265739062,
+          "MI_social": 0.02548067290009283,
+          "MI_trajectory": 0.013588288647875252,
+          "MI_resource": 0.1348067161606283,
+          "animism_score": 5.290547729614205
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.3253766230413241,
+          "MI_social": 0.02555756162498448,
+          "MI_trajectory": 0.012326630500409372,
+          "MI_resource": 0.07516367868221326,
+          "animism_score": 2.940956566401663
+        }
+      ],
+      "cycle": 10
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_015.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 37,
+        "n_patterns_analyzed": 20,
+        "cycle": 15
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.3469810379610445,
+      "std_iota": 0.07574950891579828,
+      "mean_MI_social": 0.03026735333329717,
+      "mean_MI_trajectory": 0.014611861841108612,
+      "mean_MI_resource": 0.03032304456161447,
+      "iota_range": [
+        0.14620577331408247,
+        0.4528257021347287
+      ],
+      "animism_score": 1.1044458137923239,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.4085185252800435,
+          "MI_social": 0.023293514846112747,
+          "MI_trajectory": 0.016088132494814236,
+          "MI_resource": 0.010430183008075139,
+          "animism_score": 0.44777196902148675
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.32295949069299146,
+          "MI_social": 0.025671345345516627,
+          "MI_trajectory": 0.012245655177528573,
+          "MI_resource": 0.01682917503963744,
+          "animism_score": 0.6555626443853895
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.33328899361365605,
+          "MI_social": 0.025587685484214834,
+          "MI_trajectory": 0.01279129017257423,
+          "MI_resource": 0.047012297941179504,
+          "animism_score": 1.8373016961687143
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.31448229071195644,
+          "MI_social": 0.03231389108112423,
+          "MI_trajectory": 0.014824046631213485,
+          "MI_resource": 0.007297529378462402,
+          "animism_score": 0.2258325795597289
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.3705222721559923,
+          "MI_social": 0.021663119500382782,
+          "MI_trajectory": 0.012751314151749819,
+          "MI_resource": 0.011961211078008283,
+          "animism_score": 0.5521462907406725
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.3840110922441028,
+          "MI_social": 0.02817574389495854,
+          "MI_trajectory": 0.017564923737524163,
+          "MI_resource": 0.02312492597112365,
+          "animism_score": 0.8207387906894402
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.39232889459588116,
+          "MI_social": 0.023823198077251723,
+          "MI_trajectory": 0.015380900760734997,
+          "MI_resource": 0.04362595380071397,
+          "animism_score": 1.8312383442075095
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.33796277329880187,
+          "MI_social": 0.025189839833182195,
+          "MI_trajectory": 0.012859138105261288,
+          "MI_resource": 0.0197427115290993,
+          "animism_score": 0.7837569297718409
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.4403365204648194,
+          "MI_social": 0.02950339080910725,
+          "MI_trajectory": 0.023212914413471883,
+          "MI_resource": 0.06392886372850444,
+          "animism_score": 2.16683106501679
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.32805799611449604,
+          "MI_social": 0.02878946086690993,
+          "MI_trajectory": 0.014055696453863138,
+          "MI_resource": 0.1376715591065049,
+          "animism_score": 4.7820124087402425
+        }
+      ],
+      "cycle": 15
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_020.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 43,
+        "n_patterns_analyzed": 20,
+        "cycle": 20
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.34231667108756925,
+      "std_iota": 0.08011122674550371,
+      "mean_MI_social": 0.028642459265101956,
+      "mean_MI_trajectory": 0.013305795283114135,
+      "mean_MI_resource": 0.0317581378904311,
+      "iota_range": [
+        0.12628914631504595,
+        0.4654609540765178
+      ],
+      "animism_score": 1.202699910089701,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.12628914631504595,
+          "MI_social": 0.07126458579601021,
+          "MI_trajectory": 0.010300826257011005,
+          "MI_resource": 0.029603061281832765,
+          "animism_score": 0.41539652481204925
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.37101938999959994,
+          "MI_social": 0.01693876339923247,
+          "MI_trajectory": 0.009991738320401932,
+          "MI_resource": 0.01962165352394596,
+          "animism_score": 1.1583876025350857
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.38898612564218826,
+          "MI_social": 0.02224787727978615,
+          "MI_trajectory": 0.014163533677402229,
+          "MI_resource": 0.025649065366675206,
+          "animism_score": 1.15287697087305
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.40213666880222665,
+          "MI_social": 0.024676417996099664,
+          "MI_trajectory": 0.016597928009804985,
+          "MI_resource": 0.023623113210770003,
+          "animism_score": 0.9573153289307976
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.272672927160463,
+          "MI_social": 0.035294103273176815,
+          "MI_trajectory": 0.013231662632093431,
+          "MI_resource": 0.10459412127955706,
+          "animism_score": 2.963501309836298
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.4019603140736132,
+          "MI_social": 0.02095257560330373,
+          "MI_trajectory": 0.014082851135721748,
+          "MI_resource": 0.060127709835842744,
+          "animism_score": 2.86970494579015
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.3228998920166225,
+          "MI_social": 0.031954491273024736,
+          "MI_trajectory": 0.015238665095234475,
+          "MI_resource": 0.03524781394589973,
+          "animism_score": 1.1030629042013615
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.13981997650553912,
+          "MI_social": 0.07441386404236343,
+          "MI_trajectory": 0.012095775811929952,
+          "MI_resource": 0.03452755199975356,
+          "animism_score": 0.46399353728086484
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.3832415938750219,
+          "MI_social": 0.02310262301253582,
+          "MI_trajectory": 0.014355517457225967,
+          "MI_resource": 0.024632329464713037,
+          "animism_score": 1.0662135399667465
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.3598031284508766,
+          "MI_social": 0.022419787063421102,
+          "MI_trajectory": 0.012600357613591415,
+          "MI_resource": 0.018702070309351622,
+          "animism_score": 0.8341769819868137
+        }
+      ],
+      "cycle": 20
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_025.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 29,
+        "n_patterns_analyzed": 20,
+        "cycle": 25
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.3216694451441933,
+      "std_iota": 0.12098572783974172,
+      "mean_MI_social": 0.05227561496060464,
+      "mean_MI_trajectory": 0.015475928283109558,
+      "mean_MI_resource": 0.04068710951922579,
+      "iota_range": [
+        0.0663183677192899,
+        0.4585247521387603
+      ],
+      "animism_score": 1.3886100603700249,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.08806976201251049,
+          "MI_social": 0.16137275082756034,
+          "MI_trajectory": 0.015584590979296346,
+          "MI_resource": 0.017338150237334628,
+          "animism_score": 0.10744162287883302
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.4116851896691066,
+          "MI_social": 0.019459762247645396,
+          "MI_trajectory": 0.013617362288281878,
+          "MI_resource": 0.03358005399648258,
+          "animism_score": 1.7256148132306048
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.36797716145290293,
+          "MI_social": 0.026850265318883963,
+          "MI_trajectory": 0.015632796496742398,
+          "MI_resource": 0.02042590155465933,
+          "animism_score": 0.7607336952567714
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.3996690749313314,
+          "MI_social": 0.027435328271362396,
+          "MI_trajectory": 0.018265013199842372,
+          "MI_resource": 0.056088265510438676,
+          "animism_score": 2.0443810606408834
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.11460403987367462,
+          "MI_social": 0.15463690822204187,
+          "MI_trajectory": 0.020015919649432487,
+          "MI_resource": 0.05155324180880452,
+          "animism_score": 0.33338251780603145
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.3717462419988037,
+          "MI_social": 0.02399177759315953,
+          "MI_trajectory": 0.014196259147742618,
+          "MI_resource": 0.049629664666531466,
+          "animism_score": 2.0686114012944894
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.4585247521387603,
+          "MI_social": 0.019404816255789815,
+          "MI_trajectory": 0.016432124273692266,
+          "MI_resource": 0.09977117412351581,
+          "animism_score": 5.141567578293718
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.3729678187442781,
+          "MI_social": 0.02946766723055328,
+          "MI_trajectory": 0.017527795062211426,
+          "MI_resource": 0.07203215889327666,
+          "animism_score": 2.4444472760500964
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.37105682787871563,
+          "MI_social": 0.022751931285673706,
+          "MI_trajectory": 0.013422928851429839,
+          "MI_resource": 0.02253844663508041,
+          "animism_score": 0.9906168558654305
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.33371256048224207,
+          "MI_social": 0.029727193075442505,
+          "MI_trajectory": 0.014888976031629808,
+          "MI_resource": 0.010407474266787241,
+          "animism_score": 0.35009946079923726
+        }
+      ],
+      "cycle": 25
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_029.npz",
+        "seed": 7,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 24,
+        "n_patterns_analyzed": 20,
+        "cycle": 29
+      },
+      "n_patterns": 20,
+      "mean_iota": 0.3219291240844424,
+      "std_iota": 0.10271561363142695,
+      "mean_MI_social": 0.03915271274940106,
+      "mean_MI_trajectory": 0.014561515111129086,
+      "mean_MI_resource": 0.040135574178978436,
+      "iota_range": [
+        0.09709020380723543,
+        0.5566594803569094
+      ],
+      "animism_score": 1.479213183647472,
+      "per_pattern": [
+        {
+          "pattern_id": 0,
+          "iota": 0.39273011854470763,
+          "MI_social": 0.025330862971508897,
+          "MI_trajectory": 0.0163818314087965,
+          "MI_resource": 0.019043801283250263,
+          "animism_score": 0.7518023094858608
+        },
+        {
+          "pattern_id": 1,
+          "iota": 0.39879929970219075,
+          "MI_social": 0.024663281457038007,
+          "MI_trajectory": 0.01636009300812956,
+          "MI_resource": 0.022552567284090896,
+          "animism_score": 0.9144187614846041
+        },
+        {
+          "pattern_id": 2,
+          "iota": 0.37030797349617006,
+          "MI_social": 0.020917559440833275,
+          "MI_trajectory": 0.01230115472483839,
+          "MI_resource": 0.05791836252784958,
+          "animism_score": 2.768887196982782
+        },
+        {
+          "pattern_id": 3,
+          "iota": 0.2583166271350491,
+          "MI_social": 0.025333311106552802,
+          "MI_trajectory": 0.008823192913074998,
+          "MI_resource": 0.042839680511488475,
+          "animism_score": 1.6910415038643494
+        },
+        {
+          "pattern_id": 4,
+          "iota": 0.33689614624332265,
+          "MI_social": 0.027012319971076157,
+          "MI_trajectory": 0.013723863083875886,
+          "MI_resource": 0.04850502618660666,
+          "animism_score": 1.7956630988580078
+        },
+        {
+          "pattern_id": 5,
+          "iota": 0.3452686385324323,
+          "MI_social": 0.025265137470202113,
+          "MI_trajectory": 0.013323418015471883,
+          "MI_resource": 0.045441942554581304,
+          "animism_score": 1.7986026241961224
+        },
+        {
+          "pattern_id": 6,
+          "iota": 0.43316098815425585,
+          "MI_social": 0.021864371738335334,
+          "MI_trajectory": 0.016708082311960984,
+          "MI_resource": 0.033862418580629196,
+          "animism_score": 1.5487487582941792
+        },
+        {
+          "pattern_id": 7,
+          "iota": 0.282785898681847,
+          "MI_social": 0.031104499882632804,
+          "MI_trajectory": 0.01226400029808936,
+          "MI_resource": 0.022638722439035235,
+          "animism_score": 0.7278278874265252
+        },
+        {
+          "pattern_id": 8,
+          "iota": 0.29393224456845113,
+          "MI_social": 0.02512031474034923,
+          "MI_trajectory": 0.01045745318221464,
+          "MI_resource": 0.01796636990860879,
+          "animism_score": 0.7152127707918604
+        },
+        {
+          "pattern_id": 9,
+          "iota": 0.310247287887617,
+          "MI_social": 0.028892161767614024,
+          "MI_trajectory": 0.012995548509205533,
+          "MI_resource": 0.05683288807333066,
+          "animism_score": 1.967069426318806
+        }
+      ],
+      "cycle": 29
+    }
+  ]
+}

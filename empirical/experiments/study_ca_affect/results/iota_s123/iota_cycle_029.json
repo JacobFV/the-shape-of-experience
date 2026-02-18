@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_029.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 1,
+    "n_patterns_analyzed": 1,
+    "cycle": 29
+  },
+  "mean_iota": null,
+  "std_iota": null,
+  "mean_MI_social": null,
+  "mean_MI_trajectory": null,
+  "mean_MI_resource": null,
+  "iota_range": null,
+  "animism_score": null,
+  "n_patterns": 0,
+  "cycle": 29
+}
