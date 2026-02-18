@@ -196,7 +196,7 @@ export default function Part7() {
       <p>In addition to the consolidated results above and the research roadmap, fourteen proposed experiments are distributed throughout Parts I–IV, each embedded in the theoretical context that motivates it:</p>
       <ul>
       <li><strong>Part I</strong> (4 experiments): The minimal affect experiment, the attention-as-measurement test, the <M>{"\\iota"}</M> modulation test, and the computational animism test (now confirmed — see Experiment 8).</li>
-      <li><strong>Part II</strong> (3 experiments): The unified <M>{"\\iota"}</M> modulation test (flow/awe/psychedelics/contemplation), the science <M>{"\\iota"}</M> oscillation test, and the identity thesis operationalization.</li>
+      <li><strong>Part II</strong> (4 experiments): The emergence ladder developmental validation (ordering of affect capacity onset from birth to age 6), the <M>{"\\iota"}</M> rigidity transdiagnostic predictor, the identity thesis operationalization, and the broad/narrow qualia operationalization.</li>
       <li><strong>Part III</strong> (3 experiments): Tests of art as <M>{"\\iota"}</M> technology, genre affect signatures, and philosophical affect policies.</li>
       <li><strong>Part IV</strong> (4 experiments): The contamination detection study, the ordering principle test, the temporal asymmetry test, and the digital manifold confusion study.</li>
       </ul>
