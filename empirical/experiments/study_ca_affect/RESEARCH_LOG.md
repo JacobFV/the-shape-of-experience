@@ -287,3 +287,56 @@ The mechanism seems clear: in large populations, patterns can survive with minim
 - `results/rep_analysis/rep_trajectory.png` — d_eff, A, D, K_comp across cycles
 - `results/rep_analysis/rep_eigenspectrum.png` — Eigenspectrum early vs late
 - `results/rep_analysis/rep_summary_card.png` — Summary card
+
+---
+
+## 2026-02-17: Experiment 5 — Counterfactual Detachment (NULL RESULT)
+
+### Method
+Measured external synchrony (ρ_sync), detachment events, imagination capacity (I_img), and branch entropy (H_branch) across all 3 seeds × 7 snapshots. Recording: 50 substrate steps per snapshot, tracking top-20 patterns.
+
+- **ρ_sync**: Correlation between internal state changes (Δs_B) and boundary observations (s_∂B)
+- **Detachment event**: ρ_sync < 0.3 for ≥3 consecutive steps
+- **I_img**: Mutual information between detached-period trajectory and future environment, minus reactive-period baseline
+- **H_branch**: Entropy of internal states at detachment exit points
+
+### Results
+
+| Seed | ρ_sync (mean across cycles) | detach_frac | I_img | Interpretation |
+|------|---------------------------|-------------|-------|----------------|
+| 123  | ≈ 0 (range: -0.008 to 0.014) | 0.69 – 0.83 | -0.04 to 0.13 | Internally driven from start |
+| 42   | ≈ 0 (range: -0.002 to 0.002) | 0.94 – 0.99 | ≈ 0 | Near-total detachment |
+| 7    | ≈ 0 (range: -0.004 to 0.001) | 0.92 – 0.97 | ≈ 0 | Near-total detachment |
+
+### Key observations
+
+1. **Patterns are always internally driven.** ρ_sync ≈ 0 from cycle 0 across all seeds. The predicted reactive→detached transition never occurs because patterns never start reactive. This is a substrate property: the FFT convolution kernel spreads influence globally, so patterns' internal dynamics are dominated by their own chemistry, not boundary inputs.
+
+2. **Detachment is the default, not an achievement.** Detachment fraction is 0.69–1.0 from the first cycle. Seeds 42 and 7 show 0.92–0.99 detachment fraction consistently. Even seed 123 (bottleneck seed) shows 0.69+ detachment.
+
+3. **No systematic imagination capacity.** I_img ≈ 0 across all seeds. Seed 123 shows occasional spikes (0.08 at cycle 5, 0.13 at cycle 15) but no upward trend. These are likely noise — the imagination capacity metric requires patterns to be predictive during detachment vs during reactive periods, but since both periods look identical (ρ_sync ≈ 0 everywhere), the comparison is meaningless.
+
+4. **Branch entropy is moderate and stable.** H_branch ≈ 0.4–0.7 across all seeds, indicating moderate diversity in detachment-exit states. But since detachment is ubiquitous, this just reflects the diversity of internal dynamics, not a cognitive achievement.
+
+### What this means
+
+This is an **informative null result**. The experiment framework is correct — the measures are well-defined and computable. But the substrate doesn't satisfy the precondition: patterns need to START reactive (driven by boundary observations) and LEARN to detach. V13 patterns skip this stage entirely.
+
+**Why?** The content-based coupling mechanism (`K_i(j) = K_fft(|i-j|) · (1 + α·S_local(i))`) is fundamentally about pattern-pattern similarity, not about boundary sensing. Patterns respond to similar chemistry, not to what's at their edges. This is the right substrate for symbiogenesis but the wrong one for testing sensory detachment.
+
+**What would work?** A substrate where patterns have explicit sensory channels — dedicated boundary cells that drive internal dynamics. Then detachment would mean: "I'm ignoring my senses and running an internal simulation." V13 patterns don't have senses to ignore.
+
+### Updated cross-experiment table
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry          ✓ (cheap)             ✓ (cheap)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+Counterfactual detach.   N/A (always detached) N/A (always detached)
+```
+
+### Data
+- `results/cf_s{123,42,7}/` — per-cycle JSON files
+- `results/cf_analysis/cf_cross_seed.json` — cross-seed summary

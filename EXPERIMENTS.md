@@ -260,7 +260,24 @@ If detached-mode trajectory is more predictive of future environment than reacti
 3. Useful detachment: CF > 0, precedes adaptive behavior
 4. **Key**: I_img should correlate with H_wm (you can only simulate futures you can model)
 
-### Status: NOT IMPLEMENTED
+### Status: COMPLETE (null result — informative)
+
+### Results (V13 content-based coupling, 3 seeds × 7 snapshots)
+
+| Seed | ρ_sync range | detach_frac range | I_img range | n_with_imagination (max) |
+|------|-------------|-------------------|-------------|--------------------------|
+| 123  | -0.008 to 0.014 | 0.69 – 0.83 | -0.04 to 0.13 | 12 (cycle 5) |
+| 42   | -0.002 to 0.002 | 0.94 – 0.99 | ≈ 0 | 3 (cycle 10) |
+| 7    | -0.004 to 0.001 | 0.92 – 0.97 | ≈ 0 | 4 (cycle 20) |
+
+**Finding: Null result.** Patterns are inherently internally driven (ρ_sync ≈ 0) from the first cycle. The predicted reactive→detached transition doesn't occur because patterns never start in reactive mode. Detachment fraction is 0.69–1.0 from cycle 0 — "detachment" is the default, not an achievement.
+
+**Why this matters:** The substrate's spatial dynamics are fundamentally decoupled from boundary conditions at the timescale measured. The FFT convolution kernel spreads influence across the full grid, so a pattern's internal dynamics are dominated by its own chemical states, not boundary observations. I_img ≈ 0 means detached periods carry no predictive advantage — patterns idle during detachment rather than simulate futures.
+
+**Implication for the thesis:** Counterfactual detachment as a cognitive achievement requires a substrate where patterns are initially reactive (high ρ_sync) and must learn to decouple. V13 patterns skip this stage entirely. This doesn't falsify the framework — it means counterfactual simulation requires different substrate conditions (tighter spatial coupling, or explicit sensory-boundary dependence) to be testable.
+
+**Code:** `v13_counterfactual.py`, `v13_counterfactual_run.py`
+**Data:** `results/cf_s{123,42,7}/`, `results/cf_analysis/cf_cross_seed.json`
 
 ---
 
