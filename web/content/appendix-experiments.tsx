@@ -72,6 +72,19 @@ export default function AppendixExperiments() {
       <p><strong>Lesson</strong>: Signaling is costly in large populations, beneficial only at extreme bottlenecks. The substrate finds it easier to suppress a coordination mechanism than to use it constructively.</p>
       </Section>
 
+      <Section title="V18: Boundary-Dependent Lenia" level={2}>
+      <p><strong>Addition</strong>: Insulation field computed via iterated erosion and sigmoid creates a genuine boundary/interior distinction. Dual-signal update: external FFT signals gated by <M>{"(1 - \\text{insulation})"}</M>, internal short-range recurrence gated by <M>{"\\text{insulation}"}</M>. Small patterns have insulation ≈ 0 (pure V15 behavior). Large patterns develop insulated cores with autonomous internal dynamics. New evolvable parameters: <code>boundary_width</code>, <code>insulation_beta</code>, <code>internal_gain</code>, <code>activity_threshold</code>.</p>
+      <p><strong>Hypothesis</strong>: Boundary-gated signals would create the reactive phase needed for counterfactual detachment — patterns would update from boundary observations rather than full-grid FFT, making the reactive-to-autonomous transition measurable and selectable.</p>
+      <p><strong>Result</strong>: Three seeds, 30 cycles, <M>{"C{=}16"}</M>, <M>{"N{=}128"}</M>. Mean robustness 0.969 — highest of any substrate. Peak 1.651 (seed 42). 33% of cycles show <M>{"\\intinfo"}</M> increase under stress. Three evolutionary strategies emerged:</p>
+      <ul>
+      <li><strong>Seed 42</strong>: Thin permeable membrane, moderate interior fraction (46%), <code>internal_gain</code> halved</li>
+      <li><strong>Seed 123</strong>: Thick membrane, large interior (32%), high gain — closest to the autonomous archetype</li>
+      <li><strong>Seed 7</strong>: Filaments with no interior (0.1%) — maximally reactive, no internal processing</li>
+      </ul>
+      <p><strong>Surprise</strong>: <code>internal_gain</code> evolved <em>down</em> in all three seeds (1.0 → ~0.6). The prediction was that patterns would develop stronger internal processing as they insulated themselves from external noise. Instead, evolution preferred permeable membranes. <code>boundary_width</code> converged to the minimum allowed value (0.5). External sensing was more valuable than internal rumination at this grid scale.</p>
+      <p><strong>Implication</strong>: The architectural modification achieved its engineering goal (highest robustness) but not its theoretical goal (breaking the coupling wall). See the Sensory-Motor Coupling Wall section.</p>
+      </Section>
+
       <Section title="Cross-Version Summary" level={2}>
       <table>
       <thead><tr><th>Version</th><th>Mean Robustness</th><th>Max Robustness</th><th>{">"} 1.0 Cycles</th><th>Verdict</th></tr></thead>
@@ -81,9 +94,10 @@ export default function AppendixExperiments() {
       <tr><td>V15 (+ memory)</td><td>0.907</td><td>1.070</td><td>3/90</td><td>Best dynamics</td></tr>
       <tr><td>V16 (+ plasticity)</td><td>0.892</td><td>0.974</td><td>0/90</td><td>Negative</td></tr>
       <tr><td>V17 (+ signaling)</td><td>0.892</td><td>1.125</td><td>1/90</td><td>Suppressed</td></tr>
+      <tr><td>V18 (boundary-dependent)</td><td>0.969</td><td>1.651</td><td>~10/90</td><td>Best robustness; gain↓</td></tr>
       </tbody>
       </table>
-      <p>The returns diminished after V15. The only addition evolution consistently selected for was temporal memory. V15 remained the best substrate — and was used for a second round of measurement experiments to test whether motor channels and memory broke the sensory-motor coupling wall. (They did not.)</p>
+      <p>V18 achieved the highest mean robustness of any substrate — but evolution did not use the insulation mechanism as intended. Internal gain evolved down across all seeds; boundary width converged to minimum. The architectural improvement did not break the sensory-motor coupling wall (see below). V15 remains the best substrate for dynamics; V18 for raw robustness.</p>
       </Section>
       </Section>
 
@@ -111,6 +125,7 @@ export default function AppendixExperiments() {
       </table>
       <p><strong>Finding</strong>: World model signal is present but weak in the general population (<M>{"\\mathcal{C}_{\\text{wm}} \\sim 10^{-4}"}</M>). Seed 123 at population bottleneck (cycle 29, 1 survivor): <M>{"\\mathcal{C}_{\\text{wm}} = 0.028"}</M>, roughly 100x the population average. World models emerge but are amplified by bottleneck selection, not gradual evolution.</p>
       <p><strong>V15 re-run</strong>: Memory channels improved world model capacity ~12x on seed 42 (0.00244 vs 0.0002). V13 bottleneck peak (0.028) remains the dominant signal.</p>
+      <p><strong>V18 re-run</strong>: <M>{"\\mathcal{C}_{\\text{wm}}"}</M> range 0.0001–0.007. Peak 0.0067 (seed 123, cycle 15). Slight improvement on some snapshots but inconsistent across seeds and cycles. The V13 bottleneck peak (0.028) remains the dominant signal.</p>
       </Section>
 
       <Section title="Experiment 3: Internal Representation Structure" level={2}>
@@ -146,6 +161,7 @@ export default function AppendixExperiments() {
       <p><strong>Method</strong>: External synchrony <M>{"\\rho_{\\text{sync}}"}</M> between internal updates and boundary input. Imagination capacity <M>{"\\mathcal{I}_{\\text{img}}"}</M> = predictive advantage of detached-mode trajectories.</p>
       <p><strong>Result: Null.</strong> <M>{"\\rho_{\\text{sync}} \\approx 0"}</M> from cycle 0 in all seeds. Patterns are inherently internally driven — detachment is the default, not an achievement. The FFT convolution kernel integrates over the full <M>{"128 \\times 128"}</M> grid, so boundary observations are a negligible fraction of the information driving updates. There is no reactive-to-autonomous transition because the starting point is already autonomous.</p>
       <p><strong>V15 re-run</strong>: Wall persists. Motor channels do not create boundary-dependent dynamics. <M>{"\\rho_{\\text{sync}} \\approx 0"}</M> on V15.</p>
+      <p><strong>V18 re-run</strong>: Wall persists despite boundary-gated signal architecture. <M>{"\\rho_{\\text{sync}} \\approx 0.003"}</M> across all seeds. Patterns with up to 46% interior fraction and dedicated internal recurrence channels still show no coupling to boundary observations. The wall is definitively about agency (action→observation loops), not signal routing.</p>
       </Section>
 
       <Section title="Experiment 6: Self-Model Emergence" level={2}>
@@ -153,6 +169,7 @@ export default function AppendixExperiments() {
       <p><strong>Method</strong>: Self-effect ratio <M>{"\\rho_{\\text{self}}"}</M>, self-prediction score SM, self-model salience <M>{"\\text{SM}_{\\text{sal}}"}</M>.</p>
       <p><strong>Result: Weak signal at bottleneck only.</strong> <M>{"\\rho_{\\text{self}} \\approx 0"}</M> everywhere. Self-prediction is trivially present (any spatially-coherent pattern predicts itself somewhat), but self-model <em>salience</em> — privileged self-knowledge exceeding environment-knowledge — appears exactly once: seed 123, cycle 20 (3 patterns at bottleneck), where one pattern achieves <M>{"\\text{SM}_{\\text{sal}} = 2.28"}</M>.</p>
       <p><strong>V15 re-run</strong>: Wall persists. <M>{"\\rho_{\\text{self}}"}</M> slightly higher (max 0.08 vs 0.05) but same regime.</p>
+      <p><strong>V18 re-run</strong>: <M>{"\\rho_{\\text{self}} \\approx 0.03{-}0.11"}</M>, similar to the V15 range. <M>{"\\text{SM}_{\\text{sal}}"}</M> remains trivially inflated (division-by-zero artifact in low-population snapshots). No improvement from boundary-dependent dynamics.</p>
       </Section>
 
       <Section title="Experiment 7: Affect Geometry Verification" level={2}>
@@ -167,6 +184,7 @@ export default function AppendixExperiments() {
       </table>
       <p><strong>Finding</strong>: Structural affect aligns with behavior in 8/19 testable snapshots. Seed 7 shows the clearest evolutionary trend: alignment increases from near-zero to consistently significant over 30 cycles. Structure determines behavior, but only after selection shapes the mapping. A-B alignment (from Experiment 4's <M>{"\\rho_{\\text{topo}}"}</M>) is null — structure maps to behavior but not to communication.</p>
       <p><strong>V15 re-run</strong>: Weaker than V13 (2/21 significant vs 8/19). Extra channels may add noise to the RSA computation.</p>
+      <p><strong>V18 re-run</strong>: Mixed. Seed 7 shows development (RSA 0.22 to 0.30, <M>{"p < 0.01"}</M> at cycle 29). 5/18 testable snapshots significant — better than V15 (2/21) but comparable to V13 (8/19). The higher robustness substrate does not consistently improve affect geometry alignment.</p>
       </Section>
 
       <Section title="Experiment 8: Perceptual Mode and Computational Animism" level={2}>
@@ -238,19 +256,20 @@ export default function AppendixExperiments() {
       <Section title="The Sensory-Motor Coupling Wall" level={1}>
       <p>Three experiments returned null results (5, 6, 9) and two others showed weakness (2, 7 under V15). All hit the same architectural limitation.</p>
       <p>The FFT convolution kernel integrates over the full <M>{"128 \\times 128"}</M> grid. Boundary observations are a negligible fraction of the information driving updates. Patterns are inherently internally driven (<M>{"\\rho_{\\text{sync}} \\approx 0"}</M> from cycle 0). There is no reactive-to-autonomous transition because the starting point is already autonomous.</p>
-      <p>V15's motor channels (chemotaxis) and memory channels did not fix this. The wall is architectural, not a matter of substrate complexity. Breaking it requires a fundamentally different update rule — one where patterns update from boundary-gated signals, making the reactive phase observable and autonomy an achievement that can be measured and selected for.</p>
+      <p>V15's motor channels (chemotaxis) and memory channels did not fix this. V18 introduced boundary-dependent dynamics — an insulation field creating distinct boundary and interior signal domains — specifically to break this wall. Result: wall persists. <M>{"\\rho_{\\text{sync}} \\approx 0.003"}</M> across all seeds and cycles, even in seed 123 with 32% interior fraction and high internal gain. The wall is not about signal routing architecture (FFT vs. local, boundary vs. interior). It is about the absence of a genuine action→environment→observation causal loop. Lenia patterns don't act on the world — they exist within it. No amount of internal processing architecture creates counterfactual sensitivity when there are no counterfactual actions to take.</p>
+      <p>The architectural space has been exhausted. Breaking the wall requires a fundamentally different kind of substrate: one with genuine closed-loop agency, where pattern actions cause environmental changes that pattern sensors then detect. This is not an incremental substrate modification but a change in the problem formulation.</p>
       </Section>
 
       <Section title="Falsification Map" level={1}>
       <table>
       <thead><tr><th>Experiment</th><th>Prediction</th><th>Outcome</th></tr></thead>
       <tbody>
-      <tr><td>2 (World Model)</td><td><M>{"\\mathcal{C}_{\\text{wm}}"}</M> increases with evolution</td><td>Partially confirmed. Increases at bottleneck (100x), flat in general population.</td></tr>
+      <tr><td>2 (World Model)</td><td><M>{"\\mathcal{C}_{\\text{wm}}"}</M> increases with evolution</td><td>Partially confirmed. Increases at bottleneck (100x), flat in general population. V15 re-run: memory helps (~12x on seed 42). V18 re-run: inconsistent improvement; bottleneck peak remains dominant.</td></tr>
       <tr><td>3 (Representation)</td><td>Compression and modeling co-emerge</td><td>Partially confirmed. Co-emerge under bottleneck (seed 123). Compression is cheap; quality improves only under selection.</td></tr>
       <tr><td>4 (Language)</td><td>Compositional communication emerges</td><td>Not confirmed. Chemical commons (MI {">"} 0) but <M>{"\\rho_{\\text{topo}} \\approx 0"}</M>. Unstructured broadcast, not language.</td></tr>
-      <tr><td>5 (Counterfactual)</td><td>Reactive-to-detached transition</td><td>Null. Patterns always internally driven. Coupling wall.</td></tr>
-      <tr><td>6 (Self-Model)</td><td>SM emergence with <M>{"\\intinfo"}</M> jump</td><td>Weak. <M>{"\\text{SM}_{\\text{sal}} > 1"}</M> once (n=1, bottleneck). No <M>{"\\intinfo"}</M> correlation. Coupling wall.</td></tr>
-      <tr><td>7 (Affect Geometry)</td><td>Tripartite alignment</td><td>Partially confirmed. A-C develops over evolution (seed 7: 0.01 to 0.38). A-B null.</td></tr>
+      <tr><td>5 (Counterfactual)</td><td>Reactive-to-detached transition</td><td>Null. Patterns always internally driven. Coupling wall. V15 re-run: wall persists. V18 re-run: wall persists despite boundary-gated architecture (<M>{"\\rho_{\\text{sync}} \\approx 0.003"}</M>). Definitively about agency, not signal routing.</td></tr>
+      <tr><td>6 (Self-Model)</td><td>SM emergence with <M>{"\\intinfo"}</M> jump</td><td>Weak. <M>{"\\text{SM}_{\\text{sal}} > 1"}</M> once (n=1, bottleneck). No <M>{"\\intinfo"}</M> correlation. Coupling wall. V15 re-run: wall persists. V18 re-run: no improvement from boundary-dependent dynamics.</td></tr>
+      <tr><td>7 (Affect Geometry)</td><td>Tripartite alignment</td><td>Partially confirmed. A-C develops over evolution (seed 7: 0.01 to 0.38). A-B null. V15 re-run: weaker (2/21 significant). V18 re-run: mixed (5/18 significant); higher robustness does not consistently improve geometry alignment.</td></tr>
       <tr><td>8 (<M>{"\\iota"}</M> Emergence)</td><td>Participatory default, animism</td><td><strong>Confirmed.</strong> <M>{"\\iota \\approx 0.30"}</M>, animism {">"} 1.0 in all 20 snapshots.</td></tr>
       <tr><td>9 (Normativity)</td><td>Viability gradient penalizes exploitation</td><td>Null. No <M>{"\\Delta V"}</M> asymmetry. Requires agency (capacity to act otherwise).</td></tr>
       <tr><td>10 (Superorganism)</td><td><M>{"\\intinfo_G > \\sum \\intinfo_i"}</M></td><td>Not confirmed. Ratio reaches 12% and increasing. No specialization.</td></tr>
@@ -265,9 +284,9 @@ export default function AppendixExperiments() {
       <ol>
       <li><strong>What was confirmed</strong>: Affect geometry is a baseline property of multi-agent survival (V10). Content-based coupling under lethal selection produces biological-like integration at population bottlenecks (V13). Temporal memory is the one substrate extension evolution consistently selects for (V15). Computational animism is the default perceptual mode (Experiment 8). Affect geometry develops over evolution and aligns with behavior (Experiment 7). Representation compression is cheap; quality improves under selection (Experiment 3).</li>
       <li><strong>What was not confirmed</strong>: Compositional communication (Experiment 4). Co-emergence of modeling/abstraction/imagination as predicted (Experiment 11). Superorganism integration (Experiment 10). Proto-normativity (Experiment 9).</li>
-      <li><strong>What could not be tested</strong>: Three experiments (5, 6, 9) and two re-runs (2, 7 on V15) hit the sensory-motor coupling wall — the FFT substrate prevents the reactive-to-autonomous transitions the theory predicts. Breaking this wall is the top research priority.</li>
+      <li><strong>What could not be tested</strong>: Three experiments (5, 6, 9) and re-runs (2, 7 on V15 and V18) hit the sensory-motor coupling wall. V18 definitively established that architectural approaches — signal routing changes, boundary gating, interior insulation — cannot break the wall. Breaking it requires a fundamentally different substrate with genuine closed-loop agency: patterns that act on the world and observe the consequences of their actions.</li>
       </ol>
-      <p>Seven experiments found positive signal. Three hit the coupling wall. One (Experiment 11) found that everything correlates with everything else but not in the clusters the theory predicted. The framework is not confirmed. It is informed.</p>
+      <p>V18 achieved the highest robustness of any substrate (mean 0.969, peak 1.651) while confirming that the coupling wall is about agency, not architecture. Seven experiments found positive signal. Three hit the coupling wall. One (Experiment 11) found that everything correlates with everything else but not in the clusters the theory predicted. The framework is not confirmed. It is informed.</p>
       </Section>
     </>
   );
