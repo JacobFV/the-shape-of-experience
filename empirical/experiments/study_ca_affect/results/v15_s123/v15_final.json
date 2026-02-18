@@ -1,0 +1,1460 @@
+{
+  "cycle_stats": [
+    {
+      "cycle": 0,
+      "n_patterns": 48,
+      "n_baseline": 309,
+      "n_survived": 205,
+      "mortality": 0.3365695792880259,
+      "mean_phi_base": 0.24333340157607608,
+      "mean_phi_stress": 0.22364586891646301,
+      "mean_robustness": 0.9322093882292966,
+      "phi_increase_frac": 0.30434782608695654,
+      "tau": 0.21042904853820799,
+      "gate_beta": 5.291467499732971,
+      "chemotaxis_strength": 0.3352420568466187,
+      "motor_sensitivity": 5.766253471374512,
+      "motor_threshold": 0.2821204409003258,
+      "memory_lambdas": [
+        0.007975209577652046,
+        0.0797449188055977
+      ],
+      "memory_mean": 0.1329454779624939,
+      "memory_std": 0.2561456263065338,
+      "stress_regen": 0.6303348602230302,
+      "drought_steps": 700,
+      "elapsed_s": 277.9475791454315,
+      "resource_mean": 0.26911914348602295,
+      "foraging": {
+        "mean_displacement": 5.614722516970333,
+        "resource_at_patterns": 0.6998354196548462,
+        "n_tracked": 88
+      }
+    },
+    {
+      "cycle": 1,
+      "n_patterns": 17,
+      "n_baseline": 352,
+      "n_survived": 221,
+      "mortality": 0.37215909090909094,
+      "mean_phi_base": 0.22263668896008013,
+      "mean_phi_stress": 0.211762235374642,
+      "mean_robustness": 0.889684975024709,
+      "phi_increase_frac": 0.24031007751937986,
+      "tau": 0.2119188749231398,
+      "gate_beta": 5.129928374290467,
+      "chemotaxis_strength": 0.33535310337319973,
+      "motor_sensitivity": 5.3538694977760315,
+      "motor_threshold": 0.2003953203558922,
+      "memory_lambdas": [
+        0.008219527590649771,
+        0.08217860544949199
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.5799954061837937,
+      "drought_steps": 959,
+      "elapsed_s": 70.79510426521301,
+      "resource_mean": 0.3284767270088196,
+      "foraging": {
+        "mean_displacement": 4.585372784038355,
+        "resource_at_patterns": 0.7115823030471802,
+        "n_tracked": 158
+      }
+    },
+    {
+      "cycle": 2,
+      "n_patterns": 13,
+      "n_baseline": 329,
+      "n_survived": 214,
+      "mortality": 0.34954407294832823,
+      "mean_phi_base": 0.22794176482369444,
+      "mean_phi_stress": 0.2158110443159138,
+      "mean_robustness": 0.9133947817717454,
+      "phi_increase_frac": 0.30952380952380953,
+      "tau": 0.05828867787495254,
+      "gate_beta": 5.193057668209076,
+      "chemotaxis_strength": 0.2816647381521762,
+      "motor_sensitivity": 5.825255066156387,
+      "motor_threshold": 0.2014897555112839,
+      "memory_lambdas": [
+        0.007349679145542386,
+        0.07347384041968665
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.5489997648723779,
+      "drought_steps": 973,
+      "elapsed_s": 59.28700876235962,
+      "resource_mean": 0.37373465299606323,
+      "foraging": {
+        "mean_displacement": 4.391534805071061,
+        "resource_at_patterns": 0.7192670106887817,
+        "n_tracked": 147
+      }
+    },
+    {
+      "cycle": 3,
+      "n_patterns": 6,
+      "n_baseline": 344,
+      "n_survived": 204,
+      "mortality": 0.40697674418604646,
+      "mean_phi_base": 0.22529004501740435,
+      "mean_phi_stress": 0.2110869705678523,
+      "mean_robustness": 0.9053925899366707,
+      "phi_increase_frac": 0.2689075630252101,
+      "tau": 0.026786761824041584,
+      "gate_beta": 5.134070175886154,
+      "chemotaxis_strength": 0.38444623658433563,
+      "motor_sensitivity": 6.063832864165306,
+      "motor_threshold": 0.1990114476531744,
+      "memory_lambdas": [
+        0.0075030442527089245,
+        0.0749978292092842
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.5725829388695114,
+      "drought_steps": 1382,
+      "elapsed_s": 50.18603038787842,
+      "resource_mean": 0.7737417221069336,
+      "foraging": {
+        "mean_displacement": 4.444101268446804,
+        "resource_at_patterns": 0.7419768571853638,
+        "n_tracked": 143
+      }
+    },
+    {
+      "cycle": 4,
+      "n_patterns": 41,
+      "n_baseline": 308,
+      "n_survived": 247,
+      "mortality": 0.19805194805194803,
+      "mean_phi_base": 0.22617876933416464,
+      "mean_phi_stress": 0.21443271394353827,
+      "mean_robustness": 0.8956910611909422,
+      "phi_increase_frac": 0.2517482517482518,
+      "tau": -0.0758555120788515,
+      "gate_beta": 4.783491390943527,
+      "chemotaxis_strength": 0.4767837853170932,
+      "motor_sensitivity": 5.758971258997917,
+      "motor_threshold": 0.190320086106658,
+      "memory_lambdas": [
+        0.010451719843377574,
+        0.10445923892223706
+      ],
+      "memory_mean": 0.053790174424648285,
+      "memory_std": 0.15792298316955566,
+      "stress_regen": 0.5300592804635225,
+      "drought_steps": 1093,
+      "elapsed_s": 63.18577456474304,
+      "resource_mean": 0.28617826104164124,
+      "foraging": {
+        "mean_displacement": 4.361536056265981,
+        "resource_at_patterns": 0.735417366027832,
+        "n_tracked": 155
+      }
+    },
+    {
+      "cycle": 5,
+      "n_patterns": 59,
+      "n_baseline": 314,
+      "n_survived": 226,
+      "mortality": 0.28025477707006374,
+      "mean_phi_base": 0.22663471895276543,
+      "mean_phi_stress": 0.21577238995137618,
+      "mean_robustness": 0.9155424811682107,
+      "phi_increase_frac": 0.29914529914529914,
+      "tau": -0.09691693102940921,
+      "gate_beta": 4.901070290803909,
+      "chemotaxis_strength": 0.4601143152453006,
+      "motor_sensitivity": 6.550380989909172,
+      "motor_threshold": 0.14336732290685178,
+      "memory_lambdas": [
+        0.011857455573935447,
+        0.11849859757294245
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.5797742828736624,
+      "drought_steps": 729,
+      "elapsed_s": 56.92843961715698,
+      "resource_mean": 0.4164593517780304,
+      "foraging": {
+        "mean_displacement": 4.399010332251183,
+        "resource_at_patterns": 0.713335394859314,
+        "n_tracked": 147
+      }
+    },
+    {
+      "cycle": 6,
+      "n_patterns": 10,
+      "n_baseline": 319,
+      "n_survived": 202,
+      "mortality": 0.3667711598746082,
+      "mean_phi_base": 0.2215461560992816,
+      "mean_phi_stress": 0.20395506048519024,
+      "mean_robustness": 0.8591316071728036,
+      "phi_increase_frac": 0.23684210526315788,
+      "tau": -0.1994509271346033,
+      "gate_beta": 4.668641763925552,
+      "chemotaxis_strength": 0.5015866876579822,
+      "motor_sensitivity": 6.77846571803093,
+      "motor_threshold": 0.17342634163796902,
+      "memory_lambdas": [
+        0.011026561655739656,
+        0.11018661837299899
+      ],
+      "memory_mean": 2.031386969747473e-07,
+      "memory_std": 3.677147105918266e-05,
+      "stress_regen": 0.6817219658033185,
+      "drought_steps": 1154,
+      "elapsed_s": 73.53589010238647,
+      "resource_mean": 0.45834851264953613,
+      "foraging": {
+        "mean_displacement": 4.5238502547700445,
+        "resource_at_patterns": 0.7411448955535889,
+        "n_tracked": 144
+      }
+    },
+    {
+      "cycle": 7,
+      "n_patterns": 19,
+      "n_baseline": 318,
+      "n_survived": 235,
+      "mortality": 0.26100628930817615,
+      "mean_phi_base": 0.21244308731950182,
+      "mean_phi_stress": 0.19546582757296105,
+      "mean_robustness": 0.8758327690811801,
+      "phi_increase_frac": 0.23134328358208955,
+      "tau": -0.15236156200990084,
+      "gate_beta": 4.934556251764297,
+      "chemotaxis_strength": 0.37151638278737675,
+      "motor_sensitivity": 6.845373794436455,
+      "motor_threshold": 0.14264761470258236,
+      "memory_lambdas": [
+        0.011156083877569644,
+        0.11147181500445308
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.5644422047517472,
+      "drought_steps": 1443,
+      "elapsed_s": 46.01146149635315,
+      "resource_mean": 0.3806552588939667,
+      "foraging": {
+        "mean_displacement": 4.386979556387086,
+        "resource_at_patterns": 0.7338793277740479,
+        "n_tracked": 161
+      }
+    },
+    {
+      "cycle": 8,
+      "n_patterns": 20,
+      "n_baseline": 325,
+      "n_survived": 228,
+      "mortality": 0.29846153846153844,
+      "mean_phi_base": 0.22703573397293195,
+      "mean_phi_stress": 0.20712113354094727,
+      "mean_robustness": 0.8535555332990415,
+      "phi_increase_frac": 0.1774193548387097,
+      "tau": -0.19887040769681338,
+      "gate_beta": 5.149489456415176,
+      "chemotaxis_strength": 0.35091802338138234,
+      "motor_sensitivity": 6.949348986148834,
+      "motor_threshold": 0.24261861704289914,
+      "memory_lambdas": [
+        0.009991995958529886,
+        0.0998321720292626
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.4768530125610443,
+      "drought_steps": 1026,
+      "elapsed_s": 56.91248536109924,
+      "resource_mean": 0.3625502288341522,
+      "foraging": {
+        "mean_displacement": 4.699892051939853,
+        "resource_at_patterns": 0.7219660878181458,
+        "n_tracked": 149
+      }
+    },
+    {
+      "cycle": 9,
+      "n_patterns": 23,
+      "n_baseline": 319,
+      "n_survived": 209,
+      "mortality": 0.3448275862068966,
+      "mean_phi_base": 0.22704225088019103,
+      "mean_phi_stress": 0.2109999864416824,
+      "mean_robustness": 0.8572323349525178,
+      "phi_increase_frac": 0.20535714285714285,
+      "tau": -0.27205738937482243,
+      "gate_beta": 5.488367825746535,
+      "chemotaxis_strength": 0.4328204439021648,
+      "motor_sensitivity": 6.996137287467718,
+      "motor_threshold": 0.21940001361072065,
+      "memory_lambdas": [
+        0.012615233088677487,
+        0.12603014554970998
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "stress_regen": 0.5004385824025822,
+      "drought_steps": 1245,
+      "elapsed_s": 48.68495988845825,
+      "resource_mean": 0.3891943693161011,
+      "foraging": {
+        "mean_displacement": 4.91930416375688,
+        "resource_at_patterns": 0.7450327277183533,
+        "n_tracked": 138
+      }
+    },
+    {
+      "cycle": 10,
+      "n_patterns": 90,
+      "n_baseline": 328,
+      "n_survived": 258,
+      "mortality": 0.21341463414634143,
+      "mean_phi_base": 0.21599382684716434,
+      "mean_phi_stress": 0.191767972579963,
+      "mean_robustness": 0.8565085097842955,
+      "phi_increase_frac": 0.19310344827586207,
+      "tau": -0.2761243066750467,
+      "gate_beta": 6.023524218797683,
+      "chemotaxis_strength": 0.5405473397113384,
+      "motor_sensitivity": 6.6444949470460415,
+      "motor_threshold": 0.20733996890485287,
+      "memory_lambdas": [
+        0.017705676538310712,
+        0.1768726593089475
+      ],
+      "memory_mean": 1.3356944350562117e-07,
+      "memory_std": 2.417828181933146e-05,
+      "stress_regen": 0.5208214645174936,
+      "drought_steps": 818,
+      "elapsed_s": 60.26927733421326,
+      "resource_mean": 0.3450043499469757,
+      "foraging": {
+        "mean_displacement": 4.309687668309447,
+        "resource_at_patterns": 0.7570603489875793,
+        "n_tracked": 164
+      }
+    },
+    {
+      "cycle": 11,
+      "n_patterns": 30,
+      "n_baseline": 340,
+      "n_survived": 235,
+      "mortality": 0.3088235294117647,
+      "mean_phi_base": 0.21131183244024485,
+      "mean_phi_stress": 0.18340441552892137,
+      "mean_robustness": 0.8252998696156199,
+      "phi_increase_frac": 0.19424460431654678,
+      "tau": -0.23614423787221317,
+      "gate_beta": 5.908319729566574,
+      "chemotaxis_strength": 0.6466812537051738,
+      "motor_sensitivity": 5.937573906034231,
+      "motor_threshold": 0.17094139121472834,
+      "memory_lambdas": [
+        0.01591028023008458,
+        0.15892928742653467
+      ],
+      "memory_mean": 7.942986849229783e-05,
+      "memory_std": 0.0019098230404779315,
+      "stress_regen": 0.5650360990905888,
+      "drought_steps": 1311,
+      "elapsed_s": 69.48564124107361,
+      "resource_mean": 0.40619736909866333,
+      "foraging": {
+        "mean_displacement": 3.949877181964623,
+        "resource_at_patterns": 0.7733232378959656,
+        "n_tracked": 162
+      }
+    },
+    {
+      "cycle": 12,
+      "n_patterns": 98,
+      "n_baseline": 327,
+      "n_survived": 274,
+      "mortality": 0.1620795107033639,
+      "mean_phi_base": 0.2141567880955845,
+      "mean_phi_stress": 0.1906346487199008,
+      "mean_robustness": 0.8508745876902676,
+      "phi_increase_frac": 0.17567567567567569,
+      "tau": -0.3121227554045618,
+      "gate_beta": 5.808529782295227,
+      "chemotaxis_strength": 0.6826228455640376,
+      "motor_sensitivity": 5.835629556328058,
+      "motor_threshold": 0.24577139876782894,
+      "memory_lambdas": [
+        0.026634422531057113,
+        0.26603870757659187
+      ],
+      "memory_mean": 6.828218374721473e-06,
+      "memory_std": 0.0004046675458084792,
+      "stress_regen": 0.5127139571699801,
+      "drought_steps": 752,
+      "elapsed_s": 56.914339780807495,
+      "resource_mean": 0.4178653955459595,
+      "foraging": {
+        "mean_displacement": 3.950369238044684,
+        "resource_at_patterns": 0.7526262998580933,
+        "n_tracked": 156
+      }
+    },
+    {
+      "cycle": 13,
+      "n_patterns": 19,
+      "n_baseline": 339,
+      "n_survived": 234,
+      "mortality": 0.3097345132743363,
+      "mean_phi_base": 0.21155443810403227,
+      "mean_phi_stress": 0.18422158540818867,
+      "mean_robustness": 0.8269001388634555,
+      "phi_increase_frac": 0.1937984496124031,
+      "tau": -0.28785166954621677,
+      "gate_beta": 5.771668890118598,
+      "chemotaxis_strength": 0.7259106204845012,
+      "motor_sensitivity": 5.177727196365595,
+      "motor_threshold": 0.22094867788255215,
+      "memory_lambdas": [
+        0.02233991273797829,
+        0.22313533210026557
+      ],
+      "memory_mean": 0.00240898784250021,
+      "memory_std": 0.014238359406590462,
+      "stress_regen": 0.46268469036060117,
+      "drought_steps": 1497,
+      "elapsed_s": 66.88685750961304,
+      "resource_mean": 0.3472682535648346,
+      "foraging": {
+        "mean_displacement": 4.278486340783653,
+        "resource_at_patterns": 0.7542205452919006,
+        "n_tracked": 164
+      }
+    },
+    {
+      "cycle": 14,
+      "n_patterns": 17,
+      "n_baseline": 329,
+      "n_survived": 199,
+      "mortality": 0.3951367781155015,
+      "mean_phi_base": 0.22494397050815526,
+      "mean_phi_stress": 0.204558269435181,
+      "mean_robustness": 0.8380807559950623,
+      "phi_increase_frac": 0.21100917431192662,
+      "tau": -0.29528916468843824,
+      "gate_beta": 5.892328670620918,
+      "chemotaxis_strength": 0.6977332756854594,
+      "motor_sensitivity": 4.530256126075983,
+      "motor_threshold": 0.2189107930287719,
+      "memory_lambdas": [
+        0.019024125405120444,
+        0.19000895863568906
+      ],
+      "memory_mean": 0.0007085136021487415,
+      "memory_std": 0.007091253064572811,
+      "stress_regen": 0.5108621836514935,
+      "drought_steps": 1243,
+      "elapsed_s": 43.804587841033936,
+      "resource_mean": 0.3831790089607239,
+      "foraging": {
+        "mean_displacement": 4.477268532321253,
+        "resource_at_patterns": 0.7110157012939453,
+        "n_tracked": 142
+      }
+    },
+    {
+      "cycle": 15,
+      "n_patterns": 68,
+      "n_baseline": 307,
+      "n_survived": 207,
+      "mortality": 0.32573289902280134,
+      "mean_phi_base": 0.22922282078294295,
+      "mean_phi_stress": 0.2168593709354286,
+      "mean_robustness": 0.9040367578148653,
+      "phi_increase_frac": 0.32432432432432434,
+      "tau": -0.24712181678041822,
+      "gate_beta": 5.950280132889747,
+      "chemotaxis_strength": 0.6957160965539515,
+      "motor_sensitivity": 4.066997352987528,
+      "motor_threshold": 0.26448007579892874,
+      "memory_lambdas": [
+        0.01953849001429909,
+        0.1951370937308831
+      ],
+      "memory_mean": 0.00020449585281312466,
+      "memory_std": 0.003695070743560791,
+      "stress_regen": 0.4668299242128081,
+      "drought_steps": 608,
+      "elapsed_s": 35.42724418640137,
+      "resource_mean": 0.4015309512615204,
+      "foraging": {
+        "mean_displacement": 4.693402660617549,
+        "resource_at_patterns": 0.7507433295249939,
+        "n_tracked": 134
+      }
+    },
+    {
+      "cycle": 16,
+      "n_patterns": 68,
+      "n_baseline": 302,
+      "n_survived": 221,
+      "mortality": 0.26821192052980136,
+      "mean_phi_base": 0.22565479088038348,
+      "mean_phi_stress": 0.21423085352791277,
+      "mean_robustness": 0.918338740415217,
+      "phi_increase_frac": 0.29310344827586204,
+      "tau": -0.17000375976786025,
+      "gate_beta": 5.817065170407295,
+      "chemotaxis_strength": 0.684110549185425,
+      "motor_sensitivity": 4.111093897372484,
+      "motor_threshold": 0.21067127343267203,
+      "memory_lambdas": [
+        0.021907558684952144,
+        0.2187876570448128
+      ],
+      "memory_mean": 0.000258550513535738,
+      "memory_std": 0.003964583855122328,
+      "stress_regen": 0.5971981970634054,
+      "drought_steps": 623,
+      "elapsed_s": 46.004093647003174,
+      "resource_mean": 0.35144761204719543,
+      "foraging": {
+        "mean_displacement": 4.5021268186165155,
+        "resource_at_patterns": 0.7407141327857971,
+        "n_tracked": 143
+      }
+    },
+    {
+      "cycle": 17,
+      "n_patterns": 7,
+      "n_baseline": 323,
+      "n_survived": 165,
+      "mortality": 0.4891640866873065,
+      "mean_phi_base": 0.22200547085826983,
+      "mean_phi_stress": 0.2003750226372521,
+      "mean_robustness": 0.8475935136673192,
+      "phi_increase_frac": 0.21296296296296297,
+      "tau": -0.134385099913925,
+      "gate_beta": 6.1512264758348465,
+      "chemotaxis_strength": 0.671430550608784,
+      "motor_sensitivity": 4.721812326461077,
+      "motor_threshold": 0.1748789643868804,
+      "memory_lambdas": [
+        0.030023283520019622,
+        0.2998259253783084
+      ],
+      "memory_mean": 0.0007392133120447397,
+      "memory_std": 0.007433691062033176,
+      "stress_regen": 0.41663939832255503,
+      "drought_steps": 1492,
+      "elapsed_s": 46.883294105529785,
+      "resource_mean": 0.7504624128341675,
+      "foraging": {
+        "mean_displacement": 4.662762758583246,
+        "resource_at_patterns": 0.7215451002120972,
+        "n_tracked": 144
+      }
+    },
+    {
+      "cycle": 18,
+      "n_patterns": 131,
+      "n_baseline": 274,
+      "n_survived": 241,
+      "mortality": 0.12043795620437958,
+      "mean_phi_base": 0.19455195783191065,
+      "mean_phi_stress": 0.1756898870155146,
+      "mean_robustness": 0.8955371075342813,
+      "phi_increase_frac": 0.23577235772357724,
+      "tau": -0.16505573978647597,
+      "gate_beta": 5.953528288006782,
+      "chemotaxis_strength": 0.6717863558791578,
+      "motor_sensitivity": 4.738286534324288,
+      "motor_threshold": 0.14575875159353016,
+      "memory_lambdas": [
+        0.029100454161169402,
+        0.2906014290878278
+      ],
+      "memory_mean": 0.001447417656891048,
+      "memory_std": 0.009920577518641949,
+      "stress_regen": 0.43369781781195754,
+      "drought_steps": 824,
+      "elapsed_s": 35.0513072013855,
+      "resource_mean": 0.4246479272842407,
+      "foraging": {
+        "mean_displacement": 4.706199138924452,
+        "resource_at_patterns": 0.7675119638442993,
+        "n_tracked": 140
+      }
+    },
+    {
+      "cycle": 19,
+      "n_patterns": 40,
+      "n_baseline": 294,
+      "n_survived": 245,
+      "mortality": 0.16666666666666663,
+      "mean_phi_base": 0.20737873781756033,
+      "mean_phi_stress": 0.17427586927672803,
+      "mean_robustness": 0.832451763503617,
+      "phi_increase_frac": 0.16793893129770993,
+      "tau": -0.1803306817077101,
+      "gate_beta": 6.062184754014015,
+      "chemotaxis_strength": 0.7408570765517652,
+      "motor_sensitivity": 4.736791755654849,
+      "motor_threshold": 0.06748946662992236,
+      "memory_lambdas": [
+        0.02864228966391552,
+        0.28601728645152225
+      ],
+      "memory_mean": 0.0023509166203439236,
+      "memory_std": 0.013711913488805294,
+      "stress_regen": 0.4505396651382355,
+      "drought_steps": 1374,
+      "elapsed_s": 59.210925340652466,
+      "resource_mean": 0.38112813234329224,
+      "foraging": {
+        "mean_displacement": 4.569439264530825,
+        "resource_at_patterns": 0.7284626960754395,
+        "n_tracked": 164
+      }
+    },
+    {
+      "cycle": 20,
+      "n_patterns": 80,
+      "n_baseline": 293,
+      "n_survived": 218,
+      "mortality": 0.2559726962457338,
+      "mean_phi_base": 0.22597462333485727,
+      "mean_phi_stress": 0.20141968389727036,
+      "mean_robustness": 0.848423429618124,
+      "phi_increase_frac": 0.18867924528301888,
+      "tau": -0.0009038328193128886,
+      "gate_beta": 6.137967577576637,
+      "chemotaxis_strength": 0.65479454388842,
+      "motor_sensitivity": 4.456285204389133,
+      "motor_threshold": 0.1152117049321532,
+      "memory_lambdas": [
+        0.029164912570404575,
+        0.2912269650508877
+      ],
+      "memory_mean": 0.0036582420580089092,
+      "memory_std": 0.017899196594953537,
+      "stress_regen": 0.48826976681867634,
+      "drought_steps": 582,
+      "elapsed_s": 37.88031458854675,
+      "resource_mean": 0.40723422169685364,
+      "foraging": {
+        "mean_displacement": 4.395797365774929,
+        "resource_at_patterns": 0.7176456451416016,
+        "n_tracked": 130
+      }
+    },
+    {
+      "cycle": 21,
+      "n_patterns": 33,
+      "n_baseline": 327,
+      "n_survived": 209,
+      "mortality": 0.36085626911314983,
+      "mean_phi_base": 0.22334306270179227,
+      "mean_phi_stress": 0.20588225023418447,
+      "mean_robustness": 0.8607955183674164,
+      "phi_increase_frac": 0.2,
+      "tau": 0.12166472682729357,
+      "gate_beta": 5.5760111719369885,
+      "chemotaxis_strength": 0.6199265717528761,
+      "motor_sensitivity": 5.630181159474887,
+      "motor_threshold": 0.16185841914266347,
+      "memory_lambdas": [
+        0.02809135036881012,
+        0.28049822832361976
+      ],
+      "memory_mean": 0.0037265107966959476,
+      "memory_std": 0.017855651676654816,
+      "stress_regen": 0.3834178283912333,
+      "drought_steps": 877,
+      "elapsed_s": 59.57977318763733,
+      "resource_mean": 0.3654264211654663,
+      "foraging": {
+        "mean_displacement": 4.530723699055593,
+        "resource_at_patterns": 0.7445903420448303,
+        "n_tracked": 155
+      }
+    },
+    {
+      "cycle": 22,
+      "n_patterns": 17,
+      "n_baseline": 330,
+      "n_survived": 201,
+      "mortality": 0.3909090909090909,
+      "mean_phi_base": 0.2242365283194881,
+      "mean_phi_stress": 0.2101872442880704,
+      "mean_robustness": 0.8787740999376455,
+      "phi_increase_frac": 0.22522522522522523,
+      "tau": 0.2796490193344652,
+      "gate_beta": 5.639119485020637,
+      "chemotaxis_strength": 0.5979228853248061,
+      "motor_sensitivity": 4.821810688474216,
+      "motor_threshold": 0.056732681952416875,
+      "memory_lambdas": [
+        0.0380661643254332,
+        0.38008673458590275
+      ],
+      "memory_mean": 0.0031879828311502934,
+      "memory_std": 0.016580330207943916,
+      "stress_regen": 0.5209240805299753,
+      "drought_steps": 1081,
+      "elapsed_s": 48.09797286987305,
+      "resource_mean": 0.37414899468421936,
+      "foraging": {
+        "mean_displacement": 4.4504212309383835,
+        "resource_at_patterns": 0.6939464807510376,
+        "n_tracked": 147
+      }
+    },
+    {
+      "cycle": 23,
+      "n_patterns": 23,
+      "n_baseline": 328,
+      "n_survived": 228,
+      "mortality": 0.30487804878048785,
+      "mean_phi_base": 0.2322342022906764,
+      "mean_phi_stress": 0.22663601784945261,
+      "mean_robustness": 0.9159735226577227,
+      "phi_increase_frac": 0.2892561983471074,
+      "tau": 0.13722699889913192,
+      "gate_beta": 6.1369227916002265,
+      "chemotaxis_strength": 0.5580589710734786,
+      "motor_sensitivity": 4.52321353147272,
+      "motor_threshold": 0.1316338276490569,
+      "memory_lambdas": [
+        0.0545876838192759,
+        0.5
+      ],
+      "memory_mean": 0.061505407094955444,
+      "memory_std": 0.08331107348203659,
+      "stress_regen": 0.43335703713369417,
+      "drought_steps": 888,
+      "elapsed_s": 52.21338224411011,
+      "resource_mean": 0.38711124658584595,
+      "foraging": {
+        "mean_displacement": 4.271266159024215,
+        "resource_at_patterns": 0.7292457818984985,
+        "n_tracked": 133
+      }
+    },
+    {
+      "cycle": 24,
+      "n_patterns": 12,
+      "n_baseline": 345,
+      "n_survived": 183,
+      "mortality": 0.4695652173913043,
+      "mean_phi_base": 0.21888626715403595,
+      "mean_phi_stress": 0.21458692538877489,
+      "mean_robustness": 0.8897607686676052,
+      "phi_increase_frac": 0.3113207547169811,
+      "tau": 0.21423310646787277,
+      "gate_beta": 6.031509569287299,
+      "chemotaxis_strength": 0.5127138971351088,
+      "motor_sensitivity": 4.135925646522082,
+      "motor_threshold": 0.17967906650155782,
+      "memory_lambdas": [
+        0.06449572759071139,
+        0.5
+      ],
+      "memory_mean": 0.051605064421892166,
+      "memory_std": 0.08105304092168808,
+      "stress_regen": 0.4691255768661205,
+      "drought_steps": 1181,
+      "elapsed_s": 48.94530653953552,
+      "resource_mean": 0.32299208641052246,
+      "foraging": {
+        "mean_displacement": 4.559935943004105,
+        "resource_at_patterns": 0.7119045257568359,
+        "n_tracked": 129
+      }
+    },
+    {
+      "cycle": 25,
+      "n_patterns": 7,
+      "n_baseline": 334,
+      "n_survived": 189,
+      "mortality": 0.43413173652694614,
+      "mean_phi_base": 0.22667878447124418,
+      "mean_phi_stress": 0.2025697081398649,
+      "mean_robustness": 0.8540422730239831,
+      "phi_increase_frac": 0.288135593220339,
+      "tau": 0.2732508421875536,
+      "gate_beta": 6.065807053446768,
+      "chemotaxis_strength": 0.33004146805033097,
+      "motor_sensitivity": 3.7626269418979064,
+      "motor_threshold": 0.21642798241227865,
+      "memory_lambdas": [
+        0.07262966361969635,
+        0.5
+      ],
+      "memory_mean": 0.05453665181994438,
+      "memory_std": 0.08067472279071808,
+      "stress_regen": 0.4679161121258663,
+      "drought_steps": 1288,
+      "elapsed_s": 34.40921092033386,
+      "resource_mean": 0.7459434270858765,
+      "foraging": {
+        "mean_displacement": 4.75406114813664,
+        "resource_at_patterns": 0.7108972668647766,
+        "n_tracked": 145
+      }
+    },
+    {
+      "cycle": 26,
+      "n_patterns": 76,
+      "n_baseline": 391,
+      "n_survived": 281,
+      "mortality": 0.28132992327365725,
+      "mean_phi_base": 0.2154271122025973,
+      "mean_phi_stress": 0.204002542637976,
+      "mean_robustness": 0.8942792790612027,
+      "phi_increase_frac": 0.23295454545454544,
+      "tau": 0.3855644584633409,
+      "gate_beta": 6.0949385136365875,
+      "chemotaxis_strength": 0.38029869785532366,
+      "motor_sensitivity": 4.461422498920001,
+      "motor_threshold": 0.12149424012750386,
+      "memory_lambdas": [
+        0.07911506152906636,
+        0.5
+      ],
+      "memory_mean": 0.040419284254312515,
+      "memory_std": 0.06224459037184715,
+      "stress_regen": 0.42451439002195257,
+      "drought_steps": 920,
+      "elapsed_s": 54.54432916641235,
+      "resource_mean": 0.4224192500114441,
+      "foraging": {
+        "mean_displacement": 3.165726883144688,
+        "resource_at_patterns": 0.7312918305397034,
+        "n_tracked": 205
+      }
+    },
+    {
+      "cycle": 27,
+      "n_patterns": 8,
+      "n_baseline": 360,
+      "n_survived": 275,
+      "mortality": 0.23611111111111116,
+      "mean_phi_base": 0.23255582677025505,
+      "mean_phi_stress": 0.23217825249192256,
+      "mean_robustness": 0.9319513917096094,
+      "phi_increase_frac": 0.3558282208588957,
+      "tau": 0.18453253516927354,
+      "gate_beta": 6.138385251164435,
+      "chemotaxis_strength": 0.5074139236472548,
+      "motor_sensitivity": 4.086614723899402,
+      "motor_threshold": 0.17241712864488362,
+      "memory_lambdas": [
+        0.06953979553861944,
+        0.43948051302239255
+      ],
+      "memory_mean": 0.06424560397863388,
+      "memory_std": 0.07866998016834259,
+      "stress_regen": 0.42899897765347716,
+      "drought_steps": 1174,
+      "elapsed_s": 83.13900566101074,
+      "resource_mean": 0.702923595905304,
+      "foraging": {
+        "mean_displacement": 3.9249093650567835,
+        "resource_at_patterns": 0.7429319620132446,
+        "n_tracked": 191
+      }
+    },
+    {
+      "cycle": 28,
+      "n_patterns": 172,
+      "n_baseline": 345,
+      "n_survived": 264,
+      "mortality": 0.23478260869565215,
+      "mean_phi_base": 0.21207664655170583,
+      "mean_phi_stress": 0.19860118381882388,
+      "mean_robustness": 0.8876377857880206,
+      "phi_increase_frac": 0.22807017543859648,
+      "tau": 0.18175656879320734,
+      "gate_beta": 6.0208575993776305,
+      "chemotaxis_strength": 0.4499896525405348,
+      "motor_sensitivity": 4.141971204080619,
+      "motor_threshold": 0.1783268542960286,
+      "memory_lambdas": [
+        0.08617805127387404,
+        0.5
+      ],
+      "memory_mean": 0.03735958784818649,
+      "memory_std": 0.06068163737654686,
+      "stress_regen": 0.3992125593866229,
+      "drought_steps": 639,
+      "elapsed_s": 47.02896690368652,
+      "resource_mean": 0.35032233595848083,
+      "foraging": {
+        "mean_displacement": 3.9373937046431364,
+        "resource_at_patterns": 0.7505244612693787,
+        "n_tracked": 195
+      }
+    },
+    {
+      "cycle": 29,
+      "n_patterns": 162,
+      "n_baseline": 339,
+      "n_survived": 264,
+      "mortality": 0.22123893805309736,
+      "mean_phi_base": 0.21301845820202808,
+      "mean_phi_stress": 0.20027250721881723,
+      "mean_robustness": 0.909863149633168,
+      "phi_increase_frac": 0.32142857142857145,
+      "tau": 0.11829866254702204,
+      "gate_beta": 5.985795122385023,
+      "chemotaxis_strength": 0.6479394554160536,
+      "motor_sensitivity": 3.8696049485588446,
+      "motor_threshold": 0.22974087316542863,
+      "memory_lambdas": [
+        0.07491813443208666,
+        0.4346664482895489
+      ],
+      "memory_mean": 0.03840287774801254,
+      "memory_std": 0.06140048801898956,
+      "stress_regen": 0.43159899084571596,
+      "drought_steps": 692,
+      "elapsed_s": 84.99355387687683,
+      "resource_mean": 0.43044063448905945,
+      "foraging": {
+        "mean_displacement": 3.4510411138980266,
+        "resource_at_patterns": 0.7417559623718262,
+        "n_tracked": 196
+      }
+    }
+  ],
+  "phi_trajectory": [
+    {
+      "cycle": 0,
+      "phi_base": 0.24333340157607608,
+      "phi_stress": 0.22364586891646301,
+      "robustness": 0.9322093882292966,
+      "n_patterns": 48,
+      "mortality": 0.3365695792880259,
+      "displacement": 5.614722516970333,
+      "resource_at_patterns": 0.6998354196548462,
+      "memory_lambdas": [
+        0.007975209577652046,
+        0.0797449188055977
+      ],
+      "memory_mean": 0.1329454779624939,
+      "memory_std": 0.2561456263065338
+    },
+    {
+      "cycle": 1,
+      "phi_base": 0.22263668896008013,
+      "phi_stress": 0.211762235374642,
+      "robustness": 0.889684975024709,
+      "n_patterns": 17,
+      "mortality": 0.37215909090909094,
+      "displacement": 4.585372784038355,
+      "resource_at_patterns": 0.7115823030471802,
+      "memory_lambdas": [
+        0.008219527590649771,
+        0.08217860544949199
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 2,
+      "phi_base": 0.22794176482369444,
+      "phi_stress": 0.2158110443159138,
+      "robustness": 0.9133947817717454,
+      "n_patterns": 13,
+      "mortality": 0.34954407294832823,
+      "displacement": 4.391534805071061,
+      "resource_at_patterns": 0.7192670106887817,
+      "memory_lambdas": [
+        0.007349679145542386,
+        0.07347384041968665
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 3,
+      "phi_base": 0.22529004501740435,
+      "phi_stress": 0.2110869705678523,
+      "robustness": 0.9053925899366707,
+      "n_patterns": 6,
+      "mortality": 0.40697674418604646,
+      "displacement": 4.444101268446804,
+      "resource_at_patterns": 0.7419768571853638,
+      "memory_lambdas": [
+        0.0075030442527089245,
+        0.0749978292092842
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 4,
+      "phi_base": 0.22617876933416464,
+      "phi_stress": 0.21443271394353827,
+      "robustness": 0.8956910611909422,
+      "n_patterns": 41,
+      "mortality": 0.19805194805194803,
+      "displacement": 4.361536056265981,
+      "resource_at_patterns": 0.735417366027832,
+      "memory_lambdas": [
+        0.010451719843377574,
+        0.10445923892223706
+      ],
+      "memory_mean": 0.053790174424648285,
+      "memory_std": 0.15792298316955566
+    },
+    {
+      "cycle": 5,
+      "phi_base": 0.22663471895276543,
+      "phi_stress": 0.21577238995137618,
+      "robustness": 0.9155424811682107,
+      "n_patterns": 59,
+      "mortality": 0.28025477707006374,
+      "displacement": 4.399010332251183,
+      "resource_at_patterns": 0.713335394859314,
+      "memory_lambdas": [
+        0.011857455573935447,
+        0.11849859757294245
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 6,
+      "phi_base": 0.2215461560992816,
+      "phi_stress": 0.20395506048519024,
+      "robustness": 0.8591316071728036,
+      "n_patterns": 10,
+      "mortality": 0.3667711598746082,
+      "displacement": 4.5238502547700445,
+      "resource_at_patterns": 0.7411448955535889,
+      "memory_lambdas": [
+        0.011026561655739656,
+        0.11018661837299899
+      ],
+      "memory_mean": 2.031386969747473e-07,
+      "memory_std": 3.677147105918266e-05
+    },
+    {
+      "cycle": 7,
+      "phi_base": 0.21244308731950182,
+      "phi_stress": 0.19546582757296105,
+      "robustness": 0.8758327690811801,
+      "n_patterns": 19,
+      "mortality": 0.26100628930817615,
+      "displacement": 4.386979556387086,
+      "resource_at_patterns": 0.7338793277740479,
+      "memory_lambdas": [
+        0.011156083877569644,
+        0.11147181500445308
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 8,
+      "phi_base": 0.22703573397293195,
+      "phi_stress": 0.20712113354094727,
+      "robustness": 0.8535555332990415,
+      "n_patterns": 20,
+      "mortality": 0.29846153846153844,
+      "displacement": 4.699892051939853,
+      "resource_at_patterns": 0.7219660878181458,
+      "memory_lambdas": [
+        0.009991995958529886,
+        0.0998321720292626
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 9,
+      "phi_base": 0.22704225088019103,
+      "phi_stress": 0.2109999864416824,
+      "robustness": 0.8572323349525178,
+      "n_patterns": 23,
+      "mortality": 0.3448275862068966,
+      "displacement": 4.91930416375688,
+      "resource_at_patterns": 0.7450327277183533,
+      "memory_lambdas": [
+        0.012615233088677487,
+        0.12603014554970998
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0
+    },
+    {
+      "cycle": 10,
+      "phi_base": 0.21599382684716434,
+      "phi_stress": 0.191767972579963,
+      "robustness": 0.8565085097842955,
+      "n_patterns": 90,
+      "mortality": 0.21341463414634143,
+      "displacement": 4.309687668309447,
+      "resource_at_patterns": 0.7570603489875793,
+      "memory_lambdas": [
+        0.017705676538310712,
+        0.1768726593089475
+      ],
+      "memory_mean": 1.3356944350562117e-07,
+      "memory_std": 2.417828181933146e-05
+    },
+    {
+      "cycle": 11,
+      "phi_base": 0.21131183244024485,
+      "phi_stress": 0.18340441552892137,
+      "robustness": 0.8252998696156199,
+      "n_patterns": 30,
+      "mortality": 0.3088235294117647,
+      "displacement": 3.949877181964623,
+      "resource_at_patterns": 0.7733232378959656,
+      "memory_lambdas": [
+        0.01591028023008458,
+        0.15892928742653467
+      ],
+      "memory_mean": 7.942986849229783e-05,
+      "memory_std": 0.0019098230404779315
+    },
+    {
+      "cycle": 12,
+      "phi_base": 0.2141567880955845,
+      "phi_stress": 0.1906346487199008,
+      "robustness": 0.8508745876902676,
+      "n_patterns": 98,
+      "mortality": 0.1620795107033639,
+      "displacement": 3.950369238044684,
+      "resource_at_patterns": 0.7526262998580933,
+      "memory_lambdas": [
+        0.026634422531057113,
+        0.26603870757659187
+      ],
+      "memory_mean": 6.828218374721473e-06,
+      "memory_std": 0.0004046675458084792
+    },
+    {
+      "cycle": 13,
+      "phi_base": 0.21155443810403227,
+      "phi_stress": 0.18422158540818867,
+      "robustness": 0.8269001388634555,
+      "n_patterns": 19,
+      "mortality": 0.3097345132743363,
+      "displacement": 4.278486340783653,
+      "resource_at_patterns": 0.7542205452919006,
+      "memory_lambdas": [
+        0.02233991273797829,
+        0.22313533210026557
+      ],
+      "memory_mean": 0.00240898784250021,
+      "memory_std": 0.014238359406590462
+    },
+    {
+      "cycle": 14,
+      "phi_base": 0.22494397050815526,
+      "phi_stress": 0.204558269435181,
+      "robustness": 0.8380807559950623,
+      "n_patterns": 17,
+      "mortality": 0.3951367781155015,
+      "displacement": 4.477268532321253,
+      "resource_at_patterns": 0.7110157012939453,
+      "memory_lambdas": [
+        0.019024125405120444,
+        0.19000895863568906
+      ],
+      "memory_mean": 0.0007085136021487415,
+      "memory_std": 0.007091253064572811
+    },
+    {
+      "cycle": 15,
+      "phi_base": 0.22922282078294295,
+      "phi_stress": 0.2168593709354286,
+      "robustness": 0.9040367578148653,
+      "n_patterns": 68,
+      "mortality": 0.32573289902280134,
+      "displacement": 4.693402660617549,
+      "resource_at_patterns": 0.7507433295249939,
+      "memory_lambdas": [
+        0.01953849001429909,
+        0.1951370937308831
+      ],
+      "memory_mean": 0.00020449585281312466,
+      "memory_std": 0.003695070743560791
+    },
+    {
+      "cycle": 16,
+      "phi_base": 0.22565479088038348,
+      "phi_stress": 0.21423085352791277,
+      "robustness": 0.918338740415217,
+      "n_patterns": 68,
+      "mortality": 0.26821192052980136,
+      "displacement": 4.5021268186165155,
+      "resource_at_patterns": 0.7407141327857971,
+      "memory_lambdas": [
+        0.021907558684952144,
+        0.2187876570448128
+      ],
+      "memory_mean": 0.000258550513535738,
+      "memory_std": 0.003964583855122328
+    },
+    {
+      "cycle": 17,
+      "phi_base": 0.22200547085826983,
+      "phi_stress": 0.2003750226372521,
+      "robustness": 0.8475935136673192,
+      "n_patterns": 7,
+      "mortality": 0.4891640866873065,
+      "displacement": 4.662762758583246,
+      "resource_at_patterns": 0.7215451002120972,
+      "memory_lambdas": [
+        0.030023283520019622,
+        0.2998259253783084
+      ],
+      "memory_mean": 0.0007392133120447397,
+      "memory_std": 0.007433691062033176
+    },
+    {
+      "cycle": 18,
+      "phi_base": 0.19455195783191065,
+      "phi_stress": 0.1756898870155146,
+      "robustness": 0.8955371075342813,
+      "n_patterns": 131,
+      "mortality": 0.12043795620437958,
+      "displacement": 4.706199138924452,
+      "resource_at_patterns": 0.7675119638442993,
+      "memory_lambdas": [
+        0.029100454161169402,
+        0.2906014290878278
+      ],
+      "memory_mean": 0.001447417656891048,
+      "memory_std": 0.009920577518641949
+    },
+    {
+      "cycle": 19,
+      "phi_base": 0.20737873781756033,
+      "phi_stress": 0.17427586927672803,
+      "robustness": 0.832451763503617,
+      "n_patterns": 40,
+      "mortality": 0.16666666666666663,
+      "displacement": 4.569439264530825,
+      "resource_at_patterns": 0.7284626960754395,
+      "memory_lambdas": [
+        0.02864228966391552,
+        0.28601728645152225
+      ],
+      "memory_mean": 0.0023509166203439236,
+      "memory_std": 0.013711913488805294
+    },
+    {
+      "cycle": 20,
+      "phi_base": 0.22597462333485727,
+      "phi_stress": 0.20141968389727036,
+      "robustness": 0.848423429618124,
+      "n_patterns": 80,
+      "mortality": 0.2559726962457338,
+      "displacement": 4.395797365774929,
+      "resource_at_patterns": 0.7176456451416016,
+      "memory_lambdas": [
+        0.029164912570404575,
+        0.2912269650508877
+      ],
+      "memory_mean": 0.0036582420580089092,
+      "memory_std": 0.017899196594953537
+    },
+    {
+      "cycle": 21,
+      "phi_base": 0.22334306270179227,
+      "phi_stress": 0.20588225023418447,
+      "robustness": 0.8607955183674164,
+      "n_patterns": 33,
+      "mortality": 0.36085626911314983,
+      "displacement": 4.530723699055593,
+      "resource_at_patterns": 0.7445903420448303,
+      "memory_lambdas": [
+        0.02809135036881012,
+        0.28049822832361976
+      ],
+      "memory_mean": 0.0037265107966959476,
+      "memory_std": 0.017855651676654816
+    },
+    {
+      "cycle": 22,
+      "phi_base": 0.2242365283194881,
+      "phi_stress": 0.2101872442880704,
+      "robustness": 0.8787740999376455,
+      "n_patterns": 17,
+      "mortality": 0.3909090909090909,
+      "displacement": 4.4504212309383835,
+      "resource_at_patterns": 0.6939464807510376,
+      "memory_lambdas": [
+        0.0380661643254332,
+        0.38008673458590275
+      ],
+      "memory_mean": 0.0031879828311502934,
+      "memory_std": 0.016580330207943916
+    },
+    {
+      "cycle": 23,
+      "phi_base": 0.2322342022906764,
+      "phi_stress": 0.22663601784945261,
+      "robustness": 0.9159735226577227,
+      "n_patterns": 23,
+      "mortality": 0.30487804878048785,
+      "displacement": 4.271266159024215,
+      "resource_at_patterns": 0.7292457818984985,
+      "memory_lambdas": [
+        0.0545876838192759,
+        0.5
+      ],
+      "memory_mean": 0.061505407094955444,
+      "memory_std": 0.08331107348203659
+    },
+    {
+      "cycle": 24,
+      "phi_base": 0.21888626715403595,
+      "phi_stress": 0.21458692538877489,
+      "robustness": 0.8897607686676052,
+      "n_patterns": 12,
+      "mortality": 0.4695652173913043,
+      "displacement": 4.559935943004105,
+      "resource_at_patterns": 0.7119045257568359,
+      "memory_lambdas": [
+        0.06449572759071139,
+        0.5
+      ],
+      "memory_mean": 0.051605064421892166,
+      "memory_std": 0.08105304092168808
+    },
+    {
+      "cycle": 25,
+      "phi_base": 0.22667878447124418,
+      "phi_stress": 0.2025697081398649,
+      "robustness": 0.8540422730239831,
+      "n_patterns": 7,
+      "mortality": 0.43413173652694614,
+      "displacement": 4.75406114813664,
+      "resource_at_patterns": 0.7108972668647766,
+      "memory_lambdas": [
+        0.07262966361969635,
+        0.5
+      ],
+      "memory_mean": 0.05453665181994438,
+      "memory_std": 0.08067472279071808
+    },
+    {
+      "cycle": 26,
+      "phi_base": 0.2154271122025973,
+      "phi_stress": 0.204002542637976,
+      "robustness": 0.8942792790612027,
+      "n_patterns": 76,
+      "mortality": 0.28132992327365725,
+      "displacement": 3.165726883144688,
+      "resource_at_patterns": 0.7312918305397034,
+      "memory_lambdas": [
+        0.07911506152906636,
+        0.5
+      ],
+      "memory_mean": 0.040419284254312515,
+      "memory_std": 0.06224459037184715
+    },
+    {
+      "cycle": 27,
+      "phi_base": 0.23255582677025505,
+      "phi_stress": 0.23217825249192256,
+      "robustness": 0.9319513917096094,
+      "n_patterns": 8,
+      "mortality": 0.23611111111111116,
+      "displacement": 3.9249093650567835,
+      "resource_at_patterns": 0.7429319620132446,
+      "memory_lambdas": [
+        0.06953979553861944,
+        0.43948051302239255
+      ],
+      "memory_mean": 0.06424560397863388,
+      "memory_std": 0.07866998016834259
+    },
+    {
+      "cycle": 28,
+      "phi_base": 0.21207664655170583,
+      "phi_stress": 0.19860118381882388,
+      "robustness": 0.8876377857880206,
+      "n_patterns": 172,
+      "mortality": 0.23478260869565215,
+      "displacement": 3.9373937046431364,
+      "resource_at_patterns": 0.7505244612693787,
+      "memory_lambdas": [
+        0.08617805127387404,
+        0.5
+      ],
+      "memory_mean": 0.03735958784818649,
+      "memory_std": 0.06068163737654686
+    },
+    {
+      "cycle": 29,
+      "phi_base": 0.21301845820202808,
+      "phi_stress": 0.20027250721881723,
+      "robustness": 0.909863149633168,
+      "n_patterns": 162,
+      "mortality": 0.22123893805309736,
+      "displacement": 3.4510411138980266,
+      "resource_at_patterns": 0.7417559623718262,
+      "memory_lambdas": [
+        0.07491813443208666,
+        0.4346664482895489
+      ],
+      "memory_mean": 0.03840287774801254,
+      "memory_std": 0.06140048801898956
+    }
+  ],
+  "tau": 0.11829866254702204,
+  "gate_beta": 5.985795122385023,
+  "chemotaxis_strength": 0.6479394554160536,
+  "motor_sensitivity": 3.8696049485588446,
+  "motor_threshold": 0.22974087316542863,
+  "memory_lambdas": [
+    0.07491813443208666,
+    0.4346664482895489
+  ],
+  "config": {
+    "grid_size": 128,
+    "n_channels": 16,
+    "dt": 0.1,
+    "resource_max": 1.0,
+    "resource_regen": 0.01,
+    "resource_consume": 0.003,
+    "resource_half_sat": 0.2,
+    "noise_amp": 0.003,
+    "decay_rate": 0.0,
+    "maintenance_rate": 0.003,
+    "similarity_radius": 5,
+    "tau": 0.3,
+    "gate_beta": 5.0,
+    "alpha": 1.0,
+    "d_embed": 16,
+    "chemotaxis_strength": 0.5,
+    "motor_channels": 2,
+    "motor_sensitivity": 5.0,
+    "motor_threshold": 0.3,
+    "max_speed": 1.5,
+    "velocity_blur": 3,
+    "memory_channels": 2,
+    "memory_lambdas": [
+      0.01,
+      0.1
+    ],
+    "n_resource_patches": 4,
+    "patch_shift_period": 500,
+    "n_regular": 12,
+    "memory_start": 12,
+    "motor_start": 14
+  },
+  "seed": 123,
+  "status": "complete"
+}
