@@ -1083,3 +1083,77 @@ V12 identified "individual-level plasticity" as the missing ingredient. V16 test
 - `results/v16_s42/` — Seed 42 (30 cycles, final + snapshots)
 - `results/v16_s123/` — Seed 123 (30 cycles, final + snapshots)
 - `results/v16_s7/` — Seed 7 (30 cycles, final + snapshots)
+
+---
+
+## 2026-02-17: V17 Signaling Lenia — Quorum Sensing
+
+### Design Rationale
+
+V16's lesson: C×C×N×N coupling fields add noise faster than selection filters. Constrain degrees of freedom. V17 takes a fundamentally different approach to inter-pattern coordination: instead of modifying internal coupling weights, patterns EMIT and SENSE diffusible signal molecules that spread through the environment. Analogous to bacterial quorum sensing.
+
+Key differences from V16:
+- Signal fields are (2, N, N) — NOT (C, C, N, N). Two orders of magnitude fewer DoF.
+- Coupling changes are GLOBAL (same shift everywhere), not per-location.
+- Only 4 new evolvable scalars (emission_strength × 2, signal_sensitivity × 2), plus (2, C, C) coupling shift matrices.
+- Information flows through the environment, not through internal state.
+
+Architecture: wraps V15's physics, adds signal layer between chunks:
+1. Signals diffuse (Laplacian) and decay each inter-chunk step
+2. Pattern cells emit signals based on channel activity (thresholded sigmoid)
+3. Mean signal concentration modulates coupling matrix (thresholded shifts)
+
+### 3-Seed Results (C=16, N=128, 30 cycles each)
+
+| Seed | Mean Rob. | Max Rob. | >1.0 | Pop@Max | Emission (init→final) | Sensitivity (init→final) |
+|------|-----------|----------|------|---------|----------------------|-------------------------|
+| 42   | 0.907     | **1.125**| 1/30 | 2       | 0.047→0.029          | 0.239→**0.031**         |
+| 123  | 0.875     | 0.929    | 0/30 | 49      | 0.047→0.016          | 0.331→**0.840**         |
+| 7    | 0.894     | 0.939    | 0/30 | 150     | 0.062→**0.001**      | 0.261→0.192             |
+| **Agg** | **0.892** | **1.125** | **1/90** | | | |
+
+### Signal Evolution: Three Divergent Strategies
+
+1. **Seed 42 — Hyper-sensitive listener**: Sensitivity evolved DOWN dramatically (0.24→0.03), meaning the coupling shift activates at trace signal levels. Emission decreased moderately. This seed produced the **highest single-cycle robustness ever recorded (1.125)** at population=2. The signal-modulated coupling was maximally active.
+
+2. **Seed 123 — Desensitized**: Sensitivity evolved UP (0.33→0.84), making the coupling shift nearly impossible to trigger. Emission also decreased. Effectively disabled signaling through desensitization.
+
+3. **Seed 7 — Emission collapse**: Emission plummeted to near-zero (0.062→0.001). Signals vanish from the environment. Effectively disabled signaling through silence.
+
+### The Bottleneck-Signaling Interaction
+
+Seed 42's peak robustness (1.125) occurred at the lowest population point (2 patterns). This extends the bottleneck-robustness effect seen in V13/V15, but with a twist: the signaling mechanism amplifies it. At low population, signal concentrations are dominated by the surviving patterns. With hyper-sensitive coupling modulation, the coupling matrix shifts to match whatever the survivors are doing — a form of "the environment reconfigures around the survivors."
+
+### Cross-Version Comparison (Updated)
+
+| Version | Substrate | Mean Rob. | Max Rob. | >1.0 | Key Feature |
+|---------|-----------|-----------|----------|------|-------------|
+| V13     | Content coupling | 0.923 | 1.052 | 3/90 | Baseline |
+| V14     | + Chemotaxis | 0.91* | 0.95* | ~1/90 | Directed motion |
+| V15     | + Memory | 0.907 | 1.070 | 3/90 | Temporal integration |
+| V16     | + Hebbian plasticity | 0.892 | 0.974 | 0/90 | **Negative** |
+| V17     | + Quorum signaling | 0.892 | **1.125** | 1/90 | Extreme peaks, inconsistent |
+
+### Interpretation
+
+V17's mean robustness (0.892) equals V16's — signaling doesn't help on average. But it produces the highest-ever single-cycle peak (1.125), specifically in a seed that evolved hyper-sensitivity. The mechanism: when very few patterns remain, their signals dominate the field, the coupling matrix shifts to accommodate them, and they become MORE integrated under stress than baseline.
+
+However, 2/3 seeds evolved to SUPPRESS signaling (through different mechanisms — desensitization vs. emission collapse). This suggests signaling is:
+- **Costly** in large populations (noise from many emitters disrupts coupling)
+- **Beneficial** only at population bottlenecks (coherent signal from few survivors)
+- **Not consistently selected for** — the default evolutionary trajectory is to silence it
+
+The lesson parallels V16: adding inter-pattern coordination mechanisms is difficult. The substrate finds it easier to suppress the mechanism than to use it constructively. V15's temporal memory remains the only consistently-selected substrate extension.
+
+### What This Means
+
+1. **V15 is confirmed as the best substrate.** Both V16 (Hebbian) and V17 (signaling) fail to consistently improve on it. V15's temporal memory is the only addition that evolution reliably selects for.
+
+2. **The bottleneck effect is the key phenomenon.** Across V13, V15, V17 — robustness >1.0 appears exclusively at low population. This isn't a substrate property; it's a selection dynamics property. Small populations undergo intense selection, and the survivors are disproportionately integrated.
+
+3. **Time to pivot from substrate engineering to measurement.** We've explored 5 substrate variants (V13-V17). The returns are diminishing. The formal experiment program (Experiments 2-12) should proceed on V15.
+
+### Data
+- `results/v17_s42/` — Seed 42 (30 cycles, final + snapshots)
+- `results/v17_s123/` — Seed 123 (30 cycles, final + snapshots)
+- `results/v17_s7/` — Seed 7 (30 cycles, final + snapshots)

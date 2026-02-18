@@ -1,0 +1,2133 @@
+{
+  "cycle_stats": [
+    {
+      "cycle": 0,
+      "n_patterns": 8,
+      "n_baseline": 303,
+      "n_survived": 155,
+      "mortality": 0.4884488448844885,
+      "mean_phi_base": 0.25231164844945814,
+      "mean_phi_stress": 0.23501080640466152,
+      "mean_robustness": 0.909584735470361,
+      "phi_increase_frac": 0.3050847457627119,
+      "tau": 0.2438030481338501,
+      "gate_beta": 4.914630091190338,
+      "chemotaxis_strength": 0.6030885219573975,
+      "motor_sensitivity": 4.89149734377861,
+      "motor_threshold": 0.23554271459579468,
+      "memory_lambdas": [
+        0.011535494485008565,
+        0.11534456394313983
+      ],
+      "memory_mean": 0.13894516229629517,
+      "memory_std": 0.25612178444862366,
+      "emission_strength": [
+        0.04721176569713988,
+        0.04721176569713988
+      ],
+      "signal_sensitivity": [
+        0.23868976419743163,
+        0.23868976419743163
+      ],
+      "coupling_shift_magnitude": 0.02772747352719307,
+      "signal_0_mean": 0.2361070066690445,
+      "signal_0_max": 0.34058448672294617,
+      "signal_0_std": 0.023929182440042496,
+      "signal_1_mean": 0.2364007532596588,
+      "signal_1_max": 0.3422732651233673,
+      "signal_1_std": 0.02479942888021469,
+      "stress_regen": 0.5488411318254407,
+      "drought_steps": 1098,
+      "elapsed_s": 158.12226343154907,
+      "resource_mean": 0.6199796199798584,
+      "foraging": {
+        "mean_displacement": 5.769962401122858,
+        "resource_at_patterns": 0.6905616521835327,
+        "n_tracked": 105
+      }
+    },
+    {
+      "cycle": 1,
+      "n_patterns": 22,
+      "n_baseline": 349,
+      "n_survived": 257,
+      "mortality": 0.26361031518624645,
+      "mean_phi_base": 0.24093924170515763,
+      "mean_phi_stress": 0.22188221168156405,
+      "mean_robustness": 0.8817252616977916,
+      "phi_increase_frac": 0.2129032258064516,
+      "tau": 0.3632636308670044,
+      "gate_beta": 4.559654533863068,
+      "chemotaxis_strength": 0.533324682712555,
+      "motor_sensitivity": 5.018348544836044,
+      "motor_threshold": 0.15085195302963256,
+      "memory_lambdas": [
+        0.010383366338235006,
+        0.10381621969033022
+      ],
+      "memory_mean": 0.06356973946094513,
+      "memory_std": 0.14700451493263245,
+      "emission_strength": [
+        0.05307961847419116,
+        0.05307961847419116
+      ],
+      "signal_sensitivity": [
+        0.29163724920836887,
+        0.29163724920836887
+      ],
+      "coupling_shift_magnitude": 0.02452225610613823,
+      "signal_0_mean": 0.2196204960346222,
+      "signal_0_max": 0.32359835505485535,
+      "signal_0_std": 0.02142765186727047,
+      "signal_1_mean": 0.21638329327106476,
+      "signal_1_max": 0.3011440336704254,
+      "signal_1_std": 0.017831653356552124,
+      "stress_regen": 0.5675112428565124,
+      "drought_steps": 905,
+      "elapsed_s": 57.01570463180542,
+      "resource_mean": 0.37550780177116394,
+      "foraging": {
+        "mean_displacement": 3.9499802611510937,
+        "resource_at_patterns": 0.6473068594932556,
+        "n_tracked": 184
+      }
+    },
+    {
+      "cycle": 2,
+      "n_patterns": 19,
+      "n_baseline": 361,
+      "n_survived": 245,
+      "mortality": 0.3213296398891967,
+      "mean_phi_base": 0.24907609648573073,
+      "mean_phi_stress": 0.23786644237553428,
+      "mean_robustness": 0.8988364606616753,
+      "phi_increase_frac": 0.2653061224489796,
+      "tau": 0.3089607298374176,
+      "gate_beta": 4.299450838565827,
+      "chemotaxis_strength": 0.664509379863739,
+      "motor_sensitivity": 4.877935275435448,
+      "motor_threshold": 0.13543843924999235,
+      "memory_lambdas": [
+        0.009743962147955207,
+        0.09741480857082943
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "emission_strength": [
+        0.040040575580325165,
+        0.040040575580325165
+      ],
+      "signal_sensitivity": [
+        0.29045123290854163,
+        0.29045123290854163
+      ],
+      "coupling_shift_magnitude": 0.032112233340740204,
+      "signal_0_mean": 0.2619127631187439,
+      "signal_0_max": 0.36162450909614563,
+      "signal_0_std": 0.022459419444203377,
+      "signal_1_mean": 0.25731760263442993,
+      "signal_1_max": 0.36646878719329834,
+      "signal_1_std": 0.020869961008429527,
+      "stress_regen": 0.5636782972170252,
+      "drought_steps": 732,
+      "elapsed_s": 47.12377691268921,
+      "resource_mean": 0.3635557293891907,
+      "foraging": {
+        "mean_displacement": 3.9675647850657865,
+        "resource_at_patterns": 0.7069339156150818,
+        "n_tracked": 175
+      }
+    },
+    {
+      "cycle": 3,
+      "n_patterns": 12,
+      "n_baseline": 361,
+      "n_survived": 255,
+      "mortality": 0.2936288088642659,
+      "mean_phi_base": 0.24374221688478717,
+      "mean_phi_stress": 0.23533367786046896,
+      "mean_robustness": 0.9112968597352644,
+      "phi_increase_frac": 0.267515923566879,
+      "tau": 0.2895455777645111,
+      "gate_beta": 3.968146812915802,
+      "chemotaxis_strength": 0.5996397733688354,
+      "motor_sensitivity": 5.163081094622612,
+      "motor_threshold": 0.1235421299934387,
+      "memory_lambdas": [
+        0.012798193901195843,
+        0.12793753205012262
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "emission_strength": [
+        0.027328925107600092,
+        0.027328925107600092
+      ],
+      "signal_sensitivity": [
+        0.23877493045907458,
+        0.23877493045907458
+      ],
+      "coupling_shift_magnitude": 0.020282519981265068,
+      "signal_0_mean": 0.19368082284927368,
+      "signal_0_max": 0.27329587936401367,
+      "signal_0_std": 0.017746219411492348,
+      "signal_1_mean": 0.18964961171150208,
+      "signal_1_max": 0.2524074614048004,
+      "signal_1_std": 0.016184864565730095,
+      "stress_regen": 0.6003932650309955,
+      "drought_steps": 875,
+      "elapsed_s": 45.9900267124176,
+      "resource_mean": 0.35905206203460693,
+      "foraging": {
+        "mean_displacement": 3.966681550193666,
+        "resource_at_patterns": 0.6902029514312744,
+        "n_tracked": 186
+      }
+    },
+    {
+      "cycle": 4,
+      "n_patterns": 4,
+      "n_baseline": 365,
+      "n_survived": 229,
+      "mortality": 0.3726027397260274,
+      "mean_phi_base": 0.2453037561975123,
+      "mean_phi_stress": 0.22909937165689534,
+      "mean_robustness": 0.8919187136970298,
+      "phi_increase_frac": 0.24324324324324326,
+      "tau": 0.346696811914444,
+      "gate_beta": 4.187102425098419,
+      "chemotaxis_strength": 0.6027681197971105,
+      "motor_sensitivity": 5.376831009984016,
+      "motor_threshold": 0.08096726834774015,
+      "memory_lambdas": [
+        0.013181724075789809,
+        0.131762237619413
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "emission_strength": [
+        0.025927990237263856,
+        0.025927990237263856
+      ],
+      "signal_sensitivity": [
+        0.2259568521916036,
+        0.2259568521916036
+      ],
+      "coupling_shift_magnitude": 0.012489068321883678,
+      "signal_0_mean": 0.13214942812919617,
+      "signal_0_max": 0.18856467306613922,
+      "signal_0_std": 0.012386126443743706,
+      "signal_1_mean": 0.12977942824363708,
+      "signal_1_max": 0.18607637286186218,
+      "signal_1_std": 0.015364387072622776,
+      "stress_regen": 0.5642933851325317,
+      "drought_steps": 1101,
+      "elapsed_s": 38.05849885940552,
+      "resource_mean": 0.7081848382949829,
+      "foraging": {
+        "mean_displacement": 3.897703575107156,
+        "resource_at_patterns": 0.669752299785614,
+        "n_tracked": 188
+      }
+    },
+    {
+      "cycle": 5,
+      "n_patterns": 4,
+      "n_baseline": 383,
+      "n_survived": 263,
+      "mortality": 0.3133159268929504,
+      "mean_phi_base": 0.24335836421711765,
+      "mean_phi_stress": 0.23513691394856964,
+      "mean_robustness": 0.9095341458352267,
+      "phi_increase_frac": 0.29651162790697677,
+      "tau": 0.516892009973526,
+      "gate_beta": 4.042866659164429,
+      "chemotaxis_strength": 0.7510922994464636,
+      "motor_sensitivity": 4.782739475369453,
+      "motor_threshold": 0.09893776178359984,
+      "memory_lambdas": [
+        0.01400954562693977,
+        0.14002743884874014
+      ],
+      "memory_mean": 5.0629438419491635e-09,
+      "memory_std": 9.164767220681824e-07,
+      "emission_strength": [
+        0.022829840600118913,
+        0.022829840600118913
+      ],
+      "signal_sensitivity": [
+        0.22581867358840443,
+        0.22581867358840443
+      ],
+      "coupling_shift_magnitude": 0.012055039405822754,
+      "signal_0_mean": 0.12886813282966614,
+      "signal_0_max": 0.18233725428581238,
+      "signal_0_std": 0.011359065771102905,
+      "signal_1_mean": 0.12464956939220428,
+      "signal_1_max": 0.16132347285747528,
+      "signal_1_std": 0.008511188440024853,
+      "stress_regen": 0.5875909435877013,
+      "drought_steps": 1491,
+      "elapsed_s": 37.455063343048096,
+      "resource_mean": 0.713893473148346,
+      "foraging": {
+        "mean_displacement": 3.4374531121821637,
+        "resource_at_patterns": 0.6983190178871155,
+        "n_tracked": 198
+      }
+    },
+    {
+      "cycle": 6,
+      "n_patterns": 3,
+      "n_baseline": 348,
+      "n_survived": 140,
+      "mortality": 0.5977011494252873,
+      "mean_phi_base": 0.27097484395333593,
+      "mean_phi_stress": 0.2650777245370241,
+      "mean_robustness": 0.9125716354166085,
+      "phi_increase_frac": 0.3269230769230769,
+      "tau": 0.40341796278953557,
+      "gate_beta": 4.349003648757935,
+      "chemotaxis_strength": 0.7126521643251181,
+      "motor_sensitivity": 4.674407377839088,
+      "motor_threshold": 0.1269001245498657,
+      "memory_lambdas": [
+        0.020497325398805055,
+        0.20486057806702437
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "emission_strength": [
+        0.031504532605422186,
+        0.031504532605422186
+      ],
+      "signal_sensitivity": [
+        0.19000235947815,
+        0.19000235947815
+      ],
+      "coupling_shift_magnitude": 0.011561328545212746,
+      "signal_0_mean": 0.12431855499744415,
+      "signal_0_max": 0.17261292040348053,
+      "signal_0_std": 0.01131700910627842,
+      "signal_1_mean": 0.11936420947313309,
+      "signal_1_max": 0.15803728997707367,
+      "signal_1_std": 0.009962336160242558,
+      "stress_regen": 0.5837987083914101,
+      "drought_steps": 1292,
+      "elapsed_s": 35.26958394050598,
+      "resource_mean": 0.7246067523956299,
+      "foraging": {
+        "mean_displacement": 4.273492160062284,
+        "resource_at_patterns": 0.6659770607948303,
+        "n_tracked": 137
+      }
+    },
+    {
+      "cycle": 7,
+      "n_patterns": 46,
+      "n_baseline": 326,
+      "n_survived": 322,
+      "mortality": 0.012269938650306789,
+      "mean_phi_base": 0.22417338267858422,
+      "mean_phi_stress": 0.20746433928137534,
+      "mean_robustness": 0.8889821784640662,
+      "phi_increase_frac": 0.2342857142857143,
+      "tau": 0.46875928640365605,
+      "gate_beta": 4.2114407420158395,
+      "chemotaxis_strength": 0.8052756186574699,
+      "motor_sensitivity": 4.783645525574684,
+      "motor_threshold": 0.10770831704139708,
+      "memory_lambdas": [
+        0.028225423328467867,
+        0.28208669011649157
+      ],
+      "memory_mean": 2.9959401217638515e-05,
+      "memory_std": 0.0009369299514219165,
+      "emission_strength": [
+        0.03190811011517472,
+        0.03190811011517472
+      ],
+      "signal_sensitivity": [
+        0.1793996980345238,
+        0.1793996980345238
+      ],
+      "coupling_shift_magnitude": 0.014072313904762268,
+      "signal_0_mean": 0.16079935431480408,
+      "signal_0_max": 0.23090028762817383,
+      "signal_0_std": 0.013418841175734997,
+      "signal_1_mean": 0.1266656219959259,
+      "signal_1_max": 0.17589415609836578,
+      "signal_1_std": 0.012241825461387634,
+      "stress_regen": 0.5031887357973841,
+      "drought_steps": 910,
+      "elapsed_s": 46.314225912094116,
+      "resource_mean": 0.32824060320854187,
+      "foraging": {
+        "mean_displacement": 3.9875115523668203,
+        "resource_at_patterns": 0.7130281329154968,
+        "n_tracked": 190
+      }
+    },
+    {
+      "cycle": 8,
+      "n_patterns": 20,
+      "n_baseline": 363,
+      "n_survived": 295,
+      "mortality": 0.18732782369146006,
+      "mean_phi_base": 0.2296316541334785,
+      "mean_phi_stress": 0.2142440103394073,
+      "mean_robustness": 0.8915416345552875,
+      "phi_increase_frac": 0.24444444444444444,
+      "tau": 0.37772330641746527,
+      "gate_beta": 4.140752077102662,
+      "chemotaxis_strength": 0.686547875031829,
+      "motor_sensitivity": 5.125237748026848,
+      "motor_threshold": 0.2017574071884155,
+      "memory_lambdas": [
+        0.03228529965214007,
+        0.3226510669669498
+      ],
+      "memory_mean": 0.0015422319993376732,
+      "memory_std": 0.009266525506973267,
+      "emission_strength": [
+        0.0382467171542052,
+        0.0382467171542052
+      ],
+      "signal_sensitivity": [
+        0.17632634980493483,
+        0.17632634980493483
+      ],
+      "coupling_shift_magnitude": 0.015134349465370178,
+      "signal_0_mean": 0.1711401343345642,
+      "signal_0_max": 0.23204930126667023,
+      "signal_0_std": 0.014589495956897736,
+      "signal_1_mean": 0.13349324464797974,
+      "signal_1_max": 0.18222792446613312,
+      "signal_1_std": 0.012373507022857666,
+      "stress_regen": 0.5385738546867586,
+      "drought_steps": 999,
+      "elapsed_s": 47.695038080215454,
+      "resource_mean": 0.4130181670188904,
+      "foraging": {
+        "mean_displacement": 3.7158837288575683,
+        "resource_at_patterns": 0.7040107846260071,
+        "n_tracked": 204
+      }
+    },
+    {
+      "cycle": 9,
+      "n_patterns": 5,
+      "n_baseline": 332,
+      "n_survived": 284,
+      "mortality": 0.14457831325301207,
+      "mean_phi_base": 0.22448219202367486,
+      "mean_phi_stress": 0.20849128319820232,
+      "mean_robustness": 0.8914609640603322,
+      "phi_increase_frac": 0.2857142857142857,
+      "tau": 0.6417404115200043,
+      "gate_beta": 4.2337943732738506,
+      "chemotaxis_strength": 0.8096639271825553,
+      "motor_sensitivity": 5.183631543070078,
+      "motor_threshold": 0.23668550848960873,
+      "memory_lambdas": [
+        0.040862242632266566,
+        0.40835546929367333
+      ],
+      "memory_mean": 0.003513921517878771,
+      "memory_std": 0.014885228127241135,
+      "emission_strength": [
+        0.056768210643829094,
+        0.056768210643829094
+      ],
+      "signal_sensitivity": [
+        0.13256677008205633,
+        0.13256677008205633
+      ],
+      "coupling_shift_magnitude": 0.018045006319880486,
+      "signal_0_mean": 0.19512641429901123,
+      "signal_0_max": 0.272476464509964,
+      "signal_0_std": 0.019005363807082176,
+      "signal_1_mean": 0.1533023566007614,
+      "signal_1_max": 0.22561639547348022,
+      "signal_1_std": 0.016761887818574905,
+      "stress_regen": 0.5538413381428481,
+      "drought_steps": 1362,
+      "elapsed_s": 38.761937618255615,
+      "resource_mean": 0.6561414003372192,
+      "foraging": {
+        "mean_displacement": 4.015192035060846,
+        "resource_at_patterns": 0.6579718589782715,
+        "n_tracked": 181
+      }
+    },
+    {
+      "cycle": 10,
+      "n_patterns": 2,
+      "n_baseline": 197,
+      "n_survived": 47,
+      "mortality": 0.7614213197969544,
+      "mean_phi_base": 0.2841347675466158,
+      "mean_phi_stress": 0.2399874127063996,
+      "mean_robustness": 1.1252406811179285,
+      "phi_increase_frac": 0.46153846153846156,
+      "tau": 0.5859869241714477,
+      "gate_beta": 4.105109053850175,
+      "chemotaxis_strength": 0.6584590908139945,
+      "motor_sensitivity": 5.11075359210372,
+      "motor_threshold": 0.23622037265449758,
+      "memory_lambdas": [
+        0.028131369570328416,
+        0.2811237193659197
+      ],
+      "memory_mean": 0.07573006302118301,
+      "memory_std": 0.09424122422933578,
+      "emission_strength": [
+        0.052681756668100335,
+        0.052681756668100335
+      ],
+      "signal_sensitivity": [
+        0.1123783838475079,
+        0.1123783838475079
+      ],
+      "coupling_shift_magnitude": 0.04583926126360893,
+      "signal_0_mean": 0.33688879013061523,
+      "signal_0_max": 0.4624176621437073,
+      "signal_0_std": 0.030502401292324066,
+      "signal_1_mean": 0.3206270933151245,
+      "signal_1_max": 0.4331936240196228,
+      "signal_1_std": 0.025719808414578438,
+      "stress_regen": 0.4918106044055279,
+      "drought_steps": 1228,
+      "elapsed_s": 40.40756416320801,
+      "resource_mean": 0.6378192901611328,
+      "foraging": {
+        "mean_displacement": 10.661022219882707,
+        "resource_at_patterns": 0.5752400159835815,
+        "n_tracked": 33
+      }
+    },
+    {
+      "cycle": 11,
+      "n_patterns": 100,
+      "n_baseline": 326,
+      "n_survived": 305,
+      "mortality": 0.06441717791411039,
+      "mean_phi_base": 0.2240944978093232,
+      "mean_phi_stress": 0.20845089761706473,
+      "mean_robustness": 0.9047010741903645,
+      "phi_increase_frac": 0.2988505747126437,
+      "tau": 0.5164240717887878,
+      "gate_beta": 4.443927150964738,
+      "chemotaxis_strength": 0.6574080627411605,
+      "motor_sensitivity": 4.827584858983755,
+      "motor_threshold": 0.1381542751565575,
+      "memory_lambdas": [
+        0.018971582695253415,
+        0.18958164358666893
+      ],
+      "memory_mean": 0.000946300569921732,
+      "memory_std": 0.006680714897811413,
+      "emission_strength": [
+        0.04133437977571777,
+        0.04133437977571777
+      ],
+      "signal_sensitivity": [
+        0.084905188629547,
+        0.084905188629547
+      ],
+      "coupling_shift_magnitude": 0.032298795878887177,
+      "signal_0_mean": 0.312370240688324,
+      "signal_0_max": 0.4077067971229553,
+      "signal_0_std": 0.023195810616016388,
+      "signal_1_mean": 0.18286395072937012,
+      "signal_1_max": 0.24772290885448456,
+      "signal_1_std": 0.015028967522084713,
+      "stress_regen": 0.49231390103080985,
+      "drought_steps": 681,
+      "elapsed_s": 43.5195951461792,
+      "resource_mean": 0.3640921115875244,
+      "foraging": {
+        "mean_displacement": 3.7490292023090404,
+        "resource_at_patterns": 0.7137235403060913,
+        "n_tracked": 191
+      }
+    },
+    {
+      "cycle": 12,
+      "n_patterns": 13,
+      "n_baseline": 297,
+      "n_survived": 289,
+      "mortality": 0.026936026936026924,
+      "mean_phi_base": 0.2148812736147895,
+      "mean_phi_stress": 0.19915099566439956,
+      "mean_robustness": 0.9061175790348251,
+      "phi_increase_frac": 0.33774834437086093,
+      "tau": 0.4804285556077957,
+      "gate_beta": 4.293359929323198,
+      "chemotaxis_strength": 0.5256617229431868,
+      "motor_sensitivity": 4.5488024316728115,
+      "motor_threshold": 0.19435744974762198,
+      "memory_lambdas": [
+        0.016215065751226606,
+        0.16202828473206643
+      ],
+      "memory_mean": 1.2892107861262048e-06,
+      "memory_std": 0.00016535042959731072,
+      "emission_strength": [
+        0.047255354881513396,
+        0.047255354881513396
+      ],
+      "signal_sensitivity": [
+        0.0839921012518727,
+        0.0839921012518727
+      ],
+      "coupling_shift_magnitude": 0.02068963833153248,
+      "signal_0_mean": 0.23032225668430328,
+      "signal_0_max": 0.30412060022354126,
+      "signal_0_std": 0.017366474494338036,
+      "signal_1_mean": 0.1378728151321411,
+      "signal_1_max": 0.20167317986488342,
+      "signal_1_std": 0.014312350191175938,
+      "stress_regen": 0.5387995917825057,
+      "drought_steps": 1315,
+      "elapsed_s": 42.42430758476257,
+      "resource_mean": 0.277532696723938,
+      "foraging": {
+        "mean_displacement": 4.410935938251838,
+        "resource_at_patterns": 0.6993988156318665,
+        "n_tracked": 172
+      }
+    },
+    {
+      "cycle": 13,
+      "n_patterns": 57,
+      "n_baseline": 272,
+      "n_survived": 290,
+      "mortality": -0.06617647058823528,
+      "mean_phi_base": 0.2093994869463503,
+      "mean_phi_stress": 0.202651216643522,
+      "mean_robustness": 0.9581861530582797,
+      "phi_increase_frac": 0.34507042253521125,
+      "tau": 0.34803880751132965,
+      "gate_beta": 4.327288123965265,
+      "chemotaxis_strength": 0.4935749482363463,
+      "motor_sensitivity": 4.929287400096655,
+      "motor_threshold": 0.20723270568996666,
+      "memory_lambdas": [
+        0.018255188236390142,
+        0.18240398984370118
+      ],
+      "memory_mean": 0.0,
+      "memory_std": 0.0,
+      "emission_strength": [
+        0.033426929323413554,
+        0.033426929323413554
+      ],
+      "signal_sensitivity": [
+        0.07093090726631973,
+        0.07093090726631973
+      ],
+      "coupling_shift_magnitude": 0.02442752942442894,
+      "signal_0_mean": 0.25794917345046997,
+      "signal_0_max": 0.362298846244812,
+      "signal_0_std": 0.020047523081302643,
+      "signal_1_mean": 0.15405824780464172,
+      "signal_1_max": 0.2168528139591217,
+      "signal_1_std": 0.015518679283559322,
+      "stress_regen": 0.45505891805811544,
+      "drought_steps": 1043,
+      "elapsed_s": 40.53378677368164,
+      "resource_mean": 0.3806998133659363,
+      "foraging": {
+        "mean_displacement": 4.630237940817506,
+        "resource_at_patterns": 0.6807349324226379,
+        "n_tracked": 155
+      }
+    },
+    {
+      "cycle": 14,
+      "n_patterns": 48,
+      "n_baseline": 239,
+      "n_survived": 297,
+      "mortality": -0.2426778242677825,
+      "mean_phi_base": 0.2028943470557311,
+      "mean_phi_stress": 0.192071548716765,
+      "mean_robustness": 0.9276151432433221,
+      "phi_increase_frac": 0.3333333333333333,
+      "tau": 0.3007055401802063,
+      "gate_beta": 4.477597174048426,
+      "chemotaxis_strength": 0.5163089480251074,
+      "motor_sensitivity": 5.384980883449316,
+      "motor_threshold": 0.23184988293796777,
+      "memory_lambdas": [
+        0.024990163793567916,
+        0.2496868740579726
+      ],
+      "memory_mean": 1.8386754163657315e-07,
+      "memory_std": 3.137763633276336e-05,
+      "emission_strength": [
+        0.03519520192860632,
+        0.03519520192860632
+      ],
+      "signal_sensitivity": [
+        0.07754745250559995,
+        0.07754745250559995
+      ],
+      "coupling_shift_magnitude": 0.013688575476408005,
+      "signal_0_mean": 0.16858012974262238,
+      "signal_0_max": 0.23973040282726288,
+      "signal_0_std": 0.015065038576722145,
+      "signal_1_mean": 0.10321177542209625,
+      "signal_1_max": 0.1429157257080078,
+      "signal_1_std": 0.010156705975532532,
+      "stress_regen": 0.47771795321494653,
+      "drought_steps": 1356,
+      "elapsed_s": 37.15365815162659,
+      "resource_mean": 0.313886821269989,
+      "foraging": {
+        "mean_displacement": 4.867647417616191,
+        "resource_at_patterns": 0.7313385605812073,
+        "n_tracked": 123
+      }
+    },
+    {
+      "cycle": 15,
+      "n_patterns": 12,
+      "n_baseline": 301,
+      "n_survived": 257,
+      "mortality": 0.14617940199335544,
+      "mean_phi_base": 0.21292722994646418,
+      "mean_phi_stress": 0.19736029623475457,
+      "mean_robustness": 0.8991389233580634,
+      "phi_increase_frac": 0.2916666666666667,
+      "tau": 0.21998896598815915,
+      "gate_beta": 4.265117987990381,
+      "chemotaxis_strength": 0.5236568693071604,
+      "motor_sensitivity": 5.068891163915396,
+      "motor_threshold": 0.24012348745018242,
+      "memory_lambdas": [
+        0.03611778544819444,
+        0.36085446595178944
+      ],
+      "memory_mean": 0.00027299957582727075,
+      "memory_std": 0.0035572100896388292,
+      "emission_strength": [
+        0.027664284665238292,
+        0.027664284665238292
+      ],
+      "signal_sensitivity": [
+        0.07932123565916482,
+        0.07932123565916482
+      ],
+      "coupling_shift_magnitude": 0.014050341211259365,
+      "signal_0_mean": 0.1713407039642334,
+      "signal_0_max": 0.24499072134494781,
+      "signal_0_std": 0.015406973659992218,
+      "signal_1_mean": 0.10753549635410309,
+      "signal_1_max": 0.15615195035934448,
+      "signal_1_std": 0.011752983555197716,
+      "stress_regen": 0.4793703902191471,
+      "drought_steps": 1402,
+      "elapsed_s": 36.46536064147949,
+      "resource_mean": 0.25273919105529785,
+      "foraging": {
+        "mean_displacement": 4.52508474153624,
+        "resource_at_patterns": 0.7258833646774292,
+        "n_tracked": 167
+      }
+    },
+    {
+      "cycle": 16,
+      "n_patterns": 54,
+      "n_baseline": 342,
+      "n_survived": 224,
+      "mortality": 0.3450292397660819,
+      "mean_phi_base": 0.25204043781013435,
+      "mean_phi_stress": 0.2341975928420046,
+      "mean_robustness": 0.8751291617915131,
+      "phi_increase_frac": 0.234375,
+      "tau": 0.1770819246768951,
+      "gate_beta": 4.154523488879206,
+      "chemotaxis_strength": 0.5770557347685099,
+      "motor_sensitivity": 5.235022496432066,
+      "motor_threshold": 0.28417058084160085,
+      "memory_lambdas": [
+        0.03041527233445924,
+        0.30387282224769596
+      ],
+      "memory_mean": 0.010158325545489788,
+      "memory_std": 0.029810888692736626,
+      "emission_strength": [
+        0.029314475365086932,
+        0.029314475365086932
+      ],
+      "signal_sensitivity": [
+        0.0857482108119012,
+        0.0857482108119012
+      ],
+      "coupling_shift_magnitude": 0.012374533340334892,
+      "signal_0_mean": 0.12940707802772522,
+      "signal_0_max": 0.20856702327728271,
+      "signal_0_std": 0.013083326630294323,
+      "signal_1_mean": 0.13040727376937866,
+      "signal_1_max": 0.18878619372844696,
+      "signal_1_std": 0.01448229793459177,
+      "stress_regen": 0.5472639301727426,
+      "drought_steps": 620,
+      "elapsed_s": 34.332517862319946,
+      "resource_mean": 0.39565324783325195,
+      "foraging": {
+        "mean_displacement": 4.268937720988215,
+        "resource_at_patterns": 0.6589269638061523,
+        "n_tracked": 151
+      }
+    },
+    {
+      "cycle": 17,
+      "n_patterns": 5,
+      "n_baseline": 349,
+      "n_survived": 185,
+      "mortality": 0.46991404011461313,
+      "mean_phi_base": 0.24399266594957097,
+      "mean_phi_stress": 0.2254193171161568,
+      "mean_robustness": 0.8924066489381588,
+      "phi_increase_frac": 0.28688524590163933,
+      "tau": 0.06509013772010798,
+      "gate_beta": 3.938494035601618,
+      "chemotaxis_strength": 0.6195922795683146,
+      "motor_sensitivity": 5.705591034144163,
+      "motor_threshold": 0.20895093176513907,
+      "memory_lambdas": [
+        0.03635150947482507,
+        0.36316981933627257
+      ],
+      "memory_mean": 0.0044658128172159195,
+      "memory_std": 0.019440628588199615,
+      "emission_strength": [
+        0.026235637376667217,
+        0.026235637376667217
+      ],
+      "signal_sensitivity": [
+        0.0840626338899526,
+        0.0840626338899526
+      ],
+      "coupling_shift_magnitude": 0.01311890222132206,
+      "signal_0_mean": 0.1371278613805771,
+      "signal_0_max": 0.21449986100196838,
+      "signal_0_std": 0.01580512896180153,
+      "signal_1_mean": 0.13655197620391846,
+      "signal_1_max": 0.1975114494562149,
+      "signal_1_std": 0.015021969564259052,
+      "stress_regen": 0.524879918148488,
+      "drought_steps": 1369,
+      "elapsed_s": 33.80608630180359,
+      "resource_mean": 0.7231862545013428,
+      "foraging": {
+        "mean_displacement": 4.074144842590823,
+        "resource_at_patterns": 0.6986876726150513,
+        "n_tracked": 158
+      }
+    },
+    {
+      "cycle": 18,
+      "n_patterns": 65,
+      "n_baseline": 337,
+      "n_survived": 262,
+      "mortality": 0.2225519287833828,
+      "mean_phi_base": 0.2443853939344515,
+      "mean_phi_stress": 0.2190558380534827,
+      "mean_robustness": 0.8686672258935946,
+      "phi_increase_frac": 0.20270270270270271,
+      "tau": 0.034772884845733584,
+      "gate_beta": 4.0592648833990115,
+      "chemotaxis_strength": 0.5129013840109111,
+      "motor_sensitivity": 5.583330538123846,
+      "motor_threshold": 0.3257695624604821,
+      "memory_lambdas": [
+        0.03802735811920235,
+        0.37990298344901335
+      ],
+      "memory_mean": 0.07961380481719971,
+      "memory_std": 0.20296257734298706,
+      "emission_strength": [
+        0.03494881294643015,
+        0.03494881294643015
+      ],
+      "signal_sensitivity": [
+        0.07603233855116483,
+        0.07603233855116483
+      ],
+      "coupling_shift_magnitude": 0.011340908706188202,
+      "signal_0_mean": 0.12050089240074158,
+      "signal_0_max": 0.17521052062511444,
+      "signal_0_std": 0.012910628691315651,
+      "signal_1_mean": 0.11879423260688782,
+      "signal_1_max": 0.15562036633491516,
+      "signal_1_std": 0.009079565294086933,
+      "stress_regen": 0.4203688312685245,
+      "drought_steps": 751,
+      "elapsed_s": 41.61467933654785,
+      "resource_mean": 0.3564702570438385,
+      "foraging": {
+        "mean_displacement": 4.295790412616625,
+        "resource_at_patterns": 0.6504683494567871,
+        "n_tracked": 180
+      }
+    },
+    {
+      "cycle": 19,
+      "n_patterns": 66,
+      "n_baseline": 356,
+      "n_survived": 263,
+      "mortality": 0.2612359550561798,
+      "mean_phi_base": 0.23138476083166762,
+      "mean_phi_stress": 0.2189395334409682,
+      "mean_robustness": 0.8895688772884637,
+      "phi_increase_frac": 0.28859060402684567,
+      "tau": 0.02672925591468805,
+      "gate_beta": 3.631234440207483,
+      "chemotaxis_strength": 0.46517348326742664,
+      "motor_sensitivity": 5.506286572664976,
+      "motor_threshold": 0.3250734879169613,
+      "memory_lambdas": [
+        0.035803663099544136,
+        0.3576792400804437
+      ],
+      "memory_mean": 0.010499846190214157,
+      "memory_std": 0.030586037784814835,
+      "emission_strength": [
+        0.03065272790800012,
+        0.03065272790800012
+      ],
+      "signal_sensitivity": [
+        0.08044210738598923,
+        0.08044210738598923
+      ],
+      "coupling_shift_magnitude": 0.015639653429389,
+      "signal_0_mean": 0.15954267978668213,
+      "signal_0_max": 0.24776104092597961,
+      "signal_0_std": 0.016180912032723427,
+      "signal_1_mean": 0.15690352022647858,
+      "signal_1_max": 0.20617665350437164,
+      "signal_1_std": 0.01310803648084402,
+      "stress_regen": 0.36037968407507087,
+      "drought_steps": 768,
+      "elapsed_s": 50.24175262451172,
+      "resource_mean": 0.32964250445365906,
+      "foraging": {
+        "mean_displacement": 3.850045072138657,
+        "resource_at_patterns": 0.664513349533081,
+        "n_tracked": 183
+      }
+    },
+    {
+      "cycle": 20,
+      "n_patterns": 94,
+      "n_baseline": 345,
+      "n_survived": 274,
+      "mortality": 0.20579710144927532,
+      "mean_phi_base": 0.23750408590747477,
+      "mean_phi_stress": 0.22719752473536356,
+      "mean_robustness": 0.8977475998476184,
+      "phi_increase_frac": 0.25806451612903225,
+      "tau": 0.10414475202560419,
+      "gate_beta": 3.5133208245039,
+      "chemotaxis_strength": 0.38725327886641037,
+      "motor_sensitivity": 5.263824161142111,
+      "motor_threshold": 0.4074287010822445,
+      "memory_lambdas": [
+        0.03323052823863778,
+        0.33196523272264106
+      ],
+      "memory_mean": 0.008270888589322567,
+      "memory_std": 0.02712898515164852,
+      "emission_strength": [
+        0.02423621820526582,
+        0.02423621820526582
+      ],
+      "signal_sensitivity": [
+        0.09101926290254662,
+        0.09101926290254662
+      ],
+      "coupling_shift_magnitude": 0.013440283015370369,
+      "signal_0_mean": 0.1405978500843048,
+      "signal_0_max": 0.20228642225265503,
+      "signal_0_std": 0.013561896048486233,
+      "signal_1_mean": 0.13885930180549622,
+      "signal_1_max": 0.18229012191295624,
+      "signal_1_std": 0.011176890693604946,
+      "stress_regen": 0.45945470363324276,
+      "drought_steps": 573,
+      "elapsed_s": 42.13503122329712,
+      "resource_mean": 0.3530917465686798,
+      "foraging": {
+        "mean_displacement": 4.021163495407204,
+        "resource_at_patterns": 0.7050779461860657,
+        "n_tracked": 173
+      }
+    },
+    {
+      "cycle": 21,
+      "n_patterns": 14,
+      "n_baseline": 361,
+      "n_survived": 237,
+      "mortality": 0.3434903047091413,
+      "mean_phi_base": 0.23688616677275956,
+      "mean_phi_stress": 0.22052794311643323,
+      "mean_robustness": 0.8913286345036612,
+      "phi_increase_frac": 0.2653061224489796,
+      "tau": 0.1237006783485412,
+      "gate_beta": 3.460325101017953,
+      "chemotaxis_strength": 0.48580493964254867,
+      "motor_sensitivity": 5.299459598958492,
+      "motor_threshold": 0.4052909704390913,
+      "memory_lambdas": [
+        0.03332482002403155,
+        0.33289817067983457
+      ],
+      "memory_mean": 0.0066519845277071,
+      "memory_std": 0.02325897291302681,
+      "emission_strength": [
+        0.019942863834520555,
+        0.019942863834520555
+      ],
+      "signal_sensitivity": [
+        0.07850036862607938,
+        0.07850036862607938
+      ],
+      "coupling_shift_magnitude": 0.010697881691157818,
+      "signal_0_mean": 0.11418819427490234,
+      "signal_0_max": 0.16669976711273193,
+      "signal_0_std": 0.011841262690722942,
+      "signal_1_mean": 0.11154688894748688,
+      "signal_1_max": 0.15321725606918335,
+      "signal_1_std": 0.008785214275121689,
+      "stress_regen": 0.5161494003604893,
+      "drought_steps": 994,
+      "elapsed_s": 44.2059268951416,
+      "resource_mean": 0.37435197830200195,
+      "foraging": {
+        "mean_displacement": 3.8310031577554966,
+        "resource_at_patterns": 0.6601295471191406,
+        "n_tracked": 181
+      }
+    },
+    {
+      "cycle": 22,
+      "n_patterns": 8,
+      "n_baseline": 361,
+      "n_survived": 257,
+      "mortality": 0.2880886426592798,
+      "mean_phi_base": 0.23791467784958611,
+      "mean_phi_stress": 0.22213793897630094,
+      "mean_robustness": 0.903020259533975,
+      "phi_increase_frac": 0.2716049382716049,
+      "tau": 0.23581733703613278,
+      "gate_beta": 3.397966364026071,
+      "chemotaxis_strength": 0.6393643382936718,
+      "motor_sensitivity": 5.336528044193983,
+      "motor_threshold": 0.46708434545435007,
+      "memory_lambdas": [
+        0.024639076119028977,
+        0.24612531665919365
+      ],
+      "memory_mean": 0.006651698146015406,
+      "memory_std": 0.0241160336881876,
+      "emission_strength": [
+        0.022470799422470725,
+        0.022470799422470725
+      ],
+      "signal_sensitivity": [
+        0.0631175701390241,
+        0.0631175701390241
+      ],
+      "coupling_shift_magnitude": 0.00898901466280222,
+      "signal_0_mean": 0.09381382167339325,
+      "signal_0_max": 0.13414612412452698,
+      "signal_0_std": 0.009837014600634575,
+      "signal_1_mean": 0.09228362888097763,
+      "signal_1_max": 0.12694133818149567,
+      "signal_1_std": 0.007592911832034588,
+      "stress_regen": 0.4063453891868581,
+      "drought_steps": 1112,
+      "elapsed_s": 42.78051996231079,
+      "resource_mean": 0.6696962118148804,
+      "foraging": {
+        "mean_displacement": 3.8752708771442546,
+        "resource_at_patterns": 0.7025437355041504,
+        "n_tracked": 190
+      }
+    },
+    {
+      "cycle": 23,
+      "n_patterns": 56,
+      "n_baseline": 368,
+      "n_survived": 244,
+      "mortality": 0.3369565217391305,
+      "mean_phi_base": 0.24017545872406001,
+      "mean_phi_stress": 0.23187240641098467,
+      "mean_robustness": 0.9278134925054335,
+      "phi_increase_frac": 0.34375,
+      "tau": 0.1884428560733795,
+      "gate_beta": 3.620668771862985,
+      "chemotaxis_strength": 0.5514550272375347,
+      "motor_sensitivity": 3.9613326601684093,
+      "motor_threshold": 0.46115586557425553,
+      "memory_lambdas": [
+        0.030793907633422907,
+        0.30759608958774964
+      ],
+      "memory_mean": 0.0012615900486707687,
+      "memory_std": 0.009033313021063805,
+      "emission_strength": [
+        0.03575534801770998,
+        0.03575534801770998
+      ],
+      "signal_sensitivity": [
+        0.06000207273622134,
+        0.06000207273622134
+      ],
+      "coupling_shift_magnitude": 0.010333976708352566,
+      "signal_0_mean": 0.10996207594871521,
+      "signal_0_max": 0.16067340970039368,
+      "signal_0_std": 0.011295616626739502,
+      "signal_1_mean": 0.1078207939863205,
+      "signal_1_max": 0.16069170832633972,
+      "signal_1_std": 0.013016825541853905,
+      "stress_regen": 0.4366478854238808,
+      "drought_steps": 647,
+      "elapsed_s": 37.714701652526855,
+      "resource_mean": 0.21984979510307312,
+      "foraging": {
+        "mean_displacement": 3.8694019242817785,
+        "resource_at_patterns": 0.6720805764198303,
+        "n_tracked": 193
+      }
+    },
+    {
+      "cycle": 24,
+      "n_patterns": 4,
+      "n_baseline": 363,
+      "n_survived": 218,
+      "mortality": 0.3994490358126722,
+      "mean_phi_base": 0.2398406896169896,
+      "mean_phi_stress": 0.219402413058727,
+      "mean_robustness": 0.8775088797509731,
+      "phi_increase_frac": 0.2727272727272727,
+      "tau": 0.1500311583280563,
+      "gate_beta": 3.785312417149545,
+      "chemotaxis_strength": 0.3768581334501506,
+      "motor_sensitivity": 3.226244192570448,
+      "motor_threshold": 0.5346221903804689,
+      "memory_lambdas": [
+        0.039795711359831405,
+        0.39750224738692214
+      ],
+      "memory_mean": 0.0048078326508402824,
+      "memory_std": 0.01919056847691536,
+      "emission_strength": [
+        0.049616215302543315,
+        0.049616215302543315
+      ],
+      "signal_sensitivity": [
+        0.03540230010595446,
+        0.03540230010595446
+      ],
+      "coupling_shift_magnitude": 0.017210055142641068,
+      "signal_0_mean": 0.17148877680301666,
+      "signal_0_max": 0.2593185007572174,
+      "signal_0_std": 0.01896320842206478,
+      "signal_1_mean": 0.16902658343315125,
+      "signal_1_max": 0.23682914674282074,
+      "signal_1_std": 0.02014326862990856,
+      "stress_regen": 0.4806249895310772,
+      "drought_steps": 1490,
+      "elapsed_s": 37.79188323020935,
+      "resource_mean": 0.7140498161315918,
+      "foraging": {
+        "mean_displacement": 3.7382823845162236,
+        "resource_at_patterns": 0.6676249504089355,
+        "n_tracked": 186
+      }
+    },
+    {
+      "cycle": 25,
+      "n_patterns": 125,
+      "n_baseline": 353,
+      "n_survived": 292,
+      "mortality": 0.17280453257790374,
+      "mean_phi_base": 0.23063515189333567,
+      "mean_phi_stress": 0.2152179039429244,
+      "mean_robustness": 0.8886433914699313,
+      "phi_increase_frac": 0.26229508196721313,
+      "tau": 0.18221347630023954,
+      "gate_beta": 3.975589421391488,
+      "chemotaxis_strength": 0.35778691805899154,
+      "motor_sensitivity": 2.868058543652296,
+      "motor_threshold": 0.4972455690149217,
+      "memory_lambdas": [
+        0.041212968070841766,
+        0.4116493067602692
+      ],
+      "memory_mean": 0.012694749981164932,
+      "memory_std": 0.03301692754030228,
+      "emission_strength": [
+        0.04987171112882031,
+        0.04987171112882031
+      ],
+      "signal_sensitivity": [
+        0.026804756549552673,
+        0.026804756549552673
+      ],
+      "coupling_shift_magnitude": 0.02700875513255596,
+      "signal_0_mean": 0.23429766297340393,
+      "signal_0_max": 0.36296218633651733,
+      "signal_0_std": 0.02315714955329895,
+      "signal_1_mean": 0.23014073073863983,
+      "signal_1_max": 0.3093790113925934,
+      "signal_1_std": 0.02166186273097992,
+      "stress_regen": 0.4040950845860725,
+      "drought_steps": 691,
+      "elapsed_s": 41.6073043346405,
+      "resource_mean": 0.2737220525741577,
+      "foraging": {
+        "mean_displacement": 3.7681219455792423,
+        "resource_at_patterns": 0.662520170211792,
+        "n_tracked": 201
+      }
+    },
+    {
+      "cycle": 26,
+      "n_patterns": 49,
+      "n_baseline": 342,
+      "n_survived": 261,
+      "mortality": 0.23684210526315785,
+      "mean_phi_base": 0.2493827978391548,
+      "mean_phi_stress": 0.23428913689685738,
+      "mean_robustness": 0.9050971741008573,
+      "phi_increase_frac": 0.26490066225165565,
+      "tau": 0.1364188492298126,
+      "gate_beta": 3.6529710799455652,
+      "chemotaxis_strength": 0.22690367735922348,
+      "motor_sensitivity": 2.6807665936648846,
+      "motor_threshold": 0.551807744288817,
+      "memory_lambdas": [
+        0.04198587231783345,
+        0.419360183652431
+      ],
+      "memory_mean": 0.04901465028524399,
+      "memory_std": 0.07015510648488998,
+      "emission_strength": [
+        0.03629991467556072,
+        0.03629991467556072
+      ],
+      "signal_sensitivity": [
+        0.032508140418996335,
+        0.032508140418996335
+      ],
+      "coupling_shift_magnitude": 0.027333296835422516,
+      "signal_0_mean": 0.23504000902175903,
+      "signal_0_max": 0.35530954599380493,
+      "signal_0_std": 0.02480495534837246,
+      "signal_1_mean": 0.2330661118030548,
+      "signal_1_max": 0.32123616337776184,
+      "signal_1_std": 0.024147702381014824,
+      "stress_regen": 0.4280749496417443,
+      "drought_steps": 791,
+      "elapsed_s": 59.395586252212524,
+      "resource_mean": 0.29434332251548767,
+      "foraging": {
+        "mean_displacement": 3.9014719009127714,
+        "resource_at_patterns": 0.6614261865615845,
+        "n_tracked": 176
+      }
+    },
+    {
+      "cycle": 27,
+      "n_patterns": 71,
+      "n_baseline": 342,
+      "n_survived": 238,
+      "mortality": 0.30409356725146197,
+      "mean_phi_base": 0.24681102723275877,
+      "mean_phi_stress": 0.2327432776479548,
+      "mean_robustness": 0.8964951630840532,
+      "phi_increase_frac": 0.2802547770700637,
+      "tau": 0.1663575172424316,
+      "gate_beta": 3.7892373353242883,
+      "chemotaxis_strength": 0.1206927064806224,
+      "motor_sensitivity": 2.687519121915102,
+      "motor_threshold": 0.5401940623763948,
+      "memory_lambdas": [
+        0.04961084780376936,
+        0.4955087794942205
+      ],
+      "memory_mean": 0.048950545489788055,
+      "memory_std": 0.0715445727109909,
+      "emission_strength": [
+        0.036344071865049815,
+        0.036344071865049815
+      ],
+      "signal_sensitivity": [
+        0.026117092889810904,
+        0.026117092889810904
+      ],
+      "coupling_shift_magnitude": 0.01718711666762829,
+      "signal_0_mean": 0.171158105134964,
+      "signal_0_max": 0.254232794046402,
+      "signal_0_std": 0.018781334161758423,
+      "signal_1_mean": 0.1690264642238617,
+      "signal_1_max": 0.2404710203409195,
+      "signal_1_std": 0.016566645354032516,
+      "stress_regen": 0.434383630577944,
+      "drought_steps": 737,
+      "elapsed_s": 46.494441509246826,
+      "resource_mean": 0.292966365814209,
+      "foraging": {
+        "mean_displacement": 4.2947440225784295,
+        "resource_at_patterns": 0.6391985416412354,
+        "n_tracked": 179
+      }
+    },
+    {
+      "cycle": 28,
+      "n_patterns": 100,
+      "n_baseline": 361,
+      "n_survived": 246,
+      "mortality": 0.31855955678670356,
+      "mean_phi_base": 0.2530719597851313,
+      "mean_phi_stress": 0.23762389413515725,
+      "mean_robustness": 0.8933643154464871,
+      "phi_increase_frac": 0.26666666666666666,
+      "tau": 0.23756761550903316,
+      "gate_beta": 3.8563278704881676,
+      "chemotaxis_strength": 0.058970165625214684,
+      "motor_sensitivity": 3.0968665368855,
+      "motor_threshold": 0.5090064773801714,
+      "memory_lambdas": [
+        0.049454969648810986,
+        0.49394292271681617
+      ],
+      "memory_mean": 0.06612376868724823,
+      "memory_std": 0.08603958040475845,
+      "emission_strength": [
+        0.028896977111450523,
+        0.028896977111450523
+      ],
+      "signal_sensitivity": [
+        0.031094687554712615,
+        0.031094687554712615
+      ],
+      "coupling_shift_magnitude": 0.01734183542430401,
+      "signal_0_mean": 0.17166973650455475,
+      "signal_0_max": 0.25762805342674255,
+      "signal_0_std": 0.019046103581786156,
+      "signal_1_mean": 0.17082706093788147,
+      "signal_1_max": 0.24588912725448608,
+      "signal_1_std": 0.020949115976691246,
+      "stress_regen": 0.49453764275477785,
+      "drought_steps": 588,
+      "elapsed_s": 43.500704526901245,
+      "resource_mean": 0.3217613697052002,
+      "foraging": {
+        "mean_displacement": 4.302695667118455,
+        "resource_at_patterns": 0.6868916749954224,
+        "n_tracked": 169
+      }
+    },
+    {
+      "cycle": 29,
+      "n_patterns": 99,
+      "n_baseline": 356,
+      "n_survived": 227,
+      "mortality": 0.3623595505617978,
+      "mean_phi_base": 0.25253160524975815,
+      "mean_phi_stress": 0.2446944740290443,
+      "mean_robustness": 0.9007810356415967,
+      "phi_increase_frac": 0.2608695652173913,
+      "tau": 0.11728416681289668,
+      "gate_beta": 3.8192655116319663,
+      "chemotaxis_strength": 0.06212942451238643,
+      "motor_sensitivity": 4.290660072118044,
+      "motor_threshold": 0.4694309959653764,
+      "memory_lambdas": [
+        0.0503742696374281,
+        0.5
+      ],
+      "memory_mean": 0.053093839436769485,
+      "memory_std": 0.07393581420183182,
+      "emission_strength": [
+        0.029348534192991105,
+        0.029348534192991105
+      ],
+      "signal_sensitivity": [
+        0.031025071021279146,
+        0.031025071021279146
+      ],
+      "coupling_shift_magnitude": 0.013298132456839085,
+      "signal_0_mean": 0.1397520899772644,
+      "signal_0_max": 0.21541766822338104,
+      "signal_0_std": 0.015190170146524906,
+      "signal_1_mean": 0.13712874054908752,
+      "signal_1_max": 0.1946517825126648,
+      "signal_1_std": 0.016896698623895645,
+      "stress_regen": 0.4290017954623522,
+      "drought_steps": 514,
+      "elapsed_s": 46.15005683898926,
+      "resource_mean": 0.3603228032588959,
+      "foraging": {
+        "mean_displacement": 4.082015813251662,
+        "resource_at_patterns": 0.6979295015335083,
+        "n_tracked": 175
+      }
+    }
+  ],
+  "phi_trajectory": [
+    {
+      "cycle": 0,
+      "phi_base": 0.25231164844945814,
+      "phi_stress": 0.23501080640466152,
+      "robustness": 0.909584735470361,
+      "n_patterns": 8,
+      "mortality": 0.4884488448844885,
+      "displacement": 5.769962401122858,
+      "resource_at_patterns": 0.6905616521835327,
+      "memory_lambdas": [
+        0.011535494485008565,
+        0.11534456394313983
+      ],
+      "emission_strength": [
+        0.04721176569713988,
+        0.04721176569713988
+      ],
+      "signal_sensitivity": [
+        0.23868976419743163,
+        0.23868976419743163
+      ],
+      "coupling_shift": 0.02772747352719307
+    },
+    {
+      "cycle": 1,
+      "phi_base": 0.24093924170515763,
+      "phi_stress": 0.22188221168156405,
+      "robustness": 0.8817252616977916,
+      "n_patterns": 22,
+      "mortality": 0.26361031518624645,
+      "displacement": 3.9499802611510937,
+      "resource_at_patterns": 0.6473068594932556,
+      "memory_lambdas": [
+        0.010383366338235006,
+        0.10381621969033022
+      ],
+      "emission_strength": [
+        0.05307961847419116,
+        0.05307961847419116
+      ],
+      "signal_sensitivity": [
+        0.29163724920836887,
+        0.29163724920836887
+      ],
+      "coupling_shift": 0.02452225610613823
+    },
+    {
+      "cycle": 2,
+      "phi_base": 0.24907609648573073,
+      "phi_stress": 0.23786644237553428,
+      "robustness": 0.8988364606616753,
+      "n_patterns": 19,
+      "mortality": 0.3213296398891967,
+      "displacement": 3.9675647850657865,
+      "resource_at_patterns": 0.7069339156150818,
+      "memory_lambdas": [
+        0.009743962147955207,
+        0.09741480857082943
+      ],
+      "emission_strength": [
+        0.040040575580325165,
+        0.040040575580325165
+      ],
+      "signal_sensitivity": [
+        0.29045123290854163,
+        0.29045123290854163
+      ],
+      "coupling_shift": 0.032112233340740204
+    },
+    {
+      "cycle": 3,
+      "phi_base": 0.24374221688478717,
+      "phi_stress": 0.23533367786046896,
+      "robustness": 0.9112968597352644,
+      "n_patterns": 12,
+      "mortality": 0.2936288088642659,
+      "displacement": 3.966681550193666,
+      "resource_at_patterns": 0.6902029514312744,
+      "memory_lambdas": [
+        0.012798193901195843,
+        0.12793753205012262
+      ],
+      "emission_strength": [
+        0.027328925107600092,
+        0.027328925107600092
+      ],
+      "signal_sensitivity": [
+        0.23877493045907458,
+        0.23877493045907458
+      ],
+      "coupling_shift": 0.020282519981265068
+    },
+    {
+      "cycle": 4,
+      "phi_base": 0.2453037561975123,
+      "phi_stress": 0.22909937165689534,
+      "robustness": 0.8919187136970298,
+      "n_patterns": 4,
+      "mortality": 0.3726027397260274,
+      "displacement": 3.897703575107156,
+      "resource_at_patterns": 0.669752299785614,
+      "memory_lambdas": [
+        0.013181724075789809,
+        0.131762237619413
+      ],
+      "emission_strength": [
+        0.025927990237263856,
+        0.025927990237263856
+      ],
+      "signal_sensitivity": [
+        0.2259568521916036,
+        0.2259568521916036
+      ],
+      "coupling_shift": 0.012489068321883678
+    },
+    {
+      "cycle": 5,
+      "phi_base": 0.24335836421711765,
+      "phi_stress": 0.23513691394856964,
+      "robustness": 0.9095341458352267,
+      "n_patterns": 4,
+      "mortality": 0.3133159268929504,
+      "displacement": 3.4374531121821637,
+      "resource_at_patterns": 0.6983190178871155,
+      "memory_lambdas": [
+        0.01400954562693977,
+        0.14002743884874014
+      ],
+      "emission_strength": [
+        0.022829840600118913,
+        0.022829840600118913
+      ],
+      "signal_sensitivity": [
+        0.22581867358840443,
+        0.22581867358840443
+      ],
+      "coupling_shift": 0.012055039405822754
+    },
+    {
+      "cycle": 6,
+      "phi_base": 0.27097484395333593,
+      "phi_stress": 0.2650777245370241,
+      "robustness": 0.9125716354166085,
+      "n_patterns": 3,
+      "mortality": 0.5977011494252873,
+      "displacement": 4.273492160062284,
+      "resource_at_patterns": 0.6659770607948303,
+      "memory_lambdas": [
+        0.020497325398805055,
+        0.20486057806702437
+      ],
+      "emission_strength": [
+        0.031504532605422186,
+        0.031504532605422186
+      ],
+      "signal_sensitivity": [
+        0.19000235947815,
+        0.19000235947815
+      ],
+      "coupling_shift": 0.011561328545212746
+    },
+    {
+      "cycle": 7,
+      "phi_base": 0.22417338267858422,
+      "phi_stress": 0.20746433928137534,
+      "robustness": 0.8889821784640662,
+      "n_patterns": 46,
+      "mortality": 0.012269938650306789,
+      "displacement": 3.9875115523668203,
+      "resource_at_patterns": 0.7130281329154968,
+      "memory_lambdas": [
+        0.028225423328467867,
+        0.28208669011649157
+      ],
+      "emission_strength": [
+        0.03190811011517472,
+        0.03190811011517472
+      ],
+      "signal_sensitivity": [
+        0.1793996980345238,
+        0.1793996980345238
+      ],
+      "coupling_shift": 0.014072313904762268
+    },
+    {
+      "cycle": 8,
+      "phi_base": 0.2296316541334785,
+      "phi_stress": 0.2142440103394073,
+      "robustness": 0.8915416345552875,
+      "n_patterns": 20,
+      "mortality": 0.18732782369146006,
+      "displacement": 3.7158837288575683,
+      "resource_at_patterns": 0.7040107846260071,
+      "memory_lambdas": [
+        0.03228529965214007,
+        0.3226510669669498
+      ],
+      "emission_strength": [
+        0.0382467171542052,
+        0.0382467171542052
+      ],
+      "signal_sensitivity": [
+        0.17632634980493483,
+        0.17632634980493483
+      ],
+      "coupling_shift": 0.015134349465370178
+    },
+    {
+      "cycle": 9,
+      "phi_base": 0.22448219202367486,
+      "phi_stress": 0.20849128319820232,
+      "robustness": 0.8914609640603322,
+      "n_patterns": 5,
+      "mortality": 0.14457831325301207,
+      "displacement": 4.015192035060846,
+      "resource_at_patterns": 0.6579718589782715,
+      "memory_lambdas": [
+        0.040862242632266566,
+        0.40835546929367333
+      ],
+      "emission_strength": [
+        0.056768210643829094,
+        0.056768210643829094
+      ],
+      "signal_sensitivity": [
+        0.13256677008205633,
+        0.13256677008205633
+      ],
+      "coupling_shift": 0.018045006319880486
+    },
+    {
+      "cycle": 10,
+      "phi_base": 0.2841347675466158,
+      "phi_stress": 0.2399874127063996,
+      "robustness": 1.1252406811179285,
+      "n_patterns": 2,
+      "mortality": 0.7614213197969544,
+      "displacement": 10.661022219882707,
+      "resource_at_patterns": 0.5752400159835815,
+      "memory_lambdas": [
+        0.028131369570328416,
+        0.2811237193659197
+      ],
+      "emission_strength": [
+        0.052681756668100335,
+        0.052681756668100335
+      ],
+      "signal_sensitivity": [
+        0.1123783838475079,
+        0.1123783838475079
+      ],
+      "coupling_shift": 0.04583926126360893
+    },
+    {
+      "cycle": 11,
+      "phi_base": 0.2240944978093232,
+      "phi_stress": 0.20845089761706473,
+      "robustness": 0.9047010741903645,
+      "n_patterns": 100,
+      "mortality": 0.06441717791411039,
+      "displacement": 3.7490292023090404,
+      "resource_at_patterns": 0.7137235403060913,
+      "memory_lambdas": [
+        0.018971582695253415,
+        0.18958164358666893
+      ],
+      "emission_strength": [
+        0.04133437977571777,
+        0.04133437977571777
+      ],
+      "signal_sensitivity": [
+        0.084905188629547,
+        0.084905188629547
+      ],
+      "coupling_shift": 0.032298795878887177
+    },
+    {
+      "cycle": 12,
+      "phi_base": 0.2148812736147895,
+      "phi_stress": 0.19915099566439956,
+      "robustness": 0.9061175790348251,
+      "n_patterns": 13,
+      "mortality": 0.026936026936026924,
+      "displacement": 4.410935938251838,
+      "resource_at_patterns": 0.6993988156318665,
+      "memory_lambdas": [
+        0.016215065751226606,
+        0.16202828473206643
+      ],
+      "emission_strength": [
+        0.047255354881513396,
+        0.047255354881513396
+      ],
+      "signal_sensitivity": [
+        0.0839921012518727,
+        0.0839921012518727
+      ],
+      "coupling_shift": 0.02068963833153248
+    },
+    {
+      "cycle": 13,
+      "phi_base": 0.2093994869463503,
+      "phi_stress": 0.202651216643522,
+      "robustness": 0.9581861530582797,
+      "n_patterns": 57,
+      "mortality": -0.06617647058823528,
+      "displacement": 4.630237940817506,
+      "resource_at_patterns": 0.6807349324226379,
+      "memory_lambdas": [
+        0.018255188236390142,
+        0.18240398984370118
+      ],
+      "emission_strength": [
+        0.033426929323413554,
+        0.033426929323413554
+      ],
+      "signal_sensitivity": [
+        0.07093090726631973,
+        0.07093090726631973
+      ],
+      "coupling_shift": 0.02442752942442894
+    },
+    {
+      "cycle": 14,
+      "phi_base": 0.2028943470557311,
+      "phi_stress": 0.192071548716765,
+      "robustness": 0.9276151432433221,
+      "n_patterns": 48,
+      "mortality": -0.2426778242677825,
+      "displacement": 4.867647417616191,
+      "resource_at_patterns": 0.7313385605812073,
+      "memory_lambdas": [
+        0.024990163793567916,
+        0.2496868740579726
+      ],
+      "emission_strength": [
+        0.03519520192860632,
+        0.03519520192860632
+      ],
+      "signal_sensitivity": [
+        0.07754745250559995,
+        0.07754745250559995
+      ],
+      "coupling_shift": 0.013688575476408005
+    },
+    {
+      "cycle": 15,
+      "phi_base": 0.21292722994646418,
+      "phi_stress": 0.19736029623475457,
+      "robustness": 0.8991389233580634,
+      "n_patterns": 12,
+      "mortality": 0.14617940199335544,
+      "displacement": 4.52508474153624,
+      "resource_at_patterns": 0.7258833646774292,
+      "memory_lambdas": [
+        0.03611778544819444,
+        0.36085446595178944
+      ],
+      "emission_strength": [
+        0.027664284665238292,
+        0.027664284665238292
+      ],
+      "signal_sensitivity": [
+        0.07932123565916482,
+        0.07932123565916482
+      ],
+      "coupling_shift": 0.014050341211259365
+    },
+    {
+      "cycle": 16,
+      "phi_base": 0.25204043781013435,
+      "phi_stress": 0.2341975928420046,
+      "robustness": 0.8751291617915131,
+      "n_patterns": 54,
+      "mortality": 0.3450292397660819,
+      "displacement": 4.268937720988215,
+      "resource_at_patterns": 0.6589269638061523,
+      "memory_lambdas": [
+        0.03041527233445924,
+        0.30387282224769596
+      ],
+      "emission_strength": [
+        0.029314475365086932,
+        0.029314475365086932
+      ],
+      "signal_sensitivity": [
+        0.0857482108119012,
+        0.0857482108119012
+      ],
+      "coupling_shift": 0.012374533340334892
+    },
+    {
+      "cycle": 17,
+      "phi_base": 0.24399266594957097,
+      "phi_stress": 0.2254193171161568,
+      "robustness": 0.8924066489381588,
+      "n_patterns": 5,
+      "mortality": 0.46991404011461313,
+      "displacement": 4.074144842590823,
+      "resource_at_patterns": 0.6986876726150513,
+      "memory_lambdas": [
+        0.03635150947482507,
+        0.36316981933627257
+      ],
+      "emission_strength": [
+        0.026235637376667217,
+        0.026235637376667217
+      ],
+      "signal_sensitivity": [
+        0.0840626338899526,
+        0.0840626338899526
+      ],
+      "coupling_shift": 0.01311890222132206
+    },
+    {
+      "cycle": 18,
+      "phi_base": 0.2443853939344515,
+      "phi_stress": 0.2190558380534827,
+      "robustness": 0.8686672258935946,
+      "n_patterns": 65,
+      "mortality": 0.2225519287833828,
+      "displacement": 4.295790412616625,
+      "resource_at_patterns": 0.6504683494567871,
+      "memory_lambdas": [
+        0.03802735811920235,
+        0.37990298344901335
+      ],
+      "emission_strength": [
+        0.03494881294643015,
+        0.03494881294643015
+      ],
+      "signal_sensitivity": [
+        0.07603233855116483,
+        0.07603233855116483
+      ],
+      "coupling_shift": 0.011340908706188202
+    },
+    {
+      "cycle": 19,
+      "phi_base": 0.23138476083166762,
+      "phi_stress": 0.2189395334409682,
+      "robustness": 0.8895688772884637,
+      "n_patterns": 66,
+      "mortality": 0.2612359550561798,
+      "displacement": 3.850045072138657,
+      "resource_at_patterns": 0.664513349533081,
+      "memory_lambdas": [
+        0.035803663099544136,
+        0.3576792400804437
+      ],
+      "emission_strength": [
+        0.03065272790800012,
+        0.03065272790800012
+      ],
+      "signal_sensitivity": [
+        0.08044210738598923,
+        0.08044210738598923
+      ],
+      "coupling_shift": 0.015639653429389
+    },
+    {
+      "cycle": 20,
+      "phi_base": 0.23750408590747477,
+      "phi_stress": 0.22719752473536356,
+      "robustness": 0.8977475998476184,
+      "n_patterns": 94,
+      "mortality": 0.20579710144927532,
+      "displacement": 4.021163495407204,
+      "resource_at_patterns": 0.7050779461860657,
+      "memory_lambdas": [
+        0.03323052823863778,
+        0.33196523272264106
+      ],
+      "emission_strength": [
+        0.02423621820526582,
+        0.02423621820526582
+      ],
+      "signal_sensitivity": [
+        0.09101926290254662,
+        0.09101926290254662
+      ],
+      "coupling_shift": 0.013440283015370369
+    },
+    {
+      "cycle": 21,
+      "phi_base": 0.23688616677275956,
+      "phi_stress": 0.22052794311643323,
+      "robustness": 0.8913286345036612,
+      "n_patterns": 14,
+      "mortality": 0.3434903047091413,
+      "displacement": 3.8310031577554966,
+      "resource_at_patterns": 0.6601295471191406,
+      "memory_lambdas": [
+        0.03332482002403155,
+        0.33289817067983457
+      ],
+      "emission_strength": [
+        0.019942863834520555,
+        0.019942863834520555
+      ],
+      "signal_sensitivity": [
+        0.07850036862607938,
+        0.07850036862607938
+      ],
+      "coupling_shift": 0.010697881691157818
+    },
+    {
+      "cycle": 22,
+      "phi_base": 0.23791467784958611,
+      "phi_stress": 0.22213793897630094,
+      "robustness": 0.903020259533975,
+      "n_patterns": 8,
+      "mortality": 0.2880886426592798,
+      "displacement": 3.8752708771442546,
+      "resource_at_patterns": 0.7025437355041504,
+      "memory_lambdas": [
+        0.024639076119028977,
+        0.24612531665919365
+      ],
+      "emission_strength": [
+        0.022470799422470725,
+        0.022470799422470725
+      ],
+      "signal_sensitivity": [
+        0.0631175701390241,
+        0.0631175701390241
+      ],
+      "coupling_shift": 0.00898901466280222
+    },
+    {
+      "cycle": 23,
+      "phi_base": 0.24017545872406001,
+      "phi_stress": 0.23187240641098467,
+      "robustness": 0.9278134925054335,
+      "n_patterns": 56,
+      "mortality": 0.3369565217391305,
+      "displacement": 3.8694019242817785,
+      "resource_at_patterns": 0.6720805764198303,
+      "memory_lambdas": [
+        0.030793907633422907,
+        0.30759608958774964
+      ],
+      "emission_strength": [
+        0.03575534801770998,
+        0.03575534801770998
+      ],
+      "signal_sensitivity": [
+        0.06000207273622134,
+        0.06000207273622134
+      ],
+      "coupling_shift": 0.010333976708352566
+    },
+    {
+      "cycle": 24,
+      "phi_base": 0.2398406896169896,
+      "phi_stress": 0.219402413058727,
+      "robustness": 0.8775088797509731,
+      "n_patterns": 4,
+      "mortality": 0.3994490358126722,
+      "displacement": 3.7382823845162236,
+      "resource_at_patterns": 0.6676249504089355,
+      "memory_lambdas": [
+        0.039795711359831405,
+        0.39750224738692214
+      ],
+      "emission_strength": [
+        0.049616215302543315,
+        0.049616215302543315
+      ],
+      "signal_sensitivity": [
+        0.03540230010595446,
+        0.03540230010595446
+      ],
+      "coupling_shift": 0.017210055142641068
+    },
+    {
+      "cycle": 25,
+      "phi_base": 0.23063515189333567,
+      "phi_stress": 0.2152179039429244,
+      "robustness": 0.8886433914699313,
+      "n_patterns": 125,
+      "mortality": 0.17280453257790374,
+      "displacement": 3.7681219455792423,
+      "resource_at_patterns": 0.662520170211792,
+      "memory_lambdas": [
+        0.041212968070841766,
+        0.4116493067602692
+      ],
+      "emission_strength": [
+        0.04987171112882031,
+        0.04987171112882031
+      ],
+      "signal_sensitivity": [
+        0.026804756549552673,
+        0.026804756549552673
+      ],
+      "coupling_shift": 0.02700875513255596
+    },
+    {
+      "cycle": 26,
+      "phi_base": 0.2493827978391548,
+      "phi_stress": 0.23428913689685738,
+      "robustness": 0.9050971741008573,
+      "n_patterns": 49,
+      "mortality": 0.23684210526315785,
+      "displacement": 3.9014719009127714,
+      "resource_at_patterns": 0.6614261865615845,
+      "memory_lambdas": [
+        0.04198587231783345,
+        0.419360183652431
+      ],
+      "emission_strength": [
+        0.03629991467556072,
+        0.03629991467556072
+      ],
+      "signal_sensitivity": [
+        0.032508140418996335,
+        0.032508140418996335
+      ],
+      "coupling_shift": 0.027333296835422516
+    },
+    {
+      "cycle": 27,
+      "phi_base": 0.24681102723275877,
+      "phi_stress": 0.2327432776479548,
+      "robustness": 0.8964951630840532,
+      "n_patterns": 71,
+      "mortality": 0.30409356725146197,
+      "displacement": 4.2947440225784295,
+      "resource_at_patterns": 0.6391985416412354,
+      "memory_lambdas": [
+        0.04961084780376936,
+        0.4955087794942205
+      ],
+      "emission_strength": [
+        0.036344071865049815,
+        0.036344071865049815
+      ],
+      "signal_sensitivity": [
+        0.026117092889810904,
+        0.026117092889810904
+      ],
+      "coupling_shift": 0.01718711666762829
+    },
+    {
+      "cycle": 28,
+      "phi_base": 0.2530719597851313,
+      "phi_stress": 0.23762389413515725,
+      "robustness": 0.8933643154464871,
+      "n_patterns": 100,
+      "mortality": 0.31855955678670356,
+      "displacement": 4.302695667118455,
+      "resource_at_patterns": 0.6868916749954224,
+      "memory_lambdas": [
+        0.049454969648810986,
+        0.49394292271681617
+      ],
+      "emission_strength": [
+        0.028896977111450523,
+        0.028896977111450523
+      ],
+      "signal_sensitivity": [
+        0.031094687554712615,
+        0.031094687554712615
+      ],
+      "coupling_shift": 0.01734183542430401
+    },
+    {
+      "cycle": 29,
+      "phi_base": 0.25253160524975815,
+      "phi_stress": 0.2446944740290443,
+      "robustness": 0.9007810356415967,
+      "n_patterns": 99,
+      "mortality": 0.3623595505617978,
+      "displacement": 4.082015813251662,
+      "resource_at_patterns": 0.6979295015335083,
+      "memory_lambdas": [
+        0.0503742696374281,
+        0.5
+      ],
+      "emission_strength": [
+        0.029348534192991105,
+        0.029348534192991105
+      ],
+      "signal_sensitivity": [
+        0.031025071021279146,
+        0.031025071021279146
+      ],
+      "coupling_shift": 0.013298132456839085
+    }
+  ],
+  "tau": 0.11728416681289668,
+  "gate_beta": 3.8192655116319663,
+  "chemotaxis_strength": 0.06212942451238643,
+  "motor_sensitivity": 4.290660072118044,
+  "motor_threshold": 0.4694309959653764,
+  "memory_lambdas": [
+    0.0503742696374281,
+    0.5
+  ],
+  "emission_strength": [
+    0.029348534192991105,
+    0.029348534192991105
+  ],
+  "signal_sensitivity": [
+    0.031025071021279146,
+    0.031025071021279146
+  ],
+  "config": {
+    "grid_size": 128,
+    "n_channels": 16,
+    "dt": 0.1,
+    "resource_max": 1.0,
+    "resource_regen": 0.01,
+    "resource_consume": 0.003,
+    "resource_half_sat": 0.2,
+    "noise_amp": 0.003,
+    "decay_rate": 0.0,
+    "maintenance_rate": 0.003,
+    "similarity_radius": 5,
+    "tau": 0.3,
+    "gate_beta": 5.0,
+    "alpha": 1.0,
+    "d_embed": 16,
+    "chemotaxis_strength": 0.5,
+    "motor_channels": 2,
+    "motor_sensitivity": 5.0,
+    "motor_threshold": 0.3,
+    "max_speed": 1.5,
+    "velocity_blur": 3,
+    "memory_channels": 2,
+    "memory_lambdas": [
+      0.01,
+      0.1
+    ],
+    "n_resource_patches": 4,
+    "patch_shift_period": 500,
+    "n_regular": 12,
+    "memory_start": 12,
+    "motor_start": 14,
+    "n_signals": 2,
+    "signal_diffusion": 0.15,
+    "signal_decay": 0.05,
+    "emission_threshold": 0.3,
+    "coupling_shift_scale": 0.1
+  },
+  "seed": 42,
+  "status": "complete"
+}
