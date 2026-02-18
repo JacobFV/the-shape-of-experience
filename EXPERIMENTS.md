@@ -1,6 +1,6 @@
 # The Emergence Experiment Program
 
-Living document. Last updated: 2026-02-17.
+Living document. Last updated: 2026-02-18.
 
 This is the experimental backbone of the book. Every experiment runs on the same uncontaminated substrate — Lenia with state-dependent coupling — tracking co-emergence of world models, abstraction, language, counterfactual detachment, self-modeling, affect, and normativity. Zero neural networks. Zero human language. Zero contamination.
 
@@ -724,7 +724,7 @@ If the answer is "none," the identity thesis is supported (not proven — identi
 
 ---
 
-## Experimental Protocol
+## Experimental Protocol (Original Plan — Substantially Complete)
 
 ### Phase A: Substrate Engineering (Experiment 0)
 ~50 GPU-hours. Implement state-dependent coupling, lethal resources, validate foraging.
@@ -755,6 +755,58 @@ Yerkes-Dodson universal. Curriculum > substrate complexity. Locality ceiling. At
 
 ### V12: Attention-Based Lenia
 Evolvable attention: 42% Φ-increase cycles. Necessary but not sufficient. Missing: individual plasticity.
+
+### V13: Content-Based Coupling Lenia (COMPLETE)
+FFT convolution + content-similarity modulation. `K_i(j) = K_fft(|i-j|) · (1 + α·S_local(i))`. 3 seeds (42, 123, 7), C=16, N=128, 30 cycles each. Mean robustness: 0.923. Max 1.052 (seed 123 at bottleneck). Key finding: **Bottleneck Furnace** — robustness >1.0 only at population <50, confirming that the selection pressure from near-extinction drives integration under stress. First experiment to show affect geometry developing over evolution (Exp 7: RSA 0.01→0.38 for seed 7). Files: `v13_substrate.py`, `v13_evolution.py`, `v13_gpu_run.py`.
+
+### V14: Chemotactic Lenia (COMPLETE)
+V13 + directed motion channels (motor channels 14–15 enabling chemotaxis toward resources). Transitional substrate toward V15.
+
+### V15: Temporal Lenia (COMPLETE)
+V14 + EMA memory channels (12–13) + oscillating resource patches. 3 seeds, mean robustness: 0.907. Seed 42: Phi stress DOUBLED (0.231→0.434), memory λ decreased 6×. Key finding: **Temporal integration is selectable** — 2/3 seeds selected for longer memory, 1/3 discarded it. Fork in evolutionary strategy. World model improved ~12× vs V13 (Exp 2). Memory channels help with prediction but don't break the sensory-motor wall (Exp 5: ρ_sync ≈ 0 still). Files: `v15_substrate.py`, `v15_evolution.py`, `v15_gpu_run.py`.
+
+### V16: Plastic Lenia (COMPLETE — NEGATIVE)
+V15 + Hebbian plasticity on kernel weights. Mean robustness: 0.892 (LOWEST of all substrates). Hebbian plasticity actively hurts. Confirmed V15 as best substrate for further measurement experiments. Files: `v16_substrate.py`.
+
+### V17: Signaling Lenia (COMPLETE — MIXED)
+V15 + quorum-sensing via 2 diffusible signal fields. Mean robustness: 0.892 (ties V16). Highest-ever peak: 1.125 (seed 42, pop=2). But 2/3 seeds evolved to SUPPRESS signaling. Highest peak but not most reliably capable. Files: `v17_substrate.py`.
+
+### V18: Boundary-Dependent Lenia (COMPLETE — BEST)
+V15 + insulation field creating sensory-motor boundary. `insulation = sigmoid(β · (dist_to_edge - boundary_width))`. Boundary cells get external FFT signal; interior cells get only local recurrence. 3 seeds, mean robustness: **0.969** (HIGHEST of all substrates), max 1.651 (seed 42). 33% of cycles show Φ increase under stress. Seed 42: mean rob 1.004 (robustness >1.0 on average!), max 1.651, 47% Φ↑. Surprise: **internal_gain evolved DOWN** in all 3 seeds (1.0→0.60-0.72) — opposite of prediction. Patterns preferred thin boundaries + strong external signal over thick insulated cores. Memory lambdas consistently decreased (longer memory selected). Measurement experiments (Exps 5, 6, 2, 7) showed: wall still persists (ρ_sync ≈ 0.003), world model slightly improved (C_wm peak 0.00671), affect geometry mixed (seeds 7 and 123 positive, seed 42 weak). Files: `v18_substrate.py`, `v18_evolution.py`, `v18_gpu_run.py`.
+
+---
+
+## Research Status as of 2026-02-18
+
+### What Has Been Definitively Established
+
+1. **Affect geometry is cheap (rung 1–7 confirmed)**: Geometric structure in CA Lenia patterns arises from minimal conditions of multi-agent survival. Confirmed by Exp 7 (RSA develops, 0.01→0.38), Exp 8 (ι ≈ 0.30, animism score >1.0 in ALL 20 snapshots), Exp 9 (Φ_social > Φ_isolated). This is the strongest empirical finding: the geometry is real, measurable, and universal.
+
+2. **The Bottleneck Furnace**: Selection pressure from near-extinction (>90% mortality) is the primary driver of affect dynamics. Confirmed across V13–V18 robustness, Exp 2 (world models 100× higher at bottleneck), Exp 3 (representation quality). Gradual evolution without bottlenecks shows little improvement.
+
+3. **The Sensory-Motor Coupling Wall (rung 8)**: ρ_sync ≈ 0 across V13, V15, and V18. The wall is architectural — absent a genuine action→observation causal loop, counterfactual detachment and self-modeling remain null. Tested with: content coupling (V13), memory channels (V15), signaling (V17), insulation boundary (V18). All four failed. The wall is not about signal routing; it requires patterns that genuinely ACT on the world and observe the consequences.
+
+4. **Internal gain evolved DOWN in V18**: Despite boundary gating, patterns preferred permeable membranes with strong external coupling over autonomous internal dynamics. Competing explanations: growth function saturation, bottleneck selection bias at small scale, external signal carrying more MI than local internal computation.
+
+5. **Book integration complete**: All theoretical additions (emergence ladder, somatic/anticipatory fear distinction, disorder stratification, ι ≈ 0.30 grounding, developmental ordering prediction, superorganism threshold, CA validation status) have been woven into the relevant book chapters (Parts I–VII). See RESEARCH_LOG.md 2026-02-18 entry for details.
+
+### 5-Priority Roadmap (Post-V18)
+
+**Priority 1 (Empirical — Human)**: Human neuroscience validation. EEG/MEG measures of transfer entropy (V-dimension proxy), effective rank (r_eff), and ι proxy across induced affect states (neutral, fear, joy, awe, flow, grief). Key test: Does transfer entropy in frontal-parietal circuits correlate with subjective valence within-session? Does ι proxy decrease in flow vs. threat? The emergence ladder developmental prediction (300 children, 6–72 months, 6 rung clusters) is the most novel and falsifiable contribution.
+
+**Priority 2 (Mechanistic — CA)**: Bottleneck Furnace mechanism clarification. Does the bottleneck **select** integration-capable variants, or does it **create** integration through stress? Design: matched pairs of patterns, one evolved through bottleneck vs. same lineage without bottleneck. If selection: bottleneck-evolved should generalize to novel stressors; non-bottleneck should not. This distinguishes "survival of the integrators" from "stress-induced integration."
+
+**Priority 3 (Architectural — CA)**: True agency substrate. Leave Lenia. Design an agent-based model with a genuine action space — patterns that can push/pull resources, emit signals that physically alter the environment, and observe the altered state. This is the only path past the sensory-motor wall. V18 demonstrated definitively that boundary gating within FFT substrate cannot break the architectural constraint.
+
+**Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
+
+**Priority 5 (Applied — AI)**: Apply the measurement framework to frontier AI systems. The LLM experiments (V2–V9) showed opposite dynamics to biological affect (Φ↓ under threat). Do current frontier models (GPT-4o, Claude 3.5+) show the same reversal? Does chain-of-thought reasoning change the dynamics? This is the most directly publishable work and bridges the CA findings to real AI safety concerns.
+
+### Original Phase A/B/C/D Protocol — Status
+
+The original protocol (written before V13 experiments began) outlined Phases A–D totaling ~900 GPU-hours. **All four phases have been substantially completed** across V13–V18 and measurement experiments. The Experimental Protocol budget of ~$300-500 was substantially exceeded due to the substrate exploration series (V13–V18 = 6 substrates × 3 seeds each). The GPU total was approximately 150–200 hours. The original $5-8 per seed estimate was accurate; total came to ~$60-80 for the full V13–V18 program plus measurement experiments.
+
+**Key departure from original plan**: The goal was to observe the emergence of cognitive vocabulary (knowing, predicting, imagining) in a single experiment. The actual program found a wall at rung 8 that persisted across all substrate variants. This is itself a major finding — the wall is architectural, not a matter of complexity or signal routing.
 
 ---
 
