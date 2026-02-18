@@ -93,31 +93,33 @@ def compute_foraging_metrics(patterns_before, patterns_after, resource):
         }
 
     resource_np = np.array(resource)
+    N = resource_np.shape[0]
 
     # Match patterns by closest centroid
-    centroids_before = {i: (p.center_y, p.center_x) for i, p in enumerate(patterns_before)}
-    centroids_after = {i: (p.center_y, p.center_x) for i, p in enumerate(patterns_after)}
+    # Pattern.center is np.ndarray of shape (2,): [row, col]
+    centroids_before = {i: p.center for i, p in enumerate(patterns_before)}
+    centroids_after = {i: p.center for i, p in enumerate(patterns_after)}
 
     displacements = []
     resources_at = []
 
-    for j, (cy_a, cx_a) in centroids_after.items():
+    for j, c_a in centroids_after.items():
         # Find closest pattern in before
         min_dist = float('inf')
-        for i, (cy_b, cx_b) in centroids_before.items():
+        for i, c_b in centroids_before.items():
             # Periodic distance
-            dy = min(abs(cy_a - cy_b), resource_np.shape[0] - abs(cy_a - cy_b))
-            dx = min(abs(cx_a - cx_b), resource_np.shape[1] - abs(cx_a - cx_b))
+            dy = min(abs(c_a[0] - c_b[0]), N - abs(c_a[0] - c_b[0]))
+            dx = min(abs(c_a[1] - c_b[1]), N - abs(c_a[1] - c_b[1]))
             dist = np.sqrt(dy**2 + dx**2)
             if dist < min_dist:
                 min_dist = dist
 
-        if min_dist < resource_np.shape[0] / 4:  # reasonable matching distance
+        if min_dist < N / 4:  # reasonable matching distance
             displacements.append(min_dist)
 
         # Resource at pattern location
-        iy = int(cy_a) % resource_np.shape[0]
-        ix = int(cx_a) % resource_np.shape[1]
+        iy = int(c_a[0]) % N
+        ix = int(c_a[1]) % N
         resources_at.append(resource_np[iy, ix])
 
     return {
