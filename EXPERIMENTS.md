@@ -774,6 +774,21 @@ V15 + quorum-sensing via 2 diffusible signal fields. Mean robustness: 0.892 (tie
 ### V18: Boundary-Dependent Lenia (COMPLETE — BEST)
 V15 + insulation field creating sensory-motor boundary. `insulation = sigmoid(β · (dist_to_edge - boundary_width))`. Boundary cells get external FFT signal; interior cells get only local recurrence. 3 seeds, mean robustness: **0.969** (HIGHEST of all substrates), max 1.651 (seed 42). 33% of cycles show Φ increase under stress. Seed 42: mean rob 1.004 (robustness >1.0 on average!), max 1.651, 47% Φ↑. Surprise: **internal_gain evolved DOWN** in all 3 seeds (1.0→0.60-0.72) — opposite of prediction. Patterns preferred thin boundaries + strong external signal over thick insulated cores. Memory lambdas consistently decreased (longer memory selected). Measurement experiments (Exps 5, 6, 2, 7) showed: wall still persists (ρ_sync ≈ 0.003), world model slightly improved (C_wm peak 0.00671), affect geometry mixed (seeds 7 and 123 positive, seed 42 weak). Files: `v18_substrate.py`, `v18_evolution.py`, `v18_gpu_run.py`.
 
+### V19: Bottleneck Furnace Mechanism Experiment (IN PROGRESS — 2026-02-18)
+Resolves the key mechanistic ambiguity in V13–V18: Is the Bottleneck Furnace effect due to **selection** (it culls low-Phi patterns, leaving high-Phi survivors) or **creation** (the bottleneck itself triggers developmental changes that increase novel-stress generalization)?
+
+**Design**: V18 substrate (C=16, N=128), 3 phases, 3 seeds (42, 123, 7):
+- Phase 1 (10 cycles): Standard V18 evolution — identical for all conditions
+- Phase 2 (10 cycles per condition): Fork into:
+  - A (BOTTLENECK): 2 severe droughts/cycle (8% regen), ~90-95% mortality
+  - B (GRADUAL): Mild chronic stress (55% regen), no discrete droughts, <25% mortality
+  - C (CONTROL): Standard V18 stress schedule
+- Phase 3 (5 cycles, params FROZEN): Novel extreme drought (4% regen) applied identically to all 3 conditions. Measure Phi_base and Phi_stress per pattern.
+
+**Statistical test**: `novel_robustness ~ phi_base + is_bottleneck + is_gradual`. If `is_bottleneck` coefficient is significant after controlling for `phi_base`: CREATION confirmed. If `is_bottleneck ≈ 0`: SELECTION.
+
+**Files**: `v19_experiment.py`, `v19_gpu_run.py`. Running on Lambda Labs GH200. Results expected in `results/v19_s{seed}/`.
+
 ---
 
 ## Research Status as of 2026-02-18
