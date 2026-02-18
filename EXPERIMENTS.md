@@ -224,7 +224,30 @@ High ρ_topo = signal space preserves context structure = compositional communic
 ### Predicted transition
 Language emerges *after* world models and compression (you need something to communicate about, capacity to compress it, and pressure to share).
 
-### Status: NOT IMPLEMENTED
+### Status: COMPLETE (positive MI, no structure)
+
+### Results (V13 content-based coupling, 3 seeds × 7 snapshots)
+
+| Seed | MI significant | MI range | MI trajectory | ρ_topo significant | C_channel (mean) |
+|------|---------------|----------|---------------|--------------------|------------------|
+| 123  | 4/6           | 0.019–0.039 | 0.019→0.028 | 0/6                | ~0.030           |
+| 42   | 7/7           | 0.024–0.030 | 0.024→0.030 | 0/7                | ~0.027           |
+| 7    | 4/7           | 0.023–0.055 | 0.025→0.037 | 0/7                | ~0.030           |
+
+**Finding: Chemical commons, not proto-language.** Patterns genuinely share information through the chemical medium — inter-pattern MI is above shuffled baseline in 15/20 snapshots. But ρ_topo ≈ 0 everywhere: communication is unstructured broadcast, not language-like signaling. Content coupling creates information exchange but not structured communication.
+
+**MI increases over evolution**, especially seed 7 (0.025→0.037). This suggests selection can amplify the chemical commons effect, but the topographic structure needed for compositionality never appears.
+
+**Interpretation:** The chemical medium functions as a shared "commons" — patterns influence each other's states through shared chemistry — but without the topographic structure (signal-space preserving context-space) needed for proto-language. This is consistent with the prediction that language requires world models + compression + coordination pressure. V13 patterns have weak world models (Experiment 2) and baseline compression (Experiment 3), but lack the coordination pressure that would make structured signaling fitness-relevant.
+
+**Assessment against predictions:**
+- ✓ Channel capacity C > 0: confirmed (C_channel ≈ 0.03 across seeds)
+- ✗ Compositionality ρ_topo > 0: not observed in any snapshot
+- ⚠ Language emerges after world models/compression: ordering prediction untestable since language doesn't emerge at all
+- ⚠ Culture (social learning, convention drift, normative pressure): not present
+
+**Code:** `v13_communication.py`, `v13_communication_run.py`
+**Data:** `results/comm_s{123,42,7}/`, `results/comm_analysis/comm_cross_seed.json`
 
 ---
 

@@ -290,6 +290,61 @@ The mechanism seems clear: in large populations, patterns can survive with minim
 
 ---
 
+## 2026-02-17: Experiment 4 — Proto-Communication via Chemical Coupling (POSITIVE MI, NO STRUCTURE)
+
+### Method
+Measured inter-pattern mutual information (MI_inter) using Gaussian MI estimate from pairwise correlations. Chemical channel capacity (C_channel): MI between boundary emission profiles. Topographic similarity (ρ_topo): Spearman correlation between signal distances and context distances. Vocabulary size: KMeans clustering with silhouette score on emission profiles. Shuffled temporal baseline for MI significance (100 permutations). All 3 seeds × 7 snapshots each.
+
+### Results
+
+| Metric | Seed 123 | Seed 42 | Seed 7 |
+|--------|----------|---------|--------|
+| MI significant | 4/6 | 7/7 | 4/7 |
+| MI range | 0.019–0.039 | 0.024–0.030 | 0.023–0.055 |
+| MI trajectory | 0.019→0.028 | 0.024→0.030 | 0.025→0.037 |
+| ρ_topo significant | 0/6 | 0/7 | 0/7 |
+
+### Observations
+
+1. **Inter-pattern MI is significantly above shuffled baseline in 15/20 testable snapshots.** Content coupling creates measurable information exchange between patterns. This is real — the shuffled baseline controls for shared environmental effects.
+
+2. **MI increases slightly over evolution (most clearly in seed 7).** 0.025→0.037 over 30 cycles. The chemical medium carries more information as evolution proceeds. Consistent with τ expanding (Experiment 0) — broader coupling = more information exchange.
+
+3. **ρ_topo ≈ 0 everywhere — no topographic structure.** Communication is broadcast, not language. Patterns with similar internal states don't emit similar chemicals — there's no referential mapping. The chemical channel is an undifferentiated commons, not a code.
+
+4. **Vocabulary size unstable (2-10, no convergence).** Clustering finds no consistent "words" in emission profiles. The emission space isn't carved into discrete signal types. This rules out even primitive proto-language.
+
+5. **C_channel ≈ MI_inter.** Boundary emissions carry comparable information to internal states. The chemical medium is the primary information channel between patterns, not spatial proximity or visual similarity.
+
+### Interpretation
+
+Content coupling creates a "chemical commons" — patterns influence each other's states through shared chemistry. This is genuine information exchange (MI > baseline), but it's unstructured broadcast rather than structured signaling. The absence of topographic similarity means patterns with similar internal states don't emit similar chemicals — there's no referential mapping.
+
+This complements Experiment 7's finding: affect geometry alignment develops over evolution, and now we see that inter-pattern MI also increases. The chemical medium carries real information, but the patterns haven't developed a code for it.
+
+### What this means for the theory
+
+- Chemical coupling is a communication channel, confirming the content-based coupling substrate enables inter-pattern information flow
+- But structure requires something more — likely the sensory-motor coupling loop that V13 patterns lack (consistent with Experiments 5-6 null results)
+- The "broadcast without language" result is exactly what you'd expect from organisms that share chemistry but lack directed signaling mechanisms
+
+### Updated cross-experiment table
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry          ✓ (cheap)             ✓ (cheap)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
+```
+
+### Data
+- `results/comm_s{123,42,7}/` — per-cycle JSON files
+- `results/comm_analysis/` — cross-seed summary
+
+---
+
 ## 2026-02-17: Experiment 5 — Counterfactual Detachment (NULL RESULT)
 
 ### Method
@@ -334,6 +389,7 @@ Affect geometry          ✓ (cheap)             ✓ (cheap)
 Integration robustness   ~0.92                 >1.0
 World model capacity     ~10⁻⁴                 ~10⁻²
 Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
 Counterfactual detach.   N/A (always detached) N/A (always detached)
 ```
 
@@ -386,6 +442,7 @@ Affect geometry          ✓ (cheap)             ✓ (cheap)
 Integration robustness   ~0.92                 >1.0
 World model capacity     ~10⁻⁴                 ~10⁻²
 Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
 Counterfactual detach.   N/A (always detached) N/A (always detached)
 Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1, anecdotal)
 ```
@@ -480,6 +537,7 @@ A↔C alignment (Exp 7)   0.01→0.38 (develops)  0.72 (strong but n=5)
 Integration robustness   ~0.92                 >1.0
 World model capacity     ~10⁻⁴                 ~10⁻²
 Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
 Counterfactual detach.   N/A (always detached) N/A (always detached)
 Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1)
 ```
