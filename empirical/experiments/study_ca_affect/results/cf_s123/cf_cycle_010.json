@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_010.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "detach_threshold": 0.3,
+    "n_patterns_detected": 5,
+    "n_patterns_analyzed": 5,
+    "cycle": 10
+  },
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "n_timesteps": 50,
+      "mean_rho_sync": -0.01981694648714679,
+      "std_rho_sync": 0.3814667196586564,
+      "n_detachment_events": 4,
+      "detachment_fraction": 0.7755102040816326,
+      "I_img": -0.02879441053093834,
+      "H_branch": 0.29180139258423043
+    },
+    {
+      "pattern_id": 1,
+      "n_timesteps": 50,
+      "mean_rho_sync": -0.013351986751999624,
+      "std_rho_sync": 0.1667004980299379,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.9591836734693877,
+      "I_img": 0.0,
+      "H_branch": 1.1122665512078556
+    },
+    {
+      "pattern_id": 2,
+      "n_timesteps": 50,
+      "mean_rho_sync": -0.017633037839928242,
+      "std_rho_sync": 0.19604246117084198,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.9795918367346939,
+      "I_img": 0.0,
+      "H_branch": 0.9789095641186553
+    },
+    {
+      "pattern_id": 3,
+      "n_timesteps": 50,
+      "mean_rho_sync": 0.011904131470851563,
+      "std_rho_sync": 0.3866864372546699,
+      "n_detachment_events": 4,
+      "detachment_fraction": 0.6938775510204082,
+      "I_img": -0.09334836712592531,
+      "H_branch": 0.5946492936243346
+    },
+    {
+      "pattern_id": 4,
+      "n_timesteps": 50,
+      "mean_rho_sync": 0.035154343245044496,
+      "std_rho_sync": 0.33243656545818245,
+      "n_detachment_events": 7,
+      "detachment_fraction": 0.6530612244897959,
+      "I_img": 0.0022095190366895334,
+      "H_branch": 0.4522711807071018
+    }
+  ],
+  "summary": {
+    "mean_rho_sync": -0.0007486992726357195,
+    "mean_detach_frac": 0.8122448979591838,
+    "mean_I_img": -0.023986651724034823,
+    "mean_H_branch": 0.6859795964484355,
+    "n_with_detachment": 5,
+    "n_with_imagination": 1
+  },
+  "cycle": 10
+}

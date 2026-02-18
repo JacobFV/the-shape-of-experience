@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_015.npz",
+    "seed": 7,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "detach_threshold": 0.3,
+    "n_patterns_detected": 37,
+    "n_patterns_analyzed": 20,
+    "cycle": 15
+  },
+  "patterns": [
+    {
+      "pattern_id": 8,
+      "n_timesteps": 48,
+      "mean_rho_sync": -0.008079028797665354,
+      "std_rho_sync": 0.13402655783519946,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.9574468085106383,
+      "I_img": 0.0,
+      "H_branch": 0.29961179157509715
+    },
+    {
+      "pattern_id": 1,
+      "n_timesteps": 47,
+      "mean_rho_sync": -0.017865481741508753,
+      "std_rho_sync": 0.3010789138261996,
+      "n_detachment_events": 4,
+      "detachment_fraction": 0.9130434782608695,
+      "I_img": 0.0,
+      "H_branch": 0.20297103520519844
+    },
+    {
+      "pattern_id": 10,
+      "n_timesteps": 47,
+      "mean_rho_sync": -0.0013221259194512206,
+      "std_rho_sync": 0.06556188879441166,
+      "n_detachment_events": 1,
+      "detachment_fraction": 1.0,
+      "I_img": 0.0,
+      "H_branch": 0.2260438015500609
+    },
+    {
+      "pattern_id": 19,
+      "n_timesteps": 47,
+      "mean_rho_sync": 0.007049201716575265,
+      "std_rho_sync": 0.1860720416295539,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.9565217391304348,
+      "I_img": 0.0,
+      "H_branch": 0.3929111546854361
+    },
+    {
+      "pattern_id": 11,
+      "n_timesteps": 46,
+      "mean_rho_sync": 0.030683285751294736,
+      "std_rho_sync": 0.14694857825138075,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.9111111111111111,
+      "I_img": 0.0,
+      "H_branch": 0.17362011285755266
+    },
+    {
+      "pattern_id": 2,
+      "n_timesteps": 45,
+      "mean_rho_sync": -0.031363765115388145,
+      "std_rho_sync": 0.2336477292193491,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.8863636363636364,
+      "I_img": 0.019840629761320727,
+      "H_branch": 0.4077927684009324
+    },
+    {
+      "pattern_id": 6,
+      "n_timesteps": 45,
+      "mean_rho_sync": 0.01589253137998722,
+      "std_rho_sync": 0.21706652028878382,
+      "n_detachment_events": 4,
+      "detachment_fraction": 0.8863636363636364,
+      "I_img": -0.0031187593301486016,
+      "H_branch": 0.5806092196316089
+    },
+    {
+      "pattern_id": 9,
+      "n_timesteps": 44,
+      "mean_rho_sync": -0.006236270159634778,
+      "std_rho_sync": 0.24799168669877916,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.8372093023255814,
+      "I_img": -0.012491325050822177,
+      "H_branch": 0.4412131359991356
+    },
+    {
+      "pattern_id": 17,
+      "n_timesteps": 44,
+      "mean_rho_sync": -0.02033777707055019,
+      "std_rho_sync": 0.3269195837756494,
+      "n_detachment_events": 5,
+      "detachment_fraction": 0.8604651162790697,
+      "I_img": 0.036336480852706354,
+      "H_branch": 0.24866891848399328
+    },
+    {
+      "pattern_id": 18,
+      "n_timesteps": 44,
+      "mean_rho_sync": 0.0051337429860384785,
+      "std_rho_sync": 0.32730792273550946,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.8837209302325582,
+      "I_img": -0.053184244336032305,
+      "H_branch": 0.5943828019608438
+    },
+    {
+      "pattern_id": 7,
+      "n_timesteps": 43,
+      "mean_rho_sync": 0.0006692672237650619,
+      "std_rho_sync": 0.0802522229090377,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.9761904761904762,
+      "I_img": 0.0,
+      "H_branch": 0.20253541772648348
+    },
+    {
+      "pattern_id": 12,
+      "n_timesteps": 43,
+      "mean_rho_sync": 0.0058720301240885505,
+      "std_rho_sync": 0.17173857736701179,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.9523809523809523,
+      "I_img": 0.0,
+      "H_branch": 0.11697862851437164
+    },
+    {
+      "pattern_id": 13,
+      "n_timesteps": 43,
+      "mean_rho_sync": 0.01932423183063206,
+      "std_rho_sync": 0.1587545511075892,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.9285714285714286,
+      "I_img": 0.0,
+      "H_branch": 0.2565277376555228
+    },
+    {
+      "pattern_id": 3,
+      "n_timesteps": 42,
+      "mean_rho_sync": -0.0061937105100496855,
+      "std_rho_sync": 0.18343103970038677,
+      "n_detachment_events": 1,
+      "detachment_fraction": 0.8536585365853658,
+      "I_img": -0.04485014497139728,
+      "H_branch": 0.7366275619982676
+    },
+    {
+      "pattern_id": 5,
+      "n_timesteps": 42,
+      "mean_rho_sync": 0.005934535901959441,
+      "std_rho_sync": 0.3673024201936202,
+      "n_detachment_events": 5,
+      "detachment_fraction": 0.8536585365853658,
+      "I_img": 0.010452958106119015,
+      "H_branch": 0.3691714129159021
+    },
+    {
+      "pattern_id": 15,
+      "n_timesteps": 42,
+      "mean_rho_sync": -0.013039748393566697,
+      "std_rho_sync": 0.14725327084957668,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.975609756097561,
+      "I_img": 0.0,
+      "H_branch": 0.4532247256900806
+    },
+    {
+      "pattern_id": 0,
+      "n_timesteps": 41,
+      "mean_rho_sync": -0.02320102520816363,
+      "std_rho_sync": 0.2793056130009943,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.9,
+      "I_img": 0.0,
+      "H_branch": 0.6332193637634708
+    },
+    {
+      "pattern_id": 14,
+      "n_timesteps": 39,
+      "mean_rho_sync": 0.001749585005630874,
+      "std_rho_sync": 0.20529911076757656,
+      "n_detachment_events": 3,
+      "detachment_fraction": 0.8947368421052632,
+      "I_img": 0.0,
+      "H_branch": 0.14475904584400986
+    },
+    {
+      "pattern_id": 4,
+      "n_timesteps": 38,
+      "mean_rho_sync": 0.00160278170251577,
+      "std_rho_sync": 0.05443274529950225,
+      "n_detachment_events": 1,
+      "detachment_fraction": 1.0,
+      "I_img": 0.0,
+      "H_branch": 0.502143615250155
+    },
+    {
+      "pattern_id": 16,
+      "n_timesteps": 38,
+      "mean_rho_sync": -0.004547149868567185,
+      "std_rho_sync": 0.07531902064386038,
+      "n_detachment_events": 1,
+      "detachment_fraction": 1.0,
+      "I_img": 0.0,
+      "H_branch": 0.6519689740862364
+    }
+  ],
+  "summary": {
+    "mean_rho_sync": -0.0019137444581029093,
+    "mean_detach_frac": 0.9213526143546973,
+    "mean_I_img": -0.0023507202484127133,
+    "mean_H_branch": 0.38174906118971796,
+    "n_with_detachment": 20,
+    "n_with_imagination": 3
+  },
+  "cycle": 15
+}

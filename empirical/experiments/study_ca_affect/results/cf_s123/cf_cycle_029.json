@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_029.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "detach_threshold": 0.3,
+    "n_patterns_detected": 1,
+    "n_patterns_analyzed": 1,
+    "cycle": 29
+  },
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "n_timesteps": 50,
+      "mean_rho_sync": -0.005463929691377788,
+      "std_rho_sync": 0.3208477834263241,
+      "n_detachment_events": 4,
+      "detachment_fraction": 0.6938775510204082,
+      "I_img": -0.036088828433461506,
+      "H_branch": 0.616273629273095
+    }
+  ],
+  "summary": {
+    "mean_rho_sync": -0.005463929691377788,
+    "mean_detach_frac": 0.6938775510204082,
+    "mean_I_img": -0.036088828433461506,
+    "mean_H_branch": 0.616273629273095,
+    "n_with_detachment": 1,
+    "n_with_imagination": 0
+  },
+  "cycle": 29
+}

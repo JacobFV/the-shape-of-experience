@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_020.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "detach_threshold": 0.3,
+    "n_patterns_detected": 3,
+    "n_patterns_analyzed": 3,
+    "cycle": 20
+  },
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "n_timesteps": 50,
+      "mean_rho_sync": -0.01130008166617291,
+      "std_rho_sync": 0.3225877695894414,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.8163265306122449,
+      "I_img": -0.05569021170463895,
+      "H_branch": 0.4660901472408122
+    },
+    {
+      "pattern_id": 1,
+      "n_timesteps": 50,
+      "mean_rho_sync": 0.02488140225658735,
+      "std_rho_sync": 0.31933446602048704,
+      "n_detachment_events": 6,
+      "detachment_fraction": 0.673469387755102,
+      "I_img": -0.05656964864041347,
+      "H_branch": 0.5374991553004903
+    },
+    {
+      "pattern_id": 2,
+      "n_timesteps": 50,
+      "mean_rho_sync": -0.02455606426579203,
+      "std_rho_sync": 0.39219034384525564,
+      "n_detachment_events": 4,
+      "detachment_fraction": 0.673469387755102,
+      "I_img": 0.045102438248983134,
+      "H_branch": 0.5301392745883811
+    }
+  ],
+  "summary": {
+    "mean_rho_sync": -0.0036582478917925303,
+    "mean_detach_frac": 0.7210884353741497,
+    "mean_I_img": -0.02238580736535643,
+    "mean_H_branch": 0.5112428590432279,
+    "n_with_detachment": 3,
+    "n_with_imagination": 1
+  },
+  "cycle": 20
+}

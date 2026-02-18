@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_010.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 20,
+    "detach_threshold": 0.3,
+    "n_patterns_detected": 5,
+    "n_patterns_analyzed": 5
+  },
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "n_timesteps": 20,
+      "mean_rho_sync": 0.02160893831598131,
+      "std_rho_sync": 0.3524340553203538,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.6842105263157895,
+      "I_img": -0.03194667490060038,
+      "H_branch": 0.009920802887237911
+    },
+    {
+      "pattern_id": 1,
+      "n_timesteps": 20,
+      "mean_rho_sync": -0.012160842926373573,
+      "std_rho_sync": 0.10159509640261889,
+      "n_detachment_events": 1,
+      "detachment_fraction": 1.0,
+      "I_img": 0.0,
+      "H_branch": 1.1359965480538097
+    },
+    {
+      "pattern_id": 2,
+      "n_timesteps": 20,
+      "mean_rho_sync": -0.02290206767410334,
+      "std_rho_sync": 0.294181683210715,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.9473684210526315,
+      "I_img": 0.0,
+      "H_branch": 0.7948566147298829
+    },
+    {
+      "pattern_id": 3,
+      "n_timesteps": 20,
+      "mean_rho_sync": 0.0052224379775763835,
+      "std_rho_sync": 0.3083216682424628,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.7894736842105263,
+      "I_img": 0.0,
+      "H_branch": 0.6833782246834683
+    },
+    {
+      "pattern_id": 4,
+      "n_timesteps": 20,
+      "mean_rho_sync": 0.05308476817648816,
+      "std_rho_sync": 0.26245567912513595,
+      "n_detachment_events": 2,
+      "detachment_fraction": 0.5789473684210527,
+      "I_img": 0.20348861358259795,
+      "H_branch": 0.5474969124702534
+    }
+  ],
+  "summary": {
+    "mean_rho_sync": 0.00897064677391379,
+    "mean_detach_frac": 0.7999999999999999,
+    "mean_I_img": 0.034308387736399514,
+    "mean_H_branch": 0.6343298205649304,
+    "n_with_detachment": 5,
+    "n_with_imagination": 1
+  }
+}
