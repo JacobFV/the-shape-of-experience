@@ -1,0 +1,420 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_029.npz",
+    "seed": 42,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 44,
+    "n_patterns_analyzed": 20,
+    "cycle": 29
+  },
+  "rsa_rho": 0.14736929583994893,
+  "rsa_p": 0.04245495036206084,
+  "n_patterns": 20,
+  "dim_labels_A": [
+    "valence",
+    "arousal",
+    "integration",
+    "d_eff",
+    "cf_weight",
+    "sm_sal"
+  ],
+  "dim_labels_C": [
+    "approach_avoid",
+    "activity",
+    "growth",
+    "stability"
+  ],
+  "per_pattern": [
+    {
+      "pattern_id": 0,
+      "space_A": {
+        "valence": -0.009190924313603615,
+        "arousal": 5.348056316375732,
+        "integration": 0.03700681784120863,
+        "d_eff": 1.176208415533498,
+        "cf_weight": 0.998907171539031,
+        "sm_sal": -0.36455698973989004
+      },
+      "space_C": {
+        "approach_avoid": -0.003204745650291443,
+        "activity": 2.6028182953174412,
+        "growth": 0.5,
+        "stability": 0.4447447672733873
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 1,
+      "space_A": {
+        "valence": -0.009864505456418407,
+        "arousal": 4.960263252258301,
+        "integration": 0.060486861748074494,
+        "d_eff": 1.26571860632233,
+        "cf_weight": 0.9874764764681458,
+        "sm_sal": -0.0018652525052468283
+      },
+      "space_C": {
+        "approach_avoid": 0.0014381277561187743,
+        "activity": 2.07705410366384,
+        "growth": 1.2380952380952381,
+        "stability": 0.5427447275914389
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 2,
+      "space_A": {
+        "valence": -0.00398839249902842,
+        "arousal": 7.525300979614258,
+        "integration": 0.009775157686787717,
+        "d_eff": 1.0666423428087177,
+        "cf_weight": 0.9625811204314232,
+        "sm_sal": -0.060736607906845985
+      },
+      "space_C": {
+        "approach_avoid": -0.004343193769454956,
+        "activity": 2.2738040911618858,
+        "growth": -0.4642857142857143,
+        "stability": 0.40922074629060007
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 3,
+      "space_A": {
+        "valence": 0.005967889513288226,
+        "arousal": 5.117389678955078,
+        "integration": 0.020286402636106482,
+        "d_eff": 1.110009167735589,
+        "cf_weight": 0.9958270769566298,
+        "sm_sal": -0.004292250072128301
+      },
+      "space_C": {
+        "approach_avoid": 0.0010065674781799317,
+        "activity": 2.548667576661561,
+        "growth": 2.1176470588235294,
+        "stability": 0.30047558468323554
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 4,
+      "space_A": {
+        "valence": -0.00972426667505381,
+        "arousal": 13.918249130249023,
+        "integration": 0.3396266287521521,
+        "d_eff": 1.90593078665533,
+        "cf_weight": 0.9985104446532205,
+        "sm_sal": -0.2115606633511623
+      },
+      "space_C": {
+        "approach_avoid": -0.00010174810886383056,
+        "activity": 3.1167741097359403,
+        "growth": 5.8108108108108105,
+        "stability": 0.1384315045754403
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 5,
+      "space_A": {
+        "valence": -0.0012253985113027145,
+        "arousal": 5.179490566253662,
+        "integration": 0.01683702514231189,
+        "d_eff": 1.095879992889214,
+        "cf_weight": 0.9989664790919051,
+        "sm_sal": -0.062279060976568545
+      },
+      "space_C": {
+        "approach_avoid": -0.00138863205909729,
+        "activity": 2.32644364327639,
+        "growth": -0.2878787878787879,
+        "stability": 0.6164610392495466
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 6,
+      "space_A": {
+        "valence": 0.0010502435723129585,
+        "arousal": 5.87980318069458,
+        "integration": 0.009101597862166688,
+        "d_eff": 1.0585935818417653,
+        "cf_weight": 0.9987803322728723,
+        "sm_sal": -0.08698877500802982
+      },
+      "space_C": {
+        "approach_avoid": 0.001716930866241455,
+        "activity": 2.9063112093666126,
+        "growth": 3.0434782608695654,
+        "stability": 0.1879462397286995
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 7,
+      "space_A": {
+        "valence": 0.0034067338826705,
+        "arousal": 8.75434398651123,
+        "integration": 0.023606690856255108,
+        "d_eff": 1.13284719883804,
+        "cf_weight": 0.9875208819285035,
+        "sm_sal": -0.575390067374292
+      },
+      "space_C": {
+        "approach_avoid": -0.0033925580978393555,
+        "activity": 3.258021181430504,
+        "growth": 0.16494845360824742,
+        "stability": 0.349362754264384
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 8,
+      "space_A": {
+        "valence": -0.0012472308411890147,
+        "arousal": 3.421386957168579,
+        "integration": 0.4292086050747409,
+        "d_eff": 2.6701555307836475,
+        "cf_weight": 0.9772243015468121,
+        "sm_sal": -0.002840103782315362
+      },
+      "space_C": {
+        "approach_avoid": 0.0012453210353851319,
+        "activity": 2.778258589556495,
+        "growth": -0.07692307692307693,
+        "stability": 0.3641414233019904
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 9,
+      "space_A": {
+        "valence": -0.008012927308374522,
+        "arousal": 5.161071300506592,
+        "integration": 0.11112313333270807,
+        "d_eff": 1.4646612019742737,
+        "cf_weight": 0.9987240897025913,
+        "sm_sal": -0.016627496545653986
+      },
+      "space_C": {
+        "approach_avoid": -0.002353843450546265,
+        "activity": 2.422744153258009,
+        "growth": -0.6818181818181818,
+        "stability": 0.4706189184664212
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 10,
+      "space_A": {
+        "valence": 0.008020644285240951,
+        "arousal": 7.863297939300537,
+        "integration": 0.007308462457242704,
+        "d_eff": 1.0505634130470025,
+        "cf_weight": 0.9639300778508186,
+        "sm_sal": -0.04962636793990338
+      },
+      "space_C": {
+        "approach_avoid": 0.00034930229187011717,
+        "activity": 2.8603953553679258,
+        "growth": 0.42105263157894735,
+        "stability": -0.023166541355656954
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 11,
+      "space_A": {
+        "valence": 0.002002068928309849,
+        "arousal": 2.802626609802246,
+        "integration": 0.014562635707734417,
+        "d_eff": 1.1041601376818668,
+        "cf_weight": 0.9786593653261662,
+        "sm_sal": -0.0009167258801916489
+      },
+      "space_C": {
+        "approach_avoid": -0.0006685620546340943,
+        "activity": 2.338160959294149,
+        "growth": 1.0,
+        "stability": 0.39412037907099245
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 12,
+      "space_A": {
+        "valence": -0.012218052027176837,
+        "arousal": 5.352964878082275,
+        "integration": 0.08115942801617548,
+        "d_eff": 1.4234482943290285,
+        "cf_weight": 0.9985029583331198,
+        "sm_sal": -0.010638733714599224
+      },
+      "space_C": {
+        "approach_avoid": 0.001580899953842163,
+        "activity": 2.4387299154924444,
+        "growth": -0.1891891891891892,
+        "stability": 0.28142205703850376
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 13,
+      "space_A": {
+        "valence": -0.006234689634673449,
+        "arousal": 8.245179176330566,
+        "integration": 0.04419325358572257,
+        "d_eff": 1.2387114382776996,
+        "cf_weight": 0.9893067786470056,
+        "sm_sal": -0.02575860415747433
+      },
+      "space_C": {
+        "approach_avoid": 0.001092904806137085,
+        "activity": 2.8510585159538557,
+        "growth": -0.13636363636363635,
+        "stability": 0.44272345541144864
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 14,
+      "space_A": {
+        "valence": -0.00992940396678691,
+        "arousal": 3.8312792778015137,
+        "integration": 0.30153720989568267,
+        "d_eff": 2.406058571096927,
+        "cf_weight": 0.9992262392770499,
+        "sm_sal": -0.0015115697451039134
+      },
+      "space_C": {
+        "approach_avoid": 0.005999029874801636,
+        "activity": 3.2272663531535755,
+        "growth": 3.1818181818181817,
+        "stability": 0.3808902002021312
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 15,
+      "space_A": {
+        "valence": -0.001214168509658502,
+        "arousal": 3.371657371520996,
+        "integration": 0.09356647453470779,
+        "d_eff": 1.406962755122698,
+        "cf_weight": 0.9991154365707189,
+        "sm_sal": -0.007838366508971628
+      },
+      "space_C": {
+        "approach_avoid": 0.0012819182872772217,
+        "activity": 2.720130348272727,
+        "growth": 4.8125,
+        "stability": 0.512770550146257
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 16,
+      "space_A": {
+        "valence": -0.002280804575706015,
+        "arousal": 3.272111177444458,
+        "integration": 0.1091640001197346,
+        "d_eff": 1.5186168525037118,
+        "cf_weight": 0.9913309561088681,
+        "sm_sal": -0.0015078358683423554
+      },
+      "space_C": {
+        "approach_avoid": 0.0009391999244689941,
+        "activity": 2.8153017656906214,
+        "growth": 1.8,
+        "stability": 0.5369902053400498
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 17,
+      "space_A": {
+        "valence": -0.0010934167978714924,
+        "arousal": 5.364497661590576,
+        "integration": 0.07444802775361525,
+        "d_eff": 1.4137284145439883,
+        "cf_weight": 0.9335164949297905,
+        "sm_sal": -0.0014647263449839576
+      },
+      "space_C": {
+        "approach_avoid": 3.477931022644043e-05,
+        "activity": 2.6318720993905047,
+        "growth": 0.7083333333333334,
+        "stability": 0.48182938194361896
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 18,
+      "space_A": {
+        "valence": 0.0009156733143086336,
+        "arousal": 8.276010513305664,
+        "integration": 0.04021727330549962,
+        "d_eff": 1.1901293326116915,
+        "cf_weight": 0.9905778001993895,
+        "sm_sal": -0.3487991062591761
+      },
+      "space_C": {
+        "approach_avoid": 0.005258454084396362,
+        "activity": 3.015417953058829,
+        "growth": 1.0,
+        "stability": 0.26867075409067304
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 19,
+      "space_A": {
+        "valence": -0.00013576721658512038,
+        "arousal": 3.8132312297821045,
+        "integration": 0.03356533889971036,
+        "d_eff": 1.2232790756126228,
+        "cf_weight": 0.9987613981356844,
+        "sm_sal": -0.00039947791707439784
+      },
+      "space_C": {
+        "approach_avoid": 9.189605712890625e-05,
+        "activity": 3.20325049819567,
+        "growth": 2.2777777777777777,
+        "stability": 0.11764913312377936
+      },
+      "n_timesteps": 50
+    }
+  ],
+  "space_A_means": {
+    "valence": -0.002749834741864885,
+    "arousal": 5.872910559177399,
+    "integration": 0.09283905126041689,
+    "d_eff": 1.396115255510482,
+    "cf_weight": 0.9873722939984872,
+    "sm_sal": -0.0917799390798977
+  },
+  "space_A_stds": {
+    "valence": 0.005569650208294512,
+    "arousal": 2.5611317691823032,
+    "integration": 0.11719210641700699,
+    "d_eff": 0.43329101703534173,
+    "cf_weight": 0.01662415844076488,
+    "sm_sal": 0.15502787325989822
+  },
+  "space_C_means": {
+    "approach_avoid": 0.0003291024267673492,
+    "activity": 2.720624035864949,
+    "growth": 1.3120001580128524,
+    "stability": 0.3609023640218471
+  },
+  "space_C_stds": {
+    "approach_avoid": 0.0024897162744448365,
+    "activity": 0.3347066533486842,
+    "growth": 1.7336513954483446,
+    "stability": 0.15833156329633524
+  },
+  "cycle": 29
+}

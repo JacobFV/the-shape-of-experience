@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_015.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 6,
+    "n_patterns_analyzed": 6,
+    "cycle": 15
+  },
+  "rsa_rho": 0.2571428571428571,
+  "rsa_p": 0.35486036365060913,
+  "n_patterns": 6,
+  "dim_labels_A": [
+    "valence",
+    "arousal",
+    "integration",
+    "d_eff",
+    "cf_weight",
+    "sm_sal"
+  ],
+  "dim_labels_C": [
+    "approach_avoid",
+    "activity",
+    "growth",
+    "stability"
+  ],
+  "per_pattern": [
+    {
+      "pattern_id": 0,
+      "space_A": {
+        "valence": 0.010009765625,
+        "arousal": 5.929653644561768,
+        "integration": 0.3967356065460297,
+        "d_eff": 2.5843671201281038,
+        "cf_weight": 0.8276620209217072,
+        "sm_sal": -0.016043907587044104
+      },
+      "space_C": {
+        "approach_avoid": 0.002434949278831482,
+        "activity": 2.9637737934824115,
+        "growth": 0.0,
+        "stability": 0.17996058855720526
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 1,
+      "space_A": {
+        "valence": 0.0021027058971171478,
+        "arousal": 4.019998550415039,
+        "integration": 0.2149961200848014,
+        "d_eff": 2.043764979961702,
+        "cf_weight": 0.9417958743870258,
+        "sm_sal": -0.03118925797608285
+      },
+      "space_C": {
+        "approach_avoid": -0.002090696096420288,
+        "activity": 3.3547867128511433,
+        "growth": -0.19047619047619047,
+        "stability": 0.22744838777353318
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 2,
+      "space_A": {
+        "valence": 0.0014860240780577368,
+        "arousal": 7.4571356773376465,
+        "integration": 0.13589660187860686,
+        "d_eff": 1.511943787272479,
+        "cf_weight": 0.6807348728179932,
+        "sm_sal": -0.03881704921003626
+      },
+      "space_C": {
+        "approach_avoid": 0.0016163086891174316,
+        "activity": 2.5682952889914556,
+        "growth": -0.3333333333333333,
+        "stability": 0.5086349823275935
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 3,
+      "space_A": {
+        "valence": -0.0004919159169099769,
+        "arousal": 4.6357340812683105,
+        "integration": 0.4291475099956803,
+        "d_eff": 2.539736758112499,
+        "cf_weight": 0.8475085347890854,
+        "sm_sal": -0.000920745536880041
+      },
+      "space_C": {
+        "approach_avoid": 0.0012263941764831543,
+        "activity": 3.753708657444571,
+        "growth": -0.28,
+        "stability": 0.2832843617141686
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 4,
+      "space_A": {
+        "valence": -0.006438406146302515,
+        "arousal": 15.782769203186035,
+        "integration": 0.06191175053526832,
+        "d_eff": 1.2790284890083552,
+        "cf_weight": 0.8872608169913292,
+        "sm_sal": -0.3075955597151647
+      },
+      "space_C": {
+        "approach_avoid": 0.01123300552368164,
+        "activity": 3.6450038664308595,
+        "growth": -0.20634920634920634,
+        "stability": 0.24017765430369228
+      },
+      "n_timesteps": 50
+    },
+    {
+      "pattern_id": 5,
+      "space_A": {
+        "valence": -0.01476553994782117,
+        "arousal": 3.231839179992676,
+        "integration": 0.06020063368081774,
+        "d_eff": 1.2958366402177348,
+        "cf_weight": 0.7301150858402252,
+        "sm_sal": -0.0005593391942366743
+      },
+      "space_C": {
+        "approach_avoid": 0.004293612837791443,
+        "activity": 2.4700378956811897,
+        "growth": 0.08888888888888889,
+        "stability": 0.4432797799805946
+      },
+      "n_timesteps": 50
+    }
+  ],
+  "space_A_means": {
+    "valence": -0.0013495610684764632,
+    "arousal": 6.842855056126912,
+    "integration": 0.21648137045353408,
+    "d_eff": 1.8757796291168123,
+    "cf_weight": 0.8191795342912277,
+    "sm_sal": -0.06585430986990744
+  },
+  "space_A_stds": {
+    "valence": 0.007698629553122257,
+    "arousal": 4.223203364818023,
+    "integration": 0.14862145623466877,
+    "d_eff": 0.5471100884137894,
+    "cf_weight": 0.08911015002937213,
+    "sm_sal": 0.10903545930235056
+  },
+  "space_C_means": {
+    "approach_avoid": 0.003118929068247477,
+    "activity": 3.1259343691469383,
+    "growth": -0.1535449735449735,
+    "stability": 0.3137976257761312
+  },
+  "space_C_stds": {
+    "approach_avoid": 0.004096048862665349,
+    "activity": 0.49721971588664876,
+    "growth": 0.14989839134822958,
+    "stability": 0.12003244469994863
+  },
+  "cycle": 15
+}

@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s123/v13_s123/snapshots/cycle_020.npz",
+    "seed": 123,
+    "C": 16,
+    "N": 128,
+    "n_patterns_detected": 3,
+    "n_patterns_analyzed": 3,
+    "cycle": 20
+  },
+  "rsa_rho": null,
+  "rsa_p": null,
+  "n_patterns": 0,
+  "per_pattern": [],
+  "cycle": 20
+}
