@@ -631,7 +631,34 @@ Compute correlation matrix R(g) ∈ R^{7×7} across population at generation g.
 
 **Self-model as phase transition** (Prediction 11.4): SM emergence should correlate with a discrete jump in Φ. Before self-modeling: Φ increases gradually. After: Φ jumps. This is the gradient-of-distinction Rung 5 → Rung 6 transition.
 
-### Status: NOT IMPLEMENTED (meta-analysis over Experiments 1-10)
+### Status: COMPLETE (4 clusters, all specific predictions null)
+
+### Results (V13 content-based coupling, 3 seeds × 7 cycles, 24 measures)
+
+**Method**: Computed correlation matrix across 24 measures (robustness, phi_increase, C_wm, MI_inter, MI_social, ι, d_eff, A_level, SM_sal, ρ_self, ρ_topo, phi_group, super_ratio, etc.) for each seed × cycle snapshot. Tracked entanglement (mean |r| across all pairs) over evolutionary time.
+
+**Measure clusters** (hierarchical clustering on |r| matrix):
+1. **Robustness cluster**: robustness, phi_increase, disentanglement
+2. **Large coupling cluster** (14 measures): C_wm, MI_inter, MI_social, ι, phi_group, super_ratio, animism, coherence, etc.
+3. **Dimensionality cluster**: d_eff, A_level
+4. **Self-coupling cluster**: rho_self, rho_topo
+
+**Assessment against predictions:**
+- ⚠ Prediction 11.1 (co-emergence C_wm/A/I_img): NOT confirmed — mean r = 0.19 across the predicted triplet. These quantities do not co-emerge as aspects of one process; they fall into different clusters.
+- ⚠ Prediction 11.2 (language lag): NOT confirmed — ρ_topo never becomes significant in any snapshot, so the predicted ordering cannot be assessed.
+- ⚠ Prediction 11.4 (SM-Φ jump): NOT confirmed — no SM-Φ correlation. Self-model emergence (SM_sal) and integration (Φ) are not correlated across snapshots.
+
+**Entanglement increases over evolution**: Mean |r| across all measure pairs grows from 0.68 (baseline) to 0.91 across evolutionary time. 9/15 strongest evolutionary correlations are significant.
+
+**Key significant pairs**:
+- phi_group ↔ super_ratio (r = 0.94)
+- robustness ↔ phi_increase (r = 0.86)
+- MI_inter ↔ MI_social (r = 0.69)
+
+**Interpretation**: The measures entangle into clusters, but not the clusters the theory predicted. The large coupling cluster (14 measures) suggests that most emergence metrics are driven by a single underlying factor — likely population-mediated selection intensity. The specific phase-transition predictions (co-emergence, language lag, SM-Φ jump) are all null, but the overall entanglement increase is real: as evolution proceeds, everything becomes more correlated with everything else.
+
+**Code:** `v13_entanglement.py`, `v13_entanglement_run.py`
+**Data:** `results/entanglement_analysis/`
 
 ---
 
@@ -663,7 +690,37 @@ If we build a system that models the world, models itself, communicates with oth
 
 If the answer is "none," the identity thesis is supported (not proven — identity claims are never proven, only supported by converging evidence). If the answer is "because it's just physics" — that's the point.
 
-### Status: NOT IMPLEMENTED (capstone, depends on all prior experiments)
+### Status: COMPLETE (7/7 criteria met, most at moderate strength)
+
+### Results (V13 content-based coupling, 3 seeds, Experiments 0-11 integrated)
+
+| Criterion | Status | Strength | Detail |
+|-----------|--------|----------|--------|
+| 1. World models (C_wm > 0) | MET | Weak | C_wm > 0 in 21/21 snapshots, but ~10⁻⁴ in general population |
+| 2. Self-models (SM > 0) | MET | Weak | SM_sal > 0.01 in 7/21, > 1.0 only at bottleneck (n=1) |
+| 3. Communication (C_ij > 0) | MET | Moderate | MI significant in 15/21 snapshots, but ρ_topo ≈ 0 (unstructured) |
+| 4. Affect dimensions measurable | MET | **Strong** | 84/84 dimension-measurements valid across all seeds and cycles |
+| 5. Affect geometry (RSA > 0) | MET | Moderate | 9/19 sig positive RSA; develops over evolution (seed 7: 0.01→0.38) |
+| 6. Tripartite alignment | MET | Partial | A↔C positive (mean ρ=0.17), A↔B r=0.73 (MI proxy), B↔C null |
+| 7. Perturbation response | MET | Moderate | Robustness 0.923 mean; >1.0 at bottleneck (3/90 cycles) |
+
+**Verdict: SUPPORTED with caveats.** All seven criteria are met, but most at moderate or weak strength. The strongest finding is affect dimensions (criterion 4) — the geometric framework produces valid, measurable quantities in every snapshot. The weakest are world models and self-models (criteria 1-2), which are detectable but only meaningfully strong at population bottlenecks.
+
+**Falsification map update:**
+- Affect dimensions: **CONFIRMED** (strong)
+- Affect geometry (RSA): **CONFIRMED** (moderate, develops over evolution)
+- Perturbation response: **CONFIRMED** (moderate, bottleneck-amplified)
+- World model emergence: Partially confirmed (weak in general, strong at bottleneck)
+- Self-model emergence: Partially confirmed (insufficient data, n=1 event)
+- Language/communication: Partially confirmed (MI positive, structure absent)
+- Tripartite identity: Partially confirmed (A↔C positive, B↔C null)
+
+**The sensory-motor coupling wall:** Criteria 1, 2, 5 (counterfactual detachment), and the B↔C leg of criterion 6 all hit the same limitation — V13 patterns lack explicit sensory-motor coupling. The FFT convolution substrate creates patterns that are internally driven from the start, preventing the reactive→autonomous transitions the theory predicts. Testing the full identity thesis requires a substrate with boundary-dependent dynamics.
+
+**What this means for the book:** The identity thesis is supported at the geometric level (affect space structure is real and develops) but the dynamical claims (world modeling, self-modeling, structured communication creating phenomenal character) remain undertested. The geometry is confirmed; the identity claim requires a richer substrate.
+
+**Code:** `v13_capstone.py`, `v13_capstone_run.py`
+**Data:** `results/capstone_analysis/`
 
 ---
 
