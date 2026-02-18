@@ -1,0 +1,225 @@
+{
+  "seeds": [
+    123,
+    42,
+    7
+  ],
+  "trajectories": {
+    "123": [
+      {
+        "cycle": 0,
+        "phi_group": 0.1838818703383639,
+        "sum_phi_individual": 20.78719651699066,
+        "superorganism_ratio": 0.008845919659635963,
+        "partition_loss": 0.11382947872102742,
+        "mean_pairwise_MI": 0.01838818703383639,
+        "group_coherence": 0.4,
+        "n_patterns": 5
+      },
+      {
+        "cycle": 5,
+        "phi_group": 4.206857400204564,
+        "sum_phi_individual": 88.82206392288208,
+        "superorganism_ratio": 0.04736275216321342,
+        "partition_loss": 2.3702092421820784,
+        "mean_pairwise_MI": 0.027495800001337018,
+        "group_coherence": 0.6078431372549019,
+        "n_patterns": 18
+      },
+      {
+        "cycle": 10,
+        "phi_group": 0.2976916532204844,
+        "sum_phi_individual": 24.594598054885864,
+        "superorganism_ratio": 0.012103944636791744,
+        "partition_loss": 0.18185066393569976,
+        "mean_pairwise_MI": 0.02976916532204844,
+        "group_coherence": 0.8,
+        "n_patterns": 5
+      },
+      {
+        "cycle": 15,
+        "phi_group": 0.402283879138827,
+        "sum_phi_individual": 28.219990730285645,
+        "superorganism_ratio": 0.014255280343061795,
+        "partition_loss": 0.24159934864383406,
+        "mean_pairwise_MI": 0.0268189252759218,
+        "group_coherence": 0.6,
+        "n_patterns": 6
+      },
+      {
+        "cycle": 20,
+        "phi_group": null,
+        "sum_phi_individual": null,
+        "superorganism_ratio": null,
+        "partition_loss": null,
+        "mean_pairwise_MI": null,
+        "group_coherence": null,
+        "n_patterns": 0
+      },
+      {
+        "cycle": 25,
+        "phi_group": 5.461920312183965,
+        "sum_phi_individual": 79.07546097040176,
+        "superorganism_ratio": 0.06907225383394706,
+        "partition_loss": 2.847857882462179,
+        "mean_pairwise_MI": 0.028746949011494553,
+        "group_coherence": 0.6421052631578947,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 29,
+        "phi_group": null,
+        "sum_phi_individual": null,
+        "superorganism_ratio": null,
+        "partition_loss": null,
+        "mean_pairwise_MI": null,
+        "group_coherence": null,
+        "n_patterns": 0
+      }
+    ],
+    "42": [
+      {
+        "cycle": 0,
+        "phi_group": 1.3386464834442233,
+        "sum_phi_individual": 45.51320719718933,
+        "superorganism_ratio": 0.02941226439271657,
+        "partition_loss": 0.7647054240661985,
+        "mean_pairwise_MI": 0.02433902697171315,
+        "group_coherence": 0.5636363636363636,
+        "n_patterns": 11
+      },
+      {
+        "cycle": 5,
+        "phi_group": 4.693974803562726,
+        "sum_phi_individual": 96.84905415773392,
+        "superorganism_ratio": 0.048466914255227,
+        "partition_loss": 2.441680829566143,
+        "mean_pairwise_MI": 0.024705130545066976,
+        "group_coherence": 0.5526315789473685,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 10,
+        "phi_group": 4.976556344639421,
+        "sum_phi_individual": 70.55197596549988,
+        "superorganism_ratio": 0.07053744812296926,
+        "partition_loss": 2.7923644381943675,
+        "mean_pairwise_MI": 0.02619240181389169,
+        "group_coherence": 0.6105263157894737,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 15,
+        "phi_group": 5.909498691372843,
+        "sum_phi_individual": 65.49845170974731,
+        "superorganism_ratio": 0.09022348677126678,
+        "partition_loss": 3.049603655147058,
+        "mean_pairwise_MI": 0.031102624691436015,
+        "group_coherence": 0.7105263157894737,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 20,
+        "phi_group": 5.047234889366278,
+        "sum_phi_individual": 88.00056380033493,
+        "superorganism_ratio": 0.05735457446406801,
+        "partition_loss": 2.804967914611476,
+        "mean_pairwise_MI": 0.026564394154559356,
+        "group_coherence": 0.5736842105263158,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 25,
+        "phi_group": 5.8916884403296965,
+        "sum_phi_individual": 71.19588404893875,
+        "superorganism_ratio": 0.08275321697360843,
+        "partition_loss": 3.1585676912898837,
+        "mean_pairwise_MI": 0.031008886528051033,
+        "group_coherence": 0.7,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 29,
+        "phi_group": 4.986875553399034,
+        "sum_phi_individual": 83.37049043178558,
+        "superorganism_ratio": 0.059815835646059155,
+        "partition_loss": 2.4625988758149187,
+        "mean_pairwise_MI": 0.026246713438942283,
+        "group_coherence": 0.5631578947368421,
+        "n_patterns": 20
+      }
+    ],
+    "7": [
+      {
+        "cycle": 0,
+        "phi_group": 4.742823031074813,
+        "sum_phi_individual": 77.27902030944824,
+        "superorganism_ratio": 0.0613727116633096,
+        "partition_loss": 2.5247858803215433,
+        "mean_pairwise_MI": 0.024962226479341123,
+        "group_coherence": 0.5631578947368421,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 5,
+        "phi_group": 4.126781196111894,
+        "sum_phi_individual": 78.6118249297142,
+        "superorganism_ratio": 0.052495679877697723,
+        "partition_loss": 2.292646021011148,
+        "mean_pairwise_MI": 0.021719901032167862,
+        "group_coherence": 0.49473684210526314,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 10,
+        "phi_group": 4.600329245241777,
+        "sum_phi_individual": 80.39963126182556,
+        "superorganism_ratio": 0.05721828785831824,
+        "partition_loss": 2.484858381999347,
+        "mean_pairwise_MI": 0.02421225918548304,
+        "group_coherence": 0.531578947368421,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 15,
+        "phi_group": 5.768385131551305,
+        "sum_phi_individual": 87.20596611499786,
+        "superorganism_ratio": 0.0661466799638981,
+        "partition_loss": 2.4409905240713954,
+        "mean_pairwise_MI": 0.03035992174500687,
+        "group_coherence": 0.5736842105263158,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 20,
+        "phi_group": 5.651957984455278,
+        "sum_phi_individual": 83.33885312080383,
+        "superorganism_ratio": 0.06781900365562366,
+        "partition_loss": 2.508968750882378,
+        "mean_pairwise_MI": 0.029747147286606726,
+        "group_coherence": 0.5631578947368421,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 25,
+        "phi_group": 10.566783264918655,
+        "sum_phi_individual": 86.11713218688965,
+        "superorganism_ratio": 0.12270245184183372,
+        "partition_loss": 6.336237411055359,
+        "mean_pairwise_MI": 0.055614648762729764,
+        "group_coherence": 0.6421052631578947,
+        "n_patterns": 20
+      },
+      {
+        "cycle": 29,
+        "phi_group": 8.553763676258459,
+        "sum_phi_individual": 84.97107350826263,
+        "superorganism_ratio": 0.10066677191534701,
+        "partition_loss": 3.299744479065776,
+        "mean_pairwise_MI": 0.045019808822412945,
+        "group_coherence": 0.6842105263157895,
+        "n_patterns": 20
+      }
+    ]
+  }
+}

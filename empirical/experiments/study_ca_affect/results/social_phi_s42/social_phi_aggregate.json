@@ -1,0 +1,252 @@
+{
+  "seed": 42,
+  "trajectory": [
+    {
+      "cycle": 0,
+      "phi_group": 1.3386464834442233,
+      "sum_phi_individual": 45.51320719718933,
+      "superorganism_ratio": 0.02941226439271657,
+      "partition_loss": 0.7647054240661985,
+      "mean_pairwise_MI": 0.02433902697171315,
+      "group_coherence": 0.5636363636363636,
+      "n_patterns": 11
+    },
+    {
+      "cycle": 5,
+      "phi_group": 4.693974803562726,
+      "sum_phi_individual": 96.84905415773392,
+      "superorganism_ratio": 0.048466914255227,
+      "partition_loss": 2.441680829566143,
+      "mean_pairwise_MI": 0.024705130545066976,
+      "group_coherence": 0.5526315789473685,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 10,
+      "phi_group": 4.976556344639421,
+      "sum_phi_individual": 70.55197596549988,
+      "superorganism_ratio": 0.07053744812296926,
+      "partition_loss": 2.7923644381943675,
+      "mean_pairwise_MI": 0.02619240181389169,
+      "group_coherence": 0.6105263157894737,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 15,
+      "phi_group": 5.909498691372843,
+      "sum_phi_individual": 65.49845170974731,
+      "superorganism_ratio": 0.09022348677126678,
+      "partition_loss": 3.049603655147058,
+      "mean_pairwise_MI": 0.031102624691436015,
+      "group_coherence": 0.7105263157894737,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 20,
+      "phi_group": 5.047234889366278,
+      "sum_phi_individual": 88.00056380033493,
+      "superorganism_ratio": 0.05735457446406801,
+      "partition_loss": 2.804967914611476,
+      "mean_pairwise_MI": 0.026564394154559356,
+      "group_coherence": 0.5736842105263158,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 25,
+      "phi_group": 5.8916884403296965,
+      "sum_phi_individual": 71.19588404893875,
+      "superorganism_ratio": 0.08275321697360843,
+      "partition_loss": 3.1585676912898837,
+      "mean_pairwise_MI": 0.031008886528051033,
+      "group_coherence": 0.7,
+      "n_patterns": 20
+    },
+    {
+      "cycle": 29,
+      "phi_group": 4.986875553399034,
+      "sum_phi_individual": 83.37049043178558,
+      "superorganism_ratio": 0.059815835646059155,
+      "partition_loss": 2.4625988758149187,
+      "mean_pairwise_MI": 0.026246713438942283,
+      "group_coherence": 0.5631578947368421,
+      "n_patterns": 20
+    }
+  ],
+  "cycles": [
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_000.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 11,
+        "n_patterns_analyzed": 11,
+        "cycle": 0
+      },
+      "n_patterns": 11,
+      "n_timesteps": 50,
+      "mean_phi_individual": 4.137564290653575,
+      "sum_phi_individual": 45.51320719718933,
+      "phi_group": 1.3386464834442233,
+      "superorganism_ratio": 0.02941226439271657,
+      "phi_subgroup_A": 0.32798307210921207,
+      "phi_subgroup_B": 0.24595798726881277,
+      "phi_partition_sum": 0.5739410593780249,
+      "partition_loss": 0.7647054240661985,
+      "mean_pairwise_MI": 0.02433902697171315,
+      "group_coherence": 0.5636363636363636,
+      "cycle": 0
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_005.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 35,
+        "n_patterns_analyzed": 20,
+        "cycle": 5
+      },
+      "n_patterns": 20,
+      "n_timesteps": 50,
+      "mean_phi_individual": 4.842452707886696,
+      "sum_phi_individual": 96.84905415773392,
+      "phi_group": 4.693974803562726,
+      "superorganism_ratio": 0.048466914255227,
+      "phi_subgroup_A": 1.111078734997238,
+      "phi_subgroup_B": 1.1412152389993444,
+      "phi_partition_sum": 2.2522939739965824,
+      "partition_loss": 2.441680829566143,
+      "mean_pairwise_MI": 0.024705130545066976,
+      "group_coherence": 0.5526315789473685,
+      "cycle": 5
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_010.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 34,
+        "n_patterns_analyzed": 20,
+        "cycle": 10
+      },
+      "n_patterns": 20,
+      "n_timesteps": 50,
+      "mean_phi_individual": 3.527598798274994,
+      "sum_phi_individual": 70.55197596549988,
+      "phi_group": 4.976556344639421,
+      "superorganism_ratio": 0.07053744812296926,
+      "phi_subgroup_A": 1.0234313084912239,
+      "phi_subgroup_B": 1.16076059795383,
+      "phi_partition_sum": 2.184191906445054,
+      "partition_loss": 2.7923644381943675,
+      "mean_pairwise_MI": 0.02619240181389169,
+      "group_coherence": 0.6105263157894737,
+      "cycle": 10
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_015.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 36,
+        "n_patterns_analyzed": 20,
+        "cycle": 15
+      },
+      "n_patterns": 20,
+      "n_timesteps": 50,
+      "mean_phi_individual": 3.274922585487366,
+      "sum_phi_individual": 65.49845170974731,
+      "phi_group": 5.909498691372843,
+      "superorganism_ratio": 0.09022348677126678,
+      "phi_subgroup_A": 1.1943770451820923,
+      "phi_subgroup_B": 1.6655179910436926,
+      "phi_partition_sum": 2.859895036225785,
+      "partition_loss": 3.049603655147058,
+      "mean_pairwise_MI": 0.031102624691436015,
+      "group_coherence": 0.7105263157894737,
+      "cycle": 15
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_020.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 46,
+        "n_patterns_analyzed": 20,
+        "cycle": 20
+      },
+      "n_patterns": 20,
+      "n_timesteps": 50,
+      "mean_phi_individual": 4.400028190016746,
+      "sum_phi_individual": 88.00056380033493,
+      "phi_group": 5.047234889366278,
+      "superorganism_ratio": 0.05735457446406801,
+      "phi_subgroup_A": 1.032674883581131,
+      "phi_subgroup_B": 1.209592091173671,
+      "phi_partition_sum": 2.242266974754802,
+      "partition_loss": 2.804967914611476,
+      "mean_pairwise_MI": 0.026564394154559356,
+      "group_coherence": 0.5736842105263158,
+      "cycle": 20
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_025.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 26,
+        "n_patterns_analyzed": 20,
+        "cycle": 25
+      },
+      "n_patterns": 20,
+      "n_timesteps": 50,
+      "mean_phi_individual": 3.5597942024469376,
+      "sum_phi_individual": 71.19588404893875,
+      "phi_group": 5.8916884403296965,
+      "superorganism_ratio": 0.08275321697360843,
+      "phi_subgroup_A": 1.5916264365131216,
+      "phi_subgroup_B": 1.141494312526691,
+      "phi_partition_sum": 2.733120749039813,
+      "partition_loss": 3.1585676912898837,
+      "mean_pairwise_MI": 0.031008886528051033,
+      "group_coherence": 0.7,
+      "cycle": 25
+    },
+    {
+      "metadata": {
+        "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s42_v2/v13_s42_v2/snapshots/cycle_029.npz",
+        "seed": 42,
+        "C": 16,
+        "N": 128,
+        "n_recording_steps": 50,
+        "n_patterns_detected": 44,
+        "n_patterns_analyzed": 20,
+        "cycle": 29
+      },
+      "n_patterns": 20,
+      "n_timesteps": 50,
+      "mean_phi_individual": 4.168524521589279,
+      "sum_phi_individual": 83.37049043178558,
+      "phi_group": 4.986875553399034,
+      "superorganism_ratio": 0.059815835646059155,
+      "phi_subgroup_A": 1.1302346254762707,
+      "phi_subgroup_B": 1.3940420521078443,
+      "phi_partition_sum": 2.524276677584115,
+      "partition_loss": 2.4625988758149187,
+      "mean_pairwise_MI": 0.026246713438942283,
+      "group_coherence": 0.5631578947368421,
+      "cycle": 29
+    }
+  ]
+}

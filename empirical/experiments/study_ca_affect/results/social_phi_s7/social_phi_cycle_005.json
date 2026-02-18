@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "snapshot_path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v13_s7/v13_s7/snapshots/cycle_005.npz",
+    "seed": 7,
+    "C": 16,
+    "N": 128,
+    "n_recording_steps": 50,
+    "n_patterns_detected": 23,
+    "n_patterns_analyzed": 20,
+    "cycle": 5
+  },
+  "n_patterns": 20,
+  "n_timesteps": 50,
+  "mean_phi_individual": 3.9305912464857102,
+  "sum_phi_individual": 78.6118249297142,
+  "phi_group": 4.126781196111894,
+  "superorganism_ratio": 0.052495679877697723,
+  "phi_subgroup_A": 0.9464560546346291,
+  "phi_subgroup_B": 0.8876791204661173,
+  "phi_partition_sum": 1.8341351751007464,
+  "partition_loss": 2.292646021011148,
+  "mean_pairwise_MI": 0.021719901032167862,
+  "group_coherence": 0.49473684210526314,
+  "cycle": 5
+}
