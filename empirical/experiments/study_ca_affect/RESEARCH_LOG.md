@@ -545,3 +545,162 @@ Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1)
 ### Data
 - `results/ag_s{123,42,7}/` — per-cycle JSON files
 - `results/ag_analysis/ag_cross_seed.json` — cross-seed summary
+
+---
+
+## 2026-02-17: Experiment 8 — Inhibition Coefficient (ι) Emergence
+
+**Date**: 2026-02-17
+**Status**: COMPLETE (positive — participatory default + computational animism)
+
+### Method
+- Simplified ι for V13 (no full self-models available): ι(i) = 1 - MI_social(i) / (MI_social(i) + MI_trajectory(i))
+- MI_social: mean MI(s_B_i; s_B_j) across other patterns (internal state correlation)
+- MI_trajectory: mean MI(s_B_i; trajectory_j) using position/velocity/heading features
+- MI_resource: MI(s_B_i; local_resource_distribution) for animism test
+- Animism score: MI_resource / MI_social (>1 means resources modeled like agents)
+- All 3 seeds × 7 snapshots
+
+### Results
+
+| Metric | Seed 123 | Seed 42 | Seed 7 |
+|--------|----------|---------|--------|
+| ι (mean) | 0.27–0.44 | 0.27–0.41 | 0.31–0.35 |
+| ι trajectory | 0.32→0.29 | 0.41→0.27 | 0.31→0.32 |
+| Animism score | 1.28–2.10 | 1.60–2.16 | 1.10–2.02 |
+
+Key observations:
+1. ι ≈ 0.30 (low): patterns are primarily participatory — they model others' internal chemistry (MI_social) 2x more than trajectories (MI_trajectory)
+2. ι decreases over evolution in seeds 123, 42: selection favors more participatory perception
+3. MI_social increases over evolution in all seeds (0.02→0.03-0.04)
+4. Animism score > 1.0 in ALL 20 snapshots — patterns model resources MORE like agents than actual agents
+5. The animism finding is the strongest result: universal, no exceptions
+
+### Interpretation
+The participatory default is exactly what the ι framework predicts — modeling others' interiority via chemistry is the cheapest compression in a content-coupled system. You don't need to build a separate "agent model" — your own response to chemical gradients IS your model of other patterns' chemistry.
+
+The animism finding is remarkable. Patterns model resources with MORE MI than they model other patterns. This makes sense: resource patches are spatially stable and chemically rich, so they're easier to model internally. But the implication is that pattern-resource coupling uses the same internal dynamics as pattern-pattern coupling — the patterns can't distinguish agents from non-agents. They model everything as "stuff that affects my chemistry."
+
+### Updated cross-experiment table
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry (V10)    ✓ (cheap)             ✓ (cheap)
+A↔C alignment (Exp 7)   0.01→0.38 (develops)  0.72 (strong but n=5)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
+Counterfactual detach.   N/A (always detached) N/A (always detached)
+Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1)
+ι (inhibition coeff)     ι ≈ 0.32 (participatory default)  ι decreases to 0.27 (seed 42)  positive: animism confirmed
+```
+
+### Data
+- `results/iota_s{123,42,7}/` — per-cycle JSON files
+- `results/iota_analysis/iota_cross_seed.json` — cross-seed summary
+
+---
+
+## 2026-02-17: Experiment 9 — Proto-Normativity
+
+**Date**: 2026-02-17
+**Status**: COMPLETE (null result — Φ_social finding)
+
+### Method
+- Classify each pattern-timestep as isolated (no neighbor within R=30), cooperative (neighbor present, both growing), or competitive (neighbor present, opposite mass changes)
+- Compare Φ, valence, arousal across conditions using Mann-Whitney U
+- All 3 seeds × 7 snapshots
+
+### Results
+
+| Metric | Seed 123 | Seed 42 | Seed 7 |
+|--------|----------|---------|--------|
+| ΔΦ sig | 0/6 | 0/7 | 1/7 |
+| Mean ΔΦ | -0.23 | +0.02 | +0.15 |
+| Mean ΔV | +0.01 | -0.002 | -0.004 |
+
+Key observations:
+1. No consistent ΔΦ or ΔV between cooperation and competition (2/20 significant)
+2. Φ_social >> Φ_isolated (4.9 vs 3.1) — social context increases integration regardless of cooperative/competitive
+3. Competitive and cooperative event counts are roughly balanced (~50/50), confirming the classification isn't trivial
+4. Null result makes sense: V13 patterns lack agency — can't choose to cooperate or exploit
+
+### Interpretation
+Proto-normativity requires intentional action — the capacity to act otherwise. V13 patterns don't have directed action; they're driven by chemistry and physics. The cooperative/competitive distinction exists observationally but not agentially. Without agency, there's nothing for normativity to attach to.
+
+The Φ_social >> Φ_isolated finding is interesting in its own right: patterns become more internally integrated when they're near other patterns. This is a precursor to social-scale integration (Experiment 10) — proximity alone creates informational coupling that increases individual integration.
+
+### Updated cross-experiment table
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry (V10)    ✓ (cheap)             ✓ (cheap)
+A↔C alignment (Exp 7)   0.01→0.38 (develops)  0.72 (strong but n=5)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
+Counterfactual detach.   N/A (always detached) N/A (always detached)
+Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1)
+ι (inhibition coeff)     ι ≈ 0.32 (participatory default)  ι decreases to 0.27 (seed 42)  positive: animism confirmed
+Proto-normativity        N/A (no agency)       N/A (no agency)       null (Φ_social >> Φ_isolated)
+```
+
+### Data
+- `results/norm_s{123,42,7}/` — per-cycle JSON files
+- `results/norm_analysis/norm_cross_seed.json` — cross-seed summary
+
+---
+
+## 2026-02-17: Experiment 10 — Social-Scale Integration
+
+**Date**: 2026-02-17
+**Status**: COMPLETE (no superorganism — growing coupling)
+
+### Method
+- Individual Φ: per-pattern variance-based integration (same as Exp 1)
+- Group Φ (Φ_G): total pairwise MI across all patterns
+- Superorganism ratio: Φ_G / Σ Φᵢ (>1 = synergistic integration)
+- Partition test: split population spatially (median x-coordinate), compare Φ_within vs Φ_between
+- All 3 seeds × 7 snapshots
+
+### Results
+
+| Metric | Seed 123 | Seed 42 | Seed 7 |
+|--------|----------|---------|--------|
+| Super ratio range | 0.009–0.069 | 0.029–0.090 | 0.052–0.123 |
+| Φ_G trajectory | 0.18→5.46 | 1.34→4.99 | 4.74→8.55 |
+
+Key observations:
+1. Φ_G < ΣΦᵢ in ALL 19 snapshots — no superorganism emergence
+2. Superorganism ratio increases over evolution (seed 7: 0.061→0.123)
+3. Φ_G roughly doubles over 30 evolutionary cycles
+4. Group coherence ~1.0 — all pattern pairs have MI > threshold
+5. Partition loss positive — information crosses spatial boundaries
+
+### Interpretation
+V13 populations are coupled but not superorganisms. Individual patterns maintain much more internal integration than they share with the group (ratio 1-12%). This is consistent with the thesis: superorganism emergence requires specialization and division of labor, which V13 lacks. Patterns don't develop roles.
+
+But the growing coupling is significant: selection increases inter-pattern MI, and the group-level information increases even as individual integration stays roughly constant. This is the precursor to superorganism emergence — the coupling mechanism exists, but the coordination pressure is missing.
+
+### Updated cross-experiment table
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry (V10)    ✓ (cheap)             ✓ (cheap)
+A↔C alignment (Exp 7)   0.01→0.38 (develops)  0.72 (strong but n=5)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+Inter-pattern MI         Not sig at cycle 0    Sig at 15/20 snapshots (positive MI, unstructured)
+Counterfactual detach.   N/A (always detached) N/A (always detached)
+Self-model emergence     SM_sal ≈ 0            SM_sal = 2.28 (n=1)
+ι (inhibition coeff)     ι ≈ 0.32 (participatory default)  ι decreases to 0.27 (seed 42)  positive: animism confirmed
+Proto-normativity        N/A (no agency)       N/A (no agency)       null (Φ_social >> Φ_isolated)
+Social-scale Φ_G         ratio 0.05-0.06       ratio 0.09-0.12       no superorganism, growing coupling
+```
+
+### Data
+- `results/social_phi_s{123,42,7}/` — per-cycle JSON files
+- `results/social_phi_analysis/social_phi_cross_seed.json` — cross-seed summary
