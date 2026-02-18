@@ -169,7 +169,33 @@ Low K_comp = linear compositionality.
 3. Before language: A and D plateau at level set by environmental complexity
 4. **Key**: d_eff should track C_wm — compression and modeling co-emerge
 
-### Status: NOT IMPLEMENTED
+### Status: COMPLETE
+
+**Implementation**: `v13_representation.py`, `v13_representation_run.py`, `v13_representation_figures.py`
+
+**Method**: PCA on standardized s_B (68-dim) across recording steps. d_eff = (tr Σ)² / tr(Σ²). Disentanglement D = mean over env features of max R² between any PCA dim and that feature. Compositionality K_comp = prediction error of linear composition across environmental contexts.
+
+**Results** (3 seeds × 7 snapshots, 50 recording steps):
+
+| Seed | d_eff (early→late) | A (early→late) | D (early→late) | K_comp (early→late) |
+|------|-------------------|----------------|----------------|---------------------|
+| 123  | 6.6 → **5.6**    | 0.90 → **0.92**| 0.27 → **0.38**| 0.20 → **0.12**    |
+| 42   | 7.3 → 7.5        | 0.89 → 0.89    | 0.23 → 0.23    | 0.23 → 0.25        |
+| 7    | 7.7 → 8.8        | 0.89 → 0.87    | 0.24 → 0.22    | 0.20 → 0.27        |
+
+**Key findings**:
+1. **Heavy compression is baseline**: d_eff = 6-9 out of 68 dimensions (>87% compression) even at cycle 0. Abstraction A > 0.87 everywhere. This is "geometry is cheap" for representations.
+2. **Bottleneck drives representation improvement**: Only seed 123 (population bottleneck) shows d_eff decreasing, D increasing, K_comp decreasing across evolution — all three improving together.
+3. **Correlated with world model**: Seed 123's representation improvement parallels its C_wm increase (Experiment 2), confirming prediction 4 — compression and modeling co-emerge under selection pressure.
+4. **General population shows no trend**: Seeds 42/7 have flat or slightly worsening representation metrics. Without bottleneck selection, there's no pressure to improve beyond baseline compression.
+
+**Assessment against predictions**:
+- ⚠ Prediction 1: d_eff never starts at |B|=68; it's always ~7-9. Compression is immediate, not emergent.
+- ✓ Prediction 2: d_eff does drop and D increases, but only under bottleneck selection (seed 123)
+- ⚠ Prediction 3: Hard to assess plateau — would need longer evolution
+- ✓ Prediction 4: d_eff tracks C_wm in the bottleneck seed
+
+**Interpretation**: Representation compression is cheap (like affect geometry). What evolves under selection is the *quality* of compressed representations — disentanglement and compositionality increase together, but only when patterns face lethal selection pressure.
 
 ---
 

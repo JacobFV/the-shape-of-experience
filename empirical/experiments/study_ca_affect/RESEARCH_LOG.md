@@ -235,3 +235,55 @@ Also: the current recording episodes (50 steps × 10 substrate steps = 500 steps
 - `results/wm_analysis/wm_w_tau_curves.png` — W(τ) early vs late
 - `results/wm_analysis/wm_cwm_vs_lifetime.png` — C_wm vs pattern lifetime
 - `results/wm_analysis/wm_summary_card.png` — Summary card
+
+---
+
+## 2026-02-17: Experiment 3 — Internal Representation Structure
+
+### Method
+PCA on standardized s_B (68-dim internal state) across recording steps. Effective dimensionality d_eff = (tr Σ)² / tr(Σ²) on the covariance of the standardized features. Disentanglement D = mean over environment features of max R² with any PCA dimension. Compositionality K_comp = linear composition error across environmental context pairs.
+
+### Results
+
+| Seed | d_eff (early→late) | A | D | K_comp |
+|------|-------------------|---|---|--------|
+| 123  | 6.6 → **5.6** | 0.90→0.92 | 0.27→**0.38** | 0.20→**0.12** |
+| 42   | 7.3 → 7.5 | 0.89→0.89 | 0.23→0.23 | 0.23→0.25 |
+| 7    | 7.7 → 8.8 | 0.89→0.87 | 0.24→0.22 | 0.20→0.27 |
+
+### Observations
+
+1. **Compression is cheap, like affect geometry.** All patterns at cycle 0 already use only ~7-9 effective dimensions out of 68. Abstraction >87% is baseline. The raw feature space is 68-dimensional but patterns only "live" in ~7 dimensions. This is the representation equivalent of "geometry is cheap" from V10.
+
+2. **Bottleneck drives representation quality.** Only seed 123 shows all three metrics improving together: d_eff↓ (more compressed), D↑ (more disentangled), K_comp↓ (more compositional). This is the same seed that shows world model improvement (Experiment 2) and robustness >1.0 (Experiment 0).
+
+3. **The triad co-emerges.** In seed 123: world model capacity (C_wm), representation quality (d_eff, D, K_comp), and integration robustness (Φ ratio) all improve together under bottleneck selection. This is exactly what the EXPERIMENTS.md predicted: "d_eff should track C_wm — compression and modeling co-emerge."
+
+4. **General population: flat.** Seeds 42 and 7, with stable populations of 150+, show no improvement in any representation metric. Local reactive behavior suffices for survival in gentle environments.
+
+### The Emerging Pattern Across Experiments 0-3
+
+```
+                         General Population    Bottleneck Survivors
+Affect geometry          ✓ (cheap)             ✓ (cheap)
+Integration robustness   ~0.92                 >1.0
+World model capacity     ~10⁻⁴                 ~10⁻²
+Representation quality   flat                  improving
+```
+
+The consistent finding: *structure* is cheap and universal; *dynamics* (improvement over time, maintaining quality under stress) require intense selection pressure. The bottleneck is the furnace.
+
+### What This Means for the Theory
+
+The geometry/dynamics distinction from Part I is now empirically supported across four measurement domains:
+1. Affect space geometry (V10: cheap, universal)
+2. Integration under stress (V13: requires bottleneck)
+3. Predictive world models (Exp 2: requires bottleneck)
+4. Representation quality (Exp 3: requires bottleneck)
+
+The mechanism seems clear: in large populations, patterns can survive with minimal internal structure because the environment isn't lethal enough. Only when >90% mortality occurs do patterns *need* world models, good representations, and robust integration to survive. The biological parallel: most bacteria don't need brains. Only organisms in persistently lethal, partially observable environments evolve complex cognition.
+
+### Figures
+- `results/rep_analysis/rep_trajectory.png` — d_eff, A, D, K_comp across cycles
+- `results/rep_analysis/rep_eigenspectrum.png` — Eigenspectrum early vs late
+- `results/rep_analysis/rep_summary_card.png` — Summary card
