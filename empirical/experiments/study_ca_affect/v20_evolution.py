@@ -137,16 +137,19 @@ def rescue_population(state, key, cfg, min_pop=10):
 # Cycle metrics
 # ---------------------------------------------------------------------------
 
-def run_cycle_with_metrics(state, chunk_runner, cfg, stress=False):
+def run_cycle_with_metrics(state, chunk_runner, cfg, stress=False, regen_override=None):
     """Run one cycle (steps_per_cycle steps), collecting metrics.
 
     Returns: (final_state, cycle_metrics dict)
+    regen_override: if set, use this regen rate (e.g. drought_regen); overrides stress flag.
     """
     n_chunks = cfg['steps_per_cycle'] // cfg['chunk_size']
     chunk_size = cfg['chunk_size']
 
-    # Override regen rate if stress
-    if stress:
+    # Override regen rate
+    if regen_override is not None:
+        state = {**state, 'regen_rate': jnp.array(regen_override)}
+    elif stress:
         state = {**state, 'regen_rate': jnp.array(cfg['stress_regen'])}
     else:
         state = {**state, 'regen_rate': jnp.array(cfg['resource_regen'])}
@@ -282,9 +285,24 @@ def run_v20(seed, cfg, output_dir):
     for cycle in range(cfg['n_cycles']):
         t_start = time.time()
 
-        # Run cycle
+        # Drought schedule (V20b): every drought_every cycles, deplete resources
+        # to create genuine bottleneck mortality. This is the key forcing function
+        # that was absent in V20 (mort=0% throughout due to abundant resources).
+        drought_every = cfg.get('drought_every', 0)
+        is_drought = (drought_every > 0) and (cycle > 0) and (cycle % drought_every == 0)
+        if is_drought:
+            # Deplete resources to drought_depletion fraction
+            state['resources'] = state['resources'] * cfg.get('drought_depletion', 0.05)
+            state['regen_rate'] = jnp.array(cfg.get('drought_regen', 0.00002))
+            print(f"  [DROUGHT cycle {cycle}] Resources depleted to "
+                  f"{cfg.get('drought_depletion', 0.05):.0%}")
+        else:
+            state['regen_rate'] = jnp.array(cfg['resource_regen'])
+
+        # Run cycle (pass drought regen explicitly so it isn't overridden)
+        drought_regen = cfg.get('drought_regen', 0.00002) if is_drought else None
         state, metrics, fitness, survival_steps = run_cycle_with_metrics(
-            state, chunk_runner, cfg
+            state, chunk_runner, cfg, regen_override=drought_regen
         )
 
         # Measure robustness

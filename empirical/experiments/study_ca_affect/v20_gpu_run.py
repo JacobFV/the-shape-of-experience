@@ -45,7 +45,8 @@ def run_smoke():
 
 
 def run_single(seed, output_base='/home/ubuntu/results',
-               n_cycles=30, steps_per_cycle=5000, activate_offspring=False):
+               n_cycles=30, steps_per_cycle=5000, activate_offspring=False,
+               drought_every=0):
     """Full single-seed run."""
     variant = 'b' if activate_offspring else ''
     output_dir = f'{output_base}/v20{variant}_s{seed}'
@@ -56,6 +57,7 @@ def run_single(seed, output_base='/home/ubuntu/results',
         steps_per_cycle=steps_per_cycle,
         chunk_size=50,
         activate_offspring=activate_offspring,
+        drought_every=drought_every,
     )
 
     print(f"\n{'=' * 70}")
@@ -69,12 +71,14 @@ def run_single(seed, output_base='/home/ubuntu/results',
     return run_v20(seed=seed, cfg=cfg, output_dir=output_dir)
 
 
-def run_all(output_base='/home/ubuntu/results', activate_offspring=False, **kwargs):
+def run_all(output_base='/home/ubuntu/results', activate_offspring=False,
+            drought_every=0, **kwargs):
     """Run all 3 seeds sequentially."""
     results = {}
     for seed in [42, 123, 7]:
         results[seed] = run_single(seed, output_base=output_base,
-                                   activate_offspring=activate_offspring, **kwargs)
+                                   activate_offspring=activate_offspring,
+                                   drought_every=drought_every, **kwargs)
 
     print("\n" + "=" * 70)
     print("ALL SEEDS COMPLETE")
@@ -106,16 +110,19 @@ if __name__ == '__main__':
     parser.add_argument('--output', default='/home/ubuntu/results')
     parser.add_argument('--v20b', action='store_true',
                         help='Activate offspring after tournament (fixes V20 mort=0% bug)')
+    parser.add_argument('--drought', type=int, default=0,
+                        help='Apply drought every N cycles (0=off). E.g. --drought 5')
     args = parser.parse_args()
 
     if args.command == 'smoke':
         run_smoke()
     elif args.command == 'all':
         run_all(output_base=args.output, n_cycles=args.cycles,
-                steps_per_cycle=args.steps, activate_offspring=args.v20b)
+                steps_per_cycle=args.steps, activate_offspring=args.v20b,
+                drought_every=args.drought)
     elif args.command == 'chain':
         run_chain(args.seed, output_base=args.output)
     else:
         run_single(seed=args.seed, output_base=args.output,
                    n_cycles=args.cycles, steps_per_cycle=args.steps,
-                   activate_offspring=args.v20b)
+                   activate_offspring=args.v20b, drought_every=args.drought)

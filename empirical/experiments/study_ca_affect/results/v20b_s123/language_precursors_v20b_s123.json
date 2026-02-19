@@ -1,0 +1,251 @@
+{
+  "seed": 123,
+  "snapshots": [
+    {
+      "cycle": 0,
+      "snap_path": "results/v20b_s123/snapshot_c00.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.5055483397877115,
+        "std_z": 0.02725841390263714,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    },
+    {
+      "cycle": 5,
+      "snap_path": "results/v20b_s123/snapshot_c05.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.4857157113399885,
+        "std_z": 0.03253223153562852,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    },
+    {
+      "cycle": 10,
+      "snap_path": "results/v20b_s123/snapshot_c10.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.4909016905660104,
+        "std_z": 0.02598641918305877,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    },
+    {
+      "cycle": 15,
+      "snap_path": "results/v20b_s123/snapshot_c15.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.4925902100734967,
+        "std_z": 0.020165814849179876,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    },
+    {
+      "cycle": 20,
+      "snap_path": "results/v20b_s123/snapshot_c20.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.49802007048764674,
+        "std_z": 0.017961252428350907,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    },
+    {
+      "cycle": 25,
+      "snap_path": "results/v20b_s123/snapshot_c25.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.5022589036374127,
+        "std_z": 0.03347168975487142,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    },
+    {
+      "cycle": 29,
+      "snap_path": "results/v20b_s123/snapshot_c29.npz",
+      "n_alive": 256,
+      "z_distribution": {
+        "mean_z": 0.5060722042667981,
+        "std_z": 0.035530749266274995,
+        "frac_high_z": 0.0,
+        "frac_low_z": 0.0,
+        "n_alive_agents": 153600
+      },
+      "emission_informativeness": {
+        "r2_emit_high_z": 0.0,
+        "r2_emit_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z_steps": 0,
+        "n_low_z_steps": 0,
+        "signature_present": false
+      },
+      "future_prediction": {
+        "r2_future_high_z": 0.0,
+        "r2_future_low_z": 0.0,
+        "ratio_high_vs_low": 0.0,
+        "n_high_z": 0,
+        "n_low_z": 0,
+        "signature_present": false
+      },
+      "cross_agent_utility": {
+        "insufficient_data": true,
+        "n_high_z_emit": 0
+      }
+    }
+  ],
+  "evolution_trend": {
+    "mean_z_trend": {
+      "slope": 0.00029829093455548,
+      "p": 0.36993290555258407,
+      "increasing": false
+    },
+    "emit_ratio_trend": {
+      "slope": 0.0,
+      "p": NaN,
+      "increasing": false
+    },
+    "future_ratio_trend": {
+      "slope": 0.0,
+      "p": NaN,
+      "increasing": false
+    },
+    "n_snapshots": 7,
+    "cycle_range": [
+      0,
+      29
+    ]
+  }
+}

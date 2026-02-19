@@ -65,6 +65,13 @@ def generate_v20_config(**kwargs):
         # Set True for V20b runs to get bottleneck dynamics
         'activate_offspring': False,
 
+        # V20b drought schedule: every drought_every cycles, apply severe drought
+        # to create genuine bottleneck mortality (~60-90%).
+        # Set drought_every=0 to disable.
+        'drought_every': 0,           # 0 = no drought schedule
+        'drought_depletion': 0.01,    # deplete resources to 1% at drought start
+        'drought_regen': 0.0,         # no regen during drought cycle
+
         # Run
         'chunk_size': 50,          # Steps per lax.scan segment
         'steps_per_cycle': 5000,
@@ -525,5 +532,7 @@ def extract_snapshot(state, cycle, cfg):
         'energy': np.array(state['energy']),       # (M,)
         'alive': np.array(alive),                  # (M,)
         'params': np.array(state['params']),       # (M, P)
+        'resources': np.array(state['resources']), # (N, N)
+        'signals': np.array(state['signals']),     # (N, N)
         'n_alive': int(jnp.sum(alive)),
     }
