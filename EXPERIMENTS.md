@@ -890,6 +890,134 @@ If all five develop in this order, the necessity chain is empirically validated 
 
 ---
 
+## V21: CTM-Inspired Protocell Agency (2026-02-19)
+
+### Motivation
+
+V20b broke the sensory-motor wall (ρ_sync=0.21) and confirmed bottleneck mortality (82-99%), but language precursor analysis was NULL — z-gate stuck at ~0.50 across all snapshots. Root cause: a single GRU step per environment step provides zero internal time for decoupled processing. No space for imagination, counterfactual simulation, or deliberation.
+
+### Architecture
+
+Integrates two Continuous Thought Machine (CTM) formalisms as **architectural affordances** — evolved not trained, zero labels, zero human data:
+
+1. **Internal ticks**: K_max=8 GRU steps per environment step. Tick 0 processes observation (external input). Ticks 1-7 process sync summary (internal input). Evolution controls *effective* K via softmax tick_weights — concentrate on tick 0 = reactive, spread across ticks = deliberative.
+
+2. **Sync matrix**: Persistent per-agent matrix S ∈ R^{H×H}. Updated each tick: S = r·S + h⊗h. Off-diagonal Frobenius norm = Φ_sync (coordination proxy, NOT Φ). 3-dim summary [frobenius_offdiag, mean_diag, std_offdiag] fed back as input on ticks 1+.
+
+105 new evolvable parameters (4,040 total vs V20's 3,935):
+- internal_embed_W: (3, 24) — maps sync summary → embedding
+- internal_embed_b: (24,)
+- tick_weights: (8,) — softmax gating across tick outputs
+- sync_decay_raw: (1,) — sigmoid → [0.5, 0.999]
+
+### Pre-registered Predictions
+
+1. **Effective K covaries with scarcity**: K evolves up under drought, down under abundance
+2. **Imagination index**: intra-step divergence (||h_K - h_0||/||h_0||) correlates with subsequent action quality
+3. **Tick weights don't collapse**: tick_weights ≠ all-on-tick-0 in ≥1/3 seeds
+
+### Falsification Criteria
+
+- tick_weights collapse to tick-0 across all seeds → internal ticks useless → V21 negative
+- Φ_sync zero correlation with Φ_hidden → sync matrix not measuring integration
+- Language precursors still absent → decoupled processing alone insufficient
+- Effective K does NOT covary with scarcity → no adaptive deliberation
+
+### Files
+
+- `v21_substrate.py`: Inner tick loop (lax.scan over K_max), sync matrix ops, env_step with multi-tick, chunk runner with divergence tracking
+- `v21_evolution.py`: Evolution loop with Φ_sync, tick usage, sync decay tracking
+- `v21_gpu_run.py`: CLI runner, chain test (reuses V20 measurements), prediction evaluation
+
+### Status
+
+**IMPLEMENTED** (2026-02-19). Smoke test passes (N=32, M=32, K_max=4, 3 cycles). Full GPU run pending (3 seeds × 30 cycles on A100, est. ~7.5 hours, ~$10).
+
+---
+
+## V22: Intrinsic Predictive Gradient (DESIGN SPEC — not yet implemented)
+
+### Core Idea
+
+V21 gives agents internal processing time but no mechanism to *learn from it within a lifetime*. Evolution alone shapes what happens during ticks. V22 adds within-lifetime gradient learning driven by an intrinsic signal: **predicting your own energy fate**.
+
+This is the computational equivalent of the free energy principle: minimize surprise about your own persistence. No external reward. No human labels. The gradient flows from the agent's inability to predict its own thermodynamic future.
+
+### Why This Stays Uncontaminated
+
+The learning signal is "how wrong was I about my own energy change?" — the most primitive possible prediction error. No task specification, no affect concepts, no human data. Thermodynamic self-interest generating its own gradient.
+
+### Architecture (additions over V21)
+
+**New evolvable parameters per agent** (~18 new, ~4,058 total):
+- `predict_W`: (H, 1) — energy prediction head
+- `predict_b`: (1,) — bias
+- `lr_raw`: (1,) — evolvable learning rate, sigmoid → [1e-5, 1e-2]
+
+**Within-lifetime learning loop** (the key mechanism):
+```
+env_step:
+  1. Run K_max inner ticks (V21 multi-tick)                    # forward pass
+  2. Final tick hidden → predict_energy_delta                   # dissolution prediction
+  3. Execute actions, observe actual energy delta                # ground truth
+  4. loss = (predicted - actual)^2                              # prediction error
+  5. grad = d(loss) / d(phenotype)                              # backprop through K ticks
+  6. phenotype -= lr * grad                                     # SGD update
+```
+
+**Genome vs Phenotype distinction**:
+- `genome`: evolved parameter vector (inherited from parent, subject to mutation)
+- `phenotype`: current working weights = genome + accumulated gradient updates
+- At cycle start: phenotype ← genome (reset)
+- During lifetime: phenotype updated by gradient descent
+- At reproduction: only genome inherited (Baldwinian) — or both (Lamarckian, configurable)
+
+**Why the gradient is cheap**: It only flows through K=8 ticks within a SINGLE env step — no BPTT across multiple steps. Each step is a complete prediction-observation-update episode. JAX makes this tractable via jax.grad + lax.scan.
+
+### What This Enables
+
+1. **Meta-learning**: Evolution selects initial weights (and learning rate) that lead to the most effective within-lifetime learning. Agents evolve to be good *learners*, not just good actors.
+
+2. **Counterfactual grounding**: To predict energy change, agents must model "if I go there, will I eat? if I stay, will I starve?" — this is counterfactual reasoning driven by gradient signal, not just evolutionary selection.
+
+3. **Self-model acceleration**: Predicting own energy requires modeling self-as-cause. The gradient explicitly rewards representations that distinguish "what I did" from "what happened to me."
+
+4. **Tick specialization via gradient**: Evolution gives rough tick_weights; gradient learning fine-tunes which ticks contribute to accurate predictions within a lifetime. Late ticks that improve prediction accuracy get reinforced.
+
+### Pre-registered Predictions
+
+1. **C_wm develops faster**: World model quality increases earlier in evolution vs V21 (gradient accelerates what evolution alone would take many cycles to achieve)
+2. **Dissolution prediction improves**: Energy prediction MSE decreases within each lifetime (not just across evolution) — direct evidence of within-lifetime learning
+3. **Lamarckian > Baldwinian**: If tested, Lamarckian inheritance (passing learned weights) accelerates evolution vs Baldwinian (genome only)
+4. **Gradient agents survive drought better**: Within-lifetime adaptation gives survival advantage during novel stress — agents learn to predict drought dynamics in real-time
+5. **Tick usage becomes more structured**: Late ticks contribute more to prediction (gradient teaches "think before you act") vs V21 (where tick usage is set by evolution alone)
+
+### Falsification Criteria
+
+- Prediction MSE does NOT decrease within lifetime → gradient not learning
+- C_wm no better than V21 → intrinsic gradient doesn't accelerate world modeling
+- Agents evolve lr → 0 (suppress their own learning) → gradient hurts survival
+- Phenotype drift destabilizes: agents that learn within lifetime perform worse than V21
+
+### Technical Considerations
+
+- **Gradient cost**: jax.grad through K=8 tick lax.scan. GRU is tiny (16 hidden, 24 embed), so per-step backprop is ~2-3x forward cost. Total V22 ~2-3x slower than V21.
+- **Learning rate evolution**: Critical. Too high → catastrophic forgetting of evolved structure. Too low → no within-lifetime learning. Evolution finds the sweet spot.
+- **Gradient accumulation**: Could batch gradient updates every N steps (e.g., N=10) to reduce overhead. Accumulate loss, single update.
+- **Which parameters get gradient**: All GRU weights? Only prediction head? Only internal_embed? Make it configurable. Start with full gradient (all weights).
+
+### Connection to Emergence Ladder
+
+This targets the rung 8 wall directly. Counterfactual reasoning (rung 8) requires representing "what would happen if..." — which is exactly what the dissolution prediction gradient rewards. V20 broke the wall architecturally (action-observation loops). V21 adds thinking time. V22 adds a learning signal that explicitly rewards self-predictive accuracy. If rung 8 metrics (ρ_sync, CF weight) improve under V22 vs V21, the gradient is doing what evolution alone could not.
+
+### Estimated Cost
+
+- ~2-3x V21 compute → ~15-20 hours on A100 for 3 seeds
+- ~$20-25 GPU cost
+- Implementation: ~1 day (V21 architecture + jax.grad wrapper)
+
+---
+
 ## Research Status as of 2026-02-18
 
 ### What Has Been Definitively Established
