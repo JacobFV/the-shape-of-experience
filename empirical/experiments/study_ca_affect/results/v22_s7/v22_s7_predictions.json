@@ -1,0 +1,36 @@
+{
+  "prediction_1": {
+    "supported": true,
+    "mean_improvement": 0.0007756568804531728,
+    "learning_cycles_fraction": 1.0,
+    "first_cycle_mse": 0.00014932937220969223,
+    "last_cycle_mse": 0.0005404820230251061,
+    "mse_trend": "increasing"
+  },
+  "prediction_2": {
+    "supported": true,
+    "initial_lr": 0.004958369769155979,
+    "final_lr": 0.004372006747871637,
+    "lr_suppressed": false,
+    "lr_trend": "decreasing"
+  },
+  "prediction_3": {
+    "supported": true,
+    "collapsed_fraction": 0.0
+  },
+  "prediction_4": {
+    "supported": false,
+    "mean_robustness": 0.9879506923252376
+  },
+  "prediction_5": {
+    "supported": false,
+    "mean_effective_K_drought": 7.851854610443115,
+    "mean_effective_K_normal": 7.861996040344239,
+    "tick_0_collapsed_final": 0.0,
+    "effective_K_trend": "stable_or_decreasing"
+  },
+  "drift": {
+    "mean_drift_overall": 0.11184729027251403,
+    "max_drift_overall": 0.4483354985713959
+  }
+}
