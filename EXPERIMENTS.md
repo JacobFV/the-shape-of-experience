@@ -1082,6 +1082,41 @@ V22 comparison: mean_rob=0.981, mean_phi=0.097
 
 ---
 
+### V24: TD Value Learning (2026-02-19)
+
+**Status**: RUNNING — 3 seeds on Lambda A10
+
+**Motivation**: V22 showed 1-step prediction is orthogonal to Φ. V23 showed multi-target prediction actively decreases Φ via specialization. Both are *reactive* — associations from present state, decomposable by channel. V24 tests whether *long-horizon* prediction, via temporal difference learning, forces the non-decomposable representation that creates integration.
+
+The key insight: reactivity maps present → action (decomposable). Understanding maps the possibility landscape → action (non-decomposable). A value function V(s) = E[Σ γ^t r_t] integrates over ALL possible futures — inherently non-decomposable because future outcomes depend on interactions between all state features.
+
+**Architecture** (same as V22 + 1 param):
+- `predict_W`: (H, 1) — state value V(s)
+- `predict_b`: (1,)
+- `lr_raw`: (1,) — evolvable learning rate
+- `gamma_raw`: (1,) — evolvable discount factor, sigmoid → [0.5, 0.999]
+- 20 new params over V21 (4,060 total)
+
+**TD Learning**:
+- Loss: `(V(s_t) - [r_t + γ * stop_gradient(V(s_{t+1}))])²`
+- r_t = energy delta (same reward as V22)
+- V(s_{t+1}) has stop_gradient (semi-gradient TD, stable)
+- Effective horizon: 1/(1-γ) ≈ 20 steps at γ=0.95
+
+**Pre-registered predictions**:
+1. TD error decreases within lifetime (learning works)
+2. Mean Phi > 0.11 (V22: 0.10, V23: 0.08)
+3. Mean robustness > 1.0 (V22: 0.98)
+4. gamma does NOT evolve to 0 (long horizon adaptive)
+5. V(s) differentiates drought vs normal cycles
+
+**Falsification**:
+- TD error doesn't decrease → learning not working
+- Phi/robustness no better than V22 → time horizon doesn't matter
+- gamma → 0 → agents reject long-horizon prediction
+
+---
+
 ## Research Status as of 2026-02-19 (post-V23)
 
 ### What Has Been Definitively Established
