@@ -91,8 +91,8 @@ export default function RootLayout({
           <ReaderToolbar />
           <SyncOnLogin />
           <ChatWrapper />
-          <WipBanner />
           <main className="main-content">
+            <WipBanner />
             {children}
           </main>
         </Providers>

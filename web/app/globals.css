@@ -4,7 +4,6 @@
 
 /* --- WIP Banner --- */
 .wip-banner {
-  margin-left: var(--sidebar-width);
   background: #fff8e1;
   border-bottom: 1px solid #ffe082;
   padding: 0.4rem 1rem;
@@ -882,9 +881,6 @@ body {
     overflow-x: hidden;
   }
 
-  .wip-banner {
-    margin-left: 0;
-  }
 
   .chapter {
     max-width: 100%;
