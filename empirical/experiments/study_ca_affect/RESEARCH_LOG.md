@@ -1634,3 +1634,78 @@ Implemented v20_language_precursors.py:
 ### Bug Note for Future V20 Runs
 The extract_snapshot function now saves resources and signals (previously omitted, causing v20_language_precursors.py to fail). Old snapshots (from V20 on Lambda Labs) are missing these fields — v20_language_precursors.py now falls back to neutral defaults (resources=0.5, signals=0) for old snapshots.
 
+---
+
+## 2026-02-19: V21 CTM-Inspired Protocell Agency
+
+### Motivation
+V20b z-gate NULL result → single GRU step per env step = zero internal time for decoupled processing. Added two CTM formalisms as architectural affordances: K_max=8 inner ticks per env step + persistent sync matrix.
+
+### Architecture
+- Tick 0: process observation (external). Ticks 1-7: process sync summary (internal).
+- Sync matrix: S = r*S_prev + h⊗h. 3-dim summary (frobenius_offdiag, mean_diag, std_offdiag) fed back.
+- Evolvable tick_weights (softmax gating), sync_decay (sigmoid → [0.5, 0.999]).
+- 105 new params (4,040 total). All V20b environment dynamics unchanged.
+
+### GPU Run: 3 seeds × 30 cycles on A100 SXM4 (asia-south-1)
+Total time: ~7 minutes. Cost: ~$0.15. Embarrassingly fast.
+
+| Seed | Mean Rob | Max Rob | Mean Phi | Mean Phi_sync | Final eff_K | Sync Decay |
+|------|---------|---------|----------|---------------|-------------|-----------|
+| 42   | 1.001   | 1.005   | 0.071    | 2.172         | 7.89        | 0.745     |
+| 123  | 0.995   | 1.008   | 0.094    | 4.509         | 7.79        | 0.802     |
+| 7    | 1.002   | 1.020   | 0.102    | 3.082         | 7.84        | 0.788     |
+
+### Pre-registered Predictions
+
+**P1: Effective K covaries with drought — NOT SUPPORTED (0/3 seeds)**
+K_drought ≈ K_normal across all seeds (difference < 0.01). Evolution did not create adaptive deliberation. The tick_weights barely moved from uniform in 30 cycles of evolution. Population-level effective K dropped only 1-3% from K_max.
+
+**P2: Imagination index (I_img > 0) — NOT SUPPORTED (0/3 seeds)**
+I_img = -0.08 to -0.12, all p > 0.5. Divergence does NOT correlate with subsequent survival. More "thinking" (higher hidden-state change) did not predict better outcomes. This makes sense: without a learning signal, more internal processing is just noise.
+
+**P3: tick_weights don't collapse to tick-0 — SUPPORTED (3/3 seeds)**
+0% of agents collapsed (>90% weight on tick 0). Agents use all 8 ticks. This is the positive result: the architecture is being utilized, not suppressed.
+
+### Deeper Analysis
+
+**Nascent tick specialization (individual-level)**: While population-mean eff_K barely moved, dominant-tick distributions show clear structure at C29:
+- Seed 42: tick 2 dominant (37% of agents)
+- Seed 123: bimodal split — ticks 4 (47%) and 7 (53%)
+- Seed 7: bimodal — ticks 1 (38%) and 3 (42%)
+
+The population-mean obscures individual-level differentiation. Within-population std_effective_K tripled over 30 cycles. Evolution IS creating tick diversity, just slowly.
+
+**Phi_sync is a BAD METRIC**: It grows unboundedly (0.75 → 4-10) and anti-correlates with phi_hidden (r = -0.68 to -0.87). It measures temporal autocorrelation of hidden states (how repetitive/regular the dynamics are), NOT information integration. The outer product accumulation S = r*S + h⊗h will grow monotonically as long as hidden states are non-zero and regular. After bottleneck selection creates a homogeneous population, phi_sync explodes because all agents execute similar trajectories.
+
+**Lesson for future experiments**: Any metric based on accumulated outer products needs normalization. A better sync metric would be: `S_normalized = S / (trace(S) + eps)`, measuring the STRUCTURE of coordination rather than its magnitude.
+
+**Sync decay evolution**: 2/3 seeds (123, 7) evolved toward longer memory (higher decay: +5-7%). Drought bottleneck selection preferred agents with longer sync memory. Seed 42 stayed flat. The direction is consistent: longer temporal integration is adaptive.
+
+**Robustness: Flat vs V20b**: V21 mean rob ≈ 1.0 (vs V20b mean 1.004). Max rob = 1.02 (vs V20b max 1.532). The multi-tick architecture does not improve integration-under-stress. Robustness variance is compressed rather than increased.
+
+### What V21 Tells Us
+
+1. **Evolution alone is too slow for tick specialization**: 30 cycles ≈ 30 generations. Biological nervous systems had millions. The tick architecture provides capacity, but evolutionary drift is glacially slow at filling it. This is the strongest argument for V22's within-lifetime gradient.
+
+2. **Internal time without learning signal = noise**: The agents "think" for 8 ticks but have no feedback on whether that thinking helped. This is like giving someone time to deliberate but no way to know if their deliberation improved their decision. V22's dissolution prediction gradient provides exactly this feedback.
+
+3. **The architecture works, the optimization doesn't**: Ticks don't collapse, individual-level specialization is nascent, sync memory evolves longer. The capacity is there. What's missing is a selection pressure that specifically rewards good use of internal time. Evolution can only select for "survived/didn't survive" — it can't reward "thought well on step 3,421."
+
+4. **Phi_sync needs redesign for V22**: Either normalize by trace, or replace with a better coordination metric (e.g., MI between tick-0 hidden and tick-K hidden, or the actual CTM sync loss).
+
+### V22 Design Implications
+
+The V21 results directly motivate V22:
+- Tick architecture: KEEP (it works, doesn't collapse)
+- Sync matrix: REDESIGN metric (normalize or replace)
+- Add dissolution prediction: the missing piece — gradient signal that rewards useful thinking
+- Key prediction: V22 should show FASTER tick specialization because gradient directly rewards ticks that improve energy prediction
+- The genome/phenotype distinction in V22 tests whether within-lifetime learning accelerates the optimization that evolution alone was too slow to achieve in V21
+
+### Lambda Labs Note
+asia-south-1 region works for launches (not just us-west-2). Updated memory.
+
+### Visualization
+Generated 6-panel overview plot and robustness/population dynamics plot. Saved to `/tmp/v21_results_overview.png` and `/tmp/v21_robustness_pop.png`. User requested animations for V22 runs — plan to save per-step grid snapshots for agent position/energy visualization.
+
