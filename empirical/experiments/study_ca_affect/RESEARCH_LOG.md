@@ -1709,3 +1709,65 @@ asia-south-1 region works for launches (not just us-west-2). Updated memory.
 ### Visualization
 Generated 6-panel overview plot and robustness/population dynamics plot. Saved to `/tmp/v21_results_overview.png` and `/tmp/v21_robustness_pop.png`. User requested animations for V22 runs — plan to save per-step grid snapshots for agent position/energy visualization.
 
+---
+
+## 2026-02-19: V22 Intrinsic Predictive Gradient — 3 Seeds Complete
+
+### Architecture
+V22 adds within-lifetime SGD to V21. Each agent predicts its own energy delta from its final-tick hidden state. After observing actual delta, jax.grad through all K=8 ticks updates the phenotype. Genome (evolved) vs phenotype (genome + SGD updates). Baldwinian: only genome inherited.
+
+New params: predict_W (16,1), predict_b (1,), lr_raw (1,) = 18 new → 4,058 total.
+
+### Results Summary
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | Mean | V21 Mean |
+|---|---|---|---|---|---|
+| Mean rob | 0.965 | 0.990 | 0.988 | **0.981** | ~1.0 |
+| Max rob | 1.021 | 1.049 | 1.005 | 1.025 | ~1.05 |
+| Mean phi | 0.106 | 0.100 | 0.085 | **0.097** | ~0.09 |
+| Mean MSE | 6.4e-4 | 1.1e-4 | 4.0e-4 | 3.8e-4 | N/A |
+| Final LR | 0.00483 | 0.00529 | 0.00437 | 0.00483 | N/A |
+| LR suppressed | No | No | No | **No (3/3)** | N/A |
+| Final drift | 0.246 | 0.069 | 0.129 | 0.148 | N/A |
+| Eff K | 7.87 | 7.86 | 7.76 | 7.83 | ~7.9 |
+
+### Pre-registered Predictions: 3/5 Supported
+
+- **P1 (MSE ↓ within lifetime): PASS 3/3.** learning_fraction = 1.0 in all seeds. Every single cycle shows early MSE >> late MSE (100x-15000x improvement). Within-lifetime learning is unambiguously working.
+- **P2 (LR not suppressed): PASS 3/3.** LR stays 0.0044-0.0053. Seed 123 actually increases LR. Evolution treats learning as fitness-beneficial.
+- **P3 (ticks not collapsed): PASS 3/3.** collapsed_fraction = 0 everywhere. Effective K ≈ 7.8-7.9 (near max).
+- **P4 (robustness > 1.0): FAIL 3/3.** Mean rob 0.965-0.990. Slightly worse than V21 (~1.0) and V20b (1.004). The gradient does not improve stress resilience.
+- **P5 (effective K increases): FAIL 3/3.** Tick usage stays near-uniform. Gradient does NOT cause tick specialization.
+
+### Key Insights
+
+1. **Within-lifetime learning works.** This is the first demonstration of gradient-based learning in the protocell substrate. The 100-15000x MSE improvement per lifetime is unambiguous. Agents genuinely learn to predict their own energy fate.
+
+2. **But prediction ≠ integration.** The gradient optimizes for energy-delta prediction. This is a useful survival skill (agents learn "if I go there, will I eat?") but it is apparently orthogonal to integration under stress. Phi improves ~8% over V20b but robustness degrades ~2.3%.
+
+3. **Sisyphean learning (Baldwinian).** Each generation re-learns from scratch. The genome evolves to be a good *starting point* for learning, but the learned phenotype is discarded at reproduction. The Baldwin effect would need more generations to show genomic accommodation.
+
+4. **Drift is the main risk.** Seed 42 shows concerning drift divergence (0.07 → 0.25, gradient norms 10x). Seed 42 had complete extinction at C25 (0 survivors). Seed 123 is stable (drift stays ~0.07). The gradient needs regularization or Lamarckian inheritance.
+
+5. **Tick specialization did NOT emerge from gradient.** Despite the prediction gradient flowing through all 8 ticks, agents maintain uniform tick weights. The gradient tells ticks how to *contribute* to prediction but does not create *specialization* (early ticks sensing, late ticks planning). This may require a more structured objective (different prediction targets per tick).
+
+### Falsification Status
+- "Prediction MSE does NOT decrease within lifetime → gradient not learning" — FALSIFIED (gradient learns)
+- "Agents evolve lr → 0 → gradient hurts fitness" — FALSIFIED (LR maintained)
+- "C_wm no better than V21" — NOT YET TESTED (need chain test on V22 snapshots)
+- "Phenotype drift destabilizes performance" — PARTIAL (seed 42 shows instability)
+
+### Implications for the Research Program
+The V22 result tells us: **within-lifetime learning is achievable but prediction-loss alone is insufficient for the dynamics we seek.** The gradient makes agents better at forecasting their individual fate but does not create the cross-component integration increase under stress that characterizes biological affect dynamics.
+
+What would? Candidates:
+1. **Multi-agent prediction**: Predict OTHER agents' behavior, not just own energy. This creates social modeling pressure.
+2. **Contrastive prediction**: Predict "what happens if I do X vs Y" — directly training counterfactual reasoning (rung 8).
+3. **Lamarckian inheritance**: Let learned phenotypes be inherited. This lets the gradient compound across generations.
+4. **Prediction from intermediate ticks**: Different prediction targets at different tick depths (somatic at tick 1, anticipatory at tick 7).
+
+### Cost
+- A10 in us-east-1, ~10 minutes total for 3 seeds
+- Cost: ~$0.13
+- JIT warmup: 3.6s on GPU (heavier than V21 due to gradient graph)
+

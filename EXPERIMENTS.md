@@ -935,7 +935,7 @@ Integrates two Continuous Thought Machine (CTM) formalisms as **architectural af
 
 ---
 
-## V22: Intrinsic Predictive Gradient (DESIGN SPEC — not yet implemented)
+## V22: Intrinsic Predictive Gradient (COMPLETE — 3 seeds, 3/5 predictions supported)
 
 ### Core Idea
 
@@ -1010,15 +1010,37 @@ env_step:
 
 This targets the rung 8 wall directly. Counterfactual reasoning (rung 8) requires representing "what would happen if..." — which is exactly what the dissolution prediction gradient rewards. V20 broke the wall architecturally (action-observation loops). V21 adds thinking time. V22 adds a learning signal that explicitly rewards self-predictive accuracy. If rung 8 metrics (ρ_sync, CF weight) improve under V22 vs V21, the gradient is doing what evolution alone could not.
 
-### Estimated Cost
+### Estimated Cost (Actual)
 
-- ~2-3x V21 compute → ~15-20 hours on A100 for 3 seeds
-- ~$20-25 GPU cost
-- Implementation: ~1 day (V21 architecture + jax.grad wrapper)
+- ~10 minutes on A10 for all 3 seeds ($0.13)
+- Much faster than estimated — A10 was sufficient, no A100 needed
+- JIT warmup: 3.6s (gradient graph larger than V21)
+
+### Results (2026-02-19)
+
+**3 seeds × 30 cycles complete. 3/5 pre-registered predictions supported.**
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | Mean |
+|---|---|---|---|---|
+| Mean robustness | 0.965 | 0.990 | 0.988 | 0.981 |
+| Max robustness | 1.021 | 1.049 | 1.005 | 1.025 |
+| Mean phi | 0.106 | 0.100 | 0.085 | 0.097 |
+| Mean pred MSE | 6.4e-4 | 1.1e-4 | 4.0e-4 | 3.8e-4 |
+| Final LR | 0.00483 | 0.00529 | 0.00437 | 0.00483 |
+| LR suppressed | No | No | No | No |
+| Final drift | 0.246 | 0.069 | 0.129 | 0.148 |
+
+- **P1 (MSE ↓ within lifetime): PASS 3/3** — 100-15000x improvement per lifetime
+- **P2 (LR not suppressed): PASS 3/3** — evolution maintains learning
+- **P3 (ticks not collapsed): PASS 3/3** — effective K ≈ 7.8-7.9
+- **P4 (robustness > 1.0): FAIL 3/3** — mean rob 0.965-0.990
+- **P5 (effective K increases): FAIL 3/3** — tick usage stays uniform
+
+**Key finding**: Within-lifetime learning is unambiguously working (first ever in the protocell substrate). But energy-delta prediction is orthogonal to integration under stress. Prediction ability ≠ affect dynamics. The gradient makes agents better individual forecasters without creating the cross-component coordination that characterizes biological affect. Next: contrastive prediction (predict "what if I do X vs Y") or multi-agent prediction.
 
 ---
 
-## Research Status as of 2026-02-18
+## Research Status as of 2026-02-19 (post-V22)
 
 ### What Has Been Definitively Established
 
@@ -1038,7 +1060,7 @@ This targets the rung 8 wall directly. Counterfactual reasoning (rung 8) require
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA)**: True agency substrate. Leave Lenia. Design an agent-based model with a genuine action space — patterns that can push/pull resources, emit signals that physically alter the environment, and observe the altered state. This is the only path past the sensory-motor wall. V18 demonstrated definitively that boundary gating within FFT substrate cannot break the architectural constraint.
+**Priority 3 (Architectural — CA) — V20-V22 COMPLETE**: True agency substrate (V20: wall broken, ρ_sync=0.21), bottleneck mortality (V20b: 82-99%), internal ticks (V21: architecture works, ticks don't collapse), within-lifetime learning (V22: gradient works, 100-15000x MSE improvement per lifetime). The path is clear through self-model emergence. Remaining: prediction is orthogonal to integration — next needs contrastive prediction ("what if I do X vs Y") or multi-agent prediction to bridge individual learning to collective dynamics.
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
