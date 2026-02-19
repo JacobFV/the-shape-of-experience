@@ -1771,3 +1771,82 @@ What would? Candidates:
 - Cost: ~$0.13
 - JIT warmup: 3.6s on GPU (heavier than V21 due to gradient graph)
 
+---
+
+## 2026-02-19: V23 — World-Model Gradient (Specialization ≠ Integration)
+
+### Motivation
+V22 showed scalar prediction doesn't require cross-component coordination. V23 tests whether multi-dimensional prediction (3 targets from different information sources) forces factored representations that create integration.
+
+Three prediction targets:
+- T0: energy delta (self)
+- T1: local resource mean delta (environment)
+- T2: local neighbor count delta (social)
+
+Architecture: predict_W (H,3) instead of (H,1), predict_b (3,) instead of (1,). 4,092 total params.
+
+### Results
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | Mean |
+|--------|---------|----------|--------|------|
+| Mean robustness | 1.003 | 0.973 | 1.000 | 0.992 |
+| Max robustness | 1.037 | 1.059 | 1.025 | — |
+| Mean Phi | 0.102 | 0.074 | 0.061 | 0.079 |
+| MSE energy | 0.00013 | 0.00020 | 0.00014 | 0.00016 |
+| MSE resource | 0.0013 | 0.0012 | 0.0018 | 0.0014 |
+| MSE neighbor | 0.0059 | 0.0065 | 0.0073 | 0.0066 |
+| Col cosine | 0.215 | -0.201 | 0.084 | 0.033 |
+| Eff rank | 2.89 | 2.89 | 2.80 | 2.86 |
+| Final LR | 0.0047 | 0.0046 | 0.0043 | 0.0045 |
+| Drift | 0.22 | 0.26 | 0.17 | 0.22 |
+
+V22 comparison: mean_rob=0.981, mean_phi=0.097
+
+### Prediction Evaluation
+
+| Prediction | Seed 42 | Seed 123 | Seed 7 |
+|-----------|---------|----------|--------|
+| P1: All targets improve | ✓ | ✓ | ✓ |
+| P2: Phi > 0.11 | ✗ (0.102) | ✗ (0.074) | ✗ (0.061) |
+| P3: Robustness > 1.0 | ✓ (1.003) | ✗ (0.973) | ✓ (1.000) |
+| P4: Weight specialization | ✓ (cos=0.22) | ✓ (cos=-0.20) | ✓ (cos=0.08) |
+| P5: Target difficulty E<R<N | ✓ | ✓ | ✓ |
+
+Score: Seed 42: 4/5, Seed 123: 3/5, Seed 7: 4/5
+
+### Key Insight: SPECIALIZATION ≠ INTEGRATION
+
+The multi-target gradient creates beautiful weight specialization:
+- Column cosine similarities near 0 (orthogonal or anti-correlated)
+- Effective rank ≈ 2.9 (nearly full rank from 3 targets)
+- MSE ordering E < R < N perfectly consistent across all 3 seeds
+
+But Phi DECREASED from V22 (0.079 vs 0.097). The multi-target gradient drives different hidden units to specialize for different predictions. Specialization means the system is MORE partitionable, not less. Φ (information lost under partition) goes DOWN when you can cleanly separate function.
+
+This reveals a deep tension:
+- **Specialization** (factored representations) = LOWER Φ
+- **Integration** (overlapping, non-separable representations) = HIGHER Φ
+- Multi-target prediction drives the former, not the latter
+
+To increase Φ, you need predictions that require CONJUNCTIVE features — information that spans multiple targets simultaneously and cannot be decomposed into target-specific channels. The multi-target gradient, by having separate columns in predict_W for each target, actually FACILITATES decomposition.
+
+### Robustness Note
+Despite lower Phi, robustness is marginally higher (0.992 vs 0.981). Seed 42 crosses 1.0. The agents are slightly more resilient, just not more integrated. This makes sense: world-model accuracy helps survival without requiring integration.
+
+### What This Tells Us About V24
+The path to integration is NOT through:
+- More prediction targets (V23 tried this — specialization, not integration)
+- Better prediction accuracy (V22 tried this — orthogonal to integration)
+
+The path to integration MUST be through:
+1. **Conjunctive prediction**: Predict outcomes that inherently require combining self+environment+social (e.g., "will I survive the drought?" requires all three)
+2. **Contrastive prediction**: Predict "what if X vs Y" — same hidden state must represent multiple possible futures, forcing non-decomposable structure
+3. **Temporal prediction**: Predict far-future state (not just next-step delta) — requires maintaining extended world model that can't be partitioned
+
+The user's insight about understanding vs reactivity is key here: reactivity can be decomposed into separate channels (one for resources, one for neighbors). Understanding requires seeing the WHOLE possibility landscape — which is inherently non-decomposable.
+
+### Cost
+- A10 in us-west-1, ~12 minutes total for 3 seeds
+- Cost: ~$0.15
+- JIT warmup: 2.8s on GPU (similar to V22)
+
