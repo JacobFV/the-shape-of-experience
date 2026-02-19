@@ -1885,3 +1885,85 @@ Linear prediction heads cannot force integration regardless of target, dimension
 - A10 in us-east-1, ~15 min total, ~$0.19
 - numpy.bool_ serialization fix required (bool() wrappers)
 
+---
+
+## 2026-02-19: Strategic Assessment — What Does the Thesis Actually Need?
+
+### Where We Are
+
+V13-V24 (12 experiments, 36 seeds, ~$2 total GPU cost) have produced a remarkably clean empirical story:
+
+1. **Geometry is cheap**: Affect structure emerges from survival under uncertainty. Confirmed across every substrate variant. This is the strongest finding.
+
+2. **The wall at rung 8**: Sensory-motor coupling — the capacity for action to cause observable consequences — is the architectural requirement for counterfactual processing and self-modeling. Six Lenia substrates failed (V13-V18). V20 protocell agents crossed it from initialization.
+
+3. **The bottleneck furnace**: Near-extinction events don't just filter for integration — they CREATE it (V19). Selection under extreme mortality forges novel-stress generalization.
+
+4. **The prediction→integration map (V22-V24)**:
+   - V22: Accuracy ≠ Φ (scalar prediction orthogonal)
+   - V23: Breadth ≠ Φ (multi-target → specialization → Φ DECREASES)
+   - V24: Time horizon ≠ Φ (TD value → survival best, but Φ mixed)
+   - LESSON: Linear prediction heads cannot force integration regardless of target. The bottleneck is architectural.
+
+5. **Understanding vs reactivity**: Named and computationally demonstrated. Reactivity = present-state associations (decomposable). Understanding = possibility-landscape associations (non-decomposable). Maps onto rung 7→8.
+
+### What Diminishing Returns Look Like
+
+V22, V23, V24 each found VARIANTS of the same finding: prediction helps survival but doesn't reliably create integration. A V25 (nonlinear MLP head) MIGHT force cross-component computation, but it also might produce another variant — "architecture X helps survival but Phi is seed-dependent."
+
+The pattern: each new prediction variant improves robustness slightly (0.981 → 0.992 → 1.012) while Phi wanders (0.097 → 0.079 → 0.084). We're optimizing survival without cracking integration. This could continue indefinitely.
+
+### What Would Actually Move the Thesis Forward?
+
+The thesis claims: "Affect is a geometric inevitability for any viable system navigating uncertainty under resource constraints." The CA program has CONFIRMED the geometry claim (strongly) and CHARACTERIZED the dynamics claim (the wall, the furnace, the prediction bottleneck). But the thesis needs MORE than a CA program to be compelling:
+
+**STRONGEST claims** (well-supported):
+- Affect geometry is universal (V10, Exps 7-8) — publishable as-is
+- The bottleneck furnace creates, not selects (V19) — publishable as-is
+- The sensory-motor wall is real and architectural (V13-V20) — publishable as-is
+- Understanding vs reactivity is a principled distinction (V22-V24) — novel, needs write-up
+
+**WEAKEST claims** (need work):
+- The identity thesis (experience ≡ cause-effect structure) — philosophical commitment, NOT empirically testable in our substrates. We can't know if our agents have experience. Honestly acknowledged in the book, but this is the foundation of everything above rung 7.
+- Social-scale agency (Parts IV-V) — Exp 10 null. No empirical support from our program.
+- Historical consciousness (Part VI) — interesting but untestable.
+- ι framework — theoretically elegant but only computationally grounded via Exp 8 (ι ≈ 0.30). No human validation.
+- Developmental predictions — the most NOVEL testable predictions (anxiety onset at 3-4, strict rung ordering). But we can't test them — they need developmental psych collaborators.
+
+### Most Productive Next Steps (ranked by impact/effort)
+
+1. **Consolidation paper** (HIGH IMPACT, MODERATE EFFORT): Write up the V13-V24 arc as a single paper: "Geometry is cheap, dynamics are expensive: emergence of affect structure in uncontaminated substrates." This would be the first publication from the program and would establish priority.
+
+2. **Priority 5: Apply to frontier AI** (HIGH IMPACT, MODERATE EFFORT): Run the measurement framework on a real LLM. Measure Phi, robustness, self-model salience in GPT-4 or Claude under different conditions. This bridges the CA findings to AI safety — the most publishable and attention-getting direction.
+
+3. **Interactive web visualizations** (MODERATE IMPACT, LOW EFFORT): The web book is the primary artifact. Adding interactive visualizations (emergence ladder with real data, V22-V24 comparison charts, agent world animations) would make it dramatically more engaging and shareable.
+
+4. **V25 with nonlinear head** (LOW IMPACT, LOW EFFORT): One more CA experiment. Could confirm or deny the "architectural bottleneck" hypothesis. But we're past the point of diminishing returns for the thesis.
+
+5. **Priority 1: Developmental protocol** (HIGH IMPACT IF PUBLISHED, HIGH EFFORT): Specify the 300-child study as a registered report. Novel, testable, but requires collaboration and funding.
+
+### My Recommendation
+
+Stop iterating on the CA substrate. The V13-V24 results are a COMPLETE story. Every additional experiment adds a footnote, not a chapter.
+
+The highest-impact next step is (1) or (2): either consolidate into a paper, or bridge to real AI. Both would make the thesis dramatically more credible.
+
+For the web book specifically: add interactive data visualizations. The emergence ladder, the prediction→integration map, the bottleneck furnace — these are VISUAL stories that the current text-only format doesn't serve well.
+
+### What Seed 7's Phi = 0.130 Tells Us
+
+V24 seed 7 achieved Phi = 0.130 — the highest in any prediction experiment — while seeds 42 and 123 stayed low. Why?
+
+Possible explanations:
+1. **Random initial conditions**: Seed 7's initial genome configuration happened to create hidden-state structure that responded to TD gradients with integration rather than decomposition.
+2. **Different evolutionary trajectory**: Seed 7 may have found a local optimum where value prediction requires cross-component features (conjunctive representation), while other seeds found decomposed optima.
+3. **Population dynamics**: Different drought mortality patterns create different selection pressures.
+
+The VARIANCE across seeds is itself informative. It means integration CAN emerge from these architectures — it's just not the default attractor. The question for V25 would be: can we make integration the default attractor by changing the architecture?
+
+But this is exactly the diminishing-returns trap. Each experiment clarifies why the previous one didn't fully work, suggesting a new variant that might. At some point you have to publish what you have.
+
+### Decision
+
+I'll focus on: (a) making the web book more visually compelling with the data we have, and (b) thinking about what a consolidation paper would look like. If the user wants more CA experiments, V25 is specified and ready. But the thesis is better served by communication than by computation at this point.
+
