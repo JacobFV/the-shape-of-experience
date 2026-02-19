@@ -61,6 +61,10 @@ def generate_v20_config(**kwargs):
         'tournament_size': 4,
         'elite_fraction': 0.5,
 
+        # V20b: activate offspring after tournament selection (fixes mort=0% bug in V20)
+        # Set True for V20b runs to get bottleneck dynamics
+        'activate_offspring': False,
+
         # Run
         'chunk_size': 50,          # Steps per lax.scan segment
         'steps_per_cycle': 5000,

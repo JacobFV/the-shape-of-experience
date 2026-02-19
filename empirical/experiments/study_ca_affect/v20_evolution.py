@@ -292,10 +292,36 @@ def run_v20(seed, cfg, output_dir):
                                           n_chunks_base=5, n_chunks_stress=5)
 
         # Evolution: select and mutate
-        key, k_sel = jax.random.split(key)
+        key, k_sel, k_pos = jax.random.split(key, 3)
         state['params'] = tournament_selection(
             state['params'], jnp.array(fitness), state['alive'], k_sel, cfg
         )
+
+        # V20b: activate offspring (fixes mort=0% bug from V20)
+        # tournament_selection fills ALL M param slots with elites + mutations,
+        # but V20 never set alive=True for newly-filled slots → fixed population.
+        if cfg.get('activate_offspring', False):
+            M = cfg['M_max']
+            n_alive = int(jnp.sum(state['alive']))
+            n_keep = max(1, min(n_alive, int(M * cfg['elite_fraction'])))
+            fitness_masked = np.where(np.array(state['alive']), np.array(fitness), -np.inf)
+            ranked = np.argsort(fitness_masked)[::-1]
+            elite_set = set(ranked[:n_keep].tolist())
+
+            alive_np = np.array(state['alive'])
+            positions_np = np.array(state['positions'])
+            energy_np = np.array(state['energy'])
+            new_positions = np.array(jax.random.randint(k_pos, (M, 2), 0, cfg['N']))
+
+            for i in range(M):
+                if i not in elite_set:
+                    alive_np[i] = True
+                    positions_np[i] = new_positions[i]
+                    energy_np[i] = cfg['initial_energy']
+
+            state['alive'] = jnp.array(alive_np)
+            state['positions'] = jnp.array(positions_np)
+            state['energy'] = jnp.array(energy_np)
 
         # Rescue if needed
         state, key = rescue_population(state, key, cfg)
