@@ -1,0 +1,21 @@
+{
+  "prediction_1_td_learning": {
+    "supported": true,
+    "td_improving_frac": 1.0,
+    "mean_td_error": 7.02964122100521e-05
+  },
+  "prediction_2_phi_increases": {
+    "supported": false,
+    "mean_phi": 0.05143810258557399
+  },
+  "prediction_3_robustness_increases": {
+    "supported": true,
+    "mean_robustness": 1.0337654843611246
+  },
+  "prediction_4_gamma_maintained": {
+    "supported": true,
+    "final_gamma": 0.7476128339767456,
+    "gamma_suppressed": false
+  },
+  "prediction_5_drought_differentiation": {
+    "supported": 

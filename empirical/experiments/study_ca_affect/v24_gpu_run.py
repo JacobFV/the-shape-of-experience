@@ -102,7 +102,7 @@ def evaluate_predictions(result):
             td_improving += 1
     n = len(cycles)
     p1 = {
-        'supported': td_improving > n * 0.5,
+        'supported': bool(td_improving > n * 0.5),
         'td_improving_frac': td_improving / n,
         'mean_td_error': result['summary']['mean_td_error'],
     }
@@ -110,21 +110,21 @@ def evaluate_predictions(result):
     # P2: Mean Phi > 0.11 (better than V22's ~0.10, V23's ~0.08)
     mean_phi = result['summary']['mean_phi']
     p2 = {
-        'supported': mean_phi > 0.11,
+        'supported': bool(mean_phi > 0.11),
         'mean_phi': mean_phi,
     }
 
     # P3: Robustness > 1.0
     mean_rob = result['summary']['mean_robustness']
     p3 = {
-        'supported': mean_rob > 1.0,
+        'supported': bool(mean_rob > 1.0),
         'mean_robustness': mean_rob,
     }
 
     # P4: gamma does NOT evolve to 0 (stays > 0.55)
     final_gamma = result['summary']['final_gamma']
     p4 = {
-        'supported': final_gamma > 0.55,
+        'supported': bool(final_gamma > 0.55),
         'final_gamma': final_gamma,
         'gamma_suppressed': result['summary']['gamma_suppressed'],
     }
@@ -142,7 +142,7 @@ def evaluate_predictions(result):
         drought_mean = np.mean(drought_values)
         normal_mean = np.mean(normal_values)
         p5 = {
-            'supported': drought_mean < normal_mean,
+            'supported': bool(drought_mean < normal_mean),
             'drought_value_mean': float(drought_mean),
             'normal_value_mean': float(normal_mean),
             'value_difference': float(normal_mean - drought_mean),
