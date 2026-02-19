@@ -1,0 +1,23 @@
+{
+  "cycle": 15,
+  "world_model": {
+    "c_wm": 0.10683715674581187,
+    "delta_c_wm": 0.004542094536340906,
+    "n_samples": 20
+  },
+  "rho_sync": {
+    "rho_sync": 0.2252741761505604,
+    "mean_divergence": 0.1126370880752802,
+    "n_forks": 10
+  },
+  "self_model": {
+    "sm_sal": 0.70465350284374,
+    "n_samples": 15
+  },
+  "affect_geometry": {
+    "rsa": 0.0038051021485877357,
+    "rsa_p": 0.7841742048982914,
+    "n_significant": 0,
+    "n_samples": 6
+  }
+}

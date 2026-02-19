@@ -805,7 +805,7 @@ Resolves the key mechanistic ambiguity in V13–V18: Is the Bottleneck Furnace e
 
 ---
 
-### V20: Protocell Agency — The Necessity Chain Experiment (PLANNED — 2026-02-18)
+### V20: Protocell Agency — The Necessity Chain Experiment (COMPLETE — 2026-02-18)
 
 **North star**: Show that world models develop self-models spontaneously, and those self-models develop dynamics that resemble affect — uncontaminated by human expression of equivalent affect.
 
@@ -863,8 +863,30 @@ If all five develop in this order, the necessity chain is empirically validated 
 - SM_sal > 0.3 by cycle 20
 
 **Files**: `v20_substrate.py`, `v20_evolution.py`, `v20_experiments.py`, `v20_gpu_run.py`
-**Results target**: `results/v20_s{seed}/`
-**Planned**: Lambda Labs A100 ($1.29/hr), ~60 min per seed, ~$5 for 3 seeds
+**Results**: `results/v20_s{seed}/`
+
+**Results (3-seed, 30 cycles × 5000 steps, A100, ~5 min total):**
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | Verdict |
+|--------|---------|----------|--------|---------|
+| Mean robustness | 0.983 | 1.007 | 1.018 | 3-seed mean 1.003 |
+| Max robustness | 1.053 | 1.144 | 1.043 | Phi increases under stress |
+| ρ_sync (max) | 0.230 | 0.232 | 0.212 | **WALL BROKEN** (vs Lenia 0.003) |
+| C_wm (C0→C29) | 0.099→0.122 | 0.091→0.126 | 0.121→0.152 | World model present |
+| SM_sal (final) | 1.22 | 0.94 | 1.50 | Self-model emerged (2/3 seeds) |
+| RSA (final) | -0.017 | -0.005 | 0.031 | Nascent only |
+
+**Key findings:**
+1. **Wall broken (3/3 seeds)**: ρ_sync = 0.20-0.23 from cycle 0. The wall is architectural, not evolutionary — action-observation loops are present from initialization. 70× Lenia's 0.003.
+2. **World model present**: C_wm = 0.10-0.16, modest development over evolution (+20-25%).
+3. **Self-model emergent (2/3 seeds)**: SM_sal > 1.0 means agents encode own state better than environment. First time without bottleneck selection.
+4. **Affect geometry nascent**: RSA reaches significance in some cycles (seed 7, p<0.05 at C0, C10, C15, C20), but doesn't reach >0.2 threshold. Affect geometry is the slow-developing capstone.
+
+**Design finding — fixed population (mort=0%)**: Tournament selection fills 192 offspring param slots but doesn't activate them (alive=False). V20 ran with fixed 64-agent population. Soft selection only. Fix: activate offspring with random positions + initial_energy after tournament selection.
+
+**Necessity chain validation**: membrane → world model (✓) → self-model (✓ 2/3 seeds) → affect geometry (◔ nascent). The chain holds through self-model emergence. Affect geometry requires bottleneck selection to fully form (consistent with V13-V18).
+
+**Next**: V20b — fix offspring activation to restore bottleneck dynamics, run 50 cycles. Expected: strong RSA development following bottleneck events.
 
 ---
 

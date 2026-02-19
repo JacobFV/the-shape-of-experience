@@ -1,0 +1,179 @@
+{
+  "seed": 42,
+  "n_snapshots": 7,
+  "chain_development": {
+    "c_wm_first": 0.09930916403215784,
+    "c_wm_last": 0.12239290155306307,
+    "delta_c_wm_last": -0.006974184401700373,
+    "rho_sync_max": 0.2303915059193969,
+    "rho_sync_last": 0.2303915059193969,
+    "sm_sal_last": 1.2167407731697473,
+    "rsa_last": -0.01701200171334635
+  },
+  "wall_broken": true,
+  "self_model_emergent": true,
+  "affect_geometry_present": false,
+  "results": [
+    {
+      "cycle": 0,
+      "world_model": {
+        "c_wm": 0.09930916403215784,
+        "delta_c_wm": 0.011718002114798084,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.21426141913980246,
+        "mean_divergence": 0.10713070956990123,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 0.8002265758892676,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": 0.004910197216906812,
+        "rsa_p": 0.551550729852376,
+        "n_significant": 0,
+        "n_samples": 6
+      }
+    },
+    {
+      "cycle": 5,
+      "world_model": {
+        "c_wm": 0.10629325601868367,
+        "delta_c_wm": 0.01592691484139827,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.2247066931799054,
+        "mean_divergence": 0.1123533465899527,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 0.953011451916002,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": -0.014993391886257023,
+        "rsa_p": 0.37378270601566427,
+        "n_significant": 0,
+        "n_samples": 6
+      }
+    },
+    {
+      "cycle": 10,
+      "world_model": {
+        "c_wm": 0.08432852113888492,
+        "delta_c_wm": 0.02777900701325286,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.21464649289846421,
+        "mean_divergence": 0.10732324644923211,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 1.0836391365837976,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": 0.0077912697528423475,
+        "rsa_p": 0.6609672623870929,
+        "n_significant": 0,
+        "n_samples": 6
+      }
+    },
+    {
+      "cycle": 15,
+      "world_model": {
+        "c_wm": 0.09004330475244947,
+        "delta_c_wm": 0.018599939954050865,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.20681551918387414,
+        "mean_divergence": 0.10340775959193707,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 0.9565519345684028,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": 0.000456430663610887,
+        "rsa_p": 0.5527655043966287,
+        "n_significant": 0,
+        "n_samples": 6
+      }
+    },
+    {
+      "cycle": 20,
+      "world_model": {
+        "c_wm": 0.09703863396519788,
+        "delta_c_wm": 0.016834224766383292,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.18815396837890147,
+        "mean_divergence": 0.09407698418945074,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 0.8801138789666924,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": -0.003557691469314501,
+        "rsa_p": 0.6930440269598864,
+        "n_significant": 0,
+        "n_samples": 5
+      }
+    },
+    {
+      "cycle": 25,
+      "world_model": {
+        "c_wm": 0.10329444311907263,
+        "delta_c_wm": 0.012713450662625397,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.20517855640500784,
+        "mean_divergence": 0.10258927820250392,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 1.1923019405601496,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": -0.007929968539236994,
+        "rsa_p": 0.6283489004070208,
+        "n_significant": 0,
+        "n_samples": 6
+      }
+    },
+    {
+      "cycle": 29,
+      "world_model": {
+        "c_wm": 0.12239290155306307,
+        "delta_c_wm": -0.006974184401700373,
+        "n_samples": 20
+      },
+      "rho_sync": {
+        "rho_sync": 0.2303915059193969,
+        "mean_divergence": 0.11519575295969844,
+        "n_forks": 10
+      },
+      "self_model": {
+        "sm_sal": 1.2167407731697473,
+        "n_samples": 15
+      },
+      "affect_geometry": {
+        "rsa": -0.01701200171334635,
+        "rsa_p": 0.30409020335720527,
+        "n_significant": 0,
+        "n_samples": 6
+      }
+    }
+  ]
+}
