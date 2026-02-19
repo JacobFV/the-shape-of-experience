@@ -1590,3 +1590,47 @@ The contamination error is treating language as a communication phenomenon. It i
 
 **Experimental target**: V20b with bottleneck dynamics should produce stronger world models (C_wm > 0.15) and stronger self-models (SM_sal > 2.0). Does H_branch during detachment events increase following bottleneck selection? Does the distribution of detachment states sharpen (lower entropy, higher discriminability)? If yes, the preconditions for symbol emergence are present.
 
+---
+
+## 2026-02-18: V20b Full Run — Results and Language Precursor Null
+
+### V20b Design Changes
+- Bug fix: offspring activation (previously mort=0% despite tournament selection)
+- Bug fix: drought_regen override was silently ignored by run_cycle_with_metrics (which reset regen to full rate every cycle). Fixed: pass regen_override parameter.
+- Bug fix: drought parameters too mild (5% depletion, 0.00002 regen). Fixed: 1% depletion, 0.0 regen.
+- Math: metabolic_cost=0.0004, initial_energy=1.0. At 5000 steps, agents need 2.0 energy. If all resources depleted to 1%: 163.84 total resources × 1.5 value = 245.76 energy for 256 agents needing 256 energy → borderline mortality.
+
+### V20b Results (drought_every=5, 3 seeds × 30 cycles)
+| Seed | mean_rob | max_rob | mean_phi | bottleneck mortality |
+|------|----------|---------|----------|---------------------|
+| 42 | 1.023 | 1.168 | 0.100 | 82-86% |
+| 123 | 0.990 | 1.098 | 0.095 | 87-99% |
+| 7 | 0.998 | **1.532** | 0.074 | 87-99% |
+
+Seed 7 cycle 10: pop=33 (87% mortality), robustness=1.532 — new all-time record by a large margin (V18 peak was 1.651 but at pop=2, likely noise). 1.532 at pop=33 is a much cleaner signal.
+
+### Language Precursor Test — NULL RESULT
+
+Implemented v20_language_precursors.py:
+- GRU update gate z ≈ 1 = memory-dominant ("imagination mode")
+- GRU update gate z ≈ 0 = observation-driven (reactive)
+- Theory predicts: if language precursors emerge, z should polarize — some steps high-z (offline rollouts), some low-z (reactive sensing)
+- Measured: high-z fraction > 0.7, low-z fraction < 0.3, emission R² ratio
+
+**Result**: z stays at 0.495–0.526 across all seeds/cycles. Std ≈ 0.02–0.04. frac_high_z = 0 (never exceeds 0.7), frac_low_z = 0 (never below 0.3) in any of 21 snapshots.
+
+**Interpretation**: Agents evolved balanced (always-mixed) strategy rather than oscillating between imagination and reactive modes. This is rational: in V20b's world, agents face continuously variable resource patches with periodic droughts. A balanced strategy (z≈0.5, equal memory and reactivity) may be more robust than an oscillating strategy.
+
+**What this means for the theory**: The z-gate polarization test assumes agents SHOULD develop oscillating modes. But z≈0.5 is actually the GRU's neutral state — it happens when neither memory nor observation dominates the update. The agents didn't evolve to exploit high-z windows because:
+1. No coordination pressure makes transmitting sharp counterfactuals adaptive
+2. Individual survival doesn't strongly reward internal imagination over immediate reactivity
+3. The world is too simple — V20b's 128×128 grid with periodic drought may not demand complex planning
+
+**Next question**: What selective pressure creates z polarization? Candidates:
+- Deception (requires representing another agent's false beliefs — deep world model + self-model)
+- Long-horizon coordination (requires planning across multiple steps — high-z sustained)
+- Resource prediction games (requires simulating future states during foraging — temporal detachment)
+
+### Bug Note for Future V20 Runs
+The extract_snapshot function now saves resources and signals (previously omitted, causing v20_language_precursors.py to fail). Old snapshots (from V20 on Lambda Labs) are missing these fields — v20_language_precursors.py now falls back to neutral defaults (resources=0.5, signals=0) for old snapshots.
+
