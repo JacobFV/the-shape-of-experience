@@ -1,4 +1,25 @@
-# Inevitability
+# The Shape of Experience
+
+> **Work in Progress** — This is an active research project, not a finished publication. Content is incomplete, speculative, and subject to change. Claims should be treated as hypotheses under investigation, not established conclusions.
+
+A geometric theory of affect for biological and artificial systems.
+
+**Read online**: [theshapeofexperience.com](https://theshapeofexperience.com)
+
+## Repository Structure
+
+This repository is a **research center** — the canonical source of truth for the project. Everything downstream (web book, PDF, audiobook, videos, talks, papers) is generated from here.
+
+- `web/` — Next.js 15 web book (Vercel deployment)
+- `web/content/` — Chapter content (TSX components)
+- `empirical/experiments/` — Experiment code and results (V2–V24)
+- `book/` — LaTeX source (secondary, compiled to PDF)
+- `EXPERIMENTS.md` — Experiment catalog and research roadmap
+- `CLAUDE.md` — Research context and AI collaboration instructions
+
+## Status
+
+This is research in early stages. The empirical program (V2–V24) is actively running. The theoretical framework is under development. Many claims are speculative and await experimental validation. See `EXPERIMENTS.md` for what has been tested and what remains.
 
 ## LaTeX Setup (macOS)
 

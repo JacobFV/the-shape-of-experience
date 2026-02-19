@@ -10,6 +10,7 @@ import MobileHeader from '../components/MobileHeader';
 import Providers from '../components/Providers';
 import SyncOnLogin from '../components/SyncOnLogin';
 import ChatWrapper from '../components/ChatWrapper';
+import WipBanner from '../components/WipBanner';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -90,6 +91,7 @@ export default function RootLayout({
           <ReaderToolbar />
           <SyncOnLogin />
           <ChatWrapper />
+          <WipBanner />
           <main className="main-content">
             {children}
           </main>

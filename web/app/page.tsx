@@ -8,6 +8,9 @@ export default function Home() {
         <p className="landing-subtitle">
           A Geometric Theory of Affect for Biological and Artificial Systems
         </p>
+        <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: '0.5rem', fontFamily: 'var(--font-sans)' }}>
+          Research in progress &mdash; not a finished publication
+        </p>
         <div className="landing-rule" />
       </header>
 

@@ -283,6 +283,18 @@ export default function ReaderToolbar() {
         </svg>
       </button>
 
+      {/* Info / WIP notice */}
+      <button
+        className="reader-toolbar-btn"
+        title="Research work in progress — content is incomplete and subject to change"
+        aria-label="About: this is a research work in progress"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4M12 8h.01" />
+        </svg>
+      </button>
+
       {/* User */}
       <UserButton />
 

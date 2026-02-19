@@ -1,3 +1,6 @@
+// WORK IN PROGRESS: This is active research, not a finished publication.
+// Content is incomplete, speculative, and subject to change.
+
 import { Connection, Eq, Experiment, Logos, M, MarginNote, OpenQuestion, Section, Sidebar, Warning, WideBreath } from '@/components/content';
 
 export const metadata = {

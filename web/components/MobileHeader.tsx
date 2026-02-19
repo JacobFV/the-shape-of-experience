@@ -201,6 +201,12 @@ export default function MobileHeader() {
 
               <div className="mobile-menu-divider" />
 
+              <div className="mobile-menu-item" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontStyle: 'italic', padding: '0.4rem 0.75rem', lineHeight: 1.35 }}>
+                Research work in progress — content is incomplete and subject to change
+              </div>
+
+              <div className="mobile-menu-divider" />
+
               {status === 'authenticated' && session?.user ? (
                 <>
                   <div className="mobile-menu-user-header">

@@ -2,6 +2,25 @@
    The Shape of Experience — Web Edition
    ========================================================================== */
 
+/* --- WIP Banner --- */
+.wip-banner {
+  margin-left: var(--sidebar-width);
+  background: #fff8e1;
+  border-bottom: 1px solid #ffe082;
+  padding: 0.4rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: #5d4037;
+  text-align: center;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .wip-banner {
+  background: #332b00;
+  border-bottom-color: #5d4a00;
+  color: #ffcc80;
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -861,6 +880,10 @@ body {
     padding-top: 4rem;
     max-width: 100vw;
     overflow-x: hidden;
+  }
+
+  .wip-banner {
+    margin-left: 0;
   }
 
   .chapter {

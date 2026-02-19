@@ -1,4 +1,7 @@
 
+// WORK IN PROGRESS: This is active research, not a finished publication.
+// Content is incomplete, speculative, and subject to change.
+
 export const metadata = {
   slug: 'introduction',
   title: 'Introduction',
