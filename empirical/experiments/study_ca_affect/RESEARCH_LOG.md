@@ -1850,3 +1850,38 @@ The user's insight about understanding vs reactivity is key here: reactivity can
 - Cost: ~$0.15
 - JIT warmup: 2.8s on GPU (similar to V22)
 
+---
+
+## 2026-02-19: V24 — TD Value Learning (Time Horizon ≠ Integration)
+
+### Motivation
+V22 scalar 1-step → orthogonal to Phi. V23 multi-target 1-step → specialization, Phi DECREASES. V24 tests: does long-horizon prediction via TD bootstrapping force non-decomposable representation?
+
+Architecture: predict_W (H,1), predict_b (1,), lr_raw (1,), gamma_raw (1,). TD loss: (V(s_t) - [r_t + γ·V(s_{t+1})])². 4,060 params.
+
+### Results
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | Mean |
+|--------|---------|----------|--------|------|
+| Mean rob | 1.034 | 0.998 | 1.003 | **1.012** |
+| Max rob | 1.491 | 1.019 | 1.069 | — |
+| Mean Phi | 0.051 | 0.072 | **0.130** | 0.084 |
+| Gamma | 0.748 | 0.746 | 0.741 | 0.745 |
+
+V22: rob=0.981, phi=0.097. V23: rob=0.992, phi=0.079.
+
+### The Full Prediction→Integration Map
+
+| Version | Target | Robustness | Phi | Lesson |
+|---------|--------|-----------|-----|--------|
+| V22 | 1-step energy Δ | 0.981 | 0.097 | Accuracy ≠ Φ |
+| V23 | 3 targets (E/R/N) | 0.992 | 0.079↓ | Specialization ≠ Φ |
+| V24 | TD value V(s) | **1.012** | 0.084 | Time horizon ≠ Φ |
+
+### Key Finding
+Linear prediction heads cannot force integration regardless of target, dimensionality, or time horizon. The bottleneck is ARCHITECTURAL — the head must force cross-component computation. Candidate V25 approaches: nonlinear prediction head (MLP), action-conditional prediction (shared weights across actions), or cross-tick prediction.
+
+### Cost
+- A10 in us-east-1, ~15 min total, ~$0.19
+- numpy.bool_ serialization fix required (bool() wrappers)
+

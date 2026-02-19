@@ -1084,7 +1084,7 @@ V22 comparison: mean_rob=0.981, mean_phi=0.097
 
 ### V24: TD Value Learning (2026-02-19)
 
-**Status**: RUNNING — 3 seeds on Lambda A10
+**Status**: COMPLETE — 3 seeds, survival improves but Phi mixed
 
 **Motivation**: V22 showed 1-step prediction is orthogonal to Φ. V23 showed multi-target prediction actively decreases Φ via specialization. Both are *reactive* — associations from present state, decomposable by channel. V24 tests whether *long-horizon* prediction, via temporal difference learning, forces the non-decomposable representation that creates integration.
 
@@ -1109,6 +1109,26 @@ The key insight: reactivity maps present → action (decomposable). Understandin
 3. Mean robustness > 1.0 (V22: 0.98)
 4. gamma does NOT evolve to 0 (long horizon adaptive)
 5. V(s) differentiates drought vs normal cycles
+
+**Results** (3 seeds x 30 cycles):
+
+| Metric | Seed 42 | Seed 123 | Seed 7 | Mean |
+|--------|---------|----------|--------|------|
+| Mean robustness | 1.034 | 0.998 | 1.003 | **1.012** |
+| Max robustness | 1.491 | 1.019 | 1.069 | — |
+| Mean Phi | 0.051 | 0.072 | **0.130** | 0.084 |
+| TD error | 7e-5 | 4e-5 | 7e-5 | 6e-5 |
+| Final gamma | 0.748 | 0.746 | 0.741 | 0.745 |
+
+V22: mean_rob=0.981, mean_phi=0.097. V23: mean_rob=0.992, mean_phi=0.079.
+
+- **P1 (TD error decreases): PASS 3/3** — 100% of cycles show within-lifetime improvement
+- **P2 (Phi > 0.11): PASS 1/3** — seed 7 at 0.130, seeds 42/123 below
+- **P3 (robustness > 1.0): PASS 2/3** — seeds 42 (1.034) and 7 (1.003)
+- **P4 (gamma maintained): PASS 3/3** — all ~0.745, not suppressed
+- **P5 (drought differentiation): PASS 3/3** — V(s) lower during drought
+
+**Key finding: Time horizon helps survival, not reliably integration.** TD value learning produces the best robustness of any prediction experiment (1.012 mean). Agents evolve moderate discount (γ≈0.75, horizon ≈ 4 steps) — enough to anticipate near-term resource changes. But Phi improvement is seed-dependent: seed 7 achieves 0.130 (highest in any prediction experiment), while seeds 42/123 are below V22 baseline. A single linear value readout doesn't reliably force non-decomposable hidden state structure. The bottleneck is **architectural** — the prediction head must force cross-component computation, not just predict a longer-horizon target.
 
 **Falsification**:
 - TD error doesn't decrease → learning not working
@@ -1137,7 +1157,7 @@ The key insight: reactivity maps present → action (decomposable). Understandin
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V23 COMPLETE**: True agency substrate (V20: wall broken, ρ_sync=0.21), bottleneck mortality (V20b: 82-99%), internal ticks (V21: architecture works, ticks don't collapse), within-lifetime learning (V22: gradient works, 100-15000x MSE improvement per lifetime), multi-target world model (V23: specialization ≠ integration, Phi DECREASES with multi-target prediction). V22 showed prediction accuracy is orthogonal to integration. V23 showed multi-dimensional prediction actively creates specialization (factored representations) which LOWERS integration. The path forward: conjunctive prediction (require combining self+environment+social in a non-separable way) or contrastive prediction ("what if X vs Y" through a unified representation).
+**Priority 3 (Architectural — CA) — V20-V24 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21: architecture works), within-lifetime learning (V22: gradient works), multi-target world model (V23: specialization ≠ integration), TD value learning (V24: survival improves but Phi mixed). The prediction→integration pathway is now fully mapped: 1-step prediction orthogonal to Φ (V22); multi-target 1-step specializes and LOWERS Φ (V23); multi-step TD value improves survival (rob 1.012) but Φ improvement is seed-dependent (V24). The bottleneck is architectural: a single linear readout — regardless of target, dimensionality, or time horizon — cannot force non-decomposable hidden-state structure. The next step requires an architectural change that forces cross-component computation during prediction, not just a different prediction target.
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
