@@ -1,0 +1,35 @@
+{
+  "prediction_1_all_targets_improve": {
+    "supported": true,
+    "energy_improving_frac": 1.0,
+    "resource_improving_frac": 0.8,
+    "neighbor_improving_frac": 1.0,
+    "mean_mse_energy": 0.00014483437561142246,
+    "mean_mse_resource": 0.0017473708112568443,
+    "mean_mse_neighbor": 0.00729699194322188
+  },
+  "prediction_2_phi_increases": {
+    "supported": false,
+    "mean_phi": 0.060737687243769566
+  },
+  "prediction_3_robustness_increases": {
+    "supported": false,
+    "mean_robustness": 0.9996631705067621
+  },
+  "prediction_4_weight_specialization": {
+    "supported": true,
+    "final_col_cosine": 0.08391187340021133,
+    "final_effective_rank": 2.8382630252838137
+  },
+  "prediction_5_target_difficulty": {
+    "supported": true,
+    "mse_energy": 0.00014483437561142246,
+    "mse_resource": 0.0017473708112568443,
+    "mse_neighbor": 0.00729699194322188,
+    "ordering": "E<R<N"
+  },
+  "drift": {
+    "mean_drift_overall": 0.24531422605117162,
+    "max_drift_overall": 0.5214086771011353
+  }
+}

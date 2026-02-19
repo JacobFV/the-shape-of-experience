@@ -1036,7 +1036,44 @@ This targets the rung 8 wall directly. Counterfactual reasoning (rung 8) require
 - **P4 (robustness > 1.0): FAIL 3/3** — mean rob 0.965-0.990
 - **P5 (effective K increases): FAIL 3/3** — tick usage stays uniform
 
-**Key finding**: Within-lifetime learning is unambiguously working (first ever in the protocell substrate). But energy-delta prediction is orthogonal to integration under stress. Prediction ability ≠ affect dynamics. The gradient makes agents better individual forecasters without creating the cross-component coordination that characterizes biological affect. Next: contrastive prediction (predict "what if I do X vs Y") or multi-agent prediction.
+**Key finding**: Within-lifetime learning is unambiguously working (first ever in the protocell substrate). But energy-delta prediction is orthogonal to integration under stress. Prediction ability ≠ affect dynamics. The gradient makes agents better individual forecasters without creating the cross-component coordination that characterizes biological affect.
+
+---
+
+### V23: World-Model Gradient (2026-02-19)
+
+**Status**: RUNNING — 3 seeds on Lambda A10
+
+**Motivation**: V22 showed scalar prediction doesn't require cross-component coordination — a single hidden unit can predict energy delta. V23 tests whether multi-dimensional prediction, with targets from DIFFERENT information sources, forces the factored representations that create integration.
+
+The key insight: reactivity maps present state → action. Understanding maps present state → possibility landscape → action. Multi-target prediction forces agents to model the possibility landscape.
+
+**Architecture** (over V22):
+- `predict_W`: (H, 3) instead of (H, 1) — predict 3 targets simultaneously
+- `predict_b`: (3,) instead of (1,)
+- `lr_raw`: (1,) — same evolvable learning rate
+- 52 new params over V21 (4,092 total vs V22's 4,058)
+
+**Three prediction targets**:
+- T0: energy delta (self-focused)
+- T1: local resource mean delta (environment-focused)
+- T2: local neighbor count delta / 5.0 (social-focused)
+
+The gradient from all three targets flows through the same 16 GRU hidden units, forcing them to maintain factored representations (some units encode self-state, some encode environment, some encode social context). When combined for decision-making, this requires integration.
+
+**New measurement**: Prediction weight specialization — column cosine similarity of `predict_W` (low = specialized, high = parallel), effective rank of prediction head (1 = degenerate, 3 = fully specialized).
+
+**Pre-registered predictions**:
+1. All 3 targets show within-lifetime MSE improvement
+2. Mean Phi > 0.11 (V22: ~0.10)
+3. Mean robustness > 1.0 (V22: ~0.98)
+4. predict_W columns specialize (cosine < 0.7)
+5. Target difficulty varies: energy easiest, neighbor hardest
+
+**Falsification**:
+- Any target MSE increases over lifetime → that target not learnable
+- Phi/robustness no better than V22 → multi-target still orthogonal to integration
+- predict_W columns collapse to parallel → no specialization, no benefit
 
 ---
 
