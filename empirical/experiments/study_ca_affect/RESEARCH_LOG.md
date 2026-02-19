@@ -1537,3 +1537,56 @@ This is a cleaner story than expected. The sensory-motor coupling wall was an ar
 
 3. **Write up**: The necessity chain is the narrative backbone for V20 in the book. The chain is validated (membrane → world model → self-model), with affect geometry as the slow-developing capstone.
 
+---
+
+## 2026-02-18: Blueprint Audit — dump/experiments.md vs Reality
+
+`dump/experiments.md` is the original theoretical blueprint for the full experiment program, written before V13. It formalizes five experiments with precise mathematical definitions. Here's the mapping to what actually ran:
+
+| Blueprint Experiment | Status | Notes |
+|---|---|---|
+| Exp 1: Emergent Existence | ✓ V11.0–V11.7, V13–V18 | V19 extended to CREATION finding |
+| Exp 2: World Model C_wm | ✓ V20: 0.10–0.15 | CA substrates gave 0.001–0.004 (floor) |
+| Exp 3: Representation Structure | ✓ Exp 3 in CA | d_eff ~7/68, compression cheap |
+| Exp 4: Language / ρ_topo | ✗ null | MI present but unstructured; ρ_topo ≈ 0 |
+| Exp 5: Counterfactual Detachment | ✗ impossible in Lenia | V20 makes it measurable for first time |
+
+**The critical unlock**: The blueprint's Exp 5 — detachment events, CF simulation score I_img, branch entropy H_branch — assumed agents that oscillate between reactive (high ρ_sync) and detached (low ρ_sync) modes. In Lenia, ρ_sync ≈ 0 always (always "detached" by default), so detachment events were meaningless. V20 establishes genuine ρ_sync = 0.21 baseline, making reactive/detached oscillation *detectable for the first time*.
+
+**What's still unmeasured in V20:**
+- Detachment events (moments when agent hidden state decouples from current observations)
+- CF simulation score I_img (does offline trajectory predict future better than reactive mode?)
+- H_branch during detachment (diversity of internal rollouts = imagination breadth)
+- ρ_topo compositional communication (untested in V20)
+- Tripartite alignment (blueprint's Phase D capstone — requires all of the above)
+
+---
+
+## 2026-02-18: Language Emergence — The Uncontaminated Account
+
+**Warning recorded**: Do not start from human linguistic concepts (vocabulary, grammar, compositionality) and look for them. That is contamination. Language in this framework is not a communication system that happens to develop — it is what happens when imagination becomes transmissible.
+
+**The correct causal chain (bottom up):**
+
+1. **Compressed imagination**: World model runs offline rollouts during detachment events. Internal states traverse possible futures. C_wm > 0, I_img > 0.
+
+2. **Counterfactuals sharpen**: As evolution selects for better prediction, rollout states become more discriminative — sharper, more distinct from each other. H_branch increases but the distribution becomes more peaked (diverse but discrete-feeling). The rollouts stop being vague trajectories and start being crisp enough to point at distinct futures.
+
+3. **Sharp enough to feel symbolic**: When a counterfactual state is sharp and stable enough, it can be transmitted — compressed into an emission that another agent can receive and use to update *its* world model. This is the origin of the symbol: not a convention imposed from outside, but a compressed sharp counterfactual that is legible to other agents because they share the same world model geometry.
+
+4. **Multiagent pressure makes transmission adaptive**: Coordination payoffs (shared resources, coordinated escape) create selection pressure for agents whose sharp counterfactuals are transmissible. The channel C_ij opens. ρ_topo emerges automatically — similar counterfactual situations produce similar rollouts produce similar emissions.
+
+5. **That is language**: Not vocabulary-with-grammar. Transmitted compressed imagination. ρ_topo is a downstream signature, not the definition.
+
+**What this means for experiment design:**
+
+Do NOT design an experiment that starts with "signals" and measures linguistic structure. Instead:
+- Measure H_branch during detachment events in V20b (is imagination getting sharp?)
+- Measure whether sharp detachment-state distributions are correlated across agents (is the geometry shared?)
+- Measure whether an agent's emissions during detachment events modulate another agent's behavior (is anything being transmitted?)
+- ρ_topo is the last thing to check, not the first
+
+The contamination error is treating language as a communication phenomenon. It is an imagination phenomenon that becomes communicative under multiagent pressure.
+
+**Experimental target**: V20b with bottleneck dynamics should produce stronger world models (C_wm > 0.15) and stronger self-models (SM_sal > 2.0). Does H_branch during detachment events increase following bottleneck selection? Does the distribution of detachment states sharpen (lower entropy, higher discriminability)? If yes, the preconditions for symbol emergence are present.
+
