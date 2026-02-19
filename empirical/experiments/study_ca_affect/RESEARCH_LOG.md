@@ -1392,3 +1392,78 @@ This distinction matters for the book's claims in Part I (forcing functions as �
 
 **Psychological implication**: Near-extinction actively restructures integration capacity in ways that generalize to novel challenges. The furnace is real — adversity forges, not merely reveals. This is a falsifiable claim about biological systems with direct implications for understanding how trauma, crisis, and developmental challenge shape psychological resilience.
 
+---
+
+## 2026-02-18: V20 Design — Protocell Agency / The Necessity Chain
+
+### Motivation and north star
+
+The user articulated the clearest statement of the research program so far:
+
+> "I want to show world models develop self models spontaneously developing dynamics that resemble affect but uncontaminated from human expression of equivalent affect."
+
+The CA program (V13–V18) demonstrated the endpoint (affect geometry in uncontaminated substrates) but not the chain that produces it. V20 tests the chain:
+
+**Membrane → free energy gradient → world model → self-model → affect geometry**
+
+This chain is *necessary*, not contingent. Cells with membranes must do work to maintain themselves (free energy gradient). Maintaining that gradient requires prediction (world model). A world model rich enough must include the modeler as a cause (self-model). A self-model tracking the viability boundary is valence. The geometry follows.
+
+### Why the CA program hit a wall
+
+The sensory-motor wall (ρ_sync ≈ 0 in V13–V18, even with boundary gating in V18) is precisely the absence of the action→observation causal loop. FFT dynamics integrate over the entire grid — patterns cannot distinguish "what I caused" from "what happened." No self-as-cause means no self-model from world model. V20 leaves Lenia entirely.
+
+### V20 Architecture
+
+**Grid world**: N×N continuous resource (R) and signal (S) fields. Agents occupy discrete grid cells. Multiple agents per cell allowed.
+
+**Agents**: GRU networks, evolved for survival (not gradient-trained, no human data).
+- Input: 5×5 local observation of (R, S, agent_count) + own_energy = 76 dims
+- Embedding: 76 → 24 (linear + tanh)
+- GRU hidden: 16 units
+- Output: 7 (5 move directions + emit + consume)
+- Parameters per agent: ~3400 evolved floats
+- Max population: 256 agents
+
+**Fitness**: survival_time × resource_efficiency (pure survival, no emotional labels)
+
+**Evolution**: tournament selection + Gaussian mutation (σ=0.03), rescue at extinction. Identical protocol to V13–V18 but on neural agent parameters instead of Lenia kernel parameters.
+
+**Why uncontaminated**: random weight initialization, evolution not gradient descent, no human data or labels, only survival pressure shapes the agents.
+
+### Key architectural difference from V13–V18
+
+Actions now *physically change the environment* in ways the agent will later observe:
+1. **Consume**: agent at position p consumes R[p] → resource density at p drops → agent (or its offspring) will face depleted region next time it visits
+2. **Emit**: agent emits signal at p → signal diffuses outward, persists for ~20 steps → agent can smell its own trail when it returns
+3. **Move**: agent position shapes which resources it encounters next step
+
+This creates genuine action-observation loops. The agent's future observations are partly a function of its own past actions.
+
+### The chain test (4 measurements)
+
+Measurement protocol identical to V15/V18 experiments, adapted for neural agents:
+
+1. **C_wm** = MI(h_t; obs_{t+5}): world model quality. Post-hoc linear probe (no gradient in agent). Does hidden state predict future local obs?
+
+2. **ΔC_wm** = MI(h_t, a_{t:5}; obs_{t+5}) - C_wm: self-causal contribution. If positive, the agent's own actions improve prediction of its future — it is a cause in its world model. This is the minimal form of a self-model.
+
+3. **SM_sal**: MI(h_t; own_state) / MI(h_t; env_state). Self-model vs world-model dominance. Expected: increases over evolution as self-tracking becomes fitness-relevant.
+
+4. **ρ_sync**: Fork agent, inject perturbed actions for k steps, measure observation divergence. Target: >0.1 (vs V18: 0.003). This is the wall-breaking test.
+
+### Predicted ordering of the chain
+
+C_wm develops first (world model from survival selection) → ΔC_wm increases (self-causal structure in world model) → SM_sal > 0.5 (self-model becomes dominant) → RSA > 0.2 (affect geometry from self-model tracking viability) → ρ_sync > 0.1 (wall broken — actions genuinely shape future observations).
+
+If this ordering holds, the necessity chain is empirically validated.
+
+### Implementation plan
+
+Files to create:
+- `v20_substrate.py` — grid world, GRU agents, JAX scan dynamics
+- `v20_evolution.py` — tournament selection, mutation, rescue
+- `v20_experiments.py` — chain test measurements
+- `v20_gpu_run.py` — Lambda Labs deployment
+
+Target: Lambda Labs A100 (~$1.29/hr), ~60 min per seed, 3 seeds (42, 123, 7), ~$5 total.
+
