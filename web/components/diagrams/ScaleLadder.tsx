@@ -32,19 +32,19 @@ const LEVELS = [
     label: 'World Model',
     color: 'var(--d-cyan)',
     domain: '',
-    desc: 'Internal representation of external regularities — compressed prediction of environment.',
+    desc: 'Internal representation of external regularities — compressed prediction of environment. (V20: C_wm = 0.10–0.15)',
   },
   {
     label: 'Self-Model',
     color: 'var(--d-blue)',
     domain: 'psychology',
-    desc: "The system's representation of itself within its own world model — recursive fold.",
+    desc: "The system's representation of itself within its own world model — recursive fold. (V20: SM salience > 1.0 in 2/3 seeds)",
   },
   {
     label: 'Metacognitive Dimensionality',
     color: 'var(--d-violet)',
     domain: '',
-    desc: 'Awareness of awareness — the system monitors its own monitoring, adding representational depth.',
+    desc: 'Awareness of awareness — the system monitors its own monitoring, adding representational depth. (V20: nascent; likely requires bottleneck selection to fully develop)',
   },
 ];
 
