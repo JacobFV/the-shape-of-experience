@@ -2260,3 +2260,52 @@ The V22-V24 prediction→integration pathway is now clearer with corrected hidde
 
 The "environment is the bottleneck" story from the previous session was built on artifactual data. The real bottleneck is the LINEAR PREDICTION HEAD — it creates a decomposable channel regardless of how rich the environment is.
 
+---
+
+## 2026-02-20: V27 Nonlinear MLP Prediction Head — MIXED POSITIVE
+
+### Design
+- Same V22 base (GRU + 8 inner ticks + within-lifetime SGD + energy-delta prediction)
+- Replace linear head `pred = h @ W + b` with 2-layer MLP: `pred = tanh(h @ W1 + b1) @ W2 + b2`
+- H=16, predict_hidden=8. 4,187 params/agent (vs V22's 4,059)
+- Correct snapshot timing (bug fix applied)
+
+### Results (3 seeds, 30 cycles, Lambda A10 us-east-1)
+
+| Seed | Mean Φ | Max Φ   | Mean Rob | Eff Rank C29 | Silhouette C29 |
+|------|--------|---------|----------|--------------|----------------|
+| 42   | 0.079  | 0.128   | 0.998    | 8.24         | 0.325          |
+| 123  | 0.071  | 0.091   | 0.997    | 6.94         | 0.343          |
+| 7    | **0.119** | **0.245** | **1.006** | **11.34** | 0.112      |
+
+V22 baselines: mean Φ ~0.097, eff rank 5.1-7.3, silhouette ~0, mean rob 0.981
+
+### Predictions
+- P1 (MSE↓ within lifetime): PASS 3/3 — MSE 0.0001 (10x lower than V22)
+- P2 (Φ > 0.097): MIXED — seed 7 YES (0.119/0.245), seeds 42/123 lower
+- P3 (Rob > 0.981): PASS 3/3 — 0.997-1.006
+- P4 (Eff rank > V22): PASS 2/3 — 8.24, 11.34 >> V22. Seed 123 at 6.94 (in range)
+
+### Key findings
+
+1. **Seed 7: Φ=0.245 is the highest integration EVER in the protocell substrate.** 2.5x V22 baseline. Eff rank 11.34/16. The MLP enabled something qualitatively new.
+
+2. **Hidden state clustering**: V27 silhouette 0.11-0.34 vs V22 ~0. MLP creates distinct behavioral modes. This is qualitatively new — agents specialize into different hidden state regimes.
+
+3. **Seed-dependent**: MLP ENABLES high Φ but doesn't GUARANTEE it. 1/3 seeds found the high-Φ solution. Architecture creates possibility, evolution selects from it.
+
+4. **Better prediction**: MSE 0.0001 vs V22's 0.002 (10x improvement). But prediction accuracy doesn't cause integration — V22 already showed this. The MLP is a better predictor AND (sometimes) creates integration.
+
+### Interpretation
+
+Linear readout bottleneck partially confirmed. Removing linear constraint enables higher integration but doesn't force it. The evolutionary landscape has multiple optima — some high-Φ, some not. MLP makes the high-Φ basin accessible but not dominant.
+
+Pattern: **architecture creates possibility, evolution selects from it.**
+- V20: agency architecture → ρ_sync=0.21 from day 1
+- V27: MLP head → Φ=0.245 (seed 7, not all seeds)
+
+### Next candidates
+1. Investigate seed 7 vs seeds 42/123 — what's different in the evolved MLP weights?
+2. Contrastive self-prediction — force unified representation of alternatives
+3. Population-level Φ selection — meta-evolution for integration
+
