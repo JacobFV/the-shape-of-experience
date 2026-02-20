@@ -1375,19 +1375,28 @@
     "sections": [
       {
         "level": 1,
+        "id": "experiment-dependency-map",
+        "text": "Experiment Dependency Map"
+      },
+      {
+        "level": 1,
+        "id": "v2-v9-llm-affect-signatures",
+        "text": "V2-V9: LLM Affect Signatures"
+      },
+      {
+        "level": 1,
+        "id": "v10-marl-forcing-function-ablation",
+        "text": "V10: MARL Forcing Function Ablation"
+      },
+      {
+        "level": 1,
         "id": "the-substrate-ladder",
         "text": "The Substrate Ladder"
       },
       {
         "level": 2,
-        "id": "v10-marl-forcing-function-ablation",
-        "text": "V10: MARL Forcing Function Ablation",
-        "parentSection": "the-substrate-ladder"
-      },
-      {
-        "level": 2,
-        "id": "v11-0-v11-7-lenia-ca-evolution-series",
-        "text": "V11.0-V11.7: Lenia CA Evolution Series",
+        "id": "v11-lenia-ca-evolution",
+        "text": "V11: Lenia CA Evolution",
         "parentSection": "the-substrate-ladder"
       },
       {
@@ -1404,8 +1413,8 @@
       },
       {
         "level": 2,
-        "id": "v14-chemotaxis",
-        "text": "V14: Chemotaxis",
+        "id": "v14-chemotactic-lenia",
+        "text": "V14: Chemotactic Lenia",
         "parentSection": "the-substrate-ladder"
       },
       {
@@ -1416,14 +1425,14 @@
       },
       {
         "level": 2,
-        "id": "v16-hebbian-plasticity-negative-result",
-        "text": "V16: Hebbian Plasticity (Negative Result)",
+        "id": "v16-hebbian-plasticity",
+        "text": "V16: Hebbian Plasticity",
         "parentSection": "the-substrate-ladder"
       },
       {
         "level": 2,
-        "id": "v17-quorum-signaling-mixed-result",
-        "text": "V17: Quorum Signaling (Mixed Result)",
+        "id": "v17-quorum-signaling",
+        "text": "V17: Quorum Signaling",
         "parentSection": "the-substrate-ladder"
       },
       {
@@ -1434,8 +1443,8 @@
       },
       {
         "level": 2,
-        "id": "cross-version-summary",
-        "text": "Cross-Version Summary",
+        "id": "cross-substrate-summary",
+        "text": "Cross-Substrate Summary",
         "parentSection": "the-substrate-ladder"
       },
       {
@@ -1525,6 +1534,101 @@
         "level": 1,
         "id": "the-sensory-motor-coupling-wall",
         "text": "The Sensory-Motor Coupling Wall"
+      },
+      {
+        "level": 1,
+        "id": "v19-bottleneck-furnace",
+        "text": "V19: Bottleneck Furnace"
+      },
+      {
+        "level": 1,
+        "id": "v20-protocell-agency",
+        "text": "V20: Protocell Agency"
+      },
+      {
+        "level": 1,
+        "id": "v21-ctm-inner-ticks",
+        "text": "V21: CTM Inner Ticks"
+      },
+      {
+        "level": 1,
+        "id": "v22-intrinsic-predictive-gradient",
+        "text": "V22: Intrinsic Predictive Gradient"
+      },
+      {
+        "level": 1,
+        "id": "v23-world-model-gradient",
+        "text": "V23: World-Model Gradient"
+      },
+      {
+        "level": 1,
+        "id": "v24-td-value-learning",
+        "text": "V24: TD Value Learning"
+      },
+      {
+        "level": 1,
+        "id": "v25-predator-prey",
+        "text": "V25: Predator-Prey"
+      },
+      {
+        "level": 1,
+        "id": "v26-pomdp",
+        "text": "V26: POMDP"
+      },
+      {
+        "level": 1,
+        "id": "v27-nonlinear-mlp-head",
+        "text": "V27: Nonlinear MLP Head"
+      },
+      {
+        "level": 1,
+        "id": "v28-bottleneck-width-sweep",
+        "text": "V28: Bottleneck Width Sweep"
+      },
+      {
+        "level": 1,
+        "id": "v29-social-prediction",
+        "text": "V29: Social Prediction"
+      },
+      {
+        "level": 1,
+        "id": "v30-dual-prediction",
+        "text": "V30: Dual Prediction"
+      },
+      {
+        "level": 1,
+        "id": "v31-10-seed-validation",
+        "text": "V31: 10-Seed Validation"
+      },
+      {
+        "level": 1,
+        "id": "the-decomposability-wall",
+        "text": "The Decomposability Wall"
+      },
+      {
+        "level": 1,
+        "id": "the-snapshot-bug-and-1d-collapse-retraction",
+        "text": "The Snapshot Bug and 1D Collapse Retraction"
+      },
+      {
+        "level": 1,
+        "id": "v32-drought-autopsy",
+        "text": "V32: Drought Autopsy"
+      },
+      {
+        "level": 1,
+        "id": "v33-contrastive-self-prediction",
+        "text": "V33: Contrastive Self-Prediction"
+      },
+      {
+        "level": 1,
+        "id": "v34-phi-inclusive-fitness",
+        "text": "V34: Phi-Inclusive Fitness"
+      },
+      {
+        "level": 1,
+        "id": "v35-language-emergence",
+        "text": "V35: Language Emergence"
       },
       {
         "level": 1,
