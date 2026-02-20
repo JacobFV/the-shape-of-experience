@@ -1,0 +1,812 @@
+{
+  "seed": 123,
+  "cycle": 29,
+  "config": {
+    "N": 128,
+    "M_max": 256,
+    "obs_radius": 2,
+    "embed_dim": 24,
+    "hidden_dim": 16,
+    "n_actions": 7,
+    "K_max": 8,
+    "predict_hidden": 8,
+    "resource_regen": 0.002,
+    "signal_decay": 0.04,
+    "signal_diffusion": 0.15,
+    "metabolic_cost": 0.0004,
+    "initial_energy": 1.0,
+    "resource_value": 1.5,
+    "initial_resource": 0.5,
+    "stress_regen": 0.0002,
+    "mutation_std": 0.03,
+    "tournament_size": 4,
+    "elite_fraction": 0.5,
+    "activate_offspring": true,
+    "drought_every": 5,
+    "drought_depletion": 0.01,
+    "drought_regen": 0.0,
+    "lamarckian": false,
+    "grad_every": 1,
+    "chunk_size": 50,
+    "steps_per_cycle": 5000,
+    "n_cycles": 30,
+    "obs_side": 5,
+    "obs_flat": 76,
+    "n_params": 4242
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "n_alive_start": 64,
+      "n_alive_end": 64,
+      "mortality": 0.0,
+      "mean_phi": 0.1070109985768795,
+      "mean_pred_mse": 0.008669626964256168,
+      "pred_mse_early": 0.009015905987471342,
+      "pred_mse_late": 0.008323347941040993,
+      "mean_action_diff": 0.0019074515369720756,
+      "mean_grad_norm": 0.010705181071534753,
+      "phi_base": 0.10701448172330856,
+      "phi_stress": 0.10698942244052886,
+      "robustness": 0.9997658327884585,
+      "lr_stats": {
+        "mean_lr": 0.0050074378959834576,
+        "std_lr": 0.00024418660905212164
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.09539857506752014,
+        "max_drift": 0.20897208154201508,
+        "std_drift": 0.04529032111167908
+      },
+      "elapsed_s": 10.631867170333862
+    },
+    {
+      "cycle": 1,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.10244489312171937,
+      "mean_pred_mse": 0.00971418016590178,
+      "pred_mse_early": 0.00995218936353922,
+      "pred_mse_late": 0.009476170968264341,
+      "mean_action_diff": 0.0007752097421325744,
+      "mean_grad_norm": 0.009743784905876964,
+      "phi_base": 0.10249680578708649,
+      "phi_stress": 0.10248320996761322,
+      "robustness": 0.9998673537251345,
+      "lr_stats": {
+        "mean_lr": 0.005005775019526482,
+        "std_lr": 0.0002417735377093777
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10206195712089539,
+        "max_drift": 0.23268471658229828,
+        "std_drift": 0.04473074898123741
+      },
+      "elapsed_s": 5.86908483505249
+    },
+    {
+      "cycle": 2,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09079392552375794,
+      "mean_pred_mse": 0.010565666584298014,
+      "pred_mse_early": 0.010752115864306688,
+      "pred_mse_late": 0.010379217304289342,
+      "mean_action_diff": 0.0014925262227188797,
+      "mean_grad_norm": 0.011051222211681306,
+      "phi_base": 0.09077180325984954,
+      "phi_stress": 0.09078961014747619,
+      "robustness": 1.000196172015837,
+      "lr_stats": {
+        "mean_lr": 0.005013317801058292,
+        "std_lr": 0.00023291782417800277
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10597151517868042,
+        "max_drift": 0.2096787989139557,
+        "std_drift": 0.045488834381103516
+      },
+      "elapsed_s": 5.854352951049805
+    },
+    {
+      "cycle": 3,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08271192610263825,
+      "mean_pred_mse": 0.017345909159630538,
+      "pred_mse_early": 0.017537068761885165,
+      "pred_mse_late": 0.017154749557375906,
+      "mean_action_diff": 0.0010771016008220614,
+      "mean_grad_norm": 0.011033252642955632,
+      "phi_base": 0.08281643390655517,
+      "phi_stress": 0.08289504498243332,
+      "robustness": 1.0009492207303545,
+      "lr_stats": {
+        "mean_lr": 0.005069485865533352,
+        "std_lr": 0.0002624157350510359
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.11386753618717194,
+        "max_drift": 0.2557728886604309,
+        "std_drift": 0.048987675458192825
+      },
+      "elapsed_s": 5.859542608261108
+    },
+    {
+      "cycle": 4,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.0716991275548935,
+      "mean_pred_mse": 0.02222498981282115,
+      "pred_mse_early": 0.022280657812952995,
+      "pred_mse_late": 0.022169321812689304,
+      "mean_action_diff": 0.0009331651835236698,
+      "mean_grad_norm": 0.011302191494032741,
+      "phi_base": 0.07163843363523484,
+      "phi_stress": 0.07173766791820527,
+      "robustness": 1.001385210116063,
+      "lr_stats": {
+        "mean_lr": 0.005093701649457216,
+        "std_lr": 0.00029978505335748196
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.11984685063362122,
+        "max_drift": 0.3146511912345886,
+        "std_drift": 0.05684216320514679
+      },
+      "elapsed_s": 5.872954368591309
+    },
+    {
+      "cycle": 5,
+      "n_alive_start": 256,
+      "n_alive_end": 6,
+      "mortality": 0.9765625,
+      "mean_phi": 0.06553652063012123,
+      "mean_pred_mse": 0.025728734331205486,
+      "pred_mse_early": 0.024029833152890204,
+      "pred_mse_late": 0.027427635509520768,
+      "mean_action_diff": 0.0003431872932560509,
+      "mean_grad_norm": 0.011251017805188895,
+      "phi_base": 0.023319804295897483,
+      "phi_stress": 0.023396600782871247,
+      "robustness": 1.003293187455577,
+      "lr_stats": {
+        "mean_lr": 0.004953988362103701,
+        "std_lr": 0.00031815870897844434
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.11432337760925293,
+        "max_drift": 0.17138683795928955,
+        "std_drift": 0.03101736307144165
+      },
+      "elapsed_s": 6.377574443817139
+    },
+    {
+      "cycle": 6,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.022357037849724294,
+      "mean_pred_mse": 0.010650538085028529,
+      "pred_mse_early": 0.010757244061678647,
+      "pred_mse_late": 0.01054383210837841,
+      "mean_action_diff": 0.000629748746799299,
+      "mean_grad_norm": 0.013013071394525469,
+      "phi_base": 0.022386837378144266,
+      "phi_stress": 0.02238468863070011,
+      "robustness": 0.9999040173737871,
+      "lr_stats": {
+        "mean_lr": 0.00496583292260766,
+        "std_lr": 0.00024092852254398167
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.13737379014492035,
+        "max_drift": 0.31071704626083374,
+        "std_drift": 0.05799918994307518
+      },
+      "elapsed_s": 5.849964380264282
+    },
+    {
+      "cycle": 7,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.0350838877260685,
+      "mean_pred_mse": 0.010434866463765503,
+      "pred_mse_early": 0.010520503222942353,
+      "pred_mse_late": 0.010349229704588651,
+      "mean_action_diff": 0.0006935502032138174,
+      "mean_grad_norm": 0.0132779536023736,
+      "phi_base": 0.035087183117866516,
+      "phi_stress": 0.03511103391647339,
+      "robustness": 1.0006797581477758,
+      "lr_stats": {
+        "mean_lr": 0.004956647753715515,
+        "std_lr": 0.00025823258329182863
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.1372929811477661,
+        "max_drift": 0.3275652825832367,
+        "std_drift": 0.05627451837062836
+      },
+      "elapsed_s": 5.854934215545654
+    },
+    {
+      "cycle": 8,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.030354600958526136,
+      "mean_pred_mse": 0.0130381029099226,
+      "pred_mse_early": 0.013184498753398657,
+      "pred_mse_late": 0.012891707066446543,
+      "mean_action_diff": 0.0005138761352282017,
+      "mean_grad_norm": 0.014238485484384,
+      "phi_base": 0.03032146394252777,
+      "phi_stress": 0.030333991348743438,
+      "robustness": 1.0004131530799243,
+      "lr_stats": {
+        "mean_lr": 0.004923136904835701,
+        "std_lr": 0.00026473935577087104
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.15040375292301178,
+        "max_drift": 0.3354387581348419,
+        "std_drift": 0.06387636810541153
+      },
+      "elapsed_s": 5.8661298751831055
+    },
+    {
+      "cycle": 9,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.029457836598157882,
+      "mean_pred_mse": 0.013039397522807122,
+      "pred_mse_early": 0.013158910665661097,
+      "pred_mse_late": 0.012919884379953147,
+      "mean_action_diff": 0.0009305049045360647,
+      "mean_grad_norm": 0.015807266030460596,
+      "phi_base": 0.029419267550110817,
+      "phi_stress": 0.029463353008031844,
+      "robustness": 1.0014985233009603,
+      "lr_stats": {
+        "mean_lr": 0.0049406373873353004,
+        "std_lr": 0.0002576463739387691
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.15869668126106262,
+        "max_drift": 0.3425968885421753,
+        "std_drift": 0.0707370862364769
+      },
+      "elapsed_s": 5.873863935470581
+    },
+    {
+      "cycle": 10,
+      "n_alive_start": 256,
+      "n_alive_end": 11,
+      "mortality": 0.95703125,
+      "mean_phi": 0.0352377075701952,
+      "mean_pred_mse": 0.01331408348865807,
+      "pred_mse_early": 0.011234823074191809,
+      "pred_mse_late": 0.015393343903124333,
+      "mean_action_diff": 0.0003587873982905876,
+      "mean_grad_norm": 0.014519768278114497,
+      "phi_base": 0.035393284261226655,
+      "phi_stress": 0.035672974586486814,
+      "robustness": 1.007902355802752,
+      "lr_stats": {
+        "mean_lr": 0.005031220614910126,
+        "std_lr": 0.00012073573452653363
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.1188616082072258,
+        "max_drift": 0.15762335062026978,
+        "std_drift": 0.024872826412320137
+      },
+      "elapsed_s": 6.433153390884399
+    },
+    {
+      "cycle": 11,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06929911747574806,
+      "mean_pred_mse": 0.01830363683402538,
+      "pred_mse_early": 0.017783271931111812,
+      "pred_mse_late": 0.018824001736938954,
+      "mean_action_diff": 0.0011432087568937278,
+      "mean_grad_norm": 0.013574783117510378,
+      "phi_base": 0.06916382908821106,
+      "phi_stress": 0.0692528873682022,
+      "robustness": 1.0012876424160606,
+      "lr_stats": {
+        "mean_lr": 0.00500889215618372,
+        "std_lr": 0.0001620667171664536
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.13863801956176758,
+        "max_drift": 0.2552688717842102,
+        "std_drift": 0.0365120992064476
+      },
+      "elapsed_s": 5.877439260482788
+    },
+    {
+      "cycle": 12,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07127517908811569,
+      "mean_pred_mse": 0.01752989772707224,
+      "pred_mse_early": 0.017077740095555783,
+      "pred_mse_late": 0.017982055358588697,
+      "mean_action_diff": 0.0017184422060381622,
+      "mean_grad_norm": 0.01495538589078933,
+      "phi_base": 0.07101350873708726,
+      "phi_stress": 0.07101423591375351,
+      "robustness": 1.000010239976579,
+      "lr_stats": {
+        "mean_lr": 0.005007329396903515,
+        "std_lr": 0.00016747649351600558
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.14449366927146912,
+        "max_drift": 0.2727763056755066,
+        "std_drift": 0.04226044565439224
+      },
+      "elapsed_s": 5.864006757736206
+    },
+    {
+      "cycle": 13,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06315568462014198,
+      "mean_pred_mse": 0.020022463444620373,
+      "pred_mse_early": 0.019558791629970075,
+      "pred_mse_late": 0.020486135259270667,
+      "mean_action_diff": 0.0012519742338918149,
+      "mean_grad_norm": 0.015584687544032931,
+      "phi_base": 0.06304135024547577,
+      "phi_stress": 0.06289018243551255,
+      "robustness": 0.9976020848320254,
+      "lr_stats": {
+        "mean_lr": 0.005014688242226839,
+        "std_lr": 0.00018271958106197417
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.15521365404129028,
+        "max_drift": 0.3108658194541931,
+        "std_drift": 0.05104441195726395
+      },
+      "elapsed_s": 5.881448030471802
+    },
+    {
+      "cycle": 14,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06601292341947555,
+      "mean_pred_mse": 0.021724724471569062,
+      "pred_mse_early": 0.021295903511345388,
+      "pred_mse_late": 0.022153545431792737,
+      "mean_action_diff": 0.0016595072555355727,
+      "mean_grad_norm": 0.01677957273554057,
+      "phi_base": 0.06602281033992767,
+      "phi_stress": 0.06587910503149033,
+      "robustness": 0.9978233990995317,
+      "lr_stats": {
+        "mean_lr": 0.005002277437597513,
+        "std_lr": 0.0002117431431543082
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.15974518656730652,
+        "max_drift": 0.36462152004241943,
+        "std_drift": 0.05534987896680832
+      },
+      "elapsed_s": 5.875773668289185
+    },
+    {
+      "cycle": 15,
+      "n_alive_start": 256,
+      "n_alive_end": 15,
+      "mortality": 0.94140625,
+      "mean_phi": 0.07713624313473702,
+      "mean_pred_mse": 0.02657575672492385,
+      "pred_mse_early": 0.028092348016798496,
+      "pred_mse_late": 0.025059165433049202,
+      "mean_action_diff": 0.0002842411456731497,
+      "mean_grad_norm": 0.014660986894741655,
+      "phi_base": 0.0716229647397995,
+      "phi_stress": 0.0717769518494606,
+      "robustness": 1.0021499683826345,
+      "lr_stats": {
+        "mean_lr": 0.0050919195637106895,
+        "std_lr": 0.00021125371858943254
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.15449902415275574,
+        "max_drift": 0.2635045647621155,
+        "std_drift": 0.04832283779978752
+      },
+      "elapsed_s": 6.41581392288208
+    },
+    {
+      "cycle": 16,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07832546010613442,
+      "mean_pred_mse": 0.03148000380024314,
+      "pred_mse_early": 0.031531015150249,
+      "pred_mse_late": 0.031428992450237274,
+      "mean_action_diff": 0.0002732674276921898,
+      "mean_grad_norm": 0.014353682962246239,
+      "phi_base": 0.07852917164564133,
+      "phi_stress": 0.07856671214103698,
+      "robustness": 1.0004780452233095,
+      "lr_stats": {
+        "mean_lr": 0.005015776492655277,
+        "std_lr": 0.00023114650684874505
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.16036030650138855,
+        "max_drift": 0.32005444169044495,
+        "std_drift": 0.05211745575070381
+      },
+      "elapsed_s": 5.876448392868042
+    },
+    {
+      "cycle": 17,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07067236974835396,
+      "mean_pred_mse": 0.03341368168592453,
+      "pred_mse_early": 0.03327337324619293,
+      "pred_mse_late": 0.03355399012565613,
+      "mean_action_diff": 0.0005429015724075726,
+      "mean_grad_norm": 0.014640866636764258,
+      "phi_base": 0.07063902914524078,
+      "phi_stress": 0.0705633282661438,
+      "robustness": 0.9989283420226326,
+      "lr_stats": {
+        "mean_lr": 0.0050080306828022,
+        "std_lr": 0.0002336955803912133
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.16136534512043,
+        "max_drift": 0.3187507390975952,
+        "std_drift": 0.04707586020231247
+      },
+      "elapsed_s": 5.84237003326416
+    },
+    {
+      "cycle": 18,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08248839899897575,
+      "mean_pred_mse": 0.026016678120940925,
+      "pred_mse_early": 0.026215490773320197,
+      "pred_mse_late": 0.02581786546856165,
+      "mean_action_diff": 0.0004847393586533144,
+      "mean_grad_norm": 0.015957953322213142,
+      "phi_base": 0.08294336199760437,
+      "phi_stress": 0.0829317808151245,
+      "robustness": 0.9998603724011067,
+      "lr_stats": {
+        "mean_lr": 0.004995326045900583,
+        "std_lr": 0.0002349331189179793
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.1752406358718872,
+        "max_drift": 0.3222168982028961,
+        "std_drift": 0.04912438616156578
+      },
+      "elapsed_s": 5.838217258453369
+    },
+    {
+      "cycle": 19,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09673234820365906,
+      "mean_pred_mse": 0.022564094793051482,
+      "pred_mse_early": 0.02283693790435791,
+      "pred_mse_late": 0.02229125168174505,
+      "mean_action_diff": 0.0009403692395426333,
+      "mean_grad_norm": 0.017442822337616234,
+      "phi_base": 0.09671747982501984,
+      "phi_stress": 0.09673846662044525,
+      "robustness": 1.0002169907183622,
+      "lr_stats": {
+        "mean_lr": 0.005017182789742947,
+        "std_lr": 0.00024625289370305836
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.18431296944618225,
+        "max_drift": 0.36510342359542847,
+        "std_drift": 0.05651772767305374
+      },
+      "elapsed_s": 5.863189697265625
+    },
+    {
+      "cycle": 20,
+      "n_alive_start": 256,
+      "n_alive_end": 4,
+      "mortality": 0.984375,
+      "mean_phi": 0.08492770660668611,
+      "mean_pred_mse": 0.023534920774400236,
+      "pred_mse_early": 0.02007937919348478,
+      "pred_mse_late": 0.026990462355315686,
+      "mean_action_diff": 0.00020049579705300858,
+      "mean_grad_norm": 0.01671395807294175,
+      "phi_base": 0.02566508427262306,
+      "phi_stress": 0.025647491216659546,
+      "robustness": 0.9993145139997736,
+      "lr_stats": {
+        "mean_lr": 0.005040791817009449,
+        "std_lr": 6.372700590873137e-05
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.14752957224845886,
+        "max_drift": 0.1980634331703186,
+        "std_drift": 0.04165881872177124
+      },
+      "elapsed_s": 6.4339759349823
+    },
+    {
+      "cycle": 21,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.026800165697932244,
+      "mean_pred_mse": 0.02308310433290899,
+      "pred_mse_early": 0.021825795266777276,
+      "pred_mse_late": 0.024340413399040698,
+      "mean_action_diff": 0.00010929261705314275,
+      "mean_grad_norm": 0.013594663620460778,
+      "phi_base": 0.026794557645916938,
+      "phi_stress": 0.026967881619930266,
+      "robustness": 1.0064686260659257,
+      "lr_stats": {
+        "mean_lr": 0.004933078773319721,
+        "std_lr": 0.00013303382729645818
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.17191104590892792,
+        "max_drift": 0.29056745767593384,
+        "std_drift": 0.04431325942277908
+      },
+      "elapsed_s": 5.842683553695679
+    },
+    {
+      "cycle": 22,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.03162262849509716,
+      "mean_pred_mse": 0.023576992731541395,
+      "pred_mse_early": 0.022516470439732074,
+      "pred_mse_late": 0.024637515023350716,
+      "mean_action_diff": 0.00020214922129525804,
+      "mean_grad_norm": 0.014192437147721648,
+      "phi_base": 0.03174652978777885,
+      "phi_stress": 0.03182670697569847,
+      "robustness": 1.0025255417979726,
+      "lr_stats": {
+        "mean_lr": 0.004918194375932217,
+        "std_lr": 0.00014867975551169366
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.17669378221035004,
+        "max_drift": 0.28973811864852905,
+        "std_drift": 0.049727533012628555
+      },
+      "elapsed_s": 5.8676207065582275
+    },
+    {
+      "cycle": 23,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.032441450655460356,
+      "mean_pred_mse": 0.024646061286330224,
+      "pred_mse_early": 0.023928438648581504,
+      "pred_mse_late": 0.02536368392407894,
+      "mean_action_diff": 0.00016566725447773932,
+      "mean_grad_norm": 0.014315412908326835,
+      "phi_base": 0.032440534979105,
+      "phi_stress": 0.03246162757277489,
+      "robustness": 1.000650192534848,
+      "lr_stats": {
+        "mean_lr": 0.0049243164248764515,
+        "std_lr": 0.00016149476869031787
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.17353177070617676,
+        "max_drift": 0.32976773381233215,
+        "std_drift": 0.05233824998140335
+      },
+      "elapsed_s": 5.86215615272522
+    },
+    {
+      "cycle": 24,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.03176254667341709,
+      "mean_pred_mse": 0.027494148090481757,
+      "pred_mse_early": 0.026804016157984733,
+      "pred_mse_late": 0.02818428002297878,
+      "mean_action_diff": 0.00024297532763739582,
+      "mean_grad_norm": 0.014738416799809783,
+      "phi_base": 0.03162145316600799,
+      "phi_stress": 0.0316423200070858,
+      "robustness": 1.000659895070864,
+      "lr_stats": {
+        "mean_lr": 0.004947197623550892,
+        "std_lr": 0.0001672939397394657
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.18000972270965576,
+        "max_drift": 0.34066757559776306,
+        "std_drift": 0.0555725060403347
+      },
+      "elapsed_s": 5.863601207733154
+    },
+    {
+      "cycle": 25,
+      "n_alive_start": 256,
+      "n_alive_end": 0,
+      "mortality": 1.0,
+      "mean_phi": 0.04738825112581253,
+      "mean_pred_mse": 0.035711057614535094,
+      "pred_mse_early": 0.02953697431832552,
+      "pred_mse_late": 0.04188514091074467,
+      "mean_action_diff": 0.00012768757477077842,
+      "mean_grad_norm": 0.01445959284552373,
+      "phi_base": 0.0,
+      "phi_stress": 0.0,
+      "robustness": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.0,
+        "std_lr": 0.0
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.0,
+        "max_drift": 0.0,
+        "std_drift": 0.0
+      },
+      "elapsed_s": 6.422612428665161
+    },
+    {
+      "cycle": 26,
+      "n_alive_start": 255,
+      "n_alive_end": 255,
+      "mortality": 0.0,
+      "mean_phi": 0.03287858888506889,
+      "mean_pred_mse": 0.022380426954478026,
+      "pred_mse_early": 0.023739393129944802,
+      "pred_mse_late": 0.02102146077901125,
+      "mean_action_diff": 0.00012238927083672025,
+      "mean_grad_norm": 0.016180335204117,
+      "phi_base": 0.033228302001953126,
+      "phi_stress": 0.03272455707192421,
+      "robustness": 0.9848398834824811,
+      "lr_stats": {
+        "mean_lr": 0.00526972021907568,
+        "std_lr": 7.398059824481606e-05
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.1728592813014984,
+        "max_drift": 0.2434733659029007,
+        "std_drift": 0.027894968166947365
+      },
+      "elapsed_s": 5.871763467788696
+    },
+    {
+      "cycle": 27,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.029388217814266683,
+      "mean_pred_mse": 0.0230786413513124,
+      "pred_mse_early": 0.024427033066749572,
+      "pred_mse_late": 0.021730249635875224,
+      "mean_action_diff": 0.00017423896118998528,
+      "mean_grad_norm": 0.01685406134231016,
+      "phi_base": 0.029558810591697692,
+      "phi_stress": 0.029177979007363318,
+      "robustness": 0.9871161397664174,
+      "lr_stats": {
+        "mean_lr": 0.005290488246828318,
+        "std_lr": 0.00010193946945946664
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.18100836873054504,
+        "max_drift": 0.33792054653167725,
+        "std_drift": 0.03865893557667732
+      },
+      "elapsed_s": 5.873980522155762
+    },
+    {
+      "cycle": 28,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.02897476926445961,
+      "mean_pred_mse": 0.025268768556416035,
+      "pred_mse_early": 0.02669686287641525,
+      "pred_mse_late": 0.023840674236416816,
+      "mean_action_diff": 0.00018378784880042077,
+      "mean_grad_norm": 0.01700169244315475,
+      "phi_base": 0.029279617592692375,
+      "phi_stress": 0.028983500972390174,
+      "robustness": 0.9898865953640014,
+      "lr_stats": {
+        "mean_lr": 0.005291563458740711,
+        "std_lr": 0.00011414520122343674
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.18101128935813904,
+        "max_drift": 0.3266281187534332,
+        "std_drift": 0.04643411189317703
+      },
+      "elapsed_s": 5.8631720542907715
+    },
+    {
+      "cycle": 29,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.03274195231497288,
+      "mean_pred_mse": 0.029457341134548187,
+      "pred_mse_early": 0.03089638043195009,
+      "pred_mse_late": 0.028018301837146282,
+      "mean_action_diff": 0.0001765696850634413,
+      "mean_grad_norm": 0.017087302316213027,
+      "phi_base": 0.03319152817130089,
+      "phi_stress": 0.03280355632305145,
+      "robustness": 0.9883111182393555,
+      "lr_stats": {
+        "mean_lr": 0.005287653766572475,
+        "std_lr": 0.00013357326679397374
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.1861046850681305,
+        "max_drift": 0.3595530092716217,
+        "std_drift": 0.05477609112858772
+      },
+      "elapsed_s": 6.355129957199097
+    }
+  ],
+  "snapshots": [
+    {
+      "cycle": 0
+    },
+    {
+      "cycle": 5
+    },
+    {
+      "cycle": 10
+    },
+    {
+      "cycle": 15
+    },
+    {
+      "cycle": 20
+    },
+    {
+      "cycle": 25
+    },
+    {
+      "cycle": 29
+    }
+  ]
+}
