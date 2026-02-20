@@ -2,6 +2,9 @@ import { Composition } from "remotion";
 import { BottleneckFurnaceVideo } from "./BottleneckFurnace";
 import { IntegrationTrajectoryVideo } from "./IntegrationTrajectory";
 import { GradientCouplingVideo } from "./GradientCoupling";
+import { LLMAffectContrastVideo } from "./LLMAffectContrast";
+import { WallBreakingVideo } from "./WallBreaking";
+import { FalsificationScoreboardVideo } from "./FalsificationScoreboard";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -26,6 +29,30 @@ export const RemotionRoot: React.FC = () => {
         id="GradientCoupling"
         component={GradientCouplingVideo}
         durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="LLMAffectContrast"
+        component={LLMAffectContrastVideo}
+        durationInFrames={240}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="WallBreaking"
+        component={WallBreakingVideo}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="FalsificationScoreboard"
+        component={FalsificationScoreboardVideo}
+        durationInFrames={360}
         fps={30}
         width={1080}
         height={720}

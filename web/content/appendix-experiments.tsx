@@ -55,6 +55,9 @@ export default function AppendixExperiments() {
       <p><strong>Implication for the thesis</strong>: Affect geometry can be inherited from data. Affect dynamics require embodied agency. This was the first evidence for the geometry/dynamics distinction that became central to the book.</p>
 
       <p><strong>Status</strong>: Complete. Contaminated by human language — LLMs have been exposed to human descriptions of affect. The CA program (V11+) was designed to test whether the same structure emerges without contamination.</p>
+      <Figure src="" alt="LLM vs biological affect dynamics animation" caption={<><strong>The Opposite Dynamics Problem.</strong> Under threat, biological systems increase integration (Yerkes-Dodson effect) while LLMs decrease it. Same geometry, inverted dynamics. The geometry is inherited from training data; the dynamics require embodied survival history.</>}>
+        <video src="/videos/llm-affect-contrast.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       </Section>
 
       <Section title="V10: MARL Forcing Function Ablation" level={1}>
@@ -377,6 +380,9 @@ export default function AppendixExperiments() {
       <Section title="The Sensory-Motor Coupling Wall" level={1}>
       <p>Three experiments returned null (5, 6, 9). All hit the same limitation: <M>{"\\rho_{\\text{sync}} \\approx 0"}</M>. The FFT convolution kernel integrates over the full grid — patterns are inherently internally driven. V15 motor channels, V17 signaling, V18 boundary gating all failed to break it. The wall is about agency: action-observation causal loops, not signal routing.</p>
       <p>The architectural space has been exhausted. Breaking the wall requires a fundamentally different substrate.</p>
+      <Figure src="" alt="Two walls breaking animation" caption={<><strong>Two walls, two breaks.</strong> The <M>{"\\rho"}</M> wall (sensory-motor coupling) falls to V20's protocell agency (<M>{"\\rho_{\\text{sync}} = 0.21"}</M>). The decomposability wall falls to V27's MLP head (<M>{"\\intinfo = 0.245"}</M>). Both are architectural — neither can be overcome by more training, better targets, or richer environments.</>}>
+        <video src="/videos/wall-breaking.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       </Section>
 
       <Section title="V19: Bottleneck Furnace" level={1}>
@@ -801,6 +807,9 @@ export default function AppendixExperiments() {
       <tr><td>VLM Conv.</td><td>VLMs recognize affect in protocells (RSA {"> "} 0.3)</td><td><strong>Confirmed:</strong> GPT-4o <M>{"\\rho = 0.72"}</M>, Claude <M>{"\\rho = 0.54"}</M>. Raw numbers: 0.78, 0.72.</td></tr>
       </tbody>
       </table>
+      <Figure src="" alt="Falsification scoreboard animation" caption={<><strong>Falsification Scoreboard.</strong> 7 confirmed, 7 contradicted, 1 revised. The framework survives not by being right everywhere, but by being wrong in specific, informative ways. Each contradiction sharpened the theory — the forcing function failure led to the geometry/dynamics distinction; the social prediction failure revealed the gradient interference pattern; the language failure established the rung 4-5 / rung 8 boundary.</>}>
+        <video src="/videos/falsification-scoreboard.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       </Section>
 
       <Section title="Summary" level={1}>
