@@ -334,11 +334,12 @@
     "V33": {
       "name": "Contrastive Self-Prediction",
       "substrate": "V27 + contrastive loss (positive=self, negative=other agents)",
-      "seeds": [7, 42, 123],
-      "status": "running",
-      "key_finding": null,
+      "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 42, 123],
+      "status": "complete",
+      "key_finding": "NEGATIVE. Mean Phi 0.069+-0.012, significantly WORSE than V31 (t=-2.30, p<0.05). Zero HIGH seeds. Prediction MSE increases over evolution (1.5-18.7x) — contrastive loss destabilizes gradient learning.",
+      "key_stats": {"mean_phi": 0.069, "phi_std": 0.012, "high_pct": 0, "mod_pct": 30, "low_pct": 70, "p_vs_v31": 0.04},
       "book_section": "Part VII",
-      "result_dir": "results/v33_*",
+      "result_dir": "results/v33_contrastive/",
       "code_files": ["v33_substrate.py", "v33_evolution.py", "v33_gpu_run.py"]
     },
     "V34": {
