@@ -1,0 +1,40 @@
+{
+  "cycle_stats": [
+    {
+      "cycle": 0,
+      "n_patterns": 2,
+      "n_baseline": 0,
+      "n_survived": 21,
+      "mortality": -20.0,
+      "mean_phi_base": 0.0,
+      "mean_phi_stress": 0.0,
+      "mean_robustness": 0.0,
+      "phi_increase_frac": 0.0,
+      "tau": 0.30420435443520544,
+      "gate_beta": 5.008398959040642,
+      "stress_regen": 0.37210282956360186,
+      "drought_steps": 1202,
+      "elapsed_s": 4.376979112625122,
+      "resource_mean": 0.33282625675201416
+    },
+    {
+      "cycle": 1,
+      "n_patterns": 0,
+      "n_baseline": 0,
+      "n_survived": 0,
+      "mortality": 1.0,
+      "mean_phi_base": 0.0,
+      "mean_phi_stress": 0.0,
+      "mean_robustness": 0.0,
+      "phi_increase_frac": 0.0,
+      "tau": 0.30420435443520544,
+      "gate_beta": 5.008398959040642,
+      "stress_regen": 0.01741102107967045,
+      "drought_steps": 859,
+      "elapsed_s": 0.6396899223327637,
+      "resource_mean": 0.7956525683403015
+    }
+  ],
+  "tau": 0.30420435443520544,
+  "gate_beta": 5.008398959040642
+}
