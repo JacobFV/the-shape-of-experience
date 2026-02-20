@@ -1,0 +1,64 @@
+{
+  "seed": 42,
+  "experiment": "v29_social_prediction",
+  "cycle": 0,
+  "config": {
+    "N": 128,
+    "M_max": 256,
+    "obs_radius": 2,
+    "embed_dim": 24,
+    "hidden_dim": 16,
+    "n_actions": 7,
+    "K_max": 8,
+    "predict_hidden": 8,
+    "resource_regen": 0.002,
+    "signal_decay": 0.04,
+    "signal_diffusion": 0.15,
+    "metabolic_cost": 0.0004,
+    "initial_energy": 1.0,
+    "resource_value": 1.5,
+    "initial_resource": 0.5,
+    "stress_regen": 0.0002,
+    "mutation_std": 0.03,
+    "tournament_size": 4,
+    "elite_fraction": 0.5,
+    "activate_offspring": true,
+    "drought_every": 5,
+    "drought_depletion": 0.01,
+    "drought_regen": 0.0,
+    "lamarckian": false,
+    "grad_every": 1,
+    "chunk_size": 50,
+    "steps_per_cycle": 500,
+    "n_cycles": 1,
+    "obs_side": 5,
+    "obs_flat": 76,
+    "n_params": 4186
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "n_alive_start": 64,
+      "n_alive_end": 64,
+      "mortality": 0.0,
+      "mean_phi": 0.06222114711999893,
+      "mean_pred_mse": 0.7380972623912385,
+      "pred_mse_early": 1.446949827671051,
+      "pred_mse_late": 0.02924469711142592,
+      "phi_base": 0.09413641691207886,
+      "phi_stress": 0.09414005428552627,
+      "robustness": 1.0000386393870377,
+      "mean_entropy": 2.075301170349121,
+      "mean_effective_K": 7.9669647216796875,
+      "mean_lr": 0.004992752801626921,
+      "mean_drift": 1.5306758880615234,
+      "elapsed_s": 6.678450345993042
+    }
+  ],
+  "snapshots": [
+    {
+      "cycle": 0,
+      "path": "/Users/jacob/fun/shape-of-experience/empirical/experiments/study_ca_affect/results/v29_smoke/snapshot_c00.npz"
+    }
+  ]
+}
