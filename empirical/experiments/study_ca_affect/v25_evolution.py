@@ -353,10 +353,6 @@ def run_v25(seed, cfg, output_dir):
         # Rescue
         state, key = rescue_population(state, key, cfg, patch_centers_np)
 
-        # Reset hidden states and energy
-        state['hidden'] = jnp.zeros_like(state['hidden'])
-        state['energy'] = jnp.where(state['alive'], cfg['initial_energy'], 0.0)
-
         elapsed = time.time() - t_start
 
         cycle_info = {
@@ -376,12 +372,16 @@ def run_v25(seed, cfg, output_dir):
             f"{elapsed:.0f}s"
         )
 
-        # Save snapshot
+        # Save snapshot BEFORE resetting hidden states
         if cycle % 5 == 0 or cycle == cfg['n_cycles'] - 1:
             snap = extract_snapshot(state, cycle, cfg)
             snap_path = os.path.join(output_dir, f'snapshot_c{cycle:02d}.npz')
             np.savez_compressed(snap_path, **snap)
             snapshots.append({'cycle': cycle, 'path': snap_path})
+
+        # Reset hidden states and energy for next cycle
+        state['hidden'] = jnp.zeros_like(state['hidden'])
+        state['energy'] = jnp.where(state['alive'], cfg['initial_energy'], 0.0)
 
         # Save progress
         progress = {
