@@ -2185,3 +2185,78 @@ The next experiment should create genuine partial observability: reduce observat
 - Lambda A10, us-east-1, ~85s total, ~$0.03
 - Very fast due to 1s/cycle (N=256 is cheap in JAX)
 
+---
+
+## 2026-02-19: V26 POMDP Results + CRITICAL BUG FIX
+
+### The Bug (RETRACTED: 1D Collapse)
+
+The "1D energy counter" finding from the previous session was **entirely an artifact of a snapshot timing bug**. In V20/V25/V26 evolution loops, the code order was:
+
+```python
+# Reset hidden states and energy for next cycle
+state['hidden'] = jnp.zeros_like(state['hidden'])
+state['energy'] = jnp.where(state['alive'], cfg['initial_energy'], 0.0)
+# ... later ...
+snap = extract_snapshot(state, cycle, cfg)  # captures ZERO hidden states!
+```
+
+All hidden state analysis (effective rank, energy R², position R²) was performed on **all-zero vectors**. The "energy R²=1.0" was because both hidden=0 and energy=initial_energy are constants — trivially perfect regression on constants.
+
+V22-V24 did NOT have this bug (reset at cycle START, snapshot at END), so their data was always correct.
+
+**Corrected V22-V24 results:**
+| Metric | Buggy (V20b) | Correct (V22-V24) |
+|--------|-------------|-------------------|
+| Effective rank | 1-3 | **5.1-7.3** |
+| Energy R² | 1.0 | **-3.6 to -4.6** (negative!) |
+| Position R² | ~0 | -0.06 to -0.11 |
+| PC1 variance | ~95-100% | **25-38%** |
+
+The hidden states are **moderately high-dimensional** and do NOT encode energy linearly.
+
+**Fix applied**: v25_evolution.py and v26_evolution.py — snapshot before reset. See `ANALYSIS_1D_COLLAPSE.md` for full details.
+
+**Lesson**: When hidden states appear degenerate, first check that you're analyzing actual post-cycle states, not zeroed reset buffers.
+
+### V26 Implementation
+
+- **Architecture**: 1×1 observation (own cell only) + noisy compass toward nearest patch
+- Obs vector: [resource_here, signal_here, prey_count_here, pred_count_here, energy, is_pred, compass_x, compass_y] = 8 dims
+- Compass: unit vector to nearest patch center + Gaussian noise σ=0.5
+- Hidden dim: 32 (doubled from V25's 16)
+- Total params: 5,079 per agent
+- Same V25 landscape: N=256, 12 patches (r=20), 80/20 prey/predator, drought every 5 cycles
+
+### V26 Results (3 seeds, 30 cycles, Lambda A10)
+
+**Headline**: 100% mortality at drought cycles (too harsh for partial observability). Agents can't find patches with compass-only navigation.
+
+| Seed | Mean Rob | Max Rob | Mean Phi | Final Prey | Final Pred |
+|------|----------|---------|----------|------------|------------|
+| 42   | 0.992    | 1.146   | 0.070    | 132        | 17         |
+| 123  | 0.966    | 1.079   | 0.065    | 166        | 34         |
+| 7    | 0.975    | 1.117   | 0.063    | 148        | 27         |
+
+**Hidden state analysis (cycle 29, fixed snapshots)**:
+- Effective rank: 3.6–5.7 (moderate, slightly lower than V22-V24)
+- **Type accuracy: 0.95–0.97** (strong: agents encode prey/predator identity)
+- Energy R²: near 0 (not linearly decodable)
+- Position R²: negative (not linearly decodable)
+- Silhouette score: weak clustering
+
+**Interpretation**: Partial observability (1×1) with compass produces moderate representation complexity. Type encoding is the dominant learned feature — agents know WHAT they are even if they don't encode WHERE things are or HOW MUCH energy they have linearly. The compass may be too noisy or too impoverished for spatial map maintenance.
+
+**100% drought mortality** is the main problem — entire population dies and gets reseeded every 5 cycles. This prevents accumulation of evolutionary gains. Need either: gentler drought, compass de-noising, or better rescue mechanism.
+
+### Updated Understanding
+
+The V22-V24 prediction→integration pathway is now clearer with corrected hidden state data:
+
+1. Agents DO use rich hidden representations (eff rank 5-7)
+2. Energy is NOT the dominant encoding — negative R² means linear decoding is worse than mean
+3. The prediction head bottleneck is architectural: linear readout W∈R^{H×T} can be satisfied by a subset of hidden dims without requiring cross-component coordination
+4. The path to rung 8 requires prediction heads that force NON-DECOMPOSABLE computation
+
+The "environment is the bottleneck" story from the previous session was built on artifactual data. The real bottleneck is the LINEAR PREDICTION HEAD — it creates a decomposable channel regardless of how rich the environment is.
+
