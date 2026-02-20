@@ -1,0 +1,101 @@
+{
+  "linear_w8_s42": {
+    "mean_robustness": 0.9931960665096919,
+    "max_robustness": 1.0011888713759052,
+    "mean_phi": 0.09139601361006498,
+    "max_phi": 0.1850640669465065,
+    "mean_pred_mse": 0.00016786723931975616,
+    "final_lr": 0.004942120518535376,
+    "final_drift": 0.0752742663025856,
+    "final_effective_K": 7.897137641906738,
+    "final_pop": 256
+  },
+  "linear_w8_s123": {
+    "mean_robustness": 0.9972294821418155,
+    "max_robustness": 1.0140074097501148,
+    "mean_phi": 0.07278320993607242,
+    "max_phi": 0.12424632459878922,
+    "mean_pred_mse": 0.00015733276923603947,
+    "final_lr": 0.0048168255016207695,
+    "final_drift": 0.07045231759548187,
+    "final_effective_K": 7.893420219421387,
+    "final_pop": 256
+  },
+  "linear_w8_s7": {
+    "mean_robustness": 1.0638133526836986,
+    "max_robustness": 2.9075323459942903,
+    "mean_phi": 0.05909634348315497,
+    "max_phi": 0.10998705253005028,
+    "mean_pred_mse": 0.00041450737924719376,
+    "final_lr": 0.00523323193192482,
+    "final_drift": 0.17923107743263245,
+    "final_effective_K": 7.8029632568359375,
+    "final_pop": 256
+  },
+  "tanh_w4_s42": {
+    "mean_robustness": 0.9966837613056095,
+    "max_robustness": 1.0151824689507647,
+    "mean_phi": 0.0775671304576099,
+    "max_phi": 0.11517622917890549,
+    "mean_pred_mse": 0.00015705268674651957,
+    "final_lr": 0.004809792153537273,
+    "final_drift": 0.07788067311048508,
+    "final_effective_K": 7.867030143737793,
+    "final_pop": 256
+  },
+  "tanh_w4_s123": {
+    "mean_robustness": 0.9991505277955642,
+    "max_robustness": 1.013999212172904,
+    "mean_phi": 0.05392208948110541,
+    "max_phi": 0.09595301933586597,
+    "mean_pred_mse": 0.0001675413836750454,
+    "final_lr": 0.005159101448953152,
+    "final_drift": 0.0653422623872757,
+    "final_effective_K": 7.899166107177734,
+    "final_pop": 256
+  },
+  "tanh_w4_s7": {
+    "mean_robustness": 1.0022307947930635,
+    "max_robustness": 1.0858845728334228,
+    "mean_phi": 0.07441932143022617,
+    "max_phi": 0.11568523943424225,
+    "mean_pred_mse": 0.00043716032069754634,
+    "final_lr": 0.005557814612984657,
+    "final_drift": 0.20672352612018585,
+    "final_effective_K": 7.8515625,
+    "final_pop": 256
+  },
+  "tanh_w16_s42": {
+    "mean_robustness": 0.9708880541296097,
+    "max_robustness": 1.0352803256125356,
+    "mean_phi": 0.06137910146266222,
+    "max_phi": 0.09503434151411057,
+    "mean_pred_mse": 0.00013907424448814738,
+    "final_lr": 0.005532082170248032,
+    "final_drift": 0.08954238891601562,
+    "final_effective_K": 7.847397804260254,
+    "final_pop": 256
+  },
+  "tanh_w16_s123": {
+    "mean_robustness": 0.9986827283171233,
+    "max_robustness": 1.002145568205853,
+    "mean_phi": 0.09571988513072331,
+    "max_phi": 0.13436125218868256,
+    "mean_pred_mse": 0.00025058616650544085,
+    "final_lr": 0.005388897843658924,
+    "final_drift": 0.1307435929775238,
+    "final_effective_K": 7.906862735748291,
+    "final_pop": 256
+  },
+  "tanh_w16_s7": {
+    "mean_robustness": 1.006617936976204,
+    "max_robustness": 1.0556311782340126,
+    "mean_phi": 0.09483868416398765,
+    "max_phi": 0.23422375023365022,
+    "mean_pred_mse": 0.00029350794257706954,
+    "final_lr": 0.004824153147637844,
+    "final_drift": 0.11271412670612335,
+    "final_effective_K": 7.901316165924072,
+    "final_pop": 256
+  }
+}

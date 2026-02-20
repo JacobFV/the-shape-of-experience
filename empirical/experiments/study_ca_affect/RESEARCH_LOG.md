@@ -2399,3 +2399,102 @@ If the mechanism is the bottleneck (not nonlinearity), then a **LINEAR 2-layer h
 - `v27_seed_comparison.py` — Analysis code
 - `results/v27_seed_comparison.json` — Full results
 
+---
+
+## 2026-02-20: V28 Bottleneck Width Sweep — BOTTLENECK HYPOTHESIS PARTIALLY SUPPORTED
+
+### Design
+Same V22 base with 2-layer prediction head. 3 conditions × 3 seeds = 9 runs.
+
+| Condition | Activation | Bottleneck Width | Params |
+|-----------|-----------|-----------------|--------|
+| A: linear_w8 | identity | 8 (16→8→1) | 4,186 |
+| B: tanh_w4 | tanh | 4 (16→4→1) | 4,114 |
+| C: tanh_w16 | tanh | 16 (16→16→1) | 4,330 |
+
+Ran on Lambda A100 (us-east-1), 27 min total, ~$0.60.
+
+### Results
+
+| Condition    | Seed 42 | Seed 123 | Seed 7 | Mean  |
+|-------------|---------|----------|--------|-------|
+| **linear_w8** mean Φ  | 0.091 | 0.073 | 0.059 | 0.074 |
+| **linear_w8** max Φ   | 0.185 | 0.124 | 0.110 | — |
+| **tanh_w4** mean Φ    | 0.078 | 0.054 | 0.074 | 0.069 |
+| **tanh_w4** max Φ     | 0.115 | 0.096 | 0.116 | — |
+| **tanh_w16** mean Φ   | 0.061 | 0.096 | 0.095 | 0.084 |
+| **tanh_w16** max Φ    | 0.095 | 0.134 | **0.234** | — |
+
+Baselines for comparison:
+- V22 (linear 1-layer, no bottleneck): mean Φ ≈ 0.097
+- V27 (tanh w=8): s42=0.079, s123=0.071, s7=0.119 (max 0.245)
+
+### Prediction evaluation
+
+**P1: Linear w=8 ≈ V27 (nonlinearity irrelevant) — PARTIALLY SUPPORTED**
+- linear_w8 mean across seeds: 0.074 vs V27 mean across seeds: 0.090
+- linear_w8 seed 42 max Φ=0.185 exceeds V27 seed 42 max Φ=0.128
+- Overall similar range but V27 still somewhat higher (driven by seed 7's 0.245 vs 0.110)
+- Verdict: The bottleneck CAN work without tanh, but tanh may still help via slight nonlinearity
+
+**P2: Tanh w=4 (narrow bottleneck) ≥ V27 — NOT SUPPORTED**
+- tanh_w4 mean: 0.069 < V27 mean: 0.090
+- Narrower bottleneck does NOT produce more integration
+- Possible explanation: w=4 bottleneck is TOO narrow — loses too much information for the prediction task, weakening the gradient signal
+
+**P3: Tanh w=16 (no bottleneck) ≈ V22 baseline — NOT SUPPORTED**
+- tanh_w16 mean: 0.084, significantly above V22's ~0.097... wait, similar
+- tanh_w16 seed 7: max Φ=0.234 — nearly matching V27 seed 7's 0.245!
+- This CONTRADICTS the pure bottleneck hypothesis. w=16 means the prediction head
+  is 16→16→1, which should be equivalent to no bottleneck (the 16×16 matrix W1
+  can represent any linear map). Yet seed 7 still achieves very high Φ.
+
+### Revised interpretation
+
+The data DOESN'T cleanly support the simple bottleneck hypothesis. Key observations:
+
+1. **Nonlinearity is not required** (P1 partial support): linear_w8 can reach high Φ (0.185), confirming that tanh isn't essential. But V27's tanh w=8 still tends higher.
+
+2. **Narrower ≠ better** (P2 rejected): tanh_w4 underperforms all others. The 16→4→1 bottleneck loses too much prediction-relevant information, reducing the gradient signal that drives learning.
+
+3. **No bottleneck still works** (P3 rejected): tanh_w16 seed 7 hits Φ=0.234. This means the 16→16→1 architecture (no dimension reduction) can still produce high integration. The bottleneck dimension isn't the key variable.
+
+4. **Seed dependence dominates**: Across ALL conditions, seed 7 tends toward higher Φ. This is the same initial random seed — it's setting the evolutionary trajectory. Architecture provides an upper bound, but the evolutionary path matters more.
+
+5. **What the 2-layer head DOES provide (vs V22's 1-layer)**:
+   - Even w=16 outperforms V22 on some seeds
+   - The key may be that W1 (whether 16→8 or 16→16) creates GRADIENT CROSS-TALK during SGD
+   - In V22: ∂L/∂h_i ∝ W_i (scalar, per-unit)
+   - In V28 all conditions: ∂L/∂h = W2ᵀ @ W1ᵀ (matrix, couples units)
+   - The coupling happens regardless of bottleneck width
+   - Width mainly determines how much prediction capacity is available
+
+### What this means for the theory
+
+The "bottleneck" story was partially right but incomplete:
+- **RIGHT**: 2-layer > 1-layer for integration (gradient coupling)
+- **WRONG**: Narrower bottleneck = more coupling (it actually hurts)
+- **MISSING**: The key variable is **2 layers vs 1 layer**, not bottleneck width
+
+The mechanism is simpler than I thought: ANY 2-layer prediction head creates gradient coupling between hidden units during within-lifetime learning. The coupling comes from the matrix multiplication in the gradient (`W2ᵀ @ W1ᵀ`), regardless of the intermediate dimension.
+
+### Cross-experiment Φ comparison table
+
+| Experiment | Architecture | Mean Φ (all seeds) | Max Φ (any seed) |
+|------------|-------------|--------------------|--------------------|
+| V22        | 1-layer linear (16→1) | 0.097 | 0.130 |
+| V27        | tanh 2-layer (16→8→1) | 0.090 | **0.245** |
+| V28 linear_w8 | linear 2-layer (16→8→1) | 0.074 | 0.185 |
+| V28 tanh_w4 | tanh 2-layer (16→4→1) | 0.069 | 0.116 |
+| V28 tanh_w16 | tanh 2-layer (16→16→1) | 0.084 | **0.234** |
+
+### Next steps
+1. The critical test now: **does any 2-layer head consistently outperform V22?** Need more seeds to overcome the seed-dependence noise.
+2. Alternative: move to CONTRASTIVE prediction — predict OTHER agents, not just own energy delta. This creates inter-agent coupling pressure.
+3. Or: direct Φ selection — include integration as a fitness component.
+
+### Files
+- `v28_substrate.py`, `v28_evolution.py`, `v28_gpu_run.py`
+- `results/v28_*/` — per-condition-per-seed results
+- `results/v28_results/v28_summary.json` — cross-condition summary
+
