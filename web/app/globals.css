@@ -2660,14 +2660,8 @@ mark.user-highlight .published-icon {
 /* ==========================================================================
    Native SVG Diagrams
    ========================================================================== */
-.diagram-svg {
-  width: 100%;
-  height: auto;
-  max-width: 720px;
-  margin: 0 auto;
-  display: block;
-  font-family: var(--font-body, Georgia, 'Times New Roman', serif);
-
+.diagram-svg,
+.experiment-map-modal {
   /* Light mode palette */
   --d-fg: #2a2a2a;
   --d-muted: #7a7a7a;
@@ -2683,7 +2677,17 @@ mark.user-highlight .published-icon {
   --d-purple: #6c3483;
 }
 
-[data-theme="dark"] .diagram-svg {
+.diagram-svg {
+  width: 100%;
+  height: auto;
+  max-width: 720px;
+  margin: 0 auto;
+  display: block;
+  font-family: var(--font-body, Georgia, 'Times New Roman', serif);
+}
+
+[data-theme="dark"] .diagram-svg,
+[data-theme="dark"] .experiment-map-modal {
   --d-fg: #d4d4d4;
   --d-muted: #8a8a8a;
   --d-line: #aaa;
@@ -2714,6 +2718,126 @@ mark.user-highlight .published-icon {
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* ─── Experiment Map ─────────────────────────────────────────────── */
+.experiment-map {
+  font-family: var(--font-mono, monospace);
+  max-width: none;
+}
+
+.experiment-map-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in 0.15s ease;
+}
+
+.experiment-map-modal {
+  background: var(--bg);
+  border: 1px solid var(--border, #ddd);
+  border-radius: 12px;
+  max-width: 480px;
+  width: 90%;
+  padding: 1.5rem 1.75rem;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: experiment-map-modal-enter 0.2s ease;
+}
+
+@keyframes experiment-map-modal-enter {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.experiment-map-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-secondary, #888);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+.experiment-map-modal-close:hover {
+  background: rgba(128, 128, 128, 0.15);
+}
+
+.experiment-map-modal-header h3 {
+  margin: 0.25rem 0 0;
+  font-size: 1.1rem;
+  font-family: var(--font-body, Georgia, serif);
+  color: var(--text, #222);
+}
+
+.experiment-map-modal-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #888);
+  font-style: italic;
+}
+
+.experiment-map-modal-status {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+.experiment-map-modal-status[data-status="positive"] {
+  color: var(--d-green);
+  background: color-mix(in srgb, var(--d-green) 12%, transparent);
+}
+.experiment-map-modal-status[data-status="mixed"] {
+  color: var(--d-yellow);
+  background: color-mix(in srgb, var(--d-yellow) 12%, transparent);
+}
+.experiment-map-modal-status[data-status="negative"] {
+  color: var(--d-red);
+  background: color-mix(in srgb, var(--d-red) 12%, transparent);
+}
+.experiment-map-modal-status[data-status="null"] {
+  color: var(--d-muted);
+  background: color-mix(in srgb, var(--d-muted) 12%, transparent);
+}
+.experiment-map-modal-status[data-status="planned"],
+.experiment-map-modal-status[data-status="running"] {
+  color: var(--d-blue);
+  background: color-mix(in srgb, var(--d-blue) 12%, transparent);
+}
+.experiment-map-modal-status[data-status="foundation"] {
+  color: var(--d-violet);
+  background: color-mix(in srgb, var(--d-violet) 12%, transparent);
+}
+
+.experiment-map-modal-desc {
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text, #222);
+  font-family: var(--font-body, Georgia, serif);
+}
+
+.experiment-map-modal-link {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--accent, #4a7eb5);
+  text-decoration: none;
+  font-weight: 500;
+}
+.experiment-map-modal-link:hover {
+  text-decoration: underline;
 }
 
 /* ==========================================================================
