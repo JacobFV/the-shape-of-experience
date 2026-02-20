@@ -9,3 +9,6 @@ export { default as ReductionChain } from './ReductionChain';
 export { default as AffectSpace } from './AffectSpace';
 export { default as ScaleInterventions } from './ScaleInterventions';
 export { default as HistoricalTimeline } from './HistoricalTimeline';
+export { default as EmergenceLadder } from './EmergenceLadder';
+export { default as GradientCoupling } from './GradientCoupling';
+export { default as BottleneckFurnace } from './BottleneckFurnace';

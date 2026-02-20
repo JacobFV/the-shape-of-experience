@@ -11,6 +11,9 @@ import ReductionChain from '../diagrams/ReductionChain';
 import AffectSpace from '../diagrams/AffectSpace';
 import ScaleInterventions from '../diagrams/ScaleInterventions';
 import HistoricalTimeline from '../diagrams/HistoricalTimeline';
+import EmergenceLadder from '../diagrams/EmergenceLadder';
+import GradientCoupling from '../diagrams/GradientCoupling';
+import BottleneckFurnace from '../diagrams/BottleneckFurnace';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -24,6 +27,9 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/part-3-0.svg': AffectSpace,
   '/diagrams/part-4-0.svg': ScaleInterventions,
   '/diagrams/part-5-0.svg': HistoricalTimeline,
+  '/diagrams/appendix-0.svg': EmergenceLadder,
+  '/diagrams/appendix-1.svg': GradientCoupling,
+  '/diagrams/appendix-2.svg': BottleneckFurnace,
 };
 
 interface DiagramProps {

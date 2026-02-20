@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Eq, Experiment, Figure, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
+import { Diagram, Eq, Experiment, Figure, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
 import ExperimentMap from '@/components/ExperimentMapWrapper';
 
 export const metadata = {
@@ -674,6 +674,7 @@ export default function AppendixExperiments() {
       <li><strong>Decomposability wall</strong> (V22-V24 {"\u2192"} V27): 2-layer gradient coupling. Broken by non-linear prediction head.</li>
       </ol>
       <p>Both walls are architectural. Neither can be overcome by more training data, better targets, or richer environments. The path to high integration requires specific computational structures.</p>
+      <Diagram src="/diagrams/appendix-1.svg" alt="Gradient coupling: linear head sends independent gradients; MLP head couples all units through shared intermediate layer" />
       <Figure src="/images/self_emergence_signatures.png" alt="Proto-self signatures across V22-V24" caption={<><strong>Proto-self signatures across V22–V24.</strong> Six metrics tracked over evolution for all 9 runs (3 seeds × 3 experiments). Top-left: effective rank drops at drought boundaries but recovers — states are moderately rich (4–14 dimensions). Top-center: affect motif clustering (silhouette) is mostly negative to near-zero — no behavioral modes emerge with linear readouts. Top-right: energy decoding R² is very low (0–0.2 at best) — hidden states do NOT cleanly encode energy despite the gradient specifically targeting energy prediction. Bottom row: resource decoding, hidden state diversity, activity variation — all noisy without clear trends. These are the signatures of proto-self <em>failing</em> to emerge under linear readout architectures. Compare with V27 (MLP head) where silhouette reaches 0.34 and behavioral modes appear for the first time.</>} />
       </Section>
 
@@ -691,6 +692,7 @@ export default function AppendixExperiments() {
       <p><strong>Result: Integration is trajectory, not event.</strong> Mean <M>{"\\intinfo = 0.086 \\pm 0.032"}</M> (95% CI [0.077, 0.095]). Distribution: 22% HIGH / 46% MODERATE / 32% LOW. Max <M>{"\\intinfo = 0.473"}</M> (seed 23, new all-time record). Mean drought mortality 96.8%.</p>
       <p><strong>Key revision from V31</strong>: The first drought bounce does NOT predict final category (<M>{"r = -0.075, p = 0.60"}</M>). What predicts is the <em>mean bounce across all 5 droughts</em> (<M>{"\\rho = 0.599, p = 4.4 \\times 10^{-6}"}</M>). Integration is built by repeatedly bouncing back, not by a single event. <M>{"\\intinfo"}</M> trajectory slope separates categories perfectly (ANOVA <M>{"F = 34.38, p = 6.3 \\times 10^{-10}"}</M>): every HIGH seed has positive slope, every LOW seed has negative slope.</p>
       <p><strong>Robustness is orthogonal to integration</strong> (Mann-Whitney <M>{"p = 0.73"}</M>). Seeds that survive droughts well are not the same seeds that develop high <M>{"\\intinfo"}</M>. Effective rank (mean 8.1) does not differ across categories.</p>
+      <Diagram src="/diagrams/appendix-2.svg" alt="The bottleneck furnace: repeated drought-recovery cycles forge integration in HIGH seeds while LOW seeds decline" />
       <CodeFiles files={[
         { name: 'v32_evolution.py', desc: 'Fine-grained drought tracking' },
         { name: 'v32_gpu_run.py', desc: '50-seed GPU runner' },
@@ -787,6 +789,7 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="Summary" level={1}>
+      <Diagram src="/diagrams/appendix-0.svg" alt="The emergence ladder: 10 rungs from affect dimensions to normativity, with experimental status for each" />
       <p>Thirty-five experiment versions across four substrates and fifty seeds at scale. Twelve numbered measurement experiments. One VLM convergence study. Five current priorities. The program has established:</p>
       <ol>
       <li><strong>Geometry is cheap, dynamics are expensive.</strong> Affect geometry arises from the minimal conditions of multi-agent survival (V10, Exp 7-8, Exp 12). Affect dynamics require embodied agency (V20), graduated stress exposure (V19), and non-decomposable prediction architecture (V27).</li>
