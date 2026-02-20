@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Eq, Experiment, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
+import { Eq, Experiment, Figure, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
 import ExperimentMap from '@/components/ExperimentMapWrapper';
 
 export const metadata = {
@@ -109,6 +109,10 @@ export default function AppendixExperiments() {
       <p><strong>Substrate</strong>: FFT convolution + content-similarity modulation. Cells couple more strongly with cells sharing state-features.</p>
       <Eq>{"K_i(j) = K_{\\text{base}}(|i-j|) \\cdot \\sigma\\!\\bigl(\\langle h(s_i),\\, h(s_j) \\rangle - \\tau\\bigr)"}</Eq>
       <p>Three seeds, 30 cycles each (<M>{"C{=}16"}</M>, <M>{"N{=}128"}</M>). Mean robustness 0.923, peak 1.052 at population bottleneck. This became the foundation substrate for all measurement experiments (Experiments 0-12).</p>
+      <Figure src="/images/v13_s42_trajectory.png" alt="V13 evolution trajectory showing integration, robustness, population, and parameter drift" caption={<><strong>V13 evolution trajectory (seed 42).</strong> Four panels: (top-left) mean Φ under baseline and stress conditions — note the collapse to ~0 during severe bottleneck at cycle 10; (top-right) stress robustness with the proportion of patterns showing Φ increase; (bottom-left) population dynamics — the pink bands mark drought cycles with 60–100% mortality; (bottom-right) content-coupling parameters τ (similarity threshold) and β (gate steepness) drifting under selection.</>} />
+      <Figure src="/images/v13_cross_seed_robustness.png" alt="V13 cross-seed robustness trajectories compared to historical baselines" caption={<><strong>Cross-seed robustness trajectories.</strong> Left: individual seed trajectories (3 seeds, 30 cycles each) fluctuating around 0.90–0.95. Right: mean trajectory with ±1 SD band. Dashed lines show V11.0 baseline (−6.2%) and V11.2 heterogeneous chemistry (−3.8%) for comparison. V13 content coupling improves mean robustness but does not break the 1.0 threshold reliably.</>} />
+      <Figure src="/images/v13_population_robustness.png" alt="Population size vs integration robustness showing near-zero correlation" caption={<><strong>Population size vs integration robustness (r = −0.061).</strong> Each dot is one cycle from one seed. The flat trend confirms that integration robustness is a per-pattern property, not a collective emergent effect. Small populations (bottleneck survivors) occasionally show robustness above 1.0, but population size itself has no predictive power.</>} />
+      <Figure src="/images/v13_summary_table.png" alt="V13 cross-seed summary table" caption={<><strong>Cross-seed summary.</strong> All 3 seeds survive 30 cycles. Mean robustness 0.923, with ~30% of cycles showing Φ increase under stress.</>} />
       <CodeFiles files={[
         { name: 'v13_substrate.py', desc: 'Content-coupling substrate' },
         { name: 'v13_evolution.py', desc: 'Evolution loop with curriculum' },
@@ -147,6 +151,7 @@ export default function AppendixExperiments() {
       </Warning>
       <p><strong>Addition</strong>: Local Hebbian learning rules allowing each spatial location to modify its coupling structure in response to experience.</p>
       <p><strong>Lesson</strong>: Simple learning rules are too blunt. The extra degrees of freedom overwhelm the selection signal. Plasticity added noise faster than selection could filter it.</p>
+      <Figure src="/images/v13_v16_comparison.png" alt="V13-V16 substrate comparison: robustness trajectories and aggregate comparison" caption={<><strong>V13–V16 substrate evolution comparison.</strong> Top-left: per-cycle robustness trajectories across all seeds (V13 green, V15 black, V16 red). V16 (Hebbian plasticity) consistently tracks lowest. Top-right: V16 learning rate evolution — highly variable, not converging. Bottom-left: V16 coupling spatial variance collapses to zero (homogenization, not differentiation). Bottom-right: aggregate comparison confirms V13 content coupling (0.923) &gt; V15 temporal memory (0.907) &gt; V16 plasticity (0.892).</>} />
       <CodeFiles files={[
         { name: 'v16_substrate.py', desc: 'Hebbian plasticity implementation' },
         { name: 'v16_evolution.py', desc: 'Evolution loop' },
@@ -170,6 +175,9 @@ export default function AppendixExperiments() {
       <p>Three seeds, 30 cycles. Mean robustness <strong>0.969</strong> — highest of any substrate. Peak 1.651 (seed 42). 33% of cycles show <M>{"\\intinfo"}</M> increase under stress.</p>
       <p><strong>Surprise</strong>: <code>internal_gain</code> evolved <em>down</em> in all three seeds (1.0 to ~0.6). Evolution preferred permeable membranes over insulated cores. External sensing was more valuable than internal rumination.</p>
       <p><strong>Verdict</strong>: Best engineering result (highest robustness) but not the theoretical goal (breaking the coupling wall).</p>
+      <Figure src="/images/v18_gain_evolution.png" alt="V18 internal gain, boundary width, and insulation field evolution" caption={<><strong>V18 parameter evolution.</strong> Left: internal gain evolves DOWN in all 3 seeds (starting ~1.0–2.5, converging below 1.0). Center: boundary width evolves UP (thicker membranes). Right: mean insulation field fluctuates. The convergent decrease in internal gain is the surprise — evolution consistently prefers permeable membranes over insulated cores. External sensing more valuable than internal rumination.</>} />
+      <Figure src="/images/v18_early_vs_late_s42.png" alt="V18 membrane evolution: early vs late cycle comparison for seed 42" caption={<><strong>Membrane evolution, seed 42.</strong> Top row: cycle 5 (early). Bottom row: cycle 20 (late). Left: pattern activity. Center: membrane field — at cycle 5 the membrane is tight (gain=1.09, bw=1.31); by cycle 20 it has loosened (gain=0.52, bw=0.12). Right: signal dominance — blue = external, red = internal. The shift toward red in specific regions shows that evolved patterns route information through the membrane rather than sealing it off.</>} />
+      <Figure src="/images/v18_membrane_s42_c020.png" alt="V18 boundary-dependent Lenia four-panel snapshot" caption={<><strong>V18 snapshot (seed 42, cycle 20).</strong> Top-left: pattern activity across 16 channels. Top-right: insulation field — the evolved membrane with interior (orange, 46.4%) and boundary (pink, 17.5%) regions. Bottom-left: signal dominance showing where internal (red) vs external (blue) signals dominate processing. Bottom-right: resource field with pattern boundaries overlaid. The membrane creates genuine spatial compartmentalization without fully insulating the interior.</>} />
       <CodeFiles files={[
         { name: 'v18_substrate.py', desc: 'Boundary-dependent dynamics' },
         { name: 'v18_evolution.py', desc: 'Evolution loop' },
@@ -179,6 +187,7 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="Cross-Substrate Summary" level={2}>
+      <Figure src="/images/substrate_ladder.png" alt="The Substrate Ladder: mean robustness across V11-V16" caption={<><strong>The Substrate Ladder.</strong> Mean robustness (Φ_stress / Φ_base) across substrate versions V11.0–V16. Stars mark conditions where robustness exceeded 1.0. More mechanisms ≠ better results: V15 (memory + movement) outperforms V16 (+ plasticity). V16 is the lowest — Hebbian plasticity adds noise faster than selection can filter it.</>} />
       <table>
       <thead><tr><th>Version</th><th>Mean Robustness</th><th>Max Robustness</th><th>{"> "}1.0 Cycles</th><th>Verdict</th></tr></thead>
       <tbody>
@@ -215,7 +224,9 @@ export default function AppendixExperiments() {
       <tr><td>7</td><td>0.0010</td><td>0.0002</td><td>7.9</td><td>60%</td></tr>
       </tbody>
       </table>
-      <p><strong>Finding</strong>: World model signal present but weak. Seed 123 at bottleneck shows 100x amplification. World models are amplified by bottleneck selection, not gradual evolution.</p>
+      <p><strong>Finding</strong>: World model signal present but weak. Seed 123 at bottleneck shows 100x amplification. World models are amplified by bottleneck selection, not gradual evolution. To be clear about magnitude: <M>{"\\mathcal{C}_{\\text{wm}} \\approx 0.0002"}</M> for most seeds means the internal state predicts the environment barely better than the environment alone. Only seed 123 at maximum bottleneck pressure reaches 0.028 — detectable but still small. These patterns are not building substantial world models; they carry a faint trace of environmental predictive information, amplified briefly under extreme selection.</p>
+      <Figure src="/images/wm_summary_card.png" alt="Experiment 2 world model summary" caption={<><strong>Experiment 2: World model summary.</strong> (a) World model capacity over evolution — note the y-axis scale (0.000–0.030). Seed 123 shows a dramatic late spike; seeds 42 and 7 remain near zero throughout. (b) World model horizon in recording steps. (c) Prediction gap at late evolution — seed 123 maintains a flat, elevated prediction gap across all horizons, consistent with a genuine (if weak) internal model.</>} />
+      <Figure src="/images/wm_cwm_vs_lifetime.png" alt="World model capacity vs pattern longevity" caption={<><strong>World model vs pattern longevity (r = 0.084).</strong> Near-zero correlation: having a world model does not help a pattern survive longer. Most points cluster at C_wm ≈ 0 regardless of lifetime. The few high-C_wm outliers are long-lived patterns at cycle 29 — the world model emerges as a byproduct of bottleneck survival, not as a survival advantage.</>} />
       <CodeFiles files={[
         { name: 'v13_world_model.py', desc: 'World model measurement' },
         { name: 'v13_world_model_run.py', desc: 'Runner' },
@@ -233,7 +244,9 @@ export default function AppendixExperiments() {
       <tr><td>7</td><td>7.7 to 8.8</td><td>0.89 to 0.87</td><td>0.24 to 0.22</td><td>0.20 to 0.27</td></tr>
       </tbody>
       </table>
-      <p><strong>Finding</strong>: Compression is cheap — <M>{"d_{\\text{eff}} \\approx 7"}</M>/68 from cycle 0. But quality only improves under bottleneck selection.</p>
+      <p><strong>Finding</strong>: Compression is cheap — <M>{"d_{\\text{eff}} \\approx 7"}</M>/68 from cycle 0. But quality only improves under bottleneck selection. Note the asymmetry: abstraction (<M>{"\\mathcal{A} \\approx 0.89"}</M>) is high and stable from the start — the system compresses efficiently without effort. But disentanglement (<M>{"\\mathcal{D} \\approx 0.25"}</M>) remains low — the compressed representations are tangled, not cleanly factored. Disentanglement requires active information-seeking that this substrate lacks.</p>
+      <Figure src="/images/rep_summary_card.png" alt="Experiment 3 representation structure summary" caption={<><strong>Experiment 3: Representation structure summary.</strong> (a) Effective dimensionality: 5.6–8.8 out of 68 possible — strong compression from cycle 0. Seed 123 compresses further over evolution. (b) Abstraction (A ≈ 0.89) is high and stable; disentanglement (D ≈ 0.25) remains low. The gap confirms the theory: compression is cheap but clean factoring requires agency. (c) Compositionality error — lowest for seed 123 at bottleneck, consistent with the bottleneck amplification pattern from Exp 2.</>} />
+      <Figure src="/images/rep_eigenspectrum.png" alt="Eigenspectrum of internal state: early vs late evolution" caption={<><strong>Internal state eigenspectrum, early vs late.</strong> Log-scale variance fraction by PCA dimension. Seeds 123 and 42 show the late eigenspectrum becoming more concentrated in the top components — genuine compression under evolutionary pressure. Seed 7 stays relatively flat, consistent with its lack of world-model development.</>} />
       <CodeFiles files={[
         { name: 'v13_representation.py', desc: 'Representation analysis' },
         { name: 'v13_representation_run.py', desc: 'Runner' },
@@ -451,6 +464,8 @@ export default function AppendixExperiments() {
       </table>
 
       <p>Within-lifetime learning is unambiguously working (100-15000x MSE improvement per lifetime, 3/3 seeds). LR not suppressed — evolution maintains learning. But robustness not improved over V20.</p>
+      <Figure src="/images/v22_trajectories.png" alt="V22 trajectories: robustness, integration, population, and prediction MSE" caption={<><strong>V22 evolution trajectories.</strong> Top-left: robustness stays near 1.0 between droughts, drops sharply during them. Top-right: mean Φ ranges 0.05–0.20 — moderate integration that doesn't trend upward. Bottom-left: population dynamics with regular drought dips. Bottom-right: prediction MSE stays low (10⁻⁴ scale) — the gradient works, but better prediction doesn't translate to higher integration.</>} />
+      <Figure src="/images/v22_s42_strip.png" alt="V22 agent evolution filmstrip showing grid state across cycles" caption={<><strong>V22 agent evolution (seed 42).</strong> Grid snapshots across evolution cycles C0–C29. Agents (colored dots) on a resource landscape (green). Population oscillates with drought cycles. The visual shows the substrate is working — agents persist, reproduce, and die in response to resource dynamics — but the spatial patterns alone don't reveal the internal integration story.</>} />
 
       <KeyResult>
       <p><strong>Prediction {"\u2260"} integration.</strong> The gradient makes agents better individual forecasters without creating cross-component coordination. A single linear prediction head can be satisfied by a subset of hidden units — no cross-component coupling required. This is the <em>decomposability problem</em>: linear readouts are always factored.</p>
@@ -480,6 +495,8 @@ export default function AppendixExperiments() {
       <p><strong>Specialization {"\u2260"} integration.</strong> Weight columns specialize beautifully (cosine ~ 0, near-orthogonal). But specialization means MORE partitionable, not less. <M>{"\\intinfo"}</M> <em>decreases</em> (0.079 vs V22's 0.097). Factored representations can be cleanly separated.</p>
       </Warning>
 
+      <Figure src="/images/v23_trajectories.png" alt="V23 trajectories: robustness, integration, population, and prediction MSE" caption={<><strong>V23 evolution trajectories.</strong> Compared to V22: Φ is more variable (0.02–0.12) and noisier, consistent with the multi-target head creating competing gradients. Prediction MSE is higher (10⁻³ vs V22's 10⁻⁴) and doesn't converge cleanly — three targets fighting for representational capacity.</>} />
+
       <CodeFiles files={[
         { name: 'v23_substrate.py', desc: 'Multi-target prediction head' },
         { name: 'v23_evolution.py', desc: 'Evolution loop' },
@@ -501,6 +518,9 @@ export default function AppendixExperiments() {
       </table>
 
       <p><strong>Finding</strong>: Best robustness of any prediction experiment (1.012). Agents evolve moderate discount (<M>{"\\gamma \\approx 0.75"}</M>, horizon ~ 4 steps). But <M>{"\\intinfo"}</M> is seed-dependent. The bottleneck is <strong>architectural</strong>: a single linear value readout doesn't force non-decomposable structure.</p>
+
+      <Figure src="/images/v24_trajectories.png" alt="V24 trajectories: robustness, integration, population, and TD error" caption={<><strong>V24 evolution trajectories.</strong> Top-left: robustness with dramatic spikes at drought boundaries (up to 1.5) — the highest transient robustness of any prediction experiment. Top-right: Φ shows the widest variance (0.02–0.25), with seed 7 reaching high values mid-evolution before declining. Bottom-left: population dynamics. Bottom-right: TD error decreases over evolution — value learning works, but doesn't force integration because the linear readout is decomposable.</>} />
+      <Figure src="/images/v22_v23_v24_comparison.png" alt="Robustness and integration compared across V22, V23, V24" caption={<><strong>V22–V24 prediction experiment comparison.</strong> Left: mean robustness. V24 (TD value) achieves the highest (~1.01), crossing the 1.0 threshold. V22 and V23 cluster below 1.0. Right: mean Φ. All three experiments overlap in the 0.06–0.10 range with high per-seed variance. Individual seed dots show no experiment consistently outperforms the others. The prediction target (scalar energy, multi-target, temporal value) does not reliably change integration — only architecture does (see V27).</>} />
 
       <CodeFiles files={[
         { name: 'v24_substrate.py', desc: 'TD value function' },
@@ -654,6 +674,7 @@ export default function AppendixExperiments() {
       <li><strong>Decomposability wall</strong> (V22-V24 {"\u2192"} V27): 2-layer gradient coupling. Broken by non-linear prediction head.</li>
       </ol>
       <p>Both walls are architectural. Neither can be overcome by more training data, better targets, or richer environments. The path to high integration requires specific computational structures.</p>
+      <Figure src="/images/self_emergence_signatures.png" alt="Proto-self signatures across V22-V24" caption={<><strong>Proto-self signatures across V22–V24.</strong> Six metrics tracked over evolution for all 9 runs (3 seeds × 3 experiments). Top-left: effective rank drops at drought boundaries but recovers — states are moderately rich (4–14 dimensions). Top-center: affect motif clustering (silhouette) is mostly negative to near-zero — no behavioral modes emerge with linear readouts. Top-right: energy decoding R² is very low (0–0.2 at best) — hidden states do NOT cleanly encode energy despite the gradient specifically targeting energy prediction. Bottom row: resource decoding, hidden state diversity, activity variation — all noisy without clear trends. These are the signatures of proto-self <em>failing</em> to emerge under linear readout architectures. Compare with V27 (MLP head) where silhouette reaches 0.34 and behavioral modes appear for the first time.</>} />
       </Section>
 
       <Section title="The Snapshot Bug and 1D Collapse Retraction" level={1}>
@@ -709,6 +730,10 @@ export default function AppendixExperiments() {
         { name: 'v35_evolution.py', desc: 'Evolution loop with communication metrics' },
         { name: 'v35_gpu_run.py', desc: 'GPU runner (10 seeds)' },
       ]} />
+      </Section>
+
+      <Section title="Integration Landscape: V22–V35" level={1}>
+      <Figure src="/images/phi_landscape_v22_v35.png" alt="Integration (Phi) across all experiment conditions V22-V35" caption={<><strong>Integration landscape across all conditions.</strong> Top: mean late-phase Φ with error bars. Green = MLP gradient coupling (baseline), blue = prediction variants, gray = V28 architecture controls, red = negative results, orange = mixed, purple = language. V27 baseline (dashed, Φ = 0.091) is the reference. V29/V31 (social prediction, 10 seeds) is the only condition with mean above baseline, but not significantly so (p = 0.93). V33 (contrastive, 0.054) is significantly below. V35 (language, 0.074) adds communication without lifting integration. Bottom: seed outcome distribution. The 30% HIGH / 30% MOD / 40% LOW split is remarkably stable across conditions — only V33 (70% LOW) and V34 (50% LOW, Goodharting) deviate. Architecture matters; targets and channels do not.</>} />
       </Section>
 
       <Section title="VLM Convergence Experiment" level={1}>
