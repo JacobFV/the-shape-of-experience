@@ -1393,7 +1393,108 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 ---
 
-## Research Status as of 2026-02-20 (post-V31)
+### V32: Drought Autopsy at Scale (50 seeds)
+
+**Status**: RUNNING. 50 seeds × 30 cycles, Lambda A100. Estimated ~2.5 hours.
+
+**Motivation**: The 30/70 split — why do ~30% of seeds develop high Φ while ~70% don't? V31 showed post-drought bounce r=0.997 predicts final Φ, but what happens DURING the drought that determines the outcome? V32 is a 50-seed autopsy tracking fine-grained drought dynamics.
+
+**Key metrics tracked per drought**:
+- Pre/post Φ and bounce ratio
+- Effective rank of hidden states (before/after)
+- Weight diversity (1 - mean cosine similarity of genomes)
+- Hidden state entropy and convergence
+- Survivor vs victim genome analysis (genome norm, LR, energy, MLP weight magnitude)
+
+**Pre-registered predictions**:
+- P1: First drought bounce ratio predicts final category (HIGH vs LOW)
+- P2: Weight diversity at first drought predicts outcome
+- P3: Survivor LR is higher than victim LR in HIGH seeds but not LOW seeds
+- P4: Hidden state effective rank diverges between HIGH and LOW seeds by cycle 10
+
+**Files**: `v32_evolution.py`, `v32_gpu_run.py`, `v32_analysis.py`
+
+---
+
+### V33: Contrastive Self-Prediction
+
+**Status**: CODE COMPLETE. Queued after V32 on Lambda A100. 10 seeds.
+
+**Motivation**: V22-V31 showed standard prediction (self or social) produces 30% HIGH seeds. V33 tests whether CONTRASTIVE prediction — predicting how outcomes DIFFER between actual and counterfactual actions — forces rung-8 counterfactual representation.
+
+**Architecture**: V27 base + contrastive prediction head. Instead of predicting energy delta, predicts: Δ_actual - Δ_alternative, where Δ_alternative is the energy delta from a randomly sampled alternative action. Forces agents to represent "what would happen IF I did something else."
+
+**Pre-registered predictions**:
+- P1: Mean Φ > V27's 0.090 (counterfactual forces cross-component integration)
+- P2: Action differentiation increases over evolution (agents learn to distinguish actions)
+- P3: HIGH fraction > 30% (contrastive learning is harder to satisfy with decomposed representation)
+
+**Falsification**:
+- P1 fails: counterfactual representation doesn't require integration (can be decomposed)
+- Action differentiation stays flat: contrastive signal doesn't actually force different behavior
+
+**Files**: `v33_substrate.py`, `v33_evolution.py`, `v33_gpu_run.py`
+
+---
+
+### V34: Φ-Inclusive Fitness
+
+**Status**: CODE COMPLETE. Queued after V33 on Lambda A100. 10 seeds.
+
+**Motivation**: V22-V31 use pure survival fitness. Integration (Φ) emerges as a byproduct but isn't selected for. V34 tests direct selection: fitness = survival_time × (1 + α × Φ), with α=2.0. Does this push HIGH fraction above 30%? Or does it Goodhart?
+
+**Pre-registered predictions**:
+- P1: HIGH fraction > 40% (direct selection increases success rate)
+- P2: Mean Φ > 0.090 (V27 baseline)
+- P3: Robustness maintained (Φ-optimized agents still survive)
+- P4: No Goodhart (Φ correlates positively with robustness)
+
+**Falsification**:
+- P1 fails: 30% is fundamental, not malleable by selection
+- P4 fails: Goodhart — agents evolve trivially high Φ that doesn't correlate with survival
+
+**Files**: `v34_evolution.py`, `v34_gpu_run.py`
+
+---
+
+### V35: Language Emergence under Cooperative POMDP
+
+**Status**: CODE COMPLETE. Queued after V34 on Lambda A100. 10 seeds.
+
+**Motivation**: V20b showed continuous signals → noise (z ≈ 0.5). No language emerged. The theory predicts language should emerge when: (1) partial observability creates information asymmetry, (2) discrete channel forces categorical representation, (3) cooperative pressure rewards signaling. V35 tests all three simultaneously.
+
+**Architecture**: V27 base with three key changes:
+1. **Partial observability**: obs_radius=1 (3×3 patch, down from 5×5)
+2. **Discrete communication**: K=8 symbols, one emitted per step via argmax
+3. **Cooperative dynamics**: consumption bonus (1.5×) when 2+ agents at same cell
+4. **Communication range > visual range**: comm_radius=5 > obs_radius=1
+
+Agents can "hear" further than they can "see." If an agent at a resource patch emits a specific symbol, agents at distance 2-5 can detect it but can't see the resource directly. This creates pressure for referential signaling.
+
+**Metrics**:
+- Symbol entropy (H): are agents using the full vocabulary?
+- Symbol-resource MI proxy: does emitted symbol correlate with local resource level?
+- Cooperative events: do agents cluster at resource patches?
+- Communication ablation Φ lift: does Φ drop when symbols are ablated?
+- Standard: Φ, robustness, MSE, effective rank
+
+**Pre-registered predictions**:
+- P1: Symbol-environment MI > 0.1 bits by cycle 20 (referential signaling)
+- P2: Symbol entropy > 1.0 bits (meaningful vocabulary)
+- P3: Cooperative events increase over evolution
+- P4: Φ ≥ V27 baseline
+- P5: Communication ablation drops Φ (integration depends on social channel)
+
+**Falsification**:
+- P1 fails: No referential signaling (like V20b)
+- P5 fails: Φ independent of communication (language is epiphenomenal)
+- Symbols collapse to 1-2 (no vocabulary, no language)
+
+**Files**: `v35_substrate.py`, `v35_evolution.py`, `v35_gpu_run.py`
+
+---
+
+## Research Status as of 2026-02-20 (post-V31, V32-V35 in progress)
 
 ### What Has Been Definitively Established
 
@@ -1413,7 +1514,7 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V31 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke. 10-seed statistics show social prediction changes WHICH seeds succeed but not HOW MANY (~30% reach high Φ in both self and social prediction).** Peak Φ = 0.265 (V31 seed 1). The arc from V22→V31: (1) 2-layer gradient coupling is necessary, (2) target choice (self vs social) changes the fitness landscape but not the success rate, (3) integration is fundamentally stochastic — ~30% of seeds find high-Φ basins regardless of architecture or target. The open question: what determines which seeds succeed?
+**Priority 3 (Architectural — CA) — V20-V31 COMPLETE, V32-V35 IN PROGRESS**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke. 10-seed statistics show social prediction changes WHICH seeds succeed but not HOW MANY (~30% reach high Φ in both self and social prediction).** Peak Φ = 0.265 (V31 seed 1). The arc from V22→V31: (1) 2-layer gradient coupling is necessary, (2) target choice (self vs social) changes the fitness landscape but not the success rate, (3) integration is fundamentally stochastic — ~30% of seeds find high-Φ basins regardless of architecture or target. The open question: what determines which seeds succeed? **V32-V35 address this directly**: V32 (50-seed drought autopsy), V33 (contrastive self-prediction for counterfactual representation), V34 (Φ-inclusive fitness — can selection increase the 30%?), V35 (language emergence under cooperative POMDP with discrete communication).
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
