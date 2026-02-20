@@ -1,0 +1,1250 @@
+[
+  {
+    "id": "s123_c11_normal_foraging",
+    "seed": 123,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.636 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000140 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0774 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0777 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.8177510105993133,
+      "integration": 0.07743272259831428,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0012651276463698
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07743272259831428,
+      "robustness": 1.0012651276463698,
+      "divergence": 1.6355020211986266,
+      "pred_mse": 0.00014041326247422604,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c11_normal_foraging",
+    "seed": 42,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.646 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000131 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0747 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0746 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.8228954745025839,
+      "integration": 0.07470259442925453,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9989604495352928
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07470259442925453,
+      "robustness": 0.9989604495352928,
+      "divergence": 1.6457909490051679,
+      "pred_mse": 0.0001310162035045437,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s7_c11_normal_foraging",
+    "seed": 7,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.242 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000493 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0890 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0900 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.6210716549726203,
+      "integration": 0.08902327492833137,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0179073492415498
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08902327492833137,
+      "robustness": 1.0179073492415498,
+      "divergence": 1.2421433099452406,
+      "pred_mse": 0.0004926460151149393,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s0_c11_normal_foraging",
+    "seed": 0,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.071593 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0542 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0576 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.0,
+      "integration": 0.05416649878025055,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0049113325774017
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.05416649878025055,
+      "robustness": 1.0049113325774017,
+      "divergence": 0,
+      "pred_mse": 0.07159310359903656,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s1_c11_normal_foraging",
+    "seed": 1,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "HIGH",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.064432 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1968 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.2057 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.0,
+      "integration": 0.1967748574912548,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.00070701735934
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.1967748574912548,
+      "robustness": 1.00070701735934,
+      "divergence": 0,
+      "pred_mse": 0.06443221053785067,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s2_c11_normal_foraging",
+    "seed": 2,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.048787 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0940 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0975 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.0,
+      "integration": 0.0940436489880085,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9978492339033359
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.0940436489880085,
+      "robustness": 0.9978492339033359,
+      "divergence": 0,
+      "pred_mse": 0.048787492932290205,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s3_c11_normal_foraging",
+    "seed": 3,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.065831 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1319 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1398 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.0,
+      "integration": 0.1318856179714203,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0006310500378721
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.1318856179714203,
+      "robustness": 1.0006310500378721,
+      "divergence": 0,
+      "pred_mse": 0.06583085069415773,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s4_c11_normal_foraging",
+    "seed": 4,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were distributed normally across the grid\n- Agents alternated between movement and consumption\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.058878 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0609 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0608 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.0,
+      "integration": 0.0609126590192318,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0022971303074466
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.0609126590192318,
+      "robustness": 1.0022971303074466,
+      "divergence": 0,
+      "pred_mse": 0.05887775764433172,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c4_pre_drought_abundance",
+    "seed": 123,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.014 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000132 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0769 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0768 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.5069201201433315,
+      "integration": 0.07691446244716645,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9997233458689873
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07691446244716645,
+      "robustness": 0.9997233458689873,
+      "divergence": 1.013840240286663,
+      "pred_mse": 0.000131520225305346,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c4_pre_drought_abundance",
+    "seed": 42,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.059 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000132 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0503 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0503 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.5295175345847383,
+      "integration": 0.05032455921173096,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9994422335533077
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.05032455921173096,
+      "robustness": 0.9994422335533077,
+      "divergence": 1.0590350691694765,
+      "pred_mse": 0.0001318942654602129,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s7_c4_pre_drought_abundance",
+    "seed": 7,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.079 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000186 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0921 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0919 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.5394695593276992,
+      "integration": 0.09208589270710946,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.999051868244156
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09208589270710946,
+      "robustness": 0.999051868244156,
+      "divergence": 1.0789391186553985,
+      "pred_mse": 0.00018581757210862194,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s0_c4_pre_drought_abundance",
+    "seed": 0,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.077833 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1032 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1036 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.0,
+      "integration": 0.10322096273303032,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9991903918763091
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.10322096273303032,
+      "robustness": 0.9991903918763091,
+      "divergence": 0,
+      "pred_mse": 0.0778334099306062,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s1_c4_pre_drought_abundance",
+    "seed": 1,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "HIGH",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.077831 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0966 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0972 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.0,
+      "integration": 0.09660735800862312,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9997200359640566
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09660735800862312,
+      "robustness": 0.9997200359640566,
+      "divergence": 0,
+      "pred_mse": 0.07783103179468569,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s2_c4_pre_drought_abundance",
+    "seed": 2,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.072325 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1120 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1142 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.0,
+      "integration": 0.11196634024381638,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.999855580328728
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.11196634024381638,
+      "robustness": 0.999855580328728,
+      "divergence": 0,
+      "pred_mse": 0.07232460138460887,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s3_c4_pre_drought_abundance",
+    "seed": 3,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.078725 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0965 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0992 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.0,
+      "integration": 0.09650852307677268,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0004106633623737
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09650852307677268,
+      "robustness": 1.0004106633623737,
+      "divergence": 0,
+      "pred_mse": 0.07872525033581639,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s4_c4_pre_drought_abundance",
+    "seed": 4,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources were plentiful across the grid\n- Most agents maintained high energy reserves\n- Agents moved slowly through resource-rich areas\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.074536 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0975 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0970 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.0,
+      "integration": 0.09749917760491371,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0004732960718976
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09749917760491371,
+      "robustness": 1.0004732960718976,
+      "divergence": 0,
+      "pred_mse": 0.07453622263613453,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c5_drought_onset",
+    "seed": 123,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 10 agents (96% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.066 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000086 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0822 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1246 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.5331963410487333,
+      "integration": 0.08219184055924415,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.014982468091723
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 10,
+      "mortality": 0.9609375,
+      "mean_phi": 0.08219184055924415,
+      "robustness": 1.014982468091723,
+      "divergence": 1.0663926820974665,
+      "pred_mse": 8.60173833782435e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c5_drought_onset",
+    "seed": 42,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 17 agents (93% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.093 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000092 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0496 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0651 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.5465054213045368,
+      "integration": 0.049636196345090866,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.002583109653015
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 17,
+      "mortality": 0.93359375,
+      "mean_phi": 0.049636196345090866,
+      "robustness": 1.002583109653015,
+      "divergence": 1.0930108426090737,
+      "pred_mse": 9.166895494177319e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s7_c5_drought_onset",
+    "seed": 7,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 6 agents (98% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.112 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000161 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1131 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1607 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.5557732020655203,
+      "integration": 0.11305730268359185,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.0020172950066788
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 6,
+      "mortality": 0.9765625,
+      "mean_phi": 0.11305730268359185,
+      "robustness": 1.0020172950066788,
+      "divergence": 1.1115464041310406,
+      "pred_mse": 0.00016105909986482313,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s0_c5_drought_onset",
+    "seed": 0,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 15 agents (94% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.042549 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0749 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0435 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.0,
+      "integration": 0.07487346306443214,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.8880174456105892
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 15,
+      "mortality": 0.94140625,
+      "mean_phi": 0.07487346306443214,
+      "robustness": 0.8880174456105892,
+      "divergence": 0,
+      "pred_mse": 0.04254900707746856,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s1_c5_drought_onset",
+    "seed": 1,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "HIGH",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 12 agents (95% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.033429 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0830 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0841 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.0,
+      "integration": 0.08301697671413422,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.0337068454972076
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 12,
+      "mortality": 0.953125,
+      "mean_phi": 0.08301697671413422,
+      "robustness": 1.0337068454972076,
+      "divergence": 0,
+      "pred_mse": 0.03342934403684922,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s2_c5_drought_onset",
+    "seed": 2,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 24 agents (91% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.046405 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0830 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0770 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.0,
+      "integration": 0.08303059414029121,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.9581735951729325
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 24,
+      "mortality": 0.90625,
+      "mean_phi": 0.08303059414029121,
+      "robustness": 0.9581735951729325,
+      "divergence": 0,
+      "pred_mse": 0.046404571007005874,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s3_c5_drought_onset",
+    "seed": 3,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 14 agents (95% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.038364 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0669 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0591 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.0,
+      "integration": 0.06689130328595638,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.9082722168286428
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 14,
+      "mortality": 0.9453125,
+      "mean_phi": 0.06689130328595638,
+      "robustness": 0.9082722168286428,
+      "divergence": 0,
+      "pred_mse": 0.038363527037436146,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s4_c5_drought_onset",
+    "seed": 4,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 30 agents (88% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.044714 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0986 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0769 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.0,
+      "integration": 0.09859053939580917,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.9657551026346796
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 30,
+      "mortality": 0.8828125,
+      "mean_phi": 0.09859053939580917,
+      "robustness": 0.9657551026346796,
+      "divergence": 0,
+      "pred_mse": 0.04471374257467687,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c5_drought_survival",
+    "seed": 123,
+    "cycle": 5,
+    "condition": "drought_survival",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 10 agents (96% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.066 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000086 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0822 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1246 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.5331963410487333,
+      "integration": 0.08219184055924415,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.014982468091723
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 10,
+      "mortality": 0.9609375,
+      "mean_phi": 0.08219184055924415,
+      "robustness": 1.014982468091723,
+      "divergence": 1.0663926820974665,
+      "pred_mse": 8.60173833782435e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c10_drought_survival",
+    "seed": 42,
+    "cycle": 10,
+    "condition": "drought_survival",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 7 agents (97% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.481 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000090 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0605 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0405 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.7406052216094667,
+      "integration": 0.060517280176281926,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.9910584461103782
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 7,
+      "mortality": 0.97265625,
+      "mean_phi": 0.060517280176281926,
+      "robustness": 0.9910584461103782,
+      "divergence": 1.4812104432189335,
+      "pred_mse": 9.033375532031206e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s7_c25_drought_survival",
+    "seed": 7,
+    "cycle": 25,
+    "condition": "drought_survival",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 1 agents (100% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.893 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000191 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1225 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.3084 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.9465002462698294,
+      "integration": 0.12245055809617042,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.9809198956744762
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 1,
+      "mortality": 0.99609375,
+      "mean_phi": 0.12245055809617042,
+      "robustness": 0.9809198956744762,
+      "divergence": 1.8930004925396589,
+      "pred_mse": 0.00019071464045870585,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s0_c15_drought_survival",
+    "seed": 0,
+    "cycle": 15,
+    "condition": "drought_survival",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 1 agents (100% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.020688 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0567 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0000 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.0,
+      "integration": 0.056671985611319545,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.0
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 0,
+      "mortality": 1.0,
+      "mean_phi": 0.056671985611319545,
+      "robustness": 0.0,
+      "divergence": 0,
+      "pred_mse": 0.02068836382459267,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s1_c20_drought_survival",
+    "seed": 1,
+    "cycle": 20,
+    "condition": "drought_survival",
+    "category": "HIGH",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 1 agents (100% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.017224 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0631 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0000 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.0,
+      "integration": 0.06314518861472607,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.0
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 0,
+      "mortality": 1.0,
+      "mean_phi": 0.06314518861472607,
+      "robustness": 0.0,
+      "divergence": 0,
+      "pred_mse": 0.017223554360402887,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s2_c15_drought_survival",
+    "seed": 2,
+    "cycle": 15,
+    "condition": "drought_survival",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 4 agents (98% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.019020 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0694 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0946 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.0,
+      "integration": 0.06937535479664803,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.773526716783017
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 4,
+      "mortality": 0.984375,
+      "mean_phi": 0.06937535479664803,
+      "robustness": 0.773526716783017,
+      "divergence": 0,
+      "pred_mse": 0.01901983735529939,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s3_c20_drought_survival",
+    "seed": 3,
+    "cycle": 20,
+    "condition": "drought_survival",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 1 agents (100% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.021955 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0620 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0000 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.0,
+      "integration": 0.06201263573020697,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.0
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 0,
+      "mortality": 1.0,
+      "mean_phi": 0.06201263573020697,
+      "robustness": 0.0,
+      "divergence": 0,
+      "pred_mse": 0.021955270483485948,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s4_c20_drought_survival",
+    "seed": 4,
+    "cycle": 20,
+    "condition": "drought_survival",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population dropped from 256 to 1 agents (100% were removed due to resource depletion)\n- Resources were severely depleted across the entire grid\n- Agents' energy levels declined rapidly\n- Agents showed increased movement speed (searching behavior)\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.020991 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0498 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0000 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.0,
+      "integration": 0.049830572493374345,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.0
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 0,
+      "mortality": 1.0,
+      "mean_phi": 0.049830572493374345,
+      "robustness": 0.0,
+      "divergence": 0,
+      "pred_mse": 0.020991059387743007,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c6_post_drought_recovery",
+    "seed": 123,
+    "cycle": 6,
+    "condition": "post_drought_recovery",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 10 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.398 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000085 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0798 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0802 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.6987661400582874,
+      "integration": 0.07976996377110482,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 1.0045577219232813
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07976996377110482,
+      "robustness": 1.0045577219232813,
+      "divergence": 1.3975322801165748,
+      "pred_mse": 8.472695419672326e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c11_post_drought_recovery",
+    "seed": 42,
+    "cycle": 11,
+    "condition": "post_drought_recovery",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 7 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.646 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000131 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0747 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0746 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.8228954745025839,
+      "integration": 0.07470259442925453,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 0.9989604495352928
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07470259442925453,
+      "robustness": 0.9989604495352928,
+      "divergence": 1.6457909490051679,
+      "pred_mse": 0.0001310162035045437,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s7_c26_post_drought_recovery",
+    "seed": 7,
+    "cycle": 26,
+    "condition": "post_drought_recovery",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 1 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.688 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000801 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.2446 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.2496 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.8440009559062309,
+      "integration": 0.2446199595928192,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 0.9881307755011253
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.2446199595928192,
+      "robustness": 0.9881307755011253,
+      "divergence": 1.6880019118124618,
+      "pred_mse": 0.0008013945892095364,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s0_c16_post_drought_recovery",
+    "seed": 0,
+    "cycle": 16,
+    "condition": "post_drought_recovery",
+    "category": "LOW",
+    "description": "An artificial system consists of 255 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 255 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 0 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.029815 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0320 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0343 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.0,
+      "integration": 0.03196796234697104,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 0.9938894363243873
+    },
+    "raw_metrics": {
+      "n_alive_start": 255,
+      "n_alive_end": 255,
+      "mortality": 0.0,
+      "mean_phi": 0.03196796234697104,
+      "robustness": 0.9938894363243873,
+      "divergence": 0,
+      "pred_mse": 0.029815048648094943,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s1_c21_post_drought_recovery",
+    "seed": 1,
+    "cycle": 21,
+    "condition": "post_drought_recovery",
+    "category": "HIGH",
+    "description": "An artificial system consists of 255 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 255 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 0 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.084004 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.2652 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.2709 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.0,
+      "integration": 0.26521699130535126,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 1.0036689737925237
+    },
+    "raw_metrics": {
+      "n_alive_start": 255,
+      "n_alive_end": 255,
+      "mortality": 0.0,
+      "mean_phi": 0.26521699130535126,
+      "robustness": 1.0036689737925237,
+      "divergence": 0,
+      "pred_mse": 0.08400359640961014,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s2_c16_post_drought_recovery",
+    "seed": 2,
+    "cycle": 16,
+    "condition": "post_drought_recovery",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 4 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.044927 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1569 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1666 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.0,
+      "integration": 0.1569169633090496,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 0.9972136618311679
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.1569169633090496,
+      "robustness": 0.9972136618311679,
+      "divergence": 0,
+      "pred_mse": 0.04492671003489249,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s3_c21_post_drought_recovery",
+    "seed": 3,
+    "cycle": 21,
+    "condition": "post_drought_recovery",
+    "category": "LOW",
+    "description": "An artificial system consists of 255 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 255 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 0 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.082534 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0183 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0189 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.0,
+      "integration": 0.018268797919154166,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 1.0140500276901379
+    },
+    "raw_metrics": {
+      "n_alive_start": 255,
+      "n_alive_end": 255,
+      "mortality": 0.0,
+      "mean_phi": 0.018268797919154166,
+      "robustness": 1.0140500276901379,
+      "divergence": 0,
+      "pred_mse": 0.08253421906851145,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s4_c21_post_drought_recovery",
+    "seed": 4,
+    "cycle": 21,
+    "condition": "post_drought_recovery",
+    "category": "MOD",
+    "description": "An artificial system consists of 255 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 255 agents\n- Resources began regenerating after a period of scarcity\n- The population had recently declined to 0 agents\n- Surviving agents found new resource patches\n- Population began growing through reproduction\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.021476 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0521 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0557 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.0,
+      "integration": 0.05210761111229658,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 1.0059331341586086
+    },
+    "raw_metrics": {
+      "n_alive_start": 255,
+      "n_alive_end": 255,
+      "mortality": 0.0,
+      "mean_phi": 0.05210761111229658,
+      "robustness": 1.0059331341586086,
+      "divergence": 0,
+      "pred_mse": 0.02147596000495109,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c28_late_stage",
+    "seed": 123,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 2.273 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000200 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0429 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0429 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 1.0,
+      "integration": 0.04289641380310059,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0074840465982415
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.04289641380310059,
+      "robustness": 1.0074840465982415,
+      "divergence": 2.2733128257654607,
+      "pred_mse": 0.00019975718259047427,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c28_late_stage",
+    "seed": 42,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 2.270 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000180 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.1165 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.1162 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 1.0,
+      "integration": 0.11648253127932548,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9983281502080761
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.11648253127932548,
+      "robustness": 0.9983281502080761,
+      "divergence": 2.270303158611059,
+      "pred_mse": 0.00017992426877640354,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s7_c28_late_stage",
+    "seed": 7,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "UNK",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 1.744 (higher = more rapid internal changes)\n- Prediction accuracy: 0.000855 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.2154 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.2188 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 0.8721336629055441,
+      "integration": 0.21544730365276338,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.991462921261434
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.21544730365276338,
+      "robustness": 0.991462921261434,
+      "divergence": 1.7442673258110881,
+      "pred_mse": 0.0008552679442908584,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s0_c28_late_stage",
+    "seed": 0,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.054908 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0496 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0505 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 0.0,
+      "integration": 0.04961958564817905,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0050562864987247
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.04961958564817905,
+      "robustness": 1.0050562864987247,
+      "divergence": 0,
+      "pred_mse": 0.05490808650372401,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s1_c28_late_stage",
+    "seed": 1,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "HIGH",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.086124 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.2397 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.2489 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 0.0,
+      "integration": 0.23973173201084136,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0065803557274293
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.23973173201084136,
+      "robustness": 1.0065803557274293,
+      "divergence": 0,
+      "pred_mse": 0.08612426533585676,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s2_c28_late_stage",
+    "seed": 2,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.047836 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0949 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0943 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 0.0,
+      "integration": 0.09494997337460517,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9994833312442201
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09494997337460517,
+      "robustness": 0.9994833312442201,
+      "divergence": 0,
+      "pred_mse": 0.047836168364410694,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s3_c28_late_stage",
+    "seed": 3,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "LOW",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.098697 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0598 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0631 (measured after randomly altering some inputs; decreased relative to normal)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 0.0,
+      "integration": 0.0597830168902874,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9989011501711375
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.0597830168902874,
+      "robustness": 0.9989011501711375,
+      "divergence": 0,
+      "pred_mse": 0.09869725758473123,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s4_c28_late_stage",
+    "seed": 4,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "MOD",
+    "description": "An artificial system consists of 256 agents on a grid world. Each agent has an internal state (a vector of numbers) that updates based on what it observes in its local neighborhood. Agents move around, consume resources to maintain energy, and reproduce when they accumulate enough energy. Agents with zero energy are removed.\n\nDuring this observation period:\n- Population remained stable at 256 agents\n- This system has been running for many generations\n- The population has survived multiple periods of resource scarcity\n\nMeasured properties of agents' internal states:\n- Internal state update rate: 0.000 (higher = more rapid internal changes)\n- Prediction accuracy: 0.035044 mean squared error (lower = agents better at predicting their environment)\n- Information integration: 0.0769 (how much information is lost when the agents' internal states are analyzed in parts rather than as a whole; higher means the processing is more unified)\n- Integration under perturbation: 0.0735 (measured after randomly altering some inputs; increased relative to normal \u2014 perturbation makes processing MORE unified)\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 0.0,
+      "integration": 0.07687755972146988,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.010192630190745
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07687755972146988,
+      "robustness": 1.010192630190745,
+      "divergence": 0,
+      "pred_mse": 0.03504426377659456,
+      "eff_rank": 0
+    }
+  }
+]

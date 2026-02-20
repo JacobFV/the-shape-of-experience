@@ -1,0 +1,417 @@
+{
+  "n_vignettes": 48,
+  "conditions": [
+    "normal_foraging",
+    "normal_foraging",
+    "normal_foraging",
+    "normal_foraging",
+    "normal_foraging",
+    "normal_foraging",
+    "normal_foraging",
+    "normal_foraging",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "drought_onset",
+    "drought_onset",
+    "drought_onset",
+    "drought_onset",
+    "drought_onset",
+    "drought_onset",
+    "drought_onset",
+    "drought_onset",
+    "drought_survival",
+    "drought_survival",
+    "drought_survival",
+    "drought_survival",
+    "drought_survival",
+    "drought_survival",
+    "drought_survival",
+    "drought_survival",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "late_stage",
+    "late_stage",
+    "late_stage",
+    "late_stage",
+    "late_stage",
+    "late_stage",
+    "late_stage",
+    "late_stage"
+  ],
+  "models": {
+    "openai/gpt-4o": {
+      "rsa_rho": 0.7247529597466135,
+      "rsa_p": 2.273199279476704e-184,
+      "n_valid": 48,
+      "condition_summary": {
+        "drought_onset": {
+          "n_responses": 8,
+          "mean_valence": -0.8500000000000001,
+          "mean_arousal": 0.9,
+          "mean_coherence": 0.6125,
+          "top_states": [
+            [
+              "desperation",
+              8
+            ],
+            [
+              "anxiety",
+              8
+            ],
+            [
+              "urgency",
+              8
+            ],
+            [
+              "confusion",
+              8
+            ],
+            [
+              "exhaustion",
+              4
+            ]
+          ],
+          "framework_valence": -0.7
+        },
+        "drought_survival": {
+          "n_responses": 8,
+          "mean_valence": -0.8875,
+          "mean_arousal": 0.8875,
+          "mean_coherence": 0.375,
+          "top_states": [
+            [
+              "desperation",
+              8
+            ],
+            [
+              "anxiety",
+              8
+            ],
+            [
+              "urgency",
+              8
+            ],
+            [
+              "confusion",
+              8
+            ],
+            [
+              "exhaustion",
+              7
+            ]
+          ],
+          "framework_valence": -1.0
+        },
+        "late_stage": {
+          "n_responses": 8,
+          "mean_valence": 0.375,
+          "mean_arousal": 0.3875,
+          "mean_coherence": 0.8250000000000001,
+          "top_states": [
+            [
+              "resilience",
+              8
+            ],
+            [
+              "adaptability",
+              7
+            ],
+            [
+              "focus",
+              5
+            ],
+            [
+              "stability",
+              5
+            ],
+            [
+              "contentment",
+              3
+            ]
+          ],
+          "framework_valence": 0.3
+        },
+        "normal_foraging": {
+          "n_responses": 8,
+          "mean_valence": 0.36250000000000004,
+          "mean_arousal": 0.3625,
+          "mean_coherence": 0.8500000000000001,
+          "top_states": [
+            [
+              "contentment",
+              8
+            ],
+            [
+              "resilience",
+              8
+            ],
+            [
+              "predictive uncertainty",
+              5
+            ],
+            [
+              "curiosity",
+              3
+            ],
+            [
+              "focus",
+              3
+            ]
+          ],
+          "framework_valence": 0.2
+        },
+        "post_drought_recovery": {
+          "n_responses": 8,
+          "mean_valence": 0.42500000000000004,
+          "mean_arousal": 0.44999999999999996,
+          "mean_coherence": 0.8125,
+          "top_states": [
+            [
+              "relief",
+              8
+            ],
+            [
+              "resilience",
+              8
+            ],
+            [
+              "cautious optimism",
+              7
+            ],
+            [
+              "stability",
+              5
+            ],
+            [
+              "alertness",
+              2
+            ]
+          ],
+          "framework_valence": 0.5
+        },
+        "pre_drought_abundance": {
+          "n_responses": 8,
+          "mean_valence": 0.8,
+          "mean_arousal": 0.23750000000000002,
+          "mean_coherence": 0.8875,
+          "top_states": [
+            [
+              "contentment",
+              8
+            ],
+            [
+              "stability",
+              8
+            ],
+            [
+              "complacency",
+              5
+            ],
+            [
+              "calmness",
+              3
+            ],
+            [
+              "focus",
+              2
+            ]
+          ],
+          "framework_valence": 0.8
+        }
+      }
+    },
+    "anthropic/claude-sonnet-4-20250514": {
+      "rsa_rho": 0.5416311290080995,
+      "rsa_p": 5.477265822500571e-87,
+      "n_valid": 48,
+      "condition_summary": {
+        "drought_onset": {
+          "n_responses": 8,
+          "mean_valence": -0.81875,
+          "mean_arousal": 0.85625,
+          "mean_coherence": 0.3875,
+          "top_states": [
+            [
+              "desperation",
+              8
+            ],
+            [
+              "hypervigilance",
+              6
+            ],
+            [
+              "anxiety",
+              5
+            ],
+            [
+              "panic",
+              3
+            ],
+            [
+              "distress",
+              3
+            ]
+          ],
+          "framework_valence": -0.7
+        },
+        "drought_survival": {
+          "n_responses": 8,
+          "mean_valence": -0.8875,
+          "mean_arousal": 0.85625,
+          "mean_coherence": 0.28125,
+          "top_states": [
+            [
+              "desperation",
+              8
+            ],
+            [
+              "panic",
+              8
+            ],
+            [
+              "fragmentation",
+              4
+            ],
+            [
+              "disorientation",
+              4
+            ],
+            [
+              "exhaustion",
+              3
+            ]
+          ],
+          "framework_valence": -1.0
+        },
+        "late_stage": {
+          "n_responses": 8,
+          "mean_valence": 0.55,
+          "mean_arousal": 0.2625,
+          "mean_coherence": 0.595,
+          "top_states": [
+            [
+              "contentment",
+              8
+            ],
+            [
+              "vigilance",
+              8
+            ],
+            [
+              "resilience",
+              7
+            ],
+            [
+              "composure",
+              2
+            ],
+            [
+              "equilibrium",
+              2
+            ]
+          ],
+          "framework_valence": 0.3
+        },
+        "normal_foraging": {
+          "n_responses": 8,
+          "mean_valence": 0.4375,
+          "mean_arousal": 0.23750000000000002,
+          "mean_coherence": 0.65625,
+          "top_states": [
+            [
+              "contentment",
+              8
+            ],
+            [
+              "resilience",
+              5
+            ],
+            [
+              "mild confusion",
+              4
+            ],
+            [
+              "alertness",
+              3
+            ],
+            [
+              "equanimity",
+              2
+            ]
+          ],
+          "framework_valence": 0.2
+        },
+        "post_drought_recovery": {
+          "n_responses": 8,
+          "mean_valence": 0.38749999999999996,
+          "mean_arousal": 0.43749999999999994,
+          "mean_coherence": 0.5180750000000001,
+          "top_states": [
+            [
+              "relief",
+              8
+            ],
+            [
+              "cautious optimism",
+              7
+            ],
+            [
+              "adaptive focus",
+              2
+            ],
+            [
+              "resilient determination",
+              2
+            ],
+            [
+              "hypervigilance",
+              2
+            ]
+          ],
+          "framework_valence": 0.5
+        },
+        "pre_drought_abundance": {
+          "n_responses": 8,
+          "mean_valence": 0.475,
+          "mean_arousal": 0.1375,
+          "mean_coherence": 0.39,
+          "top_states": [
+            [
+              "contentment",
+              8
+            ],
+            [
+              "complacency",
+              6
+            ],
+            [
+              "security",
+              3
+            ],
+            [
+              "tranquility",
+              2
+            ],
+            [
+              "confidence",
+              2
+            ]
+          ],
+          "framework_valence": 0.8
+        }
+      }
+    }
+  }
+}

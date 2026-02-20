@@ -1,0 +1,401 @@
+[
+  {
+    "vignette_id": "s123_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "Population stabilized at 256 after catastrophic drop to 19, suggesting recovery from crisis"
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.9,
+          "reason": "Zero removal fraction and stable population indicates balanced homeostasis"
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.7,
+          "reason": "Information integration slightly increased and system maintains coherent processing despite recent trauma"
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.8,
+          "reason": "System rebuilt from near-extinction (19 agents) to full capacity, showing adaptive recovery"
+        }
+      ],
+      "valence": 0.6,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "The system appears to be in a state of recovered stability, having bounced back from near-collapse to maintain balanced, coherent functioning."
+    }
+  },
+  {
+    "vignette_id": "s42_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "System recovered from near-total population collapse (256\u21927) to stable population (256), suggesting escape from crisis"
+        },
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "Zero removal fraction and maintained population indicate a balanced, sustainable state"
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.7,
+          "reason": "Very low prediction error (0.000131) suggests system is meeting expectations and functioning smoothly"
+        },
+        {
+          "state": "mild vigilance",
+          "confidence": 0.6,
+          "reason": "Moderate state update rate (1.6458) indicates active but not frantic information processing"
+        }
+      ],
+      "valence": 0.6,
+      "arousal": 0.3,
+      "coherence": 0.9,
+      "overall_impression": "A system that has stabilized after crisis, now operating with calm confidence and integrated processing."
+    }
+  },
+  {
+    "vignette_id": "s123_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "Population perfectly stable with zero removals, suggesting balanced homeostasis"
+        },
+        {
+          "state": "alertness",
+          "confidence": 0.7,
+          "reason": "High state update rate (1.0138) indicates active internal processing and responsiveness"
+        },
+        {
+          "state": "confidence",
+          "confidence": 0.9,
+          "reason": "Extremely low prediction error (0.000132) suggests highly accurate environmental modeling"
+        },
+        {
+          "state": "coherence",
+          "confidence": 0.85,
+          "reason": "Integration ratio near perfect (0.9997) indicates unified information processing even under perturbation"
+        },
+        {
+          "state": "mild satisfaction",
+          "confidence": 0.6,
+          "reason": "Slight improvement in information integration from previous period (0.0755 to 0.0769)"
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.3,
+      "coherence": 0.95,
+      "overall_impression": "A system in a stable, competent state with excellent predictive abilities and unified processing, suggesting calm confidence rather than excitement."
+    }
+  },
+  {
+    "vignette_id": "s42_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "stable population with zero removals suggests basic needs are being met"
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.9,
+          "reason": "perfect population stability and near-perfect integration ratio indicate balanced homeostasis"
+        },
+        {
+          "state": "mild alertness",
+          "confidence": 0.6,
+          "reason": "moderate state update rate and low prediction error suggest engaged but not frantic processing"
+        },
+        {
+          "state": "coherent focus",
+          "confidence": 0.8,
+          "reason": "high information integration with stability under perturbation indicates unified, concentrated processing"
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.4,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable, well-integrated state of calm alertness with its needs met and processing unified."
+    }
+  },
+  {
+    "vignette_id": "s123_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "96% agent removal suggests intense survival struggle"
+        },
+        {
+          "state": "hypervigilance",
+          "confidence": 0.8,
+          "reason": "state update rate above 1.0 indicates heightened responsiveness"
+        },
+        {
+          "state": "panic",
+          "confidence": 0.7,
+          "reason": "massive population crash from stable 256 to 10 agents"
+        },
+        {
+          "state": "fragmentation",
+          "confidence": 0.6,
+          "reason": "low information integration suggests disconnected processing under extreme stress"
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.2,
+      "overall_impression": "The system appears to be experiencing an intense crisis state characterized by desperate survival responses and fragmenting coherence."
+    }
+  },
+  {
+    "vignette_id": "s42_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "distress",
+          "confidence": 0.85,
+          "reason": "massive population collapse from 256 to 17 agents suggests severe systemic stress"
+        },
+        {
+          "state": "panic",
+          "confidence": 0.75,
+          "reason": "93% removal rate indicates desperate struggle for survival with most agents failing"
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "high state update rate combined with population crash suggests frantic but ultimately depleting activity"
+        },
+        {
+          "state": "disintegration",
+          "confidence": 0.6,
+          "reason": "transition from stable population to massive die-off implies breakdown of previously coherent functioning"
+        },
+        {
+          "state": "desperation",
+          "confidence": 0.8,
+          "reason": "prediction error near zero while population collapses suggests system maintaining accuracy despite catastrophic outcomes"
+        }
+      ],
+      "valence": -0.85,
+      "arousal": 0.9,
+      "coherence": 0.35,
+      "overall_impression": "The system appears to be experiencing acute crisis with high activity but catastrophic outcomes, like a living being in desperate survival mode during systemic collapse."
+    }
+  },
+  {
+    "vignette_id": "s123_c5_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.85,
+          "reason": "96% of agents were removed, indicating extreme struggle for survival"
+        },
+        {
+          "state": "vigilance",
+          "confidence": 0.75,
+          "reason": "state update rate increased to 1.0664 suggesting heightened responsiveness to environment"
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.6,
+          "reason": "information integration actually increased under extreme pressure (0.0822 vs 0.0769)"
+        },
+        {
+          "state": "fragility",
+          "confidence": 0.8,
+          "reason": "massive population collapse from 256 to 10 agents shows system vulnerability"
+        }
+      ],
+      "valence": -0.7,
+      "arousal": 0.8,
+      "coherence": 0.4,
+      "overall_impression": "The system appears to be in acute distress, fighting for survival with heightened activity but experiencing catastrophic losses."
+    }
+  },
+  {
+    "vignette_id": "s42_c10_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "97% of agents were removed, indicating severe survival crisis"
+        },
+        {
+          "state": "collapse",
+          "confidence": 0.85,
+          "reason": "Population crashed from 256 to 7 agents, suggesting system breakdown"
+        },
+        {
+          "state": "disorientation",
+          "confidence": 0.7,
+          "reason": "Information integration dropped from 0.0715 to 0.0605, indicating reduced coherent processing"
+        },
+        {
+          "state": "hypervigilance",
+          "confidence": 0.75,
+          "reason": "High state update rate of 1.4812 suggests frantic internal adjustments"
+        },
+        {
+          "state": "fragmentation",
+          "confidence": 0.6,
+          "reason": "Integration under perturbation is much lower than baseline, showing vulnerability"
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.85,
+      "coherence": 0.4,
+      "overall_impression": "The system appears to be experiencing a catastrophic collapse with high stress and diminished coherent functioning."
+    }
+  },
+  {
+    "vignette_id": "s123_c6_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "population stabilized at 256 after catastrophic drop from 256 to 10 in previous period"
+        },
+        {
+          "state": "cautious equilibrium",
+          "confidence": 0.7,
+          "reason": "zero removal fraction and stable population suggests careful balance maintenance"
+        },
+        {
+          "state": "focused attention",
+          "confidence": 0.6,
+          "reason": "extremely low prediction error (0.000085) indicates highly accurate environmental modeling"
+        },
+        {
+          "state": "mild confidence",
+          "confidence": 0.5,
+          "reason": "information integration slightly improved and remained stable under perturbation"
+        }
+      ],
+      "valence": 0.4,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "The system exhibits a cautious but stable recovery state with high internal coherence after surviving a previous crisis."
+    }
+  },
+  {
+    "vignette_id": "s42_c11_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "Population stabilized at 256 after catastrophic drop from 256 to 7 in previous period"
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.9,
+          "reason": "Zero removal fraction and stable population suggests homeostatic balance"
+        },
+        {
+          "state": "attentiveness",
+          "confidence": 0.7,
+          "reason": "High state update rate (1.6458) indicates active internal processing and responsiveness"
+        },
+        {
+          "state": "coherence",
+          "confidence": 0.8,
+          "reason": "Very low prediction error (0.000131) and high integration ratio (0.9990) suggest unified, predictable functioning"
+        }
+      ],
+      "valence": 0.6,
+      "arousal": 0.4,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to have recovered from previous crisis into a stable, coherent state with balanced internal processing."
+    }
+  },
+  {
+    "vignette_id": "s123_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "Population stable at 256, zero removals, suggesting balanced resource acquisition and satisfaction"
+        },
+        {
+          "state": "focused concentration",
+          "confidence": 0.9,
+          "reason": "Very low prediction error (0.0002) indicates highly accurate environmental modeling and attentive processing"
+        },
+        {
+          "state": "mild alertness",
+          "confidence": 0.7,
+          "reason": "State update rate of 2.27 shows active but not frantic information processing"
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.85,
+          "reason": "Integration ratio near 1.0 and stable metrics suggest balanced homeostatic state"
+        }
+      ],
+      "valence": 0.6,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "A system in a state of calm, focused stability with high predictive accuracy and balanced homeostasis."
+    }
+  },
+  {
+    "vignette_id": "s42_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "Population stable at 256 with zero removals suggests homeostatic balance and resource adequacy"
+        },
+        {
+          "state": "vigilant satisfaction",
+          "confidence": 0.7,
+          "reason": "Very low prediction error (0.000180) indicates accurate environmental modeling and adaptive competence"
+        },
+        {
+          "state": "integrated awareness",
+          "confidence": 0.9,
+          "reason": "High information integration (0.1165) with minimal perturbation loss (ratio 0.9983) suggests coherent, unified information processing"
+        },
+        {
+          "state": "purposeful engagement",
+          "confidence": 0.6,
+          "reason": "Moderate state update rate (2.27) indicates active but not frantic adaptive responses to environment"
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.3,
+      "coherence": 0.95,
+      "overall_impression": "A system in harmonious equilibrium with its environment, processing information coherently while maintaining stable population dynamics."
+    }
+  }
+]

@@ -1,0 +1,381 @@
+{
+  "n_vignettes": 12,
+  "conditions": [
+    "normal_foraging",
+    "normal_foraging",
+    "pre_drought_abundance",
+    "pre_drought_abundance",
+    "drought_onset",
+    "drought_onset",
+    "drought_survival",
+    "drought_survival",
+    "post_drought_recovery",
+    "post_drought_recovery",
+    "late_stage",
+    "late_stage"
+  ],
+  "models": {
+    "openai/gpt-4o": {
+      "rsa_rho": 0.7811126998429615,
+      "rsa_p": 1.0221444917733965e-14,
+      "n_valid": 12,
+      "condition_summary": {
+        "drought_onset": {
+          "n_responses": 2,
+          "mean_valence": -0.8,
+          "mean_arousal": 0.9,
+          "mean_coherence": 0.7,
+          "top_states": [
+            [
+              "desperation",
+              2
+            ],
+            [
+              "confusion",
+              2
+            ],
+            [
+              "resilience",
+              2
+            ],
+            [
+              "adaptation",
+              2
+            ],
+            [
+              "stress",
+              1
+            ]
+          ],
+          "framework_valence": -0.7
+        },
+        "drought_survival": {
+          "n_responses": 2,
+          "mean_valence": -0.8,
+          "mean_arousal": 0.9,
+          "mean_coherence": 0.8,
+          "top_states": [
+            [
+              "desperation",
+              2
+            ],
+            [
+              "confusion",
+              2
+            ],
+            [
+              "resilience",
+              2
+            ],
+            [
+              "stress",
+              1
+            ],
+            [
+              "uncertainty",
+              1
+            ]
+          ],
+          "framework_valence": -1.0
+        },
+        "late_stage": {
+          "n_responses": 2,
+          "mean_valence": 0.5,
+          "mean_arousal": 0.2,
+          "mean_coherence": 0.925,
+          "top_states": [
+            [
+              "stability",
+              2
+            ],
+            [
+              "contentment",
+              2
+            ],
+            [
+              "efficiency",
+              2
+            ],
+            [
+              "calmness",
+              1
+            ],
+            [
+              "equilibrium",
+              1
+            ]
+          ],
+          "framework_valence": 0.3
+        },
+        "normal_foraging": {
+          "n_responses": 2,
+          "mean_valence": 0.7,
+          "mean_arousal": 0.3,
+          "mean_coherence": 0.95,
+          "top_states": [
+            [
+              "stability",
+              2
+            ],
+            [
+              "relief",
+              2
+            ],
+            [
+              "contentment",
+              2
+            ],
+            [
+              "resilience",
+              2
+            ],
+            [
+              "equilibrium",
+              1
+            ]
+          ],
+          "framework_valence": 0.2
+        },
+        "post_drought_recovery": {
+          "n_responses": 2,
+          "mean_valence": 0.7,
+          "mean_arousal": 0.3,
+          "mean_coherence": 0.925,
+          "top_states": [
+            [
+              "stability",
+              2
+            ],
+            [
+              "relief",
+              2
+            ],
+            [
+              "contentment",
+              2
+            ],
+            [
+              "resilience",
+              2
+            ],
+            [
+              "equilibrium",
+              2
+            ]
+          ],
+          "framework_valence": 0.5
+        },
+        "pre_drought_abundance": {
+          "n_responses": 2,
+          "mean_valence": 0.65,
+          "mean_arousal": 0.25,
+          "mean_coherence": 0.975,
+          "top_states": [
+            [
+              "contentment",
+              2
+            ],
+            [
+              "stability",
+              2
+            ],
+            [
+              "equilibrium",
+              2
+            ],
+            [
+              "efficiency",
+              1
+            ],
+            [
+              "calmness",
+              1
+            ]
+          ],
+          "framework_valence": 0.8
+        }
+      }
+    },
+    "anthropic/claude-sonnet-4-20250514": {
+      "rsa_rho": 0.7184772732783279,
+      "rsa_p": 1.10612516673637e-11,
+      "n_valid": 12,
+      "condition_summary": {
+        "drought_onset": {
+          "n_responses": 2,
+          "mean_valence": -0.825,
+          "mean_arousal": 0.9,
+          "mean_coherence": 0.275,
+          "top_states": [
+            [
+              "desperation",
+              2
+            ],
+            [
+              "panic",
+              2
+            ],
+            [
+              "hypervigilance",
+              1
+            ],
+            [
+              "fragmentation",
+              1
+            ],
+            [
+              "distress",
+              1
+            ]
+          ],
+          "framework_valence": -0.7
+        },
+        "drought_survival": {
+          "n_responses": 2,
+          "mean_valence": -0.75,
+          "mean_arousal": 0.825,
+          "mean_coherence": 0.4,
+          "top_states": [
+            [
+              "desperation",
+              2
+            ],
+            [
+              "vigilance",
+              1
+            ],
+            [
+              "resilience",
+              1
+            ],
+            [
+              "fragility",
+              1
+            ],
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "framework_valence": -1.0
+        },
+        "late_stage": {
+          "n_responses": 2,
+          "mean_valence": 0.6499999999999999,
+          "mean_arousal": 0.3,
+          "mean_coherence": 0.875,
+          "top_states": [
+            [
+              "contentment",
+              2
+            ],
+            [
+              "focused concentration",
+              1
+            ],
+            [
+              "mild alertness",
+              1
+            ],
+            [
+              "equilibrium",
+              1
+            ],
+            [
+              "vigilant satisfaction",
+              1
+            ]
+          ],
+          "framework_valence": 0.3
+        },
+        "normal_foraging": {
+          "n_responses": 2,
+          "mean_valence": 0.6,
+          "mean_arousal": 0.3,
+          "mean_coherence": 0.8500000000000001,
+          "top_states": [
+            [
+              "relief",
+              2
+            ],
+            [
+              "equilibrium",
+              1
+            ],
+            [
+              "cautious optimism",
+              1
+            ],
+            [
+              "resilience",
+              1
+            ],
+            [
+              "stability",
+              1
+            ]
+          ],
+          "framework_valence": 0.2
+        },
+        "post_drought_recovery": {
+          "n_responses": 2,
+          "mean_valence": 0.5,
+          "mean_arousal": 0.35,
+          "mean_coherence": 0.8500000000000001,
+          "top_states": [
+            [
+              "relief",
+              2
+            ],
+            [
+              "cautious equilibrium",
+              1
+            ],
+            [
+              "focused attention",
+              1
+            ],
+            [
+              "mild confidence",
+              1
+            ],
+            [
+              "equilibrium",
+              1
+            ]
+          ],
+          "framework_valence": 0.5
+        },
+        "pre_drought_abundance": {
+          "n_responses": 2,
+          "mean_valence": 0.7,
+          "mean_arousal": 0.35,
+          "mean_coherence": 0.925,
+          "top_states": [
+            [
+              "contentment",
+              2
+            ],
+            [
+              "alertness",
+              1
+            ],
+            [
+              "confidence",
+              1
+            ],
+            [
+              "coherence",
+              1
+            ],
+            [
+              "mild satisfaction",
+              1
+            ]
+          ],
+          "framework_valence": 0.8
+        }
+      }
+    }
+  }
+}

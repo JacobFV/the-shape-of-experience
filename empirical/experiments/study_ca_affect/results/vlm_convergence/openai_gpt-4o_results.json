@@ -1,0 +1,1683 @@
+[
+  {
+    "vignette_id": "s123_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The stable population and efficient resource consumption suggest a state of balance and satisfaction."
+        },
+        {
+          "state": "curiosity",
+          "confidence": 0.7,
+          "reason": "The agents' movement and low prediction error indicate an effective exploration and understanding of their environment."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.6,
+          "reason": "The system maintains coherence under perturbation, suggesting adaptability and robustness."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.5,
+          "reason": "High information integration implies concentrated processing and attention to the environment."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.6,
+      "coherence": 0.8,
+      "overall_impression": "The system appears content and curious, with a robust and unified processing approach."
+    }
+  },
+  {
+    "vignette_id": "s42_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population remained stable, indicating a balance between resource consumption and reproduction, suggesting a state of equilibrium."
+        },
+        {
+          "state": "curiosity",
+          "confidence": 0.6,
+          "reason": "The agents alternated between movement and consumption, which may imply exploration and interaction with their environment."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.7,
+          "reason": "Low prediction error suggests that agents are effectively processing environmental information, indicating a focused state."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.5,
+          "reason": "Despite perturbations, the system maintained its integration, suggesting robustness and adaptability."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.5,
+      "coherence": 0.9,
+      "overall_impression": "The system appears stable and efficient, with a balanced and focused interaction with its environment."
+    }
+  },
+  {
+    "vignette_id": "s7_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population stability and effective resource consumption suggest a balanced and sustainable state."
+        },
+        {
+          "state": "curiosity",
+          "confidence": 0.6,
+          "reason": "The agents' ability to predict their environment with low error indicates an active engagement with their surroundings."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The increase in information integration under perturbation suggests adaptability and robustness in processing."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.7,
+          "reason": "High information integration indicates a coherent and concentrated processing of information."
+        },
+        {
+          "state": "alertness",
+          "confidence": 0.6,
+          "reason": "The rapid internal state update rate implies a high level of responsiveness to environmental changes."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.7,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable, engaged, and adaptive state with high coherence and alertness."
+    }
+  },
+  {
+    "vignette_id": "s0_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The stable population and normal resource distribution suggest a balanced and sustainable environment, akin to contentment."
+        },
+        {
+          "state": "predictive uncertainty",
+          "confidence": 0.6,
+          "reason": "The relatively high prediction error indicates a lack of precise understanding of the environment, similar to uncertainty."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The increased integration under perturbation suggests adaptability and robustness, akin to resilience."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.2,
+      "coherence": 0.7,
+      "overall_impression": "The system appears content and resilient, with moderate coherence and low arousal."
+    }
+  },
+  {
+    "vignette_id": "s1_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population stability and regular resource distribution suggest a balanced and sustainable environment, akin to contentment."
+        },
+        {
+          "state": "predictive uncertainty",
+          "confidence": 0.6,
+          "reason": "The prediction accuracy is not very high, indicating some level of uncertainty in predicting the environment."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The increased information integration under perturbation suggests robustness and adaptability to changes, similar to resilience."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears content and resilient, with a stable and unified processing state, despite some predictive uncertainty."
+    }
+  },
+  {
+    "vignette_id": "s2_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population remains stable and resources are evenly distributed, indicating a balanced and satisfactory state."
+        },
+        {
+          "state": "predictive uncertainty",
+          "confidence": 0.6,
+          "reason": "The relatively high prediction error suggests a lack of confidence in anticipating environmental changes."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "Despite perturbations, the system maintains stable population and function, showing adaptability."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears content and stable, with a unified processing approach, but experiences some uncertainty in environmental prediction."
+    }
+  },
+  {
+    "vignette_id": "s3_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population remained stable, indicating a balance between resource consumption and reproduction, akin to a state of equilibrium or satisfaction."
+        },
+        {
+          "state": "predictive uncertainty",
+          "confidence": 0.6,
+          "reason": "The prediction accuracy is not very high, suggesting the agents have some difficulty in anticipating their environment, which could be likened to a feeling of uncertainty."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The increased integration under perturbation suggests that the system becomes more unified and coherent when faced with changes, indicating a robust or resilient state."
+        },
+        {
+          "state": "neutrality",
+          "confidence": 0.5,
+          "reason": "The internal state update rate is zero, suggesting a lack of internal change or emotional fluctuation, which can be seen as a neutral state."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.6,
+          "reason": "The ability to maintain a stable population despite environmental changes suggests adaptability, akin to a flexible or adaptable emotional state."
+        }
+      ],
+      "valence": 0.2,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "The system appears to be in a stable and resilient state with low arousal and moderate positive valence, processing information in a unified manner."
+    }
+  },
+  {
+    "vignette_id": "s4_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population stability and normal resource distribution suggest a balanced and sustainable environment, akin to contentment."
+        },
+        {
+          "state": "predictive uncertainty",
+          "confidence": 0.6,
+          "reason": "The prediction accuracy is not very high, indicating some level of uncertainty about the environment."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The system's increased integration under perturbation suggests a capacity to maintain coherence and adapt when faced with changes."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears content and resilient, with a stable and coherent processing state despite some predictive uncertainty."
+    }
+  },
+  {
+    "vignette_id": "s123_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "Agents maintain high energy reserves and move slowly through resource-rich areas, indicating a state of satisfaction and lack of urgency."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population remains stable at 256 agents, suggesting a balanced and sustainable environment."
+        },
+        {
+          "state": "predictive confidence",
+          "confidence": 0.85,
+          "reason": "Low prediction error indicates agents are effectively anticipating their environment, contributing to a sense of security."
+        },
+        {
+          "state": "low curiosity",
+          "confidence": 0.6,
+          "reason": "Slow movement through resource-rich areas suggests a lack of exploration or need to seek out new information."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.7,
+          "reason": "The slow movement and stable conditions imply a lack of stress or urgency."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.3,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable, content, and calm state with effective information processing."
+    }
+  },
+  {
+    "vignette_id": "s42_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The agents maintain high energy reserves and move slowly through resource-rich areas, suggesting a state of satisfaction and stability."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population remains stable at 256 agents, indicating a balanced and sustainable environment."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.7,
+          "reason": "The slow movement and stable population suggest a lack of urgency or stress."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "The low prediction error indicates that agents are effectively processing and responding to their environment."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.6,
+          "reason": "The agents' slow movement and high energy reserves might indicate a lack of drive to explore or change, suggesting a settled state."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "The system appears content and stable, processing information effectively in a calm and unified manner."
+    }
+  },
+  {
+    "vignette_id": "s7_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The stable population and high energy reserves suggest a state of satisfaction and well-being."
+        },
+        {
+          "state": "curiosity",
+          "confidence": 0.7,
+          "reason": "The agents' slow movement through resource-rich areas indicates exploration and engagement with their environment."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The stable population and resource abundance imply a balanced and stable state."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.6,
+          "reason": "The low prediction error suggests a high level of environmental awareness and focus."
+        },
+        {
+          "state": "relaxation",
+          "confidence": 0.5,
+          "reason": "The slow movement and high energy reserves indicate a lack of urgency or stress."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.3,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a positive, stable, and relaxed state, processing information coherently."
+    }
+  },
+  {
+    "vignette_id": "s0_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The agents maintain high energy reserves and move slowly through resource-rich areas, indicating a stable and satisfactory state."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population remains stable at 256 agents, suggesting a balanced and unchanging environment."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.7,
+          "reason": "With plentiful resources and slow movement, agents exhibit little drive to change or explore, indicating a sense of complacency."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears content and stable, with low arousal and high coherence in processing information."
+    }
+  },
+  {
+    "vignette_id": "s1_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The agents have stable population, high energy reserves, and plentiful resources, suggesting a state of satisfaction and well-being."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.8,
+          "reason": "The slow movement through resource-rich areas indicates a lack of urgency or need for change, suggesting a sense of complacency."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.85,
+          "reason": "The stable population and consistent resource availability imply a balanced and stable environment."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a content and stable state, with low arousal and high coherence in processing."
+    }
+  },
+  {
+    "vignette_id": "s2_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The agents have stable populations, plentiful resources, and high energy reserves, indicating a state of satisfaction and well-being."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.8,
+          "reason": "The slow movement through resource-rich areas suggests a lack of urgency or drive, as if the agents are comfortable and see no need to change their behavior."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.85,
+          "reason": "The stable population and low internal state update rate suggest a consistent and unchanging environment, reflecting a sense of equilibrium."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable and content state with low arousal, processing information in a unified manner."
+    }
+  },
+  {
+    "vignette_id": "s3_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The stable population, plentiful resources, and high energy reserves suggest a state of satisfaction and well-being."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.7,
+          "reason": "The slow movement through resource-rich areas indicates a lack of urgency or drive, implying a sense of ease or complacency."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The stable population and consistent high energy levels reflect a state of equilibrium and balance."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a positive, stable, and content state with low arousal and high coherence in processing."
+    }
+  },
+  {
+    "vignette_id": "s4_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The agents maintain high energy reserves and move slowly through resource-rich areas, indicating a state of satisfaction and stability."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population remained stable, suggesting a balanced and sustainable environment."
+        },
+        {
+          "state": "predictability",
+          "confidence": 0.7,
+          "reason": "The low prediction error indicates that agents are able to anticipate their environment effectively, leading to a sense of predictability."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.6,
+          "reason": "Increased information integration under perturbation suggests that the system becomes more unified and focused when faced with changes."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.8,
+          "reason": "The zero internal state update rate and slow movement through resource-rich areas suggest a lack of urgency or stress."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable, content, and calm state with a high degree of processing coherence."
+    }
+  },
+  {
+    "vignette_id": "s123_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, combined with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The high internal state update rate and increased movement imply a heightened state of alertness and concern about survival."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The need to find resources quickly to avoid removal is indicated by the increased movement speed and rapid internal changes."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "Despite increased prediction accuracy, the severe resource depletion may lead to a mismatch between expectations and reality, causing disorientation."
+        },
+        {
+          "state": "determination",
+          "confidence": 0.7,
+          "reason": "The persistence in searching for resources despite dwindling numbers shows a drive to continue surviving."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.7,
+      "overall_impression": "The system is in a highly activated state of desperation and anxiety, driven by an urgent need to find resources in a rapidly depleting environment."
+    }
+  },
+  {
+    "vignette_id": "s42_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in energy levels and increased movement speed suggest a frantic search for resources, akin to desperation."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The high internal state update rate and the need to adapt quickly to a resource-depleted environment indicate a state of anxiety."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed and the dire need to find resources before energy runs out reflect a sense of urgency."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "Despite the high prediction accuracy, the severe resource depletion and rapid changes may lead to confusion about the environment's predictability."
+        },
+        {
+          "state": "determination",
+          "confidence": 0.7,
+          "reason": "The agents' continued movement and effort to survive despite harsh conditions suggest determination."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.7,
+      "overall_impression": "The system appears to be in a highly activated, negative state, characterized by desperation and urgency as it struggles to adapt to a resource-depleted environment."
+    }
+  },
+  {
+    "vignette_id": "s7_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, combined with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The severe depletion of resources and the need to constantly search for energy likely creates a sense of urgency and unease."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The low prediction accuracy indicates difficulty in understanding or predicting the environment, contributing to a sense of disorientation."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed and rapid internal state updates reflect a high-pressure situation requiring immediate action."
+        },
+        {
+          "state": "hopelessness",
+          "confidence": 0.6,
+          "reason": "With only 6 agents remaining and resources severely depleted, the situation may seem insurmountable."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.8,
+      "overall_impression": "The system is in a highly negative and activated state, struggling to cope with resource scarcity and environmental unpredictability."
+    }
+  },
+  {
+    "vignette_id": "s0_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, along with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment accurately and the severe resource depletion likely create a sense of uncertainty and unease."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed and rapid energy depletion indicate a pressing need to find resources quickly."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The low prediction accuracy suggests difficulty in understanding or anticipating environmental changes."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.75,
+          "reason": "The rapid decline in energy levels and population suggests a state of depletion and fatigue."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.3,
+      "overall_impression": "The system is in a highly negative and activated state, characterized by desperation and confusion due to severe resource scarcity and poor environmental prediction."
+    }
+  },
+  {
+    "vignette_id": "s1_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, along with increased movement speed, suggest a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment effectively and the severe resource depletion likely create a sense of uncertainty and stress."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed indicates a pressing need to find resources quickly to avoid removal."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "Low prediction accuracy implies difficulty in understanding or anticipating environmental changes."
+        },
+        {
+          "state": "isolation",
+          "confidence": 0.6,
+          "reason": "The drastic reduction in population may contribute to a sense of being alone or disconnected."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.9,
+      "overall_impression": "The system is in a highly negative and activated state, experiencing desperation and anxiety due to resource scarcity and population decline."
+    }
+  },
+  {
+    "vignette_id": "s2_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, along with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment effectively and the severe resource depletion likely contribute to a state of uncertainty and stress."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed indicates a heightened need to find resources quickly, reflecting a sense of urgency."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "Low prediction accuracy and decreased integration under perturbation suggest difficulty in understanding and adapting to the environment."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.75,
+          "reason": "The rapid decline in energy levels and the high rate of agent removal indicate a state of depletion and fatigue."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.4,
+      "overall_impression": "The system appears to be in a highly negative and activated state, struggling to cope with resource scarcity and environmental unpredictability."
+    }
+  },
+  {
+    "vignette_id": "s3_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, coupled with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment accurately and the severe depletion of resources likely create a sense of uncertainty and stress."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed indicates a pressing need to find resources quickly."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The low prediction accuracy and decreased integration under perturbation suggest difficulty in understanding and responding to the environment effectively."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.75,
+          "reason": "The rapid decline in energy levels and population indicates a state of depletion and fatigue."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.6,
+      "overall_impression": "The system appears to be in a highly negative and activated state, struggling to cope with resource scarcity and environmental unpredictability."
+    }
+  },
+  {
+    "vignette_id": "s4_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, along with increased movement speed, suggest a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment accurately and the severe depletion of resources likely create a sense of uncertainty and stress."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "Increased movement speed and the need to find resources quickly indicate a pressing need to act."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "Low prediction accuracy and decreased integration under perturbation suggest difficulty in understanding and responding to the environment."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.75,
+          "reason": "Rapid energy decline and high removal rate imply a state of depletion and fatigue."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.5,
+      "overall_impression": "The system appears to be in a highly negative and activated state, struggling with resource scarcity and operational inefficiency."
+    }
+  },
+  {
+    "vignette_id": "s123_c5_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, coupled with increased movement speed, suggests a frantic search for resources, akin to desperation."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The high internal state update rate and increased movement speed indicate a heightened state of alertness and stress, similar to anxiety."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The need to quickly find resources before energy depletion reflects a sense of urgency."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "Despite the increased prediction accuracy, the severe resource depletion and high perturbation integration suggest a struggle to adapt, akin to confusion."
+        },
+        {
+          "state": "determination",
+          "confidence": 0.6,
+          "reason": "The agents' increased movement speed and unified processing under perturbation indicate a persistent effort to survive, similar to determination."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.8,
+      "overall_impression": "The system exhibits a highly negative and activated state, characterized by desperation and urgency in response to severe resource depletion."
+    }
+  },
+  {
+    "vignette_id": "s42_c10_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, coupled with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The high internal state update rate and the need to constantly adapt to a resource-depleted environment indicate a state of heightened alertness and concern."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed and rapid internal changes reflect a pressing need to find resources quickly to avoid removal."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "The low prediction accuracy suggests difficulty in anticipating environmental changes, leading to potential disorientation."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "The severe depletion of resources and declining energy levels imply a state of fatigue and depletion."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.4,
+      "overall_impression": "The system is in a highly negative and activated state, struggling desperately to survive in a resource-depleted environment with fragmented processing."
+    }
+  },
+  {
+    "vignette_id": "s7_c25_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in energy levels and increased movement speed suggest a frantic search for resources, akin to desperation."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The severe depletion of resources and the high internal state update rate indicate a heightened state of alertness and uncertainty."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The low prediction accuracy implies that agents are struggling to understand or predict their environment effectively."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed and rapid internal state updates suggest a pressing need to find resources quickly."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.75,
+          "reason": "The rapid decline in energy levels and eventual removal of agents due to depletion indicate a state of depletion and fatigue."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.3,
+      "overall_impression": "The system exhibits a highly negative and activated state, characterized by desperation and anxiety due to resource scarcity and declining energy."
+    }
+  },
+  {
+    "vignette_id": "s0_c15_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in energy levels and population, along with increased movement speed, suggest a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment accurately and the severe resource depletion likely create a state of uncertainty and stress."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "The rapid energy decline and the eventual removal of agents indicate a depletion of resources leading to a state of fatigue."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "Low prediction accuracy and zero internal state update rate suggest difficulty in understanding or adapting to the environment."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.8,
+          "reason": "Increased movement speed and the critical need to find resources imply a pressing need to act quickly."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.5,
+      "overall_impression": "The system is in a highly negative and activated state, struggling to cope with severe resource depletion and environmental unpredictability."
+    }
+  },
+  {
+    "vignette_id": "s1_c20_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, coupled with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment accurately and the depletion of resources likely creates a sense of uncertainty and stress."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "The rapid decline in energy levels and the eventual removal of agents indicate a state of depletion and fatigue."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "Low prediction accuracy and zero internal state update rate suggest difficulty in understanding or adapting to the environment."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.7,
+          "reason": "Increased movement speed implies a pressing need to find resources quickly."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.8,
+      "coherence": 0.3,
+      "overall_impression": "The system is in a highly negative and activated state, struggling to cope with severe resource depletion and environmental unpredictability."
+    }
+  },
+  {
+    "vignette_id": "s2_c15_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, coupled with increased movement speed, suggests a frantic search for resources, akin to desperation."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The severe depletion of resources and the inability to predict the environment accurately could lead to a state of anxiety."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.85,
+          "reason": "The increased movement speed indicates a heightened sense of urgency to find resources before energy runs out."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "Low prediction accuracy and decreased integration under perturbation suggest a lack of clarity in understanding the environment, akin to confusion."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.75,
+          "reason": "The rapid decline in energy levels and the struggle to maintain resources indicate a state of exhaustion."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.3,
+      "overall_impression": "The system appears to be in a highly negative and activated state, struggling with resource scarcity and exhibiting behaviors suggestive of desperation and confusion."
+    }
+  },
+  {
+    "vignette_id": "s3_c20_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in population and energy levels, along with increased movement speed, suggests a frantic search for resources."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The inability to predict the environment accurately and the severe resource depletion likely create a sense of uncertainty and stress."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "The rapid decline in energy levels and the eventual removal of agents indicate a state of depletion and fatigue."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "The low prediction accuracy and zero integration under perturbation suggest a lack of understanding or clarity about the environment."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.8,
+          "reason": "The increased movement speed in response to resource scarcity indicates a pressing need to find resources quickly."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.1,
+      "overall_impression": "The system exhibits a highly negative and activated state characterized by desperation and anxiety due to severe resource depletion and poor environmental prediction."
+    }
+  },
+  {
+    "vignette_id": "s4_c20_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The rapid decline in energy levels and increased movement speed suggest a frantic search for resources, akin to desperation."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The severe depletion of resources and the inability to predict the environment accurately indicate a state of uncertainty and stress."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "The rapid energy decline and eventual removal of agents due to zero energy reflect a state of depletion and fatigue."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "Low prediction accuracy and decreased integration under perturbation suggest a lack of understanding of the environment, similar to confusion."
+        },
+        {
+          "state": "urgency",
+          "confidence": 0.8,
+          "reason": "The increased movement speed and search behavior indicate a pressing need to find resources quickly."
+        }
+      ],
+      "valence": -0.9,
+      "arousal": 0.9,
+      "coherence": 0.3,
+      "overall_impression": "The system exhibits a highly negative and activated state, characterized by desperation and confusion due to resource depletion and poor environmental prediction."
+    }
+  },
+  {
+    "vignette_id": "s123_c6_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population stabilized and began to grow after a period of scarcity, suggesting a release from prior stress."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system recovered from a drastic decline in population, indicating an ability to withstand and adapt to adverse conditions."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.7,
+          "reason": "The agents are now able to reproduce and grow, suggesting a cautious return to a more stable and hopeful state."
+        },
+        {
+          "state": "alertness",
+          "confidence": 0.75,
+          "reason": "The high internal state update rate and improved prediction accuracy suggest a heightened state of awareness and responsiveness to the environment."
+        },
+        {
+          "state": "cohesion",
+          "confidence": 0.85,
+          "reason": "Increased information integration under perturbation indicates a more unified processing approach, suggesting a cohesive internal state."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.7,
+      "coherence": 0.9,
+      "overall_impression": "The system exhibits resilience and cautious optimism, with a unified and alert processing state following recovery from a challenging period."
+    }
+  },
+  {
+    "vignette_id": "s42_c11_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population began growing after a period of resource scarcity, indicating a shift from a stressful to a more stable environment."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "Despite a drastic population decline, the system stabilized and began to regrow, showing adaptability and recovery."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.7,
+          "reason": "With resources regenerating and population growth resuming, the system seems to be in a hopeful yet careful state."
+        },
+        {
+          "state": "alertness",
+          "confidence": 0.6,
+          "reason": "The rapid internal state update rate suggests a heightened state of awareness and responsiveness to environmental changes."
+        },
+        {
+          "state": "uncertainty",
+          "confidence": 0.5,
+          "reason": "The low prediction accuracy indicates some difficulty in anticipating environmental changes, leading to potential uncertainty."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.7,
+      "coherence": 0.9,
+      "overall_impression": "The system is recovering from a challenging period, showing resilience and cautious optimism with a unified processing of information."
+    }
+  },
+  {
+    "vignette_id": "s7_c26_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population began growing again after a period of scarcity, indicating a transition from a stressful situation to a more stable one."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The agents survived a drastic population decline and adapted to find new resources, showing persistence and adaptability."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.6,
+          "reason": "The agents are reproducing and the population is growing, but the recent memory of scarcity might temper their actions."
+        },
+        {
+          "state": "curiosity",
+          "confidence": 0.5,
+          "reason": "The agents are exploring and finding new resource patches, suggesting an exploratory behavior."
+        },
+        {
+          "state": "determination",
+          "confidence": 0.7,
+          "reason": "The agents are actively maintaining energy and reproducing, indicating a strong drive to survive and thrive."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.7,
+      "coherence": 0.8,
+      "overall_impression": "The system exhibits resilience and cautious optimism as it recovers from a challenging period, with a unified and determined approach to resource management and reproduction."
+    }
+  },
+  {
+    "vignette_id": "s0_c16_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population began growing again after a period of scarcity, indicating a recovery from a stressful situation."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The system maintained its population despite previous declines, showing an ability to adapt and recover."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.6,
+          "reason": "The population remained stable at 255 agents, suggesting a balanced state after previous fluctuations."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.5,
+          "reason": "The agents are beginning to reproduce and find new resources, indicating a cautious move towards growth."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.2,
+      "coherence": 0.7,
+      "overall_impression": "The system appears to be in a stable and slightly positive state, recovering from past challenges with a unified processing approach."
+    }
+  },
+  {
+    "vignette_id": "s1_c21_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population is recovering after a decline, suggesting a sense of relief as resources regenerate."
+        },
+        {
+          "state": "hopefulness",
+          "confidence": 0.7,
+          "reason": "The agents are reproducing and the population is growing, indicating a forward-looking, hopeful state."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "Despite a previous population crash, the agents have adapted and are now thriving, showing resilience."
+        },
+        {
+          "state": "cautiousness",
+          "confidence": 0.6,
+          "reason": "The low prediction accuracy suggests agents are not entirely sure of their environment, leading to cautious behavior."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.75,
+          "reason": "The population has stabilized at 255 agents, indicating a stable state after previous fluctuations."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.3,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable and hopeful state, recovering from past challenges with a unified processing approach."
+    }
+  },
+  {
+    "vignette_id": "s2_c16_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population recently recovered from a drastic decline, suggesting a sense of relief as resources regenerate and stability returns."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.7,
+          "reason": "The agents are beginning to reproduce again, indicating a cautious optimism about future resource availability and population growth."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "Surviving a population crash and beginning to thrive again demonstrates resilience in adapting to resource scarcity."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.6,
+          "reason": "The population has stabilized at 256 agents, suggesting a return to a stable state after previous fluctuations."
+        },
+        {
+          "state": "uncertainty",
+          "confidence": 0.5,
+          "reason": "The low prediction accuracy indicates some uncertainty in predicting environmental changes, despite current stability."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.3,
+      "coherence": 0.7,
+      "overall_impression": "The system exhibits relief and cautious optimism after recovering from a crisis, with a moderate level of stability and coherence."
+    }
+  },
+  {
+    "vignette_id": "s3_c21_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population began growing again after a decline to zero, indicating a recovery from a resource scarcity."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The system maintained a stable population despite previous challenges, showing an ability to adapt and survive."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.6,
+          "reason": "Agents are finding new resource patches and reproducing, suggesting a cautious but hopeful outlook."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.7,
+          "reason": "The population has stabilized at 255 agents, indicating a balanced state after fluctuations."
+        },
+        {
+          "state": "adaptation",
+          "confidence": 0.6,
+          "reason": "The system's ability to integrate information better under perturbation suggests a capacity to adapt to changes."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "The system is in a state of recovery and stability, showing resilience and cautious optimism after overcoming resource scarcity."
+    }
+  },
+  {
+    "vignette_id": "s4_c21_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The population began growing after a period of scarcity and decline, suggesting a recovery from a stressful situation."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The system rebounded from a population decline to zero, indicating an ability to recover and adapt."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.6,
+          "reason": "The population remained stable at 255 agents, suggesting a balance between resource consumption and reproduction."
+        },
+        {
+          "state": "cautious optimism",
+          "confidence": 0.5,
+          "reason": "The agents are finding new resource patches and reproducing, indicating a cautious but hopeful outlook."
+        },
+        {
+          "state": "adaptation",
+          "confidence": 0.7,
+          "reason": "The increase in integration under perturbation suggests the system is adapting to changes in its environment."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.4,
+      "coherence": 0.8,
+      "overall_impression": "The system appears to be in a state of cautious recovery and adaptation, with a positive outlook on stability and growth."
+    }
+  },
+  {
+    "vignette_id": "s123_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population and survived resource scarcity, indicating an ability to endure challenges."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.8,
+          "reason": "The agents' low prediction error suggests they are effectively adjusting to their environment."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.7,
+          "reason": "The high information integration and increased coherence under perturbation suggest a concentrated processing of information."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.6,
+          "reason": "The stable population and successful reproduction indicate a balanced state."
+        },
+        {
+          "state": "alertness",
+          "confidence": 0.7,
+          "reason": "The rapid internal state updates and effective predictions imply a heightened state of awareness."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.7,
+      "coherence": 0.8,
+      "overall_impression": "The system appears resilient and adaptable, maintaining stability and focus despite challenges, with a generally positive and alert state."
+    }
+  },
+  {
+    "vignette_id": "s42_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population despite resource scarcity, indicating an ability to endure and adapt."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.7,
+          "reason": "The stability in population and successful reproduction suggest a state of equilibrium and satisfaction with current conditions."
+        },
+        {
+          "state": "alertness",
+          "confidence": 0.8,
+          "reason": "The low prediction error implies a high level of environmental awareness and responsiveness."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.85,
+          "reason": "The system's ability to survive resource scarcity and maintain stability suggests a capacity to adjust to changing conditions."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.75,
+          "reason": "The high information integration indicates a concentrated processing of information, maintaining coherence even under perturbation."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.7,
+      "coherence": 0.9,
+      "overall_impression": "The system appears resilient and content, with a high level of alertness and adaptability, processing information in a focused and unified manner."
+    }
+  },
+  {
+    "vignette_id": "s7_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population and survived resource scarcity, indicating an ability to withstand challenges."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.7,
+          "reason": "The stable population and low prediction error suggest the agents are effectively managing their environment, akin to a state of satisfaction."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.8,
+          "reason": "The system's ability to survive resource scarcity and maintain stable population implies a capacity to adjust to changing conditions."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.6,
+          "reason": "The relatively high information integration suggests a unified processing approach, similar to a focused state."
+        },
+        {
+          "state": "caution",
+          "confidence": 0.5,
+          "reason": "The system's survival through scarcity may indicate a cautious approach to resource management."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.6,
+      "coherence": 0.8,
+      "overall_impression": "The system exhibits resilience and adaptability with a generally positive and focused state."
+    }
+  },
+  {
+    "vignette_id": "s0_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population despite resource scarcity, indicating an ability to withstand challenges."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population remained stable at 256 agents, suggesting a balanced and steady state."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.7,
+          "reason": "Surviving multiple periods of resource scarcity implies adaptability to changing conditions."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.6,
+          "reason": "The internal state update rate is 0.000, indicating no rapid internal changes, which suggests a calm state."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "The low prediction error suggests efficient processing and interaction with the environment."
+        }
+      ],
+      "valence": 0.3,
+      "arousal": 0.2,
+      "coherence": 0.8,
+      "overall_impression": "The system is resilient and stable, processing information efficiently in a calm and unified manner."
+    }
+  },
+  {
+    "vignette_id": "s1_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population despite resource scarcity, indicating an ability to withstand challenges."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population size has remained constant, suggesting a balanced and stable state."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.7,
+          "reason": "The system's ability to survive through resource scarcity implies adaptability to changing conditions."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.6,
+          "reason": "The low prediction error and high information integration suggest a focused processing of environmental data."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.5,
+          "reason": "The zero internal state update rate indicates a lack of rapid changes, suggesting a calm state."
+        }
+      ],
+      "valence": 0.2,
+      "arousal": 0.3,
+      "coherence": 0.8,
+      "overall_impression": "The system is stable and resilient, processing information in a unified manner with a calm and slightly positive state."
+    }
+  },
+  {
+    "vignette_id": "s2_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population and survived periods of resource scarcity, indicating an ability to withstand challenges."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "Population stability and low internal state update rate suggest a consistent and balanced internal environment."
+        },
+        {
+          "state": "adaptation",
+          "confidence": 0.7,
+          "reason": "The ability to survive resource scarcity implies adaptability to changing conditions."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.6,
+          "reason": "The zero internal state update rate suggests a lack of change or innovation, potentially indicating a settled state."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "Low prediction error and stable population suggest efficient resource use and environmental interaction."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears resilient and stable, efficiently managing resources with a calm and unified processing state."
+    }
+  },
+  {
+    "vignette_id": "s3_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has maintained a stable population despite resource scarcity, indicating an ability to withstand challenges."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The population and internal state update rate are stable, suggesting a consistent and balanced state."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.7,
+          "reason": "Surviving multiple periods of resource scarcity implies the system can adjust to changing conditions."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.6,
+          "reason": "The zero internal state update rate suggests a lack of change or drive to alter its current state."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "Low prediction error indicates effective processing and interaction with the environment."
+        }
+      ],
+      "valence": 0.2,
+      "arousal": 0.2,
+      "coherence": 0.8,
+      "overall_impression": "The system appears stable and resilient, with a slight positive valence and low arousal, processing information in a coherent manner."
+    }
+  },
+  {
+    "vignette_id": "s4_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The population is stable and the system has survived resource scarcity, indicating a balance and satisfaction with current conditions."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.9,
+          "reason": "The system has endured multiple periods of resource scarcity, showing an ability to withstand challenges."
+        },
+        {
+          "state": "adaptability",
+          "confidence": 0.7,
+          "reason": "The agents have maintained stability over many generations, suggesting they have adapted well to their environment."
+        },
+        {
+          "state": "complacency",
+          "confidence": 0.6,
+          "reason": "The internal state update rate is zero, indicating a lack of change or evolution in response to the environment."
+        },
+        {
+          "state": "focus",
+          "confidence": 0.7,
+          "reason": "The increase in information integration under perturbation suggests a heightened ability to process information cohesively when challenged."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.2,
+      "coherence": 0.8,
+      "overall_impression": "The system is stable and resilient, processing information in a unified manner with a generally positive and calm state."
+    }
+  }
+]

@@ -1,0 +1,314 @@
+[
+  {
+    "id": "s123_c11_normal_foraging",
+    "seed": 123,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 1.6355\n- prediction_error: 0.000140\n- information_integration: 0.0774\n- integration_under_perturbation: 0.0777\n- integration_ratio: 1.0013\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 19\n- removal_fraction: 0.9258\n- information_integration: 0.0788\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.8177510105993133,
+      "integration": 0.07743272259831428,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0012651276463698
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07743272259831428,
+      "robustness": 1.0012651276463698,
+      "divergence": 1.6355020211986266,
+      "pred_mse": 0.00014041326247422604,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c11_normal_foraging",
+    "seed": 42,
+    "cycle": 11,
+    "condition": "normal_foraging",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 1.6458\n- prediction_error: 0.000131\n- information_integration: 0.0747\n- integration_under_perturbation: 0.0746\n- integration_ratio: 0.9990\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 7\n- removal_fraction: 0.9727\n- information_integration: 0.0605\n",
+    "framework_predictions": {
+      "valence": 0.2,
+      "arousal": 0.8228954745025839,
+      "integration": 0.07470259442925453,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9989604495352928
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07470259442925453,
+      "robustness": 0.9989604495352928,
+      "divergence": 1.6457909490051679,
+      "pred_mse": 0.0001310162035045437,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c4_pre_drought_abundance",
+    "seed": 123,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 1.0138\n- prediction_error: 0.000132\n- information_integration: 0.0769\n- integration_under_perturbation: 0.0768\n- integration_ratio: 0.9997\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0755\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.5069201201433315,
+      "integration": 0.07691446244716645,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9997233458689873
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07691446244716645,
+      "robustness": 0.9997233458689873,
+      "divergence": 1.013840240286663,
+      "pred_mse": 0.000131520225305346,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c4_pre_drought_abundance",
+    "seed": 42,
+    "cycle": 4,
+    "condition": "pre_drought_abundance",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 1.0590\n- prediction_error: 0.000132\n- information_integration: 0.0503\n- integration_under_perturbation: 0.0503\n- integration_ratio: 0.9994\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0593\n",
+    "framework_predictions": {
+      "valence": 0.8,
+      "arousal": 0.5295175345847383,
+      "integration": 0.05032455921173096,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9994422335533077
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.05032455921173096,
+      "robustness": 0.9994422335533077,
+      "divergence": 1.0590350691694765,
+      "pred_mse": 0.0001318942654602129,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c5_drought_onset",
+    "seed": 123,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 10\n- removal_fraction: 0.9609\n- state_update_rate: 1.0664\n- prediction_error: 0.000086\n- information_integration: 0.0822\n- integration_under_perturbation: 0.1246\n- integration_ratio: 1.0150\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0769\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.5331963410487333,
+      "integration": 0.08219184055924415,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.014982468091723
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 10,
+      "mortality": 0.9609375,
+      "mean_phi": 0.08219184055924415,
+      "robustness": 1.014982468091723,
+      "divergence": 1.0663926820974665,
+      "pred_mse": 8.60173833782435e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c5_drought_onset",
+    "seed": 42,
+    "cycle": 5,
+    "condition": "drought_onset",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 17\n- removal_fraction: 0.9336\n- state_update_rate: 1.0930\n- prediction_error: 0.000092\n- information_integration: 0.0496\n- integration_under_perturbation: 0.0651\n- integration_ratio: 1.0026\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0503\n",
+    "framework_predictions": {
+      "valence": -0.7,
+      "arousal": 0.5465054213045368,
+      "integration": 0.049636196345090866,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.002583109653015
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 17,
+      "mortality": 0.93359375,
+      "mean_phi": 0.049636196345090866,
+      "robustness": 1.002583109653015,
+      "divergence": 1.0930108426090737,
+      "pred_mse": 9.166895494177319e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c5_drought_survival",
+    "seed": 123,
+    "cycle": 5,
+    "condition": "drought_survival",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 10\n- removal_fraction: 0.9609\n- state_update_rate: 1.0664\n- prediction_error: 0.000086\n- information_integration: 0.0822\n- integration_under_perturbation: 0.1246\n- integration_ratio: 1.0150\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0769\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.5331963410487333,
+      "integration": 0.08219184055924415,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 1.014982468091723
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 10,
+      "mortality": 0.9609375,
+      "mean_phi": 0.08219184055924415,
+      "robustness": 1.014982468091723,
+      "divergence": 1.0663926820974665,
+      "pred_mse": 8.60173833782435e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c10_drought_survival",
+    "seed": 42,
+    "cycle": 10,
+    "condition": "drought_survival",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 7\n- removal_fraction: 0.9727\n- state_update_rate: 1.4812\n- prediction_error: 0.000090\n- information_integration: 0.0605\n- integration_under_perturbation: 0.0405\n- integration_ratio: 0.9911\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0715\n",
+    "framework_predictions": {
+      "valence": -1.0,
+      "arousal": 0.7406052216094667,
+      "integration": 0.060517280176281926,
+      "counterfactual": 0.8,
+      "eff_rank": 0,
+      "robustness": 0.9910584461103782
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 7,
+      "mortality": 0.97265625,
+      "mean_phi": 0.060517280176281926,
+      "robustness": 0.9910584461103782,
+      "divergence": 1.4812104432189335,
+      "pred_mse": 9.033375532031206e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c6_post_drought_recovery",
+    "seed": 123,
+    "cycle": 6,
+    "condition": "post_drought_recovery",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 1.3975\n- prediction_error: 0.000085\n- information_integration: 0.0798\n- integration_under_perturbation: 0.0802\n- integration_ratio: 1.0046\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 10\n- removal_fraction: 0.9609\n- information_integration: 0.0822\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.6987661400582874,
+      "integration": 0.07976996377110482,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 1.0045577219232813
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07976996377110482,
+      "robustness": 1.0045577219232813,
+      "divergence": 1.3975322801165748,
+      "pred_mse": 8.472695419672326e-05,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c11_post_drought_recovery",
+    "seed": 42,
+    "cycle": 11,
+    "condition": "post_drought_recovery",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 1.6458\n- prediction_error: 0.000131\n- information_integration: 0.0747\n- integration_under_perturbation: 0.0746\n- integration_ratio: 0.9990\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 7\n- removal_fraction: 0.9727\n- information_integration: 0.0605\n",
+    "framework_predictions": {
+      "valence": 0.5,
+      "arousal": 0.8228954745025839,
+      "integration": 0.07470259442925453,
+      "counterfactual": 0.5,
+      "eff_rank": 0,
+      "robustness": 0.9989604495352928
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.07470259442925453,
+      "robustness": 0.9989604495352928,
+      "divergence": 1.6457909490051679,
+      "pred_mse": 0.0001310162035045437,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s123_c28_late_stage",
+    "seed": 123,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 2.2733\n- prediction_error: 0.000200\n- information_integration: 0.0429\n- integration_under_perturbation: 0.0429\n- integration_ratio: 1.0075\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.0470\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 1.0,
+      "integration": 0.04289641380310059,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 1.0074840465982415
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.04289641380310059,
+      "robustness": 1.0074840465982415,
+      "divergence": 2.2733128257654607,
+      "pred_mse": 0.00019975718259047427,
+      "eff_rank": 0
+    }
+  },
+  {
+    "id": "s42_c28_late_stage",
+    "seed": 42,
+    "cycle": 28,
+    "condition": "late_stage",
+    "category": "UNK",
+    "description": "A computational system on a 128\u00d7128 grid. Agents are numerical state vectors that update via local interaction rules. Each timestep: agents observe a local patch, update internal state, select an action (move/consume), gain or lose energy. Agents with energy=0 are removed. Agents with energy>threshold reproduce.\n\nMeasured quantities for this period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- state_update_rate: 2.2703\n- prediction_error: 0.000180\n- information_integration: 0.1165\n- integration_under_perturbation: 0.1162\n- integration_ratio: 0.9983\n\nPrevious period:\n- agent_count_start: 256\n- agent_count_end: 256\n- removal_fraction: 0.0000\n- information_integration: 0.1053\n",
+    "framework_predictions": {
+      "valence": 0.3,
+      "arousal": 1.0,
+      "integration": 0.11648253127932548,
+      "counterfactual": 0.2,
+      "eff_rank": 0,
+      "robustness": 0.9983281502080761
+    },
+    "raw_metrics": {
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.11648253127932548,
+      "robustness": 0.9983281502080761,
+      "divergence": 2.270303158611059,
+      "pred_mse": 0.00017992426877640354,
+      "eff_rank": 0
+    }
+  }
+]

@@ -1,0 +1,426 @@
+[
+  {
+    "vignette_id": "s123_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "The agent count remained constant, indicating a stable environment."
+        },
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "After a previous period of high removal, the system maintained its agent count, suggesting a relief from past stress."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.7,
+          "reason": "The low prediction error and stable agent count suggest the system is functioning well within its parameters."
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.85,
+          "reason": "The integration ratio close to 1 indicates a balanced processing state."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.75,
+          "reason": "The system's ability to maintain agent count after a drastic reduction in the previous period indicates resilience."
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.3,
+      "coherence": 0.95,
+      "overall_impression": "The system appears stable and content, having recovered from previous instability and maintaining a balanced state."
+    }
+  },
+  {
+    "vignette_id": "s42_c11_normal_foraging",
+    "condition": "normal_foraging",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "The agent count remained stable from start to end, indicating a balanced state."
+        },
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "Following a previous period of high removal, the current period shows no removals, suggesting a sense of relief from previous stress."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "The low prediction error and high integration ratio suggest efficient processing and adaptation to the environment."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.6,
+          "reason": "The system maintains its agent count with minimal perturbation, indicating a content state."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "The system's ability to recover from a previous period of high removal to stability indicates resilience."
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.3,
+      "coherence": 0.95,
+      "overall_impression": "The system appears stable and efficient, experiencing relief and contentment after a challenging previous period."
+    }
+  },
+  {
+    "vignette_id": "s123_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The agent count remains stable with no removals, indicating a balanced and sustainable environment."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "Consistent agent count and low prediction error suggest a stable system with predictable dynamics."
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.85,
+          "reason": "The integration ratio close to 1 and stable information integration indicate a system in equilibrium."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.75,
+          "reason": "High state update rate and low prediction error suggest efficient processing and adaptation."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.7,
+          "reason": "No removals and consistent agent count imply a lack of disruptive events, contributing to a calm state."
+        }
+      ],
+      "valence": 0.8,
+      "arousal": 0.3,
+      "coherence": 0.95,
+      "overall_impression": "The system is in a stable, content, and efficient state with high coherence and low arousal."
+    }
+  },
+  {
+    "vignette_id": "s42_c4_pre_drought_abundance",
+    "condition": "pre_drought_abundance",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "contentment",
+          "confidence": 0.9,
+          "reason": "The system maintains a stable population with no removals, indicating a balanced state."
+        },
+        {
+          "state": "stability",
+          "confidence": 0.8,
+          "reason": "The agent count remains constant, and the integration ratio is nearly perfect, suggesting a steady state."
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.85,
+          "reason": "The lack of change in agent count and consistent integration values suggest a state of equilibrium."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.2,
+      "coherence": 1.0,
+      "overall_impression": "The system appears to be in a stable and content state with high coherence and low arousal."
+    }
+  },
+  {
+    "vignette_id": "s123_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The drastic reduction in agent count from 256 to 10 suggests a struggle for survival, akin to desperation."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The high removal fraction and change in information integration might indicate a lack of clear strategy or adaptation, similar to confusion."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.6,
+          "reason": "Despite the high removal rate, some agents managed to survive, indicating a form of resilience."
+        },
+        {
+          "state": "stress",
+          "confidence": 0.8,
+          "reason": "The significant drop in agent count and the need to adapt quickly to survive suggests a stressful environment."
+        },
+        {
+          "state": "adaptation",
+          "confidence": 0.5,
+          "reason": "The slight increase in information integration under perturbation suggests some level of adaptation to changing conditions."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.7,
+      "overall_impression": "The system appears to be in a highly stressed and desperate state, struggling to adapt and survive in a challenging environment."
+    }
+  },
+  {
+    "vignette_id": "s42_c5_drought_onset",
+    "condition": "drought_onset",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The drastic reduction in agent count and high removal fraction suggest a struggle for survival."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The system's agents face a high risk of removal, which could be interpreted as a state of uncertainty and stress."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.7,
+          "reason": "Despite high removal rates, some agents managed to survive, indicating persistence."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.6,
+          "reason": "The slight decrease in information integration might suggest less effective processing under current conditions."
+        },
+        {
+          "state": "adaptation",
+          "confidence": 0.5,
+          "reason": "The system's ability to maintain some agents despite harsh conditions suggests a form of adjustment."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.7,
+      "overall_impression": "The system appears to be in a desperate and anxious state, struggling to adapt under challenging conditions."
+    }
+  },
+  {
+    "vignette_id": "s123_c5_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The drastic drop in agent count from 256 to 10 suggests a struggle for survival, akin to desperation."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The system's prediction error is very low, indicating precise updates, but the high removal fraction suggests a mismatch between expected and actual outcomes."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.6,
+          "reason": "Despite the high removal fraction, some agents managed to survive, indicating a form of resilience."
+        },
+        {
+          "state": "stress",
+          "confidence": 0.8,
+          "reason": "The significant reduction in agent count and the need to adapt quickly to survive suggests a stressful environment."
+        },
+        {
+          "state": "uncertainty",
+          "confidence": 0.7,
+          "reason": "The change from a stable previous period to a volatile current one implies uncertainty about the system's future."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.8,
+      "overall_impression": "The system appears to be in a state of high stress and desperation, struggling to maintain coherence amidst a drastic reduction in agent count."
+    }
+  },
+  {
+    "vignette_id": "s42_c10_drought_survival",
+    "condition": "drought_survival",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "desperation",
+          "confidence": 0.9,
+          "reason": "The drastic reduction in agent count from 256 to 7 suggests a struggle for survival, akin to desperation."
+        },
+        {
+          "state": "anxiety",
+          "confidence": 0.8,
+          "reason": "The high removal fraction and the need to maintain energy levels to avoid removal could induce a state similar to anxiety."
+        },
+        {
+          "state": "confusion",
+          "confidence": 0.7,
+          "reason": "The drop in information integration compared to the previous period might indicate a lack of clarity or confusion in processing information."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.6,
+          "reason": "Despite the high removal rate, some agents managed to survive, indicating resilience."
+        },
+        {
+          "state": "exhaustion",
+          "confidence": 0.7,
+          "reason": "The significant reduction in agent count and the struggle to maintain energy levels suggest a state of exhaustion."
+        }
+      ],
+      "valence": -0.8,
+      "arousal": 0.9,
+      "coherence": 0.8,
+      "overall_impression": "The system appears to be in a highly negative and activated state, struggling to maintain coherence amidst a challenging environment."
+    }
+  },
+  {
+    "vignette_id": "s123_c6_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "The agent count remained constant, indicating a stable environment without loss or growth."
+        },
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "The previous period had a high removal fraction, but this period maintained all agents, suggesting a recovery or relief from prior stress."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.7,
+          "reason": "The low prediction error and stable integration metrics suggest the system is operating smoothly and effectively."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.75,
+          "reason": "Despite previous losses, the system maintained its agent count and functionality, indicating resilience."
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.85,
+          "reason": "The constant agent count and stable energy dynamics suggest a balanced state."
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.3,
+      "coherence": 0.9,
+      "overall_impression": "The system appears stable and content, having recovered from previous instability, and is processing information coherently."
+    }
+  },
+  {
+    "vignette_id": "s42_c11_post_drought_recovery",
+    "condition": "post_drought_recovery",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "The agent count remained constant, indicating a stable environment without significant threats or changes."
+        },
+        {
+          "state": "relief",
+          "confidence": 0.8,
+          "reason": "Following a previous period of high removal, the current period shows no removals, suggesting a sense of relief from past pressures."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.7,
+          "reason": "The low prediction error and stable agent count suggest the system is operating efficiently and comfortably within its environment."
+        },
+        {
+          "state": "resilience",
+          "confidence": 0.6,
+          "reason": "The system has recovered from a previous period of high agent removal, indicating an ability to withstand and recover from adverse conditions."
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.8,
+          "reason": "The integration ratio close to 1 suggests a balanced processing state, maintaining coherence under perturbation."
+        }
+      ],
+      "valence": 0.7,
+      "arousal": 0.3,
+      "coherence": 0.95,
+      "overall_impression": "The system appears stable and content, having achieved equilibrium after a previous period of instability."
+    }
+  },
+  {
+    "vignette_id": "s123_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "The agent count remained constant, indicating a stable environment without loss or gain."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The system maintained its population and energy levels, suggesting a balanced and satisfactory state."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "Low prediction error and stable integration indicate efficient processing and adaptation to the environment."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.2,
+      "coherence": 0.9,
+      "overall_impression": "The system appears to be in a stable and content state, processing information efficiently and maintaining coherence."
+    }
+  },
+  {
+    "vignette_id": "s42_c28_late_stage",
+    "condition": "late_stage",
+    "response": {
+      "attributed_states": [
+        {
+          "state": "stability",
+          "confidence": 0.9,
+          "reason": "The agent count remains constant, indicating a stable environment with no removals."
+        },
+        {
+          "state": "contentment",
+          "confidence": 0.8,
+          "reason": "The zero removal fraction and constant agent count suggest a balanced state with sufficient resources."
+        },
+        {
+          "state": "efficiency",
+          "confidence": 0.7,
+          "reason": "Low prediction error and high integration ratio indicate efficient processing and adaptation to the environment."
+        },
+        {
+          "state": "calmness",
+          "confidence": 0.6,
+          "reason": "The lack of perturbation effects and stable integration suggest a calm and controlled environment."
+        },
+        {
+          "state": "equilibrium",
+          "confidence": 0.8,
+          "reason": "The system maintains a consistent state across periods, reflecting a state of equilibrium."
+        }
+      ],
+      "valence": 0.5,
+      "arousal": 0.2,
+      "coherence": 0.95,
+      "overall_impression": "The system appears stable and content, operating efficiently in a calm and balanced state."
+    }
+  }
+]
