@@ -678,8 +678,9 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="V33: Contrastive Self-Prediction" level={1}>
-      <p><strong>Status</strong>: Code complete. Queued.</p>
+      <p><strong>Status</strong>: COMPLETE. <strong>NEGATIVE.</strong></p>
       <p><strong>Hypothesis</strong>: Predicting <M>{"\\Delta_{\\text{actual}} - \\Delta_{\\text{alternative}}"}</M> forces counterfactual representation (rung 8). Standard prediction can be satisfied reactively; contrastive prediction requires representing "what would happen if."</p>
+      <p><strong>Result</strong>: Contrastive loss destabilizes gradient learning. Mean <M>{"\\intinfo"}</M> = 0.054 ± 0.015 (late phase), significantly below V27 baseline (0.091). 0% HIGH, 30% MOD, 70% LOW across 10 seeds. Prediction MSE increases 1.5–18.7× over evolution in most seeds — the contrastive signal amplifies after drought cycles, decoupling the gradient from the viability signal. All three pre-registered predictions falsified.</p>
       <CodeFiles files={[
         { name: 'v33_substrate.py', desc: 'Contrastive prediction head' },
         { name: 'v33_evolution.py', desc: 'Evolution loop' },

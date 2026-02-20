@@ -1430,20 +1430,28 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 ### V33: Contrastive Self-Prediction
 
-**Status**: CODE COMPLETE. Queued after V32 on Lambda A100. 10 seeds.
+**Status**: COMPLETE. **NEGATIVE.** 10 seeds on Lambda A100.
 
 **Motivation**: V22-V31 showed standard prediction (self or social) produces 30% HIGH seeds. V33 tests whether CONTRASTIVE prediction — predicting how outcomes DIFFER between actual and counterfactual actions — forces rung-8 counterfactual representation.
 
 **Architecture**: V27 base + contrastive prediction head. Instead of predicting energy delta, predicts: Δ_actual - Δ_alternative, where Δ_alternative is the energy delta from a randomly sampled alternative action. Forces agents to represent "what would happen IF I did something else."
 
 **Pre-registered predictions**:
-- P1: Mean Φ > V27's 0.090 (counterfactual forces cross-component integration)
-- P2: Action differentiation increases over evolution (agents learn to distinguish actions)
-- P3: HIGH fraction > 30% (contrastive learning is harder to satisfy with decomposed representation)
+- P1: Mean Φ > V27's 0.090 (counterfactual forces cross-component integration) — **FALSIFIED** (mean late Φ = 0.054 ± 0.015)
+- P2: Action differentiation increases over evolution — **FALSIFIED** (action_diff stays flat or decreases)
+- P3: HIGH fraction > 30% — **FALSIFIED** (0% HIGH, 30% MOD, 70% LOW)
 
-**Falsification**:
-- P1 fails: counterfactual representation doesn't require integration (can be decomposed)
-- Action differentiation stays flat: contrastive signal doesn't actually force different behavior
+**Results (10 seeds)**:
+- Mean late Φ: 0.054 ± 0.015 (vs V27's 0.091 ± 0.028)
+- Mean robustness: 0.979 ± 0.033
+- Category distribution: 0% HIGH / 30% MOD / 70% LOW
+- Prediction MSE increases 1.5–18.7× over evolution (first cycle ~0.01, final cycle 0.03–0.32)
+- Seed 1 worst: final MSE 0.316, late Φ 0.038
+- Seed 2 best: final MSE 0.017, late Φ 0.074 (but still only MOD)
+
+**Key finding**: Contrastive loss destabilizes gradient learning. The contrastive signal amplifies after drought cycles, decoupling the prediction gradient from the viability signal. Standard prediction (V27) remains strictly superior. Counterfactual representation, at least via contrastive loss, doesn't force integration — it disrupts it.
+
+**Implication**: The path to rung-8 counterfactual representation isn't through loss function engineering. The gradient coupling (V27's 2-layer MLP) matters more than the target signal. This parallels V29/V31: what you predict doesn't determine integration; how the prediction machinery is architectured does.
 
 **Files**: `v33_substrate.py`, `v33_evolution.py`, `v33_gpu_run.py`
 
