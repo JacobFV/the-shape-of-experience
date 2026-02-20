@@ -1,0 +1,136 @@
+{
+  "per_seed": {
+    "s42": {
+      "mean_phi": 0.07883352390180032,
+      "max_phi": 0.12826984524726867,
+      "late_mean_phi": 0.09267656008402507,
+      "mean_robustness": 0.9984972278140363,
+      "max_robustness": 1.007252935792956,
+      "mean_pred_mse": 0.00015807020218416582,
+      "final_lr": 0.0046690781600773335,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.04874442203910976,
+      "category": "MOD"
+    },
+    "s123": {
+      "mean_phi": 0.07077409666031599,
+      "max_phi": 0.09140854850411415,
+      "late_mean_phi": 0.06177789039909841,
+      "mean_robustness": 0.9974075308385861,
+      "max_robustness": 1.0155097703811948,
+      "mean_pred_mse": 0.00014517482677318418,
+      "final_lr": 0.0048003774136304855,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.19102182219711336,
+      "category": "LOW"
+    },
+    "s7": {
+      "mean_phi": 0.11929509834696848,
+      "max_phi": 0.24461995661258698,
+      "late_mean_phi": 0.13828821477790673,
+      "mean_robustness": 1.0059078057420894,
+      "max_robustness": 1.0852538732638597,
+      "mean_pred_mse": 0.00036649893268130045,
+      "final_lr": 0.005168878939002752,
+      "final_pop": 256,
+      "phi_rob_correlation": -0.6653143253124609,
+      "category": "HIGH"
+    },
+    "s0": {
+      "mean_phi": 0.07625788096338511,
+      "max_phi": 0.10832461565732956,
+      "late_mean_phi": 0.06459217630326748,
+      "mean_robustness": 0.9955698526619838,
+      "max_robustness": 1.0050097685839177,
+      "mean_pred_mse": 0.0003150865066849509,
+      "final_lr": 0.004786291625350714,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.47972951405961967,
+      "category": "LOW"
+    },
+    "s1": {
+      "mean_phi": 0.08259361878658336,
+      "max_phi": 0.1558886006474495,
+      "late_mean_phi": 0.06005600843578576,
+      "mean_robustness": 0.9781693040275352,
+      "max_robustness": 1.4618914795201017,
+      "mean_pred_mse": 0.00010533341651657998,
+      "final_lr": 0.0052232518792152405,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.2502986233462639,
+      "category": "LOW"
+    },
+    "s2": {
+      "mean_phi": 0.04855119327704112,
+      "max_phi": 0.11999551728367805,
+      "late_mean_phi": 0.023961544943352543,
+      "mean_robustness": 1.0239290432611599,
+      "max_robustness": 1.3338771950312671,
+      "mean_pred_mse": 0.00010986117871135646,
+      "final_lr": 0.0051015885546803474,
+      "final_pop": 256,
+      "phi_rob_correlation": -0.37764176041517966,
+      "category": "LOW"
+    },
+    "s3": {
+      "mean_phi": 0.0700163267677029,
+      "max_phi": 0.13482256829738617,
+      "late_mean_phi": 0.08613803731898467,
+      "mean_robustness": 1.0006451225001523,
+      "max_robustness": 1.0272933595153662,
+      "mean_pred_mse": 0.00016848072122020507,
+      "final_lr": 0.004538990557193756,
+      "final_pop": 256,
+      "phi_rob_correlation": -0.02694379113411218,
+      "category": "MOD"
+    },
+    "s4": {
+      "mean_phi": 0.0833248834932844,
+      "max_phi": 0.12721126973629,
+      "late_mean_phi": 0.08917168830831847,
+      "mean_robustness": 0.9584374702058779,
+      "max_robustness": 1.0013965091987613,
+      "mean_pred_mse": 0.00022990613942721176,
+      "final_lr": 0.0048088813200592995,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.5498769871129764,
+      "category": "MOD"
+    },
+    "s5": {
+      "mean_phi": 0.06923504542559386,
+      "max_phi": 0.1432022124528885,
+      "late_mean_phi": 0.03430203810334205,
+      "mean_robustness": 0.9706773107793307,
+      "max_robustness": 1.0278336302695876,
+      "mean_pred_mse": 0.00025349764751177325,
+      "final_lr": 0.0044945161789655685,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.297030800683338,
+      "category": "LOW"
+    },
+    "s6": {
+      "mean_phi": 0.11852582437296709,
+      "max_phi": 0.26352460086345675,
+      "late_mean_phi": 0.1360360985994339,
+      "mean_robustness": 0.9662224438374503,
+      "max_robustness": 1.0053525101129743,
+      "mean_pred_mse": 0.00014055718631464183,
+      "final_lr": 0.00530934426933527,
+      "final_pop": 256,
+      "phi_rob_correlation": 0.3822436349150348,
+      "category": "HIGH"
+    }
+  },
+  "distribution": {
+    "HIGH": 2,
+    "MOD": 3,
+    "LOW": 5
+  },
+  "statistics": {
+    "mean_phi": 0.08174074919956427,
+    "mean_phi_std": 0.02078675146556629,
+    "late_phi": 0.07870002572735152,
+    "phi_rob_corr_mean": 0.11290459274917031,
+    "t_stat_vs_v27": -1.2564755170720554
+  }
+}
