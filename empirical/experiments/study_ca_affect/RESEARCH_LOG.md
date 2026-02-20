@@ -3017,3 +3017,64 @@ All 4 pre-registered predictions still PASS in both modes with both models.
 
 This is the strongest finding in the experimental program to date. It directly validates the universality claim: affect geometry arises from the structure of viable self-maintenance, not from human biological contingency.
 
+## 2026-02-20: V32 Preliminary Analysis (43/50 seeds)
+
+### Distribution
+- HIGH: 10 (23%), MOD: 15 (35%), LOW: 18 (42%)
+- Consistent with V31's 30/30/40 split
+
+### Top-line numbers
+- Mean Φ: 0.087 ± 0.032
+- Max Φ: 0.473 (new all-time record!)
+- Mean Robustness: 0.993 ± 0.022
+
+### Key finding: Phi trajectory slope is the dominant predictor
+- Phi trend slope ↔ Mean Phi: **r=0.821, p=1.6e-11**
+- HIGH seeds INCREASE over time: early=0.095, mid=0.100, late=0.201 (slope +0.005)
+- MOD seeds plateau: early=0.084, mid=0.075, late=0.081 (slope ≈ 0)
+- LOW seeds DECREASE: early=0.089, mid=0.066, late=0.041 (slope -0.002)
+- All three categories START similarly (~0.085-0.095) and diverge through droughts
+
+### Post-drought Phi preservation is the category discriminator
+- HIGH: post/pre Phi ratio = 1.043 (Phi INCREASES through drought on average!)
+- MOD: post/pre = 0.873
+- LOW: post/pre = 0.695 (Phi drops 30%)
+- This confirms: forging works by preserving/increasing integration through crises
+
+### Bounce analysis
+- Mean bounce ↔ Mean Phi: r=0.490, p<0.001
+- First bounce ↔ Mean Phi: r=0.033, p=0.83 (NOT predictive — first crisis is uninformative)
+- Mean bounce by category: HIGH=1.04, MOD=0.87, LOW=0.70
+
+### Hidden convergence during drought: sequential effect
+- Drought 0 h_conv → Drought 1 bounce: r=0.587, p<0.001 (STRONG)
+- Drought 1 h_conv → Drought 2 bounce: r=0.058, p=0.71 (nothing)
+- The first drought is formative — how hidden states respond to the first crisis determines second-drought resilience, but only for one step ahead
+
+### Genome selection: NOT significant at 43 seeds
+- Genome norm ratio HIGH vs LOW: t=-1.08, p=0.28
+- Earlier 14-seed "forging=compression" finding DOES NOT HOLD at scale
+- Survivors have slightly larger genomes in ALL categories (ratio ~1.02-1.03)
+- Learning rate, weight diversity, eff rank: all UNCORRELATED with integration
+
+### Drought survival rates identical across categories
+- HIGH: 3.1%, MOD: 3.7%, LOW: 3.0%
+- It's not about WHO survives. It's about what they do AFTER.
+
+### Differentiation timing
+- Drought 1: no significant HIGH-LOW difference (p=0.30)
+- Drought 3: significant (d=0.86, p=0.03)
+- Drought 5: significant (d=0.90, p=0.03)
+- Categories become distinguishable only by third drought
+
+### Revised narrative
+The "forging=compression" story from the 14-seed analysis is WRONG. At 43 seeds:
+- Genome properties don't predict category
+- Survival rate doesn't predict category
+- First drought doesn't predict category
+- What predicts: cumulative Phi preservation through repeated stress-recovery cycles
+- HIGH seeds preserve or increase Phi through each drought; LOW seeds lose it
+- The mechanism is trajectory-dependent — same starting conditions, divergent outcomes through iterated crisis
+
+### Still waiting: 7 more seeds (43/50 complete on Lambda)
+
