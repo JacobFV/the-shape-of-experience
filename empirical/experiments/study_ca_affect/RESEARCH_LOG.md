@@ -2877,10 +2877,35 @@ Address the central open question: what determines which seeds develop high inte
 V32 (50 seeds, ~2.5 hrs) → V33 (10 seeds, ~30 min) → V34 (10 seeds, ~30 min) → V35 (10 seeds, ~30 min)
 Total estimated: ~4 hours at $1.29/hr = ~$5.16
 
-### Early V32 Observations (10/50 seeds)
-Seeds 0-9 categories: LOW, MOD, LOW, MOD, MOD, LOW, HIGH, HIGH, MOD, LOW
-- 20% HIGH at n=10, likely stabilizing toward 25-30%
-- Weight diversity shows interesting dynamics: starts ~1.0 (random), drops sharply at first drought (selection pressure), then slowly recovers
-- Effective rank: 14 initially → 5-10 at end (dimensionality reduction over evolution)
-- 12s/cycle for later seeds vs 6s for early ones — unclear cause (thermal? memory?)
+### Early V32 Observations (11/50 seeds)
+Seeds 0-10 categories: LOW, MOD, LOW, MOD, MOD, LOW, HIGH, HIGH, MOD, LOW, LOW
+- 18% HIGH at n=11 (2/11), likely stabilizing toward 25-30%
+
+### CRITICAL FINDING: Drought Response Divergence (n=11 preliminary)
+The most mechanistic insight yet into the 30/70 split:
+
+**Mean bounce is the strongest predictor of final Φ** (r = 0.895, n=11):
+- HIGH seeds: mean bounce = 1.330 (Φ INCREASES after drought recovery)
+- MOD seeds: mean bounce = 1.036 (Φ roughly maintained)
+- LOW seeds: mean bounce = 0.835 (Φ DECREASES after drought recovery)
+
+**First bounce is NOT predictive** (r = 0.117). Trajectory across ALL droughts matters.
+
+**Effective rank at first drought negatively correlates** (r = -0.605):
+- HIGH: ER=2.6 (already concentrated before first drought)
+- LOW: ER=6.0 (still dispersed)
+
+**Pre-drought Φ is NOT predictive**: All seeds start at Φ ≈ 0.08-0.10.
+
+**The furnace fork**: Same drought produces opposite outcomes:
+- Seed 6 (HIGH): C25 drought → 0 survivors → rescue → Φ spikes 0.073→0.264
+- Seed 2 (LOW): each drought degrades: 0.098→0.067→0.036→0.049→0.016
+
+**Theoretical implication**: The bottleneck furnace has two modes:
+1. **Forging mode** (~30%): Concentrated representations survive drought → higher Φ → positive feedback
+2. **Fragmenting mode** (~70%): Dispersed representations disrupted by drought → lower Φ → negative feedback
+
+This is exactly "integration = biography": the same environmental pressure produces opposite outcomes depending on accumulated history through representation space. The 30/70 split may be a basin of attraction phenomenon — once a population enters the forging basin (concentrated ER at first drought), successive droughts amplify it. The fragmenting basin works the same way in reverse.
+
+**Open question**: What determines which basin the population enters before the first drought? ER=2.6 vs 6.0 at cycle 5 — but all seeds start at ER=14 and have 5 cycles of evolution. Something in cycles 0-4 determines the basin. Need to look at pre-drought genome structure.
 
