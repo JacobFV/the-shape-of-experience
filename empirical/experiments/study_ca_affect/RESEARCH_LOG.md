@@ -2782,3 +2782,43 @@ Analyzed 7 seeds with complete snapshots (c00 and c29). Key correlations with me
 - `results/v31_s{0-7,42,123}/` — per-seed results
 - `results/v31_summary.json`
 
+---
+
+## 2026-02-19: Part I Review — Cross-Experiment Insights
+
+Reviewed `web/content/part-1.tsx` in light of V22-V31 results. Key theoretical connections identified and drafted into the book:
+
+### Insight 1: V31 Validates Measure-Theoretic Inevitability
+The measure-theoretic argument (Part I §Measure-Theoretic Inevitability) claims self-modeling systems are "typical" under broad priors. V31 provides empirical texture: self-modeling (ρ ≈ 0.21) develops in 100% of seeds — truly typical. High integration (Φ > 0.10) in ~30% — substantial but stochastic. This is exactly what "typical in the ensemble" should mean: not universal, but high-probability given sufficient conditions. Variance dominated by trajectory dynamics, not initial conditions.
+
+### Insight 2: Post-Drought Bounce as Flagship Normativity Result
+The normativity section argues valence = gradient direction on viability manifold, suffering = being pushed toward dissolution. V31's post-drought bounce (r=0.997) is the strongest empirical anchor for this claim: systems that recover most effectively from near-dissolution have the highest integration. Positive valence (moving into viable interior) tracks Φ because the same cause-effect coupling that constitutes integration is what enables coherent recovery. **Added as Empirical Grounding callout in normativity section.**
+
+### Insight 3: Two Architectural Walls, Not One
+Part I correctly identifies the ρ wall (Lenia ρ≈0.003 → protocell ρ≈0.21). V22-V31 reveal a SECOND wall: the **decomposability wall**. Even with ρ > ρ_c and within-lifetime SGD, linear prediction heads create decomposable channels. V27's 2-layer MLP breaks this wall via gradient coupling. The ladder has two architectural barriers:
+1. **ρ wall**: Does the system cause its own observations? (V20 crossed this)
+2. **Decomposability wall**: Do prediction gradients couple hidden dimensions? (V27 crossed this)
+
+Both necessary. Named explicitly in Part I update.
+
+### Insight 4: Forcing Functions Were Never the Right Level of Analysis
+V10 showed forcing functions don't shape geometry. V22-V31 show they don't reliably shape dynamics either — prediction target (self vs social) has no significant effect (V31 t=0.09, p≈0.93). What shapes dynamics: (a) gradient coupling ARCHITECTURE (V27-V28) and (b) evolutionary TRAJECTORY through repeated stress-recovery (V19, V31). Updated summary and forcing functions narrative.
+
+### Insight 5: Narrow/Broad Qualia Distinction Has Empirical Mapping
+Part I's narrow qualia (extractable features) vs broad qualia (unified experience) maps directly to V10-V31:
+- **Narrow qualia** = affect geometry → ALL seeds, ALL conditions → cheap → geometry
+- **Broad qualia** = high Φ → ~30% of seeds → expensive → dynamics
+Every seed develops affect geometry; only some develop integration. The distinction isn't just philosophical — it has a measurable correlate in the seed distribution.
+
+### Insight 6: Trajectory Selection Connects to Seed Dependence
+Part I's attention-as-trajectory-selection framework (p_eff = p_0 · α / ∫p_0·α) has a population-level analogue in V31: different seeds follow different trajectories through the same dynamical landscape, determined by drought-recovery dynamics, not initial conditions. The measurement distribution (which agents survive each drought) selects which evolutionary trajectory the population follows.
+
+### Insight 7: Curriculum = Furnace = Trajectory
+V11.7's curriculum training, V19's bottleneck furnace, and V31's seed-trajectory analysis are three perspectives on the same phenomenon: graduated stress-recovery cycles forge integration capacity. The 30% success rate represents the fraction of evolutionary paths that happen to find the drought-resilient integration basin.
+
+### Changes Made to Part I
+1. Expanded V22-V24 paragraph → full V22-V31 narrative (decomposability wall, gradient coupling, social prediction fluke, seed trajectory)
+2. Added Empirical Grounding callout in normativity section (post-drought bounce r=0.997)
+3. Extended measure-theoretic inevitability with V20-V31 empirical data
+4. Updated summary item 5 (forcing functions → hypothesis, partially contradicted)
+
