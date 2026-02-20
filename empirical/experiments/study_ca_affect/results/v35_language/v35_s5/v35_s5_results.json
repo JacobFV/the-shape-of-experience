@@ -1,0 +1,1250 @@
+{
+  "seed": 5,
+  "config": {
+    "N": 128,
+    "M_max": 256,
+    "obs_radius": 1,
+    "embed_dim": 24,
+    "hidden_dim": 16,
+    "K_max": 8,
+    "predict_hidden": 8,
+    "K_sym": 8,
+    "comm_radius": 5,
+    "coop_bonus": 0.5,
+    "resource_regen": 0.002,
+    "signal_decay": 0.04,
+    "signal_diffusion": 0.15,
+    "metabolic_cost": 0.0004,
+    "initial_energy": 1.0,
+    "resource_value": 1.5,
+    "initial_resource": 0.5,
+    "stress_regen": 0.0002,
+    "mutation_std": 0.03,
+    "tournament_size": 4,
+    "elite_fraction": 0.5,
+    "activate_offspring": true,
+    "drought_every": 5,
+    "drought_depletion": 0.01,
+    "drought_regen": 0.0,
+    "lamarckian": false,
+    "grad_every": 1,
+    "chunk_size": 50,
+    "steps_per_cycle": 5000,
+    "n_cycles": 30,
+    "obs_side": 3,
+    "obs_flat": 36,
+    "n_actions": 14,
+    "n_params": 3345
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "n_alive_start": 64,
+      "n_alive_end": 64,
+      "mortality": 0.0,
+      "mean_phi": 0.07888793125748635,
+      "mean_pred_mse": 0.00012113183658088945,
+      "sym_entropy": 2.9286078429222107,
+      "sym_entropy_end": 2.928771781465701,
+      "sym_resource_mi_proxy": 0.0067416404764912286,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.140625,
+        0.15625,
+        0.0625,
+        0.109375,
+        0.078125,
+        0.125,
+        0.1875,
+        0.140625
+      ],
+      "mean_coop_events": 7.05,
+      "phi_base": 0.07894907146692276,
+      "phi_stress": 0.07895273566246033,
+      "robustness": 1.0000464121422772,
+      "phi_with_comm": 0.07894907146692276,
+      "phi_no_comm": 0.07894906401634216,
+      "comm_phi_lift": 7.450580596923828e-09,
+      "lr_stats": {
+        "mean_lr": 0.005047035403549671,
+        "std_lr": 0.00022902859200257808
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08532029390335083,
+        "max_drift": 0.2716936767101288,
+        "std_drift": 0.058664437383413315
+      },
+      "elapsed_s": 10.601199626922607
+    },
+    {
+      "cycle": 1,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08935099616646766,
+      "mean_pred_mse": 0.00012550239817243013,
+      "sym_entropy": 2.8823050165176394,
+      "sym_entropy_end": 2.875643585142982,
+      "sym_resource_mi_proxy": 0.002441105886417938,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.15625,
+        0.12109375,
+        0.04296875,
+        0.1015625,
+        0.06640625,
+        0.140625,
+        0.19921875,
+        0.171875
+      ],
+      "mean_coop_events": 96.43,
+      "phi_base": 0.08939280807971954,
+      "phi_stress": 0.08940969407558441,
+      "robustness": 1.0001888965815886,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005077299661934376,
+        "std_lr": 0.00023543115821667016
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08236560225486755,
+        "max_drift": 0.2944847345352173,
+        "std_drift": 0.05914512649178505
+      },
+      "elapsed_s": 6.129044532775879
+    },
+    {
+      "cycle": 2,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09596109464764595,
+      "mean_pred_mse": 0.0001098272157130098,
+      "sym_entropy": 2.860929536819458,
+      "sym_entropy_end": 2.8564081197650832,
+      "sym_resource_mi_proxy": 0.003649342047512938,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.19921875,
+        0.1015625,
+        0.04296875,
+        0.12109375,
+        0.05859375,
+        0.1328125,
+        0.19921875,
+        0.14453125
+      ],
+      "mean_coop_events": 103.79,
+      "phi_base": 0.09604631662368775,
+      "phi_stress": 0.09605192244052888,
+      "robustness": 1.000058365765999,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005069428123533726,
+        "std_lr": 0.00022391098900698125
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.07693475484848022,
+        "max_drift": 0.29450085759162903,
+        "std_drift": 0.05930761620402336
+      },
+      "elapsed_s": 6.105915546417236
+    },
+    {
+      "cycle": 3,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08767045140266419,
+      "mean_pred_mse": 0.0001012272052332186,
+      "sym_entropy": 2.904079554080963,
+      "sym_entropy_end": 2.902608477469626,
+      "sym_resource_mi_proxy": 0.0003495449629657421,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.16796875,
+        0.125,
+        0.046875,
+        0.13671875,
+        0.0703125,
+        0.17578125,
+        0.16015625,
+        0.1171875
+      ],
+      "mean_coop_events": 129.03,
+      "phi_base": 0.08776277154684067,
+      "phi_stress": 0.08774054944515228,
+      "robustness": 0.9997467935287739,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005068738479167223,
+        "std_lr": 0.00023357437748927623
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.07282306253910065,
+        "max_drift": 0.2945300042629242,
+        "std_drift": 0.05713095888495445
+      },
+      "elapsed_s": 6.114223480224609
+    },
+    {
+      "cycle": 4,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08797462731599807,
+      "mean_pred_mse": 0.00011847255212695806,
+      "sym_entropy": 2.9106288886070253,
+      "sym_entropy_end": 2.911748956677577,
+      "sym_resource_mi_proxy": 0.0014880869391396961,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.1796875,
+        0.11328125,
+        0.05859375,
+        0.125,
+        0.08984375,
+        0.1953125,
+        0.14453125,
+        0.09375
+      ],
+      "mean_coop_events": 73.09,
+      "phi_base": 0.08805499970912933,
+      "phi_stress": 0.08803321421146393,
+      "robustness": 0.9997525921556144,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005075744353234768,
+        "std_lr": 0.00024173350539058447
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08287924528121948,
+        "max_drift": 0.2945052981376648,
+        "std_drift": 0.05973076820373535
+      },
+      "elapsed_s": 6.121762037277222
+    },
+    {
+      "cycle": 5,
+      "n_alive_start": 256,
+      "n_alive_end": 22,
+      "mortality": 0.9140625,
+      "mean_phi": 0.10954711958765984,
+      "mean_pred_mse": 9.908129411676292e-05,
+      "sym_entropy": 2.881960198879242,
+      "sym_entropy_end": 2.6978458219302563,
+      "sym_resource_mi_proxy": 4.942728755993069e-07,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.36363636363636365,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.045454545454545456,
+        0.09090909090909091,
+        0.13636363636363635,
+        0.09090909090909091,
+        0.09090909090909091
+      ],
+      "mean_coop_events": 61.79,
+      "phi_base": 0.16723868250846863,
+      "phi_stress": 0.14213407039642334,
+      "robustness": 0.8498875276013129,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.00502382917329669,
+        "std_lr": 0.0002651188406161964
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08595991879701614,
+        "max_drift": 0.20248879492282867,
+        "std_drift": 0.0589902400970459
+      },
+      "elapsed_s": 6.532520055770874
+    },
+    {
+      "cycle": 6,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.11515272334218025,
+      "mean_pred_mse": 0.00011772933383102924,
+      "sym_entropy": 2.6576320219039915,
+      "sym_entropy_end": 2.6588410900891564,
+      "sym_resource_mi_proxy": 0.0018299402924626396,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.37109375,
+        0.078125,
+        0.06640625,
+        0.05078125,
+        0.078125,
+        0.1640625,
+        0.1015625,
+        0.08984375
+      ],
+      "mean_coop_events": 156.19,
+      "phi_base": 0.1151710107922554,
+      "phi_stress": 0.11511104553937912,
+      "robustness": 0.9994793372701708,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004964299499988556,
+        "std_lr": 0.00024482570006512105
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08744857460260391,
+        "max_drift": 0.2558654546737671,
+        "std_drift": 0.059932880103588104
+      },
+      "elapsed_s": 6.1043853759765625
+    },
+    {
+      "cycle": 7,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.11075111702084542,
+      "mean_pred_mse": 0.000117929062867681,
+      "sym_entropy": 2.672790744304657,
+      "sym_entropy_end": 2.658120204055307,
+      "sym_resource_mi_proxy": 0.0015396174594570766,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.3515625,
+        0.0859375,
+        0.0546875,
+        0.0390625,
+        0.08203125,
+        0.1875,
+        0.1015625,
+        0.09765625
+      ],
+      "mean_coop_events": 127.09,
+      "phi_base": 0.11087357848882676,
+      "phi_stress": 0.11085081398487091,
+      "robustness": 0.9997946805337564,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004955434240400791,
+        "std_lr": 0.00026291271205991507
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08134926110506058,
+        "max_drift": 0.23615606129169464,
+        "std_drift": 0.05790693685412407
+      },
+      "elapsed_s": 6.11879825592041
+    },
+    {
+      "cycle": 8,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.1260005295276642,
+      "mean_pred_mse": 0.00013566374613901644,
+      "sym_entropy": 2.7272433280944823,
+      "sym_entropy_end": 2.7394146398920585,
+      "sym_resource_mi_proxy": 0.0009633371272513708,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.3046875,
+        0.07421875,
+        0.06640625,
+        0.05859375,
+        0.09375,
+        0.2109375,
+        0.109375,
+        0.08203125
+      ],
+      "mean_coop_events": 119.64,
+      "phi_base": 0.12615699470043182,
+      "phi_stress": 0.1261492133140564,
+      "robustness": 0.9999383198181448,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004924433305859566,
+        "std_lr": 0.00027552989195100963
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08981601893901825,
+        "max_drift": 0.2660548686981201,
+        "std_drift": 0.06101667135953903
+      },
+      "elapsed_s": 6.122643947601318
+    },
+    {
+      "cycle": 9,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.12743778228759767,
+      "mean_pred_mse": 0.00011018297967680723,
+      "sym_entropy": 2.6629833817481994,
+      "sym_entropy_end": 2.6678707507094446,
+      "sym_resource_mi_proxy": 0.001403048697766085,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.36328125,
+        0.0703125,
+        0.0546875,
+        0.05078125,
+        0.07421875,
+        0.1328125,
+        0.13671875,
+        0.1171875
+      ],
+      "mean_coop_events": 117.1,
+      "phi_base": 0.12740568220615386,
+      "phi_stress": 0.127345210313797,
+      "robustness": 0.9995253595341296,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004905731417238712,
+        "std_lr": 0.0002963942533824593
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08023633062839508,
+        "max_drift": 0.24895702302455902,
+        "std_drift": 0.05306527763605118
+      },
+      "elapsed_s": 6.121926784515381
+    },
+    {
+      "cycle": 10,
+      "n_alive_start": 256,
+      "n_alive_end": 19,
+      "mortality": 0.92578125,
+      "mean_phi": 0.10389165803790093,
+      "mean_pred_mse": 0.00010736611481867441,
+      "sym_entropy": 2.4312241888046264,
+      "sym_entropy_end": 2.038760751997069,
+      "sym_resource_mi_proxy": 3.782224913899589e-07,
+      "sym_unique": 6,
+      "sym_distribution": [
+        0.5263157894736842,
+        0.10526315789473684,
+        0.10526315789473684,
+        0.0,
+        0.05263157894736842,
+        0.05263157894736842,
+        0.15789473684210525,
+        0.0
+      ],
+      "mean_coop_events": 165.85,
+      "phi_base": 0.07507012486457824,
+      "phi_stress": 0.07418307960033417,
+      "robustness": 0.9881837779563541,
+      "phi_with_comm": 0.07507012486457824,
+      "phi_no_comm": 0.07503316402435303,
+      "comm_phi_lift": 3.69608402252114e-05,
+      "lr_stats": {
+        "mean_lr": 0.004999199416488409,
+        "std_lr": 0.0002967851178254932
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08820616453886032,
+        "max_drift": 0.2062501311302185,
+        "std_drift": 0.05586893483996391
+      },
+      "elapsed_s": 7.057603359222412
+    },
+    {
+      "cycle": 11,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06560254245996475,
+      "mean_pred_mse": 0.00011165694721995578,
+      "sym_entropy": 2.243943634033203,
+      "sym_entropy_end": 2.2388523723484326,
+      "sym_resource_mi_proxy": 0.0025912973165071462,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.44921875,
+        0.07421875,
+        0.21484375,
+        0.01171875,
+        0.015625,
+        0.0859375,
+        0.12890625,
+        0.01953125
+      ],
+      "mean_coop_events": 183.83,
+      "phi_base": 0.06559521406888962,
+      "phi_stress": 0.06548827588558197,
+      "robustness": 0.998369725827934,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004995022434741259,
+        "std_lr": 0.00033610197715461254
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08910388499498367,
+        "max_drift": 0.24972671270370483,
+        "std_drift": 0.05677212402224541
+      },
+      "elapsed_s": 6.118515253067017
+    },
+    {
+      "cycle": 12,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.057398687303066256,
+      "mean_pred_mse": 0.0001292720479784748,
+      "sym_entropy": 2.330097784996033,
+      "sym_entropy_end": 2.3198603006211256,
+      "sym_resource_mi_proxy": 0.001048718385794345,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.38671875,
+        0.09375,
+        0.26171875,
+        0.01171875,
+        0.01953125,
+        0.09765625,
+        0.11328125,
+        0.015625
+      ],
+      "mean_coop_events": 186.87,
+      "phi_base": 0.057302139699459076,
+      "phi_stress": 0.05727126970887184,
+      "robustness": 0.999461276825802,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005029038526117802,
+        "std_lr": 0.0003624181845225394
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08956488966941833,
+        "max_drift": 0.2526229918003082,
+        "std_drift": 0.0593293160200119
+      },
+      "elapsed_s": 6.118752479553223
+    },
+    {
+      "cycle": 13,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.05730490759015083,
+      "mean_pred_mse": 0.0001352775622564195,
+      "sym_entropy": 2.4371822905540466,
+      "sym_entropy_end": 2.445063925603467,
+      "sym_resource_mi_proxy": 0.0030264942210024848,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.35546875,
+        0.09765625,
+        0.19921875,
+        0.0234375,
+        0.0234375,
+        0.1796875,
+        0.109375,
+        0.01171875
+      ],
+      "mean_coop_events": 258.83,
+      "phi_base": 0.05739718526601791,
+      "phi_stress": 0.05737323835492134,
+      "robustness": 0.9995827859678905,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.0050078826025128365,
+        "std_lr": 0.00037088070530444384
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.09167365729808807,
+        "max_drift": 0.24982261657714844,
+        "std_drift": 0.05851030722260475
+      },
+      "elapsed_s": 6.126699209213257
+    },
+    {
+      "cycle": 14,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06144771724939346,
+      "mean_pred_mse": 0.00012735984809410185,
+      "sym_entropy": 2.4498615503311156,
+      "sym_entropy_end": 2.468933660688454,
+      "sym_resource_mi_proxy": 0.0038346413879055546,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.3125,
+        0.08203125,
+        0.23828125,
+        0.015625,
+        0.01953125,
+        0.18359375,
+        0.125,
+        0.0234375
+      ],
+      "mean_coop_events": 235.54,
+      "phi_base": 0.06132171452045441,
+      "phi_stress": 0.061323247849941254,
+      "robustness": 1.0000250046741002,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.00502481684088707,
+        "std_lr": 0.00038386971573345363
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08641156554222107,
+        "max_drift": 0.252824068069458,
+        "std_drift": 0.05991164594888687
+      },
+      "elapsed_s": 6.110422611236572
+    },
+    {
+      "cycle": 15,
+      "n_alive_start": 256,
+      "n_alive_end": 33,
+      "mortality": 0.87109375,
+      "mean_phi": 0.07075336202979088,
+      "mean_pred_mse": 0.00010589088973205208,
+      "sym_entropy": 2.4154099369049074,
+      "sym_entropy_end": 2.1547502869458017,
+      "sym_resource_mi_proxy": 5.671412936161226e-07,
+      "sym_unique": 7,
+      "sym_distribution": [
+        0.45454545454545453,
+        0.09090909090909091,
+        0.12121212121212122,
+        0.030303030303030304,
+        0.030303030303030304,
+        0.24242424242424243,
+        0.030303030303030304,
+        0.0
+      ],
+      "mean_coop_events": 82.29,
+      "phi_base": 0.059241367131471635,
+      "phi_stress": 0.06001842841506004,
+      "robustness": 1.0131168695324655,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005022210534662008,
+        "std_lr": 0.0004494957101996988
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.0857820138335228,
+        "max_drift": 0.24921917915344238,
+        "std_drift": 0.06385266035795212
+      },
+      "elapsed_s": 6.5236194133758545
+    },
+    {
+      "cycle": 16,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08983073011040688,
+      "mean_pred_mse": 0.00014466182779642622,
+      "sym_entropy": 2.3001200461387636,
+      "sym_entropy_end": 2.2840749355338277,
+      "sym_resource_mi_proxy": 0.003328968089824691,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.2265625,
+        0.05859375,
+        0.09375,
+        0.05078125,
+        0.03515625,
+        0.453125,
+        0.07421875,
+        0.0078125
+      ],
+      "mean_coop_events": 145.29,
+      "phi_base": 0.08973035663366317,
+      "phi_stress": 0.0898115575313568,
+      "robustness": 1.0009049434409933,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005007358267903328,
+        "std_lr": 0.00044326012721285224
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.09861349314451218,
+        "max_drift": 0.2889884114265442,
+        "std_drift": 0.06235045939683914
+      },
+      "elapsed_s": 6.149320602416992
+    },
+    {
+      "cycle": 17,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.1069251574575901,
+      "mean_pred_mse": 0.00018260510285017517,
+      "sym_entropy": 2.192006969451904,
+      "sym_entropy_end": 2.210145764695482,
+      "sym_resource_mi_proxy": 0.007935515720707484,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.25390625,
+        0.05859375,
+        0.0859375,
+        0.04296875,
+        0.03515625,
+        0.4609375,
+        0.0546875,
+        0.0078125
+      ],
+      "mean_coop_events": 82.56,
+      "phi_base": 0.10687714964151382,
+      "phi_stress": 0.1069494903087616,
+      "robustness": 1.0006768581262733,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.0050207399763166904,
+        "std_lr": 0.0004533262108452618
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10397624969482422,
+        "max_drift": 0.33255547285079956,
+        "std_drift": 0.06513694673776627
+      },
+      "elapsed_s": 6.1248579025268555
+    },
+    {
+      "cycle": 18,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.09334974363446236,
+      "mean_pred_mse": 0.00018519561040136523,
+      "sym_entropy": 2.371386296749115,
+      "sym_entropy_end": 2.3277484403108124,
+      "sym_resource_mi_proxy": 0.005186678592879121,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.27734375,
+        0.06640625,
+        0.09765625,
+        0.07421875,
+        0.03515625,
+        0.3984375,
+        0.04296875,
+        0.0078125
+      ],
+      "mean_coop_events": 197.44,
+      "phi_base": 0.09339585900306702,
+      "phi_stress": 0.09347530156373977,
+      "robustness": 1.0008506004604567,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004988722503185272,
+        "std_lr": 0.00047802779590711
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10542447865009308,
+        "max_drift": 0.3028905391693115,
+        "std_drift": 0.06835822016000748
+      },
+      "elapsed_s": 6.1096343994140625
+    },
+    {
+      "cycle": 19,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.08427637740969658,
+      "mean_pred_mse": 0.00014781976783069693,
+      "sym_entropy": 2.3851273822784425,
+      "sym_entropy_end": 2.374350450129002,
+      "sym_resource_mi_proxy": 0.004087980107987332,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.28515625,
+        0.07421875,
+        0.09765625,
+        0.07421875,
+        0.03515625,
+        0.375,
+        0.05078125,
+        0.0078125
+      ],
+      "mean_coop_events": 125.82,
+      "phi_base": 0.0842436671257019,
+      "phi_stress": 0.08420870304107667,
+      "robustness": 0.9995849648309698,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004990805871784687,
+        "std_lr": 0.0005162646993994713
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.09729404747486115,
+        "max_drift": 0.2889143228530884,
+        "std_drift": 0.06265866011381149
+      },
+      "elapsed_s": 6.082703590393066
+    },
+    {
+      "cycle": 20,
+      "n_alive_start": 256,
+      "n_alive_end": 21,
+      "mortality": 0.91796875,
+      "mean_phi": 0.07129005938768387,
+      "mean_pred_mse": 0.00016346259341531777,
+      "sym_entropy": 2.39755224943161,
+      "sym_entropy_end": 2.3010723285372556,
+      "sym_resource_mi_proxy": 1.706495096955005e-07,
+      "sym_unique": 6,
+      "sym_distribution": [
+        0.3333333333333333,
+        0.09523809523809523,
+        0.09523809523809523,
+        0.14285714285714285,
+        0.0,
+        0.2857142857142857,
+        0.047619047619047616,
+        0.0
+      ],
+      "mean_coop_events": 162.69,
+      "phi_base": 0.06606650650501251,
+      "phi_stress": 0.07046054005622863,
+      "robustness": 1.0665092462681183,
+      "phi_with_comm": 0.06606650650501251,
+      "phi_no_comm": 0.06611749678850173,
+      "comm_phi_lift": -5.099028348921897e-05,
+      "lr_stats": {
+        "mean_lr": 0.005027842242270708,
+        "std_lr": 0.0005739970365539193
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.12081440538167953,
+        "max_drift": 0.25467050075531006,
+        "std_drift": 0.06422437727451324
+      },
+      "elapsed_s": 7.074008941650391
+    },
+    {
+      "cycle": 21,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.058335522562265395,
+      "mean_pred_mse": 0.00017679800619987417,
+      "sym_entropy": 2.5392899227142336,
+      "sym_entropy_end": 2.545683331638701,
+      "sym_resource_mi_proxy": 0.0029779963483160254,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.23828125,
+        0.1484375,
+        0.1328125,
+        0.1328125,
+        0.01171875,
+        0.27734375,
+        0.046875,
+        0.01171875
+      ],
+      "mean_coop_events": 155.73,
+      "phi_base": 0.05830058604478836,
+      "phi_stress": 0.058295154571533205,
+      "robustness": 0.9999068367297202,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005144443362951279,
+        "std_lr": 0.0005369291757233441
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10344118624925613,
+        "max_drift": 0.2698671221733093,
+        "std_drift": 0.07251676172018051
+      },
+      "elapsed_s": 6.113342523574829
+    },
+    {
+      "cycle": 22,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06373237147927284,
+      "mean_pred_mse": 0.0001625874964332752,
+      "sym_entropy": 2.5354378747940065,
+      "sym_entropy_end": 2.51687737614907,
+      "sym_resource_mi_proxy": 0.0009674199713470694,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.20703125,
+        0.140625,
+        0.109375,
+        0.12890625,
+        0.01171875,
+        0.33203125,
+        0.05859375,
+        0.01171875
+      ],
+      "mean_coop_events": 95.65,
+      "phi_base": 0.06390210539102555,
+      "phi_stress": 0.06393870562314988,
+      "robustness": 1.000572754714424,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.0051052868366241455,
+        "std_lr": 0.000546718598343432
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10534438490867615,
+        "max_drift": 0.2914024591445923,
+        "std_drift": 0.0693260058760643
+      },
+      "elapsed_s": 6.085820913314819
+    },
+    {
+      "cycle": 23,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06885144487023354,
+      "mean_pred_mse": 0.0001595570047095407,
+      "sym_entropy": 2.5976047039031984,
+      "sym_entropy_end": 2.5705949646828063,
+      "sym_resource_mi_proxy": 0.004377622753647267,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.18359375,
+        0.15625,
+        0.1484375,
+        0.1171875,
+        0.01171875,
+        0.30859375,
+        0.05859375,
+        0.015625
+      ],
+      "mean_coop_events": 134.43,
+      "phi_base": 0.06893246918916703,
+      "phi_stress": 0.06910980194807052,
+      "robustness": 1.0025725577654394,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005116366781294346,
+        "std_lr": 0.0005244577187113464
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10360763221979141,
+        "max_drift": 0.2634083926677704,
+        "std_drift": 0.07004048675298691
+      },
+      "elapsed_s": 6.140469551086426
+    },
+    {
+      "cycle": 24,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.06315078884363175,
+      "mean_pred_mse": 0.00015549815903909803,
+      "sym_entropy": 2.56901903629303,
+      "sym_entropy_end": 2.5437652198116147,
+      "sym_resource_mi_proxy": 0.004030952287814124,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.21484375,
+        0.1953125,
+        0.12109375,
+        0.09375,
+        0.01171875,
+        0.2890625,
+        0.0625,
+        0.01171875
+      ],
+      "mean_coop_events": 88.21,
+      "phi_base": 0.06351028382778168,
+      "phi_stress": 0.06358057409524917,
+      "robustness": 1.0011067541070686,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.005145946517586708,
+        "std_lr": 0.0005527173634618521
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10144813358783722,
+        "max_drift": 0.28245940804481506,
+        "std_drift": 0.06882594525814056
+      },
+      "elapsed_s": 6.120653867721558
+    },
+    {
+      "cycle": 25,
+      "n_alive_start": 256,
+      "n_alive_end": 27,
+      "mortality": 0.89453125,
+      "mean_phi": 0.07017244249582291,
+      "mean_pred_mse": 0.00016018965026177057,
+      "sym_entropy": 2.4846521043777465,
+      "sym_entropy_end": 1.9047225619197152,
+      "sym_resource_mi_proxy": 1.701424038318457e-08,
+      "sym_unique": 6,
+      "sym_distribution": [
+        0.25925925925925924,
+        0.07407407407407407,
+        0.037037037037037035,
+        0.0,
+        0.0,
+        0.5185185185185185,
+        0.07407407407407407,
+        0.037037037037037035
+      ],
+      "mean_coop_events": 151.34,
+      "phi_base": 0.09868131428956986,
+      "phi_stress": 0.0995298147201538,
+      "robustness": 1.0085983900467126,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004787586163729429,
+        "std_lr": 0.0005539573612622917
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.08829992264509201,
+        "max_drift": 0.22304196655750275,
+        "std_drift": 0.061140283942222595
+      },
+      "elapsed_s": 6.532642364501953
+    },
+    {
+      "cycle": 26,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.11514327451586723,
+      "mean_pred_mse": 0.00014171106776871055,
+      "sym_entropy": 2.295092523097992,
+      "sym_entropy_end": 2.2933541501693364,
+      "sym_resource_mi_proxy": 0.00211102831006843,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.27734375,
+        0.0859375,
+        0.03515625,
+        0.04296875,
+        0.01171875,
+        0.41796875,
+        0.06640625,
+        0.0625
+      ],
+      "mean_coop_events": 74.53,
+      "phi_base": 0.11512233316898346,
+      "phi_stress": 0.11510314345359803,
+      "robustness": 0.9998333102287176,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004811221733689308,
+        "std_lr": 0.00044152469490654767
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.09779421240091324,
+        "max_drift": 0.27562713623046875,
+        "std_drift": 0.06260138005018234
+      },
+      "elapsed_s": 6.1104419231414795
+    },
+    {
+      "cycle": 27,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.10688069611787795,
+      "mean_pred_mse": 0.00014101197994307313,
+      "sym_entropy": 2.2739770078659056,
+      "sym_entropy_end": 2.265703806045841,
+      "sym_resource_mi_proxy": 0.001448459677618294,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.296875,
+        0.05859375,
+        0.03515625,
+        0.02734375,
+        0.01171875,
+        0.40625,
+        0.08984375,
+        0.07421875
+      ],
+      "mean_coop_events": 91.84,
+      "phi_base": 0.10712281614542007,
+      "phi_stress": 0.10700871348381043,
+      "robustness": 0.9989348425880183,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004811015911400318,
+        "std_lr": 0.0004354689735919237
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.09131177514791489,
+        "max_drift": 0.27116942405700684,
+        "std_drift": 0.06551498919725418
+      },
+      "elapsed_s": 6.093581914901733
+    },
+    {
+      "cycle": 28,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.10575255453586578,
+      "mean_pred_mse": 0.00018440878561364114,
+      "sym_entropy": 2.4069727563858034,
+      "sym_entropy_end": 2.3859901885603136,
+      "sym_resource_mi_proxy": 0.0021468083099838026,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.31640625,
+        0.05078125,
+        0.0390625,
+        0.04296875,
+        0.01171875,
+        0.33984375,
+        0.0859375,
+        0.11328125
+      ],
+      "mean_coop_events": 231.94,
+      "phi_base": 0.10566537082195282,
+      "phi_stress": 0.10563066303730011,
+      "robustness": 0.9996715311328326,
+      "phi_with_comm": 0.0,
+      "phi_no_comm": 0.0,
+      "comm_phi_lift": 0.0,
+      "lr_stats": {
+        "mean_lr": 0.004813848063349724,
+        "std_lr": 0.0004307746421545744
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10650789737701416,
+        "max_drift": 0.32300668954849243,
+        "std_drift": 0.0751098170876503
+      },
+      "elapsed_s": 6.126161813735962
+    },
+    {
+      "cycle": 29,
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "mean_phi": 0.10905094593763351,
+      "mean_pred_mse": 0.00019064435505356415,
+      "sym_entropy": 2.408779945373535,
+      "sym_entropy_end": 2.4031288302071054,
+      "sym_resource_mi_proxy": 0.001297818487477398,
+      "sym_unique": 8,
+      "sym_distribution": [
+        0.28125,
+        0.0546875,
+        0.0703125,
+        0.03125,
+        0.01171875,
+        0.3671875,
+        0.07421875,
+        0.109375
+      ],
+      "mean_coop_events": 90.05,
+      "phi_base": 0.1090011328458786,
+      "phi_stress": 0.10913914740085602,
+      "robustness": 1.0012661754183103,
+      "phi_with_comm": 0.1090011328458786,
+      "phi_no_comm": 0.10903389006853104,
+      "comm_phi_lift": -3.275722265243253e-05,
+      "lr_stats": {
+        "mean_lr": 0.004792904015630484,
+        "std_lr": 0.00042586898780427873
+      },
+      "phenotype_drift": {
+        "mean_drift": 0.10810810327529907,
+        "max_drift": 0.3288549780845642,
+        "std_drift": 0.0755954384803772
+      },
+      "elapsed_s": 7.103693723678589
+    }
+  ],
+  "snapshots": [
+    {
+      "cycle": 0
+    },
+    {
+      "cycle": 5
+    },
+    {
+      "cycle": 10
+    },
+    {
+      "cycle": 15
+    },
+    {
+      "cycle": 20
+    },
+    {
+      "cycle": 25
+    },
+    {
+      "cycle": 29
+    }
+  ],
+  "summary": {
+    "mean_phi": 0.0883958452194929,
+    "max_phi": 0.12743778228759767,
+    "late_mean_phi": 0.08516636475920676,
+    "mean_robustness": 0.9976049163858124,
+    "max_robustness": 1.0665092462681183,
+    "mean_pred_mse": 0.000138990748062467,
+    "final_lr": 0.004792904015630484,
+    "final_pop": 256,
+    "category": "MOD",
+    "mean_sym_entropy": 2.411495250384013,
+    "mean_sym_resource_mi": 0.002659866897514316,
+    "mean_coop_events": 127.32066666666667,
+    "comm_phi_lift": -1.1694803833960793e-05,
+    "lang_status": "REFERENTIAL"
+  }
+}
