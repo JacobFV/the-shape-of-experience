@@ -5,6 +5,8 @@ import { GradientCouplingVideo } from "./GradientCoupling";
 import { LLMAffectContrastVideo } from "./LLMAffectContrast";
 import { WallBreakingVideo } from "./WallBreaking";
 import { FalsificationScoreboardVideo } from "./FalsificationScoreboard";
+import { LanguageEmergenceVideo } from "./LanguageEmergence";
+import { GeometryIsCheapVideo } from "./GeometryIsCheap";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -53,6 +55,22 @@ export const RemotionRoot: React.FC = () => {
         id="FalsificationScoreboard"
         component={FalsificationScoreboardVideo}
         durationInFrames={360}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="LanguageEmergence"
+        component={LanguageEmergenceVideo}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="GeometryIsCheap"
+        component={GeometryIsCheapVideo}
+        durationInFrames={300}
         fps={30}
         width={1080}
         height={720}

@@ -390,6 +390,7 @@ export default function AppendixExperiments() {
       <p><strong>Question</strong>: Is the Bottleneck Furnace effect due to <strong>selection</strong> (culling low-<M>{"\\intinfo"}</M> patterns) or <strong>creation</strong> (the bottleneck triggering developmental changes)?</p>
 
       <p><strong>Design</strong>: Three phases — standard evolution (10 cycles), fork into BOTTLENECK / GRADUAL / CONTROL (10 cycles), then novel extreme drought with frozen parameters (5 cycles). Statistical test: <M>{"\\text{novel\\_robustness} \\sim \\phi_{\\text{base}} + \\text{is\\_bottleneck} + \\text{is\\_gradual}"}</M>.</p>
+      <Diagram src="/diagrams/appendix-9.svg" alt="V19 forking experiment: shared evolution forks into bottleneck, gradual, and control conditions, then tested with novel stress" />
 
       <table>
       <thead><tr><th>Seed</th><th>Verdict</th><th><M>{"\\beta_{\\text{bottleneck}}"}</M></th><th><M>{"p"}</M></th><th><M>{"R^2"}</M></th><th>Mean rob A vs C</th></tr></thead>
@@ -747,6 +748,9 @@ export default function AppendixExperiments() {
       <p><strong>Result: Referential communication emerges in 10/10 seeds (100%).</strong> Mean symbol entropy 2.48 ± 0.14 bits (83% of maximum, range 2.18–2.67). Resource MI proxy 0.001–0.005 (all positive). All 8 symbols maintained in active use. This <strong>breaks the V20b null</strong> where continuous z-gate signals never departed from 0.5. Discrete symbols under partial observability and cooperative pressure produce referential communication as an <em>inevitability</em>, not a rarity.</p>
       <p><strong>But communication does NOT lift integration.</strong> Mean comm ablation <M>{"\\intinfo"}</M> lift ≈ 0. Late <M>{"\\intinfo = 0.074 \\pm 0.013"}</M> — <em>below</em> V27 baseline (0.090, <M>{"t = -1.78"}</M>). Distribution: 0 HIGH / 7 MOD / 3 LOW. <M>{"\\intinfo"}</M>-MI correlation <M>{"\\rho = 0.07"}</M> (null): language and integration are orthogonal. Communication neither helps nor hurts — it operates on a different axis entirely.</p>
       <p><strong>Language is cheap.</strong> Like affect geometry, referential communication emerges under minimal conditions — partial observability plus cooperative pressure. It sits at rung 4–5 of the emergence ladder. Language does not create dynamics any more than geometry does. The expensive transition remains at rung 8, requiring embodied agency and gradient coupling. Adding communication channels does not help cross it.</p>
+      <Figure src="" alt="Language emergence animation" caption={<><strong>Language Is Cheap.</strong> 10 agents under partial observability develop referential communication using 8 discrete symbols. Symbol entropy rises to 2.48 bits (83% of maximum). But <M>{"\\intinfo"}</M> stays flat at ~0.074 — language and integration are orthogonal. Like geometry, language is an inevitability of survival under information asymmetry. It sits at rung 4-5, not rung 8.</>}>
+        <video src="/videos/language-emergence.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       <CodeFiles files={[
         { name: 'v35_substrate.py', desc: 'Discrete communication + cooperative dynamics' },
         { name: 'v35_evolution.py', desc: 'Evolution loop with communication metrics' },
@@ -825,6 +829,9 @@ export default function AppendixExperiments() {
       <li><strong>The geometry is universal.</strong> VLMs trained on human data — with no exposure to the framework — independently recognize the same affect signatures in completely uncontaminated protocell systems (RSA <M>{"\\rho = 0.54"}</M>–<M>{"0.78"}</M>, <M>{"p < 0.0001"}</M>). The convergence holds and <em>strengthens</em> when narrative framing is removed and only raw numbers remain. Affect geometry arises from the structure of viable self-maintenance, not from biological contingency.</li>
       </ol>
       <p>The framework is not confirmed. It is informed. What it predicted about geometry was too weak — geometry is cheaper than expected, and now independently validated by cross-substrate convergence. What it predicted about dynamics was too strong — dynamics require specific architectural affordances the theory didn't anticipate. The interesting question is no longer "does the geometry exist?" (it does, trivially, and VLMs trained on human data agree) but "what determines which systems develop the dynamics that make the geometry experientially real?"</p>
+      <Figure src="" alt="Geometry is cheap, dynamics are expensive animation" caption={<><strong>The Central Finding.</strong> The emergence ladder: rungs 1-7 (affect geometry through integrated response) develop in 100% of seeds — geometry is cheap, an inevitability of multi-agent survival. Rungs 8-10 (counterfactual, self-model, normativity) require embodied agency and gradient coupling — only ~22% of seeds reach HIGH <M>{"\\intinfo"}</M>. The wall between cheap and expensive sits at rung 8. The hard problem applies to the 30%, not the 100%.</>}>
+        <video src="/videos/geometry-is-cheap.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       </Section>
     </>
   );

@@ -20,6 +20,7 @@ import ProtocellGrid from '../diagrams/ProtocellGrid';
 import IntegrationDistribution from '../diagrams/IntegrationDistribution';
 import SubstrateLineage from '../diagrams/SubstrateLineage';
 import VLMConvergence from '../diagrams/VLMConvergence';
+import { FurnaceMechanism } from '../diagrams/FurnaceMechanism';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -42,6 +43,7 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/appendix-6.svg': IntegrationDistribution,
   '/diagrams/appendix-7.svg': SubstrateLineage,
   '/diagrams/appendix-8.svg': VLMConvergence,
+  '/diagrams/appendix-9.svg': FurnaceMechanism,
 };
 
 interface DiagramProps {

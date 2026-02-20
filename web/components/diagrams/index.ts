@@ -18,3 +18,4 @@ export { default as ProtocellGrid } from './ProtocellGrid';
 export { default as IntegrationDistribution } from './IntegrationDistribution';
 export { default as SubstrateLineage } from './SubstrateLineage';
 export { default as VLMConvergence } from './VLMConvergence';
+export { FurnaceMechanism } from './FurnaceMechanism';
