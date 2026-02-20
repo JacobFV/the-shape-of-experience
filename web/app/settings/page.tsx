@@ -76,6 +76,8 @@ export default function SettingsPage() {
   });
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
+  const [compressing, setCompressing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -128,9 +130,6 @@ export default function SettingsPage() {
     a.click();
     URL.revokeObjectURL(url);
   }
-
-  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
-  const [compressing, setCompressing] = useState(false);
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
