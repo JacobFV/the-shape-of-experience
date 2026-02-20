@@ -344,12 +344,13 @@
     },
     "V34": {
       "name": "Phi-Inclusive Fitness",
-      "substrate": "V27 + fitness includes Phi (survival + alpha * Phi_robustness)",
-      "seeds": [7, 42, 123],
-      "status": "queued",
-      "key_finding": null,
-      "book_section": "Part VII",
-      "result_dir": "results/v34_*",
+      "substrate": "V27 + fitness includes Phi (survival × (1 + 2Φ))",
+      "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 42, 123],
+      "status": "complete",
+      "key_finding": "MIXED NEGATIVE. 2 HIGH / 3 MOD / 5 LOW. Late Phi 0.079+-0.036 (t=-1.08 vs V27, NS). 2/10 seeds Goodhart (phi-rob corr < -0.3). Direct selection for Phi does not increase integration.",
+      "key_stats": {"n_high": 2, "n_mod": 3, "n_low": 5, "late_phi_mean": 0.079, "late_phi_std": 0.036, "t_vs_v27": -1.08, "mean_phi_rob_corr": 0.113, "goodhart_seeds": 2},
+      "book_section": "Part VII, Appendix",
+      "result_dir": "results/v34_phi_inclusive/",
       "code_files": ["v34_evolution.py", "v34_gpu_run.py"]
     },
     "V35": {

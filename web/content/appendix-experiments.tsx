@@ -689,8 +689,9 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="V34: Phi-Inclusive Fitness" level={1}>
-      <p><strong>Status</strong>: Code complete. Queued.</p>
+      <p><strong>Status</strong>: COMPLETE. <strong>MIXED NEGATIVE.</strong></p>
       <p><strong>Hypothesis</strong>: Direct selection for <M>{"\\intinfo"}</M> (fitness = survival_time x (1 + 2<M>{"\\intinfo"}</M>)) pushes HIGH fraction above 30%. Or does it Goodhart?</p>
+      <p><strong>Result</strong>: Direct selection for <M>{"\\intinfo"}</M> does not increase the HIGH fraction. 2 HIGH / 3 MOD / 5 LOW across 10 seeds (20% HIGH, within noise of V27's 22%). Late <M>{"\\intinfo"}</M> = 0.079 ± 0.036 (t = -1.08 vs V27, not significant). 2/10 seeds show Goodharting (<M>{"\\intinfo"}</M>-robustness correlation &lt; -0.3). Integration cannot be selected for directly — it must emerge as a byproduct of architectural coupling and trajectory-dependent forging.</p>
       <CodeFiles files={[
         { name: 'v34_evolution.py', desc: 'Phi-inclusive fitness function' },
         { name: 'v34_gpu_run.py', desc: 'GPU runner (10 seeds)' },

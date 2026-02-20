@@ -1459,19 +1459,27 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 ### V34: Φ-Inclusive Fitness
 
-**Status**: CODE COMPLETE. Queued after V33 on Lambda A100. 10 seeds.
+**Status**: COMPLETE. **MIXED NEGATIVE.** 10 seeds on Lambda A100.
 
 **Motivation**: V22-V31 use pure survival fitness. Integration (Φ) emerges as a byproduct but isn't selected for. V34 tests direct selection: fitness = survival_time × (1 + α × Φ), with α=2.0. Does this push HIGH fraction above 30%? Or does it Goodhart?
 
 **Pre-registered predictions**:
-- P1: HIGH fraction > 40% (direct selection increases success rate)
-- P2: Mean Φ > 0.090 (V27 baseline)
-- P3: Robustness maintained (Φ-optimized agents still survive)
-- P4: No Goodhart (Φ correlates positively with robustness)
+- P1: HIGH fraction > 40% — **FALSIFIED** (20%: 2 HIGH / 3 MOD / 5 LOW)
+- P2: Mean Φ > 0.090 — **FALSIFIED** (mean 0.082 ± 0.021, t=-1.26 vs V27)
+- P3: Robustness maintained — **PARTIALLY SUPPORTED** (mean 0.990 ± 0.019, not worse)
+- P4: No Goodhart — **MIXED** (mean Φ-rob corr = 0.113, but 2/10 seeds < -0.3)
 
-**Falsification**:
-- P1 fails: 30% is fundamental, not malleable by selection
-- P4 fails: Goodhart — agents evolve trivially high Φ that doesn't correlate with survival
+**Results (10 seeds)**:
+- Late Φ: 0.079 ± 0.036 (vs V27's 0.091 ± 0.028, t=-1.08, NOT significant)
+- Category distribution: 2 HIGH (20%) / 3 MOD (30%) / 5 LOW (50%)
+- Mean robustness: 0.990 ± 0.019 (not significantly different from V27)
+- Φ-robustness correlation: mean 0.113, range -0.665 to +0.550
+- Seed 7: HIGH with phi_rob = -0.665 (strongest Goodhart signal)
+- Seed 6: HIGH with phi_rob = +0.382 (legitimate integration)
+
+**Key finding**: Direct selection for Φ does not push HIGH fraction above baseline. The two HIGH seeds (20%) are within noise of V27's 22%. Integration cannot be selected for directly — it must emerge as a byproduct of architectural coupling (V27) and trajectory-dependent forging (V31/V32). When Φ is in the fitness function, evolution can find shortcuts that inflate the measure without genuine integration (Goodharting in 2/10 seeds).
+
+**Implication**: Integration is not the kind of property that responds to direct selection. Like consciousness in biological systems, it arises from getting other things right (architecture, plasticity, environmental history) rather than from being optimized directly. This is consistent with the broader pattern: what matters is how prediction machinery is structured (V27-V28), not what is predicted (V29-V31) or what is selected for (V34).
 
 **Files**: `v34_evolution.py`, `v34_gpu_run.py`
 
