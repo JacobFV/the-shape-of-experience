@@ -1,0 +1,460 @@
+{
+  "_meta": {
+    "description": "Canonical experiment registry for the Shape of Experience research program",
+    "last_updated": "2026-02-20",
+    "convention": {
+      "seeds": "V2-V30 use {7, 42, 123}; V31+ use sequential {0, 1, 2, ...}",
+      "results": "results/v{N}_s{seed}/ for per-seed dirs; results/v{N}_summary.json for aggregates",
+      "snapshots": "*.npz files stored in GCS gs://shape-of-experience-data/experiment-snapshots/, NOT in git",
+      "code": "v{N}_evolution.py (main loop), v{N}_substrate.py (physics), v{N}_gpu_run.py (CLI runner)"
+    }
+  },
+
+  "phases": {
+    "llm_affect": {
+      "versions": ["V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9"],
+      "description": "LLM affect measurement — structured affect in language models",
+      "finding": "Affect space is coherent and measurable; LLMs show OPPOSITE dynamics to biology (Phi decreases under threat)"
+    },
+    "marl_ablation": {
+      "versions": ["V10"],
+      "description": "Multi-agent RL forcing function ablation",
+      "finding": "Affect geometry is a baseline property of multi-agent survival, not contingent on forcing functions"
+    },
+    "substrate_ladder": {
+      "versions": ["V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18"],
+      "description": "Lenia CA substrate engineering — what architectural features enable biological-like integration",
+      "finding": "Geometry is cheap (all substrates); dynamics need attention + curriculum; locality ceiling at rung 7"
+    },
+    "measurement_framework": {
+      "versions": ["Exp0", "Exp1", "Exp2", "Exp3", "Exp4", "Exp5", "Exp6", "Exp7", "Exp8", "Exp9", "Exp10", "Exp11", "Exp12"],
+      "description": "Measurement experiments run ON V13 snapshots — testing framework predictions",
+      "finding": "Affect geometry develops over evolution (Exp7); animism is computational default (Exp8); no superorganism threshold (Exp10)"
+    },
+    "agency_wall": {
+      "versions": ["V19", "V20", "V20b", "V21"],
+      "description": "Breaking the sensory-motor coupling wall — from passive patterns to embodied agents",
+      "finding": "V20 broke the wall (rho_sync=0.21); world models and self-models develop; evolution too slow for deliberation"
+    },
+    "prediction_wall": {
+      "versions": ["V22", "V23", "V24", "V25", "V26", "V27", "V28"],
+      "description": "Prediction architectures and the decomposability wall",
+      "finding": "Linear readouts always decomposable; V27 MLP breaks through via gradient coupling (Phi=0.245)"
+    },
+    "validation": {
+      "versions": ["V29", "V30", "V31"],
+      "description": "Scaling validation — prediction target, multi-task, 10-seed replication",
+      "finding": "Target doesn't matter (p=0.93); multi-task fails from gradient imbalance; 30/30/40 split is trajectory-dependent"
+    },
+    "current": {
+      "versions": ["V32", "V33", "V34", "V35"],
+      "description": "Tier 1 priorities — drought autopsy, contrastive prediction, Phi-inclusive fitness, language emergence",
+      "finding": "V35: language is cheap (10/10 referential, no Phi lift); V32: trajectory-dependence confirmed at 50-seed scale"
+    },
+    "convergence": {
+      "versions": ["VLM"],
+      "description": "VLM convergence experiment — do contaminated models recognize uncontaminated affect?",
+      "finding": "Strong convergence (RSA rho=0.54-0.78); increases with raw numbers; universality confirmed"
+    }
+  },
+
+  "experiments": {
+    "V2": {
+      "name": "LLM Affect Baseline",
+      "substrate": "GPT-4 / Claude 3",
+      "seeds": [],
+      "status": "complete",
+      "key_finding": "Processing valence != content valence",
+      "book_section": "Part VII",
+      "result_dir": null,
+      "code_files": []
+    },
+    "V10": {
+      "name": "MARL Forcing Function Ablation",
+      "substrate": "PPO agents, seasonal resource grid",
+      "seeds": [1, 2, 3],
+      "n_conditions": 7,
+      "status": "complete",
+      "key_finding": "All 7 conditions show RSA rho>0.21 (p<0.0001); removing forcing functions slightly INCREASES alignment",
+      "key_stats": {"rsa_rho_range": [0.212, 0.254], "p_all": "<0.0001"},
+      "book_section": "Part I, Part VII",
+      "result_dir": "results/v10_*",
+      "code_files": ["v10_marl.py"]
+    },
+    "V11": {
+      "name": "Lenia Substrate Ladder",
+      "subtitle": "V11.0-V11.7: 8 substrate variants",
+      "substrate": "Lenia CA (C=3 to C=64)",
+      "seeds": [7, 42, 123],
+      "n_variants": 8,
+      "status": "complete",
+      "key_finding": "Curriculum training (V11.7) is the only intervention that improves novel-stress generalization; substrate complexity matters less than training regime",
+      "key_stats": {"best_robustness": 0.967, "yerkes_dodson": "60-200% Phi increase under mild stress"},
+      "book_section": "Part I",
+      "result_dir": "results/v11_*",
+      "code_files": ["v11_substrate.py", "v11_evolution.py", "v11_run.py"]
+    },
+    "V12": {
+      "name": "Attention-Based Lenia",
+      "substrate": "Lenia + windowed self-attention (C=16, N=128)",
+      "seeds": [7, 42, 123],
+      "n_conditions": 3,
+      "status": "complete",
+      "key_finding": "Evolvable attention: 42% of cycles show Phi increase under stress (vs 3% for convolution); +2.0pp shift; necessary but not sufficient",
+      "key_stats": {"mean_robustness": 1.001, "phi_increase_fraction": 0.42},
+      "book_section": "Part I",
+      "result_dir": "results/v12_*",
+      "code_files": ["v12_substrate.py", "v12_evolution.py", "v12_run.py"]
+    },
+    "V13": {
+      "name": "Content-Coupling Lenia + Measurement Framework",
+      "substrate": "Lenia + content-based coupling (C=16, N=128)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Mean robustness 0.923; peak 1.052 at population bottleneck; plus 12 measurement experiments (Exp 0-12)",
+      "key_stats": {"mean_robustness": 0.923, "peak_robustness": 1.052},
+      "book_section": "Part I, Appendix",
+      "result_dir": "results/v13_*",
+      "code_files": ["v13_substrate.py", "v13_evolution.py", "v13_run.py"]
+    },
+    "V14": {
+      "name": "Chemotactic Lenia",
+      "substrate": "V13 + directed motion",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "V13 + chemotaxis; incremental improvement",
+      "book_section": "Appendix",
+      "result_dir": "results/v14_*",
+      "code_files": ["v14_substrate.py", "v14_evolution.py", "v14_gpu_run.py"]
+    },
+    "V15": {
+      "name": "Temporal Lenia",
+      "substrate": "V13 + memory channels",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Memory selectable (2/3 lineages chose longer retention); Phi-stress doubles in bottleneck",
+      "book_section": "Part VII, Appendix",
+      "result_dir": "results/v15_*",
+      "code_files": ["v15_substrate.py", "v15_evolution.py", "v15_gpu_run.py"]
+    },
+    "V16": {
+      "name": "Plastic Lenia",
+      "substrate": "V13 + Hebbian plasticity",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "NEGATIVE: Hebbian plasticity hurts robustness (0.892, lowest)",
+      "key_stats": {"mean_robustness": 0.892},
+      "book_section": "Appendix",
+      "result_dir": "results/v16_*",
+      "code_files": ["v16_substrate.py", "v16_evolution.py", "v16_gpu_run.py"]
+    },
+    "V17": {
+      "name": "Signaling Lenia",
+      "substrate": "V13 + inter-pattern signaling",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "MIXED: highest peak (1.125) but signaling suppressed 2/3 seeds",
+      "key_stats": {"peak_robustness": 1.125},
+      "book_section": "Appendix",
+      "result_dir": "results/v17_*",
+      "code_files": ["v17_substrate.py", "v17_evolution.py", "v17_gpu_run.py"]
+    },
+    "V18": {
+      "name": "Boundary-Dependent Lenia",
+      "substrate": "V13 + insulation field (boundary/interior split)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "BEST substrate: mean robustness 0.969, max 1.651; internal gain evolved DOWN (0.60-0.72)",
+      "key_stats": {"mean_robustness": 0.969, "max_robustness": 1.651},
+      "book_section": "Part I, Part VII, Appendix",
+      "result_dir": "results/v18_*",
+      "code_files": ["v18_substrate.py", "v18_evolution.py", "v18_gpu_run.py"]
+    },
+    "V19": {
+      "name": "Bottleneck Furnace Mechanism",
+      "substrate": "V18 (boundary-dependent Lenia)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "CREATION confirmed 2/3 seeds (seed 42: beta=0.704 p<0.0001; seed 7: beta=0.080 p=0.011). Furnace forges, not merely filters.",
+      "key_stats": {"creation_confirmed": "2/3 seeds", "beta_max": 0.704},
+      "book_section": "Part I, Part VII",
+      "result_dir": "results/v19_*",
+      "code_files": ["v19_substrate.py", "v19_evolution.py", "v19_gpu_run.py"]
+    },
+    "V20": {
+      "name": "Protocell Agency",
+      "substrate": "GRU agents (H=16, ~3935 params), 128x128 grid, 5x5 obs",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "WALL BROKEN (3/3 seeds). rho_sync=0.21. World models (C_wm=0.10-0.15). Self-models (SM_sal>1.0 in 2/3 seeds).",
+      "key_stats": {"rho_sync": 0.21, "c_wm_range": [0.10, 0.15]},
+      "book_section": "Part I, Part VII",
+      "result_dir": "results/v20_*",
+      "code_files": ["v20_substrate.py", "v20_evolution.py"]
+    },
+    "V20b": {
+      "name": "Protocell Agency + Drought",
+      "substrate": "V20 + drought schedule (every 5 cycles)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "82-99% bottleneck mortality. Max rob=1.532. Language precursor: NULL (z always ~0.5).",
+      "key_stats": {"max_robustness": 1.532},
+      "book_section": "Part VII",
+      "result_dir": "results/v20b_*",
+      "code_files": ["v20_substrate.py", "v20_evolution.py"]
+    },
+    "V21": {
+      "name": "CTM Inner Ticks",
+      "substrate": "V20 + K=8 inner GRU ticks per step",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "MIXED: ticks don't collapse (P3 confirmed), but no adaptive deliberation. Evolution too slow.",
+      "book_section": "Part VII",
+      "result_dir": "results/v21_*",
+      "code_files": ["v21_substrate.py", "v21_evolution.py"]
+    },
+    "V22": {
+      "name": "Intrinsic Predictive Gradient",
+      "substrate": "V21 + within-lifetime SGD on energy prediction",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "3/5 SUPPORTED: gradient works (100-15000x MSE improvement), LR not suppressed. But robustness not improved. Prediction != integration.",
+      "key_stats": {"mean_robustness": 0.981, "mse_improvement": "100-15000x"},
+      "book_section": "Part I, Part VII",
+      "result_dir": "results/v22_*",
+      "code_files": ["v22_evolution.py"]
+    },
+    "V23": {
+      "name": "World-Model Gradient (Multi-Target)",
+      "substrate": "V22 + multi-target prediction (energy + resource + neighbor)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "SPECIALIZATION != INTEGRATION: weight columns specialize (cos~0, rank~2.9). Phi DECREASES (0.079 vs 0.097).",
+      "key_stats": {"mean_phi": 0.079, "specialization": "near-orthogonal"},
+      "book_section": "Part VII",
+      "result_dir": "results/v23_*",
+      "code_files": ["v23_evolution.py"]
+    },
+    "V24": {
+      "name": "TD Value Learning",
+      "substrate": "V22 + temporal difference bootstrapping (gamma~0.75)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Best survival (robustness 1.012). Phi mixed. Linear readout is the architectural bottleneck.",
+      "key_stats": {"mean_robustness": 1.012},
+      "book_section": "Part VII",
+      "result_dir": "results/v24_*",
+      "code_files": ["v24_evolution.py"]
+    },
+    "V25": {
+      "name": "Predator-Prey Landscape",
+      "substrate": "N=256, 12 patches, 5x5 obs, H=16",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "NEGATIVE: 5x5 obs too rich, reactive suffices",
+      "book_section": "Appendix",
+      "result_dir": "results/v25_*",
+      "code_files": ["v25_evolution.py", "v25_analysis.py"]
+    },
+    "V26": {
+      "name": "POMDP (Minimal Observation)",
+      "substrate": "1x1 obs + noisy compass (sigma=0.5), H=32",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Eff rank 3.6-5.7, type_acc 0.95-0.97. 100% drought mortality.",
+      "book_section": "Appendix",
+      "result_dir": "results/v26_*",
+      "code_files": ["v26_evolution.py", "v26_analysis.py"]
+    },
+    "V27": {
+      "name": "Nonlinear MLP Prediction Head",
+      "substrate": "V22 + 2-layer MLP (H -> H/2 -> output)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "DECOMPOSABILITY WALL BROKEN. Seed 7: Phi=0.245 (highest ever), eff_rank=11.34. Mechanism: gradient coupling.",
+      "key_stats": {"max_phi": 0.245, "max_eff_rank": 11.34, "mean_robustness_range": [0.997, 1.006]},
+      "book_section": "Part I, Part VII",
+      "result_dir": "results/v27_*",
+      "code_files": ["v27_substrate.py", "v27_evolution.py"]
+    },
+    "V28": {
+      "name": "Width Sweep (Gradient Coupling Mechanism)",
+      "substrate": "V27 with varied width/activation",
+      "seeds": [7, 42, 123],
+      "n_conditions": 9,
+      "status": "complete",
+      "key_finding": "Confirmed: not nonlinearity, not bottleneck width — gradient coupling through 2-layer architecture",
+      "book_section": "Part VII",
+      "result_dir": "results/v28_*",
+      "code_files": ["v28_evolution.py"]
+    },
+    "V29": {
+      "name": "Social Prediction",
+      "substrate": "V27 predicting neighbor energy instead of self",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "3-seed mean Phi=0.104. Suggested 'social lift' — later shown to be a fluke by V31.",
+      "key_stats": {"mean_phi": 0.104},
+      "book_section": "Part VII",
+      "result_dir": "results/v29_*",
+      "code_files": ["v29_evolution.py"]
+    },
+    "V30": {
+      "name": "Dual Prediction (Self + Social)",
+      "substrate": "V27 predicting both self and neighbor energy",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "NEGATIVE: gradient imbalance (self MSE 100-150x smaller), self target colonizes representation",
+      "book_section": "Part VII",
+      "result_dir": "results/v30_*",
+      "code_files": ["v30_evolution.py"]
+    },
+    "V31": {
+      "name": "10-Seed Validation (Social Prediction)",
+      "substrate": "V29 architecture, 10 seeds",
+      "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "status": "complete",
+      "key_finding": "Mean Phi=0.091+-0.028, NOT significant vs V27 (p~0.93). Social lift was a fluke. 30/30/40 split. Post-drought bounce r=0.997 (p<0.0001).",
+      "key_stats": {"mean_phi": 0.091, "std_phi": 0.028, "bounce_correlation": 0.997},
+      "book_section": "Part I, Part VII",
+      "result_dir": "results/v31_*",
+      "code_files": ["v31_evolution.py"]
+    },
+    "V32": {
+      "name": "Drought Autopsy at Scale",
+      "substrate": "V27 architecture, 50 seeds, detailed drought tracking",
+      "seeds": "0-49",
+      "status": "complete",
+      "key_finding": "23/35/42 split. Phi trajectory slope r=0.821 (p<1e-11). Post-drought preservation: HIGH=1.04, LOW=0.70. First drought h_conv predicts second bounce (r=0.59). Genome compression finding RETRACTED at 43+ seeds.",
+      "key_stats": {"mean_phi": 0.087, "max_phi": 0.473, "phi_slope_r": 0.821, "n_seeds": 50},
+      "book_section": "Part VII",
+      "result_dir": "results/v32_drought_autopsy/",
+      "code_files": ["v32_evolution.py", "v32_gpu_run.py", "v32_analysis.py"]
+    },
+    "V33": {
+      "name": "Contrastive Self-Prediction",
+      "substrate": "V27 + contrastive loss (positive=self, negative=other agents)",
+      "seeds": [7, 42, 123],
+      "status": "queued",
+      "key_finding": null,
+      "book_section": "Part VII",
+      "result_dir": "results/v33_*",
+      "code_files": ["v33_substrate.py", "v33_evolution.py", "v33_gpu_run.py"]
+    },
+    "V34": {
+      "name": "Phi-Inclusive Fitness",
+      "substrate": "V27 + fitness includes Phi (survival + alpha * Phi_robustness)",
+      "seeds": [7, 42, 123],
+      "status": "queued",
+      "key_finding": null,
+      "book_section": "Part VII",
+      "result_dir": "results/v34_*",
+      "code_files": ["v34_evolution.py", "v34_gpu_run.py"]
+    },
+    "V35": {
+      "name": "Language Emergence under Cooperative POMDP",
+      "substrate": "V27 + 8 discrete symbols, obs_radius=1, comm_radius=3, cooperative bonus",
+      "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 42, 123],
+      "status": "complete",
+      "key_finding": "Referential 10/10 (100%). Mean Phi=0.084+-0.011, no lift vs V27. Phi-MI correlation rho=-0.90. Language is cheap; scaffolds substitute for integration.",
+      "key_stats": {"referential_fraction": 1.0, "mean_phi": 0.084, "phi_mi_rho": -0.90},
+      "book_section": "Part I, Part VII, Appendix",
+      "result_dir": "results/v35_*",
+      "code_files": ["v35_evolution.py"]
+    },
+    "VLM": {
+      "name": "VLM Convergence Experiment",
+      "substrate": "GPT-4o + Claude Sonnet 4 evaluating V27/V31 vignettes",
+      "seeds": null,
+      "status": "complete",
+      "key_finding": "Strong convergence: behavioral RSA rho=0.54-0.72; raw numbers RSA rho=0.72-0.78. All 4 predictions PASS. Convergence increases without narrative framing.",
+      "key_stats": {"rsa_behavioral_gpt4o": 0.72, "rsa_behavioral_claude": 0.54, "rsa_raw_gpt4o": 0.78, "rsa_raw_claude": 0.72},
+      "book_section": "Part I, Part VII, Appendix",
+      "result_dir": "results/vlm_convergence/, results/vlm_convergence_raw/",
+      "code_files": ["vlm_convergence.py"],
+      "paper": "papers/vlm-convergence/main.tex"
+    },
+    "Exp7": {
+      "name": "Affect Geometry Development",
+      "substrate": "V13 snapshots (measurement experiment)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "RSA 0.01 -> 0.38 over evolution. Affect geometry develops, not innate.",
+      "book_section": "Part III, Part VII, Appendix",
+      "result_dir": "results/exp7_*"
+    },
+    "Exp8": {
+      "name": "Computational Animism",
+      "substrate": "V13 snapshots (measurement experiment)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Animism score >1.0 in ALL 20 snapshots. iota ~0.30 is evolutionary steady state. Participatory perception is the default.",
+      "key_stats": {"iota": 0.30, "animism_universal": true},
+      "book_section": "Part II, Part III, Part VII, Appendix",
+      "result_dir": "results/exp8_*"
+    },
+    "Exp9": {
+      "name": "Social Coupling",
+      "substrate": "V13 snapshots (measurement experiment)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Phi_social >> Phi_isolated. Social coupling amplifies individual integration without crossing superorganism threshold.",
+      "book_section": "Part V, Part VII, Appendix",
+      "result_dir": "results/exp9_*"
+    },
+    "Exp10": {
+      "name": "Superorganism Detection",
+      "substrate": "V13 snapshots (measurement experiment)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Collective:individual Phi ratio 0.01-0.12. No superorganism emergence. But ratio was increasing.",
+      "book_section": "Part V, Part VII, Appendix",
+      "result_dir": "results/exp10_*"
+    },
+    "Exp12": {
+      "name": "Capstone (Three-Way Alignment)",
+      "substrate": "V13 snapshots (measurement experiment)",
+      "seeds": [7, 42, 123],
+      "status": "complete",
+      "key_finding": "Geometry confirmed, dynamics limited. Geometry is cheap, dynamics need embodied agency + gradient coupling.",
+      "book_section": "Part III, Part VII, Appendix",
+      "result_dir": "results/exp12_*"
+    }
+  },
+
+  "cross_experiment_findings": [
+    {"id": 1, "claim": "Geometry is cheap, dynamics are expensive", "evidence": ["V10", "V11", "V12", "Exp12"], "status": "confirmed"},
+    {"id": 2, "claim": "Bottleneck furnace forges, not merely filters", "evidence": ["V19", "V31", "V32"], "status": "confirmed"},
+    {"id": 3, "claim": "Sensory-motor wall at rung 8", "evidence": ["V11-V18", "V20"], "status": "confirmed"},
+    {"id": 4, "claim": "Decomposability wall broken by gradient coupling", "evidence": ["V27", "V28"], "status": "confirmed"},
+    {"id": 5, "claim": "Integration is trajectory-dependent, not initial-condition-dependent", "evidence": ["V31", "V32"], "status": "confirmed"},
+    {"id": 6, "claim": "Prediction target doesn't matter for integration", "evidence": ["V29", "V31"], "status": "confirmed"},
+    {"id": 7, "claim": "Language is cheap (rung 4-5 inevitability, no Phi lift)", "evidence": ["V35"], "status": "confirmed"},
+    {"id": 8, "claim": "Affect geometry is universal (cross-substrate convergence)", "evidence": ["V10", "Exp7", "VLM"], "status": "confirmed"},
+    {"id": 9, "claim": "Animism is computational default (iota~0.30)", "evidence": ["Exp8"], "status": "confirmed"},
+    {"id": 10, "claim": "Multi-task learning fails with difficulty asymmetry", "evidence": ["V30"], "status": "confirmed"}
+  ],
+
+  "retracted_findings": [
+    {"claim": "1D energy counter (hidden states collapse to energy)", "version": "V20/V25/V26", "reason": "Snapshot timing bug — hidden states were zeroed before saving", "corrected_in": "V22-V24"},
+    {"claim": "Forging = compression (HIGH seeds select leaner genomes)", "version": "V32 (14-seed)", "reason": "Not significant at 43-seed scale (p=0.28)", "corrected_in": "V32 (43-seed)"},
+    {"claim": "Social prediction lifts integration", "version": "V29", "reason": "Fluke at 3-seed scale; V31 10-seed: p=0.93", "corrected_in": "V31"}
+  ],
+
+  "architectural_walls": {
+    "sensory_motor_wall": {
+      "rung": 8,
+      "description": "Counterfactual sensitivity requires action->observation loop",
+      "blocked_by": "V11-V18 (all Lenia substrates, rho_sync ~0.003)",
+      "broken_by": "V20 (protocell agency, rho_sync=0.21)",
+      "mechanism": "Architectural: consume depletes patch, move changes location, emit persists trace"
+    },
+    "decomposability_wall": {
+      "rung": "8+",
+      "description": "Linear readouts create decomposable channels regardless of prediction target",
+      "blocked_by": "V22-V24 (linear prediction heads)",
+      "broken_by": "V27 (2-layer MLP prediction head)",
+      "mechanism": "Gradient coupling through composition: chain rule through two weight matrices couples all hidden dimensions"
+    }
+  }
+}

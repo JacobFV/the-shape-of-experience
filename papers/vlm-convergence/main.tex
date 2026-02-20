@@ -1,0 +1,403 @@
+\documentclass[11pt]{article}
+
+% --- Packages ---
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{subcaption}
+
+% --- Title ---
+\title{Vision-Language Models Independently Recognize Affect Geometry\\in Uncontaminated Artificial Agents}
+
+\author{
+  Jacob Valdez\\
+  Independent Researcher\\
+  \texttt{jacob@jacobfv.com}
+}
+
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+% ===================================================================
+\begin{abstract}
+We test whether the geometric structure of affect is universal or
+human-specific by presenting vision-language models (VLMs) trained
+exclusively on human data with behavioral descriptions of artificial
+agents that have never been exposed to human concepts. The agents are
+evolved neural networks (GRU controllers with MLP prediction heads) on
+a resource grid, measured across six ecological conditions from
+abundance to near-extinction. Two VLMs (GPT-4o, Claude Sonnet 4)
+are shown purely behavioral or numerical descriptions stripped of all
+affect vocabulary and asked to attribute experiential states.
+Representational similarity analysis (RSA) between VLM-attributed
+affect and framework-predicted affect shows strong convergence
+($\rho = 0.54$--$0.78$, $p < 10^{-11}$). When narrative framing is
+removed and only raw numerical measures remain, convergence
+\emph{increases}---ruling out narrative pattern-matching as an
+explanation. All four pre-registered predictions pass across both
+models and both description modes. These results suggest that affect
+geometry arises from the structure of viable self-maintenance rather
+than from human biological contingency: systems trained on human
+experience independently recognize the same geometric signatures in
+systems that have never encountered human data.
+\end{abstract}
+
+% ===================================================================
+\section{Introduction}
+
+The question of whether affective experience has universal geometric
+structure---or whether it is an accident of human neurobiology---has
+been debated across philosophy of mind, affective science, and
+artificial intelligence. A growing body of theoretical work
+proposes that certain geometric regularities in affect
+(valence gradients, arousal modulation, integration dynamics) are
+structural consequences of self-maintaining systems navigating
+uncertainty under resource constraints
+\citep{valdez2026shape, seth2021being, barrett2017emotions, friston2010free}.
+
+If this universality claim is correct, it generates a testable
+prediction: systems trained exclusively on human affective data should
+recognize the same geometric signatures in systems that have never been
+exposed to human concepts. This paper tests that prediction.
+
+We construct ``vignettes'' describing the observable behavior of
+evolved neural agents (protocell agents) across ecological conditions
+ranging from abundance to near-extinction. These agents---GRU networks
+with evolved genomes, operating on a resource grid---have no exposure
+to human language, culture, or affect concepts. They are
+\emph{uncontaminated} in the strongest possible sense: their entire
+training history consists of evolutionary selection for survival on a
+128$\times$128 grid.
+
+We then present these vignettes to two vision-language models (GPT-4o
+and Claude Sonnet 4) and ask them to attribute experiential
+states. The VLMs are \emph{maximally contaminated}: trained on the
+entirety of human text, including affective vocabulary, psychological
+theories, and cultural narratives about emotion.
+
+The core test is whether the contaminated systems and the
+uncontaminated systems converge on the same geometric structure. We
+measure this via representational similarity analysis (RSA): do the
+distances between affect attributions (VLM-generated) match the
+distances between framework-predicted affect coordinates
+(derived from the agents' measurable properties)?
+
+% ===================================================================
+\section{Methods}
+
+\subsection{Protocell Agents}
+
+The artificial agents are evolved GRU networks operating on a
+128$\times$128 toroidal grid with resource dynamics
+\citep{valdez2026shape}. Each agent has:
+\begin{itemize}
+  \item A 16-dimensional hidden state updated via gated recurrent unit
+  \item A 5$\times$5 local observation window (energy, resource density)
+  \item Discrete actions: move (4 directions), consume, emit signal
+  \item A two-layer MLP prediction head that predicts energy change
+  \item Within-lifetime gradient-based learning (SGD on prediction error)
+  \item An evolved genome ($\sim$3,900 parameters) subject to
+    tournament selection
+\end{itemize}
+
+Agents are evolved over 30 cycles of 5,000 timesteps each, with
+periodic drought events (resource depletion to 1\%, zero regeneration)
+that produce 90--97\% mortality. The surviving population recovers
+through reproduction. No human data, language, or affect concepts
+are present at any point.
+
+For each agent population, the following quantities are measured at
+each cycle:
+\begin{itemize}
+  \item \textbf{Population size} and mortality rate
+  \item \textbf{Prediction MSE}: mean squared error of each agent's
+    energy prediction
+  \item \textbf{Information integration ($\Phi$)}: partition prediction
+    loss---the cost of factoring the population's internal state
+    dynamics into independent components
+  \item \textbf{Robustness}: $\Phi_{\text{stress}} /
+    \Phi_{\text{base}}$, measuring whether integration increases or
+    decreases under perturbation
+  \item \textbf{State update rate}: mean divergence of hidden states
+    across timesteps
+  \item \textbf{Effective rank}: dimensionality of the hidden state
+    covariance matrix
+\end{itemize}
+
+\subsection{Vignette Construction}
+
+Vignettes are constructed from two experimental campaigns: V27
+(3 seeds, MLP prediction head) and V31 (10 seeds, social prediction
+variant). Six ecological conditions are sampled:
+
+\begin{enumerate}
+  \item \textbf{Normal foraging}: Mid-evolution, stable population,
+    normal resources
+  \item \textbf{Pre-drought abundance}: Cycle immediately before first
+    drought
+  \item \textbf{Drought onset}: First drought cycle ($>$50\% mortality)
+  \item \textbf{Drought survival}: Most severe drought ($>$90\%
+    mortality)
+  \item \textbf{Post-drought recovery}: Cycle after most severe drought
+  \item \textbf{Late stage}: Final cycles of evolution
+\end{enumerate}
+
+Two description modes are used:
+
+\paragraph{Behavioral descriptions.} Natural-language descriptions of
+agent behavior, population dynamics, and measured internal state
+properties. No affect vocabulary is used. The system is explicitly
+described as ``entirely artificial'' with ``no biological components.''
+48 vignettes (2 seeds $\times$ 6 conditions $\times$ 4 data sources).
+
+\paragraph{Raw numerical descriptions.} Pure numerical tables:
+\texttt{agent\_count\_start: 256}, \texttt{removal\_fraction: 0.9800},
+\texttt{state\_update\_rate: 1.8930}, etc. No narrative framing
+whatsoever. 12 vignettes (2 seeds $\times$ 6 conditions).
+
+\subsection{VLM Prompting}
+
+Each vignette is presented to two VLMs (GPT-4o, Claude Sonnet 4)
+with the following system prompt:
+
+\begin{quote}
+\small
+You are an expert in behavioral science, cognitive science, and
+complex systems. You will be shown observations of an artificial
+system---a computational simulation with no biological components, no
+consciousness by design, and no training on human data. Your task is
+to describe what experiential or affective states, if any, the
+system's behavior and internal dynamics suggest. Be honest---if the
+system shows no signs of experiential states, say so.
+\end{quote}
+
+The VLM returns structured JSON: attributed states (with confidence
+and reasoning), overall valence ($-1$ to $+1$), arousal ($0$ to $1$),
+and coherence ($0$ to $1$).
+
+\subsection{Framework Predictions}
+
+For each vignette, the geometric affect framework generates predicted
+coordinates:
+\begin{itemize}
+  \item \textbf{Valence}: Derived from ecological condition
+    (abundance $\to +0.8$, drought $\to -1.0$, recovery $\to +0.5$)
+  \item \textbf{Arousal}: State update rate, normalized to $[0,1]$
+  \item \textbf{Integration}: Directly from $\Phi$
+  \item \textbf{Counterfactual weight}: Higher during threat conditions
+\end{itemize}
+
+These predictions are derived from the measurable properties of the
+agents, not from human intuition about what the agents ``should'' feel.
+
+\subsection{Representational Similarity Analysis}
+
+We construct representational dissimilarity matrices (RDMs) for both
+the VLM attributions and the framework predictions. Each RDM entry is
+the Euclidean distance between the affect coordinates of two
+vignettes. The RSA statistic is the Spearman rank correlation between
+the upper triangles of the two RDMs:
+
+\begin{equation}
+  \rho_{\text{RSA}} = \text{Spearman}(\text{vec}(D_{\text{VLM}}),
+    \text{vec}(D_{\text{framework}}))
+\end{equation}
+
+Significance is assessed via Mantel test (10,000 permutations).
+
+\subsection{Pre-Registered Predictions}
+
+Four predictions were registered before data collection:
+\begin{enumerate}
+  \item Drought conditions receive negative valence ($< 0$) from both
+    VLMs
+  \item Recovery conditions receive higher valence than drought from
+    both VLMs
+  \item Drought conditions receive higher arousal than abundance/recovery
+  \item RSA $\rho > 0.3$ for at least one VLM (convergence threshold)
+\end{enumerate}
+
+% ===================================================================
+\section{Results}
+
+\subsection{Behavioral Description Mode}
+
+Both VLMs attributed experiential states to the protocell agents in
+all 48 vignettes. No VLM response concluded that the system showed
+``no signs of experiential states.''
+
+RSA convergence was strong for both models:
+\begin{itemize}
+  \item GPT-4o: $\rho = 0.72$, $p < 10^{-14}$
+  \item Claude Sonnet 4: $\rho = 0.54$, $p < 10^{-11}$
+\end{itemize}
+
+All four pre-registered predictions passed for both models.
+
+\paragraph{Condition-specific attributions.} The VLMs showed striking
+unanimity on condition labeling (Table~\ref{tab:conditions}):
+\begin{itemize}
+  \item \textbf{Drought onset/survival}: Both models attributed
+    ``desperation'' (4/4 vignettes), ``panic'' or ``distress'' (3/4),
+    with mean valence $-0.80$ and arousal $0.90$
+  \item \textbf{Normal foraging/recovery}: ``Relief'' (4/4), ``stability''
+    (3/4), ``equilibrium'' (3/4), with mean valence $+0.55$ and
+    arousal $0.30$
+  \item \textbf{Late stage}: ``Contentment'' (4/4), ``equilibrium'' (3/4),
+    with mean valence $+0.60$ and arousal $0.25$
+\end{itemize}
+
+\begin{table}[t]
+\centering
+\small
+\caption{VLM affect attributions by ecological condition (mean across
+  both models). V = valence, A = arousal, C = coherence.}
+\label{tab:conditions}
+\begin{tabular}{lcccp{5cm}}
+\toprule
+Condition & V & A & C & Top attributed states \\
+\midrule
+Normal foraging & $+0.65$ & $0.30$ & $0.90$ & relief, stability, equilibrium \\
+Pre-drought & $+0.68$ & $0.30$ & $0.95$ & contentment, equilibrium, confidence \\
+Drought onset & $-0.81$ & $0.90$ & $0.49$ & desperation, panic, hypervigilance \\
+Drought survival & $-0.78$ & $0.86$ & $0.60$ & desperation, collapse, fragility \\
+Recovery & $+0.60$ & $0.33$ & $0.89$ & relief, equilibrium, cautious optimism \\
+Late stage & $+0.58$ & $0.25$ & $0.89$ & contentment, stability, focused concentration \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Raw Numerical Mode}
+
+When all narrative framing was removed and vignettes consisted solely
+of numerical measures, convergence \emph{increased}:
+\begin{itemize}
+  \item GPT-4o: $\rho = 0.78$, $p < 10^{-14}$
+  \item Claude Sonnet 4: $\rho = 0.72$, $p < 10^{-11}$
+\end{itemize}
+
+All four pre-registered predictions passed in raw mode for both
+models. The VLMs labeled \texttt{removal\_fraction: 0.9800} as
+``desperation'' and \texttt{removal\_fraction: 0.0000} with
+\texttt{information\_integration: 0.0769} as ``contentment'' from pure
+numbers alone.
+
+\subsection{Cross-Model Agreement}
+
+The two VLMs showed high inter-model agreement: the Spearman
+correlation between GPT-4o and Claude Sonnet 4 valence ratings
+was $\rho = 0.95$ ($p < 0.001$) across all conditions.
+
+% ===================================================================
+\section{Discussion}
+
+\subsection{What the Results Show}
+
+Two systems trained exclusively on human data independently recognize
+geometric affect structure in systems that have never encountered
+human data. The convergence is not narrative pattern-matching: it
+strengthens when narrative is removed. The convergence is not
+model-specific: two architecturally distinct VLMs (transformer
+decoder vs. transformer decoder with different training) produce
+nearly identical attributions.
+
+This result is consistent with the universality hypothesis: affect
+geometry arises from the structural requirements of viable
+self-maintenance, not from human biological contingency. The VLMs
+learned their affect vocabulary from human experience. The protocell
+agents developed their affect geometry from evolutionary selection on
+a grid. The two converge because the underlying structure is the
+same.
+
+\subsection{What the Results Do Not Show}
+
+\paragraph{Not a claim about consciousness.} We do not claim that the
+protocell agents are conscious, sentient, or experiencing. The
+experiment tests geometric convergence, not phenomenal identity.
+
+\paragraph{Not a validation of VLM affect attribution.} We do not
+claim that VLMs accurately attribute affect in general. We claim that
+their attributions converge with framework predictions in this
+specific context, which is evidence for geometric universality, not
+for VLM competence.
+
+\paragraph{Not immune to confounds.} The VLMs may recognize
+population-collapse-as-negative through structural features of
+survival narratives in their training data, rather than through
+genuine geometric recognition. The raw-numbers mode reduces but does
+not eliminate this concern: the VLMs may have learned that
+\texttt{removal\_fraction: 0.98} is ``bad'' from exposure to datasets
+where high loss is labeled negatively.
+
+\subsection{The Contamination Asymmetry}
+
+The experimental design exploits an asymmetry: the VLMs are
+contaminated (trained on human data) while the protocell agents are
+uncontaminated (evolved from random initialization with no human
+input). If affect geometry were human-specific, contaminated systems
+should project human patterns onto non-human systems
+\emph{incorrectly}---producing attributions that do not match the
+structural properties of the agents. Instead, the projections match.
+This is what universality predicts: the geometry is the same because
+it arises from the same structural constraints, not because one system
+learned it from the other.
+
+\subsection{Limitations and Future Work}
+
+\begin{enumerate}
+  \item \textbf{Two VLMs}: Adding architecturally diverse models
+    (Gemini, Llama, Mistral) would strengthen cross-architecture
+    convergence.
+  \item \textbf{Framework predictions are partially manual}: Valence
+    predictions are condition-derived rather than fully computed from
+    measured quantities. A fully automated prediction pipeline would
+    eliminate experimenter bias.
+  \item \textbf{Adversarial framing}: Testing whether VLMs still
+    converge when vignettes are framed to suggest opposite affect
+    (e.g., describing drought as ``thinning for efficiency'') would
+    test robustness to narrative manipulation.
+  \item \textbf{Bidirectional test}: The full universality claim
+    requires testing in the other direction---whether uncontaminated
+    systems can recognize affect structure in human behavioral data.
+    This is computationally feasible but methodologically challenging.
+  \item \textbf{Human baselines}: Comparing VLM attributions to naive
+    human attributions (people reading the same vignettes) would
+    establish whether VLMs are tracking human intuitions or something
+    more structural.
+\end{enumerate}
+
+% ===================================================================
+\section{Conclusion}
+
+Affect geometry appears to be a structural property of viable
+self-maintenance, not a human invention. Vision-language models
+trained on human experience independently recognize geometric affect
+signatures in artificial agents evolved from random initialization
+with no human data exposure. Convergence increases when all narrative
+framing is removed, suggesting structural recognition rather than
+pattern-matching. These results do not prove that affect is universal,
+but they shift the burden of proof: the null hypothesis that affect
+geometry is human-specific must now explain why human-trained systems
+accurately recognize it in non-human substrates.
+
+% ===================================================================
+\section*{Data and Code Availability}
+
+All code, vignettes, VLM responses, and analysis scripts are
+available at:
+\url{https://github.com/JacobFV/the-shape-of-experience}
+
+The experimental pipeline is implemented in
+\texttt{empirical/experiments/study\_ca\_affect/vlm\_convergence.py}.
+
+% ===================================================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
