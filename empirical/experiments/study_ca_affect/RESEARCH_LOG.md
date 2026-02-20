@@ -2610,3 +2610,75 @@ The social prediction gradient creates the richness path more reliably — it fo
 - `results/v29_s{42,123,7}/` — per-seed results
 - `results/v29_summary.json`
 
+---
+
+## V30: Dual Prediction — NEGATIVE (Interference)
+
+**Date**: 2026-02-19
+**GPU**: Lambda A10 (us-east-1), 551s total, ~$0.12
+
+### Architecture
+Same V27 base but `predict_W2: (PH, 2)` instead of `(PH, 1)`. Two outputs:
+- Output 0: self energy delta prediction (V27 target)
+- Output 1: neighbor mean energy (V29 target)
+
+Loss = MSE_self + MSE_social. Shared W1 bottleneck forces both targets through the same representation.
+
+4195 params (+8 from V27's 4187).
+
+### Results
+
+| Seed | Mean Φ | Max Φ | Mean Rob | Self MSE | Social MSE |
+|------|--------|-------|----------|----------|------------|
+| s42 | 0.062 | 0.141 | 0.960 | 0.0004 | 0.067 |
+| s123 | 0.111 | 0.156 | 0.945 | 0.002 | 0.057 |
+| s7 | 0.099 | 0.204 | 1.038 | 0.0004 | 0.061 |
+| **Cross-seed** | **0.091** | **0.204** | **0.981** | — | — |
+
+### Comparison
+
+| Experiment | Mean Φ (cross-seed) | Best max Φ |
+|-----------|--------------------:|-----------:|
+| V22 (1-layer self) | 0.097 | 0.130 |
+| V27 (MLP self) | 0.090 | **0.245** |
+| V28 (linear w=8) | 0.074 | 0.185 |
+| V28 (tanh w=16) | 0.084 | 0.234 |
+| **V29 (social)** | **0.104** | 0.243 |
+| V30 (dual) | 0.091 | 0.204 |
+
+### Interpretation: GRADIENT IMBALANCE
+
+The dual prediction hypothesis is **refuted**. The mechanism:
+
+1. **Self MSE is 100-150x smaller than social MSE** (0.0004 vs 0.06). Self energy delta is an easy target — local, deterministic, low-variance.
+
+2. **Equal weighting in the loss creates gradient imbalance.** The self loss produces small, precise gradients that push the representation toward self-encoding. The social loss produces large, noisy gradients that get partially overwhelmed.
+
+3. **The shared bottleneck becomes a battleground.** Rather than complementary encodings coexisting, the self target colonizes the representation because it converges faster. The social target's gradient signal is relatively too noisy to overcome this.
+
+4. **Seed 42 is the clearest case.** V29 seed 42 achieved mean Φ 0.143 (highest cross-seed mean). V30 seed 42 drops to 0.062 — the LOWEST. The self target specifically destroys V29's richness path.
+
+5. **Seed 7 retains some integration** (max Φ 0.204) because the convergence path (V27 seed 7's specialty) partially overlaps with self-prediction.
+
+### Theoretical lesson
+
+**NOT all gradient signals are additive.** When two prediction targets have vastly different difficulty scales, naive addition creates a regime where the easier target dominates. This is analogous to multi-task learning failures — loss balancing is critical.
+
+Possible fixes (but diminishing returns):
+- Weighted loss: λ_self=0.01, λ_social=1.0 (normalize by MSE scale)
+- Gradient normalization per target
+- But these are engineering tricks, not insights
+
+The cleaner conclusion: **social prediction alone is the right gradient.** It already contains self-information implicitly (your neighbors' energy depends on what you do to them). Adding explicit self-prediction is redundant and harmful.
+
+### Next directions
+1. ~~V30: Dual prediction~~ (DONE — negative)
+2. **V31: More seeds with V29** — 10 seeds to get statistical power on the social prediction effect
+3. **V32: Mutual action prediction** — agents predict neighbor ACTIONS instead of energy (tighter coupling, possibly harder gradient)
+4. **V33: Weighted dual** — test if loss balancing fixes V30 (low priority, likely diminishing returns)
+
+### Files
+- `v30_substrate.py`, `v30_evolution.py`, `v30_gpu_run.py`
+- `results/v30_s{42,123,7}/` — per-seed results
+- `results/v30_summary.json`
+

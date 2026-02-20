@@ -1,0 +1,32 @@
+{
+  "s42": {
+    "mean_phi": 0.062035559102271993,
+    "max_phi": 0.1406484141945839,
+    "mean_robustness": 0.9598740957825124,
+    "max_robustness": 1.0801852995269514,
+    "mean_pred_mse": 0.06752437200534182,
+    "mean_pred_mse_self": 0.000378301930159636,
+    "mean_pred_mse_social": 0.06714606932152033,
+    "final_pop": 256
+  },
+  "s123": {
+    "mean_phi": 0.11093070730566978,
+    "max_phi": 0.156199349462986,
+    "mean_robustness": 0.945041882990484,
+    "max_robustness": 1.0683341742234933,
+    "mean_pred_mse": 0.05925744172251018,
+    "mean_pred_mse_self": 0.002209734602056336,
+    "mean_pred_mse_social": 0.05704770700420309,
+    "final_pop": 256
+  },
+  "s7": {
+    "mean_phi": 0.09930017539610465,
+    "max_phi": 0.20372260510921478,
+    "mean_robustness": 1.0381157368759275,
+    "max_robustness": 1.358971481184911,
+    "mean_pred_mse": 0.06141943816695013,
+    "mean_pred_mse_self": 0.0003744638546502157,
+    "mean_pred_mse_social": 0.06104497434219157,
+    "final_pop": 256
+  }
+}

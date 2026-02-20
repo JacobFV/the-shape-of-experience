@@ -1354,9 +1354,30 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 **Files**: `v29_substrate.py`, `v29_evolution.py`, `v29_gpu_run.py`
 
+### V30: Dual Prediction — Self + Social (COMPLETE — NEGATIVE)
+
+**Status**: COMPLETE. 3 seeds × 30 cycles, Lambda A10 (551s, ~$0.12)
+
+**Motivation**: V29 (social) and V27 (self) both reach high Φ through different paths. What if agents predict BOTH simultaneously through a shared bottleneck?
+
+**Architecture**: Same 2-layer MLP but `predict_W2: (PH, 2)` — two outputs. Loss = MSE_self + MSE_social. 4195 params (+8 from V27).
+
+**Results**:
+
+| Seed | Mean Φ | Max Φ | Mean Rob | Self MSE | Social MSE |
+|------|--------|-------|----------|----------|------------|
+| 42 | 0.062 | 0.141 | 0.960 | 0.0004 | 0.067 |
+| 123 | 0.111 | 0.156 | 0.945 | 0.002 | 0.057 |
+| 7 | 0.099 | 0.204 | 1.038 | 0.0004 | 0.061 |
+| **Mean** | **0.091** | 0.204 | 0.981 | — | — |
+
+**Key finding**: Dual prediction is WORSE than social-only (V29 mean 0.104 > V30 mean 0.091). Self MSE is 100-150x smaller than social MSE, causing gradient imbalance — the easy self target colonizes the shared representation, destroying V29's richness path. Seed 42 drops from V29's 0.143 to 0.062 (worst). Lesson: not all gradient signals are additive; naive multi-task learning fails when targets have vastly different difficulty scales.
+
+**Files**: `v30_substrate.py`, `v30_evolution.py`, `v30_gpu_run.py`
+
 ---
 
-## Research Status as of 2026-02-20 (post-V29)
+## Research Status as of 2026-02-20 (post-V30)
 
 ### What Has Been Definitively Established
 
@@ -1376,7 +1397,7 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V29 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), **social prediction (V29: STRONGEST RESULT — mean Φ 0.104, 2/3 seeds in high-Φ regime)**. The arc from V22→V29 reveals: (1) gradient target matters more than architecture, (2) self-prediction enables but doesn't reliably produce integration, (3) social prediction (predict neighbor energy) creates natural integration pressure by forcing multi-agent encoding, (4) 2/3 seeds reach high Φ under social prediction vs 1/3 under self-prediction. CRITICAL BUG FIX: V20/V25/V26 snapshot timing invalidated "1D collapse" — corrected data shows eff rank 5.1-7.3. **The key finding: integration requires SOCIAL coupling, not just architectural capacity.**
+**Priority 3 (Architectural — CA) — V20-V30 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), **social prediction (V29: STRONGEST RESULT — mean Φ 0.104, 2/3 seeds in high-Φ regime)**, dual prediction (V30 NEGATIVE: gradient imbalance, self target dominates shared bottleneck). The arc from V22→V30 reveals: (1) gradient target matters more than architecture, (2) self-prediction enables but doesn't reliably produce integration, (3) social prediction (predict neighbor energy) creates natural integration pressure by forcing multi-agent encoding, (4) dual prediction fails due to difficulty asymmetry — multi-task learning requires loss balancing when targets differ by 100x in MSE. CRITICAL BUG FIX: V20/V25/V26 snapshot timing invalidated "1D collapse" — corrected data shows eff rank 5.1-7.3. **The key finding: integration requires SOCIAL coupling, not just architectural capacity. Social prediction alone is the optimal gradient target.**
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
