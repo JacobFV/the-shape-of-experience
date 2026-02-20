@@ -2822,3 +2822,65 @@ V11.7's curriculum training, V19's bottleneck furnace, and V31's seed-trajectory
 3. Extended measure-theoretic inevitability with V20-V31 empirical data
 4. Updated summary item 5 (forcing functions → hypothesis, partially contradicted)
 
+---
+
+## 2026-02-20: V32-V35 Design and Launch
+
+### Session Goal
+Address the central open question: what determines which seeds develop high integration (the 30/70 split)?
+
+### Key User Insight
+"I think lots of the human thought structures are not evolutionary accidents but tautological inevitable discoveries of self-aware existence." This reframes language emergence: language isn't contingent on evolution selecting for communication — it's an inevitable discovery for any system that develops sufficient self-modeling capacity. This motivates V35 (language emergence under cooperative POMDP).
+
+### Experiments Designed
+
+**V32: Drought Autopsy at Scale** (50 seeds)
+- Enhanced V27 evolution loop with fine-grained drought tracking
+- New metrics: eff_rank, weight_diversity, hidden_entropy, hidden_convergence, survivor_stats
+- Two bugs fixed during smoke test:
+  1. Weight diversity NaN from zero-norm dead agent vectors → filtered with float64 + zero-norm check
+  2. Bounce ratio astronomical because pre-drought Φ measured after hidden reset (zeros) → track `prev_cycle_end_phi`
+- Deployed to Lambda A100 (us-east-1). ~6s/cycle for first seeds, ~12s/cycle for later seeds.
+- Early results (10/50 seeds): 2 HIGH (20%), 4 MOD, 4 LOW. Tracking near baseline 30%.
+
+**V33: Contrastive Self-Prediction** (10 seeds)
+- Predicts DIFFERENCE in energy delta between actual and alternative actions
+- Architecture: contrastive head takes (hidden, action_onehot), predicts scalar diff
+- Loss = (predicted_diff - actual_diff)² where diff = energy(actual) - energy(alt)
+- Hypothesis: Forces rung-8 counterfactual representation → higher Φ
+- Smoke test passed. Queued after V32.
+
+**V34: Φ-Inclusive Fitness** (10 seeds)
+- fitness = survival × (1 + α × Φ), α=2.0
+- Tests whether direct selection can push HIGH rate above 30%
+- Includes Goodhart check: tracks correlation between Φ and robustness
+- Smoke test passed. Queued after V33.
+
+**V35: Language Emergence under Cooperative POMDP** (10 seeds)
+- Three key changes from V27:
+  1. obs_radius=1 (3×3, down from 5×5) — partial observability
+  2. K=8 discrete symbols via argmax — categorical channel
+  3. coop_bonus=0.5 — cooperative consumption bonus
+- Critical asymmetry: comm_radius=5 > obs_radius=1 (hear further than see)
+- New metrics: symbol entropy, symbol-resource MI proxy, cooperative events, communication ablation Φ lift
+- Language classification: REFERENTIAL / DIVERSE_NOISE / COLLAPSED
+- Smoke test: symbol entropy 2.38-2.50 bits (6-7/8 symbols used), coop events increasing (4→18→27)
+- Queued after V34.
+
+### Theoretical Connections
+- V32 directly addresses: What creates the 30% vs 70% split?
+- V33 tests: Is counterfactual representation (rung 8) the missing ingredient?
+- V34 tests: Is the 30% a fundamental limit or malleable by selection pressure?
+- V35 tests: Does language emerge as an "inevitable discovery" under the right conditions?
+
+### Run Queue on Lambda
+V32 (50 seeds, ~2.5 hrs) → V33 (10 seeds, ~30 min) → V34 (10 seeds, ~30 min) → V35 (10 seeds, ~30 min)
+Total estimated: ~4 hours at $1.29/hr = ~$5.16
+
+### Early V32 Observations (10/50 seeds)
+Seeds 0-9 categories: LOW, MOD, LOW, MOD, MOD, LOW, HIGH, HIGH, MOD, LOW
+- 20% HIGH at n=10, likely stabilizing toward 25-30%
+- Weight diversity shows interesting dynamics: starts ~1.0 (random), drops sharply at first drought (selection pressure), then slowly recovers
+- Effective rank: 14 initially → 5-10 at end (dimensionality reduction over evolution)
+- 12s/cycle for later seeds vs 6s for early ones — unclear cause (thermal? memory?)
+
