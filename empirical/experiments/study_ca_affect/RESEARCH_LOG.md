@@ -2309,3 +2309,93 @@ Pattern: **architecture creates possibility, evolution selects from it.**
 2. Contrastive self-prediction — force unified representation of alternatives
 3. Population-level Φ selection — meta-evolution for integration
 
+---
+
+## 2026-02-20: V27 Seed Comparison — THE MLP IS LINEAR
+
+### Question
+Why did seed 7 achieve Φ=0.245 while seeds 42/123 didn't? Hypothesis: seed 7's MLP operates in the saturated (nonlinear) tanh regime, creating stronger gradient coupling.
+
+### Method
+For all alive agents at cycle 29, computed:
+1. **MLP saturation**: fraction of tanh units where |tanh(z)| > 0.9
+2. **Pre-activation magnitude**: mean |z| (z = W1 @ h + b1)
+3. **Jacobian effective rank**: entropy-based dimensionality of ∂pred/∂h
+4. **W1/W2 magnitudes**: Frobenius norm, L2 norm
+5. **W1 singular value structure**: SVD decomposition
+6. **Hidden state geometry**: PCA, inter-agent distances, cosine similarities
+
+### Results
+
+| Metric                  | Seed 42 | Seed 123 | Seed 7  |
+|-------------------------|---------|----------|---------|
+| Saturation mean         | 0.000   | 0.003    | 0.000   |
+| Mean \|z\|              | 0.261   | 0.279    | 0.189   |
+| Jacobian eff rank       | 12.63   | 12.18    | 10.97   |
+| W1 Frobenius norm       | 2.362   | 2.503    | 2.034   |
+| W2 L2 norm              | 0.456   | 0.696    | 0.395   |
+| W1 top SV ratio         | 0.205   | 0.208    | 0.197   |
+
+Hidden state geometry:
+
+| Metric             | Seed 42 | Seed 123 | Seed 7  |
+|--------------------|---------|----------|---------|
+| Cosine sim mean    | 0.357   | 0.263    | **0.804** |
+| PCA top-3 cumul.   | 0.637   | 0.713    | **0.483** |
+| PCA top-5 cumul.   | 0.798   | 0.828    | **0.661** |
+| Inter-agent dist   | 1.417   | 1.714    | **0.581** |
+| Hidden norm mean   | 1.260   | 1.399    | **0.945** |
+| Hidden norm std    | 0.396   | 0.543    | **0.138** |
+
+### Key finding: THE MLP IS IN THE LINEAR REGIME
+
+**ALL seeds have ZERO tanh saturation.** Mean |z| is 0.19-0.28, well within the linear regime of tanh (tanh(x) ≈ x for |x| < 0.5). The "nonlinear coupling" hypothesis is NOT the mechanism.
+
+This means the MLP is effectively: `pred ≈ (h @ W1 + b1) @ W2 + b2 = h @ (W1 @ W2) + b1 @ W2 + b2` — a linear transformation! So why does V27 outperform V22's single-layer linear head?
+
+### The mechanism: GRADIENT BOTTLENECK, not nonlinearity
+
+Even in the linear regime, the 2-layer architecture creates qualitatively different gradient dynamics:
+
+**V22 (linear)**: `∂L/∂h_i = 2(pred - target) * W_i`
+- Each hidden unit's gradient depends ONLY on its own weight
+- Evolution can zero out individual W_i without affecting others
+- No gradient coupling between hidden units
+
+**V27 (2-layer, even linear)**: `∂L/∂h = 2(pred - target) * W2.T @ diag(dtanh) @ W1.T`
+- The gradient flows through W1 which MIXES all 16 hidden units through the 8-dim bottleneck
+- When hidden unit i is updated, the gradient depends on ALL bottleneck dimensions
+- Each bottleneck dimension connects to ALL 16 hidden units
+- **The 16→8→1 compression creates mandatory representational sharing**
+
+The key is that `dtanh = 1 - tanh(z)² ≈ 1 - z² ≈ 1` in the linear regime, so the gradient is approximately `W2.T @ W1.T` — but this is still a RANK-8 MATRIX operating on h, vs V22's rank-1 diagonal. The bottleneck forces coordinated updates across hidden units.
+
+### Why seed 7 is special: GEOMETRIC CONVERGENCE
+
+Seed 7's agents evolved to a very different hidden state geometry:
+- **Cosine sim 0.804**: Agents point in nearly the same direction (vs 0.26-0.36 for others)
+- **PCA top-3 = 0.483 (LOWEST)**: Representation is MORE DISTRIBUTED across dimensions
+- **Inter-agent distance 0.581 (LOWEST)**: Agents cluster tightly
+- **Hidden norm std 0.138 (LOWEST)**: Very uniform activation magnitudes
+
+Interpretation: Seed 7 evolved a population where agents converged to similar, multi-dimensional representations. This creates a population that is ALREADY coordinated — perturbation analysis (Φ) measures how much information is lost when you partition, and a tightly-coupled population sharing a distributed representation is HARDER to partition.
+
+The other seeds' agents are MORE diverse (cosine sim 0.26-0.36, wide norm distributions) but MORE compressible (PCA top-3 = 0.64-0.71). Their hidden states live in a lower-dimensional manifold despite being spread further apart. This means a partition can capture most of the structure.
+
+### Revised understanding
+
+The V27 story is now:
+1. **The bottleneck (16→8→1) forces gradient coupling** — not nonlinearity
+2. **Gradient coupling creates a selection pressure for coordinated representation**
+3. **Seed 7 hit a basin where agents converge to similar, high-dimensional representations**
+4. **This population geometry is inherently hard to partition → high Φ**
+5. **Seeds 42/123 hit basins where agents diversify → lower Φ**
+
+### Testable prediction (V28)
+
+If the mechanism is the bottleneck (not nonlinearity), then a **LINEAR 2-layer head** (h @ W1 @ W2 + b, no tanh) should show similar results to V27. Additionally, varying the bottleneck width should modulate the effect: narrower bottleneck → more coupling → higher Φ potential.
+
+### Files
+- `v27_seed_comparison.py` — Analysis code
+- `results/v27_seed_comparison.json` — Full results
+
