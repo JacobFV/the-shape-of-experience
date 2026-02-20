@@ -106,7 +106,7 @@ These are **coordinates on a relational structure**, not the structure itself. T
   - Prefer 1x A10 ($0.75/hr) for smoke tests, 1x H100 ($3.29/hr) for real runs.
   - **NEVER use agi-inc Modal resources unless explicitly granted permission.**
 - CLI runners: `v11_run.py`, `v12_run.py`, `v13_run.py` in `empirical/experiments/study_ca_affect/`
-- Results: JSON in `results/`
+- Results: JSON + .npz snapshots in `results/` (commit immediately after each run)
 
 ---
 
@@ -130,6 +130,7 @@ The next experiments test whether affect structure emerges in systems with NO ex
 - Each experiment version gets its own commit
 - Reflections and negative results are worth committing
 - Content changes should build cleanly (`npx tsc --noEmit` in `web/`)
+- **Commit result data (including .npz snapshots) immediately after each experiment run** — don't let them accumulate untracked
 
 ### Research Journaling
 - **Commit frequently** — after every completed run, fix, or discovery. Don't batch.
