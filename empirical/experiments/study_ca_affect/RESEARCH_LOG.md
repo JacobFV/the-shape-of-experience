@@ -2581,6 +2581,25 @@ Social prediction creates integration pressure through a fundamentally different
 
 This maps onto the book's thesis: **affect geometry is cheap (V10), but integration requires social coupling.** V29's social prediction creates within-lifetime social coupling that V22-V28 lacked.
 
+### Hidden state geometry: two paths to high Φ
+
+Ran geometry comparison between V29's best seed (s42, mean Φ=0.143) and V27's best seed (s7, mean Φ=0.119):
+
+| Metric | V29 s42 (social) | V27 s7 (self) |
+|--------|------------------:|---------------:|
+| Mean cosine sim | 0.596 | 0.807 |
+| PCA 3-component | 0.721 | 0.483 |
+| Mean pairwise dist | 1.704 | 0.579 |
+| Mean norm | 1.911 | 0.945 |
+
+**Two distinct paths to high Φ:**
+
+1. **Convergence path** (V27 s7): Agents converge to very similar hidden states (cos=0.807, low norms). Integration is high because the partition boundary cuts through a tight cluster — any partition destroys the correlated structure. This is fragile and seed-dependent.
+
+2. **Richness path** (V29 s42): Agents develop complex, high-norm representations with moderate alignment (cos=0.596). Integration is high because the representations are intrinsically multi-dimensional (PCA 3-component = 0.721, meaning states use more dimensions). Harder to partition because the information is distributed across dimensions.
+
+The social prediction gradient creates the richness path more reliably — it forces agents to encode diverse neighbor states, which naturally produces high-dimensional representations. Self-prediction only produces the convergence path when evolutionary luck aligns agents geometrically.
+
 ### Next candidates
 1. **V30: Dual prediction** — predict BOTH own energy delta AND neighbor energy. Combines self-awareness and social awareness. Should this produce even higher Φ?
 2. **V31: More seeds** — run 10 seeds with V29 to estimate the statistical distribution of Φ under social prediction
