@@ -2682,3 +2682,77 @@ The cleaner conclusion: **social prediction alone is the right gradient.** It al
 - `results/v30_s{42,123,7}/` — per-seed results
 - `results/v30_summary.json`
 
+---
+
+## V31: 10-Seed Statistical Validation — SOBERING CORRECTION
+
+**Date**: 2026-02-20
+**GPU**: Lambda A10 (us-east-1), 1846s (~31 min), ~$0.40
+
+### Motivation
+V29's 3-seed mean Φ 0.104 suggested social prediction reliably lifts integration above V27's 0.090. But 3 seeds is too few for confidence. V31 runs 10 seeds to compute proper statistics.
+
+### Results
+
+| Seed | Mean Φ | Max Φ | Category |
+|------|--------|-------|----------|
+| s42 | 0.143 | 0.243 | HIGH |
+| s1 | 0.138 | **0.265** | HIGH (NEW RECORD) |
+| s123 | 0.106 | 0.167 | HIGH |
+| s2 | 0.092 | 0.162 | MODERATE |
+| s6 | 0.086 | 0.221 | MODERATE |
+| s4 | 0.081 | 0.120 | MODERATE |
+| s3 | 0.074 | 0.135 | LOW |
+| s5 | 0.073 | 0.094 | LOW |
+| s7 | 0.062 | 0.110 | LOW |
+| s0 | 0.054 | 0.121 | LOW |
+
+### Statistics
+- **Mean Φ: 0.091 ± 0.028** (not 0.104)
+- **95% CI: [0.073, 0.108]**
+- **SEM: 0.009**
+- **t-stat vs V27 baseline (0.090): 0.09 — NOT SIGNIFICANT (p ≈ 0.93)**
+- Max Φ across all seeds: 0.265 (seed 1) — NEW RECORD
+- Mean robustness: 0.981 ± 0.027
+
+### What this means
+
+**The social prediction "lift" was a 3-seed fluke.** The true population mean for social prediction (0.091) is statistically indistinguishable from V27 self-prediction (0.090).
+
+However, the picture is more nuanced:
+
+1. **The distribution is bimodal.** Seeds cluster into HIGH (>0.10: 3/10 = 30%), MODERATE (0.08-0.10: 3/10 = 30%), and LOW (<0.08: 4/10 = 40%). This isn't Gaussian — the variance (0.028) is large relative to the mean.
+
+2. **Social prediction changes WHICH seeds succeed, not HOW MANY.** V27 seed 7 was the lucky one (Φ=0.245). V31 seed 1 is the lucky one (Φ=0.265). Different seeds, similar rate of "hitting the jackpot."
+
+3. **Peak Φ is slightly higher.** V27 max was 0.245 (1 seed of 3). V31 max is 0.265 (1 seed of 10). This could be statistical noise but suggests social prediction's ceiling may be higher.
+
+4. **The original V29 conclusion needs revision.** V29 appeared to show social prediction lifting 2/3 seeds because we happened to pick seeds 42 and 123 (both in the HIGH group). The true HIGH rate is 30%, identical to V27's ~33% (1/3).
+
+### Updated cross-experiment Φ table
+
+| Experiment | Seeds | Mean Φ | Std | Best max Φ |
+|-----------|------:|-------:|----:|-----------:|
+| V22 (1-layer self) | 3 | 0.097 | ~0.01 | 0.130 |
+| V27 (MLP self) | 3 | 0.090 | ~0.03 | 0.245 |
+| V29 (social) | 3 | 0.104* | ~0.04 | 0.243 |
+| **V31 (social, 10 seeds)** | **10** | **0.091** | **0.028** | **0.265** |
+| V30 (dual) | 3 | 0.091 | ~0.02 | 0.204 |
+
+*V29 was an optimistically biased subsample of V31.
+
+### Theoretical revision
+
+The V29 result was premature: "social prediction LIFTS integration reliably" → FALSE. The correct statement is:
+
+**Social prediction changes the FITNESS LANDSCAPE but not the success rate.** Both self and social prediction produce ~30% high-Φ seeds. The mechanism differs (convergence vs richness path) but the probability of finding either path is similar.
+
+This aligns with V28's finding that architecture doesn't determine Φ — the 2-layer gradient coupling mechanism is necessary but the evolutionary search through that landscape is stochastic. Integration emerges when the evolutionary trajectory stumbles into a basin of attraction, not because the gradient reliably pushes toward it.
+
+The remaining open question: **what determines which seeds find high Φ?** Is it the initial random genome? The resource landscape? The specific drought timing? Understanding this could reveal what makes integration possible vs impossible.
+
+### Files
+- `v31_gpu_run.py` (runner only, uses V29 substrate/evolution)
+- `results/v31_s{0-7,42,123}/` — per-seed results
+- `results/v31_summary.json`
+

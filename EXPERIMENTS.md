@@ -1375,9 +1375,25 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 **Files**: `v30_substrate.py`, `v30_evolution.py`, `v30_gpu_run.py`
 
+### V31: 10-Seed Statistical Validation (COMPLETE — CORRECTION)
+
+**Status**: COMPLETE. 10 seeds × 30 cycles, Lambda A10 (31 min, ~$0.40)
+
+**Motivation**: V29's 3-seed mean Φ 0.104 suggested social prediction reliably lifts integration. V31 tests with 10 seeds for proper statistics.
+
+**Results**: Mean Φ = 0.091 ± 0.028 (95% CI [0.073, 0.108]). t-stat vs V27 (0.090) = 0.09, **NOT SIGNIFICANT** (p ≈ 0.93). Peak Φ = 0.265 (seed 1, new record).
+
+**Key findings**:
+1. V29's "lift" was a 3-seed fluke — true mean indistinguishable from V27
+2. Distribution is bimodal: 30% HIGH (>0.10), 30% MODERATE, 40% LOW
+3. Social prediction changes WHICH seeds succeed, not HOW MANY
+4. Integration is still seed-dependent (~30% success rate for both self and social)
+
+**Files**: `v31_gpu_run.py`, `results/v31_s{0-7,42,123}/`
+
 ---
 
-## Research Status as of 2026-02-20 (post-V30)
+## Research Status as of 2026-02-20 (post-V31)
 
 ### What Has Been Definitively Established
 
@@ -1397,7 +1413,7 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V30 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), **social prediction (V29: STRONGEST RESULT — mean Φ 0.104, 2/3 seeds in high-Φ regime)**, dual prediction (V30 NEGATIVE: gradient imbalance, self target dominates shared bottleneck). The arc from V22→V30 reveals: (1) gradient target matters more than architecture, (2) self-prediction enables but doesn't reliably produce integration, (3) social prediction (predict neighbor energy) creates natural integration pressure by forcing multi-agent encoding, (4) dual prediction fails due to difficulty asymmetry — multi-task learning requires loss balancing when targets differ by 100x in MSE. CRITICAL BUG FIX: V20/V25/V26 snapshot timing invalidated "1D collapse" — corrected data shows eff rank 5.1-7.3. **The key finding: integration requires SOCIAL coupling, not just architectural capacity. Social prediction alone is the optimal gradient target.**
+**Priority 3 (Architectural — CA) — V20-V31 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke. 10-seed statistics show social prediction changes WHICH seeds succeed but not HOW MANY (~30% reach high Φ in both self and social prediction).** Peak Φ = 0.265 (V31 seed 1). The arc from V22→V31: (1) 2-layer gradient coupling is necessary, (2) target choice (self vs social) changes the fitness landscape but not the success rate, (3) integration is fundamentally stochastic — ~30% of seeds find high-Φ basins regardless of architecture or target. The open question: what determines which seeds succeed?
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
