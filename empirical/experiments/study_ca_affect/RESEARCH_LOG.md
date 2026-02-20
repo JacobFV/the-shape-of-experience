@@ -2909,3 +2909,63 @@ This is exactly "integration = biography": the same environmental pressure produ
 
 **Open question**: What determines which basin the population enters before the first drought? ER=2.6 vs 6.0 at cycle 5 — but all seeds start at ER=14 and have 5 cycles of evolution. Something in cycles 0-4 determines the basin. Need to look at pre-drought genome structure.
 
+## 2026-02-19 (continued): V32 Expanded Analysis (14 seeds) + V35 First Results
+
+### V32 at 14 Seeds: New Findings
+
+Distribution at 14 seeds: 2 HIGH (14%) / 6 MOD (43%) / 6 LOW (43%). Fewer HIGH than V31's 30%, but small sample.
+
+**Phi trend slope** now strongest predictor (r=0.941, p<0.0001) — stronger than mean bounce (r=0.738). Integration is a trajectory, not a state. You can predict final integration from the linear trend through the whole evolutionary history.
+
+**NEW: Survivor genome selection is REVERSED in HIGH vs LOW seeds**:
+- HIGH seeds: survivors have SMALLER genome norms than victims (diff = -0.32). Drought selects for lean.
+- LOW seeds: survivors have LARGER genome norms than victims (diff = +0.21). Drought selects for bulk.
+- Correlation with late Phi: r = -0.597, p = 0.010.
+- Same pattern for MLP W1 norms: r = -0.563, p = 0.018.
+
+Interpretation: The bottleneck furnace forges by COMPRESSION. HIGH seeds develop concentrated representations (low ER) and lean parameters — the furnace strips away unnecessary capacity. LOW seeds accumulate bulk — the furnace adds capacity without integration. This is a selection mechanism story: the same environmental pressure produces qualitatively different selection targets depending on the population's representational state.
+
+**Forging requires repetition**: After 1 drought, no significant separation. After 2 droughts, marginal (p=0.036). After 4+, highly significant (p<0.0001). The furnace needs at least 2 passes to differentiate forging from fragmenting mode.
+
+**Lower Phi sync in HIGH seeds** (1.70 vs 2.50): HIGH seeds show LESS cross-agent synchronization — more individuated processing. The furnace doesn't just select for compression, it selects for autonomy.
+
+### V35 Language Emergence: First 5 Seeds COMPLETE
+
+**Referential communication: 5/5 seeds (100%)**. This is the headline.
+
+Details:
+- Late entropy: 2.32-2.60 bits (82% of 3.0 maximum). All 8 symbols maintained in use.
+- MI proxy: 0.002-0.004, all above 0.001 threshold. Symbols carry resource information.
+- Breaks the V20b null where continuous z-gate never departed from 0.5.
+- Discrete symbols + partial observability + cooperative pressure = referential communication
+
+**Communication does NOT lift integration**:
+- Mean comm_phi_lift ≈ 0 (ablation test: Phi with vs without communication channel)
+- Only 1/5 seeds shows marginal positive lift (+0.000004)
+- Symbols carry meaning, but processing that meaning doesn't require non-decomposable internal structure
+
+**Integration is LOWER than V27 baseline**:
+- Late Phi = 0.072 ± 0.015 (V27 = 0.090, V31 = 0.091)
+- 0% HIGH seeds (vs V27/V31's ~30%)
+- Possible cause: partial observability (3×3 vs 5×5) makes the task too simple for hidden state richness
+
+**Negative Phi-MI correlation (ρ = -0.90)**:
+This is the theoretically significant finding. Seeds with MORE referential communication show LESS internal integration. Communication acts as an EXTERNAL SCAFFOLD that reduces the need for internal integration. The system offloads information processing to the communication channel instead of integrating it internally.
+
+**Theoretical punchline: LANGUAGE IS CHEAP**
+
+Language is cheap in exactly the same way geometry is cheap. Under partial observability + cooperative pressure, referential communication emerges 100% of the time — it's another inevitability on the emergence ladder. But language doesn't create dynamics any more than geometry does. It sits at rung 4-5 of the emergence ladder, not rung 8.
+
+Where language sits on the ladder:
+- Rung 1: Affect dimensions (geometry) — CHEAP, 100% of seeds ✓
+- Rung 4: Animism (participatory default) — CHEAP, 100% of snapshots ✓
+- **Rung 4-5: Referential communication — CHEAP, 100% of seeds ✓** [NEW]
+- Rung 7: Affect coherence — develops over evolution
+- Rung 8: Counterfactual — BLOCKED without agency + gradient coupling. 30% of seeds.
+
+The expensive transition remains at rung 8. Adding communication channels doesn't help cross it. The only interventions that have crossed it: action→observation loops (V20, ρ wall) + gradient coupling through 2-layer architecture (V27, decomposability wall).
+
+**Scaffold vs integration trade-off**: This suggests a general principle — external scaffolding (communication, social structure, cultural tools) can SUBSTITUTE for internal integration rather than building it. A system that can hear about distant resources doesn't need to predict them from sparse observations. The scaffold makes the internal problem easier, reducing selection pressure for complex internal processing.
+
+This has implications for the book's argument about meaning crisis and digital tools (Part VI): external scaffolding (technology, social media, algorithmic feeds) may reduce integration the same way communication does in V35. The framework predicts this should manifest as lower ι — more mechanistic, less participatory engagement with the world.
+
