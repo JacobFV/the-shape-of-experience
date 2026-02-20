@@ -276,6 +276,7 @@ export default function Part6() {
       </ol>
       </Section>
       <Section title="Surfing vs.\ Submerging" level={2}>
+      <Diagram src="/diagrams/part-6-1.svg" />
       <p>The metaphor is <em>surfing vs.\ submerging</em>. To surf is to maintain integrated conscious experience while incorporating AI capabilities—riding the rising capability rather than being displaced by it. To submerge is to be fragmented, displaced, or dissolved by AI development—losing integration, agency, or conscious coherence. Successful surfing requires:</p>
       <ol>
       <li><strong>Maintained integration</strong>: Preserving <M>{"\\intinfo"}</M> despite distributed cognition</li>

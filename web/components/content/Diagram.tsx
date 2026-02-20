@@ -27,6 +27,9 @@ import SuperorganismTaxonomy from '../diagrams/SuperorganismTaxonomy';
 import AestheticModes from '../diagrams/AestheticModes';
 import ExistentialStrategies from '../diagrams/ExistentialStrategies';
 import PracticeMap from '../diagrams/PracticeMap';
+import BasinGeometry from '../diagrams/BasinGeometry';
+import SurfingSubmerging from '../diagrams/SurfingSubmerging';
+import AttentionEconomy from '../diagrams/AttentionEconomy';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -56,6 +59,9 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/part-3-1.svg': AestheticModes,
   '/diagrams/part-3-2.svg': ExistentialStrategies,
   '/diagrams/epilogue-0.svg': PracticeMap,
+  '/diagrams/part-2-2.svg': BasinGeometry,
+  '/diagrams/part-6-1.svg': SurfingSubmerging,
+  '/diagrams/epilogue-1.svg': AttentionEconomy,
 };
 
 interface DiagramProps {

@@ -25,3 +25,6 @@ export { default as SuperorganismTaxonomy } from './SuperorganismTaxonomy';
 export { default as AestheticModes } from './AestheticModes';
 export { default as ExistentialStrategies } from './ExistentialStrategies';
 export { default as PracticeMap } from './PracticeMap';
+export { default as BasinGeometry } from './BasinGeometry';
+export { default as SurfingSubmerging } from './SurfingSubmerging';
+export { default as AttentionEconomy } from './AttentionEconomy';
