@@ -14,6 +14,12 @@ import HistoricalTimeline from '../diagrams/HistoricalTimeline';
 import EmergenceLadder from '../diagrams/EmergenceLadder';
 import GradientCoupling from '../diagrams/GradientCoupling';
 import BottleneckFurnace from '../diagrams/BottleneckFurnace';
+import ProtocellArchitecture from '../diagrams/ProtocellArchitecture';
+import NecessityChain from '../diagrams/NecessityChain';
+import ProtocellGrid from '../diagrams/ProtocellGrid';
+import IntegrationDistribution from '../diagrams/IntegrationDistribution';
+import SubstrateLineage from '../diagrams/SubstrateLineage';
+import VLMConvergence from '../diagrams/VLMConvergence';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -30,6 +36,12 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/appendix-0.svg': EmergenceLadder,
   '/diagrams/appendix-1.svg': GradientCoupling,
   '/diagrams/appendix-2.svg': BottleneckFurnace,
+  '/diagrams/appendix-3.svg': ProtocellArchitecture,
+  '/diagrams/appendix-4.svg': NecessityChain,
+  '/diagrams/appendix-5.svg': ProtocellGrid,
+  '/diagrams/appendix-6.svg': IntegrationDistribution,
+  '/diagrams/appendix-7.svg': SubstrateLineage,
+  '/diagrams/appendix-8.svg': VLMConvergence,
 };
 
 interface DiagramProps {

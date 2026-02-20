@@ -71,6 +71,7 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="The Substrate Ladder" level={1}>
+      <Diagram src="/diagrams/appendix-7.svg" alt="Substrate lineage from V11 to V18 showing what each variant added" />
       <p>Seven substrate versions, each adding one capability, tracking whether evolution selects for it. The goal: build a substrate worth measuring.</p>
 
       <Section title="V11: Lenia CA Evolution" level={2}>
@@ -406,7 +407,10 @@ export default function AppendixExperiments() {
 
       <Section title="V20: Protocell Agency" level={1}>
       <p><strong>Period</strong>: 2026-02-18. <strong>Substrate</strong>: Discrete grid world with evolved GRU agents (~3400 params each).</p>
+      <Diagram src="/diagrams/appendix-5.svg" alt="Top-down view of the protocell grid world showing resource patches, agents, and observation windows" />
       <p><strong>The Necessity Chain</strong>: Membrane {"\u2192"} free energy gradient {"\u2192"} world model {"\u2192"} self-model {"\u2192"} affect geometry. Each step necessary, not contingent.</p>
+      <Diagram src="/diagrams/appendix-4.svg" alt="The necessity chain: membrane through free energy gradient, world model, self-model to affect geometry" />
+      <Diagram src="/diagrams/appendix-3.svg" alt="Protocell agent architecture showing GRU core with prediction and action heads" />
 
       <p><strong>Why leave Lenia</strong>: V13-V18 showed the wall is about agency, not signal routing. GRU agents on a discrete grid have bounded local sensory fields (5x5), genuine motor actions (move, consume, emit), and observations shaped by their own actions.</p>
 
@@ -690,6 +694,7 @@ export default function AppendixExperiments() {
       <p><strong>Status</strong>: Complete. 50 seeds x 30 cycles x 5 droughts each (250 total drought events).</p>
       <p><strong>Question</strong>: What happens DURING drought that determines whether a seed develops high <M>{"\\intinfo"}</M>? V31 showed post-drought bounce predicts final <M>{"\\intinfo"}</M>, but what creates the bounce?</p>
       <p><strong>Result: Integration is trajectory, not event.</strong> Mean <M>{"\\intinfo = 0.086 \\pm 0.032"}</M> (95% CI [0.077, 0.095]). Distribution: 22% HIGH / 46% MODERATE / 32% LOW. Max <M>{"\\intinfo = 0.473"}</M> (seed 23, new all-time record). Mean drought mortality 96.8%.</p>
+      <Diagram src="/diagrams/appendix-6.svg" alt="Integration distribution across 50 seeds showing 22% HIGH, 46% MOD, 32% LOW" />
       <p><strong>Key revision from V31</strong>: The first drought bounce does NOT predict final category (<M>{"r = -0.075, p = 0.60"}</M>). What predicts is the <em>mean bounce across all 5 droughts</em> (<M>{"\\rho = 0.599, p = 4.4 \\times 10^{-6}"}</M>). Integration is built by repeatedly bouncing back, not by a single event. <M>{"\\intinfo"}</M> trajectory slope separates categories perfectly (ANOVA <M>{"F = 34.38, p = 6.3 \\times 10^{-10}"}</M>): every HIGH seed has positive slope, every LOW seed has negative slope.</p>
       <p><strong>Robustness is orthogonal to integration</strong> (Mann-Whitney <M>{"p = 0.73"}</M>). Seeds that survive droughts well are not the same seeds that develop high <M>{"\\intinfo"}</M>. Effective rank (mean 8.1) does not differ across categories.</p>
       <Diagram src="/diagrams/appendix-2.svg" alt="The bottleneck furnace: repeated drought-recovery cycles forge integration in HIGH seeds while LOW seeds decline" />
@@ -739,6 +744,7 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="VLM Convergence Experiment" level={1}>
+      <Diagram src="/diagrams/appendix-8.svg" alt="VLM convergence: vision-language models trained on human data recognize affect in protocells" />
       <p><strong>Status</strong>: Complete. Both models tested.</p>
       <p><strong>Core question</strong>: If affect geometry is universal, do systems trained on human affect data (GPT-4o, Claude) independently recognize the same affect signatures in completely uncontaminated substrates?</p>
       <p><strong>Method</strong>: 48 behavioral vignettes extracted from V27/V31 protocell data across 6 conditions (normal foraging, pre-drought abundance, drought onset, drought survival, post-drought recovery, late-stage evolution). Presented to VLMs with purely behavioral descriptions — no affect language, no framework terms, explicitly labeled as artificial systems. Framework predictions computed independently. Convergence measured via Representational Similarity Analysis (RSA) between framework-predicted and VLM-labeled affect spaces.</p>
