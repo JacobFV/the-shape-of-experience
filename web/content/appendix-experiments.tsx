@@ -665,10 +665,11 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="V32: Drought Autopsy" level={1}>
-      <p><strong>Status</strong>: Running. 50 seeds x 30 cycles.</p>
-      <p><strong>Question</strong>: What happens DURING drought that determines whether a seed develops high <M>{"\\intinfo"}</M>? V31 showed post-drought bounce predicts final <M>{"\\intinfo"}</M> with <M>{"r = 0.997"}</M>, but what creates the bounce?</p>
-      <p><strong>Metrics</strong>: Pre/post <M>{"\\intinfo"}</M> per drought, effective rank, weight diversity, hidden state entropy, survivor vs victim genome analysis.</p>
-      <p><strong>Predictions</strong>: First drought bounce ratio predicts final category; weight diversity at first drought predicts outcome.</p>
+      <p><strong>Status</strong>: Complete. 50 seeds x 30 cycles x 5 droughts each (250 total drought events).</p>
+      <p><strong>Question</strong>: What happens DURING drought that determines whether a seed develops high <M>{"\\intinfo"}</M>? V31 showed post-drought bounce predicts final <M>{"\\intinfo"}</M>, but what creates the bounce?</p>
+      <p><strong>Result: Integration is trajectory, not event.</strong> Mean <M>{"\\intinfo = 0.086 \\pm 0.032"}</M> (95% CI [0.077, 0.095]). Distribution: 22% HIGH / 46% MODERATE / 32% LOW. Max <M>{"\\intinfo = 0.473"}</M> (seed 23, new all-time record). Mean drought mortality 96.8%.</p>
+      <p><strong>Key revision from V31</strong>: The first drought bounce does NOT predict final category (<M>{"r = -0.075, p = 0.60"}</M>). What predicts is the <em>mean bounce across all 5 droughts</em> (<M>{"\\rho = 0.599, p = 4.4 \\times 10^{-6}"}</M>). Integration is built by repeatedly bouncing back, not by a single event. <M>{"\\intinfo"}</M> trajectory slope separates categories perfectly (ANOVA <M>{"F = 34.38, p = 6.3 \\times 10^{-10}"}</M>): every HIGH seed has positive slope, every LOW seed has negative slope.</p>
+      <p><strong>Robustness is orthogonal to integration</strong> (Mann-Whitney <M>{"p = 0.73"}</M>). Seeds that survive droughts well are not the same seeds that develop high <M>{"\\intinfo"}</M>. Effective rank (mean 8.1) does not differ across categories.</p>
       <CodeFiles files={[
         { name: 'v32_evolution.py', desc: 'Fine-grained drought tracking' },
         { name: 'v32_gpu_run.py', desc: '50-seed GPU runner' },
@@ -751,6 +752,7 @@ export default function AppendixExperiments() {
       <tr><td>V29/V31 (Social)</td><td>Social target lifts <M>{"\\intinfo"}</M></td><td>Not confirmed. 3-seed fluke; 10-seed: <M>{"p = 0.93"}</M>.</td></tr>
       <tr><td>V30 (Dual)</td><td>Self+social {"> "} either</td><td>Negative. Gradient imbalance; self colonizes.</td></tr>
       <tr><td>V31 (Seeds)</td><td>Seed distribution</td><td><strong>Confirmed:</strong> 30/30/40 split. Post-drought bounce <M>{"r = 0.997"}</M>.</td></tr>
+      <tr><td>V32 (Autopsy)</td><td>First bounce predicts category</td><td><strong>Revised:</strong> First bounce NOT predictive (<M>{"p = 0.60"}</M>). Mean bounce across all droughts IS (<M>{"\\rho = 0.60, p < 10^{-5}"}</M>). Trajectory, not event.</td></tr>
       <tr><td>V35 (Language)</td><td>Referential communication emerges</td><td><strong>Confirmed:</strong> 10/10 seeds (100%). But does NOT lift <M>{"\\intinfo"}</M>. Language is cheap.</td></tr>
       <tr><td>VLM Conv.</td><td>VLMs recognize affect in protocells (RSA {"> "} 0.3)</td><td><strong>Confirmed:</strong> GPT-4o <M>{"\\rho = 0.72"}</M>, Claude <M>{"\\rho = 0.54"}</M>. Raw numbers: 0.78, 0.72.</td></tr>
       </tbody>
@@ -758,12 +760,12 @@ export default function AppendixExperiments() {
       </Section>
 
       <Section title="Summary" level={1}>
-      <p>Thirty-five experiment versions across four substrates. Twelve numbered measurement experiments. Five current priorities. The program has established:</p>
+      <p>Thirty-five experiment versions across four substrates and fifty seeds at scale. Twelve numbered measurement experiments. One VLM convergence study. Five current priorities. The program has established:</p>
       <ol>
       <li><strong>Geometry is cheap, dynamics are expensive.</strong> Affect geometry arises from the minimal conditions of multi-agent survival (V10, Exp 7-8, Exp 12). Affect dynamics require embodied agency (V20), graduated stress exposure (V19), and non-decomposable prediction architecture (V27).</li>
       <li><strong>Two architectural walls.</strong> The sensory-motor wall (<M>{"\\rho_{\\text{sync}} \\approx 0"}</M>) is broken by genuine action-observation loops (V20). The decomposability wall is broken by 2-layer gradient coupling (V27). Both are necessary.</li>
       <li><strong>Integration is stochastic.</strong> ~30% of seeds develop high <M>{"\\intinfo"}</M> regardless of architecture or prediction target (V31). The predictor is post-drought recovery dynamics (<M>{"r = 0.997"}</M>), not initial conditions. Integration is biographical.</li>
-      <li><strong>The bottleneck furnace is generative.</strong> Near-extinction forges integration capacity (V19). Repeated drought recovery is the mechanism (V31). The furnace does not select for pre-existing integration — it creates it. V32 reveals the mechanism is compression: HIGH seeds select leaner survivor genomes during drought, while LOW seeds select larger ones.</li>
+      <li><strong>The bottleneck furnace is generative.</strong> Near-extinction forges integration capacity (V19). Repeated drought recovery is the mechanism (V31, V32). The furnace does not select for pre-existing integration — it creates it. V32 (50 seeds) reveals that integration is trajectory, not event: the mean bounce across all 5 droughts predicts final category (<M>{"\\rho = 0.599, p < 10^{-5}"}</M>), but the first bounce alone does not (<M>{"p = 0.60"}</M>). Integration is built by the sustained pattern of recovery, not by a single crisis.</li>
       <li><strong>Prediction target doesn't matter.</strong> Self vs social prediction produces the same <M>{"\\intinfo"}</M> distribution (V31, <M>{"p = 0.93"}</M>). What matters is the gradient architecture (linear vs 2-layer) and the evolutionary trajectory.</li>
       <li><strong>Language is cheap.</strong> Referential communication emerges in 100% of seeds under partial observability with cooperative pressure (V35). But it does not lift integration — communication acts as external scaffolding that substitutes for internal processing. Like geometry, language is an inevitability of survival under information asymmetry. Like geometry, it does not cross the rung 8 wall.</li>
       <li><strong>The geometry is universal.</strong> VLMs trained on human data — with no exposure to the framework — independently recognize the same affect signatures in completely uncontaminated protocell systems (RSA <M>{"\\rho = 0.54"}</M>–<M>{"0.78"}</M>, <M>{"p < 0.0001"}</M>). The convergence holds and <em>strengthens</em> when narrative framing is removed and only raw numbers remain. Affect geometry arises from the structure of viable self-maintenance, not from biological contingency.</li>

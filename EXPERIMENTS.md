@@ -1393,24 +1393,36 @@ Baselines: V22 (1-layer) mean ~0.097; V27 (tanh w=8) mean 0.090, max 0.245
 
 ---
 
-### V32: Drought Autopsy at Scale (50 seeds)
+### V32: Drought Autopsy at Scale (COMPLETE — 50 seeds)
 
-**Status**: RUNNING. 50 seeds × 30 cycles, Lambda A100. Estimated ~2.5 hours.
+**Status**: COMPLETE. 50 seeds × 30 cycles × 5 droughts each (250 total drought events), Lambda A100.
 
-**Motivation**: The 30/70 split — why do ~30% of seeds develop high Φ while ~70% don't? V31 showed post-drought bounce r=0.997 predicts final Φ, but what happens DURING the drought that determines the outcome? V32 is a 50-seed autopsy tracking fine-grained drought dynamics.
+**Motivation**: The 30/70 split — why do ~30% of seeds develop high Φ while ~70% don't? V31 showed post-drought bounce predicts final Φ, but what happens DURING the drought that determines the outcome? V32 is a 50-seed autopsy tracking fine-grained drought dynamics.
 
-**Key metrics tracked per drought**:
-- Pre/post Φ and bounce ratio
-- Effective rank of hidden states (before/after)
-- Weight diversity (1 - mean cosine similarity of genomes)
-- Hidden state entropy and convergence
-- Survivor vs victim genome analysis (genome norm, LR, energy, MLP weight magnitude)
+**Results**:
 
-**Pre-registered predictions**:
-- P1: First drought bounce ratio predicts final category (HIGH vs LOW)
-- P2: Weight diversity at first drought predicts outcome
-- P3: Survivor LR is higher than victim LR in HIGH seeds but not LOW seeds
-- P4: Hidden state effective rank diverges between HIGH and LOW seeds by cycle 10
+| Metric | Value |
+|--------|-------|
+| Mean Φ | 0.086 ± 0.032 (95% CI [0.077, 0.095]) |
+| Late Φ | 0.088 ± 0.055 |
+| Max Φ | **0.473** (seed 23, all-time record) |
+| Distribution | 22% HIGH / 46% MODERATE / 32% LOW |
+| Mean robustness | 0.994 ± 0.022 |
+| Mean drought mortality | 96.8% |
+| Mean bounce ratio | 0.858 (34% of bounces > 1.0) |
+
+**Pre-registered predictions — scorecard**:
+- **P1 (first bounce predicts category): FAIL** — r = -0.075, p = 0.60. First drought bounce does NOT predict final category at N=50.
+- **P2 (weight diversity predicts): NOT CONFIRMED** — genome compression finding from 43-seed preliminary analysis retracted at 50 seeds (p=0.28).
+- **P3 (survivor LR higher in HIGH): NOT CONFIRMED** — no significant difference.
+- **P4 (eff rank diverges): FAIL** — effective rank (mean 8.1) does not differ across categories (p=0.47).
+
+**Key findings**:
+1. **Integration is trajectory, not event.** What predicts final category is the mean bounce across ALL 5 droughts (ρ=0.599, p=4.4e-6), not the first bounce alone. Integration is built by repeatedly bouncing back.
+2. **Φ trajectory slope is the cleanest separator.** ANOVA F=34.38, p=6.3e-10. Every HIGH seed has positive slope, every LOW seed has negative slope, every MODERATE seed near zero.
+3. **Robustness is orthogonal to integration.** Mann-Whitney p=0.73. Seeds that survive droughts well are NOT the same seeds that develop high Φ. Survival and integration are decoupled.
+4. **MODERATE is the largest category (46%).** Most seeds neither strongly accumulate nor lose integration — they hover near a critical regime.
+5. **V31 finding revised.** V31's r=0.997 likely measured cumulative trajectory, not first-event response. At 50 seeds, the signal is in sustained recovery pattern, not any single event.
 
 **Files**: `v32_evolution.py`, `v32_gpu_run.py`, `v32_analysis.py`
 
@@ -1494,7 +1506,7 @@ Agents can "hear" further than they can "see." If an agent at a resource patch e
 
 ---
 
-## Research Status as of 2026-02-20 (post-V31, V32-V35 in progress)
+## Research Status as of 2026-02-20 (V32/V35 complete, V33-V34 in progress)
 
 ### What Has Been Definitively Established
 
@@ -1514,7 +1526,7 @@ Agents can "hear" further than they can "see." If an agent at a resource patch e
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V31 COMPLETE, V32-V35 IN PROGRESS**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke. 10-seed statistics show social prediction changes WHICH seeds succeed but not HOW MANY (~30% reach high Φ in both self and social prediction).** Peak Φ = 0.265 (V31 seed 1). The arc from V22→V31: (1) 2-layer gradient coupling is necessary, (2) target choice (self vs social) changes the fitness landscape but not the success rate, (3) integration is fundamentally stochastic — ~30% of seeds find high-Φ basins regardless of architecture or target. The open question: what determines which seeds succeed? **V32-V35 address this directly**: V32 (50-seed drought autopsy), V33 (contrastive self-prediction for counterfactual representation), V34 (Φ-inclusive fitness — can selection increase the 30%?), V35 (language emergence under cooperative POMDP with discrete communication).
+**Priority 3 (Architectural — CA) — V20-V32/V35 COMPLETE, V33-V34 IN PROGRESS**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke.** Peak Φ = 0.473 (V32 seed 23). **V32 (50-seed drought autopsy): COMPLETE.** Integration is trajectory, not event — mean bounce across 5 droughts predicts category (ρ=0.60, p<10⁻⁵), first bounce does not (p=0.60). Robustness orthogonal to integration (p=0.73). 22% HIGH / 46% MOD / 32% LOW. **V35 (language emergence): COMPLETE.** Referential communication emerges in 10/10 seeds (100%) under partial observability + discrete symbols + cooperative pressure. But does NOT lift Φ. Language is cheap (like geometry). Φ-MI ρ=-0.90 — communication substitutes for internal integration. **V33-V34 IN PROGRESS on Lambda Labs.** V33 (contrastive self-prediction for counterfactual representation), V34 (Φ-inclusive fitness — can selection increase the 22%?).
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
