@@ -2,6 +2,7 @@
 // Content is incomplete, speculative, and subject to change.
 
 import { Eq, Logos, M, Section, Sidebar } from '@/components/content';
+import AffectTrajectory3D from '@/components/visualizations/AffectTrajectory3DWrapper';
 
 export const metadata = {
   slug: 'part-7',
@@ -15,6 +16,8 @@ export default function Part7() {
       <Logos>
       <p>A theory that cannot be tested is not a theory but a poem. This is a theory. Everything in the preceding six parts generates empirical predictions — some already tested, some tractable with current methods, some requiring infrastructure that does not yet exist. This part consolidates the empirical program: what has been tested, what the results show, what they mean for the bridge between physics and psychology, and what remains.</p>
       </Logos>
+
+      <AffectTrajectory3D demoMode />
 
       <Section title="What Has Been Tested" level={1}>
       <p>The framework has been subjected to four lines of investigation: multi-agent reinforcement learning, cellular automaton evolution, an eleven-experiment emergence program on uncontaminated substrates, and LLM affect probes. The results are mixed. Some predictions held. Some failed instructively. Some revealed phenomena the theory did not anticipate.</p>
