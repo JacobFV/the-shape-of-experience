@@ -22,3 +22,6 @@ export { FurnaceMechanism } from './FurnaceMechanism';
 export { default as IotaSpectrum } from './IotaSpectrum';
 export { default as ContaminationDynamics } from './ContaminationDynamics';
 export { default as SuperorganismTaxonomy } from './SuperorganismTaxonomy';
+export { default as AestheticModes } from './AestheticModes';
+export { default as ExistentialStrategies } from './ExistentialStrategies';
+export { default as PracticeMap } from './PracticeMap';

@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Logos, M, OpenQuestion, Section, Sidebar, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Figure, Logos, M, OpenQuestion, Section, Sidebar, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-6',
@@ -76,6 +76,9 @@ export default function Part6() {
       <p>Science’s affect signature reflects a distinctive configuration:</p>
       <Eq>{"\\mathbf{a}_{\\text{science}} = (+\\Val_{\\text{understanding}}, \\text{moderate } \\Ar, \\text{high } \\intinfo, \\text{high } \\reff, \\text{moderate } \\cfweight, \\text{low } \\selfsal)"}</Eq>
       <p>The scientific frame produces high integration without self-focus—the mind coherent and attending to structure rather than self.</p>
+      <Figure src="" alt="Civilizational iota trajectory animation" caption={<>The inhibition coefficient has risen steadily for three millennia. Each step gained predictive power and lost experiential richness.</>}>
+        <video src="/videos/iota-historical.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       <Sidebar title="The Scientific Revolution as  Training">
       <p>The Scientific Revolution was, among other things, the systematic installation of high <M>{"\\iota"}</M> in a population. The trained practices of science—stripping agency from natural phenomena, replacing narrative causation with mathematical regularity, demanding reproducible mechanism over teleological explanation—are precisely the practices that raise the inhibition coefficient. This was enormously productive: high <M>{"\\iota"}</M> is what makes science, engineering, and medicine possible. But it also means that the population-mean <M>{"\\iota"}</M> has been rising for four centuries, and the felt cost—what Weber called the <em>Entzauberung der Welt</em>, the disenchantment of the world—is not a cultural mood but a structural consequence of a perceptual parameter shift. The world goes dead because you have been trained to experience it in parts rather than as a whole.</p>
       <p>The historical arc from Axial Age through Scientific Revolution through Digital Transition can be reinterpreted as a civilizational trajectory through <M>{"\\iota"}</M> space: from <M>{"\\iota \\approx 0.1"}</M> (fully participatory, world alive and agentive) through <M>{"\\iota \\approx 0.5"}</M> (mixed, science emerging alongside residual animism) to the present <M>{"\\iota \\approx 0.7"}</M>–<M>{"0.9"}</M> (hyper-mechanistic, even persons modeled as data profiles). Each step gained predictive power and lost experiential richness.</p>

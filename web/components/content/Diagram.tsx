@@ -24,6 +24,9 @@ import { FurnaceMechanism } from '../diagrams/FurnaceMechanism';
 import IotaSpectrum from '../diagrams/IotaSpectrum';
 import ContaminationDynamics from '../diagrams/ContaminationDynamics';
 import SuperorganismTaxonomy from '../diagrams/SuperorganismTaxonomy';
+import AestheticModes from '../diagrams/AestheticModes';
+import ExistentialStrategies from '../diagrams/ExistentialStrategies';
+import PracticeMap from '../diagrams/PracticeMap';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -50,6 +53,9 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/part-2-1.svg': IotaSpectrum,
   '/diagrams/part-4-1.svg': ContaminationDynamics,
   '/diagrams/part-5-1.svg': SuperorganismTaxonomy,
+  '/diagrams/part-3-1.svg': AestheticModes,
+  '/diagrams/part-3-2.svg': ExistentialStrategies,
+  '/diagrams/epilogue-0.svg': PracticeMap,
 };
 
 interface DiagramProps {

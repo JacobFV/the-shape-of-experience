@@ -9,6 +9,8 @@ import { LanguageEmergenceVideo } from "./LanguageEmergence";
 import { GeometryIsCheapVideo } from "./GeometryIsCheap";
 import { AffectMotifsVideo } from "./AffectMotifs";
 import { DevelopmentalOrderingVideo } from "./DevelopmentalOrdering";
+import { IdentificationScopeVideo } from "./IdentificationScope";
+import { IotaHistoricalVideo } from "./IotaHistorical";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -88,6 +90,22 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="DevelopmentalOrdering"
         component={DevelopmentalOrderingVideo}
+        durationInFrames={360}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="IdentificationScope"
+        component={IdentificationScopeVideo}
+        durationInFrames={360}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="IotaHistorical"
+        component={IotaHistoricalVideo}
         durationInFrames={360}
         fps={30}
         width={1080}

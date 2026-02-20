@@ -70,6 +70,7 @@ export default function Part3() {
       <p>The modern “death of art”—the difficulty of producing genuinely moving work in a hyper-mechanistic culture—is an <M>{"\\iota"}</M> problem. When population-mean <M>{"\\iota"}</M> is very high, art must work harder to induce the perceptual shift that aesthetic experience requires. Irony, which maintains high <M>{"\\iota"}</M> while gesturing toward what low <M>{"\\iota"}</M> would reveal, becomes the dominant mode—not because artists prefer it, but because sincerity requires an <M>{"\\iota"}</M> reduction that the audience has been trained to resist.</p>
       <p>In the language of Part I’s attention-as-measurement framework: each aesthetic mode redistributes the observer’s measurement distribution across possibility space. The sublime overwhelms the observer with scale, forcing attention onto vast branches normally suppressed. Horror spreads attention to threat-branches normally dampened by high <M>{"\\iota"}</M>. Music that induces flow narrows the measurement window to the immediate present-state manifold. Each form is a technique for selecting which trajectories receive probability mass in the observer’s representation of possibility—and, if the trajectory-selection thesis holds, for selecting which trajectories the observer actually follows.</p>
       <Section title="Affect Signatures of Aesthetic Forms" level={2}>
+      <Diagram src="/diagrams/part-3-1.svg" />
       <p>Different aesthetic forms have characteristic affect signatures:</p>
       <table>
       <thead><tr><th>Form</th><th>Constitutive Structure</th></tr></thead>
@@ -190,6 +191,7 @@ export default function Part3() {
       <li>Mortality management (beliefs about death that reduce threat-signal)</li>
       <li>Ethical guidance (policies for navigating affect space)</li>
       </ol>
+      <Diagram src="/diagrams/part-3-2.svg" />
       <p><strong>Religious Diversity as Affect-Strategy Diversity.</strong> Different religious traditions emphasize different affect-management strategies:</p>
       <ul>
       <li><strong>Contemplative traditions</strong> (Buddhism, mystical Christianity, Sufism): Target self-model dissolution (<M>{"\\mathcal{SM} \\to 0"}</M>)</li>
