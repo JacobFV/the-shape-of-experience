@@ -1,6 +1,6 @@
 # The Emergence Experiment Program
 
-Living document. Last updated: 2026-02-18.
+Living document. Last updated: 2026-02-19.
 
 This is the experimental backbone of the book. Every experiment runs on the same uncontaminated substrate — Lenia with state-dependent coupling — tracking co-emergence of world models, abstraction, language, counterfactual detachment, self-modeling, affect, and normativity. Zero neural networks. Zero human language. Zero contamination.
 
@@ -1137,7 +1137,153 @@ V22: mean_rob=0.981, mean_phi=0.097. V23: mean_rob=0.992, mean_phi=0.079.
 
 ---
 
-## Research Status as of 2026-02-19 (post-V23)
+### CRITICAL BUG FIX: Snapshot Timing (2026-02-19)
+
+**Retraction: 1D Collapse finding.** V20, V25, and V26 evolution loops reset hidden states to zero BEFORE saving snapshots. The code order was:
+
+```python
+# Reset hidden states and energy for next cycle
+state['hidden'] = jnp.zeros_like(state['hidden'])
+state['energy'] = jnp.where(state['alive'], cfg['initial_energy'], 0.0)
+# ... later ...
+snap = extract_snapshot(state, cycle, cfg)  # captures ZERO hidden states!
+```
+
+All hidden state analysis (effective rank, energy R², position R²) was performed on all-zero vectors. The "energy R²=1.0" was because both hidden=0 and energy=initial_energy are constants — trivially perfect regression on constants. The "1D energy counter" story was completely wrong.
+
+V22-V24 did NOT have this bug (reset at cycle START, snapshot at END), so their data was always correct.
+
+**Corrected V22-V24 results:**
+
+| Metric | Buggy (V20b) | Correct (V22-V24) |
+|--------|-------------|-------------------|
+| Effective rank | 1-3 | **5.1-7.3** |
+| Energy R² | 1.0 | **-3.6 to -4.6** (negative!) |
+| Position R² | ~0 | -0.06 to -0.11 |
+| PC1 variance | ~95-100% | **25-38%** |
+
+The hidden states are **moderately high-dimensional** (eff rank 5-7, ~5-7 independent dimensions of variation) and do NOT encode energy linearly. Negative R² means a linear model predicting energy from hidden state does WORSE than predicting the mean. The agents use their hidden state richly — the degenerate representation story was an artifact.
+
+**Fix applied**: `v25_evolution.py` and `v26_evolution.py` — snapshot before reset. See `ANALYSIS_1D_COLLAPSE.md` for full details.
+
+**Lesson**: When hidden states appear degenerate, first check that you're analyzing actual post-cycle states, not zeroed reset buffers.
+
+---
+
+### V25: Predator-Prey Structured Landscape (COMPLETE — NEGATIVE)
+
+**Status**: COMPLETE — 3 seeds, environmental complexity does not break integration bottleneck
+
+**Motivation**: V22-V24 showed prediction targets don't force integration through a linear readout. V25 tests whether a more demanding environment — patchy resources, predator-prey dynamics, structured landscape — forces richer hidden state usage by requiring spatial/social encoding.
+
+**Architecture** (over V20):
+- Grid: N=256, 12 circular resource patches (r=20)
+- Population: 80/20 prey/predator split, max 256 agents
+- Observation: 5×5 local window (resources, signals, prey count, predator count)
+- GRU: H=16 hidden units
+- Drought every 5 cycles (barren-zone metabolic cost elevated)
+
+**Results** (3 seeds × 30 cycles, Lambda A10, ~$0.03):
+
+| Seed | Mean Rob | Max Rob | Mean Phi | Final Prey | Final Pred |
+|------|----------|---------|----------|------------|------------|
+| 42   | 0.831    | 1.037   | 0.129    | 309        | 74         |
+| 123  | 0.797    | 1.020   | 0.073    | 396        | 74         |
+| 7    | 0.804    | 1.064   | 0.073    | 409        | 81         |
+
+Mean robustness ~1.0 (below V22-V24). 100% mortality at drought cycles — too harsh for patchy landscape.
+
+**Key finding: Environmental complexity does not break the integration bottleneck.** The 5×5 observation window is too rich — agents can see local resources (channel 0) and nearby predators (channel 3) directly. The optimal reactive strategy (if resources visible, eat; if predator visible, flee; otherwise wander) requires NO internal state beyond energy level. Rich observations enable reactive behavior without internal representation.
+
+**The hierarchy of bottlenecks** (updated):
+1. ~~Agent architecture~~ (V13-V18): No. Crossing the sensory-motor wall requires agency, not architecture tweaks.
+2. ~~Prediction target~~ (V22-V24): No. Linear readout is always decomposable regardless of target.
+3. ~~Environmental complexity~~ (V25): No. Rich observations enable reactive behavior without internal representation.
+4. **Partial observability** (hypothesis → V26): When the observation is informationally insufficient, the hidden state MUST carry information about the unobserved world.
+
+**Files**: `v25_substrate.py`, `v25_evolution.py`, `v25_gpu_run.py`
+
+---
+
+### V26: POMDP with Partial Observability (COMPLETE — MODERATE)
+
+**Status**: COMPLETE — 3 seeds, strong type encoding but 100% drought mortality prevents evolutionary accumulation
+
+**Motivation**: V25 showed that a 5×5 observation window is informationally sufficient for reactive behavior. V26 creates genuine partial observability: 1×1 observation (own cell only) plus a noisy compass, forcing agents to maintain internal representations of the unobserved world.
+
+**Architecture** (over V25):
+- Observation: **1×1** (own cell only) + noisy compass toward nearest patch
+- Obs vector: [resource_here, signal_here, prey_count_here, pred_count_here, energy, is_pred, compass_x, compass_y] = 8 dims
+- Compass: unit vector to nearest patch center + Gaussian noise σ=0.5
+- Hidden dim: **H=32** (doubled from V25's 16 to accommodate spatial model)
+- Total params: 5,079 per agent
+- Same V25 landscape: N=256, 12 patches (r=20), 80/20 prey/predator, drought every 5 cycles
+
+**Results** (3 seeds × 30 cycles, Lambda A10):
+
+| Seed | Mean Rob | Max Rob | Mean Phi | Final Prey | Final Pred |
+|------|----------|---------|----------|------------|------------|
+| 42   | 0.992    | 1.146   | 0.070    | 132        | 17         |
+| 123  | 0.966    | 1.079   | 0.065    | 166        | 34         |
+| 7    | 0.975    | 1.117   | 0.063    | 148        | 27         |
+
+**Hidden state analysis** (cycle 29, corrected snapshots):
+
+| Metric | V26 | Interpretation |
+|--------|-----|----------------|
+| Effective rank | 3.6–5.7 | Moderate dimensionality |
+| Type accuracy | **0.95–0.97** | Strong prey/predator identity encoding |
+| Energy R² | near 0 | Not linearly decodable |
+| Position R² | negative | Not linearly decodable |
+
+**Key finding: Partial observability produces type encoding but drought prevents accumulation.** 1×1 observation with compass produces moderate representation complexity (eff rank 3.6-5.7). Type encoding is the dominant learned feature — agents know WHAT they are (prey vs predator) even if they don't encode WHERE things are or HOW MUCH energy they have linearly. However, 100% drought mortality every 5 cycles reseeds the entire population, preventing evolutionary accumulation of gains.
+
+**Updated understanding** (with corrected V22-V24 data):
+1. Agents DO use rich hidden representations (eff rank 5-7 in V22-V24, 3.6-5.7 in V26)
+2. Energy is NOT the dominant encoding — negative R² means linear decoding is worse than mean
+3. The prediction head bottleneck is architectural: linear readout W∈R^{H×T} can be satisfied by a subset of hidden dims without requiring cross-component coordination
+4. The path to rung 8 requires prediction heads that force **non-decomposable** computation
+
+**Files**: `v26_substrate.py`, `v26_evolution.py`, `v26_gpu_run.py`
+
+---
+
+### V27: Nonlinear MLP Prediction Head (NEXT)
+
+**Status**: NEXT — designed, not yet implemented
+
+**Motivation**: V22-V24 established that linear prediction heads (W∈R^{H×1} or W∈R^{H×T}) cannot force cross-component coordination regardless of prediction target, dimensionality, or time horizon. The gradient through a linear readout decomposes: ∂L/∂h_i = 2(pred-target)*w_i, meaning each hidden unit's gradient depends only on its own weight, not on other hidden units. V27 tests whether a nonlinear readout is the architectural bottleneck preventing integration.
+
+**Architecture** (over V22):
+- Same V22 base (GRU agents, within-lifetime learning, energy prediction)
+- **Replace** linear prediction head W∈R^{H×1} with 2-layer MLP:
+  - Layer 1: H → H/2 (with tanh activation)
+  - Layer 2: H/2 → 1
+- Total new params: H×(H/2) + H/2 + (H/2)×1 + 1 = H²/2 + 3H/2 + 1
+
+**Key insight — why this should work**: A nonlinear readout forces **gradient coupling across ALL hidden units**. Through the shared nonlinearity (tanh), ∂L/∂h_i depends on all h_j via the chain rule through the hidden layer. This means no single hidden unit can independently satisfy the prediction objective — the gradient signal forces coordinated, non-decomposable representations. This is the fundamental difference from V22-V24 where each hidden unit could independently contribute to the linear readout.
+
+**Pre-registered predictions**:
+1. Mean Phi > V22 (0.097) — nonlinear head forces cross-component computation
+2. Phi improvement is consistent across seeds (not seed-dependent as in V24)
+3. Prediction MSE comparable to V22 — nonlinearity doesn't hurt prediction quality
+4. Hidden state effective rank remains high (5-7) — the readout creates distributed representations, not compression
+
+**Falsification criteria**:
+- Phi no better than V22 → nonlinear readout doesn't force integration
+- Prediction MSE much worse than V22 → nonlinearity introduces optimization difficulty that hurts learning
+- Agents evolve lr → 0 → gradient through nonlinearity is destabilizing
+
+**Connection to the bottleneck hierarchy**:
+1. ~~Agent architecture~~ (V13-V18): sensory-motor wall
+2. ~~Prediction target~~ (V22-V24): linear readout always decomposable
+3. ~~Environmental complexity~~ (V25): rich observations enable reactivity
+4. ~~Partial observability alone~~ (V26): type encoding but not integration
+5. **Nonlinear readout** (V27): forces gradient coupling across hidden state (hypothesis)
+
+---
+
+## Research Status as of 2026-02-19 (post-V26)
 
 ### What Has Been Definitively Established
 
@@ -1157,7 +1303,7 @@ V22: mean_rob=0.981, mean_phi=0.097. V23: mean_rob=0.992, mean_phi=0.079.
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V24 COMPLETE**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21: architecture works), within-lifetime learning (V22: gradient works), multi-target world model (V23: specialization ≠ integration), TD value learning (V24: survival improves but Phi mixed). The prediction→integration pathway is now fully mapped: 1-step prediction orthogonal to Φ (V22); multi-target 1-step specializes and LOWERS Φ (V23); multi-step TD value improves survival (rob 1.012) but Φ improvement is seed-dependent (V24). The bottleneck is architectural: a single linear readout — regardless of target, dimensionality, or time horizon — cannot force non-decomposable hidden-state structure. The next step requires an architectural change that forces cross-component computation during prediction, not just a different prediction target.
+**Priority 3 (Architectural — CA) — V20-V26 COMPLETE, V27 NEXT**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21: architecture works), within-lifetime learning (V22: gradient works), multi-target world model (V23: specialization ≠ integration), TD value learning (V24: survival improves but Phi mixed), structured environment (V25 NEGATIVE: rich observations enable reactivity), partial observability (V26 MODERATE: type encoding but drought prevents accumulation). CRITICAL BUG FIX: V20/V25/V26 snapshot timing bug invalidated the "1D collapse" finding — corrected V22-V24 data shows eff rank 5.1-7.3, NOT degenerate. The bottleneck hierarchy is now fully mapped: (1) sensory-motor wall (V13-V18), (2) linear readout decomposability (V22-V24), (3) environmental complexity insufficient (V25), (4) partial observability alone insufficient (V26). V27 tests the remaining hypothesis: nonlinear MLP prediction head forces gradient coupling across ALL hidden units, potentially breaking the decomposability bottleneck.
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
