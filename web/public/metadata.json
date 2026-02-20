@@ -403,6 +403,12 @@
         "parentSection": "the-inhibition-coefficient"
       },
       {
+        "level": 2,
+        "id": "empirical-grounding-for-the-inhibition-coefficient",
+        "text": "Empirical Grounding for the Inhibition Coefficient",
+        "parentSection": "the-inhibition-coefficient"
+      },
+      {
         "level": 1,
         "id": "affect-motifs",
         "text": "Affect Motifs"
@@ -545,6 +551,12 @@
         "level": 2,
         "id": "the-ca-instantiation",
         "text": "The CA Instantiation",
+        "parentSection": "the-uncontaminated-test"
+      },
+      {
+        "level": 2,
+        "id": "what-the-experiments-found",
+        "text": "What the Experiments Found",
         "parentSection": "the-uncontaminated-test"
       },
       {
@@ -1094,14 +1106,26 @@
       },
       {
         "level": 2,
-        "id": "the-marl-ablation-v10",
-        "text": "The MARL Ablation (V10)",
+        "id": "geometry-is-cheap",
+        "text": "Geometry Is Cheap",
         "parentSection": "what-has-been-tested"
       },
       {
         "level": 2,
-        "id": "the-lenia-evolution-series-v11-v12",
-        "text": "The Lenia Evolution Series (V11–V12)",
+        "id": "dynamics-are-expensive",
+        "text": "Dynamics Are Expensive",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-substrate-ladder",
+        "text": "The Substrate Ladder",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-emergence-experiment-program",
+        "text": "The Emergence Experiment Program",
         "parentSection": "what-has-been-tested"
       },
       {
@@ -1112,8 +1136,36 @@
       },
       {
         "level": 1,
-        "id": "what-remains-the-research-roadmap",
-        "text": "What Remains: The Research Roadmap"
+        "id": "the-emergence-ladder",
+        "text": "The Emergence Ladder"
+      },
+      {
+        "level": 1,
+        "id": "the-bridge-to-psychology",
+        "text": "The Bridge to Psychology"
+      },
+      {
+        "level": 2,
+        "id": "pre-reflective-affect-what-comes-for-free",
+        "text": "Pre-Reflective Affect: What Comes for Free",
+        "parentSection": "the-bridge-to-psychology"
+      },
+      {
+        "level": 2,
+        "id": "the-agency-threshold-what-requires-a-body",
+        "text": "The Agency Threshold: What Requires a Body",
+        "parentSection": "the-bridge-to-psychology"
+      },
+      {
+        "level": 2,
+        "id": "psychopathology-as-geometric-deformation",
+        "text": "Psychopathology as Geometric Deformation",
+        "parentSection": "the-bridge-to-psychology"
+      },
+      {
+        "level": 1,
+        "id": "what-remains",
+        "text": "What Remains"
       },
       {
         "level": 1,
@@ -1323,42 +1375,156 @@
     "sections": [
       {
         "level": 1,
-        "id": "completed-experiments",
-        "text": "Completed Experiments"
-      },
-      {
-        "level": 2,
-        "id": "v2-v9-llm-affect-signatures",
-        "text": "V2–V9: LLM Affect Signatures",
-        "parentSection": "completed-experiments"
+        "id": "the-substrate-ladder",
+        "text": "The Substrate Ladder"
       },
       {
         "level": 2,
         "id": "v10-marl-forcing-function-ablation",
         "text": "V10: MARL Forcing Function Ablation",
-        "parentSection": "completed-experiments"
+        "parentSection": "the-substrate-ladder"
       },
       {
         "level": 2,
         "id": "v11-0-v11-7-lenia-ca-evolution-series",
-        "text": "V11.0–V11.7: Lenia CA Evolution Series",
-        "parentSection": "completed-experiments"
+        "text": "V11.0-V11.7: Lenia CA Evolution Series",
+        "parentSection": "the-substrate-ladder"
       },
       {
         "level": 2,
         "id": "v12-attention-based-lenia",
         "text": "V12: Attention-Based Lenia",
-        "parentSection": "completed-experiments"
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "v13-content-based-coupling",
+        "text": "V13: Content-Based Coupling",
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "v14-chemotaxis",
+        "text": "V14: Chemotaxis",
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "v15-temporal-memory",
+        "text": "V15: Temporal Memory",
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "v16-hebbian-plasticity-negative-result",
+        "text": "V16: Hebbian Plasticity (Negative Result)",
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "v17-quorum-signaling-mixed-result",
+        "text": "V17: Quorum Signaling (Mixed Result)",
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "v18-boundary-dependent-lenia",
+        "text": "V18: Boundary-Dependent Lenia",
+        "parentSection": "the-substrate-ladder"
+      },
+      {
+        "level": 2,
+        "id": "cross-version-summary",
+        "text": "Cross-Version Summary",
+        "parentSection": "the-substrate-ladder"
       },
       {
         "level": 1,
-        "id": "next-phase-experiments",
-        "text": "Next-Phase Experiments"
+        "id": "the-emergence-experiment-program",
+        "text": "The Emergence Experiment Program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-0-substrate-engineering",
+        "text": "Experiment 0: Substrate Engineering",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-1-emergent-existence",
+        "text": "Experiment 1: Emergent Existence",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-2-emergent-world-model",
+        "text": "Experiment 2: Emergent World Model",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-3-internal-representation-structure",
+        "text": "Experiment 3: Internal Representation Structure",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-4-emergent-language",
+        "text": "Experiment 4: Emergent Language",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-5-counterfactual-detachment",
+        "text": "Experiment 5: Counterfactual Detachment",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-6-self-model-emergence",
+        "text": "Experiment 6: Self-Model Emergence",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-7-affect-geometry-verification",
+        "text": "Experiment 7: Affect Geometry Verification",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-8-perceptual-mode-and-computational-animism",
+        "text": "Experiment 8: Perceptual Mode and Computational Animism",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-9-proto-normativity",
+        "text": "Experiment 9: Proto-Normativity",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-10-social-scale-integration",
+        "text": "Experiment 10: Social-Scale Integration",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-11-entanglement-analysis",
+        "text": "Experiment 11: Entanglement Analysis",
+        "parentSection": "the-emergence-experiment-program"
+      },
+      {
+        "level": 2,
+        "id": "experiment-12-identity-thesis-capstone",
+        "text": "Experiment 12: Identity Thesis Capstone",
+        "parentSection": "the-emergence-experiment-program"
       },
       {
         "level": 1,
-        "id": "human-studies-require-irb-and-funding",
-        "text": "Human Studies (Require IRB and Funding)"
+        "id": "the-sensory-motor-coupling-wall",
+        "text": "The Sensory-Motor Coupling Wall"
       },
       {
         "level": 1,
@@ -1367,8 +1533,8 @@
       },
       {
         "level": 1,
-        "id": "summary-of-the-experimental-program",
-        "text": "Summary of the Experimental Program"
+        "id": "summary",
+        "text": "Summary"
       }
     ]
   }
