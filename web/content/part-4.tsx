@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Eq, Experiment, Logos, M, MarginNote, OpenQuestion, Section, Sidebar, Warning, WideBreath } from '@/components/content';
+import { Connection, Diagram, Eq, Experiment, Logos, M, MarginNote, OpenQuestion, Section, Sidebar, Warning, WideBreath } from '@/components/content';
 
 export const metadata = {
   slug: 'part-4',
@@ -42,6 +42,7 @@ export default function Part4() {
       <p>Each of these defines a distinct region of social state space with its own persistence conditions.</p>
       </Section>
       <Section title="Contamination" level={2}>
+      <Diagram src="/diagrams/part-4-1.svg" />
       <p><em>Incentive contamination</em> occurs when two relationship-type manifolds <M>{"\\viable_{R_1}"}</M> and <M>{"\\viable_{R_2}"}</M> are instantiated in the same dyadic relationship and their gradients conflict:</p>
       <Eq>{"\\nabla \\viable_{R_1} \\cdot \\nabla \\viable_{R_2} < 0"}</Eq>
       <p>The system receives contradictory gradient signals. Movement toward viability in one relationship type moves away from viability in the other. Valence becomes uncomputable because the system cannot determine whether its trajectory is approach or avoidance.</p>

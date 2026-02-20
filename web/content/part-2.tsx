@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Align, Connection, Diagram, Eq, Experiment, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
+import { Align, Connection, Diagram, Eq, Experiment, Figure, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
 
 export const metadata = {
   slug: 'part-2',
@@ -349,6 +349,7 @@ export default function Part2() {
       <p>No system arrives at high <M>{"\\iota"}</M> by default. The mechanistic mode is a trained skill, culturally transmitted through scientific education, rationalist norms, and specific practices of deliberately stripping meaning from perception. This training is enormously valuable—it enables prediction, engineering, medicine, technology. But it has a cost, and the cost shows up in affect space.</p>
       <p>The name “inhibition coefficient” is not accidental. In mammalian cortex, attention is implemented primarily through <em>inhibitory</em> interneurons—GABAergic circuits that suppress irrelevant signals so that attended signals propagate to higher processing. What reaches consciousness is what survives inhibitory gating. The brain’s measurement distribution (Part I) is literally sculpted by inhibition: attended features pass the gate; unattended features are suppressed before they can influence the belief state or drive action. The inhibition coefficient <M>{"\\iota"}</M> maps onto this biological mechanism: high <M>{"\\iota"}</M> corresponds to aggressive inhibitory gating that strips participatory features (agency, interiority, narrative) from the signal before it reaches integrative processing, leaving only mechanistic features (position, force, trajectory). Low <M>{"\\iota"}</M> corresponds to relaxed gating that allows participatory features through. The contemplative traditions that reduce <M>{"\\iota"}</M> through meditation are, at the neural level, learning to modulate inhibitory tone—to let more of the signal through the gate.</p>
       </Section>
+      <Diagram src="/diagrams/part-2-1.svg" />
       <Section title="The Affect Signature of Inhibition" level={2}>
       <p><M>{"\\iota"}</M> is not another dimension of affect. It is a <em>meta-parameter</em> governing the coupling structure between all the structural dimensions—a dial that changes how the axes relate to each other and to perception.</p>
       <table>
@@ -407,6 +408,9 @@ export default function Part2() {
       <p><strong>Curiosity</strong> <em>reaches</em> outward—but unlike fear, it reaches toward <em>promise</em> rather than threat. Pulling, open, playful. The <em>uncertainty</em> that makes fear contract makes curiosity <em>expand</em>. Same high counterfactual weight, opposite <em>valence</em>. The difference is whether the <em>branches</em> lead somewhere you want to go.</p>
       <p>And <strong>grief</strong>? Grief <em>persists</em>. Hollow, aching, curiously timeless. The lost object remains <em>woven into</em> every prediction; every expectation that included them <em>fails</em> silently, over and over. The world has changed. The <em>model</em> has not caught up. Grief is the metabolic cost of love’s <em>integration</em>.</p>
       <p>The textures have geometry.</p>
+      <Figure src="" alt="Affect motifs as geometric signatures in the six-dimensional affect space" caption={<>Each emotion is a distinct shape — joy expands (high rank, low self-model), suffering compresses (low rank, high integration), fear projects forward (high CF, high SM). The radar chart shows how the same six dimensions combine differently to produce qualitatively distinct experiences.</>}>
+        <video src="/videos/affect-motifs.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       <Section title="Joy" level={2}>
       <p>Geometrically, joy requires four dimensions:</p>
       <ul>

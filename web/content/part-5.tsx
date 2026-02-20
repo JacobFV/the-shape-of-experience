@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Eq, Logos, M, NormativeImplication, Section, Sidebar, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Logos, M, NormativeImplication, Section, Sidebar, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-5',
@@ -84,6 +84,7 @@ export default function Part5() {
       </ol>
       <p>The critical distinction: a ritual is <em>aligned</em> if it serves both human flourishing and superorganism persistence. A ritual is <em>exploitative</em> if it serves pattern persistence at human cost. Many traditional rituals are approximately aligned (meditation benefits humans AND maintains the superorganism). Some are exploitative (extreme fasting, self-harm, warfare).</p>
       </Section>
+      <Diagram src="/diagrams/part-5-1.svg" />
       <Section title="Superorganism-Substrate Conflict" level={2}>
       <Warning title="Warning">
       <p>The viability manifold of a superorganism <M>{"\\viable_G"}</M> may conflict with the viability manifolds of its human substrate <M>{"{\\viable_h}"}</M>.</p>

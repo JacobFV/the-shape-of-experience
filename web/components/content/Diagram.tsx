@@ -21,6 +21,9 @@ import IntegrationDistribution from '../diagrams/IntegrationDistribution';
 import SubstrateLineage from '../diagrams/SubstrateLineage';
 import VLMConvergence from '../diagrams/VLMConvergence';
 import { FurnaceMechanism } from '../diagrams/FurnaceMechanism';
+import IotaSpectrum from '../diagrams/IotaSpectrum';
+import ContaminationDynamics from '../diagrams/ContaminationDynamics';
+import SuperorganismTaxonomy from '../diagrams/SuperorganismTaxonomy';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -44,6 +47,9 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/appendix-7.svg': SubstrateLineage,
   '/diagrams/appendix-8.svg': VLMConvergence,
   '/diagrams/appendix-9.svg': FurnaceMechanism,
+  '/diagrams/part-2-1.svg': IotaSpectrum,
+  '/diagrams/part-4-1.svg': ContaminationDynamics,
+  '/diagrams/part-5-1.svg': SuperorganismTaxonomy,
 };
 
 interface DiagramProps {

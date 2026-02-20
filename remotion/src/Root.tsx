@@ -7,6 +7,8 @@ import { WallBreakingVideo } from "./WallBreaking";
 import { FalsificationScoreboardVideo } from "./FalsificationScoreboard";
 import { LanguageEmergenceVideo } from "./LanguageEmergence";
 import { GeometryIsCheapVideo } from "./GeometryIsCheap";
+import { AffectMotifsVideo } from "./AffectMotifs";
+import { DevelopmentalOrderingVideo } from "./DevelopmentalOrdering";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -71,6 +73,22 @@ export const RemotionRoot: React.FC = () => {
         id="GeometryIsCheap"
         component={GeometryIsCheapVideo}
         durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="AffectMotifs"
+        component={AffectMotifsVideo}
+        durationInFrames={360}
+        fps={30}
+        width={1080}
+        height={720}
+      />
+      <Composition
+        id="DevelopmentalOrdering"
+        component={DevelopmentalOrderingVideo}
+        durationInFrames={360}
         fps={30}
         width={1080}
         height={720}

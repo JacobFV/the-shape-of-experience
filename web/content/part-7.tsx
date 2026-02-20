@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Eq, Logos, M, Section, Sidebar } from '@/components/content';
+import { Eq, Figure, Logos, M, Section, Sidebar } from '@/components/content';
 import AffectTrajectory3D from '@/components/visualizations/AffectTrajectory3DWrapper';
 
 export const metadata = {
@@ -123,6 +123,10 @@ export default function Part7() {
       <p>The computational mechanism behind the wall is now clear: counterfactual reasoning requires <em>temporal heterogeneity</em> within the system. Some components must be "in the present" (sensing current state) while others are simultaneously "in the possible future" (simulating consequences of actions not taken). This requires per-component temporal models — each element processing its own history through its own dynamics — rather than a shared update rule applied uniformly. Lenia patterns fail because all cells evolve under identical FFT convolution; there is no way for one region to be sensing while another imagines. Biology achieves temporal heterogeneity through neural diversity and recurrent circuits. Recent engineering work on neural architectures with per-neuron temporal models and internal processing ticks confirms this: the capacity for adaptive computation (allocating more processing to harder problems, less to easier ones) emerges only when individual components have private temporal dynamics. The wall at rung 8 is, at bottom, a wall of temporal homogeneity.</p>
       <p>With the wall broken, the cascade proceeds. World models appear (rung 3 now accessible in real-time, not just across evolutionary time). Self-models emerge in 2/3 seeds (SM<sub>sal</sub> {">"} 1.0 — privileged self-knowledge over environment knowledge). Affect geometry is nascent but requires bottleneck selection to fully develop, consistent with the Lenia finding that rung 7 needs the furnace.</p>
       </Section>
+
+      <Figure src="" alt="Emergence ladder mapped to human developmental timeline" caption={<>The emergence ladder predicts developmental sequence from computational requirements, not from observation. Key prediction: anticipatory anxiety (rung 8) must co-emerge with the false belief task (~age 3-4), not precede it.</>}>
+        <video src="/videos/developmental-ordering.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
 
       <Section title="The Bridge to Psychology" level={1}>
       <p>The emergence ladder is not merely a catalog of experimental results. It is a claim about the structure of the mind — a mapping from computational requirements to psychological phenomena that can be tested against human experience.</p>

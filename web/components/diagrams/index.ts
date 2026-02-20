@@ -19,3 +19,6 @@ export { default as IntegrationDistribution } from './IntegrationDistribution';
 export { default as SubstrateLineage } from './SubstrateLineage';
 export { default as VLMConvergence } from './VLMConvergence';
 export { FurnaceMechanism } from './FurnaceMechanism';
+export { default as IotaSpectrum } from './IotaSpectrum';
+export { default as ContaminationDynamics } from './ContaminationDynamics';
+export { default as SuperorganismTaxonomy } from './SuperorganismTaxonomy';
