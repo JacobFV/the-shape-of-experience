@@ -1,0 +1,25 @@
+{
+  "name": "remotion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "studio": "npx remotion studio",
+    "render:all": "npx remotion render BottleneckFurnace out/bottleneck-furnace.mp4 && npx remotion render IntegrationTrajectory out/integration-trajectory.mp4 && npx remotion render GradientCoupling out/gradient-coupling.mp4",
+    "render:furnace": "npx remotion render BottleneckFurnace out/bottleneck-furnace.mp4",
+    "render:trajectory": "npx remotion render IntegrationTrajectory out/integration-trajectory.mp4",
+    "render:coupling": "npx remotion render GradientCoupling out/gradient-coupling.mp4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/bundler": "^4.0.427",
+    "@remotion/cli": "^4.0.427",
+    "@types/react": "^19.2.14",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.427",
+    "typescript": "^5.9.3"
+  }
+}

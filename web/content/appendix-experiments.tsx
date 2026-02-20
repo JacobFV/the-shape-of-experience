@@ -679,6 +679,9 @@ export default function AppendixExperiments() {
       </ol>
       <p>Both walls are architectural. Neither can be overcome by more training data, better targets, or richer environments. The path to high integration requires specific computational structures.</p>
       <Diagram src="/diagrams/appendix-1.svg" alt="Gradient coupling: linear head sends independent gradients; MLP head couples all units through shared intermediate layer" />
+      <Figure src="" alt="Gradient coupling animation" caption={<><strong>The Decomposability Wall — why composition matters.</strong> Left: linear head sends independent gradients to each hidden unit (decomposable, <M>{"\\intinfo \\approx 0.08"}</M>). Right: MLP head couples all hidden units through shared intermediate layer (integrated, <M>{"\\intinfo \\approx 0.25"}</M>). The key is gradient coupling through composition — not nonlinearity, not bottleneck width.</>}>
+        <video src="/videos/gradient-coupling.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       <Figure src="/images/self_emergence_signatures.png" alt="Proto-self signatures across V22-V24" caption={<><strong>Proto-self signatures across V22–V24.</strong> Six metrics tracked over evolution for all 9 runs (3 seeds × 3 experiments). Top-left: effective rank drops at drought boundaries but recovers — states are moderately rich (4–14 dimensions). Top-center: affect motif clustering (silhouette) is mostly negative to near-zero — no behavioral modes emerge with linear readouts. Top-right: energy decoding R² is very low (0–0.2 at best) — hidden states do NOT cleanly encode energy despite the gradient specifically targeting energy prediction. Bottom row: resource decoding, hidden state diversity, activity variation — all noisy without clear trends. These are the signatures of proto-self <em>failing</em> to emerge under linear readout architectures. Compare with V27 (MLP head) where silhouette reaches 0.34 and behavioral modes appear for the first time.</>} />
       </Section>
 
@@ -698,6 +701,12 @@ export default function AppendixExperiments() {
       <p><strong>Key revision from V31</strong>: The first drought bounce does NOT predict final category (<M>{"r = -0.075, p = 0.60"}</M>). What predicts is the <em>mean bounce across all 5 droughts</em> (<M>{"\\rho = 0.599, p = 4.4 \\times 10^{-6}"}</M>). Integration is built by repeatedly bouncing back, not by a single event. <M>{"\\intinfo"}</M> trajectory slope separates categories perfectly (ANOVA <M>{"F = 34.38, p = 6.3 \\times 10^{-10}"}</M>): every HIGH seed has positive slope, every LOW seed has negative slope.</p>
       <p><strong>Robustness is orthogonal to integration</strong> (Mann-Whitney <M>{"p = 0.73"}</M>). Seeds that survive droughts well are not the same seeds that develop high <M>{"\\intinfo"}</M>. Effective rank (mean 8.1) does not differ across categories.</p>
       <Diagram src="/diagrams/appendix-2.svg" alt="The bottleneck furnace: repeated drought-recovery cycles forge integration in HIGH seeds while LOW seeds decline" />
+      <Figure src="" alt="Bottleneck furnace animation" caption={<><strong>The Bottleneck Furnace in action.</strong> 256 agents face 5 near-extinction events (93-98% mortality). Survivors rebuild the population each time. The <M>{"\\intinfo"}</M> chart tracks integration climbing — each recovery bounces higher than the last. 12 seconds of simulated evolution compressed from 30 cycles.</>}>
+        <video src="/videos/bottleneck-furnace.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
+      <Figure src="" alt="Integration trajectory animation" caption={<><strong>Integration Is Biography — Seed 23.</strong> The highest-<M>{"\\intinfo"}</M> seed in 50 (V32) climbs from 0.058 to 0.473 across 30 evolutionary cycles. Each drought (red bands) drops <M>{"\\intinfo"}</M>, but each recovery bounces back higher. The envelope of peaks rises steadily — the furnace forges by compressing, not accumulating.</>}>
+        <video src="/videos/integration-trajectory.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+      </Figure>
       <CodeFiles files={[
         { name: 'v32_evolution.py', desc: 'Fine-grained drought tracking' },
         { name: 'v32_gpu_run.py', desc: '50-seed GPU runner' },

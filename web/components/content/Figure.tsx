@@ -5,12 +5,13 @@ interface FigureProps {
   alt: string;
   caption?: ReactNode;
   multi?: boolean;
+  children?: ReactNode;
 }
 
-export function Figure({ src, alt, caption, multi }: FigureProps) {
+export function Figure({ src, alt, caption, multi, children }: FigureProps) {
   return (
     <figure className={multi ? 'multi' : undefined}>
-      <img src={src} alt={alt} />
+      {children || <img src={src} alt={alt} />}
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
   );
