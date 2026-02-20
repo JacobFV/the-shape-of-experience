@@ -1,184 +1,76 @@
-# The 1D Collapse: Why V22-V24 Failed and What It Means
+# The 1D Collapse: RETRACTED — Snapshot Timing Bug
 
-## Date: 2026-02-19
-## Status: Confirmed finding, implications for V25 design
-
----
-
-## The Finding
-
-Post-hoc analysis of hidden state dynamics across V20-V24 (all protocell agent substrates) reveals a consistent pattern: **agents evolve to use their 16-dimensional GRU hidden state as a 1-dimensional energy counter.**
-
-### Evidence
-
-| Metric | Cycle 0 | Cycle 5-25 | Cycle 29 (post-selection) |
-|--------|---------|------------|---------------------------|
-| Effective rank | ~14/16 | **1-3/16** | 6-10 (random init) |
-| Energy decode R² | variable | **~1.0** | variable |
-| Position decode R² | variable | **~0** | variable |
-| Resource decode R² | variable | **~0** | variable |
-| Silhouette score | low | **~0.98** | moderate |
-
-This pattern holds across:
-- V20b (base protocell agents)
-- V22 (with energy-delta prediction gradient)
-- V23 (with 3-target prediction gradient)
-- V24 (with TD value learning gradient)
-- All 3 seeds per version (42, 123, 7)
-
-The silhouette ~0.98 is misleading: it doesn't indicate sharp affect motifs. It indicates that all agents converge to the SAME hidden state (trivially perfect clustering because there's no diversity — one big cluster plus outliers).
-
-### What This Means
-
-The 16-dimensional hidden state was designed to encode: spatial position, local resource landscape, neighbor positions and states, energy trajectory, temporal context from memory ticks, and affect-relevant features. In practice, evolution selects for only ONE of these: current energy level. Everything else is noise that gets pruned.
-
-**The prediction→integration experiments (V22-V24) were optimizing the surface of a degenerate system.** You can't integrate representations that don't exist. A prediction head — whether linear (V22, V24) or multi-target (V23) — operates on a 1D energy signal masquerading as a 16D hidden state. No architectural change to the head can force integration when the underlying representation is 1-dimensional.
+## Date: 2026-02-19 (original), 2026-02-20 (retraction)
+## Status: RETRACTED. The original finding was an artifact of a bug.
 
 ---
 
-## Why Evolution Produces This Degeneracy
+## The Bug
 
-### The Environment is Too Simple
+V20, V25, and V26 evolution loops reset hidden states to zero BEFORE saving
+snapshots. The code order was:
 
-On a 128×128 grid with:
-- Uniformly distributed resources
-- Simple movement (4 directions)
-- Local 5×5 sensory field
-- No predators
-- No navigation requirements
-- No hidden information
-- Reversible actions
+```python
+# Reset hidden states and energy for next cycle
+state['hidden'] = jnp.zeros_like(state['hidden'])
+state['energy'] = jnp.where(state['alive'], cfg['initial_energy'], 0.0)
 
-The optimal strategy is: **move toward food, eat food.** This is reactive. One dimension (energy) captures everything survival-relevant. The other 15 dimensions are wasted parameters that evolution prunes via drift.
+# ... print, logging ...
 
-### The Selection Pressure is Wrong
+# Save snapshot  <-- captures ZERO hidden states!
+snap = extract_snapshot(state, cycle, cfg)
+```
 
-Tournament selection rewards "survived this cycle" vs "died this cycle." It cannot reward:
-- Having a rich internal representation
-- Modeling spatial structure
-- Predicting other agents' behavior
-- Planning multi-step routes
+This meant ALL hidden state analysis (effective rank, energy R², position R²,
+silhouette scores) was performed on **all-zero vectors**. The energy R²=1.0
+result was because both hidden=0 and energy=initial_energy are constants
+after reset — trivially perfect regression on constants.
 
-Because none of these confer survival advantage in the current environment. An agent with a perfect spatial map performs identically to one that just follows an energy gradient.
+## Corrected Results (V22-V24)
 
-### Prediction Doesn't Fix This
+V22-V24 evolution loops reset at cycle START (line 339-349), so their
+snapshots captured the actual post-cycle hidden states. Re-analysis shows:
 
-Adding prediction loss (V22-V24) gives agents signal about their own energy trajectory. But:
-- Energy trajectory is already the only thing encoded (R² ≈ 1.0)
-- Better energy prediction ≠ richer representation
-- Multi-target prediction (V23) just trains separate columns for each target, further decomposing the already-thin representation
-- TD value learning (V24) is still a scalar readout from a 1D effective state
+| Metric | Original (buggy V20b) | Corrected (V22-V24) |
+|--------|-----------------------|---------------------|
+| Effective rank | 1-3 | **5.1-7.3** |
+| Energy R² | 1.0 | **-3.6 to -4.6** (negative!) |
+| Position R² | ~0 | -0.06 to -0.11 |
+| PC1 variance | ~95-100% | **25-38%** |
+| N nonzero dims | 0-3 | ~32/32 (all active) |
 
-The prediction experiments were asking: "Can we force integration by adding prediction targets?" The answer is no, because the hidden state has nothing to integrate.
+The hidden states are **moderately high-dimensional** and do NOT encode
+energy linearly. The "1D energy counter" story was completely wrong.
 
----
+## What This Means
 
-## Implications for V22-V24 Results
+1. **The agents DO use their hidden state richly** — effective rank 5-7 means
+   ~5-7 independent dimensions of variation across the population
+2. **Energy is NOT the dominant feature** — negative R² means a linear model
+   predicting energy from hidden state does WORSE than predicting the mean
+3. **The "environment doesn't demand representation" story was premature** —
+   it was built on artifactual data
 
-### V22 (Scalar Prediction)
-- **Why it failed**: 1D energy state → 1D prediction. Linear head can learn this from 1-2 hidden units. No cross-component computation needed.
-- **Why MSE dropped 100-15000×**: Not because the representation got richer, but because the prediction weights learned to read the one dimension that matters.
+## What We Don't Yet Know
 
-### V23 (Multi-Target Prediction)
-- **Why Phi DECREASED**: Three prediction targets trained separate weight columns → the already-sparse representation got factored into even more independent channels → increased partitionability → lower Phi.
-- **Why specialization was "beautiful"**: Cosine similarity ≈ 0 between columns because each column learned to read different noise dimensions, not because there were rich features to specialize on.
+The corrected V22-V24 data shows rich hidden states, but what ARE they encoding?
+Energy R² is negative, position R² is negative. The hidden state varies across
+agents (eff rank 5-7) but we can't decode any environmental feature from it
+using linear regression. Candidates:
+- Temporal patterns (movement history, resource encounter sequence)
+- Action policy state (which decision mode the agent is in)
+- Random walk accumulation (GRU integrating noise without useful structure)
+- Nonlinear encodings of environmental features that linear regression can't decode
 
-### V24 (TD Value Learning)
-- **Why survival improved**: Discount factor γ ≈ 0.75 gives ~4-step horizon. Even in a simple environment, knowing "food is 3 steps away" improves survival modestly.
-- **Why Phi was seed-dependent**: Seed 7 (Phi = 0.130) may have found a local optimum where TD bootstrapping accidentally coupled some dimensions. Seeds 42 and 123 found the more typical degenerate optimum.
+## Files Affected
 
----
+- `v25_evolution.py` — FIXED (snapshot before reset)
+- `v26_evolution.py` — FIXED (snapshot before reset)
+- `v20_evolution.py` — BUG STILL PRESENT (not fixed, historical)
+- `v22_evolution.py`, `v23_evolution.py`, `v24_evolution.py` — NOT affected
+  (reset at cycle start, snapshot at end)
 
-## The Deeper Lesson: Environment Complexity → Representation Complexity → Integration
+## Lesson
 
-The V13-V24 arc taught us the wrong lesson initially: we thought the bottleneck was the agent architecture (prediction head, gradient signal, optimization method). The right lesson:
-
-> **Integration requires rich representations. Rich representations require environments that demand them. Our environment demands only energy tracking.**
-
-This is actually a stronger version of the geometry/dynamics distinction:
-- Affect GEOMETRY is cheap (emerges from any multi-agent survival — V10)
-- Affect DYNAMICS require embodied agency (V20 crossed the wall)
-- But even with agency, the CONTENT of dynamics depends on what the environment demands
-- A simple environment produces degenerate dynamics regardless of agent sophistication
-
-The hierarchy is:
-1. **Environment complexity** → determines what representations are useful
-2. **Representation richness** → determines what can be integrated
-3. **Integration architecture** → determines how representations couple under stress
-
-V22-V24 worked on level 3 while level 1 was the bottleneck.
-
----
-
-## What This Means for V25
-
-V25 must change the ENVIRONMENT, not the agent:
-
-### Requirements for Rich Representations
-
-| Feature Needed | Environment Design |
-|----------------|-------------------|
-| Spatial representation (position R² >> 0) | Clustered resources with barren zones; navigation matters |
-| Resource landscape encoding | Patchy, depleting resources; agents must remember where food was |
-| Social modeling | Predators, or competitors for scarce resources |
-| Temporal context | Seasonal patterns, resource regeneration cycles |
-| Planning | Multi-step routes between patches; irreversible commitment points |
-| Hidden information | Predators behind obstacles; resource quality not visible at distance |
-
-### Minimum Environment Specification
-- **Grid**: 256+ (enough for spatial structure)
-- **Resources**: Clustered in patches, not uniform
-- **Depletion**: Patches deplete, regenerate on long timescales
-- **Navigation cost**: Moving through barren zones costs energy; direct paths may not exist
-- **Predators**: Agent type with different fitness function that hunts prey
-- **Hidden information**: Limited visibility; some threats not visible until close
-
-### Success Criteria
-If V25's environment is working correctly, we should see:
-1. **Effective rank > 5** (not collapsing to 1D)
-2. **Position decode R² > 0.3** (agents encode where they are)
-3. **Resource decode R² > 0.2** (agents encode what's around them)
-4. **Silhouette < 0.8 with K > 2** (genuine diversity in hidden states)
-5. **Energy decode R² < 0.8** (energy is no longer the ONLY thing encoded)
-
-If we see these, THEN prediction architecture experiments become meaningful again.
-
----
-
-## Connection to the Book's Claims
-
-### Part I (Thermodynamic Foundations)
-The 1D collapse is actually consistent with the thermodynamic argument: evolution minimizes the cost of persistence. In a simple environment, the minimum-cost representation IS 1-dimensional. The "structural inevitability" argument says systems evolve toward the cheapest adequate representation — and adequacy is defined by what the environment demands.
-
-### Part II (Identity Thesis)
-If experience ≡ cause-effect structure, and our agents' cause-effect structure is 1-dimensional (energy tracking), then their "experience" — to the extent the identity thesis applies — is the experiential equivalent of a thermostat. This is NOT a failure of the identity thesis; it's a correct prediction: systems in simple environments should have simple experience.
-
-### Part VII (Empirical Program)
-The emergence ladder needs an environmental prerequisite at each rung. It's not enough to have the architectural capacity for rung N; the environment must create selection pressure FOR rung N. The ladder is really:
-- Rung 1-7: Geometric. Cheap. Emerge in any multi-agent survival.
-- Rung 8: Requires agency (architectural) AND complexity (environmental).
-- Rung 9-10: Require agency, complexity, AND social pressure.
-
-The environmental axis was implicit but unnamed. V25 makes it explicit.
-
----
-
-## What "Understanding" Really Requires
-
-The reactivity/understanding distinction now has a sharper computational definition:
-
-**Reactivity**: Present state → action via decomposable channels. Works when the environment is fully observable, actions are reversible, and the future is simple.
-
-**Understanding**: Possibility landscape → action via non-decomposable comparison. Required when the environment has hidden information, actions are irreversible, and the future is branching.
-
-Our current environment has none of the latter. So our agents are reactive. And no prediction head can make a reactive system understand — because understanding is not a property of the agent alone, but of the agent-environment coupling.
-
----
-
-## Historical Parallel
-
-This finding echoes a result from the early ALife literature: Karl Sims' evolved virtual creatures (1994) developed complex morphologies and behaviors ONLY in environments with complex fitness landscapes. In flat environments, creatures evolved to be spheres that rolled. Complexity of form tracked complexity of challenge.
-
-We've rediscovered this at the representational level: complexity of representation tracks complexity of environment. Integration is a property of the representation, and representation is shaped by the environment.
-
-The V13-V24 arc was 12 experiments, 36 seeds, ~$2 of GPU time, and 4 weeks of work to arrive at what Sims showed 30 years ago: **you can't evolve sophistication in a simple world.** But the specific form of the finding — that hidden state effective rank collapses to 1, that energy is the only semantic feature, that prediction architecture cannot compensate — is novel and informative for the theory.
+Always verify that analysis data captures the intended state. When hidden states
+appear degenerate, first check that you're not analyzing zeroed/reset buffers.
