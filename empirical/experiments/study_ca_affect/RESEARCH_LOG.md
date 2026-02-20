@@ -2111,3 +2111,77 @@ Without this existence proof, the substrate transition argument remains purely t
 
 The prediction→integration pathway (V22-V24) was a detour — informative but not on the path to selfhood. The path runs through environmental complexity, not agent optimization. The environment must DEMAND understanding. Our current environment only demands reactivity.
 
+---
+
+## 2026-02-19: V25 — Predator-Prey on Structured Landscape — NEGATIVE RESULT
+
+### Design
+Patchy resources (12 circular patches, r=20, on 256×256 grid) + predator-prey (80/20 split) + higher barren-zone metabolic cost + drought every 5 cycles. Same GRU (H=16). Hypothesis: structured environment forces spatial/social encoding → breaks 1D collapse.
+
+### Results (3 seeds, 30 cycles each, A10 GPU, ~$0.03)
+
+| Seed | Mean Rob | Max Rob | Mean Phi | Final Prey | Final Pred |
+|------|----------|---------|----------|------------|------------|
+| 42   | 0.831    | 1.037   | 0.129    | 309        | 74         |
+| 123  | 0.797    | 1.020   | 0.073    | 396        | 74         |
+| 7    | 0.804    | 1.064   | 0.073    | 409        | 81         |
+
+Notable: Seed 42 Phi INCREASES over evolution (0.10→0.22 by C20). But 100% mortality at drought cycles (too harsh for patchy landscape — no resources survive drought).
+
+### Hidden State Analysis — 1D COLLAPSE PERSISTS
+
+| Metric | V20-V24 | V25 | Pass? |
+|--------|---------|-----|-------|
+| Eff rank | 1-3 | NaN (degenerate) | NO |
+| Energy R² | ~1.0 | 1.000 | NO |
+| Position R² | ~0 | -0.01 | NO |
+| Patch R² | N/A | -0.6 | NO |
+| Type acc | N/A | 0.80 (=base rate) | NO |
+
+**ALL FIVE SUCCESS CRITERIA FAILED.** Hidden states are still 1D energy counters despite patchy resources and predators.
+
+### Why V25 Failed — The Observation Bottleneck
+
+The 5×5 observation already contains:
+- Local resources (channel 0) — agent can SEE if it's on a patch
+- Predator count (channel 3) — agent can SEE if predators are near
+- Signal field (channel 1) — ambient info
+
+The optimal REACTIVE strategy is: if resources visible, eat; if predator visible, flee; otherwise wander. This requires NO internal state beyond energy level. The observation is rich enough for reactivity.
+
+**Environmental complexity ≠ representational demand.** Making the world more complex only forces richer representation if the observation is INSUFFICIENT for reactive behavior. With a 5×5 window that directly shows resources and predators, the agent never needs to remember, plan, or model.
+
+### The Real Bottleneck: Partial Observability
+
+For the hidden state to matter, the agent must act on information NOT in the current observation:
+1. **Smaller observation** (e.g., 3×3 or 1×1) — can't see far enough, must remember
+2. **Observation noise** — can't trust what you see, must maintain beliefs
+3. **Hidden state of others** — can't see predator intentions, must model
+4. **Delayed effects** — decisions now have consequences later (longer than GRU memory)
+5. **Spatially extended goals** — navigating to a distant remembered patch requires maintaining a goal across many steps when intermediate observations have no information about the goal
+
+None of these are present in V25. The 5×5 window is still too informative.
+
+### Deeper Insight
+
+The progression V13→V25 reveals a hierarchy of bottlenecks:
+1. ~~Agent architecture~~ (V13-V18): No. Crossing the sensory-motor wall requires agency, not architecture tweaks.
+2. ~~Prediction target~~ (V22-V24): No. Linear readout is always decomposable regardless of target.
+3. ~~Environmental complexity~~ (V25): No. Rich observations enable reactive behavior without internal representation.
+4. **Partial observability**: YES (hypothesis). When the observation is informationally insufficient, the hidden state MUST carry information about the unobserved world.
+
+The next experiment should create genuine partial observability: reduce observation to 1×1 (own cell only) or add significant observation noise. Force the agent to MAINTAIN A MAP in its hidden state.
+
+### V26 Design Sketch
+
+- Same patchy landscape as V25
+- **Observation: 1×1** (own cell only — resources, signals, agent count, energy)
+- Agent must REMEMBER where patches are, where predators were last seen
+- Navigation between patches requires maintaining heading in hidden state
+- Hidden dim: 32-64 (need more state to maintain spatial model)
+- This creates GENUINE POMDP — the optimal policy requires belief state
+
+### Cost
+- Lambda A10, us-east-1, ~85s total, ~$0.03
+- Very fast due to 1s/cycle (N=256 is cheap in JAX)
+
