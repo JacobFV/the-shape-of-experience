@@ -4,9 +4,14 @@
 
 /* --- WIP Banner --- */
 .wip-banner {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  z-index: 150;
   background: #fff8e1;
   border-bottom: 1px solid #ffe082;
-  padding: 0.4rem 1rem;
+  padding: 0.35rem 1rem;
   font-family: var(--font-sans);
   font-size: 0.75rem;
   color: #5d4037;
@@ -311,6 +316,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 3rem 2rem;
+  padding-top: calc(3rem + 28px); /* extra space for fixed WIP banner */
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -3115,6 +3121,10 @@ mark.user-highlight .published-icon {
 
   .reader-toolbar {
     display: none !important;
+  }
+
+  .wip-banner {
+    display: none;
   }
 
   /* --- Header bar --- */
