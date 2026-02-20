@@ -37,9 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       readFileSync(join(process.cwd(), 'public', 'metadata.json'), 'utf-8')
     );
     for (const chapter of metadata) {
-      const level1Sections = chapter.sections.filter((s) => s.level === 1);
-      if (level1Sections.length > 0) {
-        for (const s of level1Sections) {
+      const routableSections = chapter.sections.filter((s) => s.level === 1 || s.level === 2);
+      if (routableSections.length > 0) {
+        for (const s of routableSections) {
           entries.push({
             url: `${BASE}/${chapter.slug}/${s.id}`,
             lastModified: new Date(),

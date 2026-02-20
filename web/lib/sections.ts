@@ -34,7 +34,8 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
-/** Extract a single level-1 section from a content component's JSX tree */
+/** Extract a single section from a content component's JSX tree.
+ *  Supports both level-1 (top-level) and level-2 (nested) sections. */
 export function extractSection(tree: ReactElement, sectionId: string): ReactNode[] | null {
   const treeProps = tree.props as { children?: ReactNode };
   const children = Children.toArray(treeProps.children);
@@ -42,6 +43,7 @@ export function extractSection(tree: ReactElement, sectionId: string): ReactNode
   let firstSectionIndex = -1;
   let matchIndex = -1;
 
+  // First pass: look for a level-1 match
   for (let i = 0; i < children.length; i++) {
     const child = children[i];
     if (isValidElement(child) && child.type === Section) {
@@ -57,19 +59,41 @@ export function extractSection(tree: ReactElement, sectionId: string): ReactNode
     }
   }
 
-  if (matchIndex === -1) return null;
+  if (matchIndex !== -1) {
+    const result: ReactNode[] = [];
+    // For the first section, include preamble content (e.g. <Logos>)
+    if (matchIndex === firstSectionIndex) {
+      for (let i = 0; i < matchIndex; i++) {
+        result.push(children[i]);
+      }
+    }
+    result.push(children[matchIndex]);
+    return result;
+  }
 
-  const result: ReactNode[] = [];
-
-  // For the first section, include preamble content (e.g. <Logos>)
-  if (matchIndex === firstSectionIndex) {
-    for (let i = 0; i < matchIndex; i++) {
-      result.push(children[i]);
+  // Second pass: look inside level-1 sections for a level-2 match
+  for (let i = 0; i < children.length; i++) {
+    const child = children[i];
+    if (isValidElement(child) && child.type === Section) {
+      const childProps = child.props as { level?: number; id?: string; title: string; children?: ReactNode };
+      if (childProps.level === 1) {
+        const innerChildren = Children.toArray(childProps.children);
+        for (const inner of innerChildren) {
+          if (isValidElement(inner) && inner.type === Section) {
+            const innerProps = inner.props as { level?: number; id?: string; title: string };
+            if (innerProps.level === 2) {
+              const id = innerProps.id || slugify(innerProps.title);
+              if (id === sectionId) {
+                return [inner];
+              }
+            }
+          }
+        }
+      }
     }
   }
 
-  result.push(children[matchIndex]);
-  return result;
+  return null;
 }
 
 /** Get level-1 sections for a chapter */
@@ -80,16 +104,26 @@ export function getChapterSections(slug: string): SectionMeta[] {
   return chapter.sections.filter((s) => s.level === 1);
 }
 
+/** Get all routable sections (level-1 and level-2) for a chapter */
+export function getAllRoutableSections(slug: string): SectionMeta[] {
+  const metadata = loadMetadata();
+  const chapter = metadata.find((ch) => ch.slug === slug);
+  if (!chapter) return [];
+  return chapter.sections.filter((s) => s.level === 1 || s.level === 2);
+}
+
 /** Get the first level-1 section id for a chapter (for redirects) */
 export function getFirstSectionId(slug: string): string | null {
   const sections = getChapterSections(slug);
   return sections.length > 0 ? sections[0].id : null;
 }
 
-/** Get section title by id */
+/** Get section title by id (searches all levels) */
 export function getSectionTitle(slug: string, sectionId: string): string | null {
-  const sections = getChapterSections(slug);
-  const section = sections.find((s) => s.id === sectionId);
+  const metadata = loadMetadata();
+  const chapter = metadata.find((ch) => ch.slug === slug);
+  if (!chapter) return null;
+  const section = chapter.sections.find((s) => s.id === sectionId);
   return section ? section.text : null;
 }
 
@@ -105,16 +139,16 @@ function buildNavList(): NavEntry[] {
   const entries: NavEntry[] = [];
 
   for (const chapter of metadata) {
-    const level1Sections = chapter.sections.filter((s) => s.level === 1);
+    const routableSections = chapter.sections.filter((s) => s.level === 1 || s.level === 2);
     const chapterInfo = chapters.find((c) => c.slug === chapter.slug);
 
-    if (level1Sections.length === 0) {
+    if (routableSections.length === 0) {
       entries.push({
         href: `/${chapter.slug}`,
         label: chapterInfo?.shortTitle || chapter.title,
       });
     } else {
-      for (const s of level1Sections) {
+      for (const s of routableSections) {
         entries.push({
           href: `/${chapter.slug}/${s.id}`,
           label: s.text,
@@ -160,8 +194,8 @@ export function getAllSectionParams(): { slug: string; section: string }[] {
   const params: { slug: string; section: string }[] = [];
 
   for (const chapter of metadata) {
-    const level1Sections = chapter.sections.filter((s) => s.level === 1);
-    for (const s of level1Sections) {
+    const routableSections = chapter.sections.filter((s) => s.level === 1 || s.level === 2);
+    for (const s of routableSections) {
       params.push({ slug: chapter.slug, section: s.id });
     }
   }
