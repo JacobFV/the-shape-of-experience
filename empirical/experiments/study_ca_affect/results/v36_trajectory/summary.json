@@ -1,0 +1,342 @@
+{
+  "seed": 23,
+  "config": {
+    "N": 128,
+    "M_max": 256,
+    "obs_radius": 2,
+    "embed_dim": 24,
+    "hidden_dim": 16,
+    "n_actions": 7,
+    "K_max": 8,
+    "predict_hidden": 8,
+    "resource_regen": 0.002,
+    "signal_decay": 0.04,
+    "signal_diffusion": 0.15,
+    "metabolic_cost": 0.0004,
+    "initial_energy": 1.0,
+    "resource_value": 1.5,
+    "initial_resource": 0.5,
+    "stress_regen": 0.0002,
+    "mutation_std": 0.03,
+    "tournament_size": 4,
+    "elite_fraction": 0.5,
+    "activate_offspring": true,
+    "drought_every": 5,
+    "drought_depletion": 0.01,
+    "drought_regen": 0.0,
+    "lamarckian": false,
+    "grad_every": 1,
+    "chunk_size": 50,
+    "steps_per_cycle": 5000,
+    "n_cycles": 30,
+    "obs_side": 5,
+    "obs_flat": 76,
+    "n_params": 4186
+  },
+  "cycles": [
+    {
+      "cycle": 0,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 64,
+      "n_alive_end": 64,
+      "mortality": 0.0,
+      "phi": 0.10072639584541321,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0021643528786964737,
+        "effective_rank": 4.195685545197108,
+        "pop_slope": -1.6629003634156002e-18,
+        "mean_energy": 1.9995862553119659,
+        "energy_std": 0.015675817701896057
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 3,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.09024957567453384,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.002032131155707943,
+        "effective_rank": 4.7065785965925455,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.999506865954399,
+        "energy_std": 0.01694889735635436
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 4,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.09035757184028625,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.002759214368382361,
+        "effective_rank": 4.310602617048022,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.999689575266838,
+        "energy_std": 0.01567909682258019
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 5,
+      "is_drought": true,
+      "condition": "drought",
+      "n_alive_start": 256,
+      "n_alive_end": 21,
+      "mortality": 0.91796875,
+      "phi": 0.0800330638885498,
+      "segment_affect": {
+        "valence": -0.02705943151260726,
+        "arousal": 0.00039528157015518954,
+        "effective_rank": 1.000121210137487,
+        "pop_slope": -0.06571387554055493,
+        "mean_energy": 0.7082092037304029,
+        "energy_std": 0.31810384107604334
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 6,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.06571175158023834,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0019048142150092189,
+        "effective_rank": 5.144725054769742,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9952169006824494,
+        "energy_std": 0.061463625782545196
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 7,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.07300002127885818,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0030201119848678945,
+        "effective_rank": 3.467954279758789,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9999524384498597,
+        "energy_std": 0.0033627731350372213
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 10,
+      "is_drought": true,
+      "condition": "drought",
+      "n_alive_start": 256,
+      "n_alive_end": 8,
+      "mortality": 0.96875,
+      "phi": 0.04067179933190346,
+      "segment_affect": {
+        "valence": -0.03856399579846766,
+        "arousal": 0.0006945232870321212,
+        "effective_rank": 1.0001311036473812,
+        "pop_slope": -0.06785644044225764,
+        "mean_energy": 0.643265594623849,
+        "energy_std": 0.3123318813117406
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 11,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.07542695105075836,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0014515678931360492,
+        "effective_rank": 4.677011790031869,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.995126776278019,
+        "energy_std": 0.062256294502601374
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 15,
+      "is_drought": true,
+      "condition": "drought",
+      "n_alive_start": 256,
+      "n_alive_end": 16,
+      "mortality": 0.9375,
+      "phi": 0.07260172069072723,
+      "segment_affect": {
+        "valence": -0.03824914395750966,
+        "arousal": 0.0006810002678919072,
+        "effective_rank": 1.0003473214790808,
+        "pop_slope": -0.06666357636254305,
+        "mean_energy": 0.8783471048305335,
+        "energy_std": 0.46817091477412476
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 16,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.0827544778585434,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0027467712491498313,
+        "effective_rank": 4.050812807096543,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9950444681048394,
+        "energy_std": 0.06279760478821121
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 20,
+      "is_drought": true,
+      "condition": "drought",
+      "n_alive_start": 256,
+      "n_alive_end": 12,
+      "mortality": 0.953125,
+      "phi": 0.05874277278780937,
+      "segment_affect": {
+        "valence": -0.03574519097746815,
+        "arousal": 0.0006811160571756031,
+        "effective_rank": 1.0001297555981241,
+        "pop_slope": -0.06350791449231656,
+        "mean_energy": 0.8682946430275741,
+        "energy_std": 0.4496577442024276
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 21,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.06209966912865639,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0021617560888048818,
+        "effective_rank": 3.7996565947733028,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9950785724282265,
+        "energy_std": 0.06252937314575908
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 25,
+      "is_drought": true,
+      "condition": "drought",
+      "n_alive_start": 256,
+      "n_alive_end": 13,
+      "mortality": 0.94921875,
+      "phi": 0.06321831792593002,
+      "segment_affect": {
+        "valence": -0.035973609089269304,
+        "arousal": 0.0009747349236150101,
+        "effective_rank": 1.0007221630593315,
+        "pop_slope": -0.06304917031396683,
+        "mean_energy": 0.7345436316917243,
+        "energy_std": 0.3469059284886829
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 26,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.04945828393101692,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0022059278325403256,
+        "effective_rank": 5.016080476084988,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9945828238844872,
+        "energy_std": 0.06546195210043304
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 28,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.045247454196214676,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.002498012640384433,
+        "effective_rank": 4.646580927015221,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9990915940999985,
+        "energy_std": 0.024690750187429025
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    },
+    {
+      "cycle": 29,
+      "is_drought": false,
+      "condition": "normal",
+      "n_alive_start": 256,
+      "n_alive_end": 256,
+      "mortality": 0.0,
+      "phi": 0.04818542301654816,
+      "segment_affect": {
+        "valence": 0.02,
+        "arousal": 0.0025880868527188602,
+        "effective_rank": 3.9650021507486435,
+        "pop_slope": -6.651601453662401e-18,
+        "mean_energy": 1.9992284596920014,
+        "energy_std": 0.020578421951513864
+      },
+      "focal_timeline_length": 5000,
+      "n_env_snapshots": 200
+    }
+  ]
+}
