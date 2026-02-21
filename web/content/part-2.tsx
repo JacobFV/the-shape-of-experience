@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Align, Connection, Diagram, Eq, Experiment, Figure, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, TodoEmpirical } from '@/components/content';
+import { Align, Connection, Diagram, Eq, Experiment, Figure, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, ThemeVideo, TodoEmpirical } from '@/components/content';
 
 export const metadata = {
   slug: 'part-2',
@@ -169,6 +169,7 @@ export default function Part2() {
       <p>The affect framework applies this same logic to affect rather than color. If two systems—biological and artificial, human and animal, you and me—show the same geometric structure in their affect spaces (same similarity relations, same clustering, same motif boundaries), then their narrow affect qualia are structurally equivalent, regardless of substrate. Whether their broad qualia are equivalent is a harder question, requiring not just matching narrow features but matching <M>{"\\intinfo"}</M>—matching the degree to which the whole exceeds the parts. The LLM discrepancy (later in this part) may be exactly this: the narrow structure aligns (the geometry is preserved), but the broad qualia differ because <M>{"\\intinfo"}</M> dynamics differ. The geometry is shared; the unity is not.</p>
       <p>There is a mathematical subtlety here. Broad qualia have a pre-sheaf structure: the narrow qualia (local sections) are each internally consistent, but they do not patch together into a global section. You can characterize the redness, the warmth, the valence, the arousal—each correctly—and the sum still falls short of the moment. The broad qualia is not a sheaf over its narrow aspects. This is not a limitation of measurement; it is a structural feature of experience. Integration is the name for the gap between local consistency and global irreducibility. The dimensional framework characterizes the local sections; <M>{"\\intinfo"}</M> measures how much the global section exceeds them.</p>
       </Sidebar>
+      <Diagram src="/diagrams/part-2-3.svg" />
       <Section title="Affects as Structural Motifs" level={2}>
       <p>If different experiences correspond to different structures, then <em>affects</em>—the qualitative character of emotional/valenced states—should correspond to particular structural motifs: characteristic patterns in the cause-effect geometry. An affect is what it is because of how it relates to other possible affects. Joy is defined by its structural distance from suffering, its similarity to curiosity along certain axes, its opposition to boredom along others. The Yoneda insight applies: if you know how an affect relates to every other possible state, you know the affect. There is nothing left to characterize.</p>
       <p>The <em>affect space</em> <M>{"\\mathcal{A}"}</M> is a geometric space whose points correspond to possible qualitative states. Its dimensionality is not fixed in advance. Rather than asserting a universal coordinate system, we identify recurring structural features that prove useful for characterizing and comparing affects—features without which specific affects would not be those affects. Different affects invoke different subsets. The list is open-ended.</p>
@@ -244,6 +245,7 @@ export default function Part2() {
       <Phenomenal title="Phenomenal Correspondence">
       <p><strong>High rank</strong>: Many degrees of freedom active; distributed, expansive experience.  <strong>Low rank</strong>: Collapsed into narrow subspace; concentrated, focused, or trapped experience.</p>
       </Phenomenal>
+      <Diagram src="/diagrams/part-2-4.svg" />
       <Sidebar title="Effective Rank in Discrete Substrate">
       <p>For a pattern in a CA, record its trajectory <M>{"\\mathbf{x}_1, \\mathbf{x}_2, \…, \\mathbf{x}_T"}</M> (configuration at each timestep). Each configuration is a point in <M>{"{0,1}^n"}</M>. Compute the covariance matrix <M>{"C"}</M> of these binary vectors treated as <M>{"\\R^n"}</M> points.</p>
       <p>For a glider: the trajectory lies on a low-dimensional manifold (position <M>{"\\times"}</M> position <M>{"\\times"}</M> phase <M>{"\\approx 3"}</M>–<M>{"4"}</M> effective dimensions out of <M>{"n"}</M> cells). <M>{"\\effrank"}</M> is small.</p>
@@ -409,7 +411,7 @@ export default function Part2() {
       <p>And <strong>grief</strong>? Grief <em>persists</em>. Hollow, aching, curiously timeless. The lost object remains <em>woven into</em> every prediction; every expectation that included them <em>fails</em> silently, over and over. The world has changed. The <em>model</em> has not caught up. Grief is the metabolic cost of love’s <em>integration</em>.</p>
       <p>The textures have geometry.</p>
       <Figure src="" alt="Affect motifs as geometric signatures in the six-dimensional affect space" caption={<>Each emotion is a distinct shape — joy expands (high rank, low self-model), suffering compresses (low rank, high integration), fear projects forward (high CF, high SM). The radar chart shows how the same six dimensions combine differently to produce qualitatively distinct experiences.</>}>
-        <video src="/videos/affect-motifs.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="affect-motifs" />
       </Figure>
       <Section title="Joy" level={2}>
       <p>Geometrically, joy requires four dimensions:</p>

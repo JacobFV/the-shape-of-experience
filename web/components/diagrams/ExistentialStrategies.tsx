@@ -25,7 +25,7 @@ const TRADITIONS: Tradition[] = [
     iotaRange: [0.05, 0.55],
     y: 0.12,
     target: 'SM → 0',
-    color: '#60a5fa',
+    color: 'var(--d-blue)',
     example: 'Buddhist meditation, Sufi whirling',
   },
   {
@@ -34,7 +34,7 @@ const TRADITIONS: Tradition[] = [
     iotaRange: [0.05, 0.35],
     y: 0.32,
     target: 'V → positive',
-    color: '#f472b6',
+    color: 'var(--d-pink)',
     example: 'Bhakti, Evangelical worship',
   },
   {
@@ -43,7 +43,7 @@ const TRADITIONS: Tradition[] = [
     iotaRange: [0.0, 0.25],
     y: 0.52,
     target: 'r_eff → max',
-    color: '#4ade80',
+    color: 'var(--d-green)',
     example: 'Ayahuasca, vision quest',
   },
   {
@@ -52,7 +52,7 @@ const TRADITIONS: Tradition[] = [
     iotaRange: [0.35, 0.65],
     y: 0.72,
     target: 'A → stable',
-    color: '#facc15',
+    color: 'var(--d-yellow)',
     example: 'Orthodox Judaism, traditional Islam',
   },
   {
@@ -61,7 +61,7 @@ const TRADITIONS: Tradition[] = [
     iotaRange: [0.35, 0.90],
     y: 0.25,
     target: 'Φ → high',
-    color: '#a78bfa',
+    color: 'var(--d-violet)',
     example: 'Stoicism, Greek rationalism',
   },
   {
@@ -70,7 +70,7 @@ const TRADITIONS: Tradition[] = [
     iotaRange: [0.0, 0.15],
     y: 0.88,
     target: 'ι → 0 (forced)',
-    color: '#2dd4bf',
+    color: 'var(--d-cyan)',
     example: 'Psilocybin, LSD, DMT',
   },
 ];
@@ -120,18 +120,18 @@ export default function ExistentialStrategies() {
       </text>
 
       {/* ι zone labels */}
-      <text x={toX(0.12)} y={PAD_T - 8} textAnchor="middle" fill="#4ade80" fontSize={9} opacity={0.6}>
+      <text x={toX(0.12)} y={PAD_T - 8} textAnchor="middle" fill="var(--d-green)" fontSize={9} opacity={0.6}>
         participatory
       </text>
-      <text x={toX(0.88)} y={PAD_T - 8} textAnchor="middle" fill="#f87171" fontSize={9} opacity={0.6}>
+      <text x={toX(0.88)} y={PAD_T - 8} textAnchor="middle" fill="var(--d-red)" fontSize={9} opacity={0.6}>
         mechanistic
       </text>
 
       {/* Gradient background */}
       <defs>
         <linearGradient id="iota-bg" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#4ade80" stopOpacity={0.04} />
-          <stop offset="100%" stopColor="#f87171" stopOpacity={0.04} />
+          <stop offset="0%" stopColor="var(--d-green)" stopOpacity={0.04} />
+          <stop offset="100%" stopColor="var(--d-red)" stopOpacity={0.04} />
         </linearGradient>
       </defs>
       <rect x={PAD_L} y={PAD_T} width={CHART_W} height={CHART_H} fill="url(#iota-bg)" />

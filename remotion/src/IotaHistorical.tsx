@@ -1,4 +1,5 @@
 import { AbsoluteFill, useCurrentFrame, interpolate, Easing } from "remotion";
+import { THEMES, ThemeMode } from './themes';
 
 /**
  * IotaHistorical — Part VI visual
@@ -15,59 +16,7 @@ interface Era {
   cost: string;
 }
 
-const ERAS: Era[] = [
-  {
-    label: "Pre-Axial",
-    year: "< 800 BCE",
-    iota: 0.1,
-    color: "#4ade80",
-    gain: "world alive, meaningful",
-    cost: "no analytical distance",
-  },
-  {
-    label: "Axial Age",
-    year: "800–200 BCE",
-    iota: 0.25,
-    color: "#86efac",
-    gain: "voluntary ι modulation",
-    cost: "self-consciousness emerges",
-  },
-  {
-    label: "Renaissance",
-    year: "1400–1600",
-    iota: 0.4,
-    color: "#facc15",
-    gain: "perspectival awareness",
-    cost: "groundlessness begins",
-  },
-  {
-    label: "Scientific Revolution",
-    year: "1600–1800",
-    iota: 0.6,
-    color: "#fb923c",
-    gain: "predictive power",
-    cost: "disenchantment (Weber)",
-  },
-  {
-    label: "Industrial / Psychological",
-    year: "1800–1960",
-    iota: 0.72,
-    color: "#f87171",
-    gain: "material abundance",
-    cost: "iron cage of rationality",
-  },
-  {
-    label: "Digital Transition",
-    year: "1990–present",
-    iota: 0.85,
-    color: "#ef4444",
-    gain: "global connectivity",
-    cost: "meaning crisis",
-  },
-];
-
 const TOTAL = 360;
-const PHASE = TOTAL / ERAS.length; // 60 frames each
 
 // Chart dimensions
 const CHART_LEFT = 120;
@@ -77,8 +26,62 @@ const CHART_BOTTOM = 520;
 const CHART_W = CHART_RIGHT - CHART_LEFT;
 const CHART_H = CHART_BOTTOM - CHART_TOP;
 
-export const IotaHistoricalVideo: React.FC = () => {
+export const IotaHistoricalVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
   const frame = useCurrentFrame();
+  const t = THEMES[theme ?? 'dark'];
+
+  const ERAS: Era[] = [
+    {
+      label: "Pre-Axial",
+      year: "< 800 BCE",
+      iota: 0.1,
+      color: t.green,
+      gain: "world alive, meaningful",
+      cost: "no analytical distance",
+    },
+    {
+      label: "Axial Age",
+      year: "800–200 BCE",
+      iota: 0.25,
+      color: t.green,
+      gain: "voluntary ι modulation",
+      cost: "self-consciousness emerges",
+    },
+    {
+      label: "Renaissance",
+      year: "1400–1600",
+      iota: 0.4,
+      color: t.yellow,
+      gain: "perspectival awareness",
+      cost: "groundlessness begins",
+    },
+    {
+      label: "Scientific Revolution",
+      year: "1600–1800",
+      iota: 0.6,
+      color: t.orange,
+      gain: "predictive power",
+      cost: "disenchantment (Weber)",
+    },
+    {
+      label: "Industrial / Psychological",
+      year: "1800–1960",
+      iota: 0.72,
+      color: t.red,
+      gain: "material abundance",
+      cost: "iron cage of rationality",
+    },
+    {
+      label: "Digital Transition",
+      year: "1990–present",
+      iota: 0.85,
+      color: t.red,
+      gain: "global connectivity",
+      cost: "meaning crisis",
+    },
+  ];
+
+  const PHASE = TOTAL / ERAS.length; // 60 frames each
 
   const titleOp = interpolate(frame, [0, 20], [0, 1], { extrapolateRight: "clamp" });
 
@@ -94,7 +97,7 @@ export const IotaHistoricalVideo: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: "linear-gradient(180deg, #0a0a1a 0%, #111128 100%)",
+        backgroundColor: t.bg,
         fontFamily: "system-ui, -apple-system, sans-serif",
       }}
     >
@@ -108,10 +111,10 @@ export const IotaHistoricalVideo: React.FC = () => {
           opacity: titleOp,
         }}
       >
-        <div style={{ fontSize: 26, fontWeight: 700, color: "#e2e8f0", letterSpacing: 1 }}>
+        <div style={{ fontSize: 26, fontWeight: 700, color: t.text, letterSpacing: 1 }}>
           Civilizational ι Trajectory
         </div>
-        <div style={{ fontSize: 13, color: "#94a3b8", marginTop: 4 }}>
+        <div style={{ fontSize: 13, color: t.slate, marginTop: 4 }}>
           Each step gained predictive power and lost experiential richness
         </div>
       </div>
@@ -123,7 +126,7 @@ export const IotaHistoricalVideo: React.FC = () => {
           y1={CHART_TOP}
           x2={CHART_LEFT}
           y2={CHART_BOTTOM}
-          stroke="#334155"
+          stroke={t.border}
           strokeWidth={1}
         />
         {/* Y axis labels */}
@@ -134,14 +137,14 @@ export const IotaHistoricalVideo: React.FC = () => {
               y1={iotaToY(v)}
               x2={CHART_LEFT}
               y2={iotaToY(v)}
-              stroke="#475569"
+              stroke={t.muted}
               strokeWidth={1}
             />
             <text
               x={CHART_LEFT - 12}
               y={iotaToY(v) + 4}
               textAnchor="end"
-              fill="#64748b"
+              fill={t.slate}
               fontSize={11}
             >
               {v.toFixed(2)}
@@ -152,7 +155,7 @@ export const IotaHistoricalVideo: React.FC = () => {
               y1={iotaToY(v)}
               x2={CHART_RIGHT}
               y2={iotaToY(v)}
-              stroke="#1e293b"
+              stroke={t.border}
               strokeWidth={0.5}
             />
           </g>
@@ -162,7 +165,7 @@ export const IotaHistoricalVideo: React.FC = () => {
           x={40}
           y={(CHART_TOP + CHART_BOTTOM) / 2}
           textAnchor="middle"
-          fill="#94a3b8"
+          fill={t.slate}
           fontSize={14}
           fontWeight={600}
           transform={`rotate(-90, 40, ${(CHART_TOP + CHART_BOTTOM) / 2})`}
@@ -177,10 +180,10 @@ export const IotaHistoricalVideo: React.FC = () => {
           y={iotaToY(0.35)}
           width={CHART_W}
           height={iotaToY(0) - iotaToY(0.35)}
-          fill="#4ade80"
+          fill={t.green}
           opacity={0.04}
         />
-        <text x={CHART_RIGHT + 8} y={iotaToY(0.15)} fill="#4ade80" fontSize={10} opacity={0.5}>
+        <text x={CHART_RIGHT + 8} y={iotaToY(0.15)} fill={t.green} fontSize={10} opacity={0.5}>
           participatory
         </text>
         {/* Mechanistic zone (high ι) */}
@@ -189,10 +192,10 @@ export const IotaHistoricalVideo: React.FC = () => {
           y={iotaToY(1.0)}
           width={CHART_W}
           height={iotaToY(0.65) - iotaToY(1.0)}
-          fill="#f87171"
+          fill={t.red}
           opacity={0.04}
         />
-        <text x={CHART_RIGHT + 8} y={iotaToY(0.85)} fill="#f87171" fontSize={10} opacity={0.5}>
+        <text x={CHART_RIGHT + 8} y={iotaToY(0.85)} fill={t.red} fontSize={10} opacity={0.5}>
           mechanistic
         </text>
 
@@ -267,7 +270,7 @@ export const IotaHistoricalVideo: React.FC = () => {
                 x={x}
                 y={CHART_BOTTOM + 20}
                 textAnchor="middle"
-                fill={isCurrent ? era.color : "#94a3b8"}
+                fill={isCurrent ? era.color : t.slate}
                 fontSize={isCurrent ? 12 : 10}
                 fontWeight={isCurrent ? 700 : 400}
               >
@@ -277,7 +280,7 @@ export const IotaHistoricalVideo: React.FC = () => {
                 x={x}
                 y={CHART_BOTTOM + 34}
                 textAnchor="middle"
-                fill="#64748b"
+                fill={t.slate}
                 fontSize={9}
               >
                 {era.year}
@@ -313,18 +316,18 @@ export const IotaHistoricalVideo: React.FC = () => {
         }}
       >
         <div>
-          <div style={{ fontSize: 11, color: "#64748b", textTransform: "uppercase", letterSpacing: 1 }}>
+          <div style={{ fontSize: 11, color: t.slate, textTransform: "uppercase", letterSpacing: 1 }}>
             gained
           </div>
-          <div style={{ fontSize: 15, color: "#4ade80", fontWeight: 600 }}>
+          <div style={{ fontSize: 15, color: t.green, fontWeight: 600 }}>
             {ERAS[activeIdx].gain}
           </div>
         </div>
         <div style={{ textAlign: "right" }}>
-          <div style={{ fontSize: 11, color: "#64748b", textTransform: "uppercase", letterSpacing: 1 }}>
+          <div style={{ fontSize: 11, color: t.slate, textTransform: "uppercase", letterSpacing: 1 }}>
             lost
           </div>
-          <div style={{ fontSize: 15, color: "#f87171", fontWeight: 600 }}>
+          <div style={{ fontSize: 15, color: t.red, fontWeight: 600 }}>
             {ERAS[activeIdx].cost}
           </div>
         </div>

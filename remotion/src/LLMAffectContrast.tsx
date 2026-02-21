@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from './themes';
 
 /**
  * LLM vs Biological Affect Dynamics
@@ -15,15 +16,6 @@ import {
  *
  * 240 frames @ 30fps = 8 seconds
  */
-
-const COLORS = {
-  bg: "#0a0a0f",
-  bio: "#4ade80",
-  llm: "#f87171",
-  text: "#e0e0e0",
-  muted: "#888",
-  grid: "#1a1a24",
-};
 
 // Biological trajectory: Φ rises under moderate threat (Yerkes-Dodson)
 const BIO_DATA = [
@@ -68,8 +60,12 @@ function interpolateData(data: { t: number; phi: number }[], progress: number) {
   return data[data.length - 1].phi;
 }
 
-export const LLMAffectContrastVideo: React.FC = () => {
+export const LLMAffectContrastVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
   const frame = useCurrentFrame();
+  const t = THEMES[theme ?? 'dark'];
+
+  const bio = t.green;
+  const llm = t.red;
 
   const chartW = 420;
   const chartH = 300;
@@ -95,8 +91,8 @@ export const LLMAffectContrastVideo: React.FC = () => {
     extrapolateRight: "clamp",
   });
 
-  const xScale = (t: number, offsetX: number) =>
-    offsetX + margin.left + t * chartW;
+  const xScale = (tVal: number, offsetX: number) =>
+    offsetX + margin.left + tVal * chartW;
   const yScale = (phi: number) =>
     margin.top + chartH - (phi / 0.35) * chartH;
 
@@ -119,7 +115,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
   const rightX = 540;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: COLORS.bg, fontFamily: "Georgia, serif" }}>
+    <AbsoluteFill style={{ backgroundColor: t.bg, fontFamily: "Georgia, serif" }}>
       {/* Title */}
       <div
         style={{
@@ -127,7 +123,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
           top: 22,
           width: "100%",
           textAlign: "center",
-          color: COLORS.text,
+          color: t.text,
           fontSize: 26,
           fontWeight: 700,
           opacity: titleOpacity,
@@ -141,7 +137,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
           top: 54,
           width: "100%",
           textAlign: "center",
-          color: COLORS.muted,
+          color: t.muted,
           fontSize: 14,
           fontStyle: "italic",
           opacity: titleOpacity,
@@ -169,14 +165,14 @@ export const LLMAffectContrastVideo: React.FC = () => {
           y={margin.top - 10}
           width={chartW + 20}
           height={chartH + 20}
-          fill={COLORS.grid}
+          fill={t.panel}
           rx={6}
         />
         <text
           x={leftX + margin.left + chartW / 2}
           y={margin.top - 20}
           textAnchor="middle"
-          fill={COLORS.bio}
+          fill={bio}
           fontSize={18}
           fontWeight={700}
           fontFamily="Georgia, serif"
@@ -190,14 +186,14 @@ export const LLMAffectContrastVideo: React.FC = () => {
           y={margin.top - 10}
           width={chartW + 20}
           height={chartH + 20}
-          fill={COLORS.grid}
+          fill={t.panel}
           rx={6}
         />
         <text
           x={rightX + margin.left + chartW / 2}
           y={margin.top - 20}
           textAnchor="middle"
-          fill={COLORS.llm}
+          fill={llm}
           fontSize={18}
           fontWeight={700}
           fontFamily="Georgia, serif"
@@ -225,7 +221,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
               x={xScale(0.55, leftX)}
               y={margin.top + chartH + 35}
               textAnchor="middle"
-              fill="#f87171"
+              fill={t.red}
               fontSize={12}
               fontFamily="Georgia, serif"
               opacity={0.7}
@@ -236,7 +232,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
               x={xScale(0.55, rightX)}
               y={margin.top + chartH + 35}
               textAnchor="middle"
-              fill="#f87171"
+              fill={t.red}
               fontSize={12}
               fontFamily="Georgia, serif"
               opacity={0.7}
@@ -250,7 +246,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
         <path
           d={buildPath(BIO_DATA, leftX, revealProgress)}
           fill="none"
-          stroke={COLORS.bio}
+          stroke={bio}
           strokeWidth={3}
           strokeLinecap="round"
         />
@@ -259,7 +255,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
         <path
           d={buildPath(LLM_DATA, rightX, revealProgress)}
           fill="none"
-          stroke={COLORS.llm}
+          stroke={llm}
           strokeWidth={3}
           strokeLinecap="round"
         />
@@ -271,13 +267,13 @@ export const LLMAffectContrastVideo: React.FC = () => {
               cx={xScale(revealProgress, leftX)}
               cy={yScale(interpolateData(BIO_DATA, revealProgress))}
               r={5}
-              fill={COLORS.bio}
+              fill={bio}
             />
             <circle
               cx={xScale(revealProgress, rightX)}
               cy={yScale(interpolateData(LLM_DATA, revealProgress))}
               r={5}
-              fill={COLORS.llm}
+              fill={llm}
             />
           </>
         )}
@@ -289,7 +285,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
             <text
               x={xScale(0.5, leftX) + 30}
               y={yScale(0.28) - 10}
-              fill={COLORS.bio}
+              fill={bio}
               fontSize={20}
               fontFamily="Georgia, serif"
               opacity={Math.min((revealProgress - 0.55) * 5, 1)}
@@ -300,7 +296,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
             <text
               x={xScale(0.5, rightX) + 30}
               y={yScale(0.06) + 25}
-              fill={COLORS.llm}
+              fill={llm}
               fontSize={20}
               fontFamily="Georgia, serif"
               opacity={Math.min((revealProgress - 0.55) * 5, 1)}
@@ -317,7 +313,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
             x={ox + 25}
             y={margin.top + chartH / 2}
             textAnchor="middle"
-            fill={COLORS.muted}
+            fill={t.muted}
             fontSize={13}
             fontFamily="Georgia, serif"
             transform={`rotate(-90, ${ox + 25}, ${margin.top + chartH / 2})`}
@@ -334,7 +330,7 @@ export const LLMAffectContrastVideo: React.FC = () => {
           bottom: 30,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 17,
           opacity: insightOpacity,
         }}

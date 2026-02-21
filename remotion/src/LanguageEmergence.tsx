@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from "./themes";
 
 /**
  * Language Emergence Animation (V35)
@@ -29,12 +30,18 @@ const rand = mulberry32(35);
 
 // Agent positions in a circular arrangement
 const N_AGENTS = 10;
-const AGENTS = Array.from({ length: N_AGENTS }, (_, i) => {
+
+function getAgentColors(t: typeof THEMES.dark) {
+  // Distribute across theme palette colors instead of hue-based
+  const palette = [t.red, t.orange, t.yellow, t.green, t.cyan, t.teal, t.blue, t.violet, t.pink, t.slate];
+  return palette;
+}
+
+const AGENT_POSITIONS = Array.from({ length: N_AGENTS }, (_, i) => {
   const angle = (i / N_AGENTS) * Math.PI * 2 - Math.PI / 2;
   return {
     x: 270 + Math.cos(angle) * 160,
     y: 320 + Math.sin(angle) * 160,
-    color: `hsl(${(i / N_AGENTS) * 360}, 60%, 55%)`,
     symbol: Math.floor(rand() * 8), // current emitted symbol (0-7)
   };
 });
@@ -76,8 +83,11 @@ function lerp(data: { t: number; [k: string]: number }[], progress: number, key:
   return data[data.length - 1][key];
 }
 
-export const LanguageEmergenceVideo: React.FC = () => {
+export const LanguageEmergenceVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
+  const t = THEMES[theme ?? "dark"];
   const frame = useCurrentFrame();
+
+  const agentColors = getAgentColors(t);
 
   const progress = interpolate(frame, [20, 250], [0, 1], {
     extrapolateLeft: "clamp",
@@ -108,7 +118,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
   const chartW = 460;
   const chartH = 200;
 
-  const xScale = (t: number) => chartX + 30 + t * (chartW - 60);
+  const xScale = (tv: number) => chartX + 30 + tv * (chartW - 60);
   const yScaleEntropy = (h: number) => chartY + chartH - (h / 3.0) * chartH;
   const yScalePhi = (phi: number) => chartY + chartH + 220 - (phi / 0.12) * 180;
 
@@ -121,14 +131,14 @@ export const LanguageEmergenceVideo: React.FC = () => {
   }
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily: "Georgia, serif" }}>
+    <AbsoluteFill style={{ backgroundColor: t.bg, fontFamily: "Georgia, serif" }}>
       {/* Title */}
       <div
         style={{
           position: "absolute",
           top: 22,
           left: 40,
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 26,
           fontWeight: 700,
           opacity: titleOpacity,
@@ -141,7 +151,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
           position: "absolute",
           top: 54,
           left: 40,
-          color: "#888",
+          color: t.muted,
           fontSize: 14,
           fontStyle: "italic",
           opacity: titleOpacity,
@@ -153,14 +163,14 @@ export const LanguageEmergenceVideo: React.FC = () => {
       <svg width={1080} height={720}>
         {/* Agent circle (left side) */}
         {/* Observation radius circles (partial obs) */}
-        {AGENTS.map((a, i) => (
+        {AGENT_POSITIONS.map((a, i) => (
           <circle
             key={`obs-${i}`}
             cx={a.x}
             cy={a.y}
             r={30}
             fill="none"
-            stroke={a.color}
+            stroke={agentColors[i]}
             strokeWidth={0.5}
             strokeDasharray="3 3"
             opacity={0.2 * progress}
@@ -169,8 +179,8 @@ export const LanguageEmergenceVideo: React.FC = () => {
 
         {/* Communication lines */}
         {commActive &&
-          AGENTS.map((a, i) =>
-            AGENTS.slice(i + 1).map((b, j) => {
+          AGENT_POSITIONS.map((a, i) =>
+            AGENT_POSITIONS.slice(i + 1).map((b, j) => {
               const dist = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
               if (dist > 250) return null;
               return (
@@ -180,7 +190,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
                   y1={a.y}
                   x2={b.x}
                   y2={b.y}
-                  stroke="#a78bfa"
+                  stroke={t.violet}
                   strokeWidth={1}
                   opacity={commPulse * 0.2 * progress}
                 />
@@ -189,7 +199,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
           )}
 
         {/* Agents */}
-        {AGENTS.map((a, i) => {
+        {AGENT_POSITIONS.map((a, i) => {
           const agentSymbol = SYMBOLS[(a.symbol + symbolCycle + i) % 8];
           return (
             <g key={i}>
@@ -198,8 +208,8 @@ export const LanguageEmergenceVideo: React.FC = () => {
                 cx={a.x}
                 cy={a.y}
                 r={18}
-                fill="#1a1a24"
-                stroke={a.color}
+                fill={t.panel}
+                stroke={agentColors[i]}
                 strokeWidth={2}
               />
               {/* Symbol bubble */}
@@ -210,8 +220,8 @@ export const LanguageEmergenceVideo: React.FC = () => {
                     y={a.y - 28}
                     width={22}
                     height={22}
-                    fill="#1e1e2e"
-                    stroke="#a78bfa"
+                    fill={t.panel}
+                    stroke={t.violet}
                     strokeWidth={1}
                     rx={4}
                   />
@@ -219,7 +229,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
                     x={a.x + 25}
                     y={a.y - 12}
                     textAnchor="middle"
-                    fill="#a78bfa"
+                    fill={t.violet}
                     fontSize={14}
                     fontFamily="monospace"
                   >
@@ -236,7 +246,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
           x={270}
           y={530}
           textAnchor="middle"
-          fill="#a78bfa"
+          fill={t.violet}
           fontSize={14}
           fontFamily="Georgia, serif"
           opacity={progress > 0.2 ? 1 : 0}
@@ -247,12 +257,12 @@ export const LanguageEmergenceVideo: React.FC = () => {
         {/* --- Charts (right side) --- */}
 
         {/* Symbol Entropy chart */}
-        <rect x={chartX} y={chartY} width={chartW} height={chartH} fill="#111118" rx={4} />
+        <rect x={chartX} y={chartY} width={chartW} height={chartH} fill={t.panel} rx={4} />
         <text
           x={chartX + chartW / 2}
           y={chartY - 8}
           textAnchor="middle"
-          fill="#a78bfa"
+          fill={t.violet}
           fontSize={14}
           fontFamily="Georgia, serif"
         >
@@ -264,19 +274,19 @@ export const LanguageEmergenceVideo: React.FC = () => {
           y1={yScaleEntropy(3.0)}
           x2={chartX + chartW - 30}
           y2={yScaleEntropy(3.0)}
-          stroke="#a78bfa"
+          stroke={t.violet}
           strokeWidth={0.5}
           strokeDasharray="4 4"
           opacity={0.3}
         />
-        <text x={chartX + chartW - 25} y={yScaleEntropy(3.0) + 4} fill="#a78bfa" fontSize={9} fontFamily="monospace" opacity={0.4}>
+        <text x={chartX + chartW - 25} y={yScaleEntropy(3.0) + 4} fill={t.violet} fontSize={9} fontFamily="monospace" opacity={0.4}>
           max=3.0
         </text>
         {/* Entropy line */}
         <path
           d={buildPath(ENTROPY_DATA, "h", yScaleEntropy, progress)}
           fill="none"
-          stroke="#a78bfa"
+          stroke={t.violet}
           strokeWidth={2.5}
           strokeLinecap="round"
         />
@@ -285,7 +295,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
             cx={xScale(progress)}
             cy={yScaleEntropy(currentEntropy)}
             r={5}
-            fill="#a78bfa"
+            fill={t.violet}
           />
         )}
         {/* Value readout */}
@@ -293,7 +303,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
           x={chartX + chartW - 10}
           y={chartY + chartH + 20}
           textAnchor="end"
-          fill="#a78bfa"
+          fill={t.violet}
           fontSize={18}
           fontWeight={700}
           fontFamily="Georgia, serif"
@@ -302,12 +312,12 @@ export const LanguageEmergenceVideo: React.FC = () => {
         </text>
 
         {/* Φ chart (below) */}
-        <rect x={chartX} y={chartY + chartH + 60} width={chartW} height={180} fill="#111118" rx={4} />
+        <rect x={chartX} y={chartY + chartH + 60} width={chartW} height={180} fill={t.panel} rx={4} />
         <text
           x={chartX + chartW / 2}
           y={chartY + chartH + 52}
           textAnchor="middle"
-          fill="#4ade80"
+          fill={t.green}
           fontSize={14}
           fontFamily="Georgia, serif"
         >
@@ -319,19 +329,19 @@ export const LanguageEmergenceVideo: React.FC = () => {
           y1={yScalePhi(0.091)}
           x2={chartX + chartW - 30}
           y2={yScalePhi(0.091)}
-          stroke="#4ade80"
+          stroke={t.green}
           strokeWidth={0.5}
           strokeDasharray="4 4"
           opacity={0.3}
         />
-        <text x={chartX + chartW - 25} y={yScalePhi(0.091) + 4} fill="#4ade80" fontSize={9} fontFamily="monospace" opacity={0.4}>
+        <text x={chartX + chartW - 25} y={yScalePhi(0.091) + 4} fill={t.green} fontSize={9} fontFamily="monospace" opacity={0.4}>
           V27=0.091
         </text>
         {/* Φ line */}
         <path
           d={buildPath(PHI_DATA, "phi", yScalePhi, progress)}
           fill="none"
-          stroke="#4ade80"
+          stroke={t.green}
           strokeWidth={2.5}
           strokeLinecap="round"
         />
@@ -340,7 +350,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
             cx={xScale(Math.min(progress, 1))}
             cy={yScalePhi(currentPhi)}
             r={5}
-            fill="#4ade80"
+            fill={t.green}
           />
         )}
         {/* Value readout */}
@@ -348,7 +358,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
           x={chartX + chartW - 10}
           y={chartY + chartH + 260}
           textAnchor="end"
-          fill="#4ade80"
+          fill={t.green}
           fontSize={18}
           fontWeight={700}
           fontFamily="Georgia, serif"
@@ -362,7 +372,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
             x={chartX + chartW / 2}
             y={chartY + chartH + 280}
             textAnchor="middle"
-            fill="#f87171"
+            fill={t.red}
             fontSize={12}
             fontFamily="Georgia, serif"
             opacity={Math.min((progress - 0.7) * 3, 1)}
@@ -379,7 +389,7 @@ export const LanguageEmergenceVideo: React.FC = () => {
           bottom: 30,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 16,
           opacity: punchlineOpacity,
         }}

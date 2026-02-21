@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Logos, M, NormativeImplication, Section, Sidebar, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Figure, Logos, M, NormativeImplication, Section, Sidebar, ThemeVideo, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-5',
@@ -52,6 +52,7 @@ export default function Part5() {
       <p>The book's ontological democracy—every scale of organization with causal closure is equally real at that scale—extends to the <M>{"\\iota"}</M> dimension: what is perceptible depends on the perceptual configuration, and the perceptual configuration is itself a variable, not a given. The gods do not appear and disappear as we modulate <M>{"\\iota"}</M>. What changes is our capacity to <em>perceive</em> the agency they exercise—agency that operates on its substrate regardless of whether the substrate can see it.</p>
       <p>This is not an argument for religion. It is an observation that high-<M>{"\\iota"}</M> civilization has made itself blind to the very patterns that govern it. The market god, the nation god, the algorithm god: these are most powerful precisely when the population <M>{"\\iota"}</M> is too high to perceive them as agents. A parasite benefits from being invisible to its host.</p>
       <p>The dynamic is self-reinforcing. The market god does not merely benefit from high <M>{"\\iota"}</M>—it <em>produces</em> high <M>{"\\iota"}</M> through its operational logic. Quantification, metrics, depersonalization, the reduction of persons to "human resources" and relationships to "transactions": these are <M>{"\\iota"}</M>-raising operations applied at scale. Each turn of the cycle raises population <M>{"\\iota"}</M> further, making the god less perceptible, reducing resistance, enabling further extraction. The feedback loop—god raises <M>{"\\iota"}</M>, population loses perception of god-as-agent, god operates unopposed, god raises <M>{"\\iota"}</M> further—may be the central mechanism of what Weber called rationalization. Breaking the loop requires precisely what the loop prevents: lowering <M>{"\\iota"}</M> enough to see what is acting on you.</p>
+      <Diagram src="/diagrams/part-5-2.svg" />
       <p>The trajectory-selection framework (Part I) sharpens this point. At high <M>{"\\iota"}</M>, the collective pattern is processed at such a factorized level that no single observer's attention encompasses it as a whole—it is just aggregate effects of individual actions, and the attention distribution samples only at the individual scale. At appropriate <M>{"\\iota"}</M>, collective patterns become foregrounded: the market is attended to <em>as</em> an agent, because the observer's measurement distribution allocates probability mass to market-level feedback loops. The god becomes observable not because something new enters existence but because the observer's attention has expanded to sample at the scale where the pattern operates. Ritual works, in part, by synchronizing the collective's measurement distribution—coordinating where participants direct attention, what temporal markers they share, what affective states they enter together. A synchronized collective measures at the collective scale, and what it measures, it becomes correlated with. When ritual attention weakens, the god does not cease to exist; the distributed attention pattern that constituted its observability has dissolved.</p>
       <p>This logic extends from individual perception to collective observation. Part I established that once a system integrates measurement information into its belief state, its future must remain consistent with what was observed. The principle extends to communication between observers. When observer <M>{"A"}</M> reports an observation to observer <M>{"B"}</M>, <M>{"B"}</M>'s future trajectory becomes constrained by that report—weighted by <M>{"B"}</M>'s trust in <M>{"A"}</M>'s reliability. The effective constraint is:</p>
       <Eq>{"p_B(\\mathbf{x} \\mid \\text{report}_A) \\propto p_B(\\mathbf{x}) \\cdot \\left[\\tau_{AB} \\cdot p_A(\\mathbf{x} \\mid \\text{obs}_A) + (1 - \\tau_{AB}) \\cdot p_B(\\mathbf{x})\\right]"}</Eq>
@@ -70,6 +71,13 @@ export default function Part5() {
       </ol>
       <p>Superorganisms exhibit dynamics <em>structurally analogous</em> to valence: movement toward or away from viability boundaries. A religion losing members is approaching dissolution; a growing ideology is expanding its viable region. The gradient <M>{"\\nabla d(\\mathbf{s}_G, \\partial\\viable_G) \\cdot \\dot{\\mathbf{s}}_G"}</M> is measurable at the social scale.</p>
       <p>Whether these dynamics constitute <em>phenomenal</em> valence—whether there is something it is like to be a struggling religion—remains an open question. What we can say with confidence: the <em>functional</em> structure of approach/avoidance operates at the superorganism scale, shaping behavior in ways that parallel how valence shapes individual behavior. The language of superorganisms "suffering" or "thriving" may be literal or may be analogical; resolving this would require measuring integration at social scales, which we cannot currently do.</p>
+      <Figure
+        src=""
+        alt="Superorganism lifecycle: individual substrates turn over while the pattern persists"
+        caption={<>Superorganism lifecycle — individual agents cycle in and out while the central pattern (the god, the institution) persists across substrate turnover.</>}
+      >
+        <ThemeVideo baseName="superorganism-lifecycle" />
+      </Figure>
       </Section>
       <Section title="Rituals from the Superorganism's Perspective" level={2}>
       <p>In Part III we examined how religious practices serve human affect regulation. From the superorganism's perspective, rituals serve different functions:</p>

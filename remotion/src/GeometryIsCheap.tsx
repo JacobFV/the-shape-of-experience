@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from "./themes";
 
 /**
  * Geometry Is Cheap Animation
@@ -19,22 +20,27 @@ import {
  * 300 frames @ 30fps = 10 seconds
  */
 
-const RUNGS = [
-  { num: 1, label: "Affect dimensions", status: "cheap", color: "#4ade80" },
-  { num: 2, label: "Valence gradient", status: "cheap", color: "#4ade80" },
-  { num: 3, label: "Somatic response", status: "cheap", color: "#4ade80" },
-  { num: 4, label: "Animism (ι ≈ 0.30)", status: "cheap", color: "#4ade80" },
-  { num: 5, label: "Language", status: "cheap", color: "#4ade80" },
-  { num: 6, label: "Affect coherence", status: "cheap", color: "#4ade80" },
-  { num: 7, label: "Integrated response", status: "cheap", color: "#4ade80" },
-  // THE WALL
-  { num: 8, label: "Counterfactual", status: "expensive", color: "#f87171" },
-  { num: 9, label: "Self-model", status: "expensive", color: "#f87171" },
-  { num: 10, label: "Normativity", status: "expensive", color: "#f87171" },
-];
+function getRungs(t: typeof THEMES.dark) {
+  return [
+    { num: 1, label: "Affect dimensions", status: "cheap" as const, color: t.green },
+    { num: 2, label: "Valence gradient", status: "cheap" as const, color: t.green },
+    { num: 3, label: "Somatic response", status: "cheap" as const, color: t.green },
+    { num: 4, label: "Animism (ι ≈ 0.30)", status: "cheap" as const, color: t.green },
+    { num: 5, label: "Language", status: "cheap" as const, color: t.green },
+    { num: 6, label: "Affect coherence", status: "cheap" as const, color: t.green },
+    { num: 7, label: "Integrated response", status: "cheap" as const, color: t.green },
+    // THE WALL
+    { num: 8, label: "Counterfactual", status: "expensive" as const, color: t.red },
+    { num: 9, label: "Self-model", status: "expensive" as const, color: t.red },
+    { num: 10, label: "Normativity", status: "expensive" as const, color: t.red },
+  ];
+}
 
-export const GeometryIsCheapVideo: React.FC = () => {
+export const GeometryIsCheapVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
+  const t = THEMES[theme ?? "dark"];
   const frame = useCurrentFrame();
+
+  const RUNGS = getRungs(t);
 
   const titleOpacity = interpolate(frame, [0, 15], [0, 1], {
     extrapolateRight: "clamp",
@@ -71,8 +77,12 @@ export const GeometryIsCheapVideo: React.FC = () => {
   const pieY = 350;
   const pieR = 130;
 
+  // Rung fill colors: semi-transparent tints
+  const cheapFill = t.green + "18";
+  const expensiveFill = t.red + "18";
+
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily: "Georgia, serif" }}>
+    <AbsoluteFill style={{ backgroundColor: t.bg, fontFamily: "Georgia, serif" }}>
       {/* Title */}
       <div
         style={{
@@ -80,7 +90,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
           top: 22,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 28,
           fontWeight: 700,
           opacity: titleOpacity,
@@ -94,7 +104,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
           top: 58,
           width: "100%",
           textAlign: "center",
-          color: "#888",
+          color: t.muted,
           fontSize: 14,
           fontStyle: "italic",
           opacity: titleOpacity,
@@ -109,7 +119,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
           x={ladderX + rungW / 2}
           y={100}
           textAnchor="middle"
-          fill="#ccc"
+          fill={t.text}
           fontSize={16}
           fontFamily="Georgia, serif"
         >
@@ -136,7 +146,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
                 y={y}
                 width={rungW * revealT}
                 height={rungH - 6}
-                fill={isCheap ? "#0f2a1a" : "#2a0f0f"}
+                fill={isCheap ? cheapFill : expensiveFill}
                 stroke={rung.color}
                 strokeWidth={1.5}
                 rx={4}
@@ -157,7 +167,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
               <text
                 x={ladderX + 45}
                 y={y + rungH / 2}
-                fill="#ccc"
+                fill={t.text}
                 fontSize={13}
                 fontFamily="Georgia, serif"
                 opacity={revealT}
@@ -189,14 +199,14 @@ export const GeometryIsCheapVideo: React.FC = () => {
               y1={ladderY - 7.5 * rungH + 3}
               x2={ladderX + rungW + 10}
               y2={ladderY - 7.5 * rungH + 3}
-              stroke="#f59e0b"
+              stroke={t.yellow}
               strokeWidth={3}
               strokeDasharray="8 4"
             />
             <text
               x={ladderX + rungW + 20}
               y={ladderY - 7.5 * rungH + 7}
-              fill="#f59e0b"
+              fill={t.yellow}
               fontSize={14}
               fontWeight={700}
               fontFamily="Georgia, serif"
@@ -206,7 +216,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
             <text
               x={ladderX + rungW + 20}
               y={ladderY - 7.5 * rungH + 25}
-              fill="#f59e0b"
+              fill={t.yellow}
               fontSize={11}
               fontFamily="Georgia, serif"
               opacity={0.7}
@@ -216,7 +226,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
             <text
               x={ladderX + rungW + 20}
               y={ladderY - 7.5 * rungH + 40}
-              fill="#f59e0b"
+              fill={t.yellow}
               fontSize={11}
               fontFamily="Georgia, serif"
               opacity={0.7}
@@ -233,7 +243,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
               x={pieX}
               y={160}
               textAnchor="middle"
-              fill="#ccc"
+              fill={t.text}
               fontSize={16}
               fontFamily="Georgia, serif"
             >
@@ -244,41 +254,41 @@ export const GeometryIsCheapVideo: React.FC = () => {
             {/* HIGH: 22% = 79.2° */}
             <path
               d={`M ${pieX} ${pieY} L ${pieX} ${pieY - pieR} A ${pieR} ${pieR} 0 0 1 ${pieX + pieR * Math.sin(79.2 * Math.PI / 180)} ${pieY - pieR * Math.cos(79.2 * Math.PI / 180)} Z`}
-              fill="#4ade80"
+              fill={t.green}
               opacity={0.7}
             />
             {/* MOD: 46% = 165.6° */}
             <path
               d={`M ${pieX} ${pieY} L ${pieX + pieR * Math.sin(79.2 * Math.PI / 180)} ${pieY - pieR * Math.cos(79.2 * Math.PI / 180)} A ${pieR} ${pieR} 0 0 1 ${pieX + pieR * Math.sin((79.2 + 165.6) * Math.PI / 180)} ${pieY - pieR * Math.cos((79.2 + 165.6) * Math.PI / 180)} Z`}
-              fill="#fbbf24"
+              fill={t.yellow}
               opacity={0.7}
             />
             {/* LOW: 32% = 115.2° */}
             <path
               d={`M ${pieX} ${pieY} L ${pieX + pieR * Math.sin((79.2 + 165.6) * Math.PI / 180)} ${pieY - pieR * Math.cos((79.2 + 165.6) * Math.PI / 180)} A ${pieR} ${pieR} 0 0 1 ${pieX} ${pieY - pieR} Z`}
-              fill="#f87171"
+              fill={t.red}
               opacity={0.7}
             />
 
             {/* Labels */}
-            <text x={pieX - 20} y={pieY - pieR - 15} fill="#4ade80" fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
+            <text x={pieX - 20} y={pieY - pieR - 15} fill={t.green} fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
               22% HIGH
             </text>
-            <text x={pieX + pieR + 15} y={pieY + 10} fill="#fbbf24" fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
+            <text x={pieX + pieR + 15} y={pieY + 10} fill={t.yellow} fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
               46% MOD
             </text>
-            <text x={pieX - pieR - 15} y={pieY + 60} textAnchor="end" fill="#f87171" fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
+            <text x={pieX - pieR - 15} y={pieY + 60} textAnchor="end" fill={t.red} fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
               32% LOW
             </text>
 
             {/* Key stats */}
-            <text x={pieX} y={pieY + pieR + 40} textAnchor="middle" fill="#ccc" fontSize={13} fontFamily="Georgia, serif">
+            <text x={pieX} y={pieY + pieR + 40} textAnchor="middle" fill={t.text} fontSize={13} fontFamily="Georgia, serif">
               geometry: 100% of seeds
             </text>
-            <text x={pieX} y={pieY + pieR + 60} textAnchor="middle" fill="#ccc" fontSize={13} fontFamily="Georgia, serif">
+            <text x={pieX} y={pieY + pieR + 60} textAnchor="middle" fill={t.text} fontSize={13} fontFamily="Georgia, serif">
               dynamics: ~22% reach HIGH Φ
             </text>
-            <text x={pieX} y={pieY + pieR + 85} textAnchor="middle" fill="#60a5fa" fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
+            <text x={pieX} y={pieY + pieR + 85} textAnchor="middle" fill={t.blue} fontSize={14} fontWeight={700} fontFamily="Georgia, serif">
               max Φ = 0.473 (seed 23)
             </text>
           </g>
@@ -292,7 +302,7 @@ export const GeometryIsCheapVideo: React.FC = () => {
           bottom: 25,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 16,
           opacity: conclusionOpacity,
         }}

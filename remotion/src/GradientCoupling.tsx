@@ -6,6 +6,7 @@ import {
   useVideoConfig,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from './themes';
 
 /**
  * Gradient Coupling Animation
@@ -21,65 +22,59 @@ import {
  * 300 frames @ 30fps = 10 seconds
  */
 
-// Colors
-const COLORS = {
-  bg: "#0a0a0f",
-  panel: "#111118",
-  border: "#333",
-  text: "#e0e0e0",
-  muted: "#888",
-  hidden: "#60a5fa", // blue
-  output: "#4ade80", // green
-  gradient: "#f59e0b", // amber
-  gradientCoupled: "#f43f5e", // rose - coupled gradients
-  loss: "#ef4444", // red
-  neuron: "#1e293b",
-  neuronActive: "#334155",
-  wire: "#444",
-};
-
 interface NeuronPos {
   x: number;
   y: number;
   label?: string;
 }
 
-function drawNeuron(
-  n: NeuronPos,
-  r: number,
-  fill: string,
-  stroke: string,
-  opacity: number
-) {
-  return (
-    <g key={`${n.x}-${n.y}`} opacity={opacity}>
-      <circle
-        cx={n.x}
-        cy={n.y}
-        r={r}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={1.5}
-      />
-      {n.label && (
-        <text
-          x={n.x}
-          y={n.y + 4}
-          textAnchor="middle"
-          fill="#ccc"
-          fontSize={9}
-          fontFamily="monospace"
-        >
-          {n.label}
-        </text>
-      )}
-    </g>
-  );
-}
-
-export const GradientCouplingVideo: React.FC = () => {
+export const GradientCouplingVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
+  const t = THEMES[theme ?? 'dark'];
+
+  // Derived colors
+  const hidden = t.blue;
+  const output = t.green;
+  const gradient = t.yellow;
+  const gradientCoupled = t.pink;
+  const loss = t.red;
+  const neuron = '#1e293b';
+  const neuronActive = '#334155';
+  const wire = '#444';
+
+  function drawNeuron(
+    n: NeuronPos,
+    r: number,
+    fill: string,
+    stroke: string,
+    opacity: number
+  ) {
+    return (
+      <g key={`${n.x}-${n.y}`} opacity={opacity}>
+        <circle
+          cx={n.x}
+          cy={n.y}
+          r={r}
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={1.5}
+        />
+        {n.label && (
+          <text
+            x={n.x}
+            y={n.y + 4}
+            textAnchor="middle"
+            fill={t.text}
+            fontSize={9}
+            fontFamily="monospace"
+          >
+            {n.label}
+          </text>
+        )}
+      </g>
+    );
+  }
 
   // Layout: two panels side by side
   const panelW = 460;
@@ -156,8 +151,8 @@ export const GradientCouplingVideo: React.FC = () => {
     key: string
   ) {
     const opacity = buildProgress;
-    const baseColor = isCoupled ? COLORS.gradientCoupled : COLORS.wire;
-    const flowColor = isCoupled ? COLORS.gradientCoupled : COLORS.gradient;
+    const baseColor = isCoupled ? gradientCoupled : wire;
+    const flowColor = isCoupled ? gradientCoupled : gradient;
 
     // Flow dot position (forward: top→bottom, backprop: bottom→top)
     const dotT = isForward ? flowProgress : 1 - flowProgress;
@@ -202,7 +197,7 @@ export const GradientCouplingVideo: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: COLORS.bg,
+        backgroundColor: t.bg,
         fontFamily: "Georgia, serif",
       }}
     >
@@ -212,7 +207,7 @@ export const GradientCouplingVideo: React.FC = () => {
           position: "absolute",
           top: 20,
           left: 40,
-          color: COLORS.text,
+          color: t.text,
           fontSize: 26,
           fontWeight: 700,
           opacity: interpolate(frame, [0, 20], [0, 1], {
@@ -227,7 +222,7 @@ export const GradientCouplingVideo: React.FC = () => {
           position: "absolute",
           top: 52,
           left: 40,
-          color: COLORS.muted,
+          color: t.muted,
           fontSize: 15,
           fontStyle: "italic",
           opacity: interpolate(frame, [0, 20], [0, 1], {
@@ -245,8 +240,8 @@ export const GradientCouplingVideo: React.FC = () => {
           y={panelY}
           width={panelW}
           height={panelH}
-          fill={COLORS.panel}
-          stroke={COLORS.border}
+          fill={t.panel}
+          stroke={t.border}
           strokeWidth={0.5}
           rx={6}
           opacity={buildProgress}
@@ -256,8 +251,8 @@ export const GradientCouplingVideo: React.FC = () => {
           y={panelY}
           width={panelW}
           height={panelH}
-          fill={COLORS.panel}
-          stroke={COLORS.border}
+          fill={t.panel}
+          stroke={t.border}
           strokeWidth={0.5}
           rx={6}
           opacity={buildProgress}
@@ -268,7 +263,7 @@ export const GradientCouplingVideo: React.FC = () => {
           x={leftX + panelW / 2}
           y={panelY + 30}
           textAnchor="middle"
-          fill={COLORS.muted}
+          fill={t.muted}
           fontSize={16}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -279,7 +274,7 @@ export const GradientCouplingVideo: React.FC = () => {
           x={rightX + panelW / 2}
           y={panelY + 30}
           textAnchor="middle"
-          fill={COLORS.muted}
+          fill={t.muted}
           fontSize={16}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -293,7 +288,7 @@ export const GradientCouplingVideo: React.FC = () => {
         <text
           x={leftX + 30}
           y={hiddenY + 4}
-          fill="#555"
+          fill={t.muted}
           fontSize={10}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -303,7 +298,7 @@ export const GradientCouplingVideo: React.FC = () => {
         <text
           x={leftX + 30}
           y={outputY + 4}
-          fill="#555"
+          fill={t.muted}
           fontSize={10}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -329,11 +324,11 @@ export const GradientCouplingVideo: React.FC = () => {
 
         {/* Hidden neurons */}
         {leftHidden.map((n) =>
-          drawNeuron(n, 15, COLORS.neuron, COLORS.hidden, buildProgress)
+          drawNeuron(n, 15, neuron, hidden, buildProgress)
         )}
         {/* Output neurons */}
         {linearOutputs.map((n) =>
-          drawNeuron(n, 15, COLORS.neuron, COLORS.output, buildProgress)
+          drawNeuron(n, 15, neuron, output, buildProgress)
         )}
 
         {/* Gradient labels for linear */}
@@ -343,7 +338,7 @@ export const GradientCouplingVideo: React.FC = () => {
               x={leftX + panelW / 2}
               y={hiddenY + 55}
               textAnchor="middle"
-              fill={COLORS.gradient}
+              fill={gradient}
               fontSize={12}
               fontFamily="monospace"
               opacity={backpropProgress * 0.8}
@@ -354,7 +349,7 @@ export const GradientCouplingVideo: React.FC = () => {
               x={leftX + panelW / 2}
               y={hiddenY + 72}
               textAnchor="middle"
-              fill={COLORS.muted}
+              fill={t.muted}
               fontSize={11}
               fontFamily="Georgia, serif"
               opacity={backpropProgress * 0.6}
@@ -373,7 +368,7 @@ export const GradientCouplingVideo: React.FC = () => {
                   y1={o.y - 18}
                   x2={targetH.x}
                   y2={targetH.y + 18}
-                  stroke={COLORS.gradient}
+                  stroke={gradient}
                   strokeWidth={2}
                   strokeDasharray="4 3"
                   opacity={backpropProgress * 0.6}
@@ -390,7 +385,7 @@ export const GradientCouplingVideo: React.FC = () => {
         <text
           x={rightX + 30}
           y={hiddenY + 4}
-          fill="#555"
+          fill={t.muted}
           fontSize={10}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -400,7 +395,7 @@ export const GradientCouplingVideo: React.FC = () => {
         <text
           x={rightX + 30}
           y={headY + 4}
-          fill="#555"
+          fill={t.muted}
           fontSize={10}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -410,7 +405,7 @@ export const GradientCouplingVideo: React.FC = () => {
         <text
           x={rightX + 30}
           y={outputY + 4}
-          fill="#555"
+          fill={t.muted}
           fontSize={10}
           fontFamily="Georgia, serif"
           opacity={buildProgress}
@@ -452,19 +447,19 @@ export const GradientCouplingVideo: React.FC = () => {
 
         {/* MLP neurons */}
         {rightHidden.map((n) =>
-          drawNeuron(n, 15, COLORS.neuron, COLORS.hidden, buildProgress)
+          drawNeuron(n, 15, neuron, hidden, buildProgress)
         )}
         {mlpMiddle.map((n) =>
           drawNeuron(
             n,
             13,
-            isBackpropPhase ? "#2d1525" : COLORS.neuron,
-            isBackpropPhase ? COLORS.gradientCoupled : "#a78bfa",
+            isBackpropPhase ? '#2d1525' : neuron,
+            isBackpropPhase ? gradientCoupled : t.violet,
             buildProgress
           )
         )}
         {mlpOutputs.map((n) =>
-          drawNeuron(n, 15, COLORS.neuron, COLORS.output, buildProgress)
+          drawNeuron(n, 15, neuron, output, buildProgress)
         )}
 
         {/* ReLU label on middle layer */}
@@ -474,7 +469,7 @@ export const GradientCouplingVideo: React.FC = () => {
             x={m.x}
             y={m.y + 26}
             textAnchor="middle"
-            fill="#a78bfa"
+            fill={t.violet}
             fontSize={9}
             fontFamily="monospace"
             opacity={buildProgress * 0.6}
@@ -490,7 +485,7 @@ export const GradientCouplingVideo: React.FC = () => {
               x={rightX + panelW / 2}
               y={headY + 50}
               textAnchor="middle"
-              fill={COLORS.gradientCoupled}
+              fill={gradientCoupled}
               fontSize={12}
               fontFamily="monospace"
               opacity={backpropProgress * 0.8}
@@ -501,7 +496,7 @@ export const GradientCouplingVideo: React.FC = () => {
               x={rightX + panelW / 2}
               y={headY + 67}
               textAnchor="middle"
-              fill={COLORS.muted}
+              fill={t.muted}
               fontSize={11}
               fontFamily="Georgia, serif"
               opacity={backpropProgress * 0.6}
@@ -518,7 +513,7 @@ export const GradientCouplingVideo: React.FC = () => {
                   y1={o.y - 18}
                   x2={m.x}
                   y2={m.y + 18}
-                  stroke={COLORS.gradientCoupled}
+                  stroke={gradientCoupled}
                   strokeWidth={1.5}
                   strokeDasharray="4 3"
                   opacity={backpropProgress * 0.4}
@@ -540,7 +535,7 @@ export const GradientCouplingVideo: React.FC = () => {
           >
             <polygon
               points="0 0, 8 3, 0 6"
-              fill={COLORS.gradient}
+              fill={gradient}
               opacity={0.6}
             />
           </marker>
@@ -555,7 +550,7 @@ export const GradientCouplingVideo: React.FC = () => {
               y={panelY + panelH - 60}
               width={panelW - 120}
               height={40}
-              fill="#1a1a24"
+              fill={t.panel}
               rx={6}
               opacity={resultProgress}
             />
@@ -563,7 +558,7 @@ export const GradientCouplingVideo: React.FC = () => {
               x={leftX + panelW / 2}
               y={panelY + panelH - 34}
               textAnchor="middle"
-              fill="#f87171"
+              fill={t.red}
               fontSize={18}
               fontWeight={700}
               fontFamily="Georgia, serif"
@@ -578,7 +573,7 @@ export const GradientCouplingVideo: React.FC = () => {
               y={panelY + panelH - 60}
               width={panelW - 120}
               height={40}
-              fill="#1a2418"
+              fill={t.panel}
               rx={6}
               opacity={resultProgress}
             />
@@ -586,7 +581,7 @@ export const GradientCouplingVideo: React.FC = () => {
               x={rightX + panelW / 2}
               y={panelY + panelH - 34}
               textAnchor="middle"
-              fill="#4ade80"
+              fill={t.green}
               fontSize={18}
               fontWeight={700}
               fontFamily="Georgia, serif"
@@ -604,7 +599,7 @@ export const GradientCouplingVideo: React.FC = () => {
           position: "absolute",
           bottom: 25,
           left: 40,
-          color: COLORS.muted,
+          color: t.muted,
           fontSize: 13,
         }}
       >
@@ -624,7 +619,7 @@ export const GradientCouplingVideo: React.FC = () => {
             position: "absolute",
             bottom: 25,
             right: 40,
-            color: "#4ade80",
+            color: t.green,
             fontSize: 14,
             opacity: (resultProgress - 0.5) * 2,
           }}

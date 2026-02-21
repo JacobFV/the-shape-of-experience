@@ -2675,6 +2675,12 @@ mark.user-highlight .published-icon {
   --d-violet: #7d3c98;
   --d-teal: #117a65;
   --d-purple: #6c3483;
+  --d-pink: #9b2c5e;
+  --d-red-bg: #f8e6e4;
+  --d-green-bg: #e4f8ec;
+  --d-yellow-bg: #fdf6e0;
+  --d-blue-bg: #e4eef8;
+  --d-neutral-bg: #e8e8e8;
 }
 
 .diagram-svg {
@@ -2700,6 +2706,12 @@ mark.user-highlight .published-icon {
   --d-violet: #bb8fce;
   --d-teal: #48c9b0;
   --d-purple: #a569bd;
+  --d-pink: #f472b6;
+  --d-red-bg: #2a0f0f;
+  --d-green-bg: #0f2a1a;
+  --d-yellow-bg: #2a1f0f;
+  --d-blue-bg: #0f1a2a;
+  --d-neutral-bg: #1a1a24;
 }
 
 .diagram-svg text {

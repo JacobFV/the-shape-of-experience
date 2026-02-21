@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from './themes';
 
 /**
  * Falsification Scoreboard Animation
@@ -40,14 +41,6 @@ const PREDICTIONS: PredictionRow[] = [
   { experiment: "VLM", prediction: "Cross-substrate convergence", outcome: "confirmed", brief: "ρ = 0.72, p < 0.0001" },
 ];
 
-const OUTCOME_COLORS: Record<string, string> = {
-  confirmed: "#4ade80",
-  contradicted: "#f87171",
-  partial: "#fbbf24",
-  null: "#888",
-  revised: "#60a5fa",
-};
-
 const OUTCOME_ICONS: Record<string, string> = {
   confirmed: "✓",
   contradicted: "✗",
@@ -56,8 +49,17 @@ const OUTCOME_ICONS: Record<string, string> = {
   revised: "↻",
 };
 
-export const FalsificationScoreboardVideo: React.FC = () => {
+export const FalsificationScoreboardVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
   const frame = useCurrentFrame();
+  const t = THEMES[theme ?? 'dark'];
+
+  const OUTCOME_COLORS: Record<string, string> = {
+    confirmed: t.green,
+    contradicted: t.red,
+    partial: t.yellow,
+    null: t.muted,
+    revised: t.blue,
+  };
 
   const titleOpacity = interpolate(frame, [0, 15], [0, 1], {
     extrapolateRight: "clamp",
@@ -84,7 +86,7 @@ export const FalsificationScoreboardVideo: React.FC = () => {
   const colX = [40, 110, 390, 520, 670];
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily: "Georgia, serif" }}>
+    <AbsoluteFill style={{ backgroundColor: t.bg, fontFamily: "Georgia, serif" }}>
       {/* Title */}
       <div
         style={{
@@ -92,7 +94,7 @@ export const FalsificationScoreboardVideo: React.FC = () => {
           top: 22,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 26,
           fontWeight: 700,
           opacity: titleOpacity,
@@ -106,7 +108,7 @@ export const FalsificationScoreboardVideo: React.FC = () => {
           top: 54,
           width: "100%",
           textAlign: "center",
-          color: "#888",
+          color: t.muted,
           fontSize: 14,
           fontStyle: "italic",
           opacity: titleOpacity,
@@ -117,11 +119,11 @@ export const FalsificationScoreboardVideo: React.FC = () => {
 
       <svg width={1080} height={720}>
         {/* Header row */}
-        <text x={colX[0]} y={startY - 8} fill="#666" fontSize={11} fontFamily="monospace">EXP</text>
-        <text x={colX[1]} y={startY - 8} fill="#666" fontSize={11} fontFamily="monospace">PREDICTION</text>
-        <text x={colX[3]} y={startY - 8} fill="#666" fontSize={11} fontFamily="monospace">RESULT</text>
-        <text x={colX[4]} y={startY - 8} fill="#666" fontSize={11} fontFamily="monospace">DETAIL</text>
-        <line x1={30} y1={startY} x2={1050} y2={startY} stroke="#333" strokeWidth={0.5} />
+        <text x={colX[0]} y={startY - 8} fill={t.muted} fontSize={11} fontFamily="monospace">EXP</text>
+        <text x={colX[1]} y={startY - 8} fill={t.muted} fontSize={11} fontFamily="monospace">PREDICTION</text>
+        <text x={colX[3]} y={startY - 8} fill={t.muted} fontSize={11} fontFamily="monospace">RESULT</text>
+        <text x={colX[4]} y={startY - 8} fill={t.muted} fontSize={11} fontFamily="monospace">DETAIL</text>
+        <line x1={30} y1={startY} x2={1050} y2={startY} stroke={t.border} strokeWidth={0.5} />
 
         {PREDICTIONS.map((row, i) => {
           const revealT = interpolate(
@@ -148,11 +150,11 @@ export const FalsificationScoreboardVideo: React.FC = () => {
                 rx={2}
               />
               {/* Experiment */}
-              <text x={colX[0]} y={y} fill="#ccc" fontSize={13} fontFamily="monospace">
+              <text x={colX[0]} y={y} fill={t.text} fontSize={13} fontFamily="monospace">
                 {row.experiment}
               </text>
               {/* Prediction */}
-              <text x={colX[1]} y={y} fill="#aaa" fontSize={12} fontFamily="Georgia, serif">
+              <text x={colX[1]} y={y} fill={t.muted} fontSize={12} fontFamily="Georgia, serif">
                 {row.prediction}
               </text>
               {/* Result icon */}
@@ -163,7 +165,7 @@ export const FalsificationScoreboardVideo: React.FC = () => {
                 {row.outcome}
               </text>
               {/* Detail */}
-              <text x={colX[4]} y={y} fill="#888" fontSize={11} fontFamily="Georgia, serif">
+              <text x={colX[4]} y={y} fill={t.muted} fontSize={11} fontFamily="Georgia, serif">
                 {row.brief}
               </text>
             </g>
@@ -173,14 +175,14 @@ export const FalsificationScoreboardVideo: React.FC = () => {
         {/* Summary bar */}
         {summaryOpacity > 0 && (
           <g opacity={summaryOpacity}>
-            <rect x={200} y={620} width={680} height={50} fill="#111118" rx={8} stroke="#333" strokeWidth={0.5} />
-            <text x={360} y={650} textAnchor="middle" fill="#4ade80" fontSize={20} fontWeight={700} fontFamily="Georgia, serif">
+            <rect x={200} y={620} width={680} height={50} fill={t.panel} rx={8} stroke={t.border} strokeWidth={0.5} />
+            <text x={360} y={650} textAnchor="middle" fill={t.green} fontSize={20} fontWeight={700} fontFamily="Georgia, serif">
               {confirmed} confirmed
             </text>
-            <text x={540} y={650} textAnchor="middle" fill="#f87171" fontSize={20} fontWeight={700} fontFamily="Georgia, serif">
+            <text x={540} y={650} textAnchor="middle" fill={t.red} fontSize={20} fontWeight={700} fontFamily="Georgia, serif">
               {contradicted} contradicted
             </text>
-            <text x={720} y={650} textAnchor="middle" fill="#60a5fa" fontSize={20} fontWeight={700} fontFamily="Georgia, serif">
+            <text x={720} y={650} textAnchor="middle" fill={t.blue} fontSize={20} fontWeight={700} fontFamily="Georgia, serif">
               {revised} revised
             </text>
           </g>

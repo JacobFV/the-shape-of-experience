@@ -66,7 +66,7 @@ export default function SurfingSubmerging() {
           width={PANEL_W}
           height={PANEL_H}
           rx={10}
-          fill="#4ade80"
+          fill="var(--d-green)"
           opacity={hoveredSide === 'submerge' ? 0.03 : 0.06}
           style={{ transition: 'opacity 0.3s' }}
         />
@@ -77,7 +77,7 @@ export default function SurfingSubmerging() {
           height={PANEL_H}
           rx={10}
           fill="none"
-          stroke="#4ade80"
+          stroke="var(--d-green)"
           strokeWidth={hoveredSide === 'surf' ? 2 : 1}
           opacity={hoveredSide === 'submerge' ? 0.2 : 0.5}
           style={{ transition: 'opacity 0.3s' }}
@@ -88,7 +88,7 @@ export default function SurfingSubmerging() {
           x={LEFT_X + PANEL_W / 2}
           y={TOP_Y + 24}
           textAnchor="middle"
-          fill="#4ade80"
+          fill="var(--d-green)"
           fontSize={16}
           fontWeight={700}
           opacity={hoveredSide === 'submerge' ? 0.4 : 1}
@@ -132,7 +132,7 @@ export default function SurfingSubmerging() {
                 width={barMaxW * d.surfValue}
                 height={6}
                 rx={3}
-                fill="#4ade80"
+                fill="var(--d-green)"
                 opacity={0.7}
               />
             </g>
@@ -152,7 +152,7 @@ export default function SurfingSubmerging() {
           width={PANEL_W}
           height={PANEL_H}
           rx={10}
-          fill="#f87171"
+          fill="var(--d-red)"
           opacity={hoveredSide === 'surf' ? 0.03 : 0.06}
           style={{ transition: 'opacity 0.3s' }}
         />
@@ -163,7 +163,7 @@ export default function SurfingSubmerging() {
           height={PANEL_H}
           rx={10}
           fill="none"
-          stroke="#f87171"
+          stroke="var(--d-red)"
           strokeWidth={hoveredSide === 'submerge' ? 2 : 1}
           opacity={hoveredSide === 'surf' ? 0.2 : 0.5}
           style={{ transition: 'opacity 0.3s' }}
@@ -174,7 +174,7 @@ export default function SurfingSubmerging() {
           x={RIGHT_X + PANEL_W / 2}
           y={TOP_Y + 24}
           textAnchor="middle"
-          fill="#f87171"
+          fill="var(--d-red)"
           fontSize={16}
           fontWeight={700}
           opacity={hoveredSide === 'surf' ? 0.4 : 1}
@@ -218,7 +218,7 @@ export default function SurfingSubmerging() {
                 width={barMaxW * d.submergeValue}
                 height={6}
                 rx={3}
-                fill="#f87171"
+                fill="var(--d-red)"
                 opacity={0.7}
               />
             </g>

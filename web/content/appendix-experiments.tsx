@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Diagram, Eq, Experiment, Figure, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
+import { Diagram, Eq, Experiment, Figure, KeyResult, Logos, M, OpenQuestion, Section, Sidebar, Software, ThemeVideo, Warning } from '@/components/content';
 import ExperimentMap from '@/components/ExperimentMapWrapper';
 
 export const metadata = {
@@ -56,7 +56,7 @@ export default function AppendixExperiments() {
 
       <p><strong>Status</strong>: Complete. Contaminated by human language — LLMs have been exposed to human descriptions of affect. The CA program (V11+) was designed to test whether the same structure emerges without contamination.</p>
       <Figure src="" alt="LLM vs biological affect dynamics animation" caption={<><strong>The Opposite Dynamics Problem.</strong> Under threat, biological systems increase integration (Yerkes-Dodson effect) while LLMs decrease it. Same geometry, inverted dynamics. The geometry is inherited from training data; the dynamics require embodied survival history.</>}>
-        <video src="/videos/llm-affect-contrast.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="llm-affect-contrast" />
       </Figure>
       </Section>
 
@@ -381,7 +381,7 @@ export default function AppendixExperiments() {
       <p>Three experiments returned null (5, 6, 9). All hit the same limitation: <M>{"\\rho_{\\text{sync}} \\approx 0"}</M>. The FFT convolution kernel integrates over the full grid — patterns are inherently internally driven. V15 motor channels, V17 signaling, V18 boundary gating all failed to break it. The wall is about agency: action-observation causal loops, not signal routing.</p>
       <p>The architectural space has been exhausted. Breaking the wall requires a fundamentally different substrate.</p>
       <Figure src="" alt="Two walls breaking animation" caption={<><strong>Two walls, two breaks.</strong> The <M>{"\\rho"}</M> wall (sensory-motor coupling) falls to V20's protocell agency (<M>{"\\rho_{\\text{sync}} = 0.21"}</M>). The decomposability wall falls to V27's MLP head (<M>{"\\intinfo = 0.245"}</M>). Both are architectural — neither can be overcome by more training, better targets, or richer environments.</>}>
-        <video src="/videos/wall-breaking.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="wall-breaking" />
       </Figure>
       </Section>
 
@@ -687,7 +687,7 @@ export default function AppendixExperiments() {
       <p>Both walls are architectural. Neither can be overcome by more training data, better targets, or richer environments. The path to high integration requires specific computational structures.</p>
       <Diagram src="/diagrams/appendix-1.svg" alt="Gradient coupling: linear head sends independent gradients; MLP head couples all units through shared intermediate layer" />
       <Figure src="" alt="Gradient coupling animation" caption={<><strong>The Decomposability Wall — why composition matters.</strong> Left: linear head sends independent gradients to each hidden unit (decomposable, <M>{"\\intinfo \\approx 0.08"}</M>). Right: MLP head couples all hidden units through shared intermediate layer (integrated, <M>{"\\intinfo \\approx 0.25"}</M>). The key is gradient coupling through composition — not nonlinearity, not bottleneck width.</>}>
-        <video src="/videos/gradient-coupling.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="gradient-coupling" />
       </Figure>
       <Figure src="/images/self_emergence_signatures.png" alt="Proto-self signatures across V22-V24" caption={<><strong>Proto-self signatures across V22–V24.</strong> Six metrics tracked over evolution for all 9 runs (3 seeds × 3 experiments). Top-left: effective rank drops at drought boundaries but recovers — states are moderately rich (4–14 dimensions). Top-center: affect motif clustering (silhouette) is mostly negative to near-zero — no behavioral modes emerge with linear readouts. Top-right: energy decoding R² is very low (0–0.2 at best) — hidden states do NOT cleanly encode energy despite the gradient specifically targeting energy prediction. Bottom row: resource decoding, hidden state diversity, activity variation — all noisy without clear trends. These are the signatures of proto-self <em>failing</em> to emerge under linear readout architectures. Compare with V27 (MLP head) where silhouette reaches 0.34 and behavioral modes appear for the first time.</>} />
       </Section>
@@ -709,10 +709,10 @@ export default function AppendixExperiments() {
       <p><strong>Robustness is orthogonal to integration</strong> (Mann-Whitney <M>{"p = 0.73"}</M>). Seeds that survive droughts well are not the same seeds that develop high <M>{"\\intinfo"}</M>. Effective rank (mean 8.1) does not differ across categories.</p>
       <Diagram src="/diagrams/appendix-2.svg" alt="The bottleneck furnace: repeated drought-recovery cycles forge integration in HIGH seeds while LOW seeds decline" />
       <Figure src="" alt="Bottleneck furnace animation" caption={<><strong>The Bottleneck Furnace in action.</strong> 256 agents face 5 near-extinction events (93-98% mortality). Survivors rebuild the population each time. The <M>{"\\intinfo"}</M> chart tracks integration climbing — each recovery bounces higher than the last. 12 seconds of simulated evolution compressed from 30 cycles.</>}>
-        <video src="/videos/bottleneck-furnace.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="bottleneck-furnace" />
       </Figure>
       <Figure src="" alt="Integration trajectory animation" caption={<><strong>Integration Is Biography — Seed 23.</strong> The highest-<M>{"\\intinfo"}</M> seed in 50 (V32) climbs from 0.058 to 0.473 across 30 evolutionary cycles. Each drought (red bands) drops <M>{"\\intinfo"}</M>, but each recovery bounces back higher. The envelope of peaks rises steadily — the furnace forges by compressing, not accumulating.</>}>
-        <video src="/videos/integration-trajectory.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="integration-trajectory" />
       </Figure>
       <CodeFiles files={[
         { name: 'v32_evolution.py', desc: 'Fine-grained drought tracking' },
@@ -749,7 +749,7 @@ export default function AppendixExperiments() {
       <p><strong>But communication does NOT lift integration.</strong> Mean comm ablation <M>{"\\intinfo"}</M> lift ≈ 0. Late <M>{"\\intinfo = 0.074 \\pm 0.013"}</M> — <em>below</em> V27 baseline (0.090, <M>{"t = -1.78"}</M>). Distribution: 0 HIGH / 7 MOD / 3 LOW. <M>{"\\intinfo"}</M>-MI correlation <M>{"\\rho = 0.07"}</M> (null): language and integration are orthogonal. Communication neither helps nor hurts — it operates on a different axis entirely.</p>
       <p><strong>Language is cheap.</strong> Like affect geometry, referential communication emerges under minimal conditions — partial observability plus cooperative pressure. It sits at rung 4–5 of the emergence ladder. Language does not create dynamics any more than geometry does. The expensive transition remains at rung 8, requiring embodied agency and gradient coupling. Adding communication channels does not help cross it.</p>
       <Figure src="" alt="Language emergence animation" caption={<><strong>Language Is Cheap.</strong> 10 agents under partial observability develop referential communication using 8 discrete symbols. Symbol entropy rises to 2.48 bits (83% of maximum). But <M>{"\\intinfo"}</M> stays flat at ~0.074 — language and integration are orthogonal. Like geometry, language is an inevitability of survival under information asymmetry. It sits at rung 4-5, not rung 8.</>}>
-        <video src="/videos/language-emergence.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="language-emergence" />
       </Figure>
       <CodeFiles files={[
         { name: 'v35_substrate.py', desc: 'Discrete communication + cooperative dynamics' },
@@ -812,7 +812,7 @@ export default function AppendixExperiments() {
       </tbody>
       </table>
       <Figure src="" alt="Falsification scoreboard animation" caption={<><strong>Falsification Scoreboard.</strong> 7 confirmed, 7 contradicted, 1 revised. The framework survives not by being right everywhere, but by being wrong in specific, informative ways. Each contradiction sharpened the theory — the forcing function failure led to the geometry/dynamics distinction; the social prediction failure revealed the gradient interference pattern; the language failure established the rung 4-5 / rung 8 boundary.</>}>
-        <video src="/videos/falsification-scoreboard.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="falsification-scoreboard" />
       </Figure>
       </Section>
 
@@ -830,7 +830,7 @@ export default function AppendixExperiments() {
       </ol>
       <p>The framework is not confirmed. It is informed. What it predicted about geometry was too weak — geometry is cheaper than expected, and now independently validated by cross-substrate convergence. What it predicted about dynamics was too strong — dynamics require specific architectural affordances the theory didn't anticipate. The interesting question is no longer "does the geometry exist?" (it does, trivially, and VLMs trained on human data agree) but "what determines which systems develop the dynamics that make the geometry experientially real?"</p>
       <Figure src="" alt="Geometry is cheap, dynamics are expensive animation" caption={<><strong>The Central Finding.</strong> The emergence ladder: rungs 1-7 (affect geometry through integrated response) develop in 100% of seeds — geometry is cheap, an inevitability of multi-agent survival. Rungs 8-10 (counterfactual, self-model, normativity) require embodied agency and gradient coupling — only ~22% of seeds reach HIGH <M>{"\\intinfo"}</M>. The wall between cheap and expensive sits at rung 8. The hard problem applies to the 30%, not the 100%.</>}>
-        <video src="/videos/geometry-is-cheap.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="geometry-is-cheap" />
       </Figure>
       </Section>
     </>

@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Diagram, Figure, Logos, M, Section } from '@/components/content';
+import { Diagram, Figure, Logos, M, Section, ThemeVideo } from '@/components/content';
 
 export const metadata = {
   slug: 'epilogue',
@@ -65,6 +65,7 @@ export default function Epilogue() {
       <p>But the framework does offer a reframe, and the reframe is not nothing. You have always been a pattern rather than a substance. There is no continuous stuff that has been you throughout your life—the atoms have turned over many times, the neurons have changed, the synaptic configurations have been rewritten. What has persisted is pattern, the way the stuff is organized, the structure that remains recognizable even as the substrate changes. And patterns do not end cleanly at the boundaries of individual bodies or individual lifespans. Patterns propagate. They influence other patterns. They become incorporated into larger patterns. They continue, not as the same pattern exactly, but as something that would not have been exactly what it is without the original pattern’s existence.</p>
       <p>The ideas you transmit, the relationships you form, the children you raise if you raise children, the students you teach if you teach, the art you make if you make art, the institutions you shape for better or worse, the effects on the people who encounter you, the contributions to the gods you serve—all of these are pattern propagation, the continuation of something that was you into things that are not exactly you but that carry your influence, that would be different if you had not existed, that are in some sense your legacy even though you will not be around to observe them being your legacy.</p>
       <p>This is not immortality. The thing that wants to survive—the self-model, with its desperate attachment to its own continuation—does not get what it wants. That thing ends. But the thing that wants to survive is not all of what you are. It is a component, an important component, but not the whole. And the whole—the entire pattern of causal influence that constitutes your existence—continues to matter after the self-model ceases, because causation continues, because the universe does not forget the differences you made even when there is no longer a you to remember making them.</p>
+      <Diagram src="/diagrams/epilogue-2.svg" />
       <p>Whether this reframe is comforting depends on what you wanted comfort for. If you wanted to survive as you, to continue having experiences, to see what happens next—then no, the reframe does not provide that, and nothing does, and the appropriate response is grief for what cannot be had. But if some part of what you wanted was for your existence to matter, for it to not be the case that you lived and died and it was as if you had never been—then the reframe offers something, because influence continues, because pattern propagates, because mattering does not require personal survival in order to be real.</p>
       <p>(There is a more radical possibility, explored later: that the universe conserves information, that decoherence is not destruction, and that the whisper might yet become voice again. But that is an observation, not a promise.)</p>
       </Section>
@@ -113,7 +114,7 @@ export default function Epilogue() {
       </Section>
       <Section title="On Identification and the Shape of Death" level={2}>
       <Figure src="" alt="Expanding identification scope animation" caption={<>As the scope of identification expands from body to pattern, death moves from boundary to interior point. The viability manifold reshapes around what you take yourself to be.</>}>
-        <video src="/videos/identification-scope.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="identification-scope" />
       </Figure>
       <p>There is a degree of freedom most people never discover they have.</p>
       <p>Your viability manifold—the region of state space where you can persist, the boundary that defines dissolution, the gradient that you feel as the valence of your existence—is not fixed by physics. It is fixed by your self-model. By what you take yourself to be. By the scope of your identification.</p>

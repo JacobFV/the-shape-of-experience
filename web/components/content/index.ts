@@ -30,3 +30,4 @@ export { SmallCaps } from './SmallCaps';
 export { WideBreath } from './WideBreath';
 export { WideMargin } from './WideMargin';
 export { WebOnly } from './WebOnly';
+export { ThemeVideo } from './ThemeVideo';

@@ -76,7 +76,7 @@ export default function ContaminationDynamics() {
       >
         {/* Panel background */}
         <rect x={startX1} y={65} width={panelW} height={330} fill="var(--d-fg)" opacity={0.03} rx={8} />
-        <text x={startX1 + panelW / 2} y={90} textAnchor="middle" fill="#4ade80" fontSize={14}
+        <text x={startX1 + panelW / 2} y={90} textAnchor="middle" fill="var(--d-green)" fontSize={14}
           fontWeight={700} fontFamily="Georgia, serif">
           Clean Friendship
         </text>
@@ -86,31 +86,31 @@ export default function ContaminationDynamics() {
         </text>
 
         {/* Viability manifold - overlapping circles */}
-        <circle cx={startX1 + 140} cy={240} r={90} fill="#4ade80" opacity={0.08}
-          stroke="#4ade80" strokeWidth={1.5} />
-        <circle cx={startX1 + 210} cy={240} r={90} fill="#4ade80" opacity={0.08}
-          stroke="#4ade80" strokeWidth={1.5} />
-        <text x={startX1 + 110} y={240} textAnchor="middle" fill="#4ade80" fontSize={11}
+        <circle cx={startX1 + 140} cy={240} r={90} fill="var(--d-green)" opacity={0.08}
+          stroke="var(--d-green)" strokeWidth={1.5} />
+        <circle cx={startX1 + 210} cy={240} r={90} fill="var(--d-green)" opacity={0.08}
+          stroke="var(--d-green)" strokeWidth={1.5} />
+        <text x={startX1 + 110} y={240} textAnchor="middle" fill="var(--d-green)" fontSize={11}
           fontFamily="Georgia, serif">V_A</text>
-        <text x={startX1 + 240} y={240} textAnchor="middle" fill="#4ade80" fontSize={11}
+        <text x={startX1 + 240} y={240} textAnchor="middle" fill="var(--d-green)" fontSize={11}
           fontFamily="Georgia, serif">V_B</text>
-        <text x={startX1 + 175} y={230} textAnchor="middle" fill="#4ade80" fontSize={12}
+        <text x={startX1 + 175} y={230} textAnchor="middle" fill="var(--d-green)" fontSize={12}
           fontWeight={700} fontFamily="Georgia, serif">V_F</text>
 
         {/* Aligned gradient arrows - both pointing toward center */}
-        <Arrow x1={startX1 + 80} y1={260} x2={startX1 + 130} y2={250} color="#4ade80" />
-        <Arrow x1={startX1 + 270} y1={260} x2={startX1 + 220} y2={250} color="#4ade80" />
+        <Arrow x1={startX1 + 80} y1={260} x2={startX1 + 130} y2={250} color="var(--d-green)" />
+        <Arrow x1={startX1 + 270} y1={260} x2={startX1 + 220} y2={250} color="var(--d-green)" />
 
         {/* Gradient label */}
-        <text x={startX1 + 175} y={290} textAnchor="middle" fill="#4ade80" fontSize={10}
+        <text x={startX1 + 175} y={290} textAnchor="middle" fill="var(--d-green)" fontSize={10}
           fontFamily="Georgia, serif">
           ∇V_F aligned
         </text>
 
         {/* Verdict */}
-        <rect x={startX1 + 75} y={340} width={200} height={35} fill="#0f2a1a" opacity={0.5} rx={6}
-          stroke="#4ade80" strokeWidth={1.5} />
-        <text x={startX1 + 175} y={362} textAnchor="middle" fill="#4ade80" fontSize={13}
+        <rect x={startX1 + 75} y={340} width={200} height={35} fill="var(--d-green-bg)" opacity={0.5} rx={6}
+          stroke="var(--d-green)" strokeWidth={1.5} />
+        <text x={startX1 + 175} y={362} textAnchor="middle" fill="var(--d-green)" fontSize={13}
           fontWeight={700} fontFamily="Georgia, serif">
           aesthetic clarity
         </text>
@@ -125,7 +125,7 @@ export default function ContaminationDynamics() {
       >
         {/* Panel background */}
         <rect x={startX2} y={65} width={panelW} height={330} fill="var(--d-fg)" opacity={0.03} rx={8} />
-        <text x={startX2 + panelW / 2} y={90} textAnchor="middle" fill="#f87171" fontSize={14}
+        <text x={startX2 + panelW / 2} y={90} textAnchor="middle" fill="var(--d-red)" fontSize={14}
           fontWeight={700} fontFamily="Georgia, serif">
           Contaminated: Friend + Transaction
         </text>
@@ -135,44 +135,44 @@ export default function ContaminationDynamics() {
         </text>
 
         {/* Overlapping manifolds - different colors */}
-        <circle cx={startX2 + 140} cy={230} r={80} fill="#4ade80" opacity={0.06}
-          stroke="#4ade80" strokeWidth={1} strokeDasharray="4 3" />
-        <circle cx={startX2 + 210} cy={230} r={80} fill="#4ade80" opacity={0.06}
-          stroke="#4ade80" strokeWidth={1} strokeDasharray="4 3" />
+        <circle cx={startX2 + 140} cy={230} r={80} fill="var(--d-green)" opacity={0.06}
+          stroke="var(--d-green)" strokeWidth={1} strokeDasharray="4 3" />
+        <circle cx={startX2 + 210} cy={230} r={80} fill="var(--d-green)" opacity={0.06}
+          stroke="var(--d-green)" strokeWidth={1} strokeDasharray="4 3" />
         {/* Transaction manifold overlay */}
-        <ellipse cx={startX2 + 175} cy={250} rx={70} ry={50} fill="#f87171" opacity={0.08}
-          stroke="#f87171" strokeWidth={1.5} />
+        <ellipse cx={startX2 + 175} cy={250} rx={70} ry={50} fill="var(--d-red)" opacity={0.08}
+          stroke="var(--d-red)" strokeWidth={1.5} />
 
-        <text x={startX2 + 100} y={225} textAnchor="middle" fill="#4ade80" fontSize={10}
+        <text x={startX2 + 100} y={225} textAnchor="middle" fill="var(--d-green)" fontSize={10}
           fontFamily="Georgia, serif" opacity={0.7}>V_F</text>
-        <text x={startX2 + 175} y={270} textAnchor="middle" fill="#f87171" fontSize={11}
+        <text x={startX2 + 175} y={270} textAnchor="middle" fill="var(--d-red)" fontSize={11}
           fontWeight={700} fontFamily="Georgia, serif">V_T</text>
 
         {/* Conflicting gradient arrows */}
         {/* Friendship gradient → toward mutual flourishing (inward) */}
-        <Arrow x1={startX2 + 100} y1={200} x2={startX2 + 150} y2={215} color="#4ade80" opacity={0.6} />
+        <Arrow x1={startX2 + 100} y1={200} x2={startX2 + 150} y2={215} color="var(--d-green)" opacity={0.6} />
         {/* Transaction gradient → toward balanced exchange (outward/different direction) */}
-        <Arrow x1={startX2 + 150} y1={215} x2={startX2 + 120} y2={260} color="#f87171" />
+        <Arrow x1={startX2 + 150} y1={215} x2={startX2 + 120} y2={260} color="var(--d-red)" />
 
         {/* Friendship gradient right side */}
-        <Arrow x1={startX2 + 250} y1={200} x2={startX2 + 200} y2={215} color="#4ade80" opacity={0.6} />
+        <Arrow x1={startX2 + 250} y1={200} x2={startX2 + 200} y2={215} color="var(--d-green)" opacity={0.6} />
         {/* Transaction gradient conflicts */}
-        <Arrow x1={startX2 + 200} y1={215} x2={startX2 + 230} y2={260} color="#f87171" />
+        <Arrow x1={startX2 + 200} y1={215} x2={startX2 + 230} y2={260} color="var(--d-red)" />
 
         {/* Conflict markers */}
-        <text x={startX2 + 148} y={240} fill="#fbbf24" fontSize={16} fontWeight={700}>✕</text>
-        <text x={startX2 + 198} y={240} fill="#fbbf24" fontSize={16} fontWeight={700}>✕</text>
+        <text x={startX2 + 148} y={240} fill="var(--d-yellow)" fontSize={16} fontWeight={700}>✕</text>
+        <text x={startX2 + 198} y={240} fill="var(--d-yellow)" fontSize={16} fontWeight={700}>✕</text>
 
         {/* Gradient label */}
-        <text x={startX2 + 175} y={300} textAnchor="middle" fill="#f87171" fontSize={10}
+        <text x={startX2 + 175} y={300} textAnchor="middle" fill="var(--d-red)" fontSize={10}
           fontFamily="Georgia, serif">
           gradients conflict — valence uncomputable
         </text>
 
         {/* Verdict */}
-        <rect x={startX2 + 75} y={340} width={200} height={35} fill="#2a0f0f" opacity={0.5} rx={6}
-          stroke="#f87171" strokeWidth={1.5} />
-        <text x={startX2 + 175} y={362} textAnchor="middle" fill="#f87171" fontSize={13}
+        <rect x={startX2 + 75} y={340} width={200} height={35} fill="var(--d-red-bg)" opacity={0.5} rx={6}
+          stroke="var(--d-red)" strokeWidth={1.5} />
+        <text x={startX2 + 175} y={362} textAnchor="middle" fill="var(--d-red)" fontSize={13}
           fontWeight={700} fontFamily="Georgia, serif">
           social nausea
         </text>

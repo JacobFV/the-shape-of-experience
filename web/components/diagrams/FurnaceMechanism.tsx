@@ -22,7 +22,7 @@ const CONDITIONS = [
     id: "bottleneck",
     label: "BOTTLENECK",
     sublabel: ">90% mortality",
-    color: "#f87171",
+    color: "var(--d-red)",
     y: 100,
     result: "rob = 1.116",
     beta: "β = +0.704",
@@ -33,7 +33,7 @@ const CONDITIONS = [
     id: "gradual",
     label: "GRADUAL",
     sublabel: "8% regen reduction",
-    color: "#fbbf24",
+    color: "var(--d-yellow)",
     y: 210,
     result: "rob = 1.016",
     beta: "—",
@@ -44,7 +44,7 @@ const CONDITIONS = [
     id: "control",
     label: "CONTROL",
     sublabel: "No stress change",
-    color: "#60a5fa",
+    color: "var(--d-blue)",
     y: 320,
     result: "rob = 1.029",
     beta: "baseline",
@@ -210,17 +210,17 @@ export function FurnaceMechanism() {
             y={c.y + 5}
             width={140}
             height={60}
-            fill={c.verdict === "CREATION" ? "#0f2a1a" : "var(--d-fg)"}
+            fill={c.verdict === "CREATION" ? "var(--d-green-bg)" : "var(--d-fg)"}
             opacity={c.verdict === "CREATION" ? 0.4 : 0.08}
             rx={6}
-            stroke={c.verdict === "CREATION" ? "#4ade80" : "var(--d-line)"}
+            stroke={c.verdict === "CREATION" ? "var(--d-green)" : "var(--d-line)"}
             strokeWidth={c.verdict === "CREATION" ? 2 : 1}
           />
           <text
             x={695}
             y={c.y + 28}
             textAnchor="middle"
-            fill={c.verdict === "CREATION" ? "#4ade80" : "var(--d-muted)"}
+            fill={c.verdict === "CREATION" ? "var(--d-green)" : "var(--d-muted)"}
             fontSize={12}
             fontWeight={700}
             fontFamily="monospace"

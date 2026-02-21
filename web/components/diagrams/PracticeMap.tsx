@@ -30,7 +30,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'Meditation',
     description: 'Sustained attention, integration maintenance',
-    color: '#60a5fa',
+    color: 'var(--d-blue)',
     targets: [
       { dim: 'A', effect: 'decrease' },
       { dim: 'Φ', effect: 'increase' },
@@ -41,7 +41,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'Deep Work',
     description: 'Extended focused engagement without interruption',
-    color: '#a78bfa',
+    color: 'var(--d-violet)',
     targets: [
       { dim: 'Φ', effect: 'increase' },
       { dim: 'r_eff', effect: 'increase' },
@@ -51,7 +51,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'Physical Exercise',
     description: 'Embodied presence, arousal regulation',
-    color: '#4ade80',
+    color: 'var(--d-green)',
     targets: [
       { dim: 'V', effect: 'increase' },
       { dim: 'A', effect: 'stabilize' },
@@ -62,7 +62,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'Manifold Hygiene',
     description: 'Keeping relationship types clean and uncontaminated',
-    color: '#f472b6',
+    color: 'var(--d-pink)',
     targets: [
       { dim: 'Φ', effect: 'increase' },
       { dim: 'V', effect: 'increase' },
@@ -71,7 +71,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'ι Calibration',
     description: 'Voluntary modulation of participatory perception',
-    color: '#facc15',
+    color: 'var(--d-yellow)',
     targets: [
       { dim: 'ι', effect: 'stabilize' },
       { dim: 'r_eff', effect: 'increase' },
@@ -81,7 +81,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'Grief Work',
     description: 'Updating self-model after loss',
-    color: '#fb923c',
+    color: 'var(--d-orange)',
     targets: [
       { dim: 'SM', effect: 'stabilize' },
       { dim: 'r_eff', effect: 'increase' },
@@ -91,7 +91,7 @@ const PRACTICES: Practice[] = [
   {
     name: 'Communion',
     description: 'Genuine resonance with another mind',
-    color: '#2dd4bf',
+    color: 'var(--d-cyan)',
     targets: [
       { dim: 'Φ', effect: 'increase' },
       { dim: 'SM', effect: 'decrease' },
@@ -176,10 +176,10 @@ export default function PracticeMap() {
           // Color based on effect
           const lineColor =
             target.effect === 'increase'
-              ? '#4ade80'
+              ? 'var(--d-green)'
               : target.effect === 'decrease'
-              ? '#f87171'
-              : '#facc15';
+              ? 'var(--d-red)'
+              : 'var(--d-yellow)';
 
           return (
             <path
@@ -255,7 +255,7 @@ export default function PracticeMap() {
             onMouseEnter={() => setHoveredDim(dim)}
             onMouseLeave={() => setHoveredDim(null)}
           >
-            <circle cx={DIM_X - 74} cy={y} r={5} fill={isActive ? '#e2e8f0' : 'var(--d-line)'} />
+            <circle cx={DIM_X - 74} cy={y} r={5} fill={isActive ? 'var(--d-fg)' : 'var(--d-line)'} />
             <text
               x={DIM_X - 64}
               y={y + 4}
@@ -279,11 +279,11 @@ export default function PracticeMap() {
 
       {/* Legend */}
       <g transform={`translate(${W / 2 - 100}, ${H - 18})`}>
-        <line x1={0} y1={0} x2={20} y2={0} stroke="#4ade80" strokeWidth={2} />
+        <line x1={0} y1={0} x2={20} y2={0} stroke="var(--d-green)" strokeWidth={2} />
         <text x={24} y={4} fill="var(--d-muted)" fontSize={9}>increase</text>
-        <line x1={80} y1={0} x2={100} y2={0} stroke="#f87171" strokeWidth={2} />
+        <line x1={80} y1={0} x2={100} y2={0} stroke="var(--d-red)" strokeWidth={2} />
         <text x={104} y={4} fill="var(--d-muted)" fontSize={9}>decrease</text>
-        <line x1={155} y1={0} x2={175} y2={0} stroke="#facc15" strokeWidth={2} />
+        <line x1={155} y1={0} x2={175} y2={0} stroke="var(--d-yellow)" strokeWidth={2} />
         <text x={179} y={4} fill="var(--d-muted)" fontSize={9}>stabilize</text>
       </g>
     </svg>

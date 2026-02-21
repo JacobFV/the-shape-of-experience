@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from "./themes";
 
 /**
  * Affect Motifs — Geometric Signatures of Emotion
@@ -28,18 +29,20 @@ interface AffectProfile {
   tagline: string;
 }
 
-const AFFECTS: AffectProfile[] = [
-  { name: "Joy",       color: "#4ade80", V: 0.95, A: 0.6, Phi: 0.9,  R: 0.95, CF: 0.3, SM: 0.15, tagline: "positive, unified, expansive, self-light" },
-  { name: "Suffering", color: "#f87171", V: 0.05, A: 0.7, Phi: 0.95, R: 0.1,  CF: 0.3, SM: 0.7,  tagline: "negative, hyper-integrated, collapsed" },
-  { name: "Fear",      color: "#a78bfa", V: 0.1,  A: 0.8, Phi: 0.5,  R: 0.5,  CF: 0.95,SM: 0.9,  tagline: "anticipatory, self-threatened, future-directed" },
-  { name: "Anger",     color: "#fb923c", V: 0.1,  A: 0.95,Phi: 0.4,  R: 0.3,  CF: 0.2, SM: 0.5,  tagline: "energized, externalized, other-compressed" },
-  { name: "Curiosity", color: "#38bdf8", V: 0.8,  A: 0.6, Phi: 0.6,  R: 0.8,  CF: 0.9, SM: 0.15, tagline: "open, branching, welcomed uncertainty" },
-  { name: "Grief",     color: "#94a3b8", V: 0.05, A: 0.3, Phi: 0.8,  R: 0.4,  CF: 0.85,SM: 0.6,  tagline: "persistent, past-directed, unresolvable" },
-  { name: "Shame",     color: "#e879f9", V: 0.05, A: 0.7, Phi: 0.85, R: 0.3,  CF: 0.4, SM: 0.98, tagline: "self-exposed, integrated negative evaluation" },
-];
-
 const DIMS = ["V", "A", "Φ", "r_eff", "CF", "SM"] as const;
 const DIM_LABELS = ["Valence", "Arousal", "Integration", "Eff. Rank", "CF Weight", "Self-Model"];
+
+function getAffects(t: typeof THEMES.dark): AffectProfile[] {
+  return [
+    { name: "Joy",       color: t.green,  V: 0.95, A: 0.6, Phi: 0.9,  R: 0.95, CF: 0.3, SM: 0.15, tagline: "positive, unified, expansive, self-light" },
+    { name: "Suffering", color: t.red,    V: 0.05, A: 0.7, Phi: 0.95, R: 0.1,  CF: 0.3, SM: 0.7,  tagline: "negative, hyper-integrated, collapsed" },
+    { name: "Fear",      color: t.violet, V: 0.1,  A: 0.8, Phi: 0.5,  R: 0.5,  CF: 0.95,SM: 0.9,  tagline: "anticipatory, self-threatened, future-directed" },
+    { name: "Anger",     color: t.orange, V: 0.1,  A: 0.95,Phi: 0.4,  R: 0.3,  CF: 0.2, SM: 0.5,  tagline: "energized, externalized, other-compressed" },
+    { name: "Curiosity", color: t.teal,   V: 0.8,  A: 0.6, Phi: 0.6,  R: 0.8,  CF: 0.9, SM: 0.15, tagline: "open, branching, welcomed uncertainty" },
+    { name: "Grief",     color: t.slate,  V: 0.05, A: 0.3, Phi: 0.8,  R: 0.4,  CF: 0.85,SM: 0.6,  tagline: "persistent, past-directed, unresolvable" },
+    { name: "Shame",     color: t.pink,   V: 0.05, A: 0.7, Phi: 0.85, R: 0.3,  CF: 0.4, SM: 0.98, tagline: "self-exposed, integrated negative evaluation" },
+  ];
+}
 
 function radarPoint(cx: number, cy: number, r: number, angle: number, value: number) {
   const rad = (angle - 90) * (Math.PI / 180);
@@ -71,8 +74,11 @@ function RadarShape({
   );
 }
 
-export const AffectMotifsVideo: React.FC = () => {
+export const AffectMotifsVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
+  const t = THEMES[theme ?? "dark"];
   const frame = useCurrentFrame();
+
+  const AFFECTS = getAffects(t);
 
   const titleOp = interpolate(frame, [0, 20], [0, 1], { extrapolateRight: "clamp" });
 
@@ -92,17 +98,17 @@ export const AffectMotifsVideo: React.FC = () => {
   const radarR = 200;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily: "Georgia, serif" }}>
+    <AbsoluteFill style={{ backgroundColor: t.bg, fontFamily: "Georgia, serif" }}>
       {/* Title */}
       <div style={{
         position: "absolute", top: 22, width: "100%", textAlign: "center",
-        color: "#e0e0e0", fontSize: 28, fontWeight: 700, opacity: titleOp,
+        color: t.text, fontSize: 28, fontWeight: 700, opacity: titleOp,
       }}>
         Affect Motifs: The Geometry of Emotion
       </div>
       <div style={{
         position: "absolute", top: 58, width: "100%", textAlign: "center",
-        color: "#888", fontSize: 14, fontStyle: "italic", opacity: titleOp,
+        color: t.muted, fontSize: 14, fontStyle: "italic", opacity: titleOp,
       }}>
         each emotion is a distinct shape in the six-dimensional affect space
       </div>
@@ -117,13 +123,13 @@ export const AffectMotifsVideo: React.FC = () => {
               return radarPoint(radarCX, radarCY, radarR, angle, ring);
             });
             const d = pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ") + " Z";
-            return <path key={ring} d={d} fill="none" stroke="#333" strokeWidth={0.5} />;
+            return <path key={ring} d={d} fill="none" stroke={t.border} strokeWidth={0.5} />;
           })}
           {/* Axis lines */}
           {DIMS.map((_, i) => {
             const angle = (360 / 6) * i;
             const end = radarPoint(radarCX, radarCY, radarR, angle, 1.0);
-            return <line key={i} x1={radarCX} y1={radarCY} x2={end.x} y2={end.y} stroke="#333" strokeWidth={0.5} />;
+            return <line key={i} x1={radarCX} y1={radarCY} x2={end.x} y2={end.y} stroke={t.border} strokeWidth={0.5} />;
           })}
           {/* Axis labels */}
           {DIM_LABELS.map((label, i) => {
@@ -131,7 +137,7 @@ export const AffectMotifsVideo: React.FC = () => {
             const p = radarPoint(radarCX, radarCY, radarR + 25, angle, 1.0);
             return (
               <text key={i} x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
-                fill="#888" fontSize={11} fontFamily="Georgia, serif">
+                fill={t.muted} fontSize={11} fontFamily="Georgia, serif">
                 {label}
               </text>
             );
@@ -177,7 +183,7 @@ export const AffectMotifsVideo: React.FC = () => {
                 {affect.name}
               </text>
               {/* Tagline */}
-              <text x={640} y={185} fill="#aaa" fontSize={14} fontFamily="Georgia, serif" fontStyle="italic">
+              <text x={640} y={185} fill={t.muted} fontSize={14} fontFamily="Georgia, serif" fontStyle="italic">
                 {affect.tagline}
               </text>
               {/* Dimension bars */}
@@ -194,10 +200,10 @@ export const AffectMotifsVideo: React.FC = () => {
                 const fillW = barW * dim.val;
                 return (
                   <g key={j}>
-                    <text x={640} y={barY} fill="#888" fontSize={12} fontFamily="monospace">{dim.label}</text>
-                    <rect x={695} y={barY - 12} width={barW} height={18} fill="#1a1a2a" rx={3} />
+                    <text x={640} y={barY} fill={t.muted} fontSize={12} fontFamily="monospace">{dim.label}</text>
+                    <rect x={695} y={barY - 12} width={barW} height={18} fill={t.panel} rx={3} />
                     <rect x={695} y={barY - 12} width={fillW} height={18} fill={affect.color} opacity={0.6} rx={3} />
-                    <text x={700 + barW + 10} y={barY} fill="#666" fontSize={11} fontFamily="Georgia, serif">{dim.desc}</text>
+                    <text x={700 + barW + 10} y={barY} fill={t.muted} fontSize={11} fontFamily="Georgia, serif">{dim.desc}</text>
                   </g>
                 );
               })}

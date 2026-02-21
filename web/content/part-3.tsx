@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Experiment, Historical, Logos, M, OpenQuestion, Section, Sidebar, Software, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Experiment, Figure, Historical, Logos, M, OpenQuestion, Section, Sidebar, Software, ThemeVideo, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-3',
@@ -43,6 +43,7 @@ export default function Part3() {
       <Eq>{"B_{\\text{exist}} = \\int_0^T \\left[ C_{\\text{compute}}(\\mathcal{SM}_t) + |\\valence_t| \\cdot \\mathcal{SM}_t \\right] dt"}</Eq>
       <p>The burden scales with both the salience of the self-model and the intensity of valence. To matter to yourself when you are suffering is heavier than to matter to yourself when you are neutral.</p>
       <p>Human culture, in all its variety, can be understood as the accumulated strategies for managing this burden.</p>
+      <Diagram src="/diagrams/part-3-3.svg" />
       <p>The basin geometry of affect space (Part II) clarifies what "managing the burden" means structurally. The goal is not to eliminate self-reference — that would require dissolving the self-model itself — but to inhabit a <em>deep, stable basin</em> at a viable position: a configuration where the invariants that matter are maintained by the causal dynamics with enough robustness that the system need not constantly defend against their collapse. A life that feels settled is not one where only good things happen; it is one where the particular configurations that matter — relational, material, and self-model invariants — are held with sufficient dynamical stability that disruptions return to baseline without cascading into collapse. This is why predictability and consistency register as well-being even when their content is neutral: stability is not merely a proxy for good experience but a component of it, a structural property of the basin containing the current state.</p>
       </Section>
       </Section>
@@ -60,6 +61,13 @@ export default function Part3() {
       <Eq>{"\\text{Artwork} = f_{\\text{medium}}(\\mathbf{a}_{\\text{internal}})"}</Eq>
       <p>The artist encodes their affect geometry into paint, sound, words, or movement. The artwork then carries an affect signature that can induce corresponding states in others. Art is affect technology: the transmission of experiential structure across minds and time.</p>
       <p>More precisely, <strong>art is <M>{"\\iota"}</M> technology.</strong> Art works, in part, by lowering the viewer’s inhibition coefficient <M>{"\\iota"}</M> (Part II). To experience a painting as beautiful—rather than as pigment on canvas—is to perceive it participatorily: to see interiority, intention, life in arranged matter. The artist’s craft is the arrangement of a medium so that <M>{"\\iota"}</M> drops involuntarily in the perceiver. This is why aesthetic experience requires a kind of surrender. You cannot experience beauty while maintaining full mechanistic detachment. The paint must become more than paint.</p>
+      <Figure
+        src=""
+        alt="Affect technologies: cultural forms modulating ι along a spectrum"
+        caption={<>Cultural forms as affect technologies — each modulates ι differently, reshaping the radar profile of affect coordinates.</>}
+      >
+        <ThemeVideo baseName="affect-technology" />
+      </Figure>
       <p>Each aesthetic mode has a characteristic <M>{"\\iota"}</M> signature:</p>
       <ul>
       <li><strong>The sublime</strong> is a forced <M>{"\\iota"}</M> collapse—scale overwhelms the inhibitory apparatus, and the world becomes agentive again (the storm <em>rages</em>, the mountain <em>looms</em>).</li>

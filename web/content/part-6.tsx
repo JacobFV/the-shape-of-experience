@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Figure, Logos, M, OpenQuestion, Section, Sidebar, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Figure, Logos, M, OpenQuestion, Section, Sidebar, ThemeVideo, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-6',
@@ -49,6 +49,13 @@ export default function Part6() {
       </ul>
       <p>The Axial Age was the first systematic exploration of the self-model salience dimension. Humans discovered they could modify their relationship to selfhood itself—a meta-level insight that opened vast new affect-space territory.</p>
       <p>In <M>{"\\iota"}</M> terms: the Axial Age did not invent low <M>{"\\iota"}</M>—that was the human default, the animist world of participatory perception that every human culture began from. What the Axial Age discovered was <em>voluntary <M>{"\\iota"}</M> modulation</em>: the capacity to raise and lower the inhibition coefficient deliberately rather than remaining locked at whatever setting one’s culture installed. The contemplative traditions (Buddhist <em>samatha</em>, Upanishadic meditation) are technologies for recovering low <M>{"\\iota"}</M> after cultural complexity has begun raising it. The philosophical traditions (Greek rationalism, Confucian rectification of names) are technologies for productive <M>{"\\iota"}</M>-raising—maintaining participatory connection while developing analytical power. The axial insight was not “lower <M>{"\\iota"}</M>” or “raise <M>{"\\iota"}</M>” but that <M>{"\\iota"}</M> is a parameter one can learn to control. This is the first appearance in history of what Part III calls <M>{"\\iota"}</M> flexibility.</p>
+      <Figure
+        src=""
+        alt="The Axial transition: ι rising as civilizations develop reflective consciousness"
+        caption={<>The Axial transition — as civilizations independently discover voluntary ι modulation, the affect profile shifts from participatory to reflective.</>}
+      >
+        <ThemeVideo baseName="axial-transition" />
+      </Figure>
       <p>In the trajectory-selection framework (Part I), the Axial revolution was the discovery that the human measurement distribution is itself a controllable variable. Pre-Axial cultures had a fixed measurement mode—participatory, broad, attuned to agency and narrative. The Axial insight was that you could <em>reshape where you direct attention</em>—contracting toward analytical precision or expanding toward mystical unity—and that this reshaping changes what you observe, which changes the trajectory your life follows. Literacy amplified this: writing allowed a thinker to hold stable, precise abstract categories across time, sharpening the measurement distribution beyond what oral cognition could sustain. The philosophical traditions that emerged are, among other things, technologies for defining increasingly precise measurement operators over possibility space. Aristotle’s categories, Buddhist <em>skandhas</em>, Confucian naming—each is a way of specifying <em>where to attend</em>, and therefore, what trajectories to select from.</p>
       </Section>
       <Section title="The Renaissance: Discovering Perspectivity" level={2}>
@@ -77,7 +84,7 @@ export default function Part6() {
       <Eq>{"\\mathbf{a}_{\\text{science}} = (+\\Val_{\\text{understanding}}, \\text{moderate } \\Ar, \\text{high } \\intinfo, \\text{high } \\reff, \\text{moderate } \\cfweight, \\text{low } \\selfsal)"}</Eq>
       <p>The scientific frame produces high integration without self-focus—the mind coherent and attending to structure rather than self.</p>
       <Figure src="" alt="Civilizational iota trajectory animation" caption={<>The inhibition coefficient has risen steadily for three millennia. Each step gained predictive power and lost experiential richness.</>}>
-        <video src="/videos/iota-historical.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="iota-historical" />
       </Figure>
       <Sidebar title="The Scientific Revolution as  Training">
       <p>The Scientific Revolution was, among other things, the systematic installation of high <M>{"\\iota"}</M> in a population. The trained practices of science—stripping agency from natural phenomena, replacing narrative causation with mathematical regularity, demanding reproducible mechanism over teleological explanation—are precisely the practices that raise the inhibition coefficient. This was enormously productive: high <M>{"\\iota"}</M> is what makes science, engineering, and medicine possible. But it also means that the population-mean <M>{"\\iota"}</M> has been rising for four centuries, and the felt cost—what Weber called the <em>Entzauberung der Welt</em>, the disenchantment of the world—is not a cultural mood but a structural consequence of a perceptual parameter shift. The world goes dead because you have been trained to experience it in parts rather than as a whole.</p>

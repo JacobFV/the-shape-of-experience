@@ -18,7 +18,7 @@ interface AestheticForm {
 const FORMS: AestheticForm[] = [
   {
     name: 'Tragedy',
-    color: '#a78bfa',
+    color: 'var(--d-violet)',
     iotaNote: 'sustained low ι',
     dims: [
       { label: 'V', value: 0.2, direction: 'down' },
@@ -31,7 +31,7 @@ const FORMS: AestheticForm[] = [
   },
   {
     name: 'Comedy',
-    color: '#facc15',
+    color: 'var(--d-yellow)',
     iotaNote: 'ι destabilized briefly',
     dims: [
       { label: 'V', value: 0.85, direction: 'up' },
@@ -44,7 +44,7 @@ const FORMS: AestheticForm[] = [
   },
   {
     name: 'Sublime',
-    color: '#60a5fa',
+    color: 'var(--d-blue)',
     iotaNote: 'forced ι collapse',
     dims: [
       { label: 'V', value: 0.5, direction: 'neutral' },
@@ -57,7 +57,7 @@ const FORMS: AestheticForm[] = [
   },
   {
     name: 'Horror',
-    color: '#f87171',
+    color: 'var(--d-red)',
     iotaNote: 'uncontrolled low ι',
     dims: [
       { label: 'V', value: 0.1, direction: 'down' },
@@ -70,7 +70,7 @@ const FORMS: AestheticForm[] = [
   },
   {
     name: 'Blues',
-    color: '#818cf8',
+    color: 'var(--d-violet)',
     iotaNote: 'low ι, witnessed',
     dims: [
       { label: 'V', value: 0.25, direction: 'down' },
@@ -83,7 +83,7 @@ const FORMS: AestheticForm[] = [
   },
   {
     name: 'Ambient',
-    color: '#2dd4bf',
+    color: 'var(--d-cyan)',
     iotaNote: 'gentle low ι',
     dims: [
       { label: 'V', value: 0.6, direction: 'neutral' },

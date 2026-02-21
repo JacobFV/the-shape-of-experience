@@ -86,31 +86,31 @@ export default function AttentionEconomy() {
 
       {/* Y axis */}
       <line x1={CHART_LEFT} y1={CHART_TOP} x2={CHART_LEFT} y2={CHART_BOTTOM} stroke="var(--d-line)" strokeWidth={1} />
-      <text x={CHART_LEFT - 8} y={CHART_TOP + 4} textAnchor="end" fill="#f87171" fontSize={9}>high ι</text>
-      <text x={CHART_LEFT - 8} y={CHART_BOTTOM + 4} textAnchor="end" fill="#4ade80" fontSize={9}>low ι</text>
+      <text x={CHART_LEFT - 8} y={CHART_TOP + 4} textAnchor="end" fill="var(--d-red)" fontSize={9}>high ι</text>
+      <text x={CHART_LEFT - 8} y={CHART_BOTTOM + 4} textAnchor="end" fill="var(--d-green)" fontSize={9}>low ι</text>
       <text x={22} y={(CHART_TOP + CHART_BOTTOM) / 2 + 4} textAnchor="middle" fill="var(--d-muted)" fontSize={10} fontWeight={600} transform={`rotate(-90, 22, ${(CHART_TOP + CHART_BOTTOM) / 2})`}>
         ι (inhibition)
       </text>
 
       {/* Zone backgrounds */}
-      <rect x={CHART_LEFT} y={CHART_TOP} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.35} fill="#f87171" opacity={0.03} />
-      <rect x={CHART_LEFT} y={CHART_BOTTOM - CHART_H * 0.35} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.35} fill="#4ade80" opacity={0.03} />
+      <rect x={CHART_LEFT} y={CHART_TOP} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.35} fill="var(--d-red)" opacity={0.03} />
+      <rect x={CHART_LEFT} y={CHART_BOTTOM - CHART_H * 0.35} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.35} fill="var(--d-green)" opacity={0.03} />
 
       {/* Zone labels */}
-      <text x={CHART_RIGHT + 4} y={CHART_TOP + CHART_H * 0.15} fill="#f87171" fontSize={8} opacity={0.5}>
+      <text x={CHART_RIGHT + 4} y={CHART_TOP + CHART_H * 0.15} fill="var(--d-red)" fontSize={8} opacity={0.5}>
         mechanistic
       </text>
-      <text x={CHART_RIGHT + 4} y={CHART_BOTTOM - CHART_H * 0.12} fill="#4ade80" fontSize={8} opacity={0.5}>
+      <text x={CHART_RIGHT + 4} y={CHART_BOTTOM - CHART_H * 0.12} fill="var(--d-green)" fontSize={8} opacity={0.5}>
         participatory
       </text>
 
       {/* "Rest" and "Connection" zones that are never reached */}
-      <rect x={CHART_LEFT} y={CHART_TOP} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.15} rx={4} fill="none" stroke="#f87171" strokeDasharray="4 3" opacity={0.2} />
-      <text x={(CHART_LEFT + CHART_RIGHT) / 2} y={CHART_TOP + CHART_H * 0.08} textAnchor="middle" fill="#f87171" fontSize={8} opacity={0.4}>
+      <rect x={CHART_LEFT} y={CHART_TOP} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.15} rx={4} fill="none" stroke="var(--d-red)" strokeDasharray="4 3" opacity={0.2} />
+      <text x={(CHART_LEFT + CHART_RIGHT) / 2} y={CHART_TOP + CHART_H * 0.08} textAnchor="middle" fill="var(--d-red)" fontSize={8} opacity={0.4}>
         productive distance (never reached)
       </text>
-      <rect x={CHART_LEFT} y={CHART_BOTTOM - CHART_H * 0.15} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.15} rx={4} fill="none" stroke="#4ade80" strokeDasharray="4 3" opacity={0.2} />
-      <text x={(CHART_LEFT + CHART_RIGHT) / 2} y={CHART_BOTTOM - CHART_H * 0.06} textAnchor="middle" fill="#4ade80" fontSize={8} opacity={0.4}>
+      <rect x={CHART_LEFT} y={CHART_BOTTOM - CHART_H * 0.15} width={CHART_RIGHT - CHART_LEFT} height={CHART_H * 0.15} rx={4} fill="none" stroke="var(--d-green)" strokeDasharray="4 3" opacity={0.2} />
+      <text x={(CHART_LEFT + CHART_RIGHT) / 2} y={CHART_BOTTOM - CHART_H * 0.06} textAnchor="middle" fill="var(--d-green)" fontSize={8} opacity={0.4}>
         genuine connection (never reached)
       </text>
 
@@ -135,7 +135,7 @@ export default function AttentionEconomy() {
               cx={e.x}
               cy={y}
               r={isHovered ? 7 : 5}
-              fill={e.type === 'low' ? '#4ade80' : '#f87171'}
+              fill={e.type === 'low' ? 'var(--d-green)' : 'var(--d-red)'}
               opacity={0.8}
             />
             {/* Label */}
@@ -143,7 +143,7 @@ export default function AttentionEconomy() {
               x={e.x}
               y={e.type === 'low' ? y + 18 : y - 12}
               textAnchor="middle"
-              fill={e.type === 'low' ? '#4ade80' : '#f87171'}
+              fill={e.type === 'low' ? 'var(--d-green)' : 'var(--d-red)'}
               fontSize={isHovered ? 10 : 8}
               fontWeight={isHovered ? 700 : 400}
               opacity={isHovered ? 1 : 0.6}

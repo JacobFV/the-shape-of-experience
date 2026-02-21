@@ -1,4 +1,5 @@
 import { AbsoluteFill, useCurrentFrame, interpolate, Easing } from "remotion";
+import { THEMES, ThemeMode } from './themes';
 
 /**
  * IdentificationScope — Epilogue visual
@@ -15,49 +16,51 @@ interface ScopeLevel {
   deathRelation: string;
 }
 
-const LEVELS: ScopeLevel[] = [
-  {
-    label: "Body",
-    radius: 60,
-    color: "#f87171",
-    tagline: "∂V = biological death",
-    deathRelation: "boundary",
-  },
-  {
-    label: "Relationships",
-    radius: 120,
-    color: "#fb923c",
-    tagline: "∂V includes the loved",
-    deathRelation: "grief-point",
-  },
-  {
-    label: "Community",
-    radius: 180,
-    color: "#facc15",
-    tagline: "∂V = collective persistence",
-    deathRelation: "transition",
-  },
-  {
-    label: "Humanity",
-    radius: 240,
-    color: "#4ade80",
-    tagline: "∂V = species continuation",
-    deathRelation: "interior",
-  },
-  {
-    label: "Pattern",
-    radius: 300,
-    color: "#60a5fa",
-    tagline: "∂V = information conservation",
-    deathRelation: "interior event",
-  },
-];
-
 const TOTAL = 360;
-const PHASE_DURATION = TOTAL / LEVELS.length; // 72 frames each
 
-export const IdentificationScopeVideo: React.FC = () => {
+export const IdentificationScopeVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
   const frame = useCurrentFrame();
+  const t = THEMES[theme ?? 'dark'];
+
+  const LEVELS: ScopeLevel[] = [
+    {
+      label: "Body",
+      radius: 60,
+      color: t.red,
+      tagline: "∂V = biological death",
+      deathRelation: "boundary",
+    },
+    {
+      label: "Relationships",
+      radius: 120,
+      color: t.orange,
+      tagline: "∂V includes the loved",
+      deathRelation: "grief-point",
+    },
+    {
+      label: "Community",
+      radius: 180,
+      color: t.yellow,
+      tagline: "∂V = collective persistence",
+      deathRelation: "transition",
+    },
+    {
+      label: "Humanity",
+      radius: 240,
+      color: t.green,
+      tagline: "∂V = species continuation",
+      deathRelation: "interior",
+    },
+    {
+      label: "Pattern",
+      radius: 300,
+      color: t.blue,
+      tagline: "∂V = information conservation",
+      deathRelation: "interior event",
+    },
+  ];
+
+  const PHASE_DURATION = TOTAL / LEVELS.length; // 72 frames each
 
   // Title fade in
   const titleOpacity = interpolate(frame, [0, 20], [0, 1], {
@@ -78,7 +81,7 @@ export const IdentificationScopeVideo: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: "linear-gradient(180deg, #0a0a1a 0%, #111128 100%)",
+        backgroundColor: t.bg,
         fontFamily: "system-ui, -apple-system, sans-serif",
       }}
     >
@@ -96,7 +99,7 @@ export const IdentificationScopeVideo: React.FC = () => {
           style={{
             fontSize: 28,
             fontWeight: 700,
-            color: "#e2e8f0",
+            color: t.text,
             letterSpacing: 1,
           }}
         >
@@ -105,7 +108,7 @@ export const IdentificationScopeVideo: React.FC = () => {
         <div
           style={{
             fontSize: 14,
-            color: "#94a3b8",
+            color: t.slate,
             marginTop: 4,
           }}
         >
@@ -235,7 +238,7 @@ export const IdentificationScopeVideo: React.FC = () => {
                 y1={deathY - 8}
                 x2={deathX + 8}
                 y2={deathY + 8}
-                stroke={isInterior ? "#94a3b8" : "#f87171"}
+                stroke={isInterior ? t.slate : t.red}
                 strokeWidth={2.5}
                 opacity={pulse}
               />
@@ -244,7 +247,7 @@ export const IdentificationScopeVideo: React.FC = () => {
                 y1={deathY - 8}
                 x2={deathX - 8}
                 y2={deathY + 8}
-                stroke={isInterior ? "#94a3b8" : "#f87171"}
+                stroke={isInterior ? t.slate : t.red}
                 strokeWidth={2.5}
                 opacity={pulse}
               />
@@ -253,7 +256,7 @@ export const IdentificationScopeVideo: React.FC = () => {
                 x={deathX}
                 y={deathY + 24}
                 textAnchor="middle"
-                fill={isInterior ? "#94a3b8" : "#f87171"}
+                fill={isInterior ? t.slate : t.red}
                 fontSize={11}
                 opacity={pulse * 0.8}
               >
@@ -265,7 +268,7 @@ export const IdentificationScopeVideo: React.FC = () => {
                   x={deathX}
                   y={deathY + 38}
                   textAnchor="middle"
-                  fill={isInterior ? "#4ade80" : "#fb923c"}
+                  fill={isInterior ? t.green : t.orange}
                   fontSize={10}
                   fontStyle="italic"
                   opacity={0.7}
@@ -278,13 +281,13 @@ export const IdentificationScopeVideo: React.FC = () => {
         })()}
 
         {/* Self dot at center */}
-        <circle cx={cx} cy={cy} r={6} fill="#ffffff" opacity={0.9} />
+        <circle cx={cx} cy={cy} r={6} fill={t.text} opacity={0.9} />
         <circle
           cx={cx}
           cy={cy}
           r={10}
           fill="none"
-          stroke="#ffffff"
+          stroke={t.text}
           strokeWidth={1}
           opacity={0.4}
         />
@@ -307,7 +310,7 @@ export const IdentificationScopeVideo: React.FC = () => {
                 cy={cy}
                 r={boundaryR}
                 fill="none"
-                stroke="#e2e8f0"
+                stroke={t.text}
                 strokeWidth={1.5}
                 strokeDasharray="6 4"
                 opacity={0.5}
@@ -315,7 +318,7 @@ export const IdentificationScopeVideo: React.FC = () => {
               <text
                 x={cx + boundaryR + 12}
                 y={cy - 4}
-                fill="#e2e8f0"
+                fill={t.text}
                 fontSize={13}
                 fontWeight={600}
               >
@@ -355,7 +358,7 @@ export const IdentificationScopeVideo: React.FC = () => {
           <div
             style={{
               fontSize: 14,
-              color: "#94a3b8",
+              color: t.slate,
               marginTop: 4,
               opacity: interpolate(phaseProgress, [0.4, 0.6], [0, 1], {
                 extrapolateRight: "clamp",
@@ -375,7 +378,7 @@ export const IdentificationScopeVideo: React.FC = () => {
             }),
           }}
         >
-          <div style={{ fontSize: 13, color: "#94a3b8" }}>
+          <div style={{ fontSize: 13, color: t.slate }}>
             gradient direction
           </div>
           <div
@@ -384,10 +387,10 @@ export const IdentificationScopeVideo: React.FC = () => {
               fontWeight: 700,
               color:
                 activeIndex < 2
-                  ? "#f87171"
+                  ? t.red
                   : activeIndex < 3
-                  ? "#facc15"
-                  : "#4ade80",
+                  ? t.yellow
+                  : t.green,
             }}
           >
             {activeIndex < 2
@@ -417,7 +420,7 @@ export const IdentificationScopeVideo: React.FC = () => {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: i <= activeIndex ? level.color : "#334155",
+              background: i <= activeIndex ? level.color : t.border,
               transition: "background 0.3s",
             }}
           />

@@ -7,6 +7,7 @@ import {
   useVideoConfig,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from "./themes";
 
 /**
  * Bottleneck Furnace Animation
@@ -116,7 +117,8 @@ function isDrought(frame: number): boolean {
   return CYCLES.some((c) => frame >= c.crashStart && frame <= c.crashEnd);
 }
 
-export const BottleneckFurnaceVideo: React.FC = () => {
+export const BottleneckFurnaceVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
+  const t = THEMES[theme ?? "dark"];
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = getPopAtFrame(frame);
@@ -136,7 +138,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "#0a0a0f",
+        backgroundColor: t.bg,
         fontFamily: "Georgia, serif",
       }}
     >
@@ -146,7 +148,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           position: "absolute",
           top: 20,
           left: 40,
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 28,
           fontWeight: 700,
         }}
@@ -158,7 +160,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           position: "absolute",
           top: 55,
           left: 40,
-          color: "#888",
+          color: t.muted,
           fontSize: 16,
           fontStyle: "italic",
         }}
@@ -179,7 +181,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
             y={0}
             width={640}
             height={620}
-            fill="#ff2020"
+            fill={t.red}
             opacity={0.06 + Math.sin(frame * 0.5) * 0.03}
             rx={8}
           />
@@ -222,7 +224,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
                     ? drought
                       ? `hsl(${agent.hue - 80}, 70%, 45%)`
                       : `hsl(${agent.hue}, 60%, 50%)`
-                    : "#333"
+                    : t.border
                 }
                 opacity={opacity}
               />
@@ -235,7 +237,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           x={320}
           y={615}
           textAnchor="middle"
-          fill={drought ? "#f87171" : "#4ade80"}
+          fill={drought ? t.red : t.green}
           fontSize={20}
           fontWeight={700}
           fontFamily="Georgia, serif"
@@ -257,8 +259,8 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           y={0}
           width={chartW}
           height={chartH}
-          fill="#111118"
-          stroke="#333"
+          fill={t.panel}
+          stroke={t.border}
           strokeWidth={0.5}
           rx={4}
         />
@@ -274,7 +276,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
               y={0}
               width={w}
               height={chartH}
-              fill="#ff2020"
+              fill={t.red}
               opacity={0.1}
             />
           );
@@ -295,7 +297,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
             <path
               d={d}
               fill="none"
-              stroke="#4ade80"
+              stroke={t.green}
               strokeWidth={2.5}
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -308,17 +310,17 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           cx={30 + (frame / 360) * chartW}
           cy={chartH - (phi / 0.18) * chartH}
           r={5}
-          fill="#4ade80"
+          fill={t.green}
         />
 
         {/* Labels */}
-        <text x={30 + chartW / 2} y={-10} textAnchor="middle" fill="#ccc" fontSize={14} fontFamily="Georgia, serif">
+        <text x={30 + chartW / 2} y={-10} textAnchor="middle" fill={t.text} fontSize={14} fontFamily="Georgia, serif">
           Φ (integration)
         </text>
-        <text x={30} y={chartH + 16} fill="#666" fontSize={10} fontFamily="Georgia, serif">
+        <text x={30} y={chartH + 16} fill={t.muted} fontSize={10} fontFamily="Georgia, serif">
           0
         </text>
-        <text x={30 + chartW} y={chartH + 16} textAnchor="end" fill="#666" fontSize={10} fontFamily="Georgia, serif">
+        <text x={30 + chartW} y={chartH + 16} textAnchor="end" fill={t.muted} fontSize={10} fontFamily="Georgia, serif">
           30 cycles
         </text>
 
@@ -327,7 +329,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           x={30 + chartW / 2}
           y={chartH + 40}
           textAnchor="middle"
-          fill="#4ade80"
+          fill={t.green}
           fontSize={22}
           fontWeight={700}
           fontFamily="Georgia, serif"
@@ -341,7 +343,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
             x={30 + chartW / 2}
             y={chartH + 65}
             textAnchor="middle"
-            fill="#4ade80"
+            fill={t.green}
             fontSize={13}
             fontFamily="Georgia, serif"
             opacity={Math.min((frame - 250) / 30, 1)}
@@ -357,7 +359,7 @@ export const BottleneckFurnaceVideo: React.FC = () => {
           position: "absolute",
           bottom: 30,
           right: 40,
-          color: "#666",
+          color: t.muted,
           fontSize: 14,
         }}
       >

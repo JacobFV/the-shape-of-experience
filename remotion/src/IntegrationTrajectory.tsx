@@ -6,6 +6,7 @@ import {
   useVideoConfig,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from "./themes";
 
 /**
  * Integration Trajectory Animation
@@ -71,7 +72,8 @@ const BOUNCES = [
   { drought: 5, pre: 0.358, post: 0.473, drop: 0.125 },
 ];
 
-export const IntegrationTrajectoryVideo: React.FC = () => {
+export const IntegrationTrajectoryVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
+  const t = THEMES[theme ?? "dark"];
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
 
@@ -109,8 +111,8 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
     if (nextIdx > 0) {
       const prev = TRAJECTORY[nextIdx - 1];
       const next = TRAJECTORY[nextIdx];
-      const t = (cyclesRevealed - prev.cycle) / (next.cycle - prev.cycle);
-      currentPhi = prev.phi + t * (next.phi - prev.phi);
+      const frac = (cyclesRevealed - prev.cycle) / (next.cycle - prev.cycle);
+      currentPhi = prev.phi + frac * (next.phi - prev.phi);
     } else {
       currentPhi = last.phi;
     }
@@ -143,7 +145,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "#0a0a0f",
+        backgroundColor: t.bg,
         fontFamily: "Georgia, serif",
       }}
     >
@@ -153,7 +155,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           position: "absolute",
           top: 20,
           left: margin.left,
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 26,
           fontWeight: 700,
           opacity: titleOpacity,
@@ -166,7 +168,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           position: "absolute",
           top: 52,
           left: margin.left,
-          color: "#888",
+          color: t.muted,
           fontSize: 15,
           fontStyle: "italic",
           opacity: titleOpacity,
@@ -182,7 +184,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           y={margin.top}
           width={chartW}
           height={chartH}
-          fill="#111118"
+          fill={t.panel}
           rx={4}
         />
 
@@ -197,7 +199,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
               y={margin.top}
               width={w}
               height={chartH}
-              fill="#ff2020"
+              fill={t.red}
               opacity={d <= cyclesRevealed + 1 ? 0.15 : 0}
             />
           );
@@ -211,14 +213,14 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
               y1={yScale(v)}
               x2={margin.left + chartW}
               y2={yScale(v)}
-              stroke="#222"
+              stroke={t.border}
               strokeWidth={0.5}
             />
             <text
               x={margin.left - 10}
               y={yScale(v) + 4}
               textAnchor="end"
-              fill="#555"
+              fill={t.muted}
               fontSize={11}
               fontFamily="Georgia, serif"
             >
@@ -237,7 +239,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
               .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`)
               .join(" ")}
             fill="none"
-            stroke="#4ade80"
+            stroke={t.green}
             strokeWidth={1.5}
             strokeDasharray="6 4"
             opacity={envelopeOpacity}
@@ -249,7 +251,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           <path
             d={pathD}
             fill="none"
-            stroke="#60a5fa"
+            stroke={t.blue}
             strokeWidth={3}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -270,14 +272,14 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
                 y1={y1}
                 x2={x}
                 y2={y2}
-                stroke="#f87171"
+                stroke={t.red}
                 strokeWidth={2}
                 strokeDasharray="3 2"
                 opacity={0.6}
               />
               <polygon
                 points={`${x},${y2} ${x - 4},${y2 - 8} ${x + 4},${y2 - 8}`}
-                fill="#f87171"
+                fill={t.red}
                 opacity={0.6}
               />
             </g>
@@ -292,8 +294,8 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
             )}
             cy={yScale(currentPhi)}
             r={6}
-            fill="#60a5fa"
-            stroke="#fff"
+            fill={t.blue}
+            stroke={t.text}
             strokeWidth={2}
           />
         )}
@@ -304,14 +306,14 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           y1={margin.top + chartH}
           x2={margin.left + chartW}
           y2={margin.top + chartH}
-          stroke="#444"
+          stroke={t.border}
           strokeWidth={1}
         />
         <text
           x={margin.left + chartW / 2}
           y={margin.top + chartH + 40}
           textAnchor="middle"
-          fill="#888"
+          fill={t.muted}
           fontSize={14}
           fontFamily="Georgia, serif"
         >
@@ -323,7 +325,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
             x={xScale(c)}
             y={margin.top + chartH + 18}
             textAnchor="middle"
-            fill="#555"
+            fill={t.muted}
             fontSize={10}
             fontFamily="Georgia, serif"
           >
@@ -336,7 +338,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           x={25}
           y={margin.top + chartH / 2}
           textAnchor="middle"
-          fill="#888"
+          fill={t.muted}
           fontSize={14}
           fontFamily="Georgia, serif"
           transform={`rotate(-90, 25, ${margin.top + chartH / 2})`}
@@ -353,7 +355,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
               x={xScale(d)}
               y={margin.top - 6}
               textAnchor="middle"
-              fill="#f87171"
+              fill={t.red}
               fontSize={10}
               fontFamily="Georgia, serif"
               opacity={0.7}
@@ -370,7 +372,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
           position: "absolute",
           top: margin.top + chartH + 55,
           right: margin.right,
-          color: "#60a5fa",
+          color: t.blue,
           fontSize: 28,
           fontWeight: 700,
           textAlign: "right",
@@ -386,7 +388,7 @@ export const IntegrationTrajectoryVideo: React.FC = () => {
             position: "absolute",
             bottom: 25,
             left: margin.left,
-            color: "#4ade80",
+            color: t.green,
             fontSize: 16,
             opacity: finalOpacity,
           }}

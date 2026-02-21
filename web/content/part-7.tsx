@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Eq, Figure, Logos, M, Section, Sidebar } from '@/components/content';
+import { Diagram, Eq, Figure, Logos, M, Section, Sidebar, ThemeVideo } from '@/components/content';
 import AffectTrajectory3D from '@/components/visualizations/AffectTrajectory3DWrapper';
 
 export const metadata = {
@@ -125,7 +125,7 @@ export default function Part7() {
       </Section>
 
       <Figure src="" alt="Emergence ladder mapped to human developmental timeline" caption={<>The emergence ladder predicts developmental sequence from computational requirements, not from observation. Key prediction: anticipatory anxiety (rung 8) must co-emerge with the false belief task (~age 3-4), not precede it.</>}>
-        <video src="/videos/developmental-ordering.mp4" autoPlay loop muted playsInline style={{ width: '100%', borderRadius: 8 }} />
+        <ThemeVideo baseName="developmental-ordering" />
       </Figure>
 
       <Section title="The Bridge to Psychology" level={1}>
@@ -231,6 +231,7 @@ export default function Part7() {
       </Section>
 
       <Section title="Experiments Distributed Throughout the Book" level={1}>
+      <Diagram src="/diagrams/part-7-0.svg" />
       <p>In addition to the consolidated results above and the research roadmap, fourteen proposed experiments are distributed throughout Parts I–IV, each embedded in the theoretical context that motivates it:</p>
       <ul>
       <li><strong>Part I</strong> (4 experiments): The minimal affect experiment, the attention-as-measurement test, the <M>{"\\iota"}</M> modulation test, and the computational animism test (now confirmed — see Experiment 8).</li>

@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   Easing,
 } from "remotion";
+import { THEMES, ThemeMode } from './themes';
 
 /**
  * Wall Breaking Animation
@@ -17,10 +18,6 @@ import {
  *
  * 300 frames @ 30fps = 10 seconds
  */
-
-const WALL_COLOR = "#4a3520";
-const CRACK_COLOR = "#f59e0b";
-const BREAK_COLOR = "#4ade80";
 
 interface WallProps {
   x: number;
@@ -35,11 +32,18 @@ interface WallProps {
   crackProgress: number;
   breakProgress: number;
   buildProgress: number;
+  wallColor: string;
+  crackColor: string;
+  breakColor: string;
+  textColor: string;
+  mutedColor: string;
+  blueColor: string;
 }
 
 function Wall({
   x, y, w, h, label, sublabel, breakerLabel, breakerSublabel, metric,
   crackProgress, breakProgress, buildProgress,
+  wallColor, crackColor, breakColor, textColor, mutedColor, blueColor,
 }: WallProps) {
   const isBreaking = breakProgress > 0;
   const isCracking = crackProgress > 0;
@@ -70,7 +74,7 @@ function Wall({
         <rect
           width={w}
           height={h}
-          fill={WALL_COLOR}
+          fill={wallColor}
           stroke="#6b5a3f"
           strokeWidth={2}
           rx={3}
@@ -105,7 +109,7 @@ function Wall({
             y1={c.y1}
             x2={c.x1 + (c.x2 - c.x1) * crackProgress}
             y2={c.y1 + (c.y2 - c.y1) * crackProgress}
-            stroke={CRACK_COLOR}
+            stroke={crackColor}
             strokeWidth={2}
             opacity={crackProgress * 0.8}
           />
@@ -120,7 +124,7 @@ function Wall({
             y={f.cy - 12}
             width={30}
             height={24}
-            fill={WALL_COLOR}
+            fill={wallColor}
             stroke="#6b5a3f"
             strokeWidth={1}
             rx={2}
@@ -134,7 +138,7 @@ function Wall({
         x={w / 2}
         y={-25}
         textAnchor="middle"
-        fill="#e0e0e0"
+        fill={textColor}
         fontSize={16}
         fontWeight={700}
         fontFamily="Georgia, serif"
@@ -145,7 +149,7 @@ function Wall({
         x={w / 2}
         y={-8}
         textAnchor="middle"
-        fill="#888"
+        fill={mutedColor}
         fontSize={12}
         fontFamily="Georgia, serif"
       >
@@ -159,7 +163,7 @@ function Wall({
             x={w / 2}
             y={h / 2 - 5}
             textAnchor="middle"
-            fill={BREAK_COLOR}
+            fill={breakColor}
             fontSize={18}
             fontWeight={700}
             fontFamily="Georgia, serif"
@@ -171,7 +175,7 @@ function Wall({
             x={w / 2}
             y={h / 2 + 18}
             textAnchor="middle"
-            fill={BREAK_COLOR}
+            fill={breakColor}
             fontSize={13}
             fontFamily="Georgia, serif"
             opacity={breakProgress * 0.8}
@@ -182,7 +186,7 @@ function Wall({
             x={w / 2}
             y={h / 2 + 40}
             textAnchor="middle"
-            fill="#60a5fa"
+            fill={blueColor}
             fontSize={15}
             fontWeight={700}
             fontFamily="monospace"
@@ -198,8 +202,13 @@ function Wall({
   );
 }
 
-export const WallBreakingVideo: React.FC = () => {
+export const WallBreakingVideo: React.FC<{ theme?: ThemeMode }> = ({ theme }) => {
   const frame = useCurrentFrame();
+  const t = THEMES[theme ?? 'dark'];
+
+  const wallColor = '#4a3520';
+  const crackColor = t.yellow;
+  const breakColor = t.green;
 
   // Phase 1: Build walls (0-60)
   const build1 = interpolate(frame, [10, 50], [0, 1], {
@@ -248,14 +257,14 @@ export const WallBreakingVideo: React.FC = () => {
   const wall2Blocked = ["V22", "V23", "V24"];
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily: "Georgia, serif" }}>
+    <AbsoluteFill style={{ backgroundColor: t.bg, fontFamily: "Georgia, serif" }}>
       <div
         style={{
           position: "absolute",
           top: 22,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 26,
           fontWeight: 700,
           opacity: titleOpacity,
@@ -269,7 +278,7 @@ export const WallBreakingVideo: React.FC = () => {
           top: 54,
           width: "100%",
           textAlign: "center",
-          color: "#888",
+          color: t.muted,
           fontSize: 14,
           fontStyle: "italic",
           opacity: titleOpacity,
@@ -286,7 +295,7 @@ export const WallBreakingVideo: React.FC = () => {
             x={110}
             y={180 + i * 30}
             textAnchor="middle"
-            fill={break1 > 0 ? "#4ade80" : crack1 > 0 ? "#f59e0b" : "#666"}
+            fill={break1 > 0 ? t.green : crack1 > 0 ? crackColor : t.muted}
             fontSize={13}
             fontFamily="monospace"
             opacity={build1}
@@ -301,7 +310,7 @@ export const WallBreakingVideo: React.FC = () => {
           y1={300}
           x2={220}
           y2={300}
-          stroke="#666"
+          stroke={t.muted}
           strokeWidth={2}
           opacity={build1}
           markerEnd="url(#arrowGray)"
@@ -321,6 +330,12 @@ export const WallBreakingVideo: React.FC = () => {
           buildProgress={build1}
           crackProgress={crack1}
           breakProgress={break1}
+          wallColor={wallColor}
+          crackColor={crackColor}
+          breakColor={breakColor}
+          textColor={t.text}
+          mutedColor={t.muted}
+          blueColor={t.blue}
         />
 
         {/* Arrow between walls */}
@@ -329,7 +344,7 @@ export const WallBreakingVideo: React.FC = () => {
           y1={300}
           x2={500}
           y2={300}
-          stroke="#666"
+          stroke={t.muted}
           strokeWidth={2}
           opacity={build1 > 0 && build2 > 0 ? 1 : 0}
           markerEnd="url(#arrowGray)"
@@ -342,7 +357,7 @@ export const WallBreakingVideo: React.FC = () => {
             x={530}
             y={235 + i * 30}
             textAnchor="middle"
-            fill={break2 > 0 ? "#4ade80" : crack2 > 0 ? "#f59e0b" : "#666"}
+            fill={break2 > 0 ? t.green : crack2 > 0 ? crackColor : t.muted}
             fontSize={13}
             fontFamily="monospace"
             opacity={build2}
@@ -357,7 +372,7 @@ export const WallBreakingVideo: React.FC = () => {
           y1={280}
           x2={610}
           y2={280}
-          stroke="#666"
+          stroke={t.muted}
           strokeWidth={2}
           opacity={build2}
           markerEnd="url(#arrowGray)"
@@ -377,6 +392,12 @@ export const WallBreakingVideo: React.FC = () => {
           buildProgress={build2}
           crackProgress={crack2}
           breakProgress={break2}
+          wallColor={wallColor}
+          crackColor={crackColor}
+          breakColor={breakColor}
+          textColor={t.text}
+          mutedColor={t.muted}
+          blueColor={t.blue}
         />
 
         {/* Arrow to integration */}
@@ -387,7 +408,7 @@ export const WallBreakingVideo: React.FC = () => {
               y1={300}
               x2={920}
               y2={300}
-              stroke={BREAK_COLOR}
+              stroke={breakColor}
               strokeWidth={3}
               opacity={(break2 - 0.5) * 2}
               markerEnd="url(#arrowGreen)"
@@ -396,7 +417,7 @@ export const WallBreakingVideo: React.FC = () => {
               x={970}
               y={300}
               textAnchor="middle"
-              fill={BREAK_COLOR}
+              fill={breakColor}
               fontSize={22}
               fontWeight={700}
               fontFamily="Georgia, serif"
@@ -408,7 +429,7 @@ export const WallBreakingVideo: React.FC = () => {
               x={970}
               y={325}
               textAnchor="middle"
-              fill="#888"
+              fill={t.muted}
               fontSize={13}
               fontFamily="Georgia, serif"
               opacity={(break2 - 0.5) * 2}
@@ -421,10 +442,10 @@ export const WallBreakingVideo: React.FC = () => {
         {/* Markers */}
         <defs>
           <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#666" />
+            <polygon points="0 0, 8 3, 0 6" fill={t.muted} />
           </marker>
           <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill={BREAK_COLOR} />
+            <polygon points="0 0, 8 3, 0 6" fill={breakColor} />
           </marker>
         </defs>
       </svg>
@@ -436,7 +457,7 @@ export const WallBreakingVideo: React.FC = () => {
           bottom: 30,
           width: "100%",
           textAlign: "center",
-          color: "#e0e0e0",
+          color: t.text,
           fontSize: 16,
           opacity: finalOpacity,
         }}

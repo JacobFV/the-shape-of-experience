@@ -38,9 +38,9 @@ const LANDSCAPE: [number, number][] = [
 
 // Basins
 const BASINS = [
-  { x: 100, y: 240, label: 'Depression', color: '#f87171', desc: 'low r_eff, high SM, neg V' },
-  { x: 290, y: 250, label: 'Stable Neutral', color: '#facc15', desc: 'moderate all dimensions' },
-  { x: 500, y: 240, label: 'Flourishing', color: '#4ade80', desc: 'high Φ, high r_eff, pos V' },
+  { x: 100, y: 240, label: 'Depression', color: 'var(--d-red)', desc: 'low r_eff, high SM, neg V' },
+  { x: 290, y: 250, label: 'Stable Neutral', color: 'var(--d-yellow)', desc: 'moderate all dimensions' },
+  { x: 500, y: 240, label: 'Flourishing', color: 'var(--d-green)', desc: 'high Φ, high r_eff, pos V' },
 ];
 
 // Ridges
@@ -159,7 +159,7 @@ export default function BasinGeometry() {
         cx={ballX}
         cy={ballY - 8}
         r={7}
-        fill="#e2e8f0"
+        fill="var(--d-neutral-bg)"
         stroke="var(--d-fg)"
         strokeWidth={1.5}
         style={{ transition: 'cx 0.05s linear, cy 0.05s linear' }}

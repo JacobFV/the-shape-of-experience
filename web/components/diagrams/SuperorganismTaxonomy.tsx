@@ -15,8 +15,8 @@ const TYPES = [
     id: "parasitic",
     title: "Parasitic (Demon)",
     subtitle: "V_G ⊄ V_h",
-    color: "#f87171",
-    bgColor: "#2a0f0f",
+    color: "var(--d-red)",
+    bgColor: "var(--d-red-bg)",
     equation: "∃s ∈ V_G : s ∉ ∩ V_h",
     desc: "Pattern thrives when humans suffer",
     examples: ["Attention economy", "Extractive cult", "Predatory lending"],
@@ -28,8 +28,8 @@ const TYPES = [
     id: "aligned",
     title: "Aligned",
     subtitle: "V_G ⊆ ∩ V_h",
-    color: "#fbbf24",
-    bgColor: "#2a1f0f",
+    color: "var(--d-yellow)",
+    bgColor: "var(--d-yellow-bg)",
     equation: "V_G ⊆ ∩_h V_h",
     desc: "Pattern can only thrive if humans thrive",
     examples: ["Healthy democracy", "Functional co-op", "Open-source community"],
@@ -41,8 +41,8 @@ const TYPES = [
     id: "mutualistic",
     title: "Mutualistic (God)",
     subtitle: "V_h^{with G} ⊃ V_h^{without G}",
-    color: "#4ade80",
-    bgColor: "#0f2a1a",
+    color: "var(--d-green)",
+    bgColor: "var(--d-green-bg)",
     equation: "V_h^with ⊃ V_h^without",
     desc: "Pattern expands human viability",
     examples: ["Contemplative tradition", "Scientific community", "Mutual aid network"],
@@ -119,11 +119,11 @@ export default function SuperorganismTaxonomy() {
             {/* Human manifold V_h */}
             <circle
               cx={cx + type.hOffset.x} cy={cy + type.hOffset.y}
-              r={60} fill="#60a5fa" opacity={0.1}
-              stroke="#60a5fa" strokeWidth={1.5}
+              r={60} fill="var(--d-blue)" opacity={0.1}
+              stroke="var(--d-blue)" strokeWidth={1.5}
             />
             <text x={cx + type.hOffset.x - 35} y={cy + type.hOffset.y - 45}
-              fill="#60a5fa" fontSize={10} fontFamily="Georgia, serif">
+              fill="var(--d-blue)" fontSize={10} fontFamily="Georgia, serif">
               V_h
             </text>
 
@@ -144,10 +144,10 @@ export default function SuperorganismTaxonomy() {
             {/* Conflict/alignment indicator */}
             {type.id === "parasitic" && (
               <g>
-                <text x={cx + 5} y={cy + 5} textAnchor="middle" fill="#fbbf24" fontSize={20} fontWeight={700}>
+                <text x={cx + 5} y={cy + 5} textAnchor="middle" fill="var(--d-yellow)" fontSize={20} fontWeight={700}>
                   ✕
                 </text>
-                <text x={cx + 5} y={cy + 20} textAnchor="middle" fill="#fbbf24" fontSize={8}
+                <text x={cx + 5} y={cy + 20} textAnchor="middle" fill="var(--d-yellow)" fontSize={8}
                   fontFamily="Georgia, serif">
                   conflict
                 </text>
