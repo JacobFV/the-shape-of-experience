@@ -110,6 +110,7 @@ export default function Part5() {
       <li>Cults requiring isolation from outside relationships</li>
       </ul>
       <p>These are, in the language we are using, demons: collective agentic patterns that feed on their substrate.</p>
+      <Diagram src="/diagrams/part-5-3.svg" />
       <Sidebar title="Worked Example: Attention Economy as Demon">
       <p>Consider the attention economy superorganism <M>{"G_{\\text{attn}}"}</M> constituted by:</p>
       <ul>

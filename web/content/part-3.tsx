@@ -302,6 +302,7 @@ export default function Part3() {
       </ol>
       <p>The key prediction is structural: all four conditions reduce <M>{"\\iota"}</M>, but through different mechanisms (task absorption, scale overwhelm, neurochemical precision reduction, trained voluntary control). If the same proxy battery detects <M>{"\\iota"}</M> reduction across all four, the construct validity of <M>{"\\iota"}</M> as a unitary parameter is strongly supported.</p>
       </Experiment>
+      <Diagram src="/diagrams/part-3-5.svg" />
       <p><strong>Computational Grounding of the Participatory Default.</strong> Experiment 8 in the synthetic CA program (Part VII) provides the first computational evidence that the participatory default is universal and selectable. In every one of 20 evolutionary snapshots — across three seeds spanning 30 cycles of selection — Lenia patterns modeled environmental resources with significantly more mutual information than they modeled other patterns (animism score &gt; 1.0 universally). The inhibition coefficient estimate ι ≈ 0.30 emerged as the evolutionary steady state: not maximal participation (ι = 0) and not pure mechanism (ι = 1), but a stable intermediate that balances prediction efficiency against engagement responsiveness. Crucially, these CA patterns have no cultural transmission, no linguistic scaffolding, no evolutionary history with human concepts — the participatory bias emerges from viability constraints alone. This suggests that ι ≈ 0.30 is not a human quirk but a geometric attractor: the perceptual configuration that survives selection in any resource-navigating system. The implication for the ι modulation experiments above: we are not proposing to induce an unusual state. We are proposing to temporarily restore the default that mechanistic cognition has learned to suppress.</p>
       <OpenQuestion title="Open Question">
       <p>The meaning cost of inhibition: at low <M>{"\\iota"}</M>, meaning is cheap—the world arrives already meaningful, already storied, already mattering. At high <M>{"\\iota"}</M>, meaning is expensive—it must be explicitly constructed, narrativized, therapized into existence. Does the cost scale exponentially with <M>{"\\iota"}</M>, as the source conversation suggested? If <M>{"M(\\iota) = M_0 \\cdot e^{\\alpha\\iota}"}</M>, this would explain why the modern epidemic of meaninglessness is not a philosophical problem solvable by better arguments but a structural problem: the population has been trained to a perceptual configuration where meaning is expensive to generate, and many people cannot afford the cost. But the exponential claim is empirical, not definitional, and needs measurement—perhaps via meaning-satisfaction scales correlated with <M>{"\\iota"}</M> proxy measures across populations.</p>
@@ -325,6 +326,7 @@ export default function Part3() {
       </ul>
       <p>What follows formalizes these insights as affect-space policies with measurable targets.</p>
       </Historical>
+      <Diagram src="/diagrams/part-3-6.svg" />
       <p><strong>Philosophical Affect Policy.</strong> A <em>philosophical affect policy</em> is a function <M>{"\\phi: \\mathcal{A} \\to \\R"}</M> specifying the desirability of affect states, plus a strategy for achieving high-<M>{"\\phi"}</M> states.</p>
       <p><strong>Example</strong> (Stoicism). <strong>Historical context</strong>: Hellenistic period, cosmopolitan empires. Given exposure to diverse cultures and the instability of fortune, a philosophy emphasizing internal control was inevitable.</p>
       <p><strong>Affect policy</strong>:</p>
@@ -442,6 +444,7 @@ export default function Part3() {
       <li><strong>Signal–action alignment without structure</strong>: The VLM translation is picking up behavioral cues (what the agent <em>does</em>) rather than structural cues (what the agent <em>is</em>). The translation is contaminated by action observation.</li>
       <li><strong>All pairwise alignments present but weak</strong>: The affect dimensions are real but noisy. Increase <M>{"N"}</M>, improve probes, refine translation protocol.</li>
       </ul>
+      <Diagram src="/diagrams/part-3-4.svg" />
       </Section>
       <Section title="Preliminary Results: Structure–Representation Alignment" level={2}>
       <p>Before the full three-stream test, we can run a simpler version: does the affect structure extracted from agent internals have geometric coherence with the agent’s own representation space? This tests the foundation—whether the affect dimensions capture organized structure—without requiring the VLM translation pipeline.</p>

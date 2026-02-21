@@ -92,6 +92,7 @@ export default function Part4() {
       <p>There seems to be an ordering principle: broader manifolds (those requiring participant flourishing) can safely contain narrower manifolds (those requiring only specific exchange), but not vice versa:</p>
       <Eq>{"\\viable_{\\text{care}} \\supseteq \\viable_{\\text{transaction}} \\quad \\text{is stable}"}</Eq>
       <Eq>{"\\viable_{\\text{transaction}} \\supseteq \\viable_{\\text{care}} \\quad \\text{is unstable (parasitic)}"}</Eq>
+      <Diagram src="/diagrams/part-4-4.svg" />
       <p>The logic: if the containing manifold requires participant flourishing, then it will constrain the contained manifold to be non-harmful. If the containing manifold only requires exchange, it has no such constraint and will sacrifice the contained manifold when convenient. But this is a deduction from the framework, not an observed law. It needs testing.</p>
       <p>Consider two cases:</p>
       <p><strong>Business between friends</strong> should be stable: the friendship manifold constrains the business, ensuring that the transaction never undermines mutual flourishing. If the deal would hurt the friend, the friendship-gradient overrides.</p>

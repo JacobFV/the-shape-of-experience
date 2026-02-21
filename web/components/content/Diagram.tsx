@@ -39,6 +39,19 @@ import ContaminationFlow from '../diagrams/ContaminationFlow';
 import IotaFeedback from '../diagrams/IotaFeedback';
 import ResearchRoadmap from '../diagrams/ResearchRoadmap';
 import WhatContinues from '../diagrams/WhatContinues';
+import ReactivityUnderstanding from '../diagrams/ReactivityUnderstanding';
+import DecomposabilityWall from '../diagrams/DecomposabilityWall';
+import PredictionPathway from '../diagrams/PredictionPathway';
+import SensoryMotorWall from '../diagrams/SensoryMotorWall';
+import SomaticAnticipatory from '../diagrams/SomaticAnticipatory';
+import AffectLandscape from '../diagrams/AffectLandscape';
+import OrderingPrinciple from '../diagrams/OrderingPrinciple';
+import ParasiticMutualistic from '../diagrams/ParasiticMutualistic';
+import ValenceTopology from '../diagrams/ValenceTopology';
+import TripleAlignment from '../diagrams/TripleAlignment';
+import MeaningCost from '../diagrams/MeaningCost';
+import AffectPolicies from '../diagrams/AffectPolicies';
+import AttentionOrdering from '../diagrams/AttentionOrdering';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -80,6 +93,19 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/part-5-2.svg': IotaFeedback,
   '/diagrams/part-7-0.svg': ResearchRoadmap,
   '/diagrams/epilogue-2.svg': WhatContinues,
+  '/diagrams/part-1-6.svg': ReactivityUnderstanding,
+  '/diagrams/part-1-7.svg': DecomposabilityWall,
+  '/diagrams/part-1-8.svg': AttentionOrdering,
+  '/diagrams/part-2-5.svg': SomaticAnticipatory,
+  '/diagrams/part-2-6.svg': AffectLandscape,
+  '/diagrams/part-2-7.svg': ValenceTopology,
+  '/diagrams/part-3-4.svg': TripleAlignment,
+  '/diagrams/part-3-5.svg': MeaningCost,
+  '/diagrams/part-3-6.svg': AffectPolicies,
+  '/diagrams/part-4-4.svg': OrderingPrinciple,
+  '/diagrams/part-5-3.svg': ParasiticMutualistic,
+  '/diagrams/part-7-1.svg': PredictionPathway,
+  '/diagrams/part-7-2.svg': SensoryMotorWall,
 };
 
 interface DiagramProps {
