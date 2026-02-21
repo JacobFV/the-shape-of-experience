@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
+import { chapters as canonicalChapters } from '../lib/chapter-data';
 
 interface Section {
   level: number;
@@ -17,15 +18,11 @@ interface ChapterToc {
   sections: Section[];
 }
 
-const chapters: ChapterToc[] = [
-  { slug: 'introduction', shortTitle: 'Introduction', sections: [] },
-  { slug: 'part-1', shortTitle: 'Part I: Foundations', sections: [] },
-  { slug: 'part-2', shortTitle: 'Part II: Identity Thesis', sections: [] },
-  { slug: 'part-3', shortTitle: 'Part III: Affect Signatures', sections: [] },
-  { slug: 'part-4', shortTitle: 'Part IV: Interventions', sections: [] },
-  { slug: 'part-5', shortTitle: 'Part V: Transcendence', sections: [] },
-  { slug: 'epilogue', shortTitle: 'Epilogue', sections: [] },
-];
+const chapters: ChapterToc[] = canonicalChapters.map(ch => ({
+  slug: ch.slug,
+  shortTitle: ch.shortTitle,
+  sections: [],
+}));
 
 export default function TableOfContents({
   onNavigate,
