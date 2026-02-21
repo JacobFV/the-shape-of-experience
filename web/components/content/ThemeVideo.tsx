@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface ThemeVideoProps {
   baseName: string;
@@ -9,10 +9,12 @@ interface ThemeVideoProps {
 /**
  * Video component that swaps between dark/light video files
  * based on the current data-theme attribute on <html>.
+ * Preserves playback position across theme switches.
  */
 export function ThemeVideo({ baseName }: ThemeVideoProps) {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const videoRef = useRef<HTMLVideoElement>(null);
+  const savedTime = useRef(0);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -26,6 +28,10 @@ export function ThemeVideo({ baseName }: ThemeVideoProps) {
         if (mutation.attributeName === 'data-theme') {
           const val = root.getAttribute('data-theme');
           if (val === 'light' || val === 'dark') {
+            // Save current playback position before theme switch
+            if (videoRef.current) {
+              savedTime.current = videoRef.current.currentTime;
+            }
             setTheme(val);
           }
         }
@@ -36,14 +42,13 @@ export function ThemeVideo({ baseName }: ThemeVideoProps) {
     return () => observer.disconnect();
   }, []);
 
-  // When theme changes, restart video from current position
-  useEffect(() => {
-    if (videoRef.current) {
-      const currentTime = videoRef.current.currentTime;
-      videoRef.current.load();
-      videoRef.current.currentTime = currentTime;
+  // Restore playback position after new source loads
+  const handleLoadedData = useCallback(() => {
+    if (videoRef.current && savedTime.current > 0) {
+      videoRef.current.currentTime = savedTime.current;
+      savedTime.current = 0;
     }
-  }, [theme]);
+  }, []);
 
   return (
     <video
@@ -53,6 +58,7 @@ export function ThemeVideo({ baseName }: ThemeVideoProps) {
       loop
       muted
       playsInline
+      onLoadedData={handleLoadedData}
       style={{ width: '100%', borderRadius: 8 }}
     />
   );
