@@ -42,8 +42,9 @@ texput.log
 book/generated/
 book/book.pdf
 
-# Experiment snapshots (stored externally — too large for git)
+# Experiment snapshots and trajectory data (stored externally — too large for git)
 *.npz
+empirical/experiments/study_ca_affect/results/v36_trajectory/cycle_*.json
 
 # Environment variables
 .env
