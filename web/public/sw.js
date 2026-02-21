@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'soe-v1';
+const CACHE_VERSION = 'soe-v2';
 const STATIC_CACHE = 'soe-static-v1';
 const CDN_CACHE = 'soe-cdn-v1';
 
@@ -10,14 +10,25 @@ const PRECACHE_URLS = [
   '/part-3',
   '/part-4',
   '/part-5',
+  '/part-6',
+  '/part-7',
   '/epilogue',
+  '/appendix-experiments',
   '/icon.svg',
   '/manifest.json',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_VERSION).then((cache) => cache.addAll(PRECACHE_URLS))
+    caches.open(CACHE_VERSION).then((cache) =>
+      Promise.all(
+        PRECACHE_URLS.map((url) =>
+          cache.add(url).catch(() => {
+            // Don't let one failed URL break the whole install
+          })
+        )
+      )
+    )
   );
   self.skipWaiting();
 });
