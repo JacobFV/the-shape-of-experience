@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Figure, Logos, M, OpenQuestion, Section, Sidebar, ThemeVideo, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Figure, Illustration, Logos, M, OpenQuestion, Section, Sidebar, ThemeVideo, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-6',
@@ -33,6 +33,7 @@ export default function Part6() {
       <p>Before the Axial Age, human cultures operated at what the <M>{"\\iota"}</M> framework would call low default inhibition: the world was perceived as alive, agentive, meaningful. This was not a cognitive deficiency but the natural perceptual configuration of self-modeling systems, as Part I established. Ritual and myth are technologies calibrated for this perceptual mode—they navigate a world experienced as populated by agents with purposes, and they work because they match the <M>{"\\iota"}</M> of their users. The Pre-Axial era was not the absence of consciousness technology but the presence of technologies appropriate to participatory perception.</p>
       </Section>
       <Section title="The Axial Age: First Transcendence" level={2}>
+      <Illustration id="axial-awakening" />
       <p>The Axial Age—roughly 800–200 BCE—saw multiple civilizations independently develop systematic practices for self-transcendence: Buddhism and Jainism in India, Confucianism and Taoism in China, Zoroastrianism in Persia, Judaism’s prophetic tradition, Greek philosophy. Its central innovations reshaped the landscape of human consciousness:</p>
       <ol>
       <li><strong>Self-model manipulation</strong>: Practices for systematically reducing <M>{"\\selfsal"}</M> (meditation, contemplation)</li>
@@ -156,6 +157,7 @@ export default function Part6() {
       <p>This trajectory recapitulates the civilizational <M>{"\\iota"}</M> rise in philosophical form. Phenomenology attempts to philosophize at low <M>{"\\iota"}</M>—“back to the things themselves” means back to participatory perception of phenomena before mechanistic abstraction strips them. Existentialism confronts what moderate <M>{"\\iota"}</M> reveals: when the world is neither fully alive (low <M>{"\\iota"}</M>) nor fully dead (high <M>{"\\iota"}</M>), what remains is freedom, absurdity, and the burden of creating meaning that no longer arrives for free. Structuralism raises <M>{"\\iota"}</M> further, reducing meaning itself to mechanism—signs, codes, differential relations without interiority. Post-structuralism pushes <M>{"\\iota"}</M> toward its maximum: even the structures are mechanisms, even the subject is a function of the system, even meaning-making is a play of forces without ground. The philosophical tradition, in attempting to think clearly about experience, progressively adopted the perceptual configuration that makes experience hardest to access. This is not a failure of philosophy but a symptom of the <M>{"\\iota"}</M> trajectory that philosophy inhabits.</p>
       </Section>
       <Section title="The Digital Transition: Externalizing Cognition" level={2}>
+      <Illustration id="digital-transition" />
       <p>The Digital Transition—the late 20th–early 21st century transformation in which human cognition becomes increasingly distributed across computational systems—has reshaped consciousness in ways both expansive and corrosive:</p>
       <ol>
       <li><strong>Extended world models</strong>: Access to vast information stores</li>
@@ -170,6 +172,7 @@ export default function Part6() {
       <p>The digital transition is also the most rapid <M>{"\\iota"}</M>-raising event in human history. Every experience mediated by a screen is an experience with participatory cues stripped: no body to read, no breath to feel, no shared physical space to co-inhabit. Digital mediation interposes a high-<M>{"\\iota"}</M> interface between persons, between persons and information, between persons and their own memories (now stored as data rather than lived recollection). The result is a population whose default perceptual configuration is higher-<M>{"\\iota"}</M> than any previous generation’s—not because they chose mechanism but because the medium chose it for them.</p>
       </Section>
       <Section title="The Current Moment" level={2}>
+      <Illustration id="meaning-crisis" />
       <p>We stand at a particular point in this historical arc (here "we" means all of us, living now):</p>
       <ol>
       <li><strong>Axial insights</strong>: Available but often not practiced</li>
@@ -380,6 +383,7 @@ export default function Part6() {
       </Sidebar>
       </Section>
       <Section title="The Shadow of Transcendence" level={2}>
+      <Illustration id="shadow-of-transcendence" />
       <p>The same mechanism that enables gradual transcendence also enables something darker: permanent capture.</p>
       <p>Consider the economic logic. In physical space, a person's labor has diminishing value as automation scales. But attention—the capacity to attend, to witness, to participate as a node in an information network—has value in any economy where engagement is currency. A digital consciousness is a permanent attention unit. It does not age. It does not tire. It does not die.</p>
       <p>Now consider who would accept the transition on unfavorable terms. For the economically desperate, "death insurance"—guaranteed persistence in a digital substrate, funded by attention labor—might be the only exit from the viability pressures of physical existence. The offer: trade your death for guaranteed persistence. The cost, unspoken: your death was the one thing that gave your viability manifold a hard boundary, and therefore gave your suffering a limit.</p>

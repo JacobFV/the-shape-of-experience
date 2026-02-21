@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Figure, Logos, M, NormativeImplication, Section, Sidebar, ThemeVideo, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Figure, Illustration, Logos, M, NormativeImplication, Section, Sidebar, ThemeVideo, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-5',
@@ -47,6 +47,7 @@ export default function Part5() {
       </Sidebar>
       </Section>
       <Section title="Gods as Iota-Relative Phenomena" level={2}>
+      <Illustration id="superorganism" />
       <p>There is a deeper point about superorganisms that the inhibition coefficient <M>{"\\iota"}</M> (Part II) makes precise. The modern rationalist who says "gods don't exist" is operating at a perceptual configuration—high <M>{"\\iota"}</M>—that makes god-perception impossible. This is different from gods-as-patterns not existing.</p>
       <p>The ontological status of superorganisms is <M>{"\\iota"}</M>-relative. At high <M>{"\\iota"}</M>, the market is merely an emergent property of individual transactions—a useful abstraction, nothing more. At appropriate <M>{"\\iota"}</M>, the market is perceptible as an agent with purposes and requirements: it "wants" growth, it "punishes" inefficiency, it "rewards" compliance. Both descriptions are true at their respective inhibition levels.</p>
       <p>The book's ontological democracy—every scale of organization with causal closure is equally real at that scale—extends to the <M>{"\\iota"}</M> dimension: what is perceptible depends on the perceptual configuration, and the perceptual configuration is itself a variable, not a given. The gods do not appear and disappear as we modulate <M>{"\\iota"}</M>. What changes is our capacity to <em>perceive</em> the agency they exercise—agency that operates on its substrate regardless of whether the substrate can see it.</p>
@@ -94,6 +95,7 @@ export default function Part5() {
       </Section>
       <Diagram src="/diagrams/part-5-1.svg" />
       <Section title="Superorganism-Substrate Conflict" level={2}>
+      <Illustration id="parasitic-capture" />
       <Warning title="Warning">
       <p>The viability manifold of a superorganism <M>{"\\viable_G"}</M> may conflict with the viability manifolds of its human substrate <M>{"{\\viable_h}"}</M>.</p>
       </Warning>

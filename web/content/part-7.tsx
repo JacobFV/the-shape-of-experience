@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Diagram, Eq, Figure, Logos, M, Section, Sidebar, ThemeVideo } from '@/components/content';
+import { Diagram, Eq, Figure, Illustration, Logos, M, Section, Sidebar, ThemeVideo } from '@/components/content';
 import AffectTrajectory3D from '@/components/visualizations/AffectTrajectory3DWrapper';
 
 export const metadata = {
@@ -29,6 +29,7 @@ export default function Part7() {
       </Section>
 
       <Section title="Dynamics Are Expensive" level={2}>
+      <Illustration id="integration-is-biography" />
       <p>If geometry is cheap, what is expensive? The answer came from the Lenia evolution series (V11–V12): <em>dynamics</em>. Specifically, the capacity to increase integration under threat — to become <em>more</em> unified when the world becomes more hostile.</p>
       <p>Naive patterns decompose under stress (<M>{"\\Delta\\intinfo = -6.2\\%"}</M>). So do LLMs. So do randomly initialized agents. Geometry is present everywhere; the biological signature — integration rising under threat — is rare. The Lenia series tracked what produces it:</p>
       <ol>
@@ -98,6 +99,7 @@ export default function Part7() {
       </Section>
 
       <Section title="The Emergence Ladder" level={1}>
+      <Illustration id="emergence-ladder" />
       <p>The experiments collectively reveal not a binary (geometry vs. dynamics) but a gradient — an emergence ladder with distinct rungs, each requiring more from the substrate than the last. The ladder tells us precisely which psychological phenomena are computationally cheap, which are expensive, and which require something our substrates do not yet have.</p>
 
       <table>

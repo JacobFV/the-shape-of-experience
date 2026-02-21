@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Experiment, Figure, Historical, Logos, M, OpenQuestion, Section, Sidebar, Software, ThemeVideo, Warning } from '@/components/content';
+import { Connection, Diagram, Eq, Experiment, Figure, Historical, Illustration, Logos, M, OpenQuestion, Section, Sidebar, Software, ThemeVideo, Warning } from '@/components/content';
 
 export const metadata = {
   slug: 'part-3',
@@ -20,6 +20,7 @@ export default function Part3() {
       <Diagram src="/diagrams/part-3-0.svg" />
       </Section>
       <Section title="The Expression of Inevitability: Human Responses to Inescapable Selfhood" level={1}>
+      <Illustration id="existential-burden" />
       <Connection title="Existing Theory">
       <p>This analysis of cultural responses to selfhood connects to several established research programs:</p>
       <ul>
@@ -48,6 +49,7 @@ export default function Part3() {
       </Section>
       </Section>
       <Section title="Aesthetics: The Modulation of Affect Through Form" level={1}>
+      <Illustration id="affect-technology" />
       <p>An <em>aesthetic experience</em> is an affect state induced by engagement with form—visual, auditory, linguistic, conceptual—characterized by:</p>
       <Eq>{"\\mathbf{a}_{\\text{aesthetic}} = (\\text{variable } \\valence, \\text{moderate-high } \\arousal, \\text{high } \\intinfo, \\text{high } \\effrank, \\text{low } \\mathcal{SM})"}</Eq>
       <p>The signature feature is integration without self-focus: the system is highly coupled but attending to structure outside itself.</p>

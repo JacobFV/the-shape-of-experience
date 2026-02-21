@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Align, Connection, Diagram, Eq, Experiment, Figure, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, ThemeVideo, TodoEmpirical } from '@/components/content';
+import { Align, Connection, Diagram, Eq, Experiment, Figure, Illustration, Logos, M, OpenQuestion, Phenomenal, Proof, Section, Sidebar, ThemeVideo, TodoEmpirical } from '@/components/content';
 
 export const metadata = {
   slug: 'part-2',
@@ -79,6 +79,7 @@ export default function Part2() {
       </Section>
       </Section>
       <Section title="The Identity Thesis" level={1}>
+      <Illustration id="identity-thesis" />
       <Connection title="Existing Theory">
       <p>The identity thesis is a formalization of <strong>Integrated Information Theory (IIT)</strong> developed by Giulio Tononi and collaborators (2004–present):</p>
       <ul>
@@ -115,6 +116,7 @@ export default function Part2() {
       </Proof>
       </Section>
       <Section title="The Structure of Experience" level={2}>
+      <Illustration id="broad-narrow-qualia" />
       <p>If experience is cause-effect structure, then the <em>kind</em> of experience is determined by the <em>shape</em> of that structure. Different phenomenal properties correspond to different structural features.</p>
       <p>Two levels of structural claim are at work here, and they should be distinguished. The first: <em>different experiences have different structures</em>. Specific phenomenal features—the redness of red, the sharpness of fear—correspond to specific structural motifs in cause-effect space. These extractable aspects of experience (the <em>narrow qualia</em> introduced in Part I's gradient of distinction) can be compared across moments and across systems by measuring structural similarity. This claim is relatively modest and empirically tractable. The second is stronger: <em>the unified moment of experience IS the full cause-effect structure</em>. Not just that the parts have geometry, but that the whole IS geometry—the <em>broad qualia</em>, everything-present-at-once, is identical to the intrinsic cause-effect structure in its entirety. The geometric affect framework (next section) addresses the first claim: it characterizes narrow qualia as structural motifs. The identity thesis above makes the second: broad qualia is cause-effect structure. They are logically independent—you can accept that affects have geometric signatures without accepting that experience is nothing over and above structure. But if the identity thesis holds, then integration (<M>{"\\intinfo"}</M>) becomes the bridge: it measures how much the broad qualia exceeds the sum of narrow qualia, the quantity of unified experience that survives any attempt to decompose it into characterizable parts.</p>
       <p>IIT proposes that the essential properties of any experience are:</p>

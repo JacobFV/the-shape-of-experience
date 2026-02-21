@@ -1,7 +1,7 @@
 // WORK IN PROGRESS: This is active research, not a finished publication.
 // Content is incomplete, speculative, and subject to change.
 
-import { Connection, Diagram, Eq, Experiment, Logos, M, MarginNote, OpenQuestion, Section, Sidebar, Warning, WideBreath } from '@/components/content';
+import { Connection, Diagram, Eq, Experiment, Illustration, Logos, M, MarginNote, OpenQuestion, Section, Sidebar, Warning, WideBreath } from '@/components/content';
 
 export const metadata = {
   slug: 'part-4',
@@ -23,6 +23,7 @@ export default function Part4() {
       <p>If so, then different relationship types—friendship, transaction, therapy, mentorship, romance, employment—would not be merely social conventions but distinct viability structures, each with its own manifold, its own gradients, its own persistence conditions. When these structures are respected, social life would have a characteristic aesthetic clarity. When they are violated—when the manifolds are mixed, when one relationship type masquerades as another—the result would be the distinctive phenomenological disturbance described above: what humans detect with precision and describe with moral language as <em>being used</em>, <em>corruption</em>, <em>betrayal of trust</em>. This is what we want to test.</p>
       </WideBreath>
       <Section title="Relationship Types as Viability Manifolds" level={2}>
+      <Illustration id="relationship-manifolds" />
       <p>A <em>relationship type</em> <M>{"R"}</M> defines a viability manifold <M>{"\\viable_R"}</M> for the dyad (or group) with characteristic:</p>
       <ol>
       <li><strong>Optimization target</strong>: What the relationship is <em>for</em>—what gradient it follows</li>
@@ -43,6 +44,7 @@ export default function Part4() {
       <Diagram src="/diagrams/part-4-2.svg" />
       </Section>
       <Section title="Contamination" level={2}>
+      <Illustration id="incentive-contamination" />
       <Diagram src="/diagrams/part-4-1.svg" />
       <p><em>Incentive contamination</em> occurs when two relationship-type manifolds <M>{"\\viable_{R_1}"}</M> and <M>{"\\viable_{R_2}"}</M> are instantiated in the same dyadic relationship and their gradients conflict:</p>
       <Eq>{"\\nabla \\viable_{R_1} \\cdot \\nabla \\viable_{R_2} < 0"}</Eq>
