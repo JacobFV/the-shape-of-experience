@@ -1073,12 +1073,6 @@
       },
       {
         "level": 2,
-        "id": "engineering-optical-existence",
-        "text": "Engineering Optical Existence",
-        "parentSection": "transcendence-the-opportunity"
-      },
-      {
-        "level": 2,
         "id": "the-shadow-of-transcendence",
         "text": "The Shadow of Transcendence",
         "parentSection": "transcendence-the-opportunity"
@@ -1629,6 +1623,16 @@
         "level": 1,
         "id": "v35-language-emergence",
         "text": "V35: Language Emergence"
+      },
+      {
+        "level": 1,
+        "id": "integration-landscape-v22-v35",
+        "text": "Integration Landscape: V22–V35"
+      },
+      {
+        "level": 1,
+        "id": "vlm-convergence-experiment",
+        "text": "VLM Convergence Experiment"
       },
       {
         "level": 1,

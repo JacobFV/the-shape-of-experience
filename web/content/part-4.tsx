@@ -40,6 +40,7 @@ export default function Part4() {
       <li><strong>Parenthood</strong>: Optimization target is the child's flourishing, <em>asymmetrically</em>. Information regime is radically unequal—the parent holds the child's manifold before the child can hold anything. Reciprocity is structurally absent in early stages (the infant does not reciprocate; the parent gives without return). Exit is, in the normative case, impossible: the parental manifold is designed to be permanent.</li>
       </ul>
       <p>Each of these defines a distinct region of social state space with its own persistence conditions.</p>
+      <Diagram src="/diagrams/part-4-2.svg" />
       </Section>
       <Section title="Contamination" level={2}>
       <Diagram src="/diagrams/part-4-1.svg" />
@@ -52,6 +53,7 @@ export default function Part4() {
       <li>Under <M>{"\\viable_T"}</M>: You visit your sick friend because they will owe you later (exchange accounting).</li>
       </ul>
       <p>The <em>same action</em> has opposite gradient meanings under the two manifolds. The friend can detect this—not cognitively, but phenomenologically. The visit <em>feels wrong</em>. The aesthetic response is precise: something that should be free is being priced.</p>
+      <Diagram src="/diagrams/part-4-3.svg" />
       <p>Notice the specificity of the discomfort. It is not that the friend dislikes being visited. The visit is welcome. What is unwelcome is the <em>shadow manifold</em>—the faint presence of a transactional gradient beneath the care gradient. The detection system responds to the shadow, not the surface. This is why the transactional friend is more disturbing than the honest businessman: the businessman is transparently on the transaction manifold; the transactional friend is on two manifolds at once, and only one of them is visible. The disturbance lives in the gap between what is presented and what is detected.</p>
       <p>If the manifold framework is correct, humans should possess a pre-cognitive detection system for incentive contamination. The predicted phenomenology:</p>
       <ul>

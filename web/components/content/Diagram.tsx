@@ -30,6 +30,15 @@ import PracticeMap from '../diagrams/PracticeMap';
 import BasinGeometry from '../diagrams/BasinGeometry';
 import SurfingSubmerging from '../diagrams/SurfingSubmerging';
 import AttentionEconomy from '../diagrams/AttentionEconomy';
+import InevitabilityLadder from '../diagrams/InevitabilityLadder';
+import NarrowBroadQualia from '../diagrams/NarrowBroadQualia';
+import GeometricAffectSpace from '../diagrams/GeometricAffectSpace';
+import BurdenResponses from '../diagrams/BurdenResponses';
+import RelationshipManifolds from '../diagrams/RelationshipManifolds';
+import ContaminationFlow from '../diagrams/ContaminationFlow';
+import IotaFeedback from '../diagrams/IotaFeedback';
+import ResearchRoadmap from '../diagrams/ResearchRoadmap';
+import WhatContinues from '../diagrams/WhatContinues';
 
 /** Maps SVG paths to native React diagram components */
 const NATIVE: Record<string, ComponentType> = {
@@ -62,6 +71,15 @@ const NATIVE: Record<string, ComponentType> = {
   '/diagrams/part-2-2.svg': BasinGeometry,
   '/diagrams/part-6-1.svg': SurfingSubmerging,
   '/diagrams/epilogue-1.svg': AttentionEconomy,
+  '/diagrams/intro-0.svg': InevitabilityLadder,
+  '/diagrams/part-2-3.svg': NarrowBroadQualia,
+  '/diagrams/part-2-4.svg': GeometricAffectSpace,
+  '/diagrams/part-3-3.svg': BurdenResponses,
+  '/diagrams/part-4-2.svg': RelationshipManifolds,
+  '/diagrams/part-4-3.svg': ContaminationFlow,
+  '/diagrams/part-5-2.svg': IotaFeedback,
+  '/diagrams/part-7-0.svg': ResearchRoadmap,
+  '/diagrams/epilogue-2.svg': WhatContinues,
 };
 
 interface DiagramProps {
