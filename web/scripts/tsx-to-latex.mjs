@@ -209,7 +209,8 @@ function convertToLatex(slug) {
   latex = latex.replace(/<Diagram\s+src="([^"]*)"\s*\/>/g, (_, src) => {
     const tikzFile = TIKZ_MAP[src];
     if (!tikzFile) {
-      throw new Error(`No TikZ source mapping for diagram: ${src}`);
+      console.warn(`Warning: No TikZ source mapping for diagram: ${src} (skipping)`);
+      return `% TODO: missing TikZ mapping for ${src}`;
     }
     return `\\input{${tikzFile}}`;
   });
