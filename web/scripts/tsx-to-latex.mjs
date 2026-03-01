@@ -305,6 +305,23 @@ function convertToLatex(slug) {
   latex = latex.replaceAll('\u2013', '--');   // en dash
   latex = latex.replaceAll('\u2026', '\\ldots{}'); // ellipsis
   latex = latex.replaceAll('\u00D7', '$\\times$'); // multiplication sign
+  latex = latex.replaceAll('\u2248', '$\\approx$'); // ≈
+  latex = latex.replaceAll('\u2260', '$\\neq$');    // ≠
+  latex = latex.replaceAll('\u2264', '$\\leq$');    // ≤
+  latex = latex.replaceAll('\u2265', '$\\geq$');    // ≥
+  latex = latex.replaceAll('\u2192', '$\\to$');     // →
+  latex = latex.replaceAll('\u2190', '$\\leftarrow$'); // ←
+  latex = latex.replaceAll('\u221E', '$\\infty$');  // ∞
+  latex = latex.replaceAll('\u00B1', '$\\pm$');     // ±
+  latex = latex.replaceAll('\u2228', '$\\lor$');    // ∨
+  latex = latex.replaceAll('\u2227', '$\\land$');   // ∧
+  latex = latex.replaceAll('\u2200', '$\\forall$'); // ∀
+  latex = latex.replaceAll('\u2203', '$\\exists$'); // ∃
+  latex = latex.replaceAll('\u2208', '$\\in$');     // ∈
+  latex = latex.replaceAll('\u2282', '$\\subset$'); // ⊂
+  latex = latex.replaceAll('\u2283', '$\\supset$'); // ⊃
+  latex = latex.replaceAll('\u2286', '$\\subseteq$'); // ⊆
+  latex = latex.replaceAll('\u2287', '$\\supseteq$'); // ⊇
 
   // Strip TSX indentation artifacts
   latex = latex.replace(/^[ \t]+/gm, '');
