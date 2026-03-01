@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { useMobileUI } from '../lib/MobileUIContext';
 
 export interface AudioSection {
@@ -14,7 +13,6 @@ interface AudioPlayerProps {
   sections: AudioSection[];
   chapterTitle: string;
   slug: string;
-  nextChapterHref?: string;
 }
 
 function formatTime(seconds: number): string {
@@ -24,8 +22,7 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterHref }: AudioPlayerProps) {
-  const router = useRouter();
+export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playOnLoadRef = useRef(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,15 +57,6 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
     }
   }, [everPlayed, setAudioStarted]);
 
-  // Check for auto-continue flag from previous chapter (must run before currentIndex effect)
-  useEffect(() => {
-    try {
-      if (localStorage.getItem('audio-continue')) {
-        localStorage.removeItem('audio-continue');
-        playOnLoadRef.current = true;
-      }
-    } catch { /* ignore */ }
-  }, []);
 
   // Restore saved position on mount (skip if auto-continuing from previous chapter)
   useEffect(() => {
@@ -195,17 +183,11 @@ export default function AudioPlayer({ sections, chapterTitle, slug, nextChapterH
       // Auto-advance to next section within chapter
       selectSection(currentIndex + 1);
       // Keep playing flag true so next section auto-plays
-    } else if (nextChapterHref) {
-      // Last section finished — advance to next chapter
-      try {
-        localStorage.setItem('audio-continue', 'true');
-      } catch { /* ignore */ }
-      router.push(nextChapterHref);
     } else {
-      // Last section of last chapter
+      // Last section of chapter — stop playing
       setIsPlaying(false);
     }
-  }, [currentIndex, sections.length, selectSection, nextChapterHref, router]);
+  }, [currentIndex, sections.length, selectSection]);
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
