@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { useMobileUI } from '../lib/MobileUIContext';
 import { useProfileImage } from '../lib/hooks/useProfileImage';
+import { useCopyContent } from '../lib/useCopyContent';
 import SearchOverlay from './SearchOverlay';
 
 type ThemeMode = 'light' | 'dark' | 'system';
@@ -48,6 +49,7 @@ export default function MobileHeader() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const profileImage = useProfileImage();
+  const { copyPage, copyPart, pageTitle, partTitle, isReadingPage, toast: copyToast } = useCopyContent();
 
   useEffect(() => {
     setTheme(getTheme());
@@ -146,6 +148,30 @@ export default function MobileHeader() {
 
           {menuOpen && (
             <div className="mobile-header-menu">
+              {isReadingPage && (
+                <>
+                  <button className="mobile-menu-item" onClick={() => { copyPage(); setMenuOpen(false); }}>
+                    <span className="mobile-menu-icon">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                      </svg>
+                    </span>
+                    <span>Copy: {pageTitle}</span>
+                  </button>
+                  <button className="mobile-menu-item" onClick={() => { copyPart(); setMenuOpen(false); }}>
+                    <span className="mobile-menu-icon" style={{ position: 'relative' }}>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                      </svg>
+                      <span style={{ position: 'absolute', bottom: -2, right: -4, fontSize: '0.45rem', fontWeight: 700, fontVariant: 'all-small-caps', lineHeight: 1, color: 'var(--text-secondary)' }}>ALL</span>
+                    </span>
+                    <span>{partTitle}</span>
+                  </button>
+                  <div className="mobile-menu-divider" />
+                </>
+              )}
               <div className="mobile-menu-item mobile-menu-theme-row">
                 <span>Theme</span>
                 <div className="mobile-theme-toggle" role="radiogroup" aria-label="Theme">
@@ -248,6 +274,7 @@ export default function MobileHeader() {
         </div>
       </div>
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {copyToast && <div className="toast">{copyToast}</div>}
     </header>
   );
 }

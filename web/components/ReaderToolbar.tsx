@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import UserButton from './UserButton';
 import SearchOverlay from './SearchOverlay';
+import { useCopyContent } from '../lib/useCopyContent';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -87,12 +88,13 @@ export default function ReaderToolbar() {
   const [fontFamily, setFontFamily] = useState<FontFamily>('georgia');
   const [accent, setAccent] = useState<AccentPreset>('blue');
   const [showFontPicker, setShowFontPicker] = useState(false);
+  const [showCopyMenu, setShowCopyMenu] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const fontPickerRef = useRef<HTMLDivElement>(null);
+  const copyMenuRef = useRef<HTMLDivElement>(null);
+  const { copyPage, copyPart, partTitle, isReadingPage, toast: copyToast } = useCopyContent();
 
   const pathBase = pathname.replace(/^\//, '').split('/')[0];
-  const READING_SLUGS = ['introduction', 'part-1', 'part-2', 'part-3', 'part-4', 'part-5', 'epilogue'];
-  const isReadingPage = READING_SLUGS.includes(pathBase);
   const slug = pathBase;
 
   useEffect(() => {
@@ -125,10 +127,13 @@ export default function ReaderToolbar() {
       if (fontPickerRef.current && !fontPickerRef.current.contains(e.target as Node)) {
         setShowFontPicker(false);
       }
+      if (copyMenuRef.current && !copyMenuRef.current.contains(e.target as Node)) {
+        setShowCopyMenu(false);
+      }
     }
-    if (showFontPicker) document.addEventListener('mousedown', onClick);
+    if (showFontPicker || showCopyMenu) document.addEventListener('mousedown', onClick);
     return () => document.removeEventListener('mousedown', onClick);
-  }, [showFontPicker]);
+  }, [showFontPicker, showCopyMenu]);
 
   const selectTheme = useCallback((mode: ThemeMode) => {
     setTheme(mode);
@@ -179,6 +184,50 @@ export default function ReaderToolbar() {
           <path d="M21 21l-4.35-4.35" />
         </svg>
       </button>
+
+      {/* Copy content */}
+      {isReadingPage && (
+        <div className="copy-picker" ref={copyMenuRef}>
+          <button
+            className="reader-toolbar-btn"
+            onClick={copyPage}
+            title="Copy page"
+            aria-label="Copy page content"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+            </svg>
+          </button>
+          <button
+            className="reader-toolbar-btn copy-dropdown-arrow"
+            onClick={() => setShowCopyMenu(!showCopyMenu)}
+            title="Copy options"
+            aria-label="Copy options"
+          >
+            <svg width="8" height="8" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M2 4l4 4 4-4" />
+            </svg>
+          </button>
+          {showCopyMenu && (
+            <div className="copy-picker-menu">
+              <button
+                className="copy-picker-option"
+                onClick={() => { copyPart(); setShowCopyMenu(false); }}
+              >
+                <span className="copy-all-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                  </svg>
+                  <span className="copy-all-badge">ALL</span>
+                </span>
+                <span>{partTitle}</span>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Theme toggle - single cycling button */}
       <button
@@ -299,6 +348,7 @@ export default function ReaderToolbar() {
       <UserButton />
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {copyToast && <div className="toast">{copyToast}</div>}
     </div>
   );
 }
