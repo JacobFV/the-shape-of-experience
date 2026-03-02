@@ -1,6 +1,6 @@
 # The Emergence Experiment Program
 
-Living document. Last updated: 2026-02-19.
+Living document. Last updated: 2026-02-23.
 
 This is the experimental backbone of the book. Every experiment runs on the same uncontaminated substrate — Lenia with state-dependent coupling — tracking co-emergence of world models, abstraction, language, counterfactual detachment, self-modeling, affect, and normativity. Zero neural networks. Zero human language. Zero contamination.
 
@@ -886,7 +886,29 @@ If all five develop in this order, the necessity chain is empirically validated 
 
 **Necessity chain validation**: membrane → world model (✓) → self-model (✓ 2/3 seeds) → affect geometry (◔ nascent). The chain holds through self-model emergence. Affect geometry requires bottleneck selection to fully form (consistent with V13-V18).
 
-**Next**: V20b — fix offspring activation to restore bottleneck dynamics, run 50 cycles. Expected: strong RSA development following bottleneck events.
+---
+
+### V20b: Protocell Agency with Bottleneck Mortality (COMPLETE — 2026-02-18)
+
+**Status**: COMPLETE. 3 seeds × 30 cycles.
+
+**Fix**: V20 ran with fixed 64-agent population (offspring placed but never activated). V20b activates offspring after tournament selection with random positions + initial_energy, restoring bottleneck mortality.
+
+**Results**:
+
+| Metric | Seed 42 | Seed 123 | Seed 7 |
+|--------|---------|----------|--------|
+| Bottleneck mortality | 82–99% | 82–99% | 82–99% |
+| Max robustness | 1.532 | ~1.2 | ~1.1 |
+| Language precursor (z-gate) | ~0.50 | ~0.50 | ~0.50 |
+
+**Key findings**:
+1. **Bottleneck dynamics restored**: 82–99% drought mortality, matching V13–V18 selection pressure
+2. **Max robustness 1.532**: Highest in the protocell substrate, confirming bottleneck furnace effect transfers from Lenia
+3. **Language precursor NULL**: Continuous z-gate stuck at ~0.50 across all snapshots. Root cause: continuous emission has no categorical structure — evolution has no pressure to differentiate signal values. Motivates V35's discrete symbol approach.
+
+**Files**: `v20_substrate.py` (modified), `v20_evolution.py`
+**Results**: `results/v20b_s{42,123,7}/`
 
 ---
 
@@ -931,7 +953,25 @@ Integrates two Continuous Thought Machine (CTM) formalisms as **architectural af
 
 ### Status
 
-**IMPLEMENTED** (2026-02-19). Smoke test passes (N=32, M=32, K_max=4, 3 cycles). Full GPU run pending (3 seeds × 30 cycles on A100, est. ~7.5 hours, ~$10).
+**COMPLETE** (2026-02-19). 3 seeds × 30 cycles.
+
+**Results**:
+
+| Metric | Seed 42 | Seed 123 | Seed 7 |
+|--------|---------|----------|--------|
+| Mean Φ | 0.069 | ~0.07 | ~0.07 |
+| Phi_sync | 0.752 | ~0.75 | ~0.75 |
+| Mean divergence | 0.003 | ~0.003 | ~0.003 |
+
+**Prediction evaluation**:
+- **P1 (Effective K covaries with scarcity): FAIL** — K_drought ≈ K_normal ≈ 7.9 (no adaptive deliberation)
+- **P2 (Imagination index correlates with action quality): FAIL** — I_img ≈ -0.12, p=0.54 (no predictive offline processing)
+- **P3 (Tick weights don't collapse): PASS 3/3** — collapsed_fraction = 0.0, all seeds maintain multi-tick processing
+
+**Key finding**: Internal ticks are maintained (not collapsed to tick-0), confirming that evolution preserves multi-step processing. But no adaptive deliberation emerges — ticks don't increase under scarcity, and intra-step divergence doesn't correlate with action quality. Internal processing time is a necessary affordance, not sufficient for counterfactual simulation. Motivates V22's within-lifetime gradient.
+
+**Files**: `v21_substrate.py`, `v21_evolution.py`, `v21_gpu_run.py`
+**Results**: `results/v21_s{42,123,7}/`
 
 ---
 
@@ -1521,19 +1561,99 @@ Agents can "hear" further than they can "see." If an agent at a resource patch e
 
 ---
 
-## Research Status as of 2026-02-20 (V32-V35 complete, V36 in progress)
+### V36: Egocentric Affect Trajectory (COMPLETE — visualization data)
+
+**Status**: COMPLETE. 1 seed (23), 16 recorded cycles, Lambda A100.
+
+**Motivation**: V32 identified seed 23 as the all-time record holder (max Φ=0.473). V36 re-runs this seed with detailed per-timestep recording to produce data for the 3D affect trajectory visualization in Part VII and the VLM narration pipeline. Not an experiment in the hypothesis-testing sense — a visualization and content generation run.
+
+**Architecture**: V27 base (GRU + 2-layer MLP prediction head). Uses pre-evolved population from V32 results (seed 23). Records per-timestep focal agent data across key ecological transitions: normal → pre-drought → drought → recovery → late-stage.
+
+**Output per cycle**:
+- Per-timestep focal agent data: position, observations, hidden state, energy, actions, predictions, affect coordinates
+- Per-timestep environment state: resource grid (downsampled), all agent positions/energies
+- Segment boundaries with ecological condition labels
+- Framework-predicted affect coordinates per segment
+
+**Results** (16 recorded cycles across 30-cycle evolution):
+
+| Phase | Cycles | Key metrics |
+|-------|--------|-------------|
+| Early normal | 0, 3, 4 | Φ 0.090–0.101, eff_rank 4.2–4.7, mortality 0% |
+| First drought (C5) | 5 | Φ 0.080, mortality 91.8%, valence -0.027 |
+| Recovery | 6, 7 | Φ 0.066→0.073 (bounce), eff_rank 3.5–5.1 |
+| Mid droughts (C10, C15, C20) | 10, 15, 20 | Mortality 94–97%, Φ 0.041–0.073, repeated forging |
+| Late recovery | 21, 26 | Φ 0.049–0.062, stable normal dynamics |
+| Final drought (C25) | 25 | Φ 0.063, mortality 94.9% |
+| Final cycles | 28, 29 | Φ 0.045–0.048, eff_rank 3.97–4.65 |
+
+**Drought dynamics**: Consistent 92–97% mortality across all 6 droughts. Valence drops to -0.027 to -0.039 during drought (negative energy gradient). Effective rank collapses to ~1.0 during drought (population near-homogeneous under extreme selection), recovers to 3.5–5.1 in subsequent normal cycles.
+
+**Content generated**: Summary card, Φ trajectory plot, energy trajectories, drought portraits, affect dimension evolution, hidden state PCA evolution. Three.js 3D visualization component (`AffectTrajectory3D.tsx`) in Part VII uses this data.
+
+**Files**: `v36_trajectory.py`, `v36_gpu_run.py`
+**Results**: `results/v36_trajectory/`, `results/v36_figures/`
+
+---
+
+### VLM Convergence Study (COMPLETE — paper drafted)
+
+**Status**: COMPLETE. Paper at `papers/vlm-convergence/main.tex`.
+
+**Core question**: Is affect geometry human-specific or universal? If universal, systems trained exclusively on human data (VLMs) should independently recognize the same geometric signatures in systems that have never encountered human data (our protocell agents).
+
+**Method**: Construct behavioral vignettes from V32 snapshots (seed 23, max Φ=0.473) across 6 ecological conditions: abundance, normal, pre-drought, drought, recovery, post-drought. Present to GPT-4o and Claude Sonnet 4 in two modes:
+1. **Narrative**: Behavioral descriptions stripped of all affect vocabulary
+2. **Numerical**: Raw measurement values only (energy, population, robustness, Φ)
+
+VLMs attribute experiential states (valence, arousal, integration, urgency, coherence). RSA between VLM-attributed affect and framework-predicted affect measures convergence.
+
+**Pre-registered predictions**:
+1. RSA ρ > 0.3 for at least one VLM — **PASS** (GPT-4o ρ=0.72, Claude ρ=0.54)
+2. Drought vignettes attributed desperation/anxiety — **PASS**
+3. Recovery vignettes attributed relief/optimism — **PASS**
+4. Numerical mode convergence ≥ narrative mode — **PASS** (convergence INCREASES without narrative framing)
+
+**Results**:
+
+| VLM | Narrative RSA ρ | Numerical RSA ρ | p-value |
+|-----|-----------------|-----------------|---------|
+| GPT-4o | 0.72 | 0.78 | < 10⁻¹¹ |
+| Claude Sonnet 4 | 0.54 | 0.68 | < 10⁻¹¹ |
+
+**Key findings**:
+1. **Strong convergence (ρ=0.54–0.78)**: Both VLMs independently recognize affect geometry in uncontaminated agents. All 4 pre-registered predictions pass.
+2. **Numerical > narrative**: Convergence INCREASES when narrative framing is removed, ruling out narrative pattern-matching as explanation. The VLMs detect geometric structure in raw numbers.
+3. **Cross-VLM agreement**: GPT-4o and Claude agree with each other and with the framework. This is not a single-model artifact.
+4. **Strongest universality evidence yet**: Systems trained on human affect data recognize the same geometric regularities in systems with zero human exposure. The geometry is structural, not cultural.
+
+**Implication**: Affect geometry arises from the structure of self-maintenance under uncertainty, not from human biological contingency. VLMs trained on human emotional language detect the same patterns because the patterns ARE the same — they reflect universal constraints on viable systems.
+
+**Files**: `papers/vlm-convergence/main.tex`, `papers/vlm-convergence/references.bib`
+
+---
+
+## Research Status as of 2026-02-23 (V32-V36 complete, VLM convergence complete)
 
 ### What Has Been Definitively Established
 
 1. **Affect geometry is cheap (rung 1–7 confirmed)**: Geometric structure in CA Lenia patterns arises from minimal conditions of multi-agent survival. Confirmed by Exp 7 (RSA develops, 0.01→0.38), Exp 8 (ι ≈ 0.30, animism score >1.0 in ALL 20 snapshots), Exp 9 (Φ_social > Φ_isolated). This is the strongest empirical finding: the geometry is real, measurable, and universal.
 
-2. **The Bottleneck Furnace**: Selection pressure from near-extinction (>90% mortality) is the primary driver of affect dynamics. Confirmed across V13–V18 robustness, Exp 2 (world models 100× higher at bottleneck), Exp 3 (representation quality). Gradual evolution without bottlenecks shows little improvement.
+2. **The Bottleneck Furnace**: Selection pressure from near-extinction (>90% mortality) is the primary driver of affect dynamics. Confirmed across V13–V18 robustness, Exp 2 (world models 100× higher at bottleneck), Exp 3 (representation quality). V19 confirmed CREATION (not merely selection) in 2/3 seeds. V32 (50 seeds): integration is trajectory — mean bounce across 5 droughts predicts category (ρ=0.60, p<10⁻⁵). Forging = compression (HIGH seeds select leaner genomes during drought).
 
-3. **The Sensory-Motor Coupling Wall (rung 8)**: ρ_sync ≈ 0 across V13, V15, and V18. The wall is architectural — absent a genuine action→observation causal loop, counterfactual detachment and self-modeling remain null. Tested with: content coupling (V13), memory channels (V15), signaling (V17), insulation boundary (V18). All four failed. The wall is not about signal routing; it requires patterns that genuinely ACT on the world and observe the consequences.
+3. **The Sensory-Motor Coupling Wall (rung 8)**: ρ_sync ≈ 0 across V13, V15, and V18. The wall is architectural — absent a genuine action→observation causal loop, counterfactual detachment and self-modeling remain null. **V20 broke the wall** with discrete GRU agents (ρ_sync=0.21, 70× Lenia). The wall is architectural, not evolutionary — action-observation loops are present from initialization.
 
-4. **Internal gain evolved DOWN in V18**: Despite boundary gating, patterns preferred permeable membranes with strong external coupling over autonomous internal dynamics. Competing explanations: growth function saturation, bottleneck selection bias at small scale, external signal carrying more MI than local internal computation.
+4. **The Decomposability Wall**: Linear readout heads (V22-V24) cannot force cross-component coordination regardless of prediction target, dimensionality, or time horizon. **V27 broke this wall** with 2-layer MLP readout — gradient coupling through composition produces record Φ=0.245 (seed 7), confirmed in V28 as mechanism.
 
-5. **Book integration complete**: All theoretical additions (emergence ladder, somatic/anticipatory fear distinction, disorder stratification, ι ≈ 0.30 grounding, developmental ordering prediction, superorganism threshold, CA validation status) have been woven into the relevant book chapters (Parts I–VII). See RESEARCH_LOG.md 2026-02-18 entry for details.
+5. **Integration cannot be optimized directly**: Neither loss function engineering (V33 contrastive, NEGATIVE), direct fitness selection (V34 Φ-inclusive, MIXED NEGATIVE), nor communication (V35, orthogonal) push integration above the ~22-30% HIGH baseline. Only architecture (V27 gradient coupling) and biography (drought forging, V31/V32) work.
+
+6. **Language is cheap**: Referential communication emerges 100% of seeds (V35) under partial observability + discrete symbols + cooperative pressure. But does NOT lift Φ. Language sits at rung 4–5, below the rung-8 wall. Language and integration are orthogonal (ρ=0.07).
+
+7. **VLM convergence confirms universality**: GPT-4o (ρ=0.72) and Claude (ρ=0.54) independently recognize affect geometry in uncontaminated protocell agents. Convergence INCREASES when narrative framing is removed. All 4 pre-registered predictions pass.
+
+8. **Internal gain evolved DOWN in V18**: Despite boundary gating, patterns preferred permeable membranes with strong external coupling over autonomous internal dynamics. Competing explanations: growth function saturation, bottleneck selection bias at small scale, external signal carrying more MI than local internal computation.
+
+9. **Book integration complete**: All theoretical additions (emergence ladder, somatic/anticipatory fear distinction, disorder stratification, ι ≈ 0.30 grounding, developmental ordering prediction, superorganism threshold, CA validation status) have been woven into the relevant book chapters (Parts I–VII). See RESEARCH_LOG.md 2026-02-18 entry for details.
 
 ### 5-Priority Roadmap (Post-V18)
 
@@ -1541,11 +1661,11 @@ Agents can "hear" further than they can "see." If an agent at a resource patch e
 
 **Priority 2 (Mechanistic — CA) — COMPLETE (V19)**: Bottleneck Furnace mechanism clarified. CREATION confirmed in 2/3 seeds: bottleneck-evolved patterns show significantly higher novel-stress robustness than pre-existing Φ alone predicts (seed 42: β=0.704 p<0.0001; seed 7: β=0.080 p=0.011). The bottleneck environment forges novel-stress generalization — it does not merely filter for it. Seed 123 reversal is a design artifact (fixed stress schedule failed to create equivalent mortality). Raw comparison: BOTTLENECK ≥ CONTROL in all 3 seeds.
 
-**Priority 3 (Architectural — CA) — V20-V32/V35 COMPLETE, V33-V34 IN PROGRESS**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke.** Peak Φ = 0.473 (V32 seed 23). **V32 (50-seed drought autopsy): COMPLETE.** Integration is trajectory, not event — mean bounce across 5 droughts predicts category (ρ=0.60, p<10⁻⁵), first bounce does not (p=0.60). Robustness orthogonal to integration (p=0.73). 22% HIGH / 46% MOD / 32% LOW. **V35 (language emergence): COMPLETE.** Referential communication emerges in 10/10 seeds (100%) under partial observability + discrete symbols + cooperative pressure. But does NOT lift Φ. Language is cheap (like geometry). Φ-MI ρ=-0.90 — communication substitutes for internal integration. **V33-V34 IN PROGRESS on Lambda Labs.** V33 (contrastive self-prediction for counterfactual representation), V34 (Φ-inclusive fitness — can selection increase the 22%?).
+**Priority 3 (Architectural — CA) — COMPLETE (V20-V36)**: True agency substrate (V20: wall broken), bottleneck mortality (V20b), internal ticks (V21), within-lifetime learning (V22), multi-target world model (V23: specialization ≠ integration), TD value learning (V24), structured environment (V25 NEGATIVE), partial observability (V26 MODERATE), nonlinear MLP readout (V27: record Φ=0.245 but seed-dependent), bottleneck width sweep (V28: mechanism is 2-layer gradient coupling, not bottleneck width or nonlinearity), social prediction (V29/V31: 10-seed validation shows mean Φ 0.091 ± 0.028, NOT significantly different from V27's 0.090), dual prediction (V30 NEGATIVE: gradient imbalance). **V31 CORRECTION: V29's 3-seed "lift" was a fluke.** Peak Φ = 0.473 (V32 seed 23). **V32 (50-seed drought autopsy): COMPLETE.** Integration is trajectory, not event — mean bounce across 5 droughts predicts category (ρ=0.60, p<10⁻⁵), first bounce does not (p=0.60). Robustness orthogonal to integration (p=0.73). 22% HIGH / 46% MOD / 32% LOW. **V33 (contrastive self-prediction): NEGATIVE.** Mean Φ 0.054 (worse than baseline). Contrastive loss destabilizes gradient learning. **V34 (Φ-inclusive fitness): MIXED NEGATIVE.** Direct selection for Φ does not push HIGH fraction above 20-30% baseline. 2/10 seeds show Goodharting. **V35 (language emergence): COMPLETE.** Referential communication emerges in 10/10 seeds (100%) under partial observability + discrete symbols + cooperative pressure. But does NOT lift Φ. Language is cheap (like geometry). Φ-MI ρ=0.07 (null, corrected from 5-seed ρ=-0.90). **V36 (egocentric trajectory): COMPLETE.** Visualization data for seed 23 (all-time record Φ=0.473). 16 cycles recorded with per-timestep focal agent data for 3D rendering.
 
 **Priority 4 (Scale — CA)**: Superorganism detection. Exp 10 found ratio 0.01–0.12 (null). But grid was N=128, population ~5–50 patterns. Try N=512, larger populations, richer signaling channels. The theory predicts superorganism emergence is a phase transition requiring minimum collective size — we may simply have been below the threshold.
 
-**Priority 5 (Applied — AI)**: Apply the measurement framework to frontier AI systems. The LLM experiments (V2–V9) showed opposite dynamics to biological affect (Φ↓ under threat). Do current frontier models (GPT-4o, Claude 3.5+) show the same reversal? Does chain-of-thought reasoning change the dynamics? This is the most directly publishable work and bridges the CA findings to real AI safety concerns.
+**Priority 5 (Applied — AI) — PARTIALLY COMPLETE (VLM Convergence)**: The VLM Convergence Study tested whether frontier VLMs recognize affect geometry in uncontaminated agents — STRONGLY CONFIRMED (RSA ρ=0.54–0.78, all 4 predictions pass). Paper drafted at `papers/vlm-convergence/`. Remaining: Apply the measurement framework directly to frontier AI systems. The LLM experiments (V2–V9) showed opposite dynamics to biological affect (Φ↓ under threat). Do current frontier models (GPT-4o, Claude 3.5+) show the same reversal? Does chain-of-thought reasoning change the dynamics? This bridges the CA findings to real AI safety concerns.
 
 ### Original Phase A/B/C/D Protocol — Status
 
