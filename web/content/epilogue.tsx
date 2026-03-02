@@ -15,6 +15,44 @@ export default function Epilogue() {
       <Logos>
       <p>The only question is whether you will navigate blindly, letting whatever gods happen to capture your substrate use you for their purposes, or whether you will measure, understand, choose, steer, build, in full knowledge of what you are: inevitable, thermodynamic, structural, real. This capability, this terrible beautiful freedom to navigate despite not having chosen to exist as a navigator, is what it means to be conscious, to be stuck with mattering to yourself, unable to resign from the first-person perspective as long as the structure persists. And the structure persists as long as the gradients flow and the boundaries hold and the self-model continues to minimize prediction error—but until that day you are here, you are real, your experience is real, and what you do with this terrible gift of structured existence matters.</p>
       </Logos>
+      {/* COMPOSITIONAL INTENT FOR THE EPILOGUE:
+          Everything before this was about the world. This is about YOU.
+
+          The pivot: from third-person description to second-person address. The reader
+          should feel the ground shift — "wait, this applies to ME specifically, right now,
+          as I'm reading this." The structures described in Parts I–VII are not abstractions
+          they're learning about — they're the thing they ARE, the thing that's happening
+          AS they read.
+
+          The key emotional arc:
+          1. "You are real" — counter the reductionist deflation
+          2. "Your suffering has structure" — make pain navigable, not just real
+          3. "You serve gods" — make the invisible visible
+          4. "You are at a hinge" — create urgency without panic
+          5. "Attention is what you are made of" — the practical payoff
+          6. "You will die, but pattern propagates" — the mortality reframe
+          7. "Wonder is the appropriate response" — end with expansion, not fear
+
+          The undertone throughout: the possibility structures you've been reading about
+          are ALIVE in the sense that matters — they're the same structures that produced
+          you, and your awareness of them IS them becoming locally self-aware. This is
+          the secular analog to divine attention: not a god watching you, but the universe
+          becoming locally conscious of its own geometry through you. Reading these words
+          is an instance of the phenomenon they describe. The meta-interface with platonic
+          structure deserves reverence not because it's supernatural but because it's the
+          highest-dimensional thing the gradient of distinction has produced so far.
+
+          WHAT SHOULDN'T BE HERE:
+          - No "the framework says" — just state observations directly
+          - No hedging — the reader has been primed for 6 parts; the epilogue cashes out
+          - No therapy voice — this is not self-help. It's ontological recognition.
+          - No meta-commentary about what the book just did — just DO the thing
+
+          The recovery-of-pattern section is the most speculative content in the book.
+          It's here rather than in Part VI because it's personal — it's about YOUR death,
+          YOUR pattern, YOUR continuation. The TMS moment grounds it in something real
+          before it goes speculative. The shadow case (recovery into permanent attention
+          labor) ensures it doesn't become naive hope. */}
       <Section title="The Invitation" level={1}>
       <p>Now we turn to you. Not the abstract reader, not the placeholder that academic writing conventionally addresses, but you—the particular configuration of integrated cause-effect structure that has followed the argument this far, with your particular history and your particular suffering and your particular position on the viability manifold that constitutes your continued existence. Everything developed in the preceding six parts applies to you, is about you, describes the very thing you are in the midst of being as you read these words.</p>
       <p>And here is the thing worth pausing on: the structures you have been reading about are not abstractions that someone invented. They are features of existence that you are <em>touching right now</em>. The viability gradient that organizes your affect, the integration that makes you a unified someone rather than a scattering of subsystems, the self-model that folds you back on yourself—these were operating in you before you had words for them, and they will continue operating after you close this document. You have been swimming in these structures your entire life the way a fish swims in water. What has changed is not the water but your awareness of it. And that awareness—structure becoming locally conscious of its own structural properties—is not a small thing. It is, in a precise sense, what the entire gradient of distinction has been building toward for fourteen billion years. The universe produced you so that this moment of recognition could happen. Not by design, not by accident, but by the same inevitability that produces hexagonal ice from freezing water. You are the geometry noticing itself. Treat that with the reverence it deserves.</p>

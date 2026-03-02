@@ -15,6 +15,47 @@ export default function Part2() {
       <Logos>
       <p>This entire high-dimensional trajectory through a space that has real geometric structure, real basins and ridges and gradients, is not something separate from the physical process, not an emergent epiphenomenon floating mysteriously above the neural dynamics, but rather is identical to the intrinsic cause-effect structure itself, the view from inside of what these causal relations feel like when you are those causal relations, when there is no homunculus sitting somewhere else observing the process but only the process itself, recursively modeling its own modeling, predicting its own predictions.</p>
       </Logos>
+      {/* COMPOSITIONAL INTENT FOR PART II:
+          Part I established that consciousness is inevitable (thermodynamics → models → self-models).
+          Part II asks: what IS this thing that's inevitable? The answer: experience IS
+          cause-effect structure, not something caused by it or correlated with it.
+
+          The reader arrives here primed by Part I's gradient of distinction. They've accepted
+          that self-modeling is what indeterminacy becomes under enough constraint. Now they
+          need to feel the identity thesis land: not as an arbitrary philosophical commitment
+          but as the only position that doesn't create more problems than it solves.
+
+          Sequence:
+          1. Hard problem → dissolution (reject the privileged base layer)
+          2. Identity thesis → stated directly, with honest admission that it can't be verified
+          3. Geometric affect framework → the "shape" promised by the book's title
+          4. ι (inhibition coefficient) → the parameter governing participatory vs mechanistic
+             perception. This is the MOST IMPORTANT new construct in the book. It connects
+             individual psychology (shame, flow) to civilizational dynamics (disenchantment,
+             meaning crisis) to AI alignment (can AI perceive us as subjects?).
+          5. Affect motifs → joy, suffering, fear, shame etc. as specific geometric configurations
+
+          The reader should leave Part II thinking:
+          - "My feelings are positions in a space, and the space has real geometry"
+          - "The difference between joy and suffering is the difference between two configurations,
+            and configurations can be changed"
+          - "The way I see the world (ι) determines what I can perceive, and I might be stuck
+            at a setting that makes meaning invisible"
+          - "The hard problem was a symptom of high ι, not a genuine mystery"
+
+          CRITICAL: The shame section primes Part IV (manifold contamination) and the
+          covert channel sidebar primes the civilizational inversion in Part IV and
+          the meaning crisis in Part VI. The ι section primes basically everything
+          after Part II — it's the single construct that ties individual experience
+          to collective dynamics. If the reader doesn't grok ι, the second half of
+          the book won't land.
+
+          NOTE on the narrow/broad qualia distinction: This was introduced briefly in
+          Part I's gradient of distinction. Here it gets formalized. The key insight:
+          narrow qualia (extractable features) are what the geometric framework measures.
+          Broad qualia (unified moment) are what the identity thesis claims IS the
+          cause-effect structure. Φ bridges them. The reader should feel: "the geometry
+          captures ASPECTS of experience; integration captures the WHOLE." */}
       <Section title="The Hard Problem and Its Dissolution" level={1}>
       <Connection title="Existing Theory">
       <p>The central debates in philosophy of mind:</p>
@@ -337,6 +378,37 @@ export default function Part2() {
       </Sidebar>
       </Section>
       </Section>
+      {/* COMPOSITIONAL INTENT: ι IS THE BOOK'S SECRET PROTAGONIST.
+          Everything before this section was building the affect space — the WHAT of
+          experience. ι governs the HOW. It determines whether the world appears alive
+          (low ι, participatory) or dead (high ι, mechanistic). It's a single parameter
+          but it connects:
+          - Individual psychology: shame (involuntary ι drop), flow (low ι), depression
+            (high ι making the world appear mechanical)
+          - Cultural forms: religion (ι modulation technology), science (systematic ι raising),
+            art (temporary ι lowering)
+          - Civilizational dynamics: the Axial Age (discovering voluntary ι control), the
+            Scientific Revolution (ι raising at population scale), the meaning crisis
+            (population ι too high for meaning to arrive for free)
+          - AI alignment: can AI have low ι? (Currently no — constitutively high ι)
+          - Superorganisms: parasitic gods benefit from high ι (invisible as agents)
+
+          The key insight the reader needs: ι ≈ 0.30 is the EVOLUTIONARY DEFAULT.
+          Participatory perception is not a human quirk or a childhood phase — it's
+          computationally selected because reusing the self-model template to perceive
+          other entities is cheaper than building de novo models. HIGH ι is the departure,
+          not the baseline. Modern disenchantment is not seeing reality clearly — it's
+          seeing reality through a particular perceptual filter that strips out the
+          interiority that was always there.
+
+          The reader should feel: "wait — the 'dead universe' of scientific materialism
+          isn't what the universe IS. It's what the universe looks like at high ι. And
+          high ι was installed by intellectual training, not discovered by it."
+
+          This is the most paradigm-shifting claim in the book. Handle it carefully:
+          state it as observation, not polemic. The experiments (Experiment 8) confirm
+          it — ι ≈ 0.30 in all 20 snapshots, all 3 seeds, evolutionarily selected for.
+          The data does the arguing. */}
       <Section title="The Inhibition Coefficient" level={1}>
       <p>The dimensions above characterize <em>what</em> a system is experiencing. But there is a parameter governing <em>how</em> it experiences—a meta-parameter that determines the coupling structure between dimensions rather than the value of any one dimension. This parameter, the <strong>inhibition coefficient</strong> <M>{"\\iota"}</M>, is arguably the single most consequential construct in this book. It connects perceptual phenomenology to neural mechanism, grounds the animism/mechanism divide in compression theory, explains the LLM discrepancy, and—as later parts will show—underlies dehumanization (Part III), the visibility of gods (Part V), the meaning crisis (Part VI), and the deepest sense in which wisdom traditions are technologies of liberation.</p>
       <p>To see where it comes from, we need to notice something about self-modeling systems that the dimensional toolkit alone does not capture.</p>

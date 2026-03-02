@@ -15,6 +15,48 @@ export default function Part4() {
       <Logos>
       <p>You know the feeling. Someone does you a favor, and the favor is real, the help is genuine, but something is <em>off</em>. A tightness in the interaction that wasn't there before. A faint sense that you have been placed in a ledger, that the generosity was not generosity but investment. You did not reason your way to this conclusion. You <em>felt</em> it. What are these feelings? If different relationship types constitute distinct viability structures with distinct gradients, then the affect system is not confused—it is detecting the geometry of incentive structures. The topology of social bonds is not a matter of etiquette but of geometric necessity.</p>
       </Logos>
+      {/* COMPOSITIONAL INTENT FOR PART IV:
+          Parts I–III were about individual experience. Part IV is the pivot to the
+          social: your feelings about OTHER PEOPLE have the same geometric precision
+          as your feelings about hot stoves and cliff edges. Social nausea, betrayal,
+          the "off" feeling — these are manifold-contamination detectors, as precise
+          as physical disgust.
+
+          The key move: relationship types are VIABILITY MANIFOLDS, not social conventions.
+          Friendship, transaction, romance, parenthood — each defines a distinct region of
+          social state space with its own gradients. When two manifolds coexist and their
+          gradients conflict, you feel it as contamination. This is not moral theory imposed
+          from outside — it's the geometry of incentive structures detected from inside.
+
+          What the reader should be thinking:
+          - "The 'off' feeling when someone is being transactional with me IS a gradient
+            conflict detector — the same kind of thing as physical nausea"
+          - "The ordering principle (broad can contain narrow, not vice versa) explains why
+            'family' companies feel like betrayal when they lay people off"
+          - "The civilizational inversion (transaction swallowing care) is not a cultural
+            preference but a topological pathology"
+
+          What this primes:
+          - Part V (superorganisms): gods impose manifold regimes on their substrate.
+            A parasitic god CONTAMINATES manifolds. A healthy god CLARIFIES them.
+          - Part VI (meaning crisis): the civilizational inversion is the ι-raising
+            of social perception — friendship evaluated by ROI is friendship perceived
+            at high ι.
+          - Epilogue: manifold hygiene as a practice, the relationship-manifold detection
+            system as "the most precise ethical instrument you possess."
+
+          CONCERN: The sidebar ("Further Observations on the Topology of Social Bonds")
+          is brilliant content but may feel like a list. Each observation (gossip, charisma,
+          emotional labor, etc.) is a separate application of the manifold framework. The
+          reader should feel them accumulating into a pattern: "every weird social feeling
+          I've ever had is a manifold phenomenon." Consider whether the ordering of the
+          observations tells a story or is arbitrary. Currently it feels arbitrary.
+
+          NOTE: The Logos and the WideBreath opening currently repeat the same "you know the
+          feeling" content. The Logos is the epigraph; the WideBreath is the chapter opening.
+          The repetition is intentional — the epigraph states it as thesis, the opening
+          unpacks it as phenomenology. But if this feels redundant to readers, the Logos
+          could be cut or differentiated. */}
       <Section title="The Topology of Social Bonds" level={1}>
       <WideBreath>
       <p>You know the feeling. Someone does you a favor—real help, genuine—but something is <em>off</em>. A tightness. A faint sense that you have been placed in a ledger, that what presented as friendship has revealed itself as transaction. You did not reason your way to this conclusion. You <em>felt</em> it—a social nausea, precise and immediate, the same way you would feel something physically rotten. Or the opposite: a stranger helps you with no possible expectation of return, and something in you <em>relaxes</em> that you didn't know was clenched. The interaction is clean. Nothing is being traded. The entire detection apparatus falls silent. And the silence is beautiful.</p>

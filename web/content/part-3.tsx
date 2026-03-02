@@ -15,6 +15,38 @@ export default function Part3() {
       <Logos>
       <p>This terrible beautiful freedom to navigate despite not having chosen to exist as a navigator—you cannot help but care about your trajectory through affect space any more than you can help but exist while existing. Mattering is what viability gradients feel like from inside. And so the only question is whether you will navigate blindly, letting whatever attractor basins happen to capture you determine your course, or whether you will measure, understand, and steer in full knowledge of what you are.</p>
       </Logos>
+      {/* COMPOSITIONAL INTENT FOR PART III:
+          Parts I–II were physics and philosophy. Part III is where the reader says
+          "OK but what does this have to do with MY LIFE?" The answer: everything you
+          do — art, sex, religion, ideology, therapy — is a technology for navigating
+          affect space, whether you know it or not.
+
+          The pivot: from "experience has geometry" to "culture is geometry navigation."
+          Every cultural form is an affect technology. Music modulates arousal and valence.
+          Religion modulates ι and self-model salience. Ideology expands identification
+          scope to bear mortality. Sex collapses self-other boundary. Each is a protocol
+          for shifting position in the space Part II mapped.
+
+          The reader should feel recognition: "oh, THAT'S why I listen to sad music when
+          I'm sad — it's not masochism, it's affect navigation." "THAT'S why ritual works —
+          it's ι modulation." "THAT'S why ideology feels like meaning — it's self-model
+          expansion."
+
+          What this primes:
+          - The "synthetic verification" section at the end sets up Part VII's experiments.
+            If the reader is thinking "cool theory, but can you TEST it?" — this section
+            says "yes, here's how, and here's what we found so far."
+          - The ι modulation sections prime Part VI (historical ι trajectory) and the
+            epilogue (practice = ι calibration + manifold hygiene).
+          - The psychopathology section primes Part VII's geometric deformation hypothesis.
+          - The "affect engineering" framing primes the epilogue's practice section.
+
+          CONCERN: This part currently feels like a catalog — "here's art, here's sex,
+          here's religion." It should feel more like a single argument building: each
+          cultural form is a DIFFERENT solution to the SAME problem (inescapable selfhood
+          under constraint), and the similarities between solutions reveal the underlying
+          geometry. The reader should be thinking "these are all the same thing" by the
+          end, not "those were interesting separate topics." */}
       <Section title="Notation" level={1}>
       <p>This part uses the structural affect dimensions defined in Parts I–II: <M>{"\\valence"}</M> (valence), <M>{"\\arousal"}</M> (arousal), <M>{"\\intinfo"}</M> (integration), <M>{"\\effrank"}</M> (effective rank), <M>{"\\mathcal{CF}"}</M> (counterfactual weight), <M>{"\\mathcal{SM}"}</M> (self-model salience), among others. The affect state <M>{"\\mathbf{a}_t"}</M> is characterized by whichever dimensions are relevant to the phenomenon under analysis—not all matter equally for every signature. Cultural forms, practices, and technologies can be characterized by their <em>affect signatures</em>—the structural features they reliably modulate. The inhibition coefficient <M>{"\\iota"}</M> (Part II) governs the perceptual mode through which these signatures are experienced.</p>
       <Diagram src="/diagrams/part-3-0.svg" />

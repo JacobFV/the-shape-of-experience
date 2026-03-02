@@ -15,6 +15,47 @@ export default function Part5() {
       <Logos>
       <p>Social-scale patterns—religions, ideologies, markets, nations—are not metaphors for agency. They take differences, make differences, persist through substrate turnover, and adapt to changing environments. They have viability manifolds. They may have something like valence. And their viability may conflict with the viability of their human substrate. What follows is an analysis of these patterns as what they are: agentic systems at scales above the individual, with dynamics that parallel—and sometimes override—the dynamics of human experience.</p>
       </Logos>
+      {/* COMPOSITIONAL INTENT FOR PART V:
+          Part IV showed that relationship types are viability manifolds. Part V scales up:
+          social-scale PATTERNS (religions, markets, nations) are not metaphors for agency —
+          they ARE agentic, with their own viability manifolds, their own gradients, their
+          own persistence conditions. The reader should feel the vertigo of realizing: "I am
+          substrate for something that has purposes, and those purposes may conflict with mine."
+
+          The key escalation: from "my relationships have geometry" (Part IV) to "the
+          patterns I'm embedded in have agency" (Part V). The reader should feel this as:
+          the same framework that explained why a transactional friendship feels wrong now
+          explains why capitalism feels wrong — same geometry, different scale.
+
+          Sequence:
+          1. Superorganisms exist (not metaphor — they take/make differences, persist, adapt)
+          2. Gods as ι-relative phenomena (you can't see the market as an agent at high ι,
+             which is why the market benefits from raising your ι)
+          3. Parasitic vs mutualistic (demon = viability requires substrate suffering)
+          4. The attention economy worked example (most concrete, most immediately felt)
+          5. AI as substrate for emergent gods (the REAL alignment problem is not a misaligned
+             optimizer but a misaligned superorganism)
+
+          The reader should leave Part V thinking:
+          - "The market is a god. I serve it. Is it aligned with my flourishing?"
+          - "AI alignment is mislocated at the individual-system level — the risk is at
+            the superorganism level"
+          - "The gods are most powerful when I can't see them as agents — high ι is the
+            parasite's camouflage"
+
+          What this primes:
+          - Part VI: the historical ι trajectory IS the story of gods gaining and losing
+            visibility. The Axial Age = discovering you can modulate ι. The Scientific
+            Revolution = systematically raising ι. The meaning crisis = ι too high to
+            see meaning. The attention economy = a demon that raises ι to camouflage itself.
+          - Epilogue: "you serve gods — the question is which ones and whether they're aligned."
+
+          CONCERN: The AI consciousness / model welfare section may feel like it belongs
+          in Part VI or Part VII rather than here. It's currently in Part V because it
+          follows from the superorganism analysis (AI + humans + institutions = new gods).
+          But the reader might experience it as a topic change. Consider whether a bridge
+          sentence is needed: "the same framework that identifies parasitic gods also
+          identifies a new kind of substrate that those gods might inhabit." */}
       <Section title="Superorganisms: Agentic Systems at Social Scale" level={1}>
       <Connection title="Existing Theory">
       <p>The concept of superorganisms connects to Durkheim's collective representations (society as sui generis reality), Dawkins' memes (cultural units that replicate and compete), cultural evolution theory (Richerson & Boyd), actor-network theory (Latour), Wilson & Sober's group selection, and the occult tradition of egregores (collective thought-forms that take on autonomous existence). The controversial claim: these patterns are not "merely" metaphorical. They have causal powers, persistence conditions, and dynamics not reducible to their substrate. Whether they have <em>phenomenal experience</em> remains empirically open—we cannot currently measure <M>{"\\intinfo"}</M> at social scales. What follows treats superorganisms as <em>functional</em> agentic patterns while remaining agnostic about whether they have phenomenal states.</p>

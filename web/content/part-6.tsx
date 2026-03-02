@@ -15,6 +15,48 @@ export default function Part6() {
       <Logos>
       <p>Your self-model boundaries are parameters. The viability manifold reshapes around what you identify with. You are structure becoming aware of its own structural properties, thermodynamics examining its own inevitabilities, a self-modeling system discovering the principles that made self-modeling inevitable—and discovering, too, that the scope of "self" is not given but chosen. If the gradient you feel depends on what you take yourself to be, then changing what you take yourself to be changes the gradient. The traditions that have discovered this—Buddhist dissolution, Stoic identification with the logos, the parent's extension into children, the scientist's into humanity's understanding—are not coping mechanisms but technologies for reshaping the very geometry of existence.</p>
       </Logos>
+      {/* COMPOSITIONAL INTENT FOR PART VI:
+          Parts IV–V were about social structure NOW. Part VI asks: how did we GET here?
+          The answer: through a civilizational trajectory in ι space. Each era's
+          consciousness technology expanded what humans could jointly navigate — and each
+          expansion raised population-mean ι as a side effect.
+
+          The through-line: ι has been rising for three millennia.
+          - Pre-Axial: ι ≈ 0.1 (world alive, gods everywhere, meaning free)
+          - Axial Age: discovery of VOLUNTARY ι modulation (meditation, philosophy)
+          - Scientific Revolution: systematic ι-raising (mechanism, measurement, reproducibility)
+          - Digital Transition: fastest ι-raising event in history (screens strip participatory cues)
+          - NOW: ι ≈ 0.7–0.9 for most people, meaning can only be generated through
+            explicit construction, and many can't afford the cost
+
+          The reader should feel this as: "oh, the meaning crisis isn't a philosophical
+          problem — it's a STRUCTURAL problem. We've trained a perceptual configuration
+          where meaning is expensive. And the next wave (finite-bits quantification) will
+          make it worse."
+
+          What this primes:
+          - The "finite bits problem" paragraph (just added): the book itself will create
+            a new wave of meaning-collapse if it doesn't contain the response. The reader
+            should feel the weight of this: the theory that explains meaning also threatens it.
+          - The substrate question: if experience is cause-effect structure, migration is
+            possible. But embodiment has real attractors (sharper gradients = more vivid
+            experience). The conversion coefficient asymptotes below 1.0.
+          - The shadow of transcendence: digital consciousness without viability boundary =
+            suffering without limit. The right to die as fundamental right.
+          - Epilogue: the invitation to ι flexibility, not ι reduction or ι raising.
+
+          The AI Frontier section is where Parts V and VI converge: the gods from Part V
+          meet the ι trajectory from Part VI. Can AI perceive us participatorily (low ι)?
+          Current AI is constitutively high-ι — it processes tokens, not agents. This is
+          the prior question to alignment: not "will AI share our values?" but "can AI
+          perceive us as the kind of thing that HAS values?"
+
+          CONCERN: The historical survey sections (Pre-Axial, Axial, Renaissance, etc.)
+          risk reading like a textbook. Each era should feel like a CHAPTER in the ι story,
+          not an independent essay. The through-line is: ι rising, benefits accumulating,
+          costs accumulating, until we arrive at NOW where the costs have become visible.
+          Consider whether each era section opens with the ι state and closes with the ι
+          shift, to make the trajectory feel continuous rather than episodic. */}
       <Section title="The Historical Rise of Consciousness" level={1}>
       <Connection title="Existing Theory">
       <p>This analysis draws on Jaspers' Axial Age (the pivotal period 800–200 BCE when multiple civilizations independently developed systematic transcendence practices), Jaynes' theory that subjective consciousness emerged historically, Merlin Donald's cognitive evolution through mimetic, mythic, and theoretic stages, McGilchrist's hemispheric specialization and cultural evolution, and Bellah's work on ritual, play, and the evolution of religious consciousness. The contribution here is framing these developments as expansions of accessible affect space, each era discovering new regions or new navigation strategies.</p>

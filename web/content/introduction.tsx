@@ -21,6 +21,32 @@ export default function Introduction() {
         <ThemeVideo baseName="necessity-argument" />
       </Figure>
       <Illustration id="what-are-these-feelings" />
+      {/* COMPOSITIONAL INTENT FOR THE INTRODUCTION:
+          This is the reader's first encounter. They should leave with:
+          1. The felt sense that experience has STRUCTURE (not just content)
+          2. The inevitability argument in intuitive form (snowflake, eyes, calculus)
+          3. The "maintenance is the verb hiding inside every noun" insight
+          4. Enough concrete examples (ice, social scrutiny) that the abstraction
+             feels grounded in their own body
+          5. The suspicion that their feelings are not noise but geometry
+
+          What we're priming for later parts:
+          - "Boundary" → Part I (viability manifold), Part IV (relationship manifolds)
+          - "Compression" → Part I (POMDP), Part II (narrow vs broad qualia)
+          - "Control cost" → Part II (valence as gradient), Part III (affect engineering)
+          - "Self as boundary in time" → Part II (self-model salience), epilogue (identification)
+          - "Maintenance" → the entire framework. If the reader gets nothing else from
+            the introduction, they should get this: persistence is not free, and consciousness
+            is what the bill looks like from the inside.
+
+          The register should be: first-person, intimate, but with sudden technical precision.
+          Not a lecture. A conversation where the other person keeps saying things that
+          reorganize how you see your own life.
+
+          NOTE: The introduction currently has no Section tags — it's one continuous flow.
+          This is deliberate. The reader should feel swept along, not given rest stops.
+          Parts I–VII use sections for navigation; the introduction earns trust by
+          refusing to let you look away. */}
       <p>What is the shape of experience? The title is a provocation more than a label: it asks you to treat your own conscious life not as a private theater where sensations play to an audience of one, but as a structured phenomenon with contours, pressures, gradients, seams, and attractors—something that can be described with the same seriousness we grant to tectonic plates, immune systems, or the orbital mechanics of planets. If that sounds like category error, notice how quickly the phrase “what it is like” becomes a dead end in ordinary speech. We talk about what it is like to be in love, to grieve, to feel shame wash over us, to lose ourselves in flow, to wake from a dream and carry a residue of unreality into the day. The “like” is not a confession of mystery; it is a placeholder for structure we have not learned to name. The wager of this book is that experience has a shape because existence has a shape, and consciousness is not an exception to causality but one of its most elaborate interiorizations. The wager is also that the most powerful way to understand ourselves is not to flee from abstraction into sentiment, nor to flee from lived texture into sterile mechanics, but to build a vocabulary that makes the texture and the mechanics identical in reference: the same thing seen from the inside and from the outside, at different resolutions.</p>
       <p>Begin with the simplest claim that does not collapse into nonsense: to exist is to be different. Not in the sentimental sense in which every snowflake is special, but in the operational sense in which a thing is distinguishable from what it is not, and in which that distinguishability can make a difference to what happens next. If there were no differences, there would be no state, no configuration, no information, no trajectory—nothing to point to, nothing to separate, nothing to preserve. Existence, in any non-trivial meaning of the term, is a pattern that is not the surrounding pattern. It is a boundary that does not immediately dissolve. It is the persistence of a distinction. The moment you accept that, you have already stepped onto the bridge that takes you from “static structure” to “causal structure,” because persistence is never merely given. A difference that does not persist is only a contrast in a single frame, a transient imbalance that disappears as soon as the world mixes—a Boltzmann brain that flickered into existence without purpose and dissolved before it could ask why. To exist across time is to resist being averaged away. The universe does not need a villain to erase you; ordinary mixing is enough. Gradients flatten. Correlations decay. Edges blur. Every island of structure exists under pressure, and to remain an island is to pay a bill.</p>
       <p>This is the point where the philosophy of existence stops being a cloud of words and becomes an engineering problem. A boundary is not a metaphysical line drawn on reality; it is a mechanism. A boundary is anything that reduces mixing between an inside and an outside, anything that makes certain differences last long enough to matter. A cell membrane is a boundary—it admits nutrients, expels waste, and keeps the cytoplasm from dissolving into the surrounding medium. A skin is a boundary—it holds the organism together against a world that would otherwise colonize, desiccate, or disassemble it. Attention is a boundary in cognition—it selects what enters processing and what remains noise, what becomes signal and what stays background. Every boundary is a kind of selective permeability: it admits some flows, blocks others, and thereby stabilizes a distinction that would otherwise degrade. But boundaries are never free. The cell membrane is maintained by active transport. The skin is repaired by continuous cellular turnover. Attention is allocated and reallocated by mechanisms that themselves require energy and coordination. Maintenance is the verb hiding inside every noun that persists. The moment you say “this continues to be,” you are already talking about dynamics.</p>

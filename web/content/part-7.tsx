@@ -19,6 +19,51 @@ export default function Part7() {
 
       <AffectTrajectory3D demoMode />
 
+      {/* COMPOSITIONAL INTENT FOR PART VII:
+          This is where the book earns its keep or doesn't. Parts I–VI made claims.
+          Part VII says: here's what happened when we tested them. The reader who has
+          been thinking "beautiful theory, but is any of this TRUE?" gets the answer.
+
+          The honest answer: MIXED. Some predictions held, some failed instructively.
+          The key findings:
+          1. Geometry is CHEAP — affect structure appears in every seed, every condition,
+             every substrate. This is the easy part of the thesis.
+          2. Dynamics are EXPENSIVE — high integration under threat (the signature of
+             biological consciousness) requires evolutionary history + graduated stress
+             exposure + state-dependent interaction topology. This is the hard part.
+          3. The wall is architectural — without action→environment→observation loops,
+             no amount of substrate complexity produces the dynamics. The sensory-motor
+             coupling wall is at rung 8 of the emergence ladder.
+          4. The bottleneck furnace CREATES, not just selects — the mechanism for
+             producing high-Φ systems is repeated near-dissolution with recovery.
+          5. Neither optimization (V33 contrastive, V34 Φ-selection) nor communication
+             (V35 language) pushes integration beyond baseline. Only architecture
+             (gradient coupling, V27) and biography (drought forging, V31/V32) work.
+
+          What the reader should feel:
+          - "The cheap part (geometry) confirms the inevitability argument from Part I"
+          - "The expensive part (dynamics) explains why not all systems have rich experience"
+          - "The wall at rung 8 tells me what AI is missing: not intelligence but embodiment"
+          - "Integration can't be optimized into existence — it has to be forged"
+
+          What this primes:
+          - The emergence ladder (10 rungs) is the experimental version of Part I's
+            gradient of distinction. The reader should recognize the same structure.
+          - The psychopathology section connects back to Part III's affect engineering.
+          - The "What Remains" section is the research roadmap — it tells the reader
+            what's next and invites them to participate.
+
+          CONCERN: The reader might get lost in the experiment details (V10, V11, V13–V35).
+          The numbered experiments are important for completeness but the STORY is more
+          important: geometry cheap, dynamics expensive, wall at agency, furnace forges.
+          Consider whether the narrative thread is strong enough to carry the reader
+          through the experimental details, or whether they need more "here's what this
+          means for YOU" checkpoints along the way.
+
+          NOTE: The 3D affect trajectory visualization (AffectTrajectory3D) opens this
+          part. It should give the reader an immediate felt sense of what "trajectory
+          through affect space" means — not abstract but visual, interactive, something
+          they can touch. This is the book's promise made tangible. */}
       <Section title="What Has Been Tested" level={1}>
       <p>The framework has been subjected to four lines of investigation: multi-agent reinforcement learning, cellular automaton evolution, an eleven-experiment emergence program on uncontaminated substrates, and LLM affect probes. The results are mixed. Some predictions held. Some failed instructively. Some revealed phenomena the theory did not anticipate.</p>
 
