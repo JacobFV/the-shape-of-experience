@@ -101,7 +101,7 @@ export default function Part7() {
 
       <Section title="The Emergence Ladder" level={1}>
       <Illustration id="emergence-ladder" />
-      <p>The experiments collectively reveal not a binary (geometry vs. dynamics) but a gradient — an emergence ladder with distinct rungs, each requiring more from the substrate than the last. The ladder tells us precisely which psychological phenomena are computationally cheap, which are expensive, and which require something our substrates do not yet have.</p>
+      <p>The experiments collectively reveal not a binary (geometry vs. dynamics) but a gradient — an emergence ladder with distinct rungs, each one a further constraint on indeterminacy, each requiring more from the substrate than the last. Mind is what indeterminacy becomes when progressively constrained, and the ladder traces the progressive constraining: which psychological phenomena are computationally cheap (already present once survival operates), which are expensive (requiring biographical forging), and which require something our substrates do not yet have (closed-loop agency).</p>
 
       <table>
       <thead><tr><th>Rung</th><th>What emerges</th><th>What it requires</th><th>Experimental evidence</th></tr></thead>
