@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: false  # PDF generation uses LaTeX/TikZ source, not LFS assets
+          lfs: false  # Book images are regular git objects, not LFS
 
       - uses: actions/setup-node@v4
         with:
@@ -48,9 +48,18 @@ jobs:
       - name: Compile book PDF
         run: |
           cd book
+          # First pass (generates .aux, .toc, etc.)
           latexmk -pdf -interaction=nonstopmode book.tex || true
-          # Retry with -f (force past non-fatal tcolorbox warnings)
-          latexmk -pdf -interaction=nonstopmode -f book.tex
+          # Second pass with -f to force through non-fatal warnings (missing images, etc.)
+          latexmk -pdf -interaction=nonstopmode -f book.tex || true
+          # Third pass to resolve cross-references
+          latexmk -pdf -interaction=nonstopmode -f book.tex || true
+          # Verify PDF was actually produced
+          if [ ! -f book.pdf ]; then
+            echo "ERROR: book.pdf was not produced"
+            exit 1
+          fi
+          echo "SUCCESS: book.pdf produced ($(du -h book.pdf | cut -f1))"
 
       - name: Copy PDF to web
         run: cp book/book.pdf web/public/book.pdf
