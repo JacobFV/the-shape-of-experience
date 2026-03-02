@@ -9,3 +9,9 @@
 *.hdf5 filter=lfs diff=lfs merge=lfs -text
 *.pt filter=lfs diff=lfs merge=lfs -text
 *.pth filter=lfs diff=lfs merge=lfs -text
+
+# Exclude book images from LFS so PDF workflow doesn't need LFS bandwidth
+book/images/** !filter !diff !merge text=auto
+book/images/*.png !filter !diff !merge -text
+book/images/*.jpg !filter !diff !merge -text
+book/images/*.pdf !filter !diff !merge -text
