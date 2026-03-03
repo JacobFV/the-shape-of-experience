@@ -15,3 +15,6 @@ book/images/** !filter !diff !merge text=auto
 book/images/*.png !filter !diff !merge -text
 book/images/*.jpg !filter !diff !merge -text
 book/images/*.pdf !filter !diff !merge -text
+
+# Exclude web videos from LFS so Vercel deploy doesn't need LFS bandwidth
+web/public/videos/*.mp4 !filter !diff !merge -text
