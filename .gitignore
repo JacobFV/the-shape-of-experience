@@ -50,3 +50,6 @@ empirical/experiments/study_ca_affect/results/v36_trajectory/cycle_*.json
 .env
 .env.local
 .vercel
+
+# LFS-DAL credentials (contains service account key)
+.lfsdalconfig
