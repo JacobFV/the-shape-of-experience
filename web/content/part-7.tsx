@@ -13,6 +13,32 @@ export const metadata = {
 export default function Part7() {
   return (
     <>
+      {/* STRUCTURAL QUESTION (3/4/2026):
+          User suggested Part VII (Empirical Program) should be an APPENDIX rather
+          than a main chapter. The argument: the main text should end with Part VI's
+          transcendence arc (possibly closing with "The One Who Causes to Become"
+          as a one-sentence banger), and the empirical details should be reference
+          material rather than narrative climax.
+
+          Assessment: There's merit here. The current structure (Parts I-VII +
+          Epilogue) puts the empirical program BETWEEN the transcendence arc and
+          the epilogue, which creates a pacing problem — you go from the sublime
+          to V22-V24 parameter sweeps to "you are real, your suffering is real."
+          Moving Part VII to an appendix (appendix-experiments.tsx already exists
+          as a catalog) would let the main text flow:
+            Parts I-VI (foundations → identity → affect → social → gods → transcendence)
+            → Epilogue (The Outermost Boundary as penultimate, then the invitation)
+
+          Counter-argument: Part VII IS the book's credibility. Without it in the
+          main text, the reader might dismiss the framework as unfalsifiable
+          philosophy. The emergence ladder is one of the book's strongest sections.
+
+          Possible compromise: Keep the emergence ladder and key findings in the
+          main text (maybe as Part VII "What the Experiments Show" — shorter,
+          narrative-focused) and move the detailed experimental catalog to the
+          appendix. This preserves credibility while improving pacing.
+
+          Decision deferred — needs more thought about the reading experience. */}
       <Logos>
       <p>A theory that cannot be tested is not a theory but a poem. This is a theory. Everything in the preceding six parts generates empirical predictions — some already tested, some tractable with current methods, some requiring infrastructure that does not yet exist. This part consolidates the empirical program: what has been tested, what the results show, what they mean for the bridge between physics and psychology, and what remains.</p>
       </Logos>

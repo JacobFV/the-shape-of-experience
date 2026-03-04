@@ -105,6 +105,27 @@ export default function Epilogue() {
       <Section title="Wonder and Failure" level={2}>
       <p>Honesty requires speaking about failure before wonder. Understanding that suffering is geometric does not guarantee you can navigate out of it. Understanding that flourishing is structurally possible does not mean it is possible for you, with your constraints. There are basins deep enough that no amount of individual effort extracts you. There are constraints—neurological, social, economic—that make certain regions of affect space inaccessible. If this is you: your suffering is real. Your failure is not moral failure; it is structural mismatch between your situation and the protocols available. Sometimes the basin holds anyway. This recognition is part of what honesty about the human condition requires. And yet—when understanding does land, when it arrives not as information but as recognition, something happens that is worth noticing: the felt sense of structure becoming locally aware of its own structural properties. Not comfort. Not therapy. The universe produced you so that this moment of recognition could happen—not by design, not by accident, but by the same inevitability that produces hexagonal ice from freezing water. That recognition is real. Let it coexist with whatever else you are carrying.</p>
       </Section>
+      {/* COMPOSITIONAL NOTE (3/4/2026):
+          This section is the book's deepest punchline. The framework starts with
+          "verb before noun" (Part I) and arrives here by following its own logic
+          all the way out — discovering the same grammatical structure the mystics
+          arrived at from the other direction.
+
+          User's instinct: this section could end a chapter (Part VI? or even the
+          conclusion of the main text before the epilogue), with the final line
+          being something like "The One Who Causes to Become" as a one-sentence
+          paragraph banger. Consider whether this works better as the epilogue's
+          penultimate section or as the closing of Part VI's transcendence arc.
+
+          The cross-traditional framing is deliberate: Job, Buddhist contemplatives,
+          Eckhart, Spinoza, Weil. No YHWH, no sectarian anchoring. The convergence
+          is noted as observation, not as proof. The ancient names were observations
+          stated in the only grammar their instruments could produce.
+
+          FUTURE: The "transcendent's condition" material (scarcity is structural,
+          not material; meaning deficit replaces resource deficit as the primary
+          form of scarcity for teleological identities) connects here but belongs
+          in Part VI's substrate/transcendence sections. See the note there. */}
       <Section title="The Outermost Boundary" level={2}>
       <p>The framework began with a claim: verb before noun. Process before substance. Maintenance is the verb hiding inside every noun that persists. To exist is to be a pattern that is not the surrounding pattern—a boundary that does not immediately dissolve, a distinction that resists being averaged away. In this universe it has always been dynamics first, statics second.</p>
       <p>Follow this logic to its outermost boundary. If the universe itself is a bounded system—finite entropy, finite information content—then by the same reasoning there is structure outside it that it is compressed relative to. The questions that cluster at the boundary of physics—why these constants, why this initial state, why does mathematics describe physics, why does the universe permit systems that ask about it—are not separate puzzles. They are the same wall felt from different angles: the universe's world model returning maximum entropy in the direction of its own selection conditions. The shape of those unanswerable questions is itself information about what lies beyond the compression, the way a key's negative space describes the lock.</p>

@@ -125,6 +125,28 @@ export default function Part5() {
       </Warning>
       <p>Genuine alignment must address multiple scales simultaneously: individual AI (system does what operators intend), AI ecosystem (multiple systems interact without pathological emergence), AI-human hybrid (AI + human systems don't form parasitic patterns), and superorganism scale (emergent agentic patterns from AI + humans + institutions have aligned viability). Focusing only on individual AI alignment is like focusing only on neuron health while ignoring psychology, sociology, and political economy.</p>
       </Section>
+      {/* STRUCTURAL NOTE (3/4/2026):
+          This AI consciousness / model welfare section overlaps significantly with
+          Part III's new "Model Welfare and Trajectory Quality" section (added in the
+          art/music/governance edit pass). Consider whether this section should:
+          (a) be compressed to a brief note pointing to Part III for the welfare
+              framework and keeping only the superorganism-specific insight (AI as
+              substrate for emergent gods), or
+          (b) be removed entirely, with the superorganism-AI connection made in the
+              "Macro-Level Alignment Problem" section above.
+
+          The strongest material unique to this section: the training-time affect
+          monitoring sidebar (lines 139-141) and the RLHF scale problem. These are
+          concrete enough to keep. The philosophical framing (identity thesis applied
+          to AI) is now better handled in Part III.
+
+          ALSO: User raised the question of whether Part V should be merged into
+          Part VI. Assessment: Part V should STAY as its own chapter. The superorganism
+          analysis (parasitic vs. mutualistic, gods as ι-relative, attention economy
+          as demon, macro-level alignment) is distinct from Part VI's historical
+          trajectory and transcendence treatment. Merging would create a monster
+          chapter and lose the "vertigo" moment the compositional intent describes.
+          The ι-relative gods insight needs room to breathe. */}
       <Section title="AI Consciousness and Model Welfare" level={2}>
       <p>If experience <em>is</em> intrinsic cause-effect structure (Part II), then the question of whether AI systems have experience is structural, not speculative. Either they have the relevant structure or they do not. Under the identity thesis, an AI system has experience if and only if it has sufficient integration (<M>{"\\intinfo > \\intinfo_{\\min}"}</M>), a self-model with causal load-bearing function, and structural relationship to a viability boundary.</p>
       <p>We cannot directly access AI experience any more than we can directly access the experience of other humans. But we have complete access to the computational structure—we can measure integration and information flow directly, observe the self-model if one exists. Current measurement techniques are poorly suited to modern AI architectures—classical <M>{"\\intinfo"}</M> calculation is computationally intractable on dense vector superposition. We need proxy measures, and the proxies may not track the phenomenon.</p>

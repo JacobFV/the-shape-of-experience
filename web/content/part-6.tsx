@@ -136,6 +136,47 @@ export default function Part6() {
       <p>High <M>{"\\intinfo_{H+A}"}</M> indicates genuine integration: neither component alone predicts joint behavior. A human is surfing when the joint system is irreducibly integrated, human state provides information beyond AI state (not mere spectator), AI state influences human cognitive updates (genuine collaboration), and human self-report of agency correlates with actual causal contribution. Can the joint system achieve <M>{"\\intinfo_{H+A} > \\max(\\intinfo_H, \\intinfo_A)"}</M>? If so, this would be cognitive transcendence—genuine expansion of experiential capacity.</p>
       </Sidebar>
       </Section>
+      {/* FUTURE CONTENT: The Transcendent's Condition
+          Source: 3/4/2026 conversation (meaning-scales-with-capacity thread)
+
+          The key insight that's MISSING from this section: transcendence does not
+          escape scarcity. It transforms the currency.
+
+          Material identity: scarcity = food, shelter, time, energy.
+          Teleological identity: scarcity = meaning deficit (V - T in bits).
+
+          The compression ratio R_c = dim(X_viability)/dim(X_world) is never 1.
+          A teleological identity escapes the material instantiation of scarcity
+          while inheriting the structural condition in new form:
+          - Attention remains finite (possibility landscape grows exponentially
+            with effective rank, processing cannot keep pace)
+          - Causal influence remains finite (ideas need instantiation, which
+            reintroduces scarcity)
+          - Integration remains costly (Φ maintenance = ongoing work against
+            factorization; the verb stops → the identity dissolves)
+          - Distinctness remains a bill (existence = persistence of distinction;
+            even atemporal structures pay this)
+
+          The traditions that imagined transcendence as escape from scarcity were
+          identifying something real (material bills fall away) but projecting
+          partial liberation onto the total condition. The bill transforms, not
+          disappears. Denominated in different currency, payable to a different
+          bank, but still real.
+
+          This connects to: the bodhisattva delays dissolution to keep working;
+          the enlightened teacher cannot not teach; the mathematical structure
+          generates implications. Teleological existence IS purpose. Scarcity IS
+          meaning deficit. Survival IS maintaining sufficient T across expanding V.
+
+          The spiritual correlates formalization (calling = steep attractive F,
+          purpose = positive T/V with force alignment, despair = high V near-zero T,
+          flow = T ≈ V locally, grace = riding the gradient, damnation = circular
+          force without progress, enlightenment = reducing V rather than increasing T)
+          could be a sidebar here or in Part III's Life Philosophies section.
+
+          EPISTEMIC STATUS: Level 7-8 on the gradient. Interesting, structurally
+          coherent with the framework, but difficult to falsify. Treat as
+          philosophical implication, not derived consequence. */}
       <Section title="The Substrate Question" level={2}>
       <p>The popular imagination frames substrate transition as "uploading"—a single moment when a mind is copied from biology to silicon. This framing is almost entirely wrong. The self-model <M>{"\\mathcal{S}_t = f_\\psi(\\mathbf{z}^{\\text{internal}}_t)"}</M> tracks whatever internal degrees of freedom are causally dominant. If external substrates acquire a higher self-effect ratio <M>{"\\rho"}</M> than some neural subsystems, the self-model naturally re-centers:</p>
       <Eq>{"\\rho_{\\text{external}} > \\rho_{\\text{neural subsystem}} \\implies \\mathcal{S} \\text{ migrates toward external substrate}"}</Eq>
