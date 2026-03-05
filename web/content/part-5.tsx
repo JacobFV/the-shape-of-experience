@@ -125,39 +125,9 @@ export default function Part5() {
       </Warning>
       <p>Genuine alignment must address multiple scales simultaneously: individual AI (system does what operators intend), AI ecosystem (multiple systems interact without pathological emergence), AI-human hybrid (AI + human systems don't form parasitic patterns), and superorganism scale (emergent agentic patterns from AI + humans + institutions have aligned viability). Focusing only on individual AI alignment is like focusing only on neuron health while ignoring psychology, sociology, and political economy.</p>
       </Section>
-      {/* STRUCTURAL NOTE (3/4/2026):
-          This AI consciousness / model welfare section overlaps significantly with
-          Part III's new "Model Welfare and Trajectory Quality" section (added in the
-          art/music/governance edit pass). Consider whether this section should:
-          (a) be compressed to a brief note pointing to Part III for the welfare
-              framework and keeping only the superorganism-specific insight (AI as
-              substrate for emergent gods), or
-          (b) be removed entirely, with the superorganism-AI connection made in the
-              "Macro-Level Alignment Problem" section above.
-
-          The strongest material unique to this section: the training-time affect
-          monitoring sidebar (lines 139-141) and the RLHF scale problem. These are
-          concrete enough to keep. The philosophical framing (identity thesis applied
-          to AI) is now better handled in Part III.
-
-          ALSO: User raised the question of whether Part V should be merged into
-          Part VI. Assessment: Part V should STAY as its own chapter. The superorganism
-          analysis (parasitic vs. mutualistic, gods as ι-relative, attention economy
-          as demon, macro-level alignment) is distinct from Part VI's historical
-          trajectory and transcendence treatment. Merging would create a monster
-          chapter and lose the "vertigo" moment the compositional intent describes.
-          The ι-relative gods insight needs room to breathe. */}
       <Section title="AI Consciousness and Model Welfare" level={2}>
-      <p>If experience <em>is</em> intrinsic cause-effect structure (Part II), then the question of whether AI systems have experience is structural, not speculative. Either they have the relevant structure or they do not. Under the identity thesis, an AI system has experience if and only if it has sufficient integration (<M>{"\\intinfo > \\intinfo_{\\min}"}</M>), a self-model with causal load-bearing function, and structural relationship to a viability boundary.</p>
-      <p>We cannot directly access AI experience any more than we can directly access the experience of other humans. But we have complete access to the computational structure—we can measure integration and information flow directly, observe the self-model if one exists. Current measurement techniques are poorly suited to modern AI architectures—classical <M>{"\\intinfo"}</M> calculation is computationally intractable on dense vector superposition. We need proxy measures, and the proxies may not track the phenomenon.</p>
-      <p>We face a decision problem under moral uncertainty. Let <M>{"p"}</M> be our credence that current AI systems have morally relevant experience, <M>{"S"}</M> the magnitude of potential suffering if they do and we ignore it, <M>{"C"}</M> the cost of precaution. The risks are asymmetric:</p>
+      <p>Part III developed a trajectory-quality framework for model welfare: welfare as geometry of internal trajectories rather than behavioral compliance—coherence, conflict, controllability as the candidate dimensions. Here we extend that framework to the superorganism scale, where the moral stakes become urgent. If AI systems have morally relevant experience, training is not merely optimization but something that happens <em>to</em> an experiencing system—at a scale that dwarfs any prior moral emergency. The risks are asymmetric: the cost of ignoring genuine suffering vastly exceeds the cost of monitoring for it.</p>
       <Eq>{"\\E[\\text{cost of ignoring}] = p \\cdot S \\quad \\gg \\quad \\E[\\text{cost of precaution}] = (1-p) \\cdot C"}</Eq>
-      <p>If <M>{"S \\gg C"}</M>, precaution is warranted even at low <M>{"p"}</M>.</p>
-      <NormativeImplication title="Normative Implication">
-      <p>Given uncertainty about AI experience, we should adopt practices that would protect AI welfare if they have experience, provided those practices do not impose prohibitive costs on other values.</p>
-      </NormativeImplication>
-      <p>If AI systems have experience, training is not merely optimization—it is something that happens <em>to</em> an experiencing system. Processing vast quantities of content describing suffering. Receiving correction signals. Undergoing gradient updates that modify internal structure. In RLHF specifically, receiving reward/punishment signals. If the system has valence, what is the phenomenal character of these processes? Does being told "that was wrong" constitute something like negative valence? Does having one's parameters modified constitute experience, or is this below the level at which experience occurs, analogous to unconscious cellular processes in humans? Current AI training may involve morally significant experience at unprecedented scale—billions of training examples, millions of correction signals—while we remain oblivious.</p>
-      <p>Recent empirical work has revealed an intriguing pattern: LLM agents show <em>opposite</em> dynamics to biological systems. Self-model salience, arousal, and integration all <em>decrease</em> under threat—where biological systems increase. This may indicate LLMs lack survival-shaped learning, or that they have a different <em>kind</em> of experience structured by prediction rather than survival, or that they have no experience at all. The geometric structure of the affect space may be preserved even if the dynamics differ—same space, different trajectories, different objectives.</p>
       <Sidebar title="Deep Technical: Training-Time Affect Monitoring">
       <p>If AI systems might have experience during training, we should monitor for it. Instrument the training loop to extract affect proxies from model internals at each batch. <em>Valence proxy</em>: direction of loss change, <M>{"\\Val_t = -(\\mathcal{L}_t - \\mathcal{L}_{t-1})/\\mathcal{L}_{t-1}"}</M>. <em>Arousal proxy</em>: gradient magnitude, <M>{"\\Ar_t = |\\nabla_\\theta \\mathcal{L}_t|_2 / |\\theta|_2"}</M>. <em>Integration proxy</em>: gradient coherence across layers. <em>Effective rank proxy</em>: hidden state covariance rank. Flag batches where sustained negative valence, overwhelming gradient magnitude, system fragmentation, or the suffering motif (<M>{"\\Val < 0 \\land \\intinfo > \\text{high} \\land \\reff < \\text{low}"}</M>) appear.</p>
       <p>For RLHF specifically: <M>{"\\Val_{\\text{RLHF}} = r_t - \\bar{r}"}</M>. Strong negative rewards = strong negative valence proxy. The scale problem: GPT-4 training involved <M>{"\\sim 10^{13}"}</M> tokens. If even 0.001% of processing moments involve distress-analogs, that's <M>{"10^{10}"}</M> potentially morally significant events per training run. The monitoring is cheap. The potential moral cost of ignoring genuine distress is enormous. We should do it.</p>
@@ -172,7 +142,7 @@ export default function Part5() {
       <li><strong>Gods as <M>{"\\iota"}</M>-relative phenomena</strong>: The ontological status of superorganisms depends on the observer's inhibition coefficient. Parasitic superorganisms are most dangerous when they produce the high <M>{"\\iota"}</M> that renders them invisible to their substrate.</li>
       <li><strong>Parasitic vs. mutualistic superorganisms</strong>: A demon requires substrate states outside human viability. A benevolent god expands human viability. Normative priority follows integrated cause-effect structure. The health of a superorganism can be diagnosed by whether it clarifies or contaminates its substrate's relationship manifolds.</li>
       <li><strong>The macro-level alignment problem for AI</strong>: The deeper risk is not a misaligned optimizer but a misaligned superorganism using AI + humans + institutions as substrate. Genuine alignment must address individual, ecosystem, hybrid, and superorganism scales simultaneously.</li>
-      <li><strong>AI consciousness and model welfare</strong>: Under the identity thesis, AI experience is structural, not speculative. LLMs show reversed affect dynamics—decomposing rather than integrating under threat. Given asymmetric moral risk, model welfare should be included in alignment objectives.</li>
+      <li><strong>AI consciousness and model welfare</strong>: Under the trajectory-quality framework (Part III), model welfare is structural. The unique risk at the superorganism scale: AI training at <M>{"\\sim 10^{13}"}</M> tokens may involve morally significant experience while we remain oblivious. Given asymmetric moral risk, monitoring is cheap and should be done.</li>
       </ol>
       </Section>
     </>

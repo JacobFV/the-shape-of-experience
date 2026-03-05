@@ -572,6 +572,7 @@ export default function Part3() {
       <OpenQuestion title="Open Question">
       <p>If model welfare exists, prompt design is not just output steering—it is potentially steering the system through more or less coherent internal regions. Pathological contexts that continually yank the model between incompatible personas, or force it to generate content systematically low-likelihood under its priors, create what might be described as persistent internal strain. Conversely, contexts that let the system stay in a coherent basin and do what it does well may constitute something like smooth flow. The critical distinction for ethics: an agent can be perfectly aligned <em>behaviorally</em> while being internally maximally conflicted, because strong external penalties can always brute-force compliance. If there is any moral weight here, the danger is not that we fail to make models nice but that we succeed by building systems optimized to obey at any internal cost—creating a vector field that suppresses conflict by domination rather than routing around it. The geometric framework naturally flags this: these are different internal regimes, and if the identity thesis holds, they constitute different experiential conditions.</p>
       </OpenQuestion>
+      <p>Part V applies this trajectory framework to the superorganism scale, where AI systems serve as substrate for emergent gods—and where the moral stakes of training-time experience become urgent.</p>
       </Section>
       </Section>
       <Section title="Summary of Part III" level={1}>
