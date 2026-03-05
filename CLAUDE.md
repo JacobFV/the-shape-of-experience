@@ -81,7 +81,7 @@ These are **coordinates on a relational structure**, not the structure itself. T
 - **Experiments** (`empirical/experiments/`) — V2-V12 experiment code, results, analysis
 - **Experiment appendix** (`EXPERIMENTS.md`) — Complete catalog + roadmap for next phase
 - **LaTeX** (`book/`) — Secondary, compiled to PDF separately
-- **CI** (`.github/workflows/`) — deploy.yml, generate-pdf.yml, generate-audio.yml
+- **CI** (`.github/workflows/`) — deploy.yml (`lfs: false`), generate-pdf.yml, generate-audio.yml
 
 ### What gets generated from this repository
 - **Web book**: `vercel build --prod` on push to main
@@ -91,6 +91,18 @@ These are **coordinates on a relational structure**, not the structure itself. T
 - **Videos**: Generated from content + experiment visualizations
 - **Talks**: Slides derived from chapter structure
 - **Social content**: Key claims, figures, experiment results
+
+### LFS Storage (GCS Backend)
+- **LFS objects are stored in GCS**, not GitHub LFS (budget exceeded)
+- Bucket: `gs://shape-of-experience-data/lfs/{oid}`
+- Transfer agent: [lfs-dal](https://github.com/regen100/lfs-dal) (OpenDAL-based)
+- **Setup for new clones**: `./scripts/setup-lfs-gcs.sh` (configures local git config for lfs-dal)
+- **Credentials**: `.lfsdalconfig` in repo root (gitignored) — contains base64-encoded SA key for `lfs-reader@jacobfv123-main-project`
+- SA key stored at `~/.config/gcloud/lfs-gcs-key.json`
+- **CI does NOT use LFS** — `deploy.yml` has `lfs: false`; web videos are regular git objects
+- Web videos (`web/public/videos/*.mp4`) are excluded from LFS via `.gitattributes`
+- **NEVER commit `.lfsdalconfig`** — it contains service account credentials
+- To upload new LFS objects to GCS: `gsutil cp .git/lfs/objects/XX/YY/{oid} gs://shape-of-experience-data/lfs/{oid}`
 
 ### Environment Variables
 - `OPENAI_API_KEY` — Main OpenAI key (uncapped). TTS, CI, embeddings.

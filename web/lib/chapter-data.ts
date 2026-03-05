@@ -14,8 +14,8 @@ export const chapters: Chapter[] = [
   { slug: 'part-3', title: 'Part III: Signatures of Affect Under the Existential Burden', shortTitle: 'Part III: Affect Signatures' },
   { slug: 'part-4', title: 'Part IV: The Topology of Social Bonds', shortTitle: 'Part IV: Social Bonds' },
   { slug: 'part-5', title: 'Part V: Gods and Superorganisms', shortTitle: 'Part V: Gods' },
-  { slug: 'part-6', title: 'Part VI: Historical Consciousness and Transcendence', shortTitle: 'Part VI: Transcendence' },
-  { slug: 'part-7', title: 'Part VII: The Empirical Program', shortTitle: 'Part VII: Empirical Program' },
+  { slug: 'part-6', title: 'Part VI: Transcendence and the Shape of Becoming', shortTitle: 'Part VI: Transcendence' },
   { slug: 'epilogue', title: 'Epilogue', shortTitle: 'Epilogue' },
+  { slug: 'appendix-empirical', title: 'Appendix: The Empirical Program', shortTitle: 'Empirical Program' },
   { slug: 'appendix-experiments', title: 'Appendix: Experiment Catalog', shortTitle: 'Experiments' },
 ];

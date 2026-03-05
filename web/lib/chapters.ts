@@ -20,8 +20,8 @@ const chapterModules: Record<string, () => Promise<{ default: ComponentType }>> 
   'part-4': () => import('../content/part-4'),
   'part-5': () => import('../content/part-5'),
   'part-6': () => import('../content/part-6'),
-  'part-7': () => import('../content/part-7'),
   'epilogue': () => import('../content/epilogue'),
+  'appendix-empirical': () => import('../content/appendix-empirical'),
   'appendix-experiments': () => import('../content/appendix-experiments'),
 };
 
