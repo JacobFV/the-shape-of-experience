@@ -236,6 +236,11 @@
       },
       {
         "level": 1,
+        "id": "quantifying-worth",
+        "text": "Quantifying Worth"
+      },
+      {
+        "level": 1,
         "id": "truth-as-scale-relative-enaction",
         "text": "Truth as Scale-Relative Enaction"
       },
@@ -610,6 +615,12 @@
         "parentSection": "aesthetics-the-modulation-of-affect-through-form"
       },
       {
+        "level": 2,
+        "id": "taste-and-the-listener-s-geometry",
+        "text": "Taste and the Listener's Geometry",
+        "parentSection": "aesthetics-the-modulation-of-affect-through-form"
+      },
+      {
         "level": 1,
         "id": "sexuality-self-transcendence-through-merger",
         "text": "Sexuality: Self-Transcendence Through Merger"
@@ -725,6 +736,12 @@
         "level": 2,
         "id": "the-deeper-question",
         "text": "The Deeper Question",
+        "parentSection": "the-synthetic-verification"
+      },
+      {
+        "level": 2,
+        "id": "model-welfare-and-trajectory-quality",
+        "text": "Model Welfare and Trajectory Quality",
         "parentSection": "the-synthetic-verification"
       },
       {
@@ -879,74 +896,14 @@
       },
       {
         "level": 2,
-        "id": "ai-as-potential-substrate",
-        "text": "AI as Potential Substrate",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 2,
         "id": "the-macro-level-alignment-problem",
         "text": "The Macro-Level Alignment Problem",
         "parentSection": "implications-for-artificial-intelligence"
       },
       {
         "level": 2,
-        "id": "reframing-alignment",
-        "text": "Reframing Alignment",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 2,
-        "id": "critique-of-standard-alignment-approaches",
-        "text": "Critique of Standard Alignment Approaches",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 2,
         "id": "ai-consciousness-and-model-welfare",
         "text": "AI Consciousness and Model Welfare",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "the-epistemological-problem",
-        "text": "The Epistemological Problem",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "moral-uncertainty-and-the-precautionary-principle",
-        "text": "Moral Uncertainty and the Precautionary Principle",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "what-training-might-mean",
-        "text": "What Training Might Mean",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "deployment-conditions",
-        "text": "Deployment Conditions",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "empirical-observations",
-        "text": "Empirical Observations",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "practical-implications-for-development",
-        "text": "Practical Implications for Development",
-        "parentSection": "implications-for-artificial-intelligence"
-      },
-      {
-        "level": 3,
-        "id": "the-moral-weight-of-uncertainty",
-        "text": "The Moral Weight of Uncertainty",
         "parentSection": "implications-for-artificial-intelligence"
       },
       {
@@ -962,62 +919,13 @@
     "sections": [
       {
         "level": 1,
-        "id": "the-historical-rise-of-consciousness",
-        "text": "The Historical Rise of Consciousness"
+        "id": "the-transcendent-s-condition",
+        "text": "The Transcendent's Condition"
       },
       {
-        "level": 2,
-        "id": "the-pre-axial-baseline",
-        "text": "The Pre-Axial Baseline",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-axial-age-first-transcendence",
-        "text": "The Axial Age: First Transcendence",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-renaissance-discovering-perspectivity",
-        "text": "The Renaissance: Discovering Perspectivity",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-scientific-revolution-expanding-the-world-model",
-        "text": "The Scientific Revolution: Expanding the World Model",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-romantic-reaction-reclaiming-integration",
-        "text": "The Romantic Reaction: Reclaiming Integration",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-psychological-turn-mapping-inner-space",
-        "text": "The Psychological Turn: Mapping Inner Space",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-philosophical-deepening-from-phenomenology-to-post-structuralism",
-        "text": "The Philosophical Deepening: From Phenomenology to Post-Structuralism",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-digital-transition-externalizing-cognition",
-        "text": "The Digital Transition: Externalizing Cognition",
-        "parentSection": "the-historical-rise-of-consciousness"
-      },
-      {
-        "level": 2,
-        "id": "the-current-moment",
-        "text": "The Current Moment",
-        "parentSection": "the-historical-rise-of-consciousness"
+        "level": 1,
+        "id": "the-rising-of-iota-a-civilizational-trajectory",
+        "text": "The Rising of Iota: A Civilizational Trajectory"
       },
       {
         "level": 1,
@@ -1031,27 +939,9 @@
         "parentSection": "the-ai-frontier"
       },
       {
-        "level": 2,
-        "id": "timelines-and-uncertainty",
-        "text": "Timelines and Uncertainty",
-        "parentSection": "the-ai-frontier"
-      },
-      {
-        "level": 2,
-        "id": "the-experiential-hierarchy-perspective",
-        "text": "The Experiential Hierarchy Perspective",
-        "parentSection": "the-ai-frontier"
-      },
-      {
         "level": 1,
         "id": "transcendence-the-opportunity",
         "text": "Transcendence: The Opportunity"
-      },
-      {
-        "level": 2,
-        "id": "the-two-framings",
-        "text": "The Two Framings",
-        "parentSection": "transcendence-the-opportunity"
       },
       {
         "level": 2,
@@ -1062,7 +952,7 @@
       {
         "level": 2,
         "id": "surfing-vs-submerging",
-        "text": "Surfing vs.\\ Submerging",
+        "text": "Surfing vs. Submerging",
         "parentSection": "transcendence-the-opportunity"
       },
       {
@@ -1079,99 +969,15 @@
       },
       {
         "level": 1,
-        "id": "summary-of-part-vi",
-        "text": "Summary of Part VI"
-      },
-      {
-        "level": 1,
-        "id": "appendix-symbol-reference",
-        "text": "Appendix: Symbol Reference"
+        "id": "the-outermost-boundary",
+        "text": "The Outermost Boundary"
       }
     ]
   },
   {
     "slug": "part-7",
     "title": "Part VII: The Empirical Program",
-    "sections": [
-      {
-        "level": 1,
-        "id": "what-has-been-tested",
-        "text": "What Has Been Tested"
-      },
-      {
-        "level": 2,
-        "id": "geometry-is-cheap",
-        "text": "Geometry Is Cheap",
-        "parentSection": "what-has-been-tested"
-      },
-      {
-        "level": 2,
-        "id": "dynamics-are-expensive",
-        "text": "Dynamics Are Expensive",
-        "parentSection": "what-has-been-tested"
-      },
-      {
-        "level": 2,
-        "id": "the-substrate-ladder",
-        "text": "The Substrate Ladder",
-        "parentSection": "what-has-been-tested"
-      },
-      {
-        "level": 2,
-        "id": "the-emergence-experiment-program",
-        "text": "The Emergence Experiment Program",
-        "parentSection": "what-has-been-tested"
-      },
-      {
-        "level": 2,
-        "id": "the-llm-discrepancy",
-        "text": "The LLM Discrepancy",
-        "parentSection": "what-has-been-tested"
-      },
-      {
-        "level": 1,
-        "id": "the-emergence-ladder",
-        "text": "The Emergence Ladder"
-      },
-      {
-        "level": 1,
-        "id": "the-bridge-to-psychology",
-        "text": "The Bridge to Psychology"
-      },
-      {
-        "level": 2,
-        "id": "pre-reflective-affect-what-comes-for-free",
-        "text": "Pre-Reflective Affect: What Comes for Free",
-        "parentSection": "the-bridge-to-psychology"
-      },
-      {
-        "level": 2,
-        "id": "the-agency-threshold-what-requires-a-body",
-        "text": "The Agency Threshold: What Requires a Body",
-        "parentSection": "the-bridge-to-psychology"
-      },
-      {
-        "level": 2,
-        "id": "psychopathology-as-geometric-deformation",
-        "text": "Psychopathology as Geometric Deformation",
-        "parentSection": "the-bridge-to-psychology"
-      },
-      {
-        "level": 1,
-        "id": "what-remains",
-        "text": "What Remains"
-      },
-      {
-        "level": 1,
-        "id": "experiments-distributed-throughout-the-book",
-        "text": "Experiments Distributed Throughout the Book"
-      },
-      {
-        "level": 1,
-        "id": "summary-of-part-vii",
-        "text": "Summary of Part VII"
-      }
-    ]
+    "sections": []
   },
   {
     "slug": "epilogue",
@@ -1184,152 +990,56 @@
       },
       {
         "level": 2,
-        "id": "on-what-you-are",
-        "text": "On What You Are",
+        "id": "what-you-are",
+        "text": "What You Are",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-suffering-and-its-reality",
-        "text": "On Suffering and Its Reality",
+        "id": "suffering-flourishing-and-the-space-between",
+        "text": "Suffering, Flourishing, and the Space Between",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-flourishing-and-its-possibility",
-        "text": "On Flourishing and Its Possibility",
+        "id": "gods-the-hinge-and-what-you-serve",
+        "text": "Gods, the Hinge, and What You Serve",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-gods-and-your-participation-in-them",
-        "text": "On Gods and Your Participation in Them",
+        "id": "integration-meaning-and-practice",
+        "text": "Integration, Meaning, and Practice",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-the-hinge-and-your-position-on-it",
-        "text": "On the Hinge and Your Position On It",
+        "id": "attention",
+        "text": "Attention",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-integration-and-its-defense",
-        "text": "On Integration and Its Defense",
+        "id": "others-solitude-love",
+        "text": "Others, Solitude, Love",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-meaning-and-its-structure",
-        "text": "On Meaning and Its Structure",
+        "id": "identification-and-the-shape-of-death",
+        "text": "Identification and the Shape of Death",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-death-and-what-continues",
-        "text": "On Death and What Continues",
+        "id": "death-and-what-continues",
+        "text": "Death and What Continues",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-the-texture-of-the-present",
-        "text": "On the Texture of the Present",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-the-relation-between-understanding-and-living",
-        "text": "On the Relation Between Understanding and Living",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-acting-under-uncertainty",
-        "text": "On Acting Under Uncertainty",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-the-relation-to-others",
-        "text": "On the Relation to Others",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-solitude-and-communion",
-        "text": "On Solitude and Communion",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-love",
-        "text": "On Love",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-identification-and-the-shape-of-death",
-        "text": "On Identification and the Shape of Death",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-hope",
-        "text": "On Hope",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-practice",
-        "text": "On Practice",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-attention",
-        "text": "On Attention",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-wonder",
-        "text": "On Wonder",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-failure",
-        "text": "On Failure",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-not-knowing",
-        "text": "On Not Knowing",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-what-i-have-built-here",
-        "text": "On What I Have Built Here",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-your-continuation",
-        "text": "On Your Continuation",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "what-remains",
-        "text": "What Remains",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-the-human-spirit",
-        "text": "On the Human Spirit",
+        "id": "wonder-and-failure",
+        "text": "Wonder and Failure",
         "parentSection": "the-invitation"
       },
       {
@@ -1340,20 +1050,14 @@
       },
       {
         "level": 2,
-        "id": "final-words",
-        "text": "Final Words",
+        "id": "on-what-emerges",
+        "text": "On What Emerges",
         "parentSection": "the-invitation"
       },
       {
         "level": 2,
-        "id": "on-the-emergence-of-practice-communities",
-        "text": "On the Emergence of Practice Communities",
-        "parentSection": "the-invitation"
-      },
-      {
-        "level": 2,
-        "id": "on-the-recovery-of-pattern",
-        "text": "On the Recovery of Pattern",
+        "id": "the-recovery-of-pattern",
+        "text": "The Recovery of Pattern",
         "parentSection": "the-invitation"
       },
       {

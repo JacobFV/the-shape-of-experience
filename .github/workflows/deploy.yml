@@ -45,6 +45,9 @@ jobs:
           key: audio-v1
           restore-keys: audio-
 
+      - name: Generate metadata
+        run: cd web && node scripts/build-toc.mjs && node scripts/build-search-index.mjs
+
       - name: Build
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 

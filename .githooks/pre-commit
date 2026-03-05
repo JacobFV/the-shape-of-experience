@@ -1,0 +1,15 @@
+#!/bin/sh
+# Regenerate metadata.json and search-index.json if any content files changed.
+# This keeps the sidebar TOC in sync with the actual chapter structure.
+
+CONTENT_CHANGED=$(git diff --cached --name-only -- 'web/content/*.tsx' 'web/lib/chapter-data.ts')
+
+if [ -n "$CONTENT_CHANGED" ]; then
+  echo "Content files changed — regenerating metadata.json and search-index.json..."
+  cd web
+  node scripts/build-toc.mjs
+  node scripts/build-search-index.mjs
+  cd ..
+  git add web/public/metadata.json web/public/search-index.json
+  echo "Metadata regenerated and staged."
+fi
