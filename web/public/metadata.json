@@ -598,6 +598,12 @@
         "parentSection": "the-expression-of-inevitability-human-responses-to-inescapable-selfhood"
       },
       {
+        "level": 2,
+        "id": "the-geometry-of-the-meaning-crisis",
+        "text": "The Geometry of the Meaning Crisis",
+        "parentSection": "the-expression-of-inevitability-human-responses-to-inescapable-selfhood"
+      },
+      {
         "level": 1,
         "id": "aesthetics-the-modulation-of-affect-through-form",
         "text": "Aesthetics: The Modulation of Affect Through Form"
@@ -923,6 +929,23 @@
         "text": "The Transcendent's Condition"
       },
       {
+        "level": 2,
+        "id": "the-100-bit-wall",
+        "text": "The 100-Bit Wall",
+        "parentSection": "the-transcendent-s-condition"
+      },
+      {
+        "level": 2,
+        "id": "identity-migration",
+        "text": "Identity Migration",
+        "parentSection": "the-transcendent-s-condition"
+      },
+      {
+        "level": 1,
+        "id": "the-transcendent-s-eros",
+        "text": "The Transcendent's Eros"
+      },
+      {
         "level": 1,
         "id": "the-rising-of-iota-a-civilizational-trajectory",
         "text": "The Rising of Iota: A Civilizational Trajectory"
@@ -936,6 +959,12 @@
         "level": 2,
         "id": "the-nature-of-the-transition",
         "text": "The Nature of the Transition",
+        "parentSection": "the-ai-frontier"
+      },
+      {
+        "level": 2,
+        "id": "the-exocortex-identity-dissolution-through-distributed-agency",
+        "text": "The Exocortex: Identity Dissolution Through Distributed Agency",
         "parentSection": "the-ai-frontier"
       },
       {
@@ -959,6 +988,12 @@
         "level": 2,
         "id": "the-substrate-question",
         "text": "The Substrate Question",
+        "parentSection": "transcendence-the-opportunity"
+      },
+      {
+        "level": 2,
+        "id": "engineering-for-consciousness",
+        "text": "Engineering for Consciousness",
         "parentSection": "transcendence-the-opportunity"
       },
       {
