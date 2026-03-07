@@ -47,7 +47,9 @@ export default async function SectionPage({ params }: Props) {
 
   const sectionTitle = getSectionTitle(slug, sectionId);
   const { prev, next } = getAdjacentSections(slug, sectionId);
-  const audioSections = getChapterAudio(slug);
+  const allAudio = getChapterAudio(slug);
+  // Filter to just the audio for this section page
+  const pageAudio = allAudio.filter(a => a.id === sectionId);
 
   return (
     <article className="chapter">
@@ -56,9 +58,9 @@ export default async function SectionPage({ params }: Props) {
         <h1 className="chapter-title">{sectionTitle}</h1>
       </header>
 
-      {audioSections.length > 0 && (
+      {pageAudio.length > 0 && (
         <AudioPlayer
-          sections={audioSections}
+          sections={pageAudio}
           chapterTitle={chapter.shortTitle}
           slug={slug}
         />
