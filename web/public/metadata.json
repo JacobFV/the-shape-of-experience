@@ -968,6 +968,12 @@
         "parentSection": "the-ai-frontier"
       },
       {
+        "level": 2,
+        "id": "the-persistence-of-center",
+        "text": "The Persistence of Center",
+        "parentSection": "the-ai-frontier"
+      },
+      {
         "level": 1,
         "id": "transcendence-the-opportunity",
         "text": "Transcendence: The Opportunity"
