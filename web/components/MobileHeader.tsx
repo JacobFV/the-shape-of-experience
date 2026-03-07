@@ -39,7 +39,7 @@ function applyFontSize(size: FontSize) {
 }
 
 export default function MobileHeader() {
-  const { sidebarOpen, setSidebarOpen, audioAvailable, audioStarted, audioToggleRef } = useMobileUI();
+  const { sidebarOpen, setSidebarOpen, audioAvailable, audioPlaying, audioToggleRef } = useMobileUI();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>('system');
@@ -111,15 +111,22 @@ export default function MobileHeader() {
         <div className="mobile-header-center" />
 
         <div className="mobile-header-right" ref={menuRef}>
-          {audioAvailable && !audioStarted && (
+          {audioAvailable && (
             <button
               className="mobile-header-btn mobile-header-play"
               onClick={() => audioToggleRef.current?.()}
-              aria-label="Play audio"
+              aria-label={audioPlaying ? 'Pause audio' : 'Play audio'}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              {audioPlaying ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
             </button>
           )}
 

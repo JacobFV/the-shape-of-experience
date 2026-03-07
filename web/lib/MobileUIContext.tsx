@@ -9,6 +9,8 @@ interface MobileUIContextType {
   setAudioAvailable: (v: boolean) => void;
   audioStarted: boolean;
   setAudioStarted: (v: boolean) => void;
+  audioPlaying: boolean;
+  setAudioPlaying: (v: boolean) => void;
   audioToggleRef: React.MutableRefObject<(() => void) | null>;
 }
 
@@ -18,6 +20,7 @@ export function MobileUIProvider({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [audioAvailable, setAudioAvailable] = useState(false);
   const [audioStarted, setAudioStarted] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
   const audioToggleRef = useRef<(() => void) | null>(null);
 
   return (
@@ -25,6 +28,7 @@ export function MobileUIProvider({ children }: { children: ReactNode }) {
       sidebarOpen, setSidebarOpen,
       audioAvailable, setAudioAvailable,
       audioStarted, setAudioStarted,
+      audioPlaying, setAudioPlaying,
       audioToggleRef,
     }}>
       {children}

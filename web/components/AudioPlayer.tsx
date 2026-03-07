@@ -32,7 +32,7 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
   const [loaded, setLoaded] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [everPlayed, setEverPlayed] = useState(false);
-  const { setAudioAvailable, setAudioStarted, audioToggleRef } = useMobileUI();
+  const { setAudioAvailable, setAudioStarted, setAudioPlaying, audioToggleRef } = useMobileUI();
 
   const current = sections[currentIndex];
 
@@ -43,11 +43,17 @@ export default function AudioPlayer({ sections, chapterTitle, slug }: AudioPlaye
     return () => {
       setAudioAvailable(false);
       setAudioStarted(false);
+      setAudioPlaying(false);
       delete document.body.dataset.hasAudio;
       delete document.body.dataset.audioStarted;
       audioToggleRef.current = null;
     };
-  }, [setAudioAvailable, setAudioStarted, audioToggleRef]);
+  }, [setAudioAvailable, setAudioStarted, setAudioPlaying, audioToggleRef]);
+
+  // Sync playing state to context for header buttons
+  useEffect(() => {
+    setAudioPlaying(isPlaying);
+  }, [isPlaying, setAudioPlaying]);
 
   // Sync everPlayed to body data attribute
   useEffect(() => {

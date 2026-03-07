@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import UserButton from './UserButton';
 import SearchOverlay from './SearchOverlay';
 import { useCopyContent } from '../lib/useCopyContent';
+import { useMobileUI } from '../lib/MobileUIContext';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
@@ -93,6 +94,7 @@ export default function ReaderToolbar() {
   const fontPickerRef = useRef<HTMLDivElement>(null);
   const copyMenuRef = useRef<HTMLDivElement>(null);
   const { copyPage, copyPart, copyBook, partTitle, isReadingPage, hasSubsections, toast: copyToast } = useCopyContent();
+  const { audioAvailable, audioPlaying, audioToggleRef } = useMobileUI();
 
   const pathBase = pathname.replace(/^\//, '').split('/')[0];
   const slug = pathBase;
@@ -184,6 +186,27 @@ export default function ReaderToolbar() {
           <path d="M21 21l-4.35-4.35" />
         </svg>
       </button>
+
+      {/* Audio play/pause */}
+      {audioAvailable && (
+        <button
+          className="reader-toolbar-btn"
+          onClick={() => audioToggleRef.current?.()}
+          title={audioPlaying ? 'Pause audio' : 'Play audio'}
+          aria-label={audioPlaying ? 'Pause audio' : 'Play audio'}
+        >
+          {audioPlaying ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+      )}
 
       {/* Copy content */}
       {isReadingPage && (
