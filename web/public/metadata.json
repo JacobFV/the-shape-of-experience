@@ -921,7 +921,7 @@
   },
   {
     "slug": "part-6",
-    "title": "Part VI: Historical Consciousness and Transcendence",
+    "title": "Part VI: Transcendence and the Shape of Becoming",
     "sections": [
       {
         "level": 1,
@@ -1016,11 +1016,6 @@
     ]
   },
   {
-    "slug": "part-7",
-    "title": "Part VII: The Empirical Program",
-    "sections": []
-  },
-  {
     "slug": "epilogue",
     "title": "Epilogue",
     "sections": [
@@ -1105,6 +1100,90 @@
         "level": 1,
         "id": "conclusion",
         "text": "Conclusion"
+      }
+    ]
+  },
+  {
+    "slug": "appendix-empirical",
+    "title": "Appendix: The Empirical Program",
+    "sections": [
+      {
+        "level": 1,
+        "id": "what-has-been-tested",
+        "text": "What Has Been Tested"
+      },
+      {
+        "level": 2,
+        "id": "geometry-is-cheap",
+        "text": "Geometry Is Cheap",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "dynamics-are-expensive",
+        "text": "Dynamics Are Expensive",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-substrate-ladder",
+        "text": "The Substrate Ladder",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-emergence-experiment-program",
+        "text": "The Emergence Experiment Program",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 2,
+        "id": "the-llm-discrepancy",
+        "text": "The LLM Discrepancy",
+        "parentSection": "what-has-been-tested"
+      },
+      {
+        "level": 1,
+        "id": "the-emergence-ladder",
+        "text": "The Emergence Ladder"
+      },
+      {
+        "level": 1,
+        "id": "the-bridge-to-psychology",
+        "text": "The Bridge to Psychology"
+      },
+      {
+        "level": 2,
+        "id": "pre-reflective-affect-what-comes-for-free",
+        "text": "Pre-Reflective Affect: What Comes for Free",
+        "parentSection": "the-bridge-to-psychology"
+      },
+      {
+        "level": 2,
+        "id": "the-agency-threshold-what-requires-a-body",
+        "text": "The Agency Threshold: What Requires a Body",
+        "parentSection": "the-bridge-to-psychology"
+      },
+      {
+        "level": 2,
+        "id": "psychopathology-as-geometric-deformation",
+        "text": "Psychopathology as Geometric Deformation",
+        "parentSection": "the-bridge-to-psychology"
+      },
+      {
+        "level": 1,
+        "id": "what-remains",
+        "text": "What Remains"
+      },
+      {
+        "level": 1,
+        "id": "experiments-distributed-throughout-the-book",
+        "text": "Experiments Distributed Throughout the Book"
+      },
+      {
+        "level": 1,
+        "id": "summary",
+        "text": "Summary"
       }
     ]
   },

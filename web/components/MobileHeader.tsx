@@ -49,7 +49,7 @@ export default function MobileHeader() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const profileImage = useProfileImage();
-  const { copyPage, copyPart, pageTitle, partTitle, isReadingPage, toast: copyToast } = useCopyContent();
+  const { copyPage, copyPart, copyBook, pageTitle, partTitle, isReadingPage, hasSubsections, toast: copyToast } = useCopyContent();
 
   useEffect(() => {
     setTheme(getTheme());
@@ -159,15 +159,27 @@ export default function MobileHeader() {
                     </span>
                     <span>Copy: {pageTitle}</span>
                   </button>
-                  <button className="mobile-menu-item" onClick={() => { copyPart(); setMenuOpen(false); }}>
+                  {hasSubsections && (
+                    <button className="mobile-menu-item" onClick={() => { copyPart(); setMenuOpen(false); }}>
+                      <span className="mobile-menu-icon" style={{ position: 'relative' }}>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="9" y="9" width="13" height="13" rx="2" />
+                          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        </svg>
+                        <span style={{ position: 'absolute', bottom: -2, right: -4, fontSize: '0.45rem', fontWeight: 700, fontVariant: 'all-small-caps', lineHeight: 1, color: 'var(--text-secondary)' }}>ALL</span>
+                      </span>
+                      <span>{partTitle}</span>
+                    </button>
+                  )}
+                  <button className="mobile-menu-item" onClick={() => { copyBook(); setMenuOpen(false); }}>
                     <span className="mobile-menu-icon" style={{ position: 'relative' }}>
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" />
-                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
                       </svg>
                       <span style={{ position: 'absolute', bottom: -2, right: -4, fontSize: '0.45rem', fontWeight: 700, fontVariant: 'all-small-caps', lineHeight: 1, color: 'var(--text-secondary)' }}>ALL</span>
                     </span>
-                    <span>{partTitle}</span>
+                    <span>Entire Book</span>
                   </button>
                   <div className="mobile-menu-divider" />
                 </>

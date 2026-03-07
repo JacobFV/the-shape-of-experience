@@ -92,7 +92,7 @@ export default function ReaderToolbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const fontPickerRef = useRef<HTMLDivElement>(null);
   const copyMenuRef = useRef<HTMLDivElement>(null);
-  const { copyPage, copyPart, partTitle, isReadingPage, toast: copyToast } = useCopyContent();
+  const { copyPage, copyPart, copyBook, partTitle, isReadingPage, hasSubsections, toast: copyToast } = useCopyContent();
 
   const pathBase = pathname.replace(/^\//, '').split('/')[0];
   const slug = pathBase;
@@ -211,18 +211,33 @@ export default function ReaderToolbar() {
           </button>
           {showCopyMenu && (
             <div className="copy-picker-menu">
+              {hasSubsections && (
+                <button
+                  className="copy-picker-option"
+                  onClick={() => { copyPart(); setShowCopyMenu(false); }}
+                >
+                  <span className="copy-all-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" />
+                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                    </svg>
+                    <span className="copy-all-badge">ALL</span>
+                  </span>
+                  <span>{partTitle}</span>
+                </button>
+              )}
               <button
                 className="copy-picker-option"
-                onClick={() => { copyPart(); setShowCopyMenu(false); }}
+                onClick={() => { copyBook(); setShowCopyMenu(false); }}
               >
                 <span className="copy-all-icon">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" />
-                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
                   </svg>
                   <span className="copy-all-badge">ALL</span>
                 </span>
-                <span>{partTitle}</span>
+                <span>Entire Book</span>
               </button>
             </div>
           )}

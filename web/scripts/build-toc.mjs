@@ -12,18 +12,12 @@ const root = join(__dirname, '..');
 const contentDir = join(root, 'content');
 const outPath = join(root, 'public', 'metadata.json');
 
-const chapters = [
-  { slug: 'introduction', title: 'Introduction' },
-  { slug: 'part-1', title: 'Part I: Thermodynamic Foundations and the Ladder of Emergence' },
-  { slug: 'part-2', title: 'Part II: The Identity Thesis and the Geometry of Feeling' },
-  { slug: 'part-3', title: 'Part III: Signatures of Affect Under the Existential Burden' },
-  { slug: 'part-4', title: 'Part IV: The Topology of Social Bonds' },
-  { slug: 'part-5', title: 'Part V: Gods and Superorganisms' },
-  { slug: 'part-6', title: 'Part VI: Historical Consciousness and Transcendence' },
-  { slug: 'part-7', title: 'Part VII: The Empirical Program' },
-  { slug: 'epilogue', title: 'Epilogue' },
-  { slug: 'appendix-experiments', title: 'Appendix: Experiment Catalog' },
-];
+// Import canonical chapter data — single source of truth
+const chapterDataPath = join(root, 'lib', 'chapter-data.ts');
+const chapterDataSrc = readFileSync(chapterDataPath, 'utf-8');
+// Extract the array from the TS source (simple regex — the format is stable)
+const chapterMatches = [...chapterDataSrc.matchAll(/\{\s*slug:\s*'([^']+)',\s*title:\s*'([^']+)'/g)];
+const chapters = chapterMatches.map(m => ({ slug: m[1], title: m[2] }));
 
 function slugify(text) {
   return text

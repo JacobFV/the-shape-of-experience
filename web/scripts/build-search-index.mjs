@@ -13,18 +13,11 @@ const root = join(__dirname, '..');
 const contentDir = join(root, 'content');
 const outPath = join(root, 'public', 'search-index.json');
 
-const chapters = [
-  { slug: 'introduction', title: 'Introduction' },
-  { slug: 'part-1', title: 'Part I: Foundations' },
-  { slug: 'part-2', title: 'Part II: Identity Thesis' },
-  { slug: 'part-3', title: 'Part III: Affect Signatures' },
-  { slug: 'part-4', title: 'Part IV: Social Bonds' },
-  { slug: 'part-5', title: 'Part V: Gods' },
-  { slug: 'part-6', title: 'Part VI: Transcendence' },
-  { slug: 'part-7', title: 'Part VII: Empirical Program' },
-  { slug: 'epilogue', title: 'Epilogue' },
-  { slug: 'appendix-experiments', title: 'Experiments' },
-];
+// Import canonical chapter data — single source of truth
+const chapterDataPath = join(root, 'lib', 'chapter-data.ts');
+const chapterDataSrc = readFileSync(chapterDataPath, 'utf-8');
+const chapterMatches = [...chapterDataSrc.matchAll(/\{\s*slug:\s*'([^']+)',\s*title:\s*'([^']+)'/g)];
+const chapters = chapterMatches.map(m => ({ slug: m[1], title: m[2] }));
 
 function slugify(text) {
   return text
