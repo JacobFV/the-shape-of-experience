@@ -1726,42 +1726,6 @@ body {
 }
 
 /* Paragraph play button — tooltip style matching highlight-popover */
-.para-play-btn {
-  position: fixed;
-  transform: translateX(-50%);
-  background: var(--text);
-  color: white;
-  border-radius: 6px;
-  padding: 2px;
-  display: flex;
-  z-index: 250;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
-  font-family: var(--font-sans);
-  animation: paraPlayFadeIn 0.15s ease;
-}
-
-.para-play-btn button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 0.78rem;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  border-radius: 4px;
-  font-family: var(--font-sans);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.para-play-btn button:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-@keyframes paraPlayFadeIn {
-  from { opacity: 0; transform: translateX(-50%) scale(0.9); }
-  to { opacity: 1; transform: translateX(-50%) scale(1); }
-}
 
 mark.user-highlight {
   background: rgba(255, 213, 79, 0.4);
