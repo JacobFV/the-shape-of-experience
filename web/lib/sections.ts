@@ -133,22 +133,24 @@ export interface NavEntry {
   label: string;
 }
 
-/** Build flat navigation list across all chapters and sections */
+/** Build flat navigation list across all chapters and sections.
+ *  Only level-1 sections are navigation targets; level-2 sections
+ *  are accessed as hash anchors within their parent page. */
 function buildNavList(): NavEntry[] {
   const metadata = loadMetadata();
   const entries: NavEntry[] = [];
 
   for (const chapter of metadata) {
-    const routableSections = chapter.sections.filter((s) => s.level === 1 || s.level === 2);
+    const level1Sections = chapter.sections.filter((s) => s.level === 1);
     const chapterInfo = chapters.find((c) => c.slug === chapter.slug);
 
-    if (routableSections.length === 0) {
+    if (level1Sections.length === 0) {
       entries.push({
         href: `/${chapter.slug}`,
         label: chapterInfo?.shortTitle || chapter.title,
       });
     } else {
-      for (const s of routableSections) {
+      for (const s of level1Sections) {
         entries.push({
           href: `/${chapter.slug}/${s.id}`,
           label: s.text,
@@ -188,14 +190,16 @@ export function getChapterNav(slug: string): { prev?: NavEntry; next?: NavEntry 
   };
 }
 
-/** Get all chapter-section params for generateStaticParams */
+/** Get all chapter-section params for generateStaticParams.
+ *  Only level-1 sections get their own pages; level-2 sections
+ *  are rendered inline within their parent level-1 section. */
 export function getAllSectionParams(): { slug: string; section: string }[] {
   const metadata = loadMetadata();
   const params: { slug: string; section: string }[] = [];
 
   for (const chapter of metadata) {
-    const routableSections = chapter.sections.filter((s) => s.level === 1 || s.level === 2);
-    for (const s of routableSections) {
+    const level1Sections = chapter.sections.filter((s) => s.level === 1);
+    for (const s of level1Sections) {
       params.push({ slug: chapter.slug, section: s.id });
     }
   }

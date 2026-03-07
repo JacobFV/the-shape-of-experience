@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { chapters } from '@/lib/chapter-data';
 
 export default function Home() {
   return (
@@ -41,16 +42,9 @@ export default function Home() {
       <section className="landing-toc">
         <h2>Contents</h2>
         <ol>
-          <li><Link href="/introduction">Introduction</Link></li>
-          <li><Link href="/part-1">Part I: Thermodynamic Foundations and the Ladder of Emergence</Link></li>
-          <li><Link href="/part-2">Part II: The Identity Thesis and the Geometry of Feeling</Link></li>
-          <li><Link href="/part-3">Part III: Signatures of Affect Under the Existential Burden</Link></li>
-          <li><Link href="/part-4">Part IV: The Topology of Social Bonds</Link></li>
-          <li><Link href="/part-5">Part V: Gods and Superorganisms</Link></li>
-          <li><Link href="/part-6">Part VI: Historical Consciousness and Transcendence</Link></li>
-          <li><Link href="/part-7">Part VII: The Empirical Program</Link></li>
-          <li><Link href="/epilogue">Epilogue</Link></li>
-          <li><Link href="/appendix-experiments">Appendix: Experiment Catalog</Link></li>
+          {chapters.map(ch => (
+            <li key={ch.slug}><Link href={`/${ch.slug}`}>{ch.title}</Link></li>
+          ))}
         </ol>
       </section>
     </article>
