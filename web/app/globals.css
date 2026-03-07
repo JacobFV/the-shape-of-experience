@@ -3298,7 +3298,13 @@ mark.user-highlight .published-icon {
   }
 
   .wip-banner {
-    display: none;
+    position: fixed;
+    top: calc(52px + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    z-index: 150;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.75rem;
   }
 
   /* --- Header bar --- */
@@ -3562,13 +3568,13 @@ mark.user-highlight .published-icon {
     pointer-events: auto;
   }
 
-  /* --- Main content padding for header --- */
+  /* --- Main content padding for header + WIP banner --- */
   .main-content {
-    padding-top: calc(60px + env(safe-area-inset-top, 0px));
+    padding-top: calc(84px + env(safe-area-inset-top, 0px));
   }
 
   body[data-audio-started="true"] .main-content {
-    padding-top: calc(140px + env(safe-area-inset-top, 0px));
+    padding-top: calc(164px + env(safe-area-inset-top, 0px));
     transition: padding-top 0.3s ease;
   }
 
