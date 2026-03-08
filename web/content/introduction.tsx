@@ -13,13 +13,6 @@ export const metadata = {
 export default function Introduction() {
   return (
     <>
-      <Figure
-        src=""
-        alt="The necessity argument: physics leads to information leads to affect"
-        caption={<>The three-step inevitability argument animated: thermodynamic necessity → computational necessity → structural necessity, culminating in six inevitable coordinates.</>}
-      >
-        <ThemeVideo baseName="necessity-argument" />
-      </Figure>
       <Illustration id="what-are-these-feelings" />
       {/* COMPOSITIONAL INTENT FOR THE INTRODUCTION:
           This is the reader's first encounter. They should leave with:
